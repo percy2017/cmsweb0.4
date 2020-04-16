@@ -1,0 +1,25 @@
+{
+    "name": "nwidart/webstreaming",
+    "description": "",
+    "authors": [
+        {
+            "name": "Nicolas Widart",
+            "email": "n.widart@gmail.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Modules\\Webstreaming\\Providers\\WebstreamingServiceProvider"
+            ],
+            "aliases": {
+
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\Webstreaming\\": ""
+        }
+    }
+}

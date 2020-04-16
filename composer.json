@@ -16,7 +16,7 @@
         "guzzlehttp/guzzle": "^6.3",
         "laravel/framework": "^7.0",
         "laravel/socialite": "^4.3",
-        "laravel/tinker": "^2.0",
+        "laravel/tinker": "^2.4",
         "laravel/ui": "^2.0",
         "nwidart/laravel-modules": "^7.1",
         "silviolleite/laravelpwa": "^1.0",
@@ -50,7 +50,8 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Tests\\": "tests/"
+            "Tests\\": "tests/",
+            "Modules\\": "modules/"
         }
     },
     "minimum-stability": "dev",

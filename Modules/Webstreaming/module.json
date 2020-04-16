@@ -1,0 +1,13 @@
+{
+    "name": "Webstreaming",
+    "alias": "webstreaming",
+    "description": "",
+    "keywords": [],
+    "order": 0,
+    "providers": [
+        "Modules\\Webstreaming\\Providers\\WebstreamingServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}
