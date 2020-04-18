@@ -17,14 +17,14 @@ class MeetingsController extends Controller
      * @return Response
      */
 
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('auth');
+    // }
     
     public function index()
     {
-        $meetings = Meeting::where('deleted_at', null)->orderBy('id', 'Desc')->paginate(10);
+        $meetings = Meeting::where('deleted_at', null)->where('user_id', Auth::user()->id)->orderBy('id', 'Desc')->paginate(10);
         return view('histream::meetings.index', compact('meetings'));
     }
 

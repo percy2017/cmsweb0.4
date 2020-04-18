@@ -15,5 +15,5 @@ Route::prefix('histream')->group(function() {
     Route::get('/', 'HiStreamController@index');
 });
 
-Route::resource('admin/conferencias', 'MeetingsController');
+Route::resource('admin/conferencias', 'MeetingsController')->middleware('auth');
 Route::get('meet/{slug}', 'MeetingsController@join');
