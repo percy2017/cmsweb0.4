@@ -64,10 +64,12 @@
 
 
 <body class="creative-lp">
+    <!-- Navigation & Intro -->
+  <header>
     @yield('header')
-    
+  </header>
     @yield('content')
-
+@include('webstreaming::layouts.footer')
     {{-- Laravel Mix - JS File --}}
     {{-- <script src="{{ mix('js/webstreaming.js') }}"></script> --}}
     <!-- JQuery -->

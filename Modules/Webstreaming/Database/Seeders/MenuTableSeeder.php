@@ -144,7 +144,7 @@ class MenuTableSeeder extends Seeder
                 'icon_class' => 'fab fa-twitter-f title',
                 'color'      => null,
                 'parent_id'  => null,
-                'order'      => 1,
+                'order'      => 2,
             ])->save();
         }
          /** primer title 3 */
@@ -160,7 +160,7 @@ class MenuTableSeeder extends Seeder
                 'icon_class' => 'fab fa-instagram-f title',
                 'color'      => null,
                 'parent_id'  => null,
-                'order'      => 1,
+                'order'      => 3,
             ])->save();
         }
     }

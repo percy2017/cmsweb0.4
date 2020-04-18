@@ -62,7 +62,7 @@
 
         <!-- Grid column -->
         <div class="col-lg-4 col-md-12 mb-1 text-center text-md-left">
-            <img src="{{ voayger::Image($data->imagen->value) }}" alt=""
+            <img src="{{ voyager::Image($data->imagen->value) }}" alt=""
                 class="z-depth-0 img-fluid">
         </div>
         <!-- Grid column -->
