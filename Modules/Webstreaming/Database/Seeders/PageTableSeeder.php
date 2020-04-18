@@ -20,7 +20,7 @@ class PageTableSeeder extends Seeder
             'name'        =>  'Landing Page HiStream',
             'slug'        =>  'landing-page-histream',
             'user_id'     =>  1,
-            'direction'   =>  'Webstreaming::index',
+            'direction'   =>  'webstreaming::index',
             'description' =>  'Pagina de destino de HiStream.',
             'details'     =>   json_encode([
 
@@ -28,7 +28,7 @@ class PageTableSeeder extends Seeder
                     'type'   => 'image',
                     'name'   => 'imagen',
                     'label'  => 'Imagen',
-                    'value'  => 'images/62.jpg',
+                    'value'  => 'images62.jpg',
                     'width'  => 12
                 ],
 

@@ -28,7 +28,7 @@
 
        <!--Third column-->
        <div class="col-md-3 mb-2">
-         <h1 class="white-text mb-1 font-weight-bold"{{ $data->title_3->value }}</h1>
+         <h1 class="white-text mb-1 font-weight-bold">{{ $data->title_3->value }}</h1>
          <p class="white-text">{{ $data->parrafo_3->value }}</p>
        </div>
        <!--/Third column-->

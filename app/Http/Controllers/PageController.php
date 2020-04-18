@@ -76,9 +76,53 @@ class PageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $page_id)
     {
-        //
+       
+        $page = Page::where('id', $page_id)->first();
+        $page->name = $request->name;
+        $page->slug = Str::slug($request->name);
+        $page->direction = $request->direction;
+        $page->description = $request->description;
+        if($request->hasFile('image')){
+         
+            $image=Storage::disk('public')->put('pages/'.date('F').date('Y'), $request->file('image'));
+            // return $image;
+            $page->image = $image;
+        }
+        $mijson = $page->details;
+        if ($mijson) {
+            foreach(json_decode($page->details, true) as $item => $value)
+            {
+                if($value['type'] == 'image')
+                {
+                  
+                    $mijson = str_replace($value['value'], $value['value'], $mijson);
+                }else{
+                    if($value['type'] == 'space')
+                    {
+                    }else
+                    {
+                        $mijson = str_replace($value['value'], $request[$value['name']], $mijson);
+                    }
+                    
+                }
+                if($request->hasFile($value['name']))
+                {
+                    $dirimage = Storage::disk('public')->put('pages/'.date('F').date('Y'), $request->file($value['name']));
+                    $mijson = str_replace($value['value'], $dirimage, $mijson);
+                }
+               
+            }
+            $page->details = $mijson;
+        }
+   
+        $page->save();
+        
+        return back()->with([
+            'message'    => 'Pagina Actualizada - '.$page->name,
+            'alert-type' => 'success',
+        ]);
     }
 
     /**
