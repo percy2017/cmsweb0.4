@@ -35,6 +35,26 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('/block/move_up/{block_id}', 'BlockController@move_up')->name('block_move_up'); 
     Route::get('/block/move_down/{block_id}', 'BlockController@move_down')->name('block_move_down');
 });
+Route::get('{module_name}/installer', function($module_id) {
+    $module=App\Module::where('id', $module_id)->first();
+    $module_name=$module->name;
+
+    switch ($module->name) {
+        case 'Inti v1.0':
+            $module_name = 'Inti';
+            break;
+        case 'hiStream v1.0':
+            $module_name = 'Webstreaming';
+            break;
+        default:
+            # code...
+            break;
+    }
+    Artisan::call('module:seed '.$module_name);
+    $module->installed=true;
+    $module->save();
+    return back()->with(['message' => 'Modulo Instalado.', 'alert-type' => 'success']);
+})->name('module_installer');
 
 Route::get('/{slug}', 'FrontEndController@pages')->name('pages');
 
