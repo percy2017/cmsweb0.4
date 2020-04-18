@@ -14,3 +14,6 @@
 Route::prefix('webstreaming')->group(function() {
     Route::get('/', 'WebstreamingController@index');
 });
+
+Route::resource('admin/conferencias', 'MeetingsController')->middleware('auth');
+Route::get('meet/{slug}', 'MeetingsController@join');

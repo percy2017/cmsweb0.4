@@ -3,7 +3,7 @@
 namespace Modules\Webstreaming\Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use Illuminate\Database\Eloquent\Model;
+// use Illuminate\Database\Eloquent\Model;
 
 class WebstreamingDatabaseSeeder extends Seeder
 {
@@ -14,8 +14,9 @@ class WebstreamingDatabaseSeeder extends Seeder
      */
     public function run()
     {
-        Model::unguard();
+        // Model::unguard();
 
-        // $this->call("OthersTableSeeder");
+        // $this->call("MenuItemsTableSeeder");
+        $this->call(MenuItemsTableSeeder::class);
     }
 }
