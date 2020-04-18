@@ -16,6 +16,8 @@ class WebstreamingDatabaseSeeder extends Seeder
     {
         Model::unguard();
 
-        // $this->call("OthersTableSeeder");
+        $this->call(PageTableSeeder::class);
+        $this->call(MenuTableSeeder::class);
+        
     }
 }

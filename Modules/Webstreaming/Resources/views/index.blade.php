@@ -1,9 +1,14 @@
 @extends('webstreaming::layouts.master')
-
+@section('header')
+    @include('webstreaming::layouts.header')
+@endsection
 @section('content')
-    <h1>Hello World</h1>
 
-    <p>
-        This view is loaded from module: {!! config('webstreaming.name') !!}
-    </p>
+<main>
+
+  @foreach ($blocks as $item)
+  @include('webstreaming::blocks.'.$item->name, ['data' => json_decode($item->details)])
+  @endforeach
+
+</main>
 @endsection
