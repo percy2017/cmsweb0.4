@@ -8,7 +8,7 @@ use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
 
 // Models
-use Modules\HiStream\Entities\Meeting;
+use Modules\Webstreaming\Entities\Meeting;
 
 class MeetingsController extends Controller
 {
@@ -25,7 +25,7 @@ class MeetingsController extends Controller
     public function index()
     {
         $meetings = Meeting::where('deleted_at', null)->where('user_id', Auth::user()->id)->orderBy('id', 'Desc')->paginate(10);
-        return view('histream::meetings.index', compact('meetings'));
+        return view('webstreaming::meetings.index', compact('meetings'));
     }
 
     public function join($slug)
@@ -33,9 +33,9 @@ class MeetingsController extends Controller
         $meeting = Meeting::where('slug', $slug)->where('deleted_at', null)->first();
         if($meeting){
             $name = $meeting->name;
-            return view('histream::meetings.join', compact('name'));
+            return view('webstreaming::meetings.join', compact('name'));
         }else{
-            return view('histream::meetings.error');
+            return view('webstreaming::meetings.error');
         }
         
     }
@@ -75,7 +75,7 @@ class MeetingsController extends Controller
      */
     public function show($id)
     {
-        return view('histream::show');
+        return view('webstreaming::show');
     }
 
     /**
@@ -85,7 +85,7 @@ class MeetingsController extends Controller
      */
     public function edit($id)
     {
-        return view('histream::edit');
+        return view('webstreaming::edit');
     }
 
     /**

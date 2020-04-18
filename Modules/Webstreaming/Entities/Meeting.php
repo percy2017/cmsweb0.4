@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\HiStream\Entities;
+namespace Modules\Webstreaming\Entities;
 
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
