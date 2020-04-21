@@ -19,5 +19,6 @@ class WebstreamingDatabaseSeeder extends Seeder
         $this->call(PageTableSeeder::class);
         $this->call(MenuTableSeeder::class);
         $this->call(MenuItemsTableSeeder::class);
+        $this->call(SettingTableSeeder::class);
     }
 }
