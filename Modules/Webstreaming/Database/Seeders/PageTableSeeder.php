@@ -525,7 +525,236 @@ class PageTableSeeder extends Seeder
                     'width'  => 9
                 ],
 
+                
+
             ])
         ]);
+
+               /** block 6 */
+               Block::create([
+                'name'        => 'lphs_block6',
+                'title'       => 'Blocke #6 (nuestros planes start #6)',
+                'description' => 'Seccion nuestros planes  #6 para la plantilla LPHS',
+                'page_id'     => $page->id,
+                'position'    => 1,
+                'details'     => json_encode([
+                    
+                    'title_h3' => [
+                        'type'   => 'text',
+                        'name'   => 'title_h3',
+                        'label'  => 'Titulo en Negrita',
+                        'value'  => 'Nuestros Planes',
+                        'width'  => 6
+                    ],  
+                    'parrafo' => [
+                        'type'   => 'text_area',
+                        'name'   => 'parrafo',
+                        'label'  => 'Parrafo #1',
+                        'value'  => 'Escoge el plan que se adapte a ti',
+                        'width'  => 6
+                    ],    
+                    /**encabezado del plan 1 */
+                    'pricing1_title' => [
+                        'type'   => 'text',
+                        'name'   => 'pricing1_title',
+                        'label'  => 'Titulo del plan #1',
+                        'value'  => 'Uso Individual',
+                        'width'  => 6
+                    ],
+                    'pricing1_price1' => [
+                        'type'   => 'text',
+                        'name'   => 'pricing1_price1',
+                        'label'  => 'precio #1 - plan 1',
+                        'value'  => '0',
+                        'width'  => 6
+                    ],  
+                    /**contenido del plan 1 */
+                    'pricing1_content1' => [
+                        'type'   => 'text',
+                        'name'   => 'pricing1_content1',
+                        'label'  => 'contenido #1 - plan 1',
+                        'value'  => 'gratis',
+                        'width'  => 6
+                    ], 
+                    'pricing1_content2' => [
+                        'type'   => 'text',
+                        'name'   => 'pricing1_content2',
+                        'label'  => 'contenido #2 - plan 2',
+                        'value'  => '10 participantes',
+                        'width'  => 6
+                    ],
+                    'pricing1_content3' => [
+                        'type'   => 'text',
+                        'name'   => 'pricing1_content3',
+                        'label'  => 'contenido #3 - plan 3',
+                        'value'  => '1  hora de streaming',
+                        'width'  => 4
+                    ],
+                    'pricing1_content4' => [
+                        'type'   => 'text',
+                        'name'   => 'pricing1_content4',
+                        'label'  => 'contenido #4 - plan 4',
+                        'value'  => ' cifrado ssl',
+                        'width'  => 4
+                    ],
+                    'pricing1_content5' => [
+                        'type'   => 'text',
+                        'name'   => 'pricing1_content5',
+                        'label'  => 'contenido #5 - plan 5',
+                        'value'  => 'funciones de video conferencias',
+                        'width'  => 4
+                    ],  
+                    /**button name  and action */
+                    'btn_name' => [
+                        'type'   => 'text',
+                        'name'   => 'btn_name',
+                        'label'  => 'Nombre del boton',
+                        'value'  => 'probar ahora',
+                        'width'  => 6
+                    ],
+                    'btn_action' => [
+                        'type'   => 'text',
+                        'name'   => 'btn_action',
+                        'label'  => 'Accion del boton',
+                        'value'  => '/register',
+                        'width'  => 6
+                    ],
+
+
+                    /**encabezado del plan 2 */
+                    'pricing2_title' => [
+                        'type'   => 'text',
+                        'name'   => 'pricing2_title',
+                        'label'  => 'Titulo del plan #2',
+                        'value'  => 'Pro',
+                        'width'  => 6
+                    ],
+                    'pricing2_price1' => [
+                        'type'   => 'text',
+                        'name'   => 'pricing2_price1',
+                        'label'  => 'precio #2 - plan 2',
+                        'value'  => '100',
+                        'width'  => 6
+                    ],  
+                    /**contenido del plan 2 */
+                    'pricing2_content1' => [
+                        'type'   => 'text',
+                        'name'   => 'pricing2_content1',
+                        'label'  => 'contenido #1 - plan 2',
+                        'value'  => 'todas las funciones basicas',
+                        'width'  => 6
+                    ], 
+                    'pricing2_content2' => [
+                        'type'   => 'text',
+                        'name'   => 'pricing2_content2',
+                        'label'  => 'contenido #2 - plan 2',
+                        'value'  => '100 participantes',
+                        'width'  => 6
+                    ],
+                    'pricing2_content3' => [
+                        'type'   => 'text',
+                        'name'   => 'pricing2_content3',
+                        'label'  => 'contenido #3 - plan 2',
+                        'value'  => '6 hr streaming',
+                        'width'  => 4
+                    ],
+                    'pricing2_content4' => [
+                        'type'   => 'text',
+                        'name'   => 'pricing2_content4',
+                        'label'  => 'contenido #4 - plan 4',
+                        'value'  => 'ssl cifrado',
+                        'width'  => 4
+                    ],
+                    'pricing2_content5' => [
+                        'type'   => 'text',
+                        'name'   => 'pricing2_content5',
+                        'label'  => 'contenido #5 - plan 5',
+                        'value'  => ' administracion de usuarios',
+                        'width'  => 4
+                    ],  
+                    /**button name  and action */
+                    'btn_name2' => [
+                        'type'   => 'text',
+                        'name'   => 'btn_name2',
+                        'label'  => 'Nombre del boton',
+                        'value'  => 'probar ahora',
+                        'width'  => 6
+                    ],
+                    'btn_action2' => [
+                        'type'   => 'text',
+                        'name'   => 'btn_action2',
+                        'label'  => 'Accion del boton',
+                        'value'  => '/register',
+                        'width'  => 6
+                    ],
+
+                    /**encabezado del plan 3 */
+                    'pricing3_title' => [
+                        'type'   => 'text',
+                        'name'   => 'pricing3_title',
+                        'label'  => 'Titulo del plan #3',
+                        'value'  => 'Empresas',
+                        'width'  => 6
+                    ],
+                    'pricing3_price1' => [
+                        'type'   => 'text',
+                        'name'   => 'pricing3_price1',
+                        'label'  => 'precio #3 - plan 3',
+                        'value'  => '200',
+                        'width'  => 6
+                    ],  
+                    /**contenido del plan 3 */
+                    'pricing3_content1' => [
+                        'type'   => 'text',
+                        'name'   => 'pricing3_content1',
+                        'label'  => 'contenido #1 - plan 3',
+                        'value'  => 'panel administrativo',
+                        'width'  => 6
+                    ], 
+                    'pricing3_content2' => [
+                        'type'   => 'text',
+                        'name'   => 'pricing3_content2',
+                        'label'  => 'contenido #2 - plan 3',
+                        'value'  => 'soporte tecnico',
+                        'width'  => 6
+                    ],
+                    'pricing3_content3' => [
+                        'type'   => 'text',
+                        'name'   => 'pricing3_content3',
+                        'label'  => 'contenido #3 - plan 3',
+                        'value'  => 'incluye 300 partcipantes',
+                        'width'  => 4
+                    ],
+                    'pricing3_content4' => [
+                        'type'   => 'text',
+                        'name'   => 'pricing3_content4',
+                        'label'  => 'contenido #4 - plan 3',
+                        'value'  => 'marca de la compañia',
+                        'width'  => 4
+                    ],
+                    'pricing3_content5' => [
+                        'type'   => 'text',
+                        'name'   => 'pricing3_content5',
+                        'label'  => 'contenido #5 - plan 3',
+                        'value'  => 'todas las funciones pro',
+                        'width'  => 4
+                    ],  
+                    /**button name  and action */
+                    'btn_name3' => [
+                        'type'   => 'text',
+                        'name'   => 'btn_name3',
+                        'label'  => 'Nombre del boton #3',
+                        'value'  => 'probar ahora',
+                        'width'  => 6
+                    ],
+                    'btn_action3' => [
+                        'type'   => 'text',
+                        'name'   => 'btn_action3',
+                        'label'  => 'Accion del boton #3',
+                        'value'  => '/register',
+                        'width'  => 6
+                    ],
+                ])     
+            ]);
     }
 }
