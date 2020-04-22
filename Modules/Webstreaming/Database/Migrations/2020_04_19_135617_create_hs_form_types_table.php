@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateHsMeetingsTable extends Migration
+class CreateHsFormTypesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,14 @@ class CreateHsMeetingsTable extends Migration
      */
     public function up()
     {
-        Schema::create('hs_meetings', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
+        Schema::create('hs_form_types', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('name')->unique();
             $table->string('slug')->unique();
-            $table->integer('user_id');
-            $table->time('start', 0);
-            $table->time('finish', 0);
-            $table->json('meeting_types');
-
-            $table->timestamps();
+            $table->mediumText('description')->nullable();
+            
             $table->softDeletes();
+            $table->timestamps(); 
         });
     }
 
@@ -34,6 +31,6 @@ class CreateHsMeetingsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('hs_meetings');
+        Schema::dropIfExists('hs_form_types');
     }
 }

@@ -52,9 +52,7 @@
             <strong>HiStream</strong>
           </h6>
           <hr class="pink accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
-          <p>Here you can use rows and columns here to organize your footer content. Lorem ipsum dolor sit amet,
-            consectetur
-            adipisicing elit.</p>
+          <p>Confíe en nosotros para contactarlo con las personas que le interesan. Valoramos la confianza más que cualquier otra cosa.</p>
         </div>
         <!--/.First column-->
 
@@ -65,16 +63,16 @@
           </h6>
           <hr class="pink accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
           <p>
-            <a href="#!">Movil App</a>
+            <a href="https://play.google.com/store/apps/dev?id=8983547128702673310&hl=es" target="_blanck">Movil App</a>
           </p>
           <p>
-            <a href="#!">Demo App</a>
+            <a href="https://live.loginweb.dev/trabajo" target="_blanck">Demo App</a>
           </p>
           <p>
-            <a href="#!">Descargar App</a>
+            <a href="https://play.google.com/store/apps/dev?id=8983547128702673310&hl=es" target="_blanck">Descargar App</a>
           </p>
           <p>
-            <a href="#!">Servicios</a>
+            <a href="https://loginweb.dev"target="_blanck">Servicios</a>
           </p>
         </div>
         <!--/.Second column-->
@@ -85,18 +83,7 @@
             <strong>Links</strong>
           </h6>
           <hr class="pink accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
-          <p>
-            <a href="#!">Video Conferencias/a>
-          </p>
-          <p>
-            <a href="#!">Reuniones</a>
-          </p>
-          <p>
-            <a href="#!">Chats</a>
-          </p>
-          <p>
-            <a href="#!">Help</a>
-          </p>
+            {{ menu('LandingPage', 'webstreaming::menus.menuLink') }}
         </div>
         <!--/.Third column-->
 
@@ -111,9 +98,9 @@
           <p>
             <i class="fas fa-envelope mr-3"></i> Empresa.loginweb@gmail.com</p>
           <p>
-            <i class="fas fa-phone mr-3"></i> + 591 71130 xx</p>
+            <i class="fas fa-phone mr-3"></i> + 591 71130 523</p>
           <p>
-            <i class="fas fa-print mr-3"></i> + 591 71130 xx</p>
+            <i class="fas fa-print mr-3"></i> + 591 71130 523</p>
         </div>
         <!--/.Fourth column-->
 
@@ -124,9 +111,9 @@
     <!-- Copyright -->
     <div class="footer-copyright py-3 text-center wow fadeIn" data-wow-delay="0.3s">
       <div class="container-fluid">
-        © 2019 Copyright: <a href="live.loginweb.dev" target="_blank"> HiStream </a>
+        © 2020 Copyright: <a href="live.loginweb.dev" target="_blank"> HiStream </a>
       </div>
-    </div>s
+    </div>
     <!-- Copyright -->
 
   </footer>

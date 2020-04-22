@@ -35,7 +35,7 @@
 
                         <!--Footer-->
                         <div class="modal-footer justify-content-center">
-                            <span class="mr-4">difundir la palabra!</span>
+                            <span class="mr-4">Compartir :</span>
                             <a type="button" class="btn-floating btn-sm btn-fb"><i class="fab fa-facebook-f"></i></a>
                             <!--Twitter-->
                             <a type="button" class="btn-floating btn-sm btn-tw"><i class="fab fa-twitter"></i></a>
@@ -94,7 +94,7 @@
 
                         <!--Footer-->
                         <div class="modal-footer justify-content-center">
-                            <span class="mr-4">difundir la palabra!!</span>
+                            <span class="mr-4">Compartir :</span>
                             <a type="button" class="btn-floating btn-sm btn-fb"><i class="fab fa-facebook-f"></i></a>
                             <!--Twitter-->
                             <a type="button" class="btn-floating btn-sm btn-tw"><i class="fab fa-twitter"></i></a>
@@ -151,7 +151,7 @@
 
                         <!--Footer-->
                         <div class="modal-footer justify-content-center">
-                            <span class="mr-4">difundir la palabra!</span>
+                            <span class="mr-4">Compartir :</span>
                             <a type="button" class="btn-floating btn-sm btn-fb"><i class="fab fa-facebook-f"></i></a>
                             <!--Twitter-->
                             <a type="button" class="btn-floating btn-sm btn-tw"><i class="fab fa-twitter"></i></a>
