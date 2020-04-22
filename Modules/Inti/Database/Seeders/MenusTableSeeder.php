@@ -92,6 +92,17 @@ class MenusTableSeeder extends Seeder
             ])->save();
         }
 
+         /**
+         * ------------------------------------------------
+         *            Menu  dropdown-toggle
+         * -----------------------------------------------
+         */
+
+        // category--------------------------
+        Menu::firstOrCreate([
+            'name' => 'inti_categories',
+        ]);
+
         /**
          * ------------------------------------------------
          *            Menu  dropdown-toggle
@@ -103,8 +114,23 @@ class MenusTableSeeder extends Seeder
         $menu = Menu::where('name', 'inti_courses')->firstOrFail();
         $menuItem = MenuItem::firstOrNew([
             'menu_id' => $menu->id,
-            'title'   => 'Crear Nuevo',
+            'title'   => 'Nuevo Curso',
             'url'     => 'admin/inti_courses/create',
+            'route'   => null
+        ]);
+        if (!$menuItem->exists) {
+            $menuItem->fill([
+                'target'     => '_self',
+                'icon_class' => null,
+                'color'      => null,
+                'parent_id'  => null,
+                'order'      => 1,
+            ])->save();
+        }
+        $menuItem = MenuItem::firstOrNew([
+            'menu_id' => $menu->id,
+            'title'   => 'Nueva Categoria',
+            'url'     => 'admin/inti_categories/create',
             'route'   => null
         ]);
         if (!$menuItem->exists) {

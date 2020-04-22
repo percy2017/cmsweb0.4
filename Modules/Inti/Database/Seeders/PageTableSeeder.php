@@ -28,14 +28,14 @@ class PageTableSeeder extends Seeder
                         'type'   => 'text',
                         'name'   => 'title_h5',
                         'label'  => 'Titulo h5 (banner)',
-                        'value'  => 'Todos los Niños Anelan Aprender',
+                        'value'  => 'INSTITUTO DE TECNOLOGÍA EN INTERNET',
                         'width'  => 6
                     ],
                     'title_h1'=>[
                         'type'   => 'text',
                         'name'   => 'title_h1',
                         'label'  => 'Titulo h1 (banner)',
-                        'value'  => 'Hacer Que El Mundo De Sus Hijos Sea Mejor',
+                        'value'  => 'INTI',
                         'width'  => 6
                     ],
                     'btn_name1' => [
@@ -70,8 +70,7 @@ class PageTableSeeder extends Seeder
                         'type'   => 'text_area',
                         'name'   => 'parrafo',
                         'label'  => 'Parrafo del Banner',
-                        'value'  => 'Replenish seasons may male hath fruit beast were seas saw you arrie said man beast whales
-                        his void unto last session for bite. Set have great youll male grass yielding yielding man',
+                        'value'  => 'En nuestra plataforma podrás aprender tecnologías en el área de Internet, Programación, Ofimática, Servidores, Negocios y Marketing.',
                         'width'  => 12
                     ]
 
