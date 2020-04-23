@@ -17,6 +17,8 @@ class DataRowsTableSeeder extends Seeder
     public function run()
     {
         $ChatDataType = DataType::where('slug', 'hs_chats')->firstOrFail();
+        $FormTypeDataType = DataType::where('slug', 'hs_form_types')->firstOrFail();
+        $FieldDataType = DataType::where('slug', 'hs_fields')->firstOrFail();
         /**
          * ------------------------------------------------
          *               Formulario Course
@@ -49,11 +51,11 @@ class DataRowsTableSeeder extends Seeder
             ])->save();
         }
 
-        $dataRow = $this->dataRow($ChatDataType, 'title');
+        $dataRow = $this->dataRow($ChatDataType, 'message');
         if (!$dataRow->exists) {
             $dataRow->fill([
                 'type'         => 'text',
-                'display_name' => 'Titulo',
+                'display_name' => 'Mensaje',
                 'required'     => 1,
                 'browse'       => 1,
                 'read'         => 1,
@@ -64,6 +66,129 @@ class DataRowsTableSeeder extends Seeder
                 'details'      => [
                     'display'   => [
                         'width'  => '6',
+                    ],
+                ]
+            ])->save();
+        }
+        $dataRow = $this->dataRow($ChatDataType, 'message_type');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'text',
+                'display_name' => 'Tipo de Mensaje',
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'order'        => $postion++,
+                'details'      => [
+                    'display'   => [
+                        'width'  => '6',
+                    ],
+                ]
+            ])->save();
+        }
+        $dataRow = $this->dataRow($ChatDataType, 'transmitter');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'text',
+                'display_name' => 'Emisor',
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'order'        => $postion++,
+                'details'      => [
+                    'display'   => [
+                        'width'  => '6',
+                    ],
+                ]
+            ])->save();
+        }
+        $dataRow = $this->dataRow($ChatDataType, 'receiver');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'text',
+                'display_name' => 'Receptor',
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'order'        => $postion++,
+                'details'      => [
+                    'display'   => [
+                        'width'  => '6',
+                    ],
+                ]
+            ])->save();
+        }
+        $dataRow = $this->dataRow($ChatDataType, 'file');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'text',
+                'display_name' => 'Archivo',
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'order'        => $postion++,
+                'details'      => [
+                    'display'   => [
+                        'width'  => '6',
+                    ],
+                ]
+            ])->save();
+        }
+        $dataRow = $this->dataRow($ChatDataType, 'chat_belongsto_meeting_relationship');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'relationship',
+                'display_name' => 'Reunion',
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'details'      => [
+                    'display' => [
+                        'width' => 6
+                    ],
+                    'model'       => 'Modules\\Webstreaming\\Entities\\Meeting',
+                    'table'       => 'hs_meetings',
+                    'type'        => 'belongsTo',
+                    'column'      => 'hs_meeting_id',
+                    'key'         => 'id',
+                    'label'       => 'title',
+                    'pivot_table' => 'hs_meetings',
+                    'pivot'       => 0,
+                ],
+                'order'=> $postion++,
+
+            ])->save();
+        }
+        $dataRow = $this->dataRow($ChatDataType, 'hs_meeting_id');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'hidden',
+                'display_name' => 'meeting_id',
+                'required'     => 1,
+                'browse'       => 0,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'order'        => $postion++,
+                'details'      => [
+                    'display'   => [
+                        'width'  => '12',
                     ],
                 ]
             ])->save();
