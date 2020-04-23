@@ -21,7 +21,7 @@ class DataTypesTableSeeder extends Seeder
                 'name'                  => 'hs_chats',
                 'display_name_singular' => 'Chat',
                 'display_name_plural'   => 'Chats',
-                'icon'                  => 'fa fa-id-badge',
+                'icon'                  => 'fa fa-weixin',
                 'model_name'            => 'Modules\\Webstreaming\\Entities\\HsChat',
                 'policy_name'           => null,
                 'controller'            => 'Modules\\Webstreaming\\Http\\Controllers\\ChatsController',
