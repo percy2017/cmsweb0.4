@@ -17,8 +17,8 @@ class DataRowsTableSeeder extends Seeder
     public function run()
     {
         $ChatDataType = DataType::where('slug', 'hs_chats')->firstOrFail();
-        $FormTypeDataType = DataType::where('slug', 'hs_form_types')->firstOrFail();
-        $FieldDataType = DataType::where('slug', 'hs_fields')->firstOrFail();
+        $PlanDataType = DataType::where('slug', 'hs_plans')->firstOrFail();
+        //$FieldDataType = DataType::where('slug', 'hs_fields')->firstOrFail();
         /**
          * ------------------------------------------------
          *               Formulario Course
@@ -40,12 +40,12 @@ class DataRowsTableSeeder extends Seeder
                     'displey' => [
                         'width' => '6'
                     ],
-                    'actions' => [
+                    /* 'actions' => [
                         'table' => 'inti_contents',
                         'key' => 'course_id',
                         'type' => 'create',
                         'message' => 'Crear Nuevo Contenido'
-                    ],
+                    ], */
                 ],
                 'order'        => $postion++,
             ])->save();
@@ -73,7 +73,7 @@ class DataRowsTableSeeder extends Seeder
         $dataRow = $this->dataRow($ChatDataType, 'message_type');
         if (!$dataRow->exists) {
             $dataRow->fill([
-                'type'         => 'text',
+                'type'         => 'select_dropdown',
                 'display_name' => 'Tipo de Mensaje',
                 'required'     => 1,
                 'browse'       => 1,
@@ -84,7 +84,13 @@ class DataRowsTableSeeder extends Seeder
                 'order'        => $postion++,
                 'details'      => [
                     'display'   => [
-                        'width'  => '6',
+                        'options' => [
+                            'option1' => 'Privado',
+                            'option2' => 'publico'
+                        ],
+                        'display'   => [
+                            'width'  => '6',
+                        ]
                     ],
                 ]
             ])->save();
@@ -193,6 +199,107 @@ class DataRowsTableSeeder extends Seeder
                 ]
             ])->save();
         }
+        /**
+         * ---------------------------------------------------------------------------
+         *          PLANES - FORMULARIO
+         * --------------------------------------------------------------------------
+         */
+        $dataRow = $this->dataRow($PlanDataType, 'id');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'number',
+                'display_name' => __('voyager::seeders.data_rows.id'),
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 0,
+                'edit'         => 0,
+                'add'          => 0,
+                'delete'       => 0,
+                'details'      => [
+                    'displey' => [
+                        'width' => '6'
+                    ]
+                ],
+                'order' => $postion++,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($PlanDataType, 'name');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'text',
+                'display_name' => 'Nombre del plan',
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'order'        => $postion++,
+                'details'      => [
+                    'display'   => [
+                        'width'  => '6',
+                    ],
+                ]
+            ])->save();
+        }
+        $dataRow = $this->dataRow($PlanDataType, 'max_person');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'number',
+                'display_name' => 'Numero de personas del plan',
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'order'        => $postion++,
+                'details'      => [
+                    'display'   => [
+                        'width'  => '6',
+                    ],
+                ]
+            ])->save();
+        }
+        $dataRow = $this->dataRow($PlanDataType, 'max_time');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'number',
+                'display_name' => 'Tiempo Maximo del plan',
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'order'        => $postion++,
+                'details'      => [
+                    'display'   => [
+                        'width'  => '6',
+                    ],
+                ]
+            ])->save();
+        }
+        $dataRow = $this->dataRow($PlanDataType, 'price');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'number',
+                'display_name' => 'Precio del plan',
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'order'        => $postion++,
+                'details'      => [
+                    'display'   => [
+                        'width'  => '6',
+                    ],
+                ]
+            ])->save();
+        }
+        
     }
 
 

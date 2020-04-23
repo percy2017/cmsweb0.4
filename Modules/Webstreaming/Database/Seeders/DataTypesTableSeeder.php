@@ -22,9 +22,33 @@ class DataTypesTableSeeder extends Seeder
                 'display_name_singular' => 'Chat',
                 'display_name_plural'   => 'Chats',
                 'icon'                  => 'fa fa-weixin',
-                'model_name'            => 'Modules\\Webstreaming\\Entities\\HsChat',
+                'model_name'            => 'Modules\\Webstreaming\\Entities\\Chat',
                 'policy_name'           => null,
                 'controller'            => 'Modules\\Webstreaming\\Http\\Controllers\\ChatsController',
+                'generate_permissions'  => 1,
+                'description'           => null,
+                'server_side'           => 1,
+                'details'               => [
+                    'order_column'         => 'id',
+                    'order_display_column' => 'id',
+                    'order_direction'      => 'asc',
+                    'default_search_key'   => 'id',
+                    'scope'                => null
+                ]
+            ])->save();
+        }
+
+
+        $dataType = $this->dataType('slug', 'hs_plans');
+        if (!$dataType->exists) {
+            $dataType->fill([
+                'name'                  => 'hs_plans',
+                'display_name_singular' => 'Plan',
+                'display_name_plural'   => 'Planes',
+                'icon'                  => 'fa fa-bolt',
+                'model_name'            => 'Modules\\Webstreaming\\Entities\\Plan',
+                'policy_name'           => null,
+                'controller'            => 'Modules\\Webstreaming\\Http\\Controllers\\PlansController',
                 'generate_permissions'  => 1,
                 'description'           => null,
                 'server_side'           => 1,
