@@ -12,7 +12,6 @@ use TCG\Voyager\VoyagerServiceProvider;
 
 class CmswebInstall extends Command
 {
-    
     use Seedable;
 
     protected $seedersPath = __DIR__.'/../../publishable/database/seeds/';
@@ -22,7 +21,7 @@ class CmswebInstall extends Command
      *
      * @var string
      */
-    protected $name = 'cmsweb:install';
+    protected $name = 'voyager:install';
 
     /**
      * The console command description.
@@ -69,6 +68,7 @@ class CmswebInstall extends Command
     {
         $this->info('Resenteando la Base de Datos');
         $this->call('migrate:reset');
+        
         $this->info('Publishing the Voyager assets, database, and config files');
 
         // Publish only relevant resources on install
@@ -79,19 +79,19 @@ class CmswebInstall extends Command
         $this->info('Migrating the database tables into your application');
         $this->call('migrate', ['--force' => $this->option('force')]);
 
-        // $this->info('Attempting to set Voyager User model as parent to App\User');
-        // if (file_exists(app_path('User.php'))) {
-        //     $str = file_get_contents(app_path('User.php'));
+        $this->info('Attempting to set Voyager User model as parent to App\User');
+        if (file_exists(app_path('User.php'))) {
+            $str = file_get_contents(app_path('User.php'));
 
-        //     if ($str !== false) {
-        //         $str = str_replace('extends Authenticatable', "extends \TCG\Voyager\Models\User", $str);
+            if ($str !== false) {
+                $str = str_replace('extends Authenticatable', "extends \TCG\Voyager\Models\User", $str);
 
-        //         file_put_contents(app_path('User.php'), $str);
-        //     }
-        // } else {
-        //     $this->warn('Unable to locate "app/User.php".  Did you move this file?');
-        //     $this->warn('You will need to update this manually.  Change "extends Authenticatable" to "extends \TCG\Voyager\Models\User" in your User model');
-        // }
+                file_put_contents(app_path('User.php'), $str);
+            }
+        } else {
+            $this->warn('Unable to locate "app/User.php".  Did you move this file?');
+            $this->warn('You will need to update this manually.  Change "extends Authenticatable" to "extends \TCG\Voyager\Models\User" in your User model');
+        }
 
         $this->info('Dumping the autoloaded files and reloading all new files');
 
@@ -101,14 +101,14 @@ class CmswebInstall extends Command
         $process->setTimeout(null); // Setting timeout to null to prevent installation from stopping at a certain point in time
         $process->setWorkingDirectory(base_path())->run();
 
-        // $this->info('Adding Voyager routes to routes/web.php');
-        // $routes_contents = $filesystem->get(base_path('routes/web.php'));
-        // if (false === strpos($routes_contents, 'Voyager::routes()')) {
-        //     $filesystem->append(
-        //         base_path('routes/web.php'),
-        //         "\n\nRoute::group(['prefix' => 'admin'], function () {\n    Voyager::routes();\n});\n"
-        //     );
-        // }
+        $this->info('Adding Voyager routes to routes/web.php');
+        $routes_contents = $filesystem->get(base_path('routes/web.php'));
+        if (false === strpos($routes_contents, 'Voyager::routes()')) {
+            $filesystem->append(
+                base_path('routes/web.php'),
+                "\n\nRoute::group(['prefix' => 'admin'], function () {\n    Voyager::routes();\n});\n"
+            );
+        }
 
         $this->info('Seeding data into the database');
         $this->seed('VoyagerDatabaseSeeder');
@@ -133,6 +133,12 @@ class CmswebInstall extends Command
         $this->info('Adding the storage symlink to your public folder');
         $this->call('storage:link');
 
-        $this->info('Successfully installed Voyager! Enjoy');
+        $this->info('Generando llave de Identificacion del CmsWeb v3.0');
+        $this->call('key:generate');
+
+        $this->info('Realizando Limpieza');
+        $this->call('optimize:clear');
+
+        $this->info('CmsWeb v3.0 instalado con éxito! Disfrutalo');
     }
 }

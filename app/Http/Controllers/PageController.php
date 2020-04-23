@@ -105,7 +105,6 @@ class PageController extends Controller
                     {
                         $mijson = str_replace($value['value'], $request[$value['name']], $mijson);
                     }
-                    
                 }
                 if($request->hasFile($value['name']))
                 {
@@ -114,6 +113,7 @@ class PageController extends Controller
                 }
                
             }
+            // return $mijson;
             $page->details = $mijson;
         }
    

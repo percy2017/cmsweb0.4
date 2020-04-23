@@ -55,7 +55,7 @@
                                     <hr />
                                 </div>
                             
-                            
+                                {{-- {{ dd(json_decode($block->details, true)) }} --}}
                                 @foreach (json_decode($block->details, true) as $item => $value)
                                     @switch($value['type'])
                                         @case('text')
@@ -121,6 +121,7 @@
                                             </div>
                                         @break
                                     @endswitch
+                                    {{-- {{ dd($value['type']) }} --}}
                                 @endforeach
                                 <div class="form-group col-md-12">
                                     <hr />

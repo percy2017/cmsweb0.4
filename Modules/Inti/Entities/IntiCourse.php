@@ -9,5 +9,5 @@ class IntiCourse extends Model
     use SoftDeletes;
     protected $dates = ['deleted_at'];
     protected $table = 'inti_courses';
-    protected $fillable = ['title','slug','body','user_id'];
+    protected $fillable = ['title', 'description', 'slug', 'body', 'user_id', 'price', 'images', 'seats', 'category_id'];
 }
