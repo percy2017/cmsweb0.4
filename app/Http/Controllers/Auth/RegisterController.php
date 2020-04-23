@@ -9,6 +9,9 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
+use App\Module;
+use Modules\Webstreaming\Entities\PlanUser;
+
 class RegisterController extends Controller
 {
     /*
@@ -52,8 +55,8 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'captcha' => 'required|captcha'
+            'password' => ['required', 'string', 'min:8'],
+            // 'captcha' => 'required|captcha'
         ]);
     }
 
@@ -65,10 +68,26 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
+            'role_id' => 1, // role_id debe ser 2
             'password' => Hash::make($data['password']),
         ]);
+
+        // Enviar notificación de nueva suscripción al módulo hiStream
+        $module_histream = Module::find(2);
+        if($module_histream){
+            if ($module_histream->installed){
+                $status = $data['plan_id'] <= 1 ? 1 : null;
+                $plan_user = PlanUser::create([
+                    'hs_plan_type_id' => $data['plan_id'],
+                    'user_id' => $user->id,
+                    'status' => $status
+                ]);
+                session(['greetings_histream' => true]);
+            }
+        }
+        return $user;
     }
 }

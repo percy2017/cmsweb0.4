@@ -18,7 +18,6 @@ class CreateHsFormTypesTable extends Migration
             $table->string('name')->unique();
             $table->string('slug')->unique();
             $table->mediumText('description')->nullable();
-            
             $table->softDeletes();
             $table->timestamps(); 
         });

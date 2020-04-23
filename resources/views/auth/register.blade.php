@@ -59,19 +59,39 @@
                             @enderror
                         </div>
 
-                            <div class="md-form">
-                                @captcha
-                                <input type="text" class="form-control @error('captcha') is-invalid @enderror" id="captcha" name="captcha" autocomplete="off" placeholder="Ingresa el codigo de la imagen">
-                                @error('captcha')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                        <div class="md-form">
+                            @captcha
+                            <input type="text" class="form-control @error('captcha') is-invalid @enderror" id="captcha" name="captcha" autocomplete="off" placeholder="Ingresa el codigo de la imagen">
+                            @error('captcha')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
 
+                        {{-- Select de plan de pagos --}}
+                        @php
+                            $module_histream = App\Module::find(2);
+                        @endphp
+                        @if ($module_histream)
+                            @if ($module_histream->installed)
+                            <div class="pb-4">
+                                <label for="">Plan</label>
+                                <select name="plan_id" class="browser-default custom-select" required>
+                                    <option value="" disabled>Elige tu plan</option>
+                                    @foreach (Modules\Webstreaming\Entities\PlanType::where('deleted_at', null)->get() as $item)
+                                    <option @if(session('plan_id')==$item->id) selected @endif value="{{ $item->id }}">{{ $item->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            @endif
+                            @php
+                                session()->forget('plan_id');
+                            @endphp
+                        @endif
                         <div class="text-center mb-3">
                             <button type="submit" class="btn blue-gradient btn-block btn-rounded z-depth-1a">Enviar</button>
-                            <a href="/" class="btn green-gradient btn-block btn-rounded z-depth-1a">VOlver al Home</a>
+                            <a href="/" class="btn green-gradient btn-block btn-rounded z-depth-1a">Volver al Home</a>
                         </div>
                         
                     </div>

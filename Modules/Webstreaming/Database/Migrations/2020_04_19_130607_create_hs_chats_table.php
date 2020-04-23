@@ -14,15 +14,13 @@ class CreateHsChatsTable extends Migration
     public function up()
     {
         Schema::create('hs_chats', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
             $table->string('message')->nullable();
             $table->string('message_type')->nullable();
             $table->string('transmitter')->nullable();
             $table->string('receiver')->nullable();
             $table->string('file')->nullable();
-
             $table->foreignId('hs_meeting_id')->constrained();
-
             $table->softDeletes();
             $table->timestamps();
         });

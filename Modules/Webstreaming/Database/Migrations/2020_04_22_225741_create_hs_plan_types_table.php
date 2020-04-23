@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateHsFieldsTable extends Migration
+class CreateHsPlanTypesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,14 @@ class CreateHsFieldsTable extends Migration
      */
     public function up()
     {
-        Schema::create('hs_fields', function (Blueprint $table) {
+        Schema::create('hs_plan_types', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('field')->nullable();
-            $table->string('type')->nullable();
-            $table->text('details')->nullable();
-            $table->foreignId('hs_form_type_id')->constrained();
-            $table->softDeletes();
+            $table->string('name')->nullable();
+            $table->integer('max_persons')->nullable();
+            $table->integer('max_time')->nullable();
+            $table->decimal('price', 10, 2);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -31,6 +31,6 @@ class CreateHsFieldsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('hs_fields');
+        Schema::dropIfExists('hs_suscription_types');
     }
 }

@@ -28,21 +28,31 @@
               </div>
   
               <ul class="striped mb-1">
-                <li>
-                  <p><strong></strong> {{ $data->pricing1_content1->value }}</p>
-                </li>
-                <li>
-                  <p><strong></strong>{{ $data->pricing1_content2->value }}</p>
-                </li>
-                <li>
-                  <p><strong></strong>{{ $data->pricing1_content3->value }}</p>
-                </li>
-                <li>
-                  <p><strong>+</strong>{{ $data->pricing1_content4->value }} </p>
-                </li>
-                <li>
-                  <p><strong></strong>{{ $data->pricing1_content5->value }} </p>
-                </li>
+                @if ($data->pricing1_content1->value)
+                    <li>
+                      <p><strong></strong> {{ $data->pricing1_content1->value }}</p>
+                    </li>
+                @endif
+                @if ($data->pricing1_content2->value)
+                    <li>
+                      <p><strong></strong> {{ $data->pricing1_content2->value }}</p>
+                    </li>
+                @endif
+                @if ($data->pricing1_content3->value)
+                    <li>
+                      <p><strong></strong> {{ $data->pricing1_content3->value }}</p>
+                    </li>
+                @endif
+                @if ($data->pricing1_content4->value)
+                    <li>
+                      <p><strong></strong> {{ $data->pricing1_content4->value }}</p>
+                    </li>
+                @endif
+                @if ($data->pricing1_content5->value)
+                    <li>
+                      <p><strong></strong> {{ $data->pricing1_content5->value }}</p>
+                    </li>
+                @endif
               </ul>
               <a href="{{ $data->btn_action->value }}" class="btn btn-danger btn-rounded mb-4">{{ $data->btn_name->value }} </a>
   
@@ -74,21 +84,31 @@
                 </div>
   
                 <ul class="striped mb-0">
-                  <li>
-                    <p><strong></strong>{{ $data->pricing2_content1->value }}</p>
-                  </li>
-                  <li>
-                    <p><strong></strong>{{ $data->pricing2_content2->value }}</p>
-                  </li>
-                  <li>
-                    <p><strong></strong>{{ $data->pricing2_content3->value }}</p>
-                  </li>
-                  <li>
-                    <p><strong></strong>{{ $data->pricing2_content4->value }}</p>
-                  </li>
-                  <li>
-                    <p><strong></strong>{{ $data->pricing2_content4->value }}</p>
-                  </li>
+                  @if ($data->pricing2_content1->value)
+                    <li>
+                      <p><strong></strong> {{ $data->pricing2_content1->value }}</p>
+                    </li>
+                @endif
+                @if ($data->pricing2_content2->value)
+                    <li>
+                      <p><strong></strong> {{ $data->pricing2_content2->value }}</p>
+                    </li>
+                @endif
+                @if ($data->pricing2_content3->value)
+                    <li>
+                      <p><strong></strong> {{ $data->pricing2_content3->value }}</p>
+                    </li>
+                @endif
+                @if ($data->pricing2_content4->value)
+                    <li>
+                      <p><strong></strong> {{ $data->pricing2_content4->value }}</p>
+                    </li>
+                @endif
+                @if ($data->pricing2_content5->value)
+                    <li>
+                      <p><strong></strong> {{ $data->pricing2_content5->value }}</p>
+                    </li>
+                @endif
                 </ul>
                 <a href="{{ $data->btn_action2->value }}" class="btn btn-rounded btn-outline-white">{{ $data->btn_name2->value }}</a>
   
@@ -119,21 +139,31 @@
               </div>
   
               <ul class="striped mb-1">
-                <li>
-                  <p><strong></strong>{{ $data->pricing3_content1->value }}</p>
-                </li>
-                <li>
-                  <p><strong></strong>{{ $data->pricing3_content2->value }}</p>
-                </li>
-                <li>
-                  <p><strong></strong>{{ $data->pricing3_content3->value }}</p>
-                </li>
-                <li>
-                  <p><strong></strong>{{ $data->pricing3_content4->value }}</p>
-                </li>
-                <li>
-                  <p><strong></strong>{{ $data->pricing3_content5->value }}</p>
-                </li>
+                @if ($data->pricing3_content1->value)
+                    <li>
+                      <p><strong></strong> {{ $data->pricing3_content1->value }}</p>
+                    </li>
+                @endif
+                @if ($data->pricing3_content2->value)
+                    <li>
+                      <p><strong></strong> {{ $data->pricing3_content2->value }}</p>
+                    </li>
+                @endif
+                @if ($data->pricing3_content3->value)
+                    <li>
+                      <p><strong></strong> {{ $data->pricing3_content3->value }}</p>
+                    </li>
+                @endif
+                @if ($data->pricing3_content4->value)
+                    <li>
+                      <p><strong></strong> {{ $data->pricing3_content4->value }}</p>
+                    </li>
+                @endif
+                @if ($data->pricing3_content5->value)
+                    <li>
+                      <p><strong></strong> {{ $data->pricing3_content5->value }}</p>
+                    </li>
+                @endif
               </ul>
               <a href="{{ $data->btn_action3->value }}" class="btn btn-danger btn-rounded mb-4">{{ $data->btn_name3->value }}</a>
   
