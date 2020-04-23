@@ -3,8 +3,11 @@
 namespace Modules\Webstreaming\Entities;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Chat extends Model
 {
-    protected $fillable = [];
+    use SoftDeletes;
+    protected $table = 'hs_chats';
+    protected $fillable = ['message','message_type','transmitter','receiver','file','hs_meeting_id'];
 }
