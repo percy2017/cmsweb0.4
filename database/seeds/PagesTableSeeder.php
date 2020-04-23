@@ -115,7 +115,7 @@ class PagesTableSeeder extends Seeder
                     'value' => 'Customization',
                     'width'  => 3
                 ],
-                'descripcion1' => [
+                'description1' => [
                     'type'  => 'text_area',
                     'name'  => 'description1',
                     'label' => 'Descripcion #1',

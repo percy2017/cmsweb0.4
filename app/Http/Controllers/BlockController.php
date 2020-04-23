@@ -19,6 +19,7 @@ class BlockController extends Controller
         $page = Page::where('id', $page_id)->first();
         $blocks = Block::where('page_id', $page_id)->orderBy('position', 'asc')->get();
         $dataType = Voyager::model('DataType')->where('slug', '=', 'blocks')->first();
+        // dd($page, $blocks, $dataType);
         return view('vendor.pages.blocks', [
             'blocks' => $blocks,
             'dataType' =>  $dataType,
@@ -82,32 +83,31 @@ class BlockController extends Controller
         $mijson = $block->details;
         foreach(json_decode($block->details, true) as $item => $value)
         {
-              
-            if($value['type'] == 'image')
-            {
-              
+            if($value['type'] == 'image'){
                 $mijson = str_replace($value['value'], $value['value'], $mijson);
             }else{
-                if($value['type'] == 'space')
-                {
-                }else
-                {
-                    $mijson = str_replace($value['value'], $request[$value['name']], $mijson);
+                if($value['type'] == 'space'){
+                }else{
+                    $mijson_aux = json_decode($mijson, true);
+                    $mijson_aux[$value['name']]['value'] = $request[$value['name']];
+                    $mijson = json_encode($mijson_aux);
+                    // $mijson = str_replace($value['value'], $request[$value['name']], $mijson);
                 }
-                
             }
-            if($request->hasFile($value['name']))
-            {
+
+            if($request->hasFile($value['name'])){
                 $dirimage = Storage::disk('public')->put('blocks/'.date('F').date('Y'), $request->file($value['name']));
                 $mijson = str_replace($value['value'], $dirimage, $mijson);
             }
+            
         }
+        // return $mijson;
         $block->details = $mijson;
        // $block->position = $request->position;
         $block->save();
         
         return back()->with([
-            'message'    => 'Block Actualizada - '.$block->title,
+            'message'    => 'Block '.$block->title.' actualizado.',
             'alert-type' => 'success',
         ]);
     }
