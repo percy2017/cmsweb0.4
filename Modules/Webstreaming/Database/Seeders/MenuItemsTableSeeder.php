@@ -18,6 +18,27 @@ class MenuItemsTableSeeder extends Seeder
     {
         $menu = Menu::where('name', 'admin')->firstOrFail();
 
+
+        $last_menu_item = MenuItem::orderBy('order', 'DESC')->first();
+        $cont = $last_menu_item ? $last_menu_item->id : 0;
+
+        $menuItem = MenuItem::firstOrNew([
+            'menu_id' => $menu->id,
+            'title'   => 'Suscripciones',
+            'url'     => '',
+            'route'   => 'suscripciones.index',
+        ]);
+        if (!$menuItem->exists) {
+            $menuItem->fill([
+                'target'     => '_self',
+                'icon_class' => 'voyager-logbook',
+                'color'      => null,
+                'parent_id'  => 1,
+                'order'      => $cont++,
+            ])->save();
+        }
+
+
         $HiStreamMenuItem = MenuItem::firstOrNew([
             'menu_id' => $menu->id,
             'title'   => 'Histream',
@@ -32,6 +53,7 @@ class MenuItemsTableSeeder extends Seeder
                 'order'      => 2,
             ])->save();
         }
+
         $menuItem = MenuItem::firstOrNew([
             'menu_id' => $menu->id,
             'title'   => 'Conferencias',
@@ -184,9 +206,10 @@ class MenuItemsTableSeeder extends Seeder
                 'icon_class' => null,
                 'color'      => null,
                 'parent_id'  => null,
-                'order'      => 1,
+                'order'=> 1,
             ])->save();
         }
+        
         $menuItem = MenuItem::firstOrNew([
             'menu_id' => $menu->id,
             'title'   => 'divider',

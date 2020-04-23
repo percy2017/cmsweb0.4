@@ -123,6 +123,37 @@
   
       </div>
       <!-- First row -->
+
+      {{-- second row --}}
+      @if(session('greetings_histream'))
+        <div class="row">
+          <!-- First column -->
+          <div class="col-lg-12 mb-4">
+    
+            <!-- Card -->
+            <div class="card card-cascade narrower">
+    
+              <!-- Card content -->
+              <div class="card-body card-body-cascade">
+                <div class="alert alert-primary" role="alert">
+                  {!! setting('histream.greetings') !!}
+                </div>
+                {!! setting('histream.tutorial') !!}
+              </div>
+              <!-- Card content -->
+    
+            </div>
+            <!-- Card -->
+    
+          </div>
+          <!-- First column -->
+    
+        </div>
+      @endif
+      @php
+        session()->forget('greetings_histream');
+      @endphp
+      {{-- second row --}}
     </section>
   </div>
 @endsection

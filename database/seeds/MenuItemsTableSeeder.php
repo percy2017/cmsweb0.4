@@ -31,7 +31,7 @@ class MenuItemsTableSeeder extends Seeder
         //     ])->save();
         // }
 
-        $count = 1;
+        $count = 0;
         $toolsMenuItem = MenuItem::firstOrNew([
             'menu_id' => $menu->id,
             'title'   => __('voyager::seeders.menu_items.tools'),
@@ -43,7 +43,7 @@ class MenuItemsTableSeeder extends Seeder
                 'icon_class' => 'voyager-tools',
                 'color'      => null,
                 'parent_id'  => null,
-                'order'      => 1,
+                'order'      => $count++,
             ])->save();
         }
 

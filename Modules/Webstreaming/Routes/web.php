@@ -15,5 +15,15 @@ Route::prefix('webstreaming')->group(function() {
     Route::get('/', 'WebstreamingController@index');
 });
 
+// Conferecias
 Route::resource('admin/conferencias', 'MeetingsController')->middleware('auth');
 Route::get('meet/{slug}', 'MeetingsController@join');
+
+// suscripciones
+Route::resource('admin/suscripciones', 'SuscriptionsController')->middleware('auth');
+Route::get('admin/suscripciones/list/{search}', 'SuscriptionsController@list')->middleware('auth');
+
+Route::get('register/{id}', function($id){
+    session(['plan_id' => $id]);
+    return redirect('/register');
+});
