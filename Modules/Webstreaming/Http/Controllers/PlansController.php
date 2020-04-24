@@ -35,7 +35,7 @@ class plansController extends Controller
 
     public function index()
     {
-        return view('inti::bread.index', [
+        return view('webstreaming::bread.index', [
             'dataType' =>  $this->dataType,
             'menuItems' => $this->menuItems
         ]);
@@ -43,7 +43,7 @@ class plansController extends Controller
 
     public function create()
     {
-        return view('inti::bread.create', [
+        return view('webstreaming::bread.create', [
             'dataType' => $this->dataType,
             'dataRows'=>$this->dataRowsAdd
         ]); 
@@ -123,7 +123,7 @@ class plansController extends Controller
     public function show($id = null)
     {
         $dataTypeContent = $this->dataType->model_name::orderBy($this->dataType->details->{'order_column'}, $this->dataType->details->{'order_direction'})->paginate(setting('admin.pagination')); 
-        return view('inti::bread.show', [
+        return view('webstreaming::bread.show', [
             'dataType' =>  $this->dataType,
             'dataTypeContent' => $dataTypeContent
         ]);
@@ -132,7 +132,7 @@ class plansController extends Controller
     public function edit($id)
     {
         $data = $this->dataType->model_name::find($id);
-        return view('inti::bread.edit', [
+        return view('webstreaming::bread.edit', [
             'dataType' => $this->dataType,
             'dataRows'=> $this->dataRowsEdit,
             'data' => $data

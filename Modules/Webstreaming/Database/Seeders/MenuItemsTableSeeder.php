@@ -69,12 +69,12 @@ class MenuItemsTableSeeder extends Seeder
                 'order'      => 1,
             ])->save();
         }
-        $menuItem = MenuItem::firstOrNew([
+       /*  $menuItem = MenuItem::firstOrNew([
             'menu_id' => $menu->id,
             'title'   => 'Chats',
             'url'     => '',
             'route'   => 'voyager.hs_chats.index',
-        ]);/** 2--- */
+        ]);   
         if (!$menuItem->exists) {
             $menuItem->fill([
                 'target'     => '_self',
@@ -83,7 +83,7 @@ class MenuItemsTableSeeder extends Seeder
                 'parent_id'  => $HiStreamMenuItem->id,
                 'order'      => 1,
             ])->save();
-        }
+        } */
         $menuItem = MenuItem::firstOrNew([
             'menu_id' => $menu->id,
             'title'   => 'Planes',

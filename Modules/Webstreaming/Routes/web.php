@@ -1,5 +1,9 @@
 <?php
 
+
+
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -11,10 +15,18 @@
 |
 */
 
-Route::prefix('webstreaming')->group(function() {
-    Route::get('/', 'WebstreamingController@index');
+Route::group(['prefix' => 'admin'], function () {
+    
+    
+    Route::post('histream/search', 'WebstreamingController@search')->name('search');
+    Route::get('histream/relationship/{id}/{table}/{key}/{type}', 'WebstreamingController@relationship')->name('relationship');
+    Route::get('histream/view/{table}/{id}', 'WebstreamingController@view')->name('view');
+    Route::get('histream/deletes/recovery/{table}/{id}', 'WebstreamingController@recovery')->name('recovery');
+    Route::get('histream/deletes/{table}', 'WebstreamingController@deletes')->name('deletes');
+    
+ 
 });
-
+    
 // Conferecias
 Route::resource('admin/conferencias', 'MeetingsController')->middleware('auth');
 Route::get('meet/{slug}', 'MeetingsController@join');

@@ -163,6 +163,23 @@
                                                 id="{{ $row->field }}" 
                                                 value="@if(isset($dataTypeContent->{$row->field})){{ \Carbon\Carbon::parse(old($row->field, $dataTypeContent->{$row->field}))->format('m/d/Y g:i A') }}@else{{old($row->field)}}@endif">
                                             @break
+                                            {{ dd($row) }}
+                                        @case('time')
+                                            <label class="control-label" for="{{ $row->field }}">{{ $row->display_name }}</label>
+                                            @if(isset($row->details->tooltip))
+                                                <span class="voyager-question"
+                                                aria-hidden="true"
+                                                data-toggle="tooltip"
+                                                data-placement="{{ $row->details->tooltip->{'ubication'} }}"
+                                                title="{{ $row->details->tooltip->{'message'} }}"></span>
+                                            @endif
+                                            <input 
+                                                type="time" 
+                                                class="form-control datepicker" 
+                                                name="{{ $row->field }}" 
+                                                id="{{ $row->field }}" 
+                                                value="@if(isset($dataTypeContent->{$row->field})){{ \Carbon\Carbon::parse(old($row->field, $dataTypeContent->{$row->field}))->format('m/d/Y g:i A') }}@else{{old($row->field)}}@endif">
+                                            @break    
                                         @case('rich_text_box')
                                             <label class="control-label" for="{{ $row->field }}">{{ $row->display_name }}</label>
                                             @if(isset($row->details->tooltip))
