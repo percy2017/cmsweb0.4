@@ -239,19 +239,19 @@
 
                                     <td class="no-sort no-click bread-actions">
                                         @can('read', app($dataType->model_name))
-                                        <a href="#"
-                                            onclick="ajax('{{ route('inti_view', [$dataType->name, $data->id]) }}', 'get')"
-                                            title="#" class="btn btn-warning">
-                                            <i class="voyager-eye"></i> <span class="hidden-xs hidden-sm">Ver</span>
-                                        </a>
+                                            <a href="#"
+                                                onclick="ajax('{{ route('hs_view', [$dataType->name, $data->id]) }}', 'get')"
+                                                title="#" class="btn btn-warning">
+                                                <i class="voyager-eye"></i> <span class="hidden-xs hidden-sm">Ver</span>
+                                            </a>
                                         @endcan
 
                                         @can('edit', app($dataType->model_name))
-                                        <a href="#"
-                                            onclick="ajax('{{ route('voyager.'.$dataType->name.'.edit', $data->id) }}', 'get')"
-                                            title="#" class="btn btn-primary">
-                                            <i class="voyager-edit"></i> <span class="hidden-xs hidden-sm">Editar</span>
-                                        </a>
+                                            <a href="#"
+                                                onclick="ajax('{{ route('voyager.'.$dataType->name.'.edit', $data->id) }}', 'get')"
+                                                title="#" class="btn btn-primary">
+                                                <i class="voyager-edit"></i> <span class="hidden-xs hidden-sm">Editar</span>
+                                            </a>
                                         @endcan
                                         @can('delete', app($dataType->model_name))
                                         <a href="#"

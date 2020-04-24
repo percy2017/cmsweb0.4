@@ -199,6 +199,65 @@ class DataRowsTableSeeder extends Seeder
                 ]
             ])->save();
         }
+        $dataRow = $this->dataRow($ChatDataType, 'created_at');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'timestamp',
+                'display_name' => __('voyager::seeders.data_rows.created_at'),
+                'required'     => 0,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 0,
+                'add'          => 0,
+                'delete'       => 0,
+                'order'        => $postion++,
+                'details'      => [
+                    'display' => [
+                        'width' => '3'
+                    ]
+                ]
+            ])->save();
+        }
+
+        $dataRow = $this->dataRow($ChatDataType, 'updated_at');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'timestamp',
+                'display_name' => __('voyager::seeders.data_rows.updated_at'),
+                'required'     => 0,
+                'browse'       => 0,
+                'read'         => 1,
+                'edit'         => 0,
+                'add'          => 0,
+                'delete'       => 0,
+                'order'        => $postion++,
+                'details'      => [
+                    'display' => [
+                        'width' => '3'
+                    ]
+                ]
+            ])->save();
+        }
+
+        $dataRow = $this->dataRow($ChatDataType, 'deleted_at');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'timestamp',
+                'display_name' => 'deleted_at',
+                'required'     => 0,
+                'browse'       => 0,
+                'read'         => 1,
+                'edit'         => 0,
+                'add'          => 0,
+                'delete'       => 0,
+                'order'        => $postion++,
+                'details'      => [
+                    'display' => [
+                        'width' => '3'
+                    ]
+                ]
+            ])->save();
+        }
         /**
          * ---------------------------------------------------------------------------
          *          PLANES - FORMULARIO
@@ -264,7 +323,7 @@ class DataRowsTableSeeder extends Seeder
         $dataRow = $this->dataRow($PlanDataType, 'max_time');
         if (!$dataRow->exists) {
             $dataRow->fill([
-                'type'         => 'number',
+                'type'         => 'time',
                 'display_name' => 'Tiempo Maximo del plan',
                 'required'     => 1,
                 'browse'       => 1,
@@ -296,6 +355,65 @@ class DataRowsTableSeeder extends Seeder
                     'display'   => [
                         'width'  => '6',
                     ],
+                ]
+            ])->save();
+        }
+        $dataRow = $this->dataRow($PlanDataType, 'created_at');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'timestamp',
+                'display_name' => __('voyager::seeders.data_rows.created_at'),
+                'required'     => 0,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 0,
+                'add'          => 0,
+                'delete'       => 0,
+                'order'        => $postion++,
+                'details'      => [
+                    'display' => [
+                        'width' => '3'
+                    ]
+                ]
+            ])->save();
+        }
+
+        $dataRow = $this->dataRow($PlanDataType, 'updated_at');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'timestamp',
+                'display_name' => __('voyager::seeders.data_rows.updated_at'),
+                'required'     => 0,
+                'browse'       => 0,
+                'read'         => 1,
+                'edit'         => 0,
+                'add'          => 0,
+                'delete'       => 0,
+                'order'        => $postion++,
+                'details'      => [
+                    'display' => [
+                        'width' => '3'
+                    ]
+                ]
+            ])->save();
+        }
+
+        $dataRow = $this->dataRow($PlanDataType, 'deleted_at');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'timestamp',
+                'display_name' => 'deleted_at',
+                'required'     => 0,
+                'browse'       => 0,
+                'read'         => 1,
+                'edit'         => 0,
+                'add'          => 0,
+                'delete'       => 0,
+                'order'        => $postion++,
+                'details'      => [
+                    'display' => [
+                        'width' => '3'
+                    ]
                 ]
             ])->save();
         }

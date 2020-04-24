@@ -19,7 +19,7 @@
               <br>
               <h5 class="dark-grey-text font-weight-bold mt-2">{{ $data->title1->value }}</h5>
               <div class="mt-1">
-                <p class="mx-3 grey-text">{{ $data->descripcion1->value }}</p>
+                <p class="mx-3 grey-text">{{ $data->description1->value }}</p>
               </div>
             </div>
           </div>
