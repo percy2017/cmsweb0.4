@@ -18,25 +18,8 @@ class MenuItemsTableSeeder extends Seeder
     {
         $menu = Menu::where('name', 'admin')->firstOrFail();
 
-
         $last_menu_item = MenuItem::orderBy('order', 'DESC')->first();
-        $cont = $last_menu_item ? $last_menu_item->id : 0;
-
-        $menuItem = MenuItem::firstOrNew([
-            'menu_id' => $menu->id,
-            'title'   => 'Suscripciones',
-            'url'     => '',
-            'route'   => 'suscripciones.index',
-        ]);
-        if (!$menuItem->exists) {
-            $menuItem->fill([
-                'target'     => '_self',
-                'icon_class' => 'voyager-logbook',
-                'color'      => null,
-                'parent_id'  => 1,
-                'order'      => $cont++,
-            ])->save();
-        }
+        $cont = $last_menu_item ? $last_menu_item->order : 0;
 
 
         $HiStreamMenuItem = MenuItem::firstOrNew([
@@ -50,7 +33,23 @@ class MenuItemsTableSeeder extends Seeder
                 'icon_class' => 'fa fa-eercast',
                 'color'      => null,
                 'parent_id'  => null,
-                'order'      => 2,
+                'order'      => $cont++,
+            ])->save();
+        }
+
+        $menuItem = MenuItem::firstOrNew([
+            'menu_id' => $menu->id,
+            'title'   => 'Suscripciones',
+            'url'     => '',
+            'route'   => 'suscripciones.index',
+        ]);
+        if (!$menuItem->exists) {
+            $menuItem->fill([
+                'target'     => '_self',
+                'icon_class' => 'voyager-logbook',
+                'color'      => null,
+                'parent_id'  => $HiStreamMenuItem->id,
+                'order'      => $cont++,
             ])->save();
         }
 
@@ -66,7 +65,7 @@ class MenuItemsTableSeeder extends Seeder
                 'icon_class' => 'voyager-double-right',
                 'color'      => null,
                 'parent_id'  => $HiStreamMenuItem->id,
-                'order'      => 1,
+                'order'      => $cont++,
             ])->save();
         }
        /*  $menuItem = MenuItem::firstOrNew([
@@ -96,7 +95,7 @@ class MenuItemsTableSeeder extends Seeder
                 'icon_class' => 'voyager-double-right',
                 'color'      => null,
                 'parent_id'  => $HiStreamMenuItem->id,
-                'order'      => 1,
+                'order'      => $cont++,
             ])->save();
         }
 

@@ -16,15 +16,12 @@ class WebstreamingDatabaseSeeder extends Seeder
     {
         // Model::unguard();
 
-
-
         $this->call(DataTypesTableSeeder::class);
         $this->call(DataRowsTableSeeder::class);
         $this->call(PageTableSeeder::class);
         $this->call(MenuTableSeeder::class);//menu de la landing page
-
         $this->call(MenuItemsTableSeeder::class);
-        $this->call(PlanTypesTableSeeder::class);
+        $this->call(PlansTableSeeder::class);
         $this->call(PlanUserTableSeeder::class);
         $this->call(SettingTableSeeder::class);
         $this->call(PermissionsTableSeeder::class);

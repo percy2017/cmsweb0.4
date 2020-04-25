@@ -14,14 +14,13 @@ class CreateHsPlansTable extends Migration
     public function up()
     {
         Schema::create('hs_plans', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
             $table->string('name')->nullable();
             $table->integer('max_person')->nullable();
             $table->time('max_time')->nullable();
-            $table->integer('price', 0)->nullable();
-
-            $table->softDeletes();
+            $table->decimal('price', 10, 2);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

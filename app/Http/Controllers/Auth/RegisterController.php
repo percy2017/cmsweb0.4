@@ -68,24 +68,30 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        $user = User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'role_id' => 1, // role_id debe ser 2
-            'password' => Hash::make($data['password']),
-        ]);
-
-        // Enviar notificación de nueva suscripción al módulo hiStream
         $module_histream = Module::find(2);
+
+        $user = new User;
+        $user->name = $data['name'];
+        $user->email = $data['email'];
+        $user->role_id = 1; // role_id debe ser 2
+        $user->password = Hash::make($data['password']);
+        if($module_histream){
+            if ($module_histream->installed){
+                $user->phone = $data['phone'];
+            }
+        }
+        $user->save();
+
         if($module_histream){
             if ($module_histream->installed){
                 $status = $data['plan_id'] <= 1 ? 1 : null;
                 $plan_user = PlanUser::create([
-                    'hs_plan_type_id' => $data['plan_id'],
+                    'hs_plan_id' => $data['plan_id'],
                     'user_id' => $user->id,
                     'status' => $status
                 ]);
                 session(['greetings_histream' => true]);
+                // Enviar notificación de nueva suscripción al módulo hiStream
             }
         }
         return $user;
