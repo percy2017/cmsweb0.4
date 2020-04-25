@@ -15,10 +15,10 @@ class CreateHsPlanUserTable extends Migration
     {
         Schema::create('hs_plan_user', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->foreignId('hs_plan_type_id')->constrained();
+            $table->foreignId('hs_plan_id')->constrained();
             $table->foreignId('user_id')->constrained();
-            $table->time('start', 0)->nullable();
-            $table->time('finish', 0)->nullable();
+            $table->date('start', 0)->nullable();
+            $table->date('finish', 0)->nullable();
             $table->integer('status')->nullable();
             $table->timestamps();
             $table->softDeletes();

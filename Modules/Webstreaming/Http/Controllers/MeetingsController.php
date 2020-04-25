@@ -6,9 +6,11 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 // Models
 use Modules\Webstreaming\Entities\Meeting;
+use Modules\Webstreaming\Entities\PlanUser;
 
 class MeetingsController extends Controller
 {
@@ -24,8 +26,18 @@ class MeetingsController extends Controller
     
     public function index()
     {
+        $suscription = DB::table('hs_plan_user as pu')
+                            ->join('hs_plans as p', 'p.id', 'pu.hs_plan_id')
+                            ->select('pu.*', 'p.max_person', 'p.max_time')
+                            ->where('user_id', Auth::user()->id)
+                            ->where('status', '<=', 2)
+                            ->first();
+        return view('webstreaming::meetings.index', compact('suscription'));
+    }
+
+    public function list(){
         $meetings = Meeting::where('deleted_at', null)->where('user_id', Auth::user()->id)->orderBy('id', 'Desc')->paginate(10);
-        return view('webstreaming::meetings.index', compact('meetings'));
+        return view('webstreaming::meetings.partials.list', compact('meetings'));
     }
 
     public function join($slug)
@@ -58,6 +70,7 @@ class MeetingsController extends Controller
     {
         $meeting = Meeting::create([
             'name' => $request->name,
+            'start' => date('Y-m-d H:i', strtotime($request->start)),
             'user_id' => Auth::user()->id
         ]);
 
@@ -98,6 +111,7 @@ class MeetingsController extends Controller
     {
         $meeting = Meeting::findOrFail($id);
         $meeting->name = $request->name;
+        $meeting->start = date('Y-m-d H:i', strtotime($request->start));
         $meeting->save();
 
         if($request->ajax){

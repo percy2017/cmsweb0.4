@@ -18,9 +18,9 @@
     </head>
     <body>
         <div id="meet"></div>
-        <script src='https://live.loginweb.dev/external_api.js'></script>
+        <script src="{{ setting('histream.server').'/external_api.js' }}"></script>
         <script>
-            const domain = 'live.loginweb.dev';
+            const domain = "{{ str_replace('https://', '', setting('histream.server')) }}";
             const options = {
                 roomName: '{{ $name }}',
                 // width: screen.width,

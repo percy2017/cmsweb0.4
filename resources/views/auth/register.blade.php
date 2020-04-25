@@ -36,7 +36,7 @@
                     
                         <div class="md-form">
                             <input type="text" id="name" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required>
-                            <label for="name">Name Complet</label>
+                            <label for="name">Nombre completo</label>
                             @error('name')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -46,23 +46,13 @@
 
                         <div class="md-form">
                             <input type="text" id="email" class="form-control @error('name') is-invalid @enderror" name="email" value="{{ old('name') }}" required>
-                            <label for="email">Your email</label>
-                        </div>
-
-                        <div class="md-form pb-3">
-                            <input type="password" id="password" class="form-control @error('password') is-invalid @enderror" name="password" required>
-                            <label for="password">Your password</label>
-                            @error('password')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
+                            <label for="email">tu email</label>
                         </div>
 
                         <div class="md-form">
-                            @captcha
-                            <input type="text" class="form-control @error('captcha') is-invalid @enderror" id="captcha" name="captcha" autocomplete="off" placeholder="Ingresa el codigo de la imagen">
-                            @error('captcha')
+                            <input type="password" id="password" class="form-control @error('password') is-invalid @enderror" name="password" required>
+                            <label for="password">Tu contraseña</label>
+                            @error('password')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -75,11 +65,20 @@
                         @endphp
                         @if ($module_histream)
                             @if ($module_histream->installed)
+                            <div class="md-form">
+                                <input type="tel" id="phome" class="form-control @error('phome') is-invalid @enderror" name="phone" required>
+                                <label for="password">Número de celular</label>
+                                @error('phome')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
                             <div class="pb-4">
                                 <label for="">Plan</label>
                                 <select name="plan_id" class="browser-default custom-select" required>
                                     <option value="" disabled>Elige tu plan</option>
-                                    @foreach (Modules\Webstreaming\Entities\PlanType::where('deleted_at', null)->get() as $item)
+                                    @foreach (Modules\Webstreaming\Entities\Plan::where('deleted_at', null)->get() as $item)
                                     <option @if(session('plan_id')==$item->id) selected @endif value="{{ $item->id }}">{{ $item->name }}</option>
                                     @endforeach
                                 </select>
@@ -89,6 +88,17 @@
                                 session()->forget('plan_id');
                             @endphp
                         @endif
+
+                        <div class="md-form">
+                            @captcha
+                            <input type="text" class="form-control @error('captcha') is-invalid @enderror" id="captcha" name="captcha" autocomplete="off" placeholder="Ingresa el codigo de la imagen">
+                            @error('captcha')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+
                         <div class="text-center mb-3">
                             <button type="submit" class="btn blue-gradient btn-block btn-rounded z-depth-1a">Enviar</button>
                             <a href="/" class="btn green-gradient btn-block btn-rounded z-depth-1a">Volver al Home</a>

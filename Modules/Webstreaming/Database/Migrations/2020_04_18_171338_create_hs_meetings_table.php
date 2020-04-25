@@ -18,8 +18,8 @@ class CreateHsMeetingsTable extends Migration
             $table->string('name');
             $table->string('slug')->unique();
             $table->integer('user_id')->nullable();
-            $table->time('start', 0)->nullable();
-            $table->time('finish', 0)->nullable();
+            $table->dateTime('start', 0)->nullable();
+            $table->dateTime('finish', 0)->nullable();
             $table->json('meeting_types')->nullable();
             $table->timestamps();
             $table->softDeletes();

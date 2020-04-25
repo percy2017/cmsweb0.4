@@ -5,9 +5,9 @@ namespace Modules\Webstreaming\Database\Seeders;
 use Illuminate\Database\Seeder;
 // use Illuminate\Database\Eloquent\Model;
 
-use Modules\Webstreaming\Entities\PlanType;
+use Modules\Webstreaming\Entities\Plan;
 
-class PlanTypesTableSeeder extends Seeder
+class PlansTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -18,22 +18,22 @@ class PlanTypesTableSeeder extends Seeder
     {
         // Model::unguard();
 
-        PlanType::create([
+        Plan::create([
             'name' => 'Gratis',
-            'max_persons' => 10,
-            'max_time' => 40,
+            'max_person' => 10,
+            'max_time' => '1:00:00',
             'price' => 0
         ]);
-        PlanType::create([
+        Plan::create([
             'name' => 'Profesional',
-            'max_persons' => 100,
-            'max_time' => 360,
+            'max_person' => 100,
+            'max_time' => '06:00:00',
             'price' => 100
         ]);
-        PlanType::create([
+        Plan::create([
             'name' => 'Empresarial',
-            'max_persons' => 300,
-            'max_time' => 1440,
+            'max_person' => 300,
+            'max_time' => '23:59:59',
             'price' => 300
         ]);
     }

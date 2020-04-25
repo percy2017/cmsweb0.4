@@ -10,7 +10,7 @@ class Meeting extends Model
     use Sluggable;
 
     protected $table = 'hs_meetings';
-    protected $fillable = ['name', 'slug', 'user_id'];
+    protected $fillable = ['name', 'slug', 'user_id', 'start', 'finish', 'meeting_type'];
 
     public function sluggable()
     {
