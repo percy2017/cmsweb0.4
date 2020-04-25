@@ -26,6 +26,7 @@ class SocialiteController extends Controller
                                  'email' => $auth_user->email ?? trim(str_ireplace(' ', '.', $auth_user->name)).'.'.rand(1001, 9999).'@loginweb.dev',
                                  'password' => Hash::make('password'),
                                  'avatar' => $auth_user->avatar,
+                                 'role_id' => 2
                              ]);
  
                      Auth::login($user, true);

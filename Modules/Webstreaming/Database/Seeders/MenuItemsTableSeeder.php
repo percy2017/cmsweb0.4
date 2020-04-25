@@ -69,11 +69,11 @@ class MenuItemsTableSeeder extends Seeder
                 'order'      => 1,
             ])->save();
         }
-       /*  $menuItem = MenuItem::firstOrNew([
+        $menuItem = MenuItem::firstOrNew([
             'menu_id' => $menu->id,
-            'title'   => 'Chats',
+            'title'   => 'Reuniones',
             'url'     => '',
-            'route'   => 'voyager.hs_chats.index',
+            'route'   => 'voyager.hs_meetings.index',
         ]);   
         if (!$menuItem->exists) {
             $menuItem->fill([
@@ -83,7 +83,7 @@ class MenuItemsTableSeeder extends Seeder
                 'parent_id'  => $HiStreamMenuItem->id,
                 'order'      => 1,
             ])->save();
-        } */
+        } 
         $menuItem = MenuItem::firstOrNew([
             'menu_id' => $menu->id,
             'title'   => 'Planes',
@@ -173,6 +173,77 @@ class MenuItemsTableSeeder extends Seeder
         /**
          * ------------------------------------------------
          *            Menu  dropdown-toggle => planes
+         * -----------------------------------------------
+         */
+        Menu::firstOrCreate([
+            'name' => 'hs_plans',
+        ]);
+        $menu = Menu::where('name', 'hs_plans')->firstOrFail();
+        $menuItem = MenuItem::firstOrNew([
+            'menu_id' => $menu->id,
+            'title'   => 'Crear Nuevo',
+            'url'     => 'admin/hs_plans/create',
+            'route'   => null
+        ]);
+        if (!$menuItem->exists) {
+            $menuItem->fill([
+                'target'     => '_self',
+                'icon_class' => null,
+                'color'      => null,
+                'parent_id'  => null,
+                'order'      => 1,
+            ])->save();
+        }
+        $menuItem = MenuItem::firstOrNew([
+            'menu_id' => $menu->id,
+            'title'   => 'Listar',
+            'url'     => 'admin/hs_plans/1',
+            'route'   => null
+        ]);
+        if (!$menuItem->exists) {
+            $menuItem->fill([
+                'target'     => '_self',
+                'icon_class' => null,
+                'color'      => null,
+                'parent_id'  => null,
+                'order'=> 1,
+            ])->save();
+        }
+        
+        $menuItem = MenuItem::firstOrNew([
+            'menu_id' => $menu->id,
+            'title'   => 'divider',
+            'url'     => null,
+            'route'   => null
+        ]);
+        if (!$menuItem->exists) {
+            $menuItem->fill([
+                'target'     => '_self',
+                'icon_class' => null,
+                'color'      => null,
+                'parent_id'  => null,
+                'order'      => 2,
+            ])->save();
+        }
+        $menuItem = MenuItem::firstOrNew([
+            'menu_id' => $menu->id,
+            'title'   => 'setting',
+            'url'     => null,
+            'route'   => null
+        ]);
+        if (!$menuItem->exists) {
+            $menuItem->fill([
+                'target'     => '_blank',
+                'icon_class' => null,
+                'color'      => null,
+                'parent_id'  => null,
+                'order'      => 3,
+            ])->save();
+        }
+
+        /**
+         * ------------------------------------------------
+         *            Menu  dropdown-toggle => 
          * -----------------------------------------------
          */
         Menu::firstOrCreate([

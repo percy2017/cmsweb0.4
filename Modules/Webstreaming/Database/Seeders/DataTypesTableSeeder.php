@@ -61,6 +61,29 @@ class DataTypesTableSeeder extends Seeder
                 ]
             ])->save();
         }
+
+        $dataType = $this->dataType('slug', 'hs_meetings');
+        if (!$dataType->exists) {
+            $dataType->fill([
+                'name'                  => 'hs_meetings',
+                'display_name_singular' => 'Reunion',
+                'display_name_plural'   => 'Reuniones',
+                'icon'                  => 'fa fa-plug',
+                'model_name'            => 'Modules\\Webstreaming\\Entities\\Meeting',
+                'policy_name'           => null,
+                'controller'            => 'Modules\\Webstreaming\\Http\\Controllers\\MeetingController',
+                'generate_permissions'  => 1,
+                'description'           => null,
+                'server_side'           => 1,
+                'details'               => [
+                    'order_column'         => 'id',
+                    'order_display_column' => 'id',
+                    'order_direction'      => 'asc',
+                    'default_search_key'   => 'id',
+                    'scope'                => null
+                ]
+            ])->save();
+        }
     }
 
 

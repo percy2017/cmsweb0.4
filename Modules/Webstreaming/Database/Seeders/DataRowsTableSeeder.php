@@ -18,6 +18,7 @@ class DataRowsTableSeeder extends Seeder
     {
         $ChatDataType = DataType::where('slug', 'hs_chats')->firstOrFail();
         $PlanDataType = DataType::where('slug', 'hs_plans')->firstOrFail();
+        $MeetingDataType = DataType::where('slug', 'hs_meetings')->firstOrFail();
         //$FieldDataType = DataType::where('slug', 'hs_fields')->firstOrFail();
         /**
          * ------------------------------------------------
@@ -418,7 +419,214 @@ class DataRowsTableSeeder extends Seeder
             ])->save();
         }
         
+
+        /**
+         * ---------------------------------------------------------------------------
+         *          Reuniones - FORMULARIO
+         * --------------------------------------------------------------------------
+         */
+        
+        $dataRow = $this->dataRow($MeetingDataType, 'id');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'number',
+                'display_name' => __('voyager::seeders.data_rows.id'),
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 0,
+                'edit'         => 0,
+                'add'          => 0,
+                'delete'       => 0,
+                'details'      => [
+                    'displey' => [
+                        'width' => '6'
+                    ]
+                ],
+                'order' => $postion++,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($MeetingDataType, 'name');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'text',
+                'display_name' => 'Nombre',
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'order'        => $postion++,
+                'details'      => [
+                    'display'   => [
+                        'width'  => '6',
+                    ],
+                ]
+            ])->save();
+        }
+        $dataRow = $this->dataRow($MeetingDataType, 'slug');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'Slug',
+                'display_name' => 'Slug',
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'order'        => $postion++,
+                'details'      => [
+                    'slugify' => [
+                        'origin' => 'name',
+                        'forceUpdate' => true
+                    ],
+                    'display'   => [
+                        'width'  => '6',
+                    ],
+                ]
+            ])->save();
+        }
+        $dataRow = $this->dataRow($MeetingDataType, 'user_id');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'Traking',
+                'display_name' => 'Traking',
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'order'        => $postion++,
+                'details'      => [
+                    'display'   => [
+                        'width'  => '6',
+                    ],
+                ]
+            ])->save();
+        }
+        $dataRow = $this->dataRow($MeetingDataType, 'start');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'time',
+                'display_name' => 'Inicio',
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'order'        => $postion++,
+                'details'      => [
+                    'display'   => [
+                        'width'  => '6',
+                    ],
+                ]
+            ])->save();
+        }
+        $dataRow = $this->dataRow($MeetingDataType, 'finish');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'time',
+                'display_name' => 'Fin',
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'order'        => $postion++,
+                'details'      => [
+                    'display'   => [
+                        'width'  => '6',
+                    ],
+                ]
+            ])->save();
+        }
+        $dataRow = $this->dataRow($MeetingDataType, 'meeting_types');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'select_dropdown',
+                'display_name' => 'Tipo de Reuniones',
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'order'        => $postion++,
+                'details'      => [
+                    'options'=>[
+                        'option1'=>'options1',
+                        'option2'=>'options2'
+                    ],
+                    'display'   => [
+                        'width'  => '6',
+                    ],
+                ]
+            ])->save();
+        }
+        $dataRow = $this->dataRow($MeetingDataType, 'created_at');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'timestamp',
+                'display_name' => __('voyager::seeders.data_rows.created_at'),
+                'required'     => 0,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 0,
+                'add'          => 0,
+                'delete'       => 0,
+                'order'        => $postion++,
+                'details'      => [
+                    'display' => [
+                        'width' => '3'
+                    ]
+                ]
+            ])->save();
+        }
+        $dataRow = $this->dataRow($MeetingDataType, 'updated_at');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'timestamp',
+                'display_name' => __('voyager::seeders.data_rows.updated_at'),
+                'required'     => 0,
+                'browse'       => 0,
+                'read'         => 1,
+                'edit'         => 0,
+                'add'          => 0,
+                'delete'       => 0,
+                'order'        => $postion++,
+                'details'      => [
+                    'display' => [
+                        'width' => '3'
+                    ]
+                ]
+            ])->save();
+        }
+        $dataRow = $this->dataRow($MeetingDataType, 'deleted_at');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'timestamp',
+                'display_name' => 'deleted_at',
+                'required'     => 0,
+                'browse'       => 0,
+                'read'         => 1,
+                'edit'         => 0,
+                'add'          => 0,
+                'delete'       => 0,
+                'order'        => $postion++,
+                'details'      => [
+                    'display' => [
+                        'width' => '3'
+                    ]
+                ]
+            ])->save();
+        }
+
     }
+   
 
 
     

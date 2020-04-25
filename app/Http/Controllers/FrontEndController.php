@@ -24,4 +24,14 @@ class FrontEndController extends Controller
             'blocks'     => $blocks
         ]);
     }
+    public function pages($slug)
+    {
+        $collection = Page::where('slug', $slug)->first();
+        $blocks = Block::where('page_id', $collection->id)->orderBy('position', 'asc')->get();
+        return view($collection->direction, [
+            'collection' => json_decode($collection->details, true),
+            'page' => $collection,
+            'blocks'     => $blocks
+        ]);
+    }
 }
