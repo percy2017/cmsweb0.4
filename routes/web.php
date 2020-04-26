@@ -46,6 +46,12 @@ Route::get('{module_name}/installer', function($module_id) {
         case 'hiStream v1.0':
             $module_name = 'Webstreaming';
             break;
+        case 'BolDig v1.0':
+            $module_name = 'Boldig';
+            break;
+        case 'BimGo v1.0':
+            $module_name = 'Bimgo';
+            break;
         default:
             # code...
             break;

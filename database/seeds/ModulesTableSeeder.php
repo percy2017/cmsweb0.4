@@ -20,7 +20,24 @@ class ModulesTableSeeder extends Seeder
         $module = Module::create([
             'installed'         => false,
             'name'              => 'hiStream v1.0',
-            'description_short' => 'Software para crar reuniones virtuales y video conferencias.'
+            'description_short' => 'Software para crar y administrar reuniones virtuales y video conferencias.'
+        ]);
+        $module = Module::create([
+            'installed'         => false,
+            'name'              => 'BolDig v1.0',
+            'description_short' => 'Paquete para crear y administrar periodicos digitales.'
+        ]);
+
+        $module = Module::create([
+            'installed'         => false,
+            'name'              => 'BimGo v1.0',
+            'description_short' => 'Software para crar y administrar tienda en linea.'
+        ]);
+
+        $module = Module::create([
+            'installed'         => false,
+            'name'              => 'Yimbo v1.0',
+            'description_short' => 'Software para crar y administrar restaurant y delivery.'
         ]);
     }
 }

@@ -18,7 +18,7 @@ class PageTableSeeder extends Seeder
     {
         $page = Page::create([
             'name'        =>  'Landing Page Boldig',
-            'slug'        =>  'landing-page-bolding',
+            'slug'        =>  'landing-page-boldig',
             'user_id'     =>  1,
             'direction'   =>  'boldig::index',
             'description' =>  'Pagina de destino de Boldig.'

@@ -12,11 +12,12 @@ class PagesTableSeeder extends Seeder
      */
     public function run()
     {
+        // ------------ LPS
         $page = Page::create([
             'name'      => 'Landing Page Software',
-            'slug'      => 'welcome',
+            'slug'      => 'landingpage-software',
             'description' => 'Pagina de Destino para Empresa de Software',
-            'direction' => 'welcome',
+            'direction' => 'pages.lps',
             'user_id' => 1,
             'details'   => json_encode([
                 'title' => [
@@ -727,5 +728,19 @@ class PagesTableSeeder extends Seeder
                 ],
             ])
         ]);
+
+
+        // ------------ LPR
+        $page = Page::create([
+            'name'      => 'Landing Page Restaurant',
+            'slug'      => 'landingpage-restaurant',
+            'description' => 'Pagina de Destino para Restaurant',
+            'direction' => 'page.lpr',
+            'user_id' => 1,
+            'details'   => null
+        ]);
+
     }
+
+
 }

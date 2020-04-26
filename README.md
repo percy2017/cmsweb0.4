@@ -5,14 +5,14 @@ En un software inteligente para crear y administrar paginas web dinamicas, utili
 
 La herramienta inscluye paquete de terceros:
 
-- [Laravel Framework v6](#)
-- [Voyager Packages v1.3](#)
-- [VueJs Framework v2.5](#)
-- [Websockets v1.3](#)
+- [Laravel Framework v7](#)
+- [Voyager Packages v1.4](#)
+- [ReactJs Framework v16.2](#)
+- [Websockets v1.4](#)
 
 # Servidor
 ### Step #1
-- LEMP (Ubuntu 18.04)
+- LEMP (Ubuntu 20.04)
 - Let’s Encrypt 
 - Php Extenciones
 > php7.2-mbstring
@@ -45,9 +45,9 @@ Configurar el erchivo .env (Variales de Entorno) y permisos
 
 ### Step #3
 Realizar la instalcion mediante el comando:
--   php artisan cmsweb:install
+-   php artisan voyager:install
 
-La instalacion el super usuario con el login:
+nombre el super usuario:
 -   admin@admin.com 
 -   password
 # CmsWeb Sponsors

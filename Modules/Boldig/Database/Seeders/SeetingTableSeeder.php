@@ -28,6 +28,6 @@ class SeetingTableSeeder extends Seeder
 
         DB::table('settings')
             ->where('key', 'site.page')
-            ->update(['value' => 'index']);
+            ->update(['value' => 'landing-page-boldig']);
     }
 }

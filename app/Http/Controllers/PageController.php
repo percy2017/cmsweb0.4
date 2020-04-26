@@ -135,4 +135,18 @@ class PageController extends Controller
     {
         //
     }
+
+    function default($page_id)
+    {
+        $page = Page::where('id', $page_id)->first(); 
+        
+        DB::table('settings')
+            ->where('key', 'site.page')
+            ->update(['value' => $page->slug]);
+
+            return back()->with([
+                'message'    => $page->name.' - plantilla establecida',
+                'alert-type' => 'success',
+            ]);
+    }
 }

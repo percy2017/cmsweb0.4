@@ -1,0 +1,13 @@
+{
+    "name": "Bimgo",
+    "alias": "bimgo",
+    "description": "",
+    "keywords": [],
+    "order": 0,
+    "providers": [
+        "Modules\\Bimgo\\Providers\\BimgoServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

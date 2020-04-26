@@ -7,21 +7,21 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="manifest" href="site.webmanifest">
-		<link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
+		<link rel="shortcut icon" type="image/x-icon" href="{{ asset('vendor/boldig/img/favicon.ico') }}">
 
 		<!-- CSS here -->
-            <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-            <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
-            <link rel="stylesheet" href="assets/css/ticker-style.css">
-            <link rel="stylesheet" href="assets/css/flaticon.css">
-            <link rel="stylesheet" href="assets/css/slicknav.css">
-            <link rel="stylesheet" href="assets/css/animate.min.css">
-            <link rel="stylesheet" href="assets/css/magnific-popup.css">
-            <link rel="stylesheet" href="assets/css/fontawesome-all.min.css">
-            <link rel="stylesheet" href="assets/css/themify-icons.css">
-            <link rel="stylesheet" href="assets/css/slick.css">
-            <link rel="stylesheet" href="assets/css/nice-select.css">
-            <link rel="stylesheet" href="assets/css/style.css">
+            <link rel="stylesheet" href="{{ asset('vendor/boldig/css/bootstrap.min.css') }}">
+            <link rel="stylesheet" href="{{ asset('vendor/boldig/css/owl.carousel.min.css') }}">
+            <link rel="stylesheet" href="{{ asset('vendor/boldig/css/ticker-style.css') }}">
+            <link rel="stylesheet" href="{{ asset('vendor/boldig/css/flaticon.css') }}">
+            <link rel="stylesheet" href="{{ asset('vendor/boldig/css/slicknav.css') }}">
+            <link rel="stylesheet" href="{{ asset('vendor/boldig/css/animate.min.css') }}">
+            <link rel="stylesheet" href="{{ asset('vendor/boldig/css/magnific-popup.css') }}">
+            <link rel="stylesheet" href="{{ asset('vendor/boldig/css/fontawesome-all.min.css') }}">
+            <link rel="stylesheet" href="{{ asset('vendor/boldig/css/themify-icons.css') }}">
+            <link rel="stylesheet" href="{{ asset('vendor/boldig/css/slick.css') }}">
+            <link rel="stylesheet" href="{{ asset('vendor/boldig/css/nice-select.css') }}">
+            <link rel="stylesheet" href="{{ asset('vendor/boldig/css/style.css') }}">
    </head>
 
    <body>
@@ -49,8 +49,8 @@
                             <div class="row d-flex justify-content-between align-items-center">
                                 <div class="header-info-left">
                                     <ul>     
-                                        <li><img src="assets/img/icon/header_icon1.png" alt="">34ºc, Sunny </li>
-                                        <li><img src="assets/img/icon/header_icon1.png" alt="">Tuesday, 18th June, 2019</li>
+                                        <li><img src="{{ asset('vendor/boldig/img/icon/header_icon1.png') }}" alt="">34ºc, Sunny </li>
+                                        <li><img src="{{ asset('vendor/boldig/img/icon/header_icon1.png') }}" alt="">Tuesday, 18th June, 2019</li>
                                     </ul>
                                 </div>
                                 <div class="header-info-right">
@@ -70,12 +70,12 @@
                             <!-- Logo -->
                             <div class="col-xl-3 col-lg-3 col-md-3">
                                 <div class="logo">
-                                    <a href="index.html"><img src="assets/img/logo/logo.png" alt=""></a>
+                                    <a href="index.html"><img src="{{ asset('vendor/boldig/img/logo/logo.png') }}" alt=""></a>
                                 </div>
                             </div>
                             <div class="col-xl-9 col-lg-9 col-md-9">
                                 <div class="header-banner f-right ">
-                                    <img src="assets/img/hero/header_card.jpg" alt="">
+                                    <img src="{{ asset('vendor/boldig/img/hero/header_card.jpg') }}" alt="">
                                 </div>
                             </div>
                         </div>
@@ -87,7 +87,7 @@
                             <div class="col-xl-10 col-lg-10 col-md-12 header-flex">
                                 <!-- sticky -->
                                     <div class="sticky-logo">
-                                        <a href="index.html"><img src="assets/img/logo/logo.png" alt=""></a>
+                                        <a href="index.html"><img src="{{ asset('vendor/boldig/img/logo/logo.png') }}" alt=""></a>
                                     </div>
                                 <!-- Main-menu -->
                                 <div class="main-menu d-none d-md-block">
@@ -160,7 +160,7 @@
                         <!-- Trending Top -->
                         <div class="trending-top mb-30">
                             <div class="trend-top-img">
-                                <img src="assets/img/trending/trending_top.jpg" alt="">
+                                <img src="{{ asset('vendor/boldig/img/trending/trending_top.jpg') }}" alt="">
                                 <div class="trend-top-cap">
                                     <span>Appetizers</span>
                                     <h2><a href="details.html">Welcome To The Best Model Winner<br> Contest At Look of the year</a></h2>
@@ -173,7 +173,7 @@
                                 <div class="col-lg-4">
                                 <div class="single-bottom mb-35">
                                     <div class="trend-bottom-img mb-30">
-                                        <img src="assets/img/trending/trending_bottom1.jpg" alt="">
+                                        <img src="{{ asset('vendor/boldig/img/trending/trending_bottom1.jpg') }}" alt="">
                                     </div>
                                     <div class="trend-bottom-cap">
                                         <span class="color1">Lifestyple</span>
@@ -184,7 +184,7 @@
                                 <div class="col-lg-4">
                                     <div class="single-bottom mb-35">
                                         <div class="trend-bottom-img mb-30">
-                                            <img src="assets/img/trending/trending_bottom2.jpg" alt="">
+                                            <img src="{{ asset('vendor/boldig/img/trending/trending_bottom2.jpg') }}" alt="">
                                         </div>
                                         <div class="trend-bottom-cap">
                                             <span class="color2">Sports</span>
@@ -195,7 +195,7 @@
                                 <div class="col-lg-4">
                                     <div class="single-bottom mb-35">
                                         <div class="trend-bottom-img mb-30">
-                                            <img src="assets/img/trending/trending_bottom3.jpg" alt="">
+                                            <img src="{{ asset('vendor/boldig/img/trending/trending_bottom3.jpg') }}" alt="">
                                         </div>
                                         <div class="trend-bottom-cap">
                                             <span class="color3">Travels</span>
@@ -210,7 +210,7 @@
                     <div class="col-lg-4">
                         <div class="trand-right-single d-flex">
                             <div class="trand-right-img">
-                                <img src="assets/img/trending/right1.jpg" alt="">
+                                <img src="{{ asset('vendor/boldig/img/trending/right1.jpg') }}" alt="">
                             </div>
                             <div class="trand-right-cap">
                                 <span class="color1">Concert</span>
@@ -219,7 +219,7 @@
                         </div>
                         <div class="trand-right-single d-flex">
                             <div class="trand-right-img">
-                                <img src="assets/img/trending/right2.jpg" alt="">
+                                <img src="{{ asset('vendor/boldig/img/trending/right2.jpg') }}" alt="">
                             </div>
                             <div class="trand-right-cap">
                                 <span class="color3">sea beach</span>
@@ -228,7 +228,7 @@
                         </div>
                         <div class="trand-right-single d-flex">
                             <div class="trand-right-img">
-                                <img src="assets/img/trending/right3.jpg" alt="">
+                                <img src="{{ asset('vendor/boldig/img/trending/right3.jpg') }}" alt="">
                             </div>
                             <div class="trand-right-cap">
                                 <span class="color2">Bike Show</span>
@@ -237,7 +237,7 @@
                         </div> 
                         <div class="trand-right-single d-flex">
                             <div class="trand-right-img">
-                                <img src="assets/img/trending/right4.jpg" alt="">
+                                <img src="{{ asset('vendor/boldig/img/trending/right4.jpg') }}" alt="">
                             </div>
                             <div class="trand-right-cap">
                                 <span class="color4">See beach</span>
@@ -246,7 +246,7 @@
                         </div>
                         <div class="trand-right-single d-flex">
                             <div class="trand-right-img">
-                                <img src="assets/img/trending/right5.jpg" alt="">
+                                <img src="{{ asset('vendor/boldig/img/trending/right5.jpg' ) }}" alt="">
                             </div>
                             <div class="trand-right-cap">
                                 <span class="color1">Skeping</span>
@@ -276,7 +276,7 @@
                         <div class="weekly-news-active dot-style d-flex dot-style">
                             <div class="weekly-single">
                                 <div class="weekly-img">
-                                    <img src="assets/img/news/weeklyNews2.jpg" alt="">
+                                    <img src="{{ asset('vendor/boldig/img/news/weeklyNews2.jpg') }}" alt="">
                                 </div>
                                 <div class="weekly-caption">
                                     <span class="color1">Strike</span>
@@ -285,7 +285,7 @@
                             </div> 
                             <div class="weekly-single active">
                                 <div class="weekly-img">
-                                        <img src="assets/img/news/weeklyNews1.jpg" alt="">
+                                        <img src="{{ asset('vendor/boldig/img/news/weeklyNews1.jpg') }}" alt="">
                                 </div>
                                 <div class="weekly-caption">
                                     <span class="color1">Strike</span>
@@ -294,7 +294,7 @@
                             </div>
                             <div class="weekly-single">
                                 <div class="weekly-img">
-                                        <img src="assets/img/news/weeklyNews3.jpg" alt="">
+                                        <img src="{{ asset('vendor/boldig/img/news/weeklyNews3.jpg') }}" alt="">
                                 </div>
                                 <div class="weekly-caption">
                                     <span class="color1">Strike</span>
@@ -303,7 +303,7 @@
                             </div>
                             <div class="weekly-single">
                                 <div class="weekly-img">
-                                    <img src="assets/img/news/weeklyNews1.jpg" alt="">
+                                    <img src="{{ asset('vendor/boldig/img/news/weeklyNews1.jpg') }}" alt="">
                                 </div>
                                 <div class="weekly-caption">
                                     <span class="color1">Strike</span>
@@ -356,7 +356,7 @@
                                         <div class="col-lg-6 col-md-6">
                                             <div class="single-what-news mb-100">
                                                 <div class="what-img">
-                                                    <img src="assets/img/news/whatNews1.jpg" alt="">
+                                                    <img src="{{ asset('vendor/boldig/img/news/whatNews1.jpg') }}" alt="">
                                                 </div>
                                                 <div class="what-cap">
                                                     <span class="color1">Night party</span>
@@ -367,7 +367,7 @@
                                         <div class="col-lg-6 col-md-6">
                                             <div class="single-what-news mb-100">
                                                 <div class="what-img">
-                                                    <img src="assets/img/news/whatNews2.jpg" alt="">
+                                                    <img src="{{ asset('vendor/boldig/img/news/whatNews2.jpg') }}" alt="">
                                                 </div>
                                                 <div class="what-cap">
                                                     <span class="color1">Night party</span>
@@ -378,7 +378,7 @@
                                         <div class="col-lg-6 col-md-6">
                                             <div class="single-what-news mb-100">
                                                 <div class="what-img">
-                                                    <img src="assets/img/news/whatNews3.jpg" alt="">
+                                                    <img src="{{ asset('vendor/boldig/img/news/whatNews3.jpg') }}" alt="">
                                                 </div>
                                                 <div class="what-cap">
                                                     <span class="color1">Night party</span>
@@ -389,7 +389,7 @@
                                         <div class="col-lg-6 col-md-6">
                                             <div class="single-what-news mb-100">
                                                 <div class="what-img">
-                                                    <img src="assets/img/news/whatNews4.jpg" alt="">
+                                                    <img src="{{ asset('vendor/boldig/img/news/whatNews4.jpg') }}" alt="">
                                                 </div>
                                                 <div class="what-cap">
                                                     <span class="color1">Night party</span>
@@ -407,7 +407,7 @@
                                         <div class="col-lg-6 col-md-6">
                                             <div class="single-what-news mb-100">
                                                 <div class="what-img">
-                                                    <img src="assets/img/news/whatNews1.jpg" alt="">
+                                                    <img src="{{ asset('vendor/boldig/img/news/whatNews1.jpg') }}" alt="">
                                                 </div>
                                                 <div class="what-cap">
                                                     <span class="color1">Night party</span>
@@ -418,7 +418,7 @@
                                         <div class="col-lg-6 col-md-6">
                                             <div class="single-what-news mb-100">
                                                 <div class="what-img">
-                                                    <img src="assets/img/news/whatNews2.jpg" alt="">
+                                                    <img src="{{ asset('vendor/boldig/img/news/whatNews2.jpg') }}" alt="">
                                                 </div>
                                                 <div class="what-cap">
                                                     <span class="color1">Night party</span>
@@ -429,7 +429,7 @@
                                         <div class="col-lg-6 col-md-6">
                                             <div class="single-what-news mb-100">
                                                 <div class="what-img">
-                                                    <img src="assets/img/news/whatNews3.jpg" alt="">
+                                                    <img src="{{ asset('vendor/boldig/img/news/whatNews3.jpg') }}" alt="">
                                                 </div>
                                                 <div class="what-cap">
                                                     <span class="color1">Night party</span>
@@ -440,7 +440,7 @@
                                         <div class="col-lg-6 col-md-6">
                                             <div class="single-what-news mb-100">
                                                 <div class="what-img">
-                                                    <img src="assets/img/news/whatNews4.jpg" alt="">
+                                                    <img src="{{ asset('vendor/boldig/img/news/whatNews4.jpg') }}" alt="">
                                                 </div>
                                                 <div class="what-cap">
                                                     <span class="color1">Night party</span>
@@ -458,7 +458,7 @@
                                         <div class="col-lg-6 col-md-6">
                                             <div class="single-what-news mb-100">
                                                 <div class="what-img">
-                                                    <img src="assets/img/news/whatNews1.jpg" alt="">
+                                                    <img src="{{ asset('vendor/boldig/img/news/whatNews1.jpg') }}" alt="">
                                                 </div>
                                                 <div class="what-cap">
                                                     <span class="color1">Night party</span>
@@ -469,7 +469,7 @@
                                         <div class="col-lg-6 col-md-6">
                                             <div class="single-what-news mb-100">
                                                 <div class="what-img">
-                                                    <img src="assets/img/news/whatNews2.jpg" alt="">
+                                                    <img src="{{ asset('vendor/boldig/img/news/whatNews2.jpg') }}" alt="">
                                                 </div>
                                                 <div class="what-cap">
                                                     <span class="color1">Night party</span>
@@ -480,7 +480,7 @@
                                         <div class="col-lg-6 col-md-6">
                                             <div class="single-what-news mb-100">
                                                 <div class="what-img">
-                                                    <img src="assets/img/news/whatNews3.jpg" alt="">
+                                                    <img src="{{ asset('vendor/boldig/img/news/whatNews3.jpg') }}" alt="">
                                                 </div>
                                                 <div class="what-cap">
                                                     <span class="color1">Night party</span>
@@ -491,7 +491,7 @@
                                         <div class="col-lg-6 col-md-6">
                                             <div class="single-what-news mb-100">
                                                 <div class="what-img">
-                                                    <img src="assets/img/news/whatNews4.jpg" alt="">
+                                                    <img src="{{ asset('vendor/boldig/img/news/whatNews4.jpg') }}" alt="">
                                                 </div>
                                                 <div class="what-cap">
                                                     <span class="color1">Night party</span>
@@ -509,7 +509,7 @@
                                         <div class="col-lg-6 col-md-6">
                                             <div class="single-what-news mb-100">
                                                 <div class="what-img">
-                                                    <img src="assets/img/news/whatNews1.jpg" alt="">
+                                                    <img src="{{ asset('vendor/boldig/img/news/whatNews1.jpg') }}" alt="">
                                                 </div>
                                                 <div class="what-cap">
                                                     <span class="color1">Night party</span>
@@ -520,7 +520,7 @@
                                         <div class="col-lg-6 col-md-6">
                                             <div class="single-what-news mb-100">
                                                 <div class="what-img">
-                                                    <img src="assets/img/news/whatNews2.jpg" alt="">
+                                                    <img src="{{ asset('vendor/boldig/img/news/whatNews2.jpg') }}" alt="">
                                                 </div>
                                                 <div class="what-cap">
                                                     <span class="color1">Night party</span>
@@ -531,7 +531,7 @@
                                         <div class="col-lg-6 col-md-6">
                                             <div class="single-what-news mb-100">
                                                 <div class="what-img">
-                                                    <img src="assets/img/news/whatNews3.jpg" alt="">
+                                                    <img src="{{ asset('vendor/boldig/img/news/whatNews3.jpg') }}" alt="">
                                                 </div>
                                                 <div class="what-cap">
                                                     <span class="color1">Night party</span>
@@ -542,7 +542,7 @@
                                         <div class="col-lg-6 col-md-6">
                                             <div class="single-what-news mb-100">
                                                 <div class="what-img">
-                                                    <img src="assets/img/news/whatNews4.jpg" alt="">
+                                                    <img src="{{ asset('vendor/boldig/img/news/whatNews4.jpg') }}" alt="">
                                                 </div>
                                                 <div class="what-cap">
                                                     <span class="color1">Night party</span>
@@ -560,7 +560,7 @@
                                         <div class="col-lg-6 col-md-6">
                                             <div class="single-what-news mb-100">
                                                 <div class="what-img">
-                                                    <img src="assets/img/news/whatNews1.jpg" alt="">
+                                                    <img src="{{ asset('vendor/boldig/img/news/whatNews1.jpg') }}" alt="">
                                                 </div>
                                                 <div class="what-cap">
                                                     <span class="color1">Night party</span>
@@ -571,7 +571,7 @@
                                         <div class="col-lg-6 col-md-6">
                                             <div class="single-what-news mb-100">
                                                 <div class="what-img">
-                                                    <img src="assets/img/news/whatNews2.jpg" alt="">
+                                                    <img src="{{ asset('vendor/boldig/img/news/whatNews2.jpg') }}" alt="">
                                                 </div>
                                                 <div class="what-cap">
                                                     <span class="color1">Night party</span>
@@ -582,7 +582,7 @@
                                         <div class="col-lg-6 col-md-6">
                                             <div class="single-what-news mb-100">
                                                 <div class="what-img">
-                                                    <img src="assets/img/news/whatNews3.jpg" alt="">
+                                                    <img src="{{ asset('vendor/boldig/img/news/whatNews3.jpg') }}" alt="">
                                                 </div>
                                                 <div class="what-cap">
                                                     <span class="color1">Night party</span>
@@ -593,7 +593,7 @@
                                         <div class="col-lg-6 col-md-6">
                                             <div class="single-what-news mb-100">
                                                 <div class="what-img">
-                                                    <img src="assets/img/news/whatNews4.jpg" alt="">
+                                                    <img src="{{ asset('vendor/boldig/img/news/whatNews4.jpg') }}" alt="">
                                                 </div>
                                                 <div class="what-cap">
                                                     <span class="color1">Night party</span>
@@ -611,7 +611,7 @@
                                         <div class="col-lg-6 col-md-6">
                                             <div class="single-what-news mb-100">
                                                 <div class="what-img">
-                                                    <img src="assets/img/news/whatNews1.jpg" alt="">
+                                                    <img src="{{ asset('vendor/boldig/img/news/whatNews1.jpg') }}" alt="">
                                                 </div>
                                                 <div class="what-cap">
                                                     <span class="color1">Night party</span>
@@ -622,7 +622,7 @@
                                         <div class="col-lg-6 col-md-6">
                                             <div class="single-what-news mb-100">
                                                 <div class="what-img">
-                                                    <img src="assets/img/news/whatNews2.jpg" alt="">
+                                                    <img src="{{ asset('vendor/boldig/img/news/whatNews2.jpg') }}" alt="">
                                                 </div>
                                                 <div class="what-cap">
                                                     <span class="color1">Night party</span>
@@ -633,7 +633,7 @@
                                         <div class="col-lg-6 col-md-6">
                                             <div class="single-what-news mb-100">
                                                 <div class="what-img">
-                                                    <img src="assets/img/news/whatNews3.jpg" alt="">
+                                                    <img src="{{ asset('vendor/boldig/img/news/whatNews3.jpg') }}" alt="">
                                                 </div>
                                                 <div class="what-cap">
                                                     <span class="color1">Night party</span>
@@ -644,7 +644,7 @@
                                         <div class="col-lg-6 col-md-6">
                                             <div class="single-what-news mb-100">
                                                 <div class="what-img">
-                                                    <img src="assets/img/news/whatNews4.jpg" alt="">
+                                                    <img src="{{ asset('vendor/boldig/img/news/whatNews4.jpg') }}" alt="">
                                                 </div>
                                                 <div class="what-cap">
                                                     <span class="color1">Night party</span>
@@ -670,7 +670,7 @@
                     <div class="single-box">
                         <div class="follow-us d-flex align-items-center">
                             <div class="follow-social">
-                                <a href="#"><img src="assets/img/news/icon-fb.png" alt=""></a>
+                                <a href="#"><img src="{{ asset('vendor/boldig/img/news/icon-fb.png') }}" alt=""></a>
                             </div>
                             <div class="follow-count">  
                                 <span>8,045</span>
@@ -679,7 +679,7 @@
                         </div> 
                         <div class="follow-us d-flex align-items-center">
                             <div class="follow-social">
-                                <a href="#"><img src="assets/img/news/icon-tw.png" alt=""></a>
+                                <a href="#"><img src="{{ asset('vendor/boldig/img/news/icon-tw.png') }}" alt=""></a>
                             </div>
                             <div class="follow-count">
                                 <span>8,045</span>
@@ -688,7 +688,7 @@
                         </div>
                             <div class="follow-us d-flex align-items-center">
                             <div class="follow-social">
-                                <a href="#"><img src="assets/img/news/icon-ins.png" alt=""></a>
+                                <a href="#"><img src="{{ asset('vendor/boldig/img/news/icon-ins.png') }}" alt=""></a>
                             </div>
                             <div class="follow-count">
                                 <span>8,045</span>
@@ -697,7 +697,7 @@
                         </div>
                         <div class="follow-us d-flex align-items-center">
                             <div class="follow-social">
-                                <a href="#"><img src="assets/img/news/icon-yo.png" alt=""></a>
+                                <a href="#"><img src="{{ asset('vendor/boldig/img/news/icon-yo.png') }}" alt=""></a>
                             </div>
                             <div class="follow-count">
                                 <span>8,045</span>
@@ -708,7 +708,7 @@
                 </div>
                 <!-- New Poster -->
                 <div class="news-poster d-none d-lg-block">
-                    <img src="assets/img/news/news_card.jpg" alt="">
+                    <img src="{{ asset('vendor/boldig/img/news/news_card.jpg') }}" alt="">
                 </div>
             </div>
             </div>
@@ -732,7 +732,7 @@
                         <div class="weekly2-news-active dot-style d-flex dot-style">
                             <div class="weekly2-single">
                                 <div class="weekly2-img">
-                                    <img src="assets/img/news/weekly2News1.jpg" alt="">
+                                    <img src="{{ asset('vendor/boldig/img/news/weekly2News1.jpg') }}" alt="">
                                 </div>
                                 <div class="weekly2-caption">
                                     <span class="color1">Corporate</span>
@@ -742,7 +742,7 @@
                             </div> 
                             <div class="weekly2-single">
                                 <div class="weekly2-img">
-                                    <img src="assets/img/news/weekly2News2.jpg" alt="">
+                                    <img src="{{ asset('vendor/boldig/img/news/weekly2News2.jpg') }}" alt="">
                                 </div>
                                 <div class="weekly2-caption">
                                     <span class="color1">Event night</span>
@@ -752,7 +752,7 @@
                             </div> 
                             <div class="weekly2-single">
                                 <div class="weekly2-img">
-                                    <img src="assets/img/news/weekly2News3.jpg" alt="">
+                                    <img src="{{ asset('vendor/boldig/img/news/weekly2News3.jpg') }}" alt="">
                                 </div>
                                 <div class="weekly2-caption">
                                     <span class="color1">Corporate</span>
@@ -762,7 +762,7 @@
                             </div>
                              <div class="weekly2-single">
                                 <div class="weekly2-img">
-                                    <img src="assets/img/news/weekly2News4.jpg" alt="">
+                                    <img src="{{ asset('vendor/boldig/img/news/weekly2News4.jpg') }}" alt="">
                                 </div>
                                 <div class="weekly2-caption">
                                     <span class="color1">Event time</span>
@@ -772,7 +772,7 @@
                             </div> 
                              <div class="weekly2-single">
                                 <div class="weekly2-img">
-                                    <img src="assets/img/news/weekly2News4.jpg" alt="">
+                                    <img src="{{ asset('vendor/boldig/img/news/weekly2News4.jpg') }}" alt="">
                                 </div>
                                 <div class="weekly2-caption">
                                     <span class="color1">Corporate</span>
@@ -882,7 +882,7 @@
                         <div class="recent-active dot-style d-flex dot-style">
                             <div class="single-recent mb-100">
                                 <div class="what-img">
-                                    <img src="assets/img/news/recent1.jpg" alt="">
+                                    <img src="{{ asset('vendor/boldig/img/news/recent1.jpg') }}" alt="">
                                 </div>
                                 <div class="what-cap">
                                     <span class="color1">Night party</span>
@@ -891,7 +891,7 @@
                             </div>
                             <div class="single-recent mb-100">
                                 <div class="what-img">
-                                    <img src="assets/img/news/recent2.jpg" alt="">
+                                    <img src="{{ asset('vendor/boldig/img/news/recent2.jpg') }}" alt="">
                                 </div>
                                 <div class="what-cap">
                                     <span class="color1">Night party</span>
@@ -900,7 +900,7 @@
                             </div>
                             <div class="single-recent mb-100">
                                 <div class="what-img">
-                                    <img src="assets/img/news/recent3.jpg" alt="">
+                                    <img src="{{ asset('vendor/boldig/img/news/recent3.jpg') }}" alt="">
                                 </div>
                                 <div class="what-cap">
                                     <span class="color1">Night party</span>
@@ -909,7 +909,7 @@
                             </div>
                             <div class="single-recent mb-100">
                                 <div class="what-img">
-                                    <img src="assets/img/news/recent2.jpg" alt="">
+                                    <img src="{{ asset('vendor/boldig/img/news/recent2.jpg') }}" alt="">
                                 </div>
                                 <div class="what-cap">
                                     <span class="color1">Night party</span>
@@ -1003,12 +1003,12 @@
                             </div>
                             <div class="instagram-gellay">
                                 <ul class="insta-feed">
-                                    <li><a href="#"><img src="assets/img/post/instra1.jpg" alt=""></a></li>
-                                    <li><a href="#"><img src="assets/img/post/instra2.jpg" alt=""></a></li>
-                                    <li><a href="#"><img src="assets/img/post/instra3.jpg" alt=""></a></li>
-                                    <li><a href="#"><img src="assets/img/post/instra4.jpg" alt=""></a></li>
-                                    <li><a href="#"><img src="assets/img/post/instra5.jpg" alt=""></a></li>
-                                    <li><a href="#"><img src="assets/img/post/instra6.jpg" alt=""></a></li>
+                                    <li><a href="#"><img src="{{ asset('vendor/boldig/img/post/instra1.jpg') }}" alt=""></a></li>
+                                    <li><a href="#"><img src="{{ asset('vendor/boldig/img/post/instra2.jpg') }}" alt=""></a></li>
+                                    <li><a href="#"><img src="{{ asset('vendor/boldig/img/post/instra3.jpg') }}" alt=""></a></li>
+                                    <li><a href="#"><img src="{{ asset('vendor/boldig/img/post/instra4.jpg') }}" alt=""></a></li>
+                                    <li><a href="#"><img src="{{ asset('vendor/boldig/img/post/instra5.jpg') }}" alt=""></a></li>
+                                    <li><a href="#"><img src="{{ asset('vendor/boldig/img/post/instra6.jpg') }}" alt=""></a></li>
                                 </ul>
                             </div>
                         </div>
@@ -1047,43 +1047,43 @@
 	<!-- JS here -->
 	
 		<!-- All JS Custom Plugins Link Here here -->
-        <script src="./assets/js/vendor/modernizr-3.5.0.min.js"></script>
+        <script src="{{ asset('vendor/boldig/js/vendor/modernizr-3.5.0.min.js') }}"></script>
 		<!-- Jquery, Popper, Bootstrap -->
-		<script src="./assets/js/vendor/jquery-1.12.4.min.js"></script>
-        <script src="./assets/js/popper.min.js"></script>
-        <script src="./assets/js/bootstrap.min.js"></script>
+		<script src="{{ asset('vendor/boldig/js/vendor/jquery-1.12.4.min.js') }}"></script>
+        <script src="{{ asset('vendor/boldig/js/popper.min.js') }}"></script>
+        <script src="{{ asset('vendor/boldig/js/bootstrap.min.js') }}"></script>
 	    <!-- Jquery Mobile Menu -->
-        <script src="./assets/js/jquery.slicknav.min.js"></script>
+        <script src="{{ asset('vendor/boldig/js/jquery.slicknav.min.js') }}"></script>
 
 		<!-- Jquery Slick , Owl-Carousel Plugins -->
-        <script src="./assets/js/owl.carousel.min.js"></script>
-        <script src="./assets/js/slick.min.js"></script>
+        <script src="{{ asset('vendor/boldig/js/owl.carousel.min.js') }}"></script>
+        <script src="{{ asset('vendor/boldig/js/slick.min.js') }}"></script>
         <!-- Date Picker -->
-        <script src="./assets/js/gijgo.min.js"></script>
+        <script src="{{ asset('vendor/boldig/js/gijgo.min.js') }}"></script>
 		<!-- One Page, Animated-HeadLin -->
-        <script src="./assets/js/wow.min.js"></script>
-		<script src="./assets/js/animated.headline.js"></script>
-        <script src="./assets/js/jquery.magnific-popup.js"></script>
+        <script src="{{ asset('vendor/boldig/js/wow.min.js') }}"></script>
+		<script src="{{ asset('vendor/boldig/js/animated.headline.js') }}"></script>
+        <script src="{{ asset('vendor/boldig/js/jquery.magnific-popup.js') }}"></script>
 
         <!-- Breaking New Pluging -->
-        <script src="./assets/js/jquery.ticker.js"></script>
-        <script src="./assets/js/site.js"></script>
+        <script src="{{ asset('vendor/boldig/js/jquery.ticker.js') }}"></script>
+        <script src="{{ asset('vendor/boldig/js/site.js') }}"></script>
 
 		<!-- Scrollup, nice-select, sticky -->
-        <script src="./assets/js/jquery.scrollUp.min.js"></script>
-        <script src="./assets/js/jquery.nice-select.min.js"></script>
-		<script src="./assets/js/jquery.sticky.js"></script>
+        <script src="{{ asset('vendor/boldig/js/jquery.scrollUp.min.js') }}"></script>
+        <script src="{{ asset('vendor/boldig/js/jquery.nice-select.min.js') }}"></script>
+		<script src="{{ asset('vendor/boldig/js/jquery.sticky.js') }}"></script>
         
         <!-- contact js -->
-        <script src="./assets/js/contact.js"></script>
-        <script src="./assets/js/jquery.form.js"></script>
-        <script src="./assets/js/jquery.validate.min.js"></script>
-        <script src="./assets/js/mail-script.js"></script>
-        <script src="./assets/js/jquery.ajaxchimp.min.js"></script>
+        <script src="{{ asset('vendor/boldig/js/contact.js') }}"></script>
+        <script src="{{ asset('vendor/boldig/js/jquery.form.js') }}"></script>
+        <script src="{{ asset('vendor/boldig/js/jquery.validate.min.js') }}"></script>
+        <script src="{{ asset('vendor/boldig/js/mail-script.js') }}"></script>
+        <script src="{{ asset('vendor/boldig/js/jquery.ajaxchimp.min.js') }}"></script>
         
 		<!-- Jquery Plugins, main Jquery -->	
-        <script src="./assets/js/plugins.js"></script>
-        <script src="./assets/js/main.js"></script>
+        <script src="{{ asset('vendor/boldig/js/plugins.js') }}"></script>
+        <script src="{{ asset('vendor/boldig/js/main.js') }}"></script>
         
     </body>
 </html>

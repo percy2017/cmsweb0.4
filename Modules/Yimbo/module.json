@@ -1,0 +1,13 @@
+{
+    "name": "Yimbo",
+    "alias": "yimbo",
+    "description": "",
+    "keywords": [],
+    "order": 0,
+    "providers": [
+        "Modules\\Yimbo\\Providers\\YimboServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}
