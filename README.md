@@ -19,13 +19,11 @@ La herramienta inscluye paquete de terceros:
 
 > php7.2-bcmath
 
-> php7.2-gd
+> php7.4-gd
 
-> hp7.2-json
+> php7.4-dom
 
-> php7.2-dom
-
-> php7.2-curl
+> php7.4-curl
 
 > php7.2-zip
 
@@ -50,11 +48,20 @@ Realizar la instalcion mediante el comando:
 nombre el super usuario:
 -   admin@admin.com 
 -   password
+# Paquetes Disponibles
+
+El cmsweb incluye 5 paquetes para ser utilizados
+- BimGo - Software para comercio electronico
+- Yimbo - Paquete para venta de comida y delivery
+- Inti - Software para centros educativos
+- BolDig - Paquete para crear y administrar periodicos digitales
+- hiStream - Paquete para la gestion de video conferencias
+
 # CmsWeb Sponsors
 
 La empresa detras del Diseño y Creacion del CmsWeb v2020 es:
 
-- ***[LoginWeb - Empresa de Diseño y Desarrollo de Hardwre y Software](https://loginweb.net/)***
+- ***[LoginWeb - Empresa de Diseño y Desarrollo de Hardware y Software](https://loginweb.net/)***
 
 ### Contributing
 

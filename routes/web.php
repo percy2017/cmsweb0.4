@@ -52,6 +52,9 @@ Route::get('{module_name}/installer', function($module_id) {
         case 'BimGo v1.0':
             $module_name = 'Bimgo';
             break;
+        case 'Yimbo v1.0':
+            $module_name = 'Yimbo';
+            break;
         default:
             # code...
             break;
@@ -59,6 +62,8 @@ Route::get('{module_name}/installer', function($module_id) {
     Artisan::call('module:seed '.$module_name);
     $module->installed=true;
     $module->save();
+    $module=App\Module::where('installed', false)->delete();
+
     return back()->with(['message' => 'Modulo Instalado.', 'alert-type' => 'success']);
 })->name('module_installer');
 

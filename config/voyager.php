@@ -137,7 +137,11 @@ return [
                 'icon_class'   => 'voyager-home',
                 'target_blank' => true,
             ],
-            'Modulos' => [
+            'Parametros' => [
+                'route'      => 'voyager.settings.index',
+                'icon_class' => 'voyager-settings',
+            ],
+            'Paquetes' => [
                 'route'      => 'voyager.modules.index',
                 'icon_class' => 'voyager-github-icon',
             ],

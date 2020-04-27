@@ -735,7 +735,27 @@ class PagesTableSeeder extends Seeder
             'name'      => 'Landing Page Restaurant',
             'slug'      => 'landingpage-restaurant',
             'description' => 'Pagina de Destino para Restaurant',
-            'direction' => 'page.lpr',
+            'direction' => 'pages.lpr',
+            'user_id' => 1,
+            'details'   => null
+        ]);
+
+        // ------------ LPU
+        $page = Page::create([
+            'name'      => 'Landing Page Centros Educativos',
+            'slug'      => 'landingpage-learning',
+            'description' => 'Pagina de Destino centros educativos',
+            'direction' => 'pages.lpu',
+            'user_id' => 1,
+            'details'   => null
+        ]);
+
+         // ------------ LPU
+         $page = Page::create([
+            'name'      => 'Landing Page centro de belleza',
+            'slug'      => 'landingpage-spa',
+            'description' => 'Pagina de Destino centros de belleza',
+            'direction' => 'pages.spa',
             'user_id' => 1,
             'details'   => null
         ]);

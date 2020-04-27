@@ -1,12 +1,11 @@
 <?php
 
-namespace Modules\Boldig\Database\Seeders;
+namespace Modules\Yimbo\Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
 use App\Page;
 use App\Block;
-
 class PageTableSeeder extends Seeder
 {
     /**
@@ -18,11 +17,13 @@ class PageTableSeeder extends Seeder
     {
         Page::where('user_id', 1)->delete();
         $page = Page::create([
-            'name'        =>  'Landing Page Boldig',
-            'slug'        =>  'landing-page-boldig',
+            'name'        =>  'Landing Page Yimbo',
+            'slug'        =>  'landingpage-yimbo',
             'user_id'     =>  1,
-            'direction'   =>  'boldig::index',
-            'description' =>  'Pagina de destino de Boldig.'
+            'direction'   =>  'yimbo::index',
+            'description' =>  'Pagina de destino para yimbo.',
+            'details'     =>   null
         ]);
+        
     }
 }

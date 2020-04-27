@@ -14,8 +14,7 @@ class YimboDatabaseSeeder extends Seeder
      */
     public function run()
     {
-        Model::unguard();
-
-        // $this->call("OthersTableSeeder");
+        $this->call(SeetingTableSeeder::class);
+        $this->call(PageTableSeeder::class);
     }
 }
