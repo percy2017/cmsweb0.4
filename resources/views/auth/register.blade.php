@@ -78,7 +78,9 @@
                                 <label for="">Plan</label>
                                 <select name="plan_id" class="browser-default custom-select" required>
                                     <option value="" disabled>Elige tu plan</option>
-                                    @foreach (Modules\Webstreaming\Entities\Plan::where('deleted_at', null)->get() as $item)
+
+                                    @foreach (Modules\Webstreaming\Entities\Plan::all() as $item)
+
                                     <option @if(session('plan_id')==$item->id) selected @endif value="{{ $item->id }}">{{ $item->name }}</option>
                                     @endforeach
                                 </select>

@@ -553,12 +553,16 @@ class PageTableSeeder extends Seeder
                         'label'  => 'Parrafo #1',
                         'value'  => 'Escoge el plan que se adapte a ti',
                         'width'  => 6
-                    ],    
+                    ], 
+                    'space1' => [
+                        'type'  => 'space',
+                        'name'  => 'space1',
+                    ],   
                     /**encabezado del plan 1 */
                     'pricing1_title' => [
                         'type'   => 'text',
                         'name'   => 'pricing1_title',
-                        'label'  => 'Titulo del plan #1',
+                        'label'  => 'Titulo del plan 1',
                         'value'  => 'Gratis',
                         'width'  => 6
                     ],
@@ -569,6 +573,10 @@ class PageTableSeeder extends Seeder
                         'value'  => '0',
                         'width'  => 6
                     ],  
+                    'space2' => [
+                        'type'  => 'space',
+                        'name'  => 'space2',
+                    ],
                     /**contenido del plan 1 */
                     'pricing1_content1' => [
                         'type'   => 'text',
@@ -580,31 +588,35 @@ class PageTableSeeder extends Seeder
                     'pricing1_content2' => [
                         'type'   => 'text',
                         'name'   => 'pricing1_content2',
-                        'label'  => 'contenido #2 - plan 2',
+                        'label'  => 'contenido #2 - plan 1',
                         'value'  => '10 participantes',
                         'width'  => 6
                     ],
                     'pricing1_content3' => [
                         'type'   => 'text',
                         'name'   => 'pricing1_content3',
-                        'label'  => 'contenido #3 - plan 3',
+                        'label'  => 'contenido #3 - plan 1',
                         'value'  => '1 hora de reunión',
                         'width'  => 4
                     ],
                     'pricing1_content4' => [
                         'type'   => 'text',
                         'name'   => 'pricing1_content4',
-                        'label'  => 'contenido #4 - plan 4',
+                        'label'  => 'contenido #4 - plan 1',
                         'value'  => '',
                         'width'  => 4
                     ],
                     'pricing1_content5' => [
                         'type'   => 'text',
                         'name'   => 'pricing1_content5',
-                        'label'  => 'contenido #5 - plan 5',
+                        'label'  => 'contenido #5 - plan 1',
                         'value'  => '',
                         'width'  => 4
                     ],  
+                    'space4' => [
+                        'type'  => 'space',
+                        'name'  => 'space4',
+                    ],
                     /**button name  and action */
                     'btn_name' => [
                         'type'   => 'text',
@@ -620,23 +632,27 @@ class PageTableSeeder extends Seeder
                         'value'  => '/register',
                         'width'  => 6
                     ],
-
+                    'space5' => [
+                        'type'  => 'space',
+                        'name'  => 'space5',
+                    ],
 
                     /**encabezado del plan 2 */
                     'pricing2_title' => [
                         'type'   => 'text',
                         'name'   => 'pricing2_title',
-                        'label'  => 'Titulo del plan #2',
+                        'label'  => 'Titulo del plan 2',
                         'value'  => 'Profesional',
                         'width'  => 6
                     ],
                     'pricing2_price1' => [
                         'type'   => 'text',
                         'name'   => 'pricing2_price1',
-                        'label'  => 'precio #2 - plan 2',
+                        'label'  => 'precio - plan 2',
                         'value'  => '100',
                         'width'  => 6
-                    ],  
+                    ], 
+                   
                     /**contenido del plan 2 */
                     'pricing2_content1' => [
                         'type'   => 'text',
@@ -662,17 +678,21 @@ class PageTableSeeder extends Seeder
                     'pricing2_content4' => [
                         'type'   => 'text',
                         'name'   => 'pricing2_content4',
-                        'label'  => 'contenido #4 - plan 4',
+                        'label'  => 'contenido #4 - plan 2',
                         'value'  => '',
                         'width'  => 4
                     ],
                     'pricing2_content5' => [
                         'type'   => 'text',
                         'name'   => 'pricing2_content5',
-                        'label'  => 'contenido #5 - plan 5',
+                        'label'  => 'contenido #5 - plan 2',
                         'value'  => '',
                         'width'  => 4
-                    ],  
+                    ], 
+                    'space8' => [
+                        'type'  => 'space',
+                        'name'  => 'space8',
+                    ], 
                     /**button name  and action */
                     'btn_name2' => [
                         'type'   => 'text',
@@ -688,19 +708,22 @@ class PageTableSeeder extends Seeder
                         'value'  => '/register/2',
                         'width'  => 6
                     ],
-
+                    'space9' => [
+                        'type'  => 'space',
+                        'name'  => 'space9',
+                    ], 
                     /**encabezado del plan 3 */
                     'pricing3_title' => [
                         'type'   => 'text',
                         'name'   => 'pricing3_title',
-                        'label'  => 'Titulo del plan #3',
+                        'label'  => 'Titulo del plan 3',
                         'value'  => 'Empresarial',
                         'width'  => 6
                     ],
                     'pricing3_price1' => [
                         'type'   => 'text',
                         'name'   => 'pricing3_price1',
-                        'label'  => 'precio #3 - plan 3',
+                        'label'  => 'precio - plan 3',
                         'value'  => '200',
                         'width'  => 6
                     ],  
@@ -740,6 +763,10 @@ class PageTableSeeder extends Seeder
                         'value'  => '',
                         'width'  => 4
                     ],  
+                    'space10' => [
+                        'type'  => 'space',
+                        'name'  => 'space10',
+                    ], 
                     /**button name  and action */
                     'btn_name3' => [
                         'type'   => 'text',
