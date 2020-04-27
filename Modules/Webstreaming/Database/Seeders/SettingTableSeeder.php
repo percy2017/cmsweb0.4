@@ -3,6 +3,7 @@
 namespace Modules\Webstreaming\Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use TCG\Voyager\Models\Setting;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
 
@@ -43,6 +44,24 @@ class SettingTableSeeder extends Seeder
             'order' => 1,
             'group' => 'HiStream'
         ]);
+       /*  $setting = $this->findSetting('site.pag_icon');
+        if (!$setting->exists) {
+            $setting->fill([
+                'display_name' => 'Agregar icon al Título del sitio',
+                'value'        => [
+                    'options'  => [
+                        'fas fa-video'       => 'Video',
+                        'fa fa-university'   => 'University',
+                        'fa fa-video-camera' => 'Camera'
+                    ]
+                ],
+                'details'      => null,
+                'type'         => 'select_dropdown',
+                'order'        => 6,
+                'group'        => 'Site',
+            ])->save();
+        } */
+        
         DB::table('settings')->insert([
             'key' => 'histream.tutorial',
             'display_name' => 'Tutorial',
@@ -63,5 +82,19 @@ class SettingTableSeeder extends Seeder
             'order' => 2,
             'group' => 'HiStream'
         ]);
+    }
+    /**
+     * [setting description].
+     *
+     * @param [type] $key [description]
+     *
+     * @return [type] [description]
+     */
+
+
+
+    protected function findSetting($key)
+    {
+        return Setting::firstOrNew(['key' => $key]);
     }
 }

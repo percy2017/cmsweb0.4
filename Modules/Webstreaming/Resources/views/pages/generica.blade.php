@@ -1,6 +1,6 @@
 @extends('webstreaming::layouts.master')
 @section('header')
-    @include('webstreaming::layouts.header')
+    @include('webstreaming::layouts.navbar')
 @endsection
 @section('content')
     @foreach ($blocks as $item) 

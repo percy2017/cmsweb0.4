@@ -3,8 +3,8 @@
 return [
     'name' => 'LaravelPWA',
     'manifest' => [
-        'name' => env('APP_NAME', 'My PWA App'),
-        'short_name' => 'PWA',
+        'name' => env('APP_NAME', 'My HiStream App'),
+        'short_name' => 'HiStream',
         'start_url' => '/',
         'background_color' => '#ffffff',
         'theme_color' => '#000000',

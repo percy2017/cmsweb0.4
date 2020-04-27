@@ -99,6 +99,36 @@ class MenuItemsTableSeeder extends Seeder
                 'order'      => 1,
             ])->save();
         }
+        $menuItem = MenuItem::firstOrNew([
+            'menu_id' => $menu->id,
+            'title'   => 'Suscripciones',
+            'url'     => '',
+            'route'   => 'voyager.hs_plan_user.index',
+        ]);/** 4---- */
+        if (!$menuItem->exists) {
+            $menuItem->fill([
+                'target'     => '_self',
+                'icon_class' => 'voyager-double-right',
+                'color'      => null,
+                'parent_id'  => $HiStreamMenuItem->id,
+                'order'      => 1,
+            ])->save();
+        }
+        $menuItem = MenuItem::firstOrNew([
+            'menu_id' => $menu->id,
+            'title'   => 'Mi Plan',
+            'url'     => '',
+            'route'   => '/pasarela-de-pago',
+        ]);/** 4---- */
+        if (!$menuItem->exists) {
+            $menuItem->fill([
+                'target'     => '_self',
+                'icon_class' => 'voyager-double-right',
+                'color'      => null,
+                'parent_id'  => $HiStreamMenuItem->id,
+                'order'      => 1,
+            ])->save();
+        }
 
 
         /**
@@ -241,19 +271,19 @@ class MenuItemsTableSeeder extends Seeder
             ])->save();
         }
 
-        /**
+         /**
          * ------------------------------------------------
-         *            Menu  dropdown-toggle => 
+         *            Menu  dropdown-toggle => planes
          * -----------------------------------------------
          */
         Menu::firstOrCreate([
-            'name' => 'hs_plans',
+            'name' => 'hs_meetings',
         ]);
-        $menu = Menu::where('name', 'hs_plans')->firstOrFail();
+        $menu = Menu::where('name', 'hs_meetings')->firstOrFail();
         $menuItem = MenuItem::firstOrNew([
             'menu_id' => $menu->id,
             'title'   => 'Crear Nuevo',
-            'url'     => 'admin/hs_plans/create',
+            'url'     => 'admin/hs_meetings/create',
             'route'   => null
         ]);
         if (!$menuItem->exists) {
@@ -268,7 +298,79 @@ class MenuItemsTableSeeder extends Seeder
         $menuItem = MenuItem::firstOrNew([
             'menu_id' => $menu->id,
             'title'   => 'Listar',
-            'url'     => 'admin/hs_plans/1',
+            'url'     => 'admin/hs_meetings/1',
+            'route'   => null
+        ]);
+        if (!$menuItem->exists) {
+            $menuItem->fill([
+                'target'     => '_self',
+                'icon_class' => null,
+                'color'      => null,
+                'parent_id'  => null,
+                'order'=> 1,
+            ])->save();
+        }
+        
+        $menuItem = MenuItem::firstOrNew([
+            'menu_id' => $menu->id,
+            'title'   => 'divider',
+            'url'     => null,
+            'route'   => null
+        ]);
+        if (!$menuItem->exists) {
+            $menuItem->fill([
+                'target'     => '_self',
+                'icon_class' => null,
+                'color'      => null,
+                'parent_id'  => null,
+                'order'      => 2,
+            ])->save();
+        }
+        $menuItem = MenuItem::firstOrNew([
+            'menu_id' => $menu->id,
+            'title'   => 'setting',
+            'url'     => null,
+            'route'   => null
+        ]);
+        if (!$menuItem->exists) {
+            $menuItem->fill([
+                'target'     => '_blank',
+                'icon_class' => null,
+                'color'      => null,
+                'parent_id'  => null,
+                'order'      => 3,
+            ])->save();
+        }
+
+
+        /**
+         * ------------------------------------------------
+         *            Menu  dropdown-toggle => 
+         * -----------------------------------------------
+         */
+        Menu::firstOrCreate([
+            'name' => 'hs_plan_user',
+        ]);
+        $menu = Menu::where('name', 'hs_plan_user')->firstOrFail();
+        $menuItem = MenuItem::firstOrNew([
+            'menu_id' => $menu->id,
+            'title'   => 'Crear Nuevo',
+            'url'     => 'admin/hs_plan_user/create',
+            'route'   => null
+        ]);
+        if (!$menuItem->exists) {
+            $menuItem->fill([
+                'target'     => '_self',
+                'icon_class' => null,
+                'color'      => null,
+                'parent_id'  => null,
+                'order'      => 1,
+            ])->save();
+        }
+        $menuItem = MenuItem::firstOrNew([
+            'menu_id' => $menu->id,
+            'title'   => 'Listar',
+            'url'     => 'admin/hs_plan_user/1',
             'route'   => null
         ]);
         if (!$menuItem->exists) {
