@@ -122,7 +122,16 @@ class plansController extends Controller
 
     public function show($id = null)
     {
-        $dataTypeContent = $this->dataType->model_name::orderBy($this->dataType->details->{'order_column'}, $this->dataType->details->{'order_direction'})->paginate(setting('admin.pagination')); 
+        $user = \App\User::where('id', Auth::user()->id)->first();
+        if($user->role_id == 2){
+            $dataTypeContent = $this->dataType->model_name::where('user_id', Auth::user()->id)->orderBy($this->dataType->details->{'order_column'}, $this->dataType->details->{'order_direction'})->paginate(setting('admin.pagination')); 
+        }else{
+            $dataTypeContent = $this->dataType->model_name::orderBy($this->dataType->details->{'order_column'}, $this->dataType->details->{'order_direction'})->paginate(setting('admin.pagination'));
+        }
+        
+
+        
+
         return view('webstreaming::bread.show', [
             'dataType' =>  $this->dataType,
             'dataTypeContent' => $dataTypeContent

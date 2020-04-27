@@ -5,27 +5,25 @@ En un software inteligente para crear y administrar paginas web dinamicas, utili
 
 La herramienta inscluye paquete de terceros:
 
-- [Laravel Framework v6](#)
-- [Voyager Packages v1.3](#)
-- [VueJs Framework v2.5](#)
-- [Websockets v1.3](#)
+- [Laravel Framework v7](#)
+- [Voyager Packages v1.4](#)
+- [ReactJs Framework v16.2](#)
+- [Websockets v1.4](#)
 
 # Servidor
 ### Step #1
-- LEMP (Ubuntu 18.04)
+- LEMP (Ubuntu 20.04)
 - Let’s Encrypt 
 - Php Extenciones
 > php7.2-mbstring
 
 > php7.2-bcmath
 
-> php7.2-gd
+> php7.4-gd
 
-> hp7.2-json
+> php7.4-dom
 
-> php7.2-dom
-
-> php7.2-curl
+> php7.4-curl
 
 > php7.2-zip
 
@@ -45,16 +43,25 @@ Configurar el erchivo .env (Variales de Entorno) y permisos
 
 ### Step #3
 Realizar la instalcion mediante el comando:
--   php artisan cmsweb:install
+-   php artisan voyager:install
 
-La instalacion el super usuario con el login:
+nombre el super usuario:
 -   admin@admin.com 
 -   password
+# Paquetes Disponibles
+
+El cmsweb incluye 5 paquetes para ser utilizados
+- BimGo - Software para comercio electronico
+- Yimbo - Paquete para venta de comida y delivery
+- Inti - Software para centros educativos
+- BolDig - Paquete para crear y administrar periodicos digitales
+- hiStream - Paquete para la gestion de video conferencias
+
 # CmsWeb Sponsors
 
 La empresa detras del Diseño y Creacion del CmsWeb v2020 es:
 
-- ***[LoginWeb - Empresa de Diseño y Desarrollo de Hardwre y Software](https://loginweb.net/)***
+- ***[LoginWeb - Empresa de Diseño y Desarrollo de Hardware y Software](https://loginweb.net/)***
 
 ### Contributing
 

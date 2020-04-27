@@ -11,9 +11,9 @@ class Install extends AbstractAction
     {
         $mymodule = Module::where('id', $this->data->{$this->data->getKeyName()})->first();
         if ($mymodule->installed) {
-            return 'Modulo Instaldo';
+            return 'Paquete Instaldo';
         } else {
-            return 'Instalar Modulo';
+            return 'Instalar Paquete';
         }
         
     }
@@ -37,7 +37,7 @@ class Install extends AbstractAction
             ];
         } else {
             return [
-                'class' => 'btn btn-primary',
+                'class' => 'btn btn-dark',
             ];
         }
 

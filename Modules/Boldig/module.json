@@ -1,0 +1,13 @@
+{
+    "name": "Boldig",
+    "alias": "boldig",
+    "description": "",
+    "keywords": [],
+    "order": 0,
+    "providers": [
+        "Modules\\Boldig\\Providers\\BoldigServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

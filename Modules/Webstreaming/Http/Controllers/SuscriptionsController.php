@@ -8,7 +8,8 @@ use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\DB;
 
 // Models
-// use Modules\Webstreaming\Entities\PlanUser;
+use Modules\Webstreaming\Entities\Plan;
+use Modules\Webstreaming\Entities\PlanUser;
 
 class SuscriptionsController extends Controller
 {
@@ -18,18 +19,19 @@ class SuscriptionsController extends Controller
      */
     public function index()
     {
-        
-        return view('webstreaming::suscriptions.index');
+        $plans = Plan::where('deleted_at', null)->get();
+        return view('webstreaming::suscriptions.index', compact('plans'));
     }
 
     public function list(){
         $registers = DB::table('hs_plan_user as pu')
                                 ->join('users as u', 'u.id', 'pu.user_id')
-                                ->join('hs_plan_types as pt', 'pt.id', 'pu.hs_plan_type_id')
+                                ->join('hs_plans as pt', 'pt.id', 'pu.hs_plan_id')
                                 ->select('pu.*', 'u.name as client', 'pt.name as plan')
                                 ->where('pu.deleted_at', null)
+                                ->orderBy('id', 'DESC')
                                 ->paginate(10);
-                                // dd($registers);
+        
         return view('webstreaming::suscriptions.partials.list', compact('registers'));
     }
 
@@ -80,7 +82,48 @@ class SuscriptionsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // try {
+            switch ($request->type) {
+                case 'up':
+                    $date = date('Y-m-d');
+
+                    $suscription = PlanUser::find($id);
+                    $suscription->status = 1;
+                    $suscription->start = $date;
+                    $suscription->finish = date('Y-m-d', strtotime($date."+1 months"));
+                    $suscription->save();
+                    $res = $suscription;
+                    break;
+                case 'down':
+                    $suscription = PlanUser::find($id);
+                    $suscription->status = 2;
+                    $suscription->save();
+                    $res = $suscription;
+                    break;
+                case 'delete':
+                    $suscription = PlanUser::find($id);
+                    // $suscription->status = 2;
+                    // $suscription->deleted_at = ;
+                    $suscription->delete();
+                    $res = $suscription;
+                    break;
+                default:
+                    $suscription = PlanUser::find($id);
+                    $suscription->status = 1;
+                    $suscription->hs_plan_id = $request->hs_plan_id;
+                    $suscription->finish = $request->finish;
+                    $suscription->save();
+                    $res = $suscription;
+                    break;
+            }
+
+            if($request->ajax){
+                return response()->json($res);
+            }
+            return redirect()->route('conferencias.index')->with(['message' => 'Conferencia ingresada exitosamente.', 'alert-type' => 'success']);
+        // } catch (\Throwable $th) {
+        //     //throw $th;
+        // }
     }
 
     /**

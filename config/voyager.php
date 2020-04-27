@@ -14,7 +14,7 @@ return [
         'add_default_role_on_register' => true,
         'default_role'                 => 'admin',
         'default_avatar'               => 'users/default.png',
-        'redirect'                     => '/admin',
+        'redirect'                     => '/admin/profile',
     ],
 
     /*
@@ -137,10 +137,19 @@ return [
                 'icon_class'   => 'voyager-home',
                 'target_blank' => true,
             ],
+            'Parametros' => [
+                'route'      => 'voyager.settings.index',
+                'icon_class' => 'voyager-settings',
+            ],
+            'Paquetes' => [
+                'route'      => 'voyager.modules.index',
+                'icon_class' => 'voyager-github-icon',
+            ],
             'voyager::generic.logout' => [
                 'route'      => 'voyager.logout',
                 'icon_class' => 'voyager-power',
-            ],
+            ]
+         
         ],
 
         'widgets' => [

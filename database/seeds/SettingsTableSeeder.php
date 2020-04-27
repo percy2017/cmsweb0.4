@@ -62,7 +62,7 @@ class SettingsTableSeeder extends Seeder
         if (!$setting->exists) {
             $setting->fill([
                 'display_name' => 'Pagina',
-                'value'        => 'welcome',
+                'value'        => 'null',
                 'details'      => '',
                 'type'         => 'text',
                 'order'        => 5,
