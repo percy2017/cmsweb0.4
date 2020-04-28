@@ -10,7 +10,7 @@ class DataTypesTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
-     *
+     *hs_plan_user
      * @return void
      */
     public function run()

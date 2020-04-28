@@ -17,6 +17,7 @@ class PageTableSeeder extends Seeder
     public function run()
     {
         Page::where('user_id', 1)->delete();
+        Block::where('deleted_at', false)->delete();
         $page = Page::create([
             'name'        =>  'Landing Page HiStream',
             'slug'        =>  'landing-page-histream',

@@ -145,15 +145,15 @@ return [
     */
 
     'seo'                 => [
-        'author'          => '',
-        'description'     => '',
-        'keywords'        => '',
+        'author'          => 'Ing. Percy Alvarez',
+        'description'     => 'Software para crear y administrar paginas web dinamicas.',
+        'keywords'        => 'cms, paginas, web',
         'og'              => [
-            'title'       => '',
+            'title'       => 'CmsWeb v0.4',
             'type'        => 'article',
-            'url'         => '',
+            'url'         => 'loginweb.dev/docs',
             'image'       => '',
-            'description' => '',
+            'description' => 'Software para crear y administrar paginas web dinamicas.',
         ]
     ],
 

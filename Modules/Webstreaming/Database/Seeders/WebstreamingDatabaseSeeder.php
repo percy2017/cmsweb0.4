@@ -25,5 +25,6 @@ class WebstreamingDatabaseSeeder extends Seeder
         $this->call(PlanUserTableSeeder::class);
         $this->call(SettingTableSeeder::class);
         $this->call(PermissionsTableSeeder::class);
+        $this->call(RolesTableSeeder::class);
     }
 }

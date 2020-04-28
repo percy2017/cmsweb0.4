@@ -78,12 +78,12 @@ class RegisterController extends Controller
 
         // Enviar notificación de nueva suscripción al módulo hiStream
 
-        $module_histream = Module::find(2);
+        // $module_histream = Module::find(2);
 
         $user = new User;
         $user->name = $data['name'];
         $user->email = $data['email'];
-        $user->role_id = 1; // role_id debe ser 2
+        $user->role_id = 2; // role_id debe ser 2
         $user->password = Hash::make($data['password']);
         if($module_histream){
             if ($module_histream->installed){
