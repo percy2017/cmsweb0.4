@@ -1,17 +1,17 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>Material Design Bootstrap</title>
+  <title>{{ $page->name }}</title>
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
   <!-- Bootstrap core CSS -->
-  <link href="{{ asset('vendor/landingpage/css/bootstrap.min.css') }}" rel="stylesheet">
+  <link href="{{ asset('resources/landingpage/css/bootstrap.min.css') }}" rel="stylesheet">
   <!-- Material Design Bootstrap -->
-  <link href="{{ asset('vendor/landingpage/css/mdb.min.css') }}" rel="stylesheet">
+  <link href="{{ asset('resources/landingpage/css/mdb.min.css') }}" rel="stylesheet">
   <style>
     html,
     body,
@@ -51,6 +51,7 @@
     }
 
   </style>
+  @laravelPWA
 </head>
 
 <body class="university-lp">
@@ -1103,16 +1104,16 @@
   <!--SCRIPTS-->
 
   <!--JQuery-->
-  <script type="text/javascript" src="{{ asset('vendor/landingpage/js/jquery-3.4.1.min.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('resources/landingpage/js/jquery-3.4.1.min.js') }}"></script>
 
   <!--Bootstrap tooltips-->
-  <script type="text/javascript" src="{{ asset('vendor/landingpage/js/popper.min.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('resources/landingpage/js/popper.min.js') }}"></script>
 
   <!--Bootstrap core JavaScript-->
-  <script type="text/javascript" src="{{ asset('vendor/landingpage/js/bootstrap.min.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('resources/landingpage/js/bootstrap.min.js') }}"></script>
 
   <!--MDB core JavaScript-->
-  <script type="text/javascript" src="{{ asset('vendor/landingpage/js/mdb.min.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('resources/landingpage/js/mdb.min.js') }}"></script>
 
   <script>
     //Animation init

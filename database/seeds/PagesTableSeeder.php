@@ -14,7 +14,7 @@ class PagesTableSeeder extends Seeder
     {
         // ------------ LPS
         $page = Page::create([
-            'name'      => 'Landing Page Software',
+            'name'      => 'Landingpage Software',
             'slug'      => 'landingpage-software',
             'description' => 'Pagina de Destino para Empresa de Software',
             'direction' => 'pages.lps',
@@ -732,7 +732,7 @@ class PagesTableSeeder extends Seeder
 
         // ------------ LPR
         $page = Page::create([
-            'name'      => 'Landing Page Restaurant',
+            'name'      => 'Landingpage Restaurant',
             'slug'      => 'landingpage-restaurant',
             'description' => 'Pagina de Destino para Restaurant',
             'direction' => 'pages.lpr',
@@ -742,7 +742,7 @@ class PagesTableSeeder extends Seeder
 
         // ------------ LPU
         $page = Page::create([
-            'name'      => 'Landing Page Centros Educativos',
+            'name'      => 'Landingpage Learning',
             'slug'      => 'landingpage-learning',
             'description' => 'Pagina de Destino centros educativos',
             'direction' => 'pages.lpu',
@@ -750,12 +750,32 @@ class PagesTableSeeder extends Seeder
             'details'   => null
         ]);
 
-         // ------------ LPU
+         // ------------ SPA
          $page = Page::create([
-            'name'      => 'Landing Page centro de belleza',
+            'name'      => 'Landingpage SPA',
             'slug'      => 'landingpage-spa',
             'description' => 'Pagina de Destino centros de belleza',
             'direction' => 'pages.spa',
+            'user_id' => 1,
+            'details'   => null
+        ]);
+
+        // ------------ LPT
+        $page = Page::create([
+            'name'      => 'Landingpage Transporte',
+            'slug'      => 'landingpage-transporte',
+            'description' => 'Landingpage para negocios de transporte de personas o mercaderia',
+            'direction' => 'pages.lpt',
+            'user_id' => 1,
+            'details'   => null
+        ]);
+
+        // ------------ LPM
+        $page = Page::create([
+            'name'      => 'Landingpage Medical',
+            'slug'      => 'landingpage-medical',
+            'description' => 'Landingpage para empresas privadas y publicas de atencion medica o de salud',
+            'direction' => 'pages.lpm',
             'user_id' => 1,
             'details'   => null
         ]);

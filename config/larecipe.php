@@ -125,7 +125,7 @@ return [
         'fa_v4_shims'    => true, // Add FontAwesome v4 shims prevent BC break
         'show_side_bar'  => true,
         'colors'         => [
-            'primary'    => '#787AF6',
+            'primary'    => '#4267B2',
             'secondary'  => '#2b9cf2'
         ],
 
@@ -151,7 +151,7 @@ return [
         'og'              => [
             'title'       => 'CmsWeb v0.4',
             'type'        => 'article',
-            'url'         => 'loginweb.dev/docs',
+            'url'         => 'loginweb.dev',
             'image'       => '',
             'description' => 'Software para crear y administrar paginas web dinamicas.',
         ]
