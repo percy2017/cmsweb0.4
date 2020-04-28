@@ -46,7 +46,7 @@ class MenuItemsTableSeeder extends Seeder
         if (!$menuItem->exists) {
             $menuItem->fill([
                 'target'     => '_self',
-                'icon_class' => 'voyager-logbook',
+                'icon_class' => 'voyager-double-right',
                 'color'      => null,
                 'parent_id'  => $HiStreamMenuItem->id,
                 'order'      => $cont++,
