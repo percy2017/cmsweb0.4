@@ -68,17 +68,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-
-        $user = User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'role_id' => 2, // role_id debe ser 2
-            'password' => Hash::make($data['password']),
-        ]);
-
-        // Enviar notificación de nueva suscripción al módulo hiStream
-
-        // $module_histream = Module::find(2);
+        $module_histream = Module::find(2);
 
         $user = new User;
         $user->name = $data['name'];
