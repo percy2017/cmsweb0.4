@@ -23,6 +23,7 @@
         "nwidart/laravel-modules": "^7.1",
         "pusher/pusher-php-server": "~4.0",
         "silviolleite/laravelpwa": "^1.0",
+        "spatie/laravel-backup": "^6.9",
         "tcg/voyager": "^1.4"
     },
     "require-dev": {
