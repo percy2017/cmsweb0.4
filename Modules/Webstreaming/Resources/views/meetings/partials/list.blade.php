@@ -11,17 +11,17 @@
         <tbody id="body-list">
             @forelse ($meetings as $item)
             <tr id="tr-{{ $item->id }}">
-                <td id="td-name_{{ $item->id }}">{{ $item->name }}</td>
-                <td>{{ date('d-m-Y H:i', strtotime($item->start)) }} <br> <small>{{ \Carbon\Carbon::parse($item->start)->diffForHumans() }}</small> </td>
+                <td id="td-name_{{ $item->id }}">{{ $item->name }} <button type="button" class="btn btn-link btn-copy" onclick="copy('{{ $item->slug }}')">Copiar</button> </td>
+                <td>{{ date('d-m-Y H:i', strtotime($item->day.' '.$item->start)) }} <br> <small>{{ \Carbon\Carbon::parse($item->day.' '.$item->start)->diffForHumans() }}</small> </td>
                 <td><small>{{ \Carbon\Carbon::parse($item->created_at)->diffForHumans() }}</small> </td>
                 <td class="no-sort no-click bread-actions">
                     {{-- <a href="#" title="Borrar" class="btn btn-sm btn-danger pull-right delete" data-id="1" id="delete-1">
                         <i class="voyager-trash"></i> <span class="hidden-xs hidden-sm">Borrar</span>
                     </a> --}}
-                    <a href="#" title="Editar" class="btn btn-sm btn-primary pull-right edit" data-toggle="modal" data-target="#edit_modal" onclick="setUpdate({{ $item->id }}, '{{ $item->name }}', '{{ $item->start }}')">
+                    <a href="#" title="Editar" class="btn btn-sm btn-primary pull-right edit" data-toggle="modal" data-target="#edit_modal" onclick="edit('{{ json_encode($item) }}')">
                         <i class="voyager-edit"></i> <span class="hidden-xs hidden-sm">Editar</span>
                     </a>
-                    <a href="{{ url('meet/'.$item->slug) }}" title="Ir" target="_blank" class="btn btn-sm btn-warning pull-right view">
+                    <a href="{{ url('conferencia/'.$item->slug) }}" title="Ir" target="_blank" class="btn btn-sm btn-warning pull-right view">
                         <i class="voyager-eye"></i> <span class="hidden-xs hidden-sm">Ir</span>
                     </a>
                 </td>
@@ -45,6 +45,15 @@
     </div>
 </div>
 
+<style>
+    .btn-copy{
+        padding:0px;
+        margin:5px 0px;
+        color: #1D80DC !important;
+        font-size: 12px;
+    }
+</style>
+
 <script>
     $(document).ready(function(){
 
@@ -58,6 +67,14 @@
                 $('#data-list').html(`<div class="text-center"><img src="${loader}" height="200px"></div>`);
                 list(search, page);
             }
+        });
+
+        // Script adicional
+        $('.btn-copy').click(function(){
+            $(this).text('Copiado');
+            setTimeout(() => {
+                $(this).text('Copiar');
+            }, 2000);
         });
     });
 </script>

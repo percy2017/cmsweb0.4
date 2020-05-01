@@ -18,5 +18,18 @@
     </head>
     <body>
         <h1>Error</h1>
+        @switch($error)
+            @case('notfound')
+                <h3>La reunión no existe</h3>
+                @break
+            @case('max_participants')
+                <h3>La reunión no permite más participantes</h3>
+                @break
+            @case('not_start')
+                <h3>La reunión aun no ha inicado</h3>
+            @break
+            @default
+                <h3>Error desconocido</h3>
+        @endswitch
     </body>
 </html>

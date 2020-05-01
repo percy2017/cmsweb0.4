@@ -32,7 +32,20 @@
                     videoInput: '<deviceLabel>'
                 },
             };
+
+            let newParticipant = true;
+            let maxParticipants = '{{ $plan_user->status }}' == 1 ? '{{ $plan_user->max_person }}' : '{{ $plan->max_person }}';
             const api = new JitsiMeetExternalAPI(domain, options);
+            api.addEventListener('participantJoined', res=>{
+                setTimeout(() => {
+                    let numberOfParticipants = api.getNumberOfParticipants();
+                    if(newParticipant && numberOfParticipants > maxParticipants){
+                        api.dispose();
+                        window.location = '{{ url("conferencia/error/max_participants") }}'
+                    }
+                    newParticipant = false;
+                }, 1000);
+            });
         </script>
     </body>
 </html>

@@ -3,12 +3,9 @@
 namespace Modules\Webstreaming\Entities;
 
 use Illuminate\Database\Eloquent\Model;
-use Cviebrock\EloquentSluggable\Sluggable;
 
 class Meeting extends Model
 {
-    use Sluggable;
-
     protected $table = 'hs_meetings';
 
     protected $fillable = [
@@ -22,18 +19,4 @@ class Meeting extends Model
         'link',
         'descriptions'
     ];
-
-
-    public function sluggable()
-    {
-        return [
-            'slug' => [
-                'source' => 'name'
-            ]
-        ];
-    }
-    public function getRouteKeyName()
-    {
-        return 'slug';
-    }
 }

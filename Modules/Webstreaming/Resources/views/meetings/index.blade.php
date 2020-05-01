@@ -7,11 +7,9 @@
         <h1 class="page-title">
             <i class="voyager-group"></i> Conferencias
         </h1>
-        @if ($suscription || Auth::user()->role_id == 1)
-            <a href="#" data-toggle="modal" data-target="#create_modal" class="btn btn-success btn-add-new">
-                <i class="voyager-plus"></i> <span>Crear</span>
-            </a>
-        @endif
+        <a href="#" data-toggle="modal" data-target="#create_modal" class="btn btn-success btn-sm btn-add-new">
+            <i class="voyager-plus"></i> <span>Crear</span>
+        </a>
         
     </div>
 @stop
@@ -25,16 +23,25 @@
                     <strong>Información:</strong>
                     <p>{{ setting('histream.upgrade') }}</p>
                     Para cambiar de plan presiona
-                    <code><a href="#">aquí.</a></code>
+                    <code><a href="#" data-toggle="modal" data-target="#modal_upgrade">aquí.</a></code>
                 </div>
+            @else
+                @if ($suscription->status == '')
+                    <div class="alert alert-info">
+                        <strong>Información:</strong>
+                        <p>{{ setting('histream.waiting') }}</p>
+                        En caso de que tu solicitud haya tardado demasiado, para solicitarla nuevamente presiona
+                        <code><a href="#">aquí.</a></code>
+                    </div>
+                @elseif($suscription->status == 2)
+                    <div class="alert alert-info">
+                        <strong>Información:</strong>
+                        <p>{{ setting('histream.suscribre') }}</p>
+                        Para cambiar de plan presiona
+                        <code><a href="#">aquí.</a></code>
+                    </div>
+                @endif
             @endif
-        @else
-            <div class="alert alert-warning">
-                <strong>Información:</strong>
-                <p>{{ setting('histream.suscribre') }}</p>
-                Para cambiar de plan presiona
-                <code><a href="#">aquí.</a></code>
-            </div>
         @endif
         <div class="row">
             <div class="col-md-12">
@@ -48,6 +55,37 @@
     </div>
 
     {{-- Modals --}}
+    <form action="" method="POST">
+        <div class="modal modal-info fade" tabindex="-1" id="modal_upgrade" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title"><i class="voyager-plus"></i> Cambiar de plan</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="">Plan</label>
+                            <select name="plan_id" class="form-control" required>
+                                <option value="" disabled>Elige tu plan</option>
+
+                                @foreach (Modules\Webstreaming\Entities\Plan::all() as $item)
+
+                                <option @if(session('plan_id')==$item->id) selected @endif value="{{ $item->id }}">{{ $item->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-info pull-right">Solicitar</button>
+                        <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Cancelar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+
     <form action="{{ route("conferencias.store") }}" id="form_create" method="POST">
         <div class="modal modal-success fade" tabindex="-1" id="create_modal" role="dialog">
             <div class="modal-dialog">
@@ -63,17 +101,33 @@
                             <label>Nombre</label>
                             <input type="text" name="name" class="form-control" autofocus required>
                         </div>
-                        <div class="form-group">
-                            <label>Inicio de la reunión</label>
-                            <input type="datetime" class="form-control datepicker" name="start" required />
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group col-md-4 form-p0">
+                                    <label>Fecha</label>
+                                    <input type="date" class="form-control" name="day" value="{{ date('Y-m-d') }}" required />
+                                </div>
+                                <div class="form-group col-md-4 form-p0">
+                                    <label>Inicio</label>
+                                    <input type="time" class="form-control" name="start" min="{{ date('H:i') }}" required />
+                                </div>
+                                <div class="form-group col-md-4 form-p0">
+                                    <label>Fin</label>
+                                    <input type="time" class="form-control" name="finish" />
+                                </div>
+                            </div>
                         </div>
                         @if ($suscription)
                             @if ($suscription->hs_plan_id == 1)
                                 <div class="alert alert-info">
-                                    <p>Tenga en cuanta que su reunión debe tener un tiempo maximo de <code>{{ $suscription->max_time }}</code> a partir de la hora de inicio.</p>
+                                    <p>Tenga en cuenta que su reunión debe tener un tiempo maximo de <code>{{ $suscription->max_time }}</code> a partir de la hora de inicio.</p>
                                 </div>
                             @endif
                         @endif
+                        <div class="form-group">
+                            <label>Descripción</label>
+                            <textarea name="descriptions" class="form-control" placeholder="Descripción breve de la conferencia" required></textarea>
+                        </div>
                     </div>
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-success pull-right">Crear</button>
@@ -101,9 +155,32 @@
                             <input type="text" name="name" class="form-control" autofocus required>
                             <input type="hidden" name="id">
                         </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group col-md-4 form-p0">
+                                    <label>Fecha</label>
+                                    <input type="date" class="form-control" name="day" value="{{ date('Y-m-d') }}" required />
+                                </div>
+                                <div class="form-group col-md-4 form-p0">
+                                    <label>Inicio</label>
+                                    <input type="time" class="form-control" name="start" min="{{ date('H:i') }}" required />
+                                </div>
+                                <div class="form-group col-md-4 form-p0">
+                                    <label>Fin</label>
+                                    <input type="time" class="form-control" name="finish" />
+                                </div>
+                            </div>
+                        </div>
+                        @if ($suscription)
+                            @if ($suscription->hs_plan_id == 1)
+                                <div class="alert alert-info">
+                                    <p>Tenga en cuenta que su reunión debe tener un tiempo maximo de <code>{{ $suscription->max_time }}</code> a partir de la hora de inicio.</p>
+                                </div>
+                            @endif
+                        @endif
                         <div class="form-group">
-                            <label>Inicio de la reunión</label>
-                            <input type="datetime" class="form-control datepicker" name="start"  required />
+                            <label>Descripción</label>
+                            <textarea name="descriptions" class="form-control" placeholder="Descripción breve de la conferencia" required></textarea>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -114,10 +191,19 @@
             </div>
         </div>
     </form>
+
+    {{-- Controles auxiliares --}}
+    <div style="position:fixed;bottom:-50px">
+        <input type="text" id="url_meeting">
+    </div>
 @stop
 
 @section('css')
-
+    <style>
+        .form-p0{
+            padding: 0px !important
+        }
+    </style>
 @stop
 
 @section('javascript')
@@ -152,10 +238,10 @@
                     });
                     list(search, page_actual);
                     $('#create_modal').modal('toggle');
-                    setTimeout(() => {
-                        var win = window.open("{{ url('meet') }}/"+res.slug, '_blank');
-                        win.focus();
-                    }, 3000);
+                    // setTimeout(() => {
+                    //     var win = window.open("{{ url('conferencia') }}/"+res.slug, '_blank');
+                    //     win.focus();
+                    // }, 3000);
                 })
                 .fail(function() {
                     Toast.fire({
@@ -190,10 +276,21 @@
             });
         }
 
-        function setUpdate(id, name, start){
-            $('#edit_modal input[name="id"]').val(id);
-            $('#edit_modal input[name="name"]').val(name);
-            $('#edit_modal input[name="start"]').val(start);
+        function edit(reg){
+            let data = JSON.parse(reg);
+            $('#edit_modal input[name="id"]').val(data.id);
+            $('#edit_modal input[name="name"]').val(data.name);
+            $('#edit_modal input[name="day"]').val(data.day);
+            $('#edit_modal input[name="start"]').val(data.start);
+            $('#edit_modal input[name="finish"]').val(data.finish);
+            $('#edit_modal textarea[name="descriptions"]').val(data.descriptions);
+        }
+
+        function copy(slug){
+            let url = document.getElementById("url_meeting");
+            url.value = '{{ url("conferencia") }}/'+slug
+            url.select();
+            document.execCommand("copy");
         }
     </script>
 @stop
