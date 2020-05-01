@@ -35,7 +35,7 @@ class SettingTableSeeder extends Seeder
         DB::table('settings')->insert([
             'key' => 'histream.server',
             'display_name' => 'Servidor',
-            'value' => 'https://live.loginweb.dev/external_api.js',
+            'value' => 'https://live.loginweb.dev',
             'details' => '',
             'type' => 'text',
             'order' => 1,
@@ -94,12 +94,22 @@ class SettingTableSeeder extends Seeder
         ]);
 
         DB::table('settings')->insert([
+            'key' => 'histream.waiting',
+            'display_name' => 'En espera',
+            'value' => 'Tu suscripción será aprobada en unos momentos por nuestro personal, mientras tanto tendras las opciones del plan gratuito.',
+            'details' => '',
+            'type' => 'text_area',
+            'order' => 4,
+            'group' => 'HiStream'
+        ]);
+
+        DB::table('settings')->insert([
             'key' => 'histream.upgrade',
             'display_name' => 'Subir de nivel',
             'value' => 'Tu suscripción es gratuita por lo que solo tendras un número limitado de conferencias e invitados.',
             'details' => '',
             'type' => 'text_area',
-            'order' => 4,
+            'order' => 5,
             'group' => 'HiStream'
         ]);
 
@@ -109,7 +119,7 @@ class SettingTableSeeder extends Seeder
             'value' => 'Tus suscripción ha vencido, por el momento solo podras acceder a las opciones que incluye el plan gratuito.',
             'details' => '',
             'type' => 'text_area',
-            'order' => 5,
+            'order' => 6,
             'group' => 'HiStream'
         ]);
     }
