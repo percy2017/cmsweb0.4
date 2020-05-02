@@ -18,7 +18,7 @@ class SettingTableSeeder extends Seeder
     {
         DB::table('settings')
             ->where('key', 'site.title')
-            ->update(['value' => 'HiStream v1.0']);
+            ->update(['value' => 'HiStream']);
 
         DB::table('settings')
             ->where('key', 'admin.title')

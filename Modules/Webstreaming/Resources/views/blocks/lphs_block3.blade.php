@@ -1,4 +1,4 @@
-<section class="p-1 mb-5 pb-4">
+<section id ="4"class="p-1 mb-5 pb-4">
     <!-- Section heading -->
     <h3 class="text-center title my-5 dark-grey-text font-weight-bold wow fadeIn" data-wow-delay="0.2s">
         <strong>{{ $data->title_strong->value }}</strong>
