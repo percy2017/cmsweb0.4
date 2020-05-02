@@ -1,6 +1,6 @@
 <div class="container">
 <!-- Section: About -->
-<section id="about" class="about mt-5 mb-5 py-3 wow fadeIn" data-wow-delay="0.2s">
+<section id="2" class="about mt-5 mb-5 py-3 wow fadeIn" data-wow-delay="0.2s">
 
     <!-- Grid row -->
     <div class="row pt-2 mt-5">
@@ -8,7 +8,7 @@
         <!-- Grid column -->
         <div class="col-lg-5 col-md-12 mb-3 wow fadeIn" data-wow-delay="0.4s">
             <!-- Image -->
-            <img src="{{ voyager::Image($data->imagen->value) }}" class="img-fluid z-depth-1 rounded"
+            <img src="{{ voyager::Image($data->imagen_bl1->value) }}" class="img-fluid z-depth-1 rounded"
                 alt="My photo">
         </div>
         <!-- Grid column -->

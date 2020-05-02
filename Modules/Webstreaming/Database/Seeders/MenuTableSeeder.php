@@ -22,13 +22,28 @@ class MenuTableSeeder extends Seeder
         ]);
         $menu = Menu::where('name', 'LandingPageHiStream')->firstOrFail();
 
-   
+        /** segundo title 1 */
+        $menuItem = MenuItem::firstOrNew([
+            'menu_id' => $menu->id,
+            'title'   => 'Home',
+            'url'     => '#1',
+            'route'   => null,
+        ]);
+        if (!$menuItem->exists) {
+            $menuItem->fill([
+                'target'     => '_self',
+                'icon_class' => null,
+                'color'      => null,
+                'parent_id'  => null,
+                'order'      => 1,
+            ])->save();
+        }  
         
         /** segundo title 2 */
         $menuItem = MenuItem::firstOrNew([
             'menu_id' => $menu->id,
-            'title'   => 'About',
-            'url'     => '#about',
+            'title'   => 'Como Funciona',
+            'url'     => '#2',
             'route'   => null,
         ]);
         if (!$menuItem->exists) {
@@ -44,8 +59,8 @@ class MenuTableSeeder extends Seeder
         /** segundo title 3 */
         $menuItem = MenuItem::firstOrNew([
             'menu_id' => $menu->id,
-            'title'   => 'About',
-            'url'     => '#about',
+            'title'   => 'Funciones',
+            'url'     => '#3',
             'route'   => null,
         ]);
         if (!$menuItem->exists) {
@@ -61,8 +76,8 @@ class MenuTableSeeder extends Seeder
         /** segundo title 4 */
         $menuItem = MenuItem::firstOrNew([
             'menu_id' => $menu->id,
-            'title'   => 'Features',
-            'url'     => '#features',
+            'title'   => 'Tutorial',
+            'url'     => '#4',
             'route'   => null,
         ]);
         if (!$menuItem->exists) {
@@ -78,8 +93,8 @@ class MenuTableSeeder extends Seeder
         /** segundo title 5 */
         $menuItem = MenuItem::firstOrNew([
             'menu_id' => $menu->id,
-            'title'   => 'Services',
-            'url'     => '#services',
+            'title'   => 'Beneficios',
+            'url'     => '#5',
             'route'   => null,
         ]);
         if (!$menuItem->exists) {
@@ -95,8 +110,8 @@ class MenuTableSeeder extends Seeder
          /** segundo title 6 */
          $menuItem = MenuItem::firstOrNew([
             'menu_id' => $menu->id,
-            'title'   => 'Contact',
-            'url'     => '#contact',
+            'title'   => 'Nuestros Planes',
+            'url'     => '#6',
             'route'   => null,
         ]);
         if (!$menuItem->exists) {
