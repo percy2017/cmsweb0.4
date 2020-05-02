@@ -8,8 +8,13 @@ use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\DB;
 
 // Models
+use App\User;
 use Modules\Webstreaming\Entities\Plan;
 use Modules\Webstreaming\Entities\PlanUser;
+
+// Events
+use Modules\Webstreaming\Events\SuscriptionActiveUser;
+use Modules\Webstreaming\Events\PetitionUser;
 
 class SuscriptionsController extends Controller
 {
@@ -33,6 +38,27 @@ class SuscriptionsController extends Controller
                                 ->paginate(10);
         
         return view('webstreaming::suscriptions.partials.list', compact('registers'));
+    }
+
+    public function petition(Request $request){
+        $plan_user = PlanUser::find($request->id);
+        $user = User::find($plan_user->user_id)->only(['id', 'name', 'phone']);
+        if($request->type=='upgrade'){
+            $plan_user->hs_plan_id = $request->plan_id;
+            $plan_user->status = null;
+            $plan_user->save();
+
+            // Event
+            event(new PetitionUser($user, 'upgrade'));
+        }else{
+            // Event
+            event(new PetitionUser($user, 'request'));
+        }
+
+        if($request->ajax){
+            return response()->json($plan_user);
+        }
+        return redirect()->route('conferencias.index')->with(['message' => 'Petición realizada exitosamente.', 'alert-type' => 'success']);
     }
 
     /**
@@ -82,7 +108,7 @@ class SuscriptionsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // try {
+        try {
             switch ($request->type) {
                 case 'up':
                     $date = date('Y-m-d');
@@ -93,6 +119,7 @@ class SuscriptionsController extends Controller
                     $suscription->finish = date('Y-m-d', strtotime($date."+1 months"));
                     $suscription->save();
                     $res = $suscription;
+                    event(new SuscriptionActiveUser($suscription->user_id));
                     break;
                 case 'down':
                     $suscription = PlanUser::find($id);
@@ -121,9 +148,9 @@ class SuscriptionsController extends Controller
                 return response()->json($res);
             }
             return redirect()->route('conferencias.index')->with(['message' => 'Conferencia ingresada exitosamente.', 'alert-type' => 'success']);
-        // } catch (\Throwable $th) {
-        //     //throw $th;
-        // }
+        } catch (\Throwable $th) {
+            return redirect()->route('conferencias.index')->with(['message' => 'Ocurrió un error inesperado.', 'alert-type' => 'error']);
+        }
     }
 
     /**

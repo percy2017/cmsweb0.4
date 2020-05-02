@@ -27,13 +27,13 @@ class PlansTableSeeder extends Seeder
         Plan::create([
             'name' => 'Profesional',
             'max_person' => 100,
-            'max_time' => '06:00:00',
+            'max_time' => '3:00:00',
             'price' => 100
         ]);
         Plan::create([
             'name' => 'Empresarial',
             'max_person' => 300,
-            'max_time' => '23:59:59',
+            'max_time' => '10:00:00',
             'price' => 300
         ]);
     }
