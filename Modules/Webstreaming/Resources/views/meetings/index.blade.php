@@ -22,7 +22,7 @@
                 <div class="alert alert-info">
                     <strong>Información:</strong>
                     <p>{{ setting('histream.upgrade') }}</p>
-                    Para cambiar de plan presiona
+                    Para solicitar el cambio de plan presiona
                     <code><a href="#" data-toggle="modal" data-target="#modal_upgrade">aquí.</a></code>
                 </div>
             @else
@@ -31,7 +31,7 @@
                         <strong>Información:</strong>
                         <p>{{ setting('histream.waiting') }}</p>
                         En caso de que tu solicitud haya tardado demasiado, para solicitarla nuevamente presiona
-                        <code><a href="#">aquí.</a></code>
+                        <code><a href="#" id="btn-request">aquí.</a></code>
                     </div>
                 @elseif($suscription->status == 2)
                     <div class="alert alert-info">
@@ -55,25 +55,30 @@
     </div>
 
     {{-- Modals --}}
-    <form action="" method="POST">
+    <form id="form_petition" action="{{ route('petition_user') }}" method="POST">
         <div class="modal modal-info fade" tabindex="-1" id="modal_upgrade" role="dialog">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title"><i class="voyager-plus"></i> Cambiar de plan</h4>
+                        <h4 class="modal-title"><i class="voyager-certificate"></i> Solicitar cambio de plan</h4>
                     </div>
                     <div class="modal-body">
                         <div class="form-group">
+                            {{ csrf_field() }}
+                            <input type="hidden" name="id" value="{{ $suscription->id }}">
+                            <input type="hidden" name="type" value="upgrade">
+                            <input type="hidden" name="ajax" value="1">
                             <label for="">Plan</label>
                             <select name="plan_id" class="form-control" required>
                                 <option value="" disabled>Elige tu plan</option>
-
                                 @foreach (Modules\Webstreaming\Entities\Plan::all() as $item)
-
-                                <option @if(session('plan_id')==$item->id) selected @endif value="{{ $item->id }}">{{ $item->name }}</option>
+                                    <option @if($suscription->hs_plan_id==$item->id) selected @endif value="{{ $item->id }}">{{ $item->name }}</option>
                                 @endforeach
                             </select>
+                        </div>
+                        <div class="text-center" id="message-redirect" style="display: none">
+                            <p class="text-muted">Redireccinando...</p>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -83,6 +88,13 @@
                 </div>
             </div>
         </div>
+    </form>
+
+    <form id="form_request">
+        {{ csrf_field() }}
+        <input type="hidden" name="id" value="{{ $suscription->id }}">
+        <input type="hidden" name="type" value="request">
+        <input type="hidden" name="ajax" value="1">
     </form>
 
 
@@ -109,11 +121,11 @@
                                 </div>
                                 <div class="form-group col-md-4 form-p0">
                                     <label>Inicio</label>
-                                    <input type="time" class="form-control" name="start" min="{{ date('H:i') }}" required />
+                                    <input type="time" class="form-control input-start" data-name="start_create" name="start" required />
                                 </div>
                                 <div class="form-group col-md-4 form-p0">
                                     <label>Fin</label>
-                                    <input type="time" class="form-control" name="finish" />
+                                    <input type="time" class="form-control" name="finish" required />
                                 </div>
                             </div>
                         </div>
@@ -127,6 +139,14 @@
                         <div class="form-group">
                             <label>Descripción</label>
                             <textarea name="descriptions" class="form-control" placeholder="Descripción breve de la conferencia" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="">Banner</label>
+                            <br>
+                            <div style="text-align:center; margin-top: 5px">
+                                <input type='file' name="banner" class="input-preview" id="input-preview-c" data-index="-c" />
+                                <img class="img-preview" id="img-preview-c" data-toggle="tooltip" title="Has click para agregar una imagen" data-index="-c" />
+                            </div>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -163,11 +183,11 @@
                                 </div>
                                 <div class="form-group col-md-4 form-p0">
                                     <label>Inicio</label>
-                                    <input type="time" class="form-control" name="start" min="{{ date('H:i') }}" required />
+                                    <input type="time" class="form-control input-start" data-name="start_edit" name="start" required />
                                 </div>
                                 <div class="form-group col-md-4 form-p0">
                                     <label>Fin</label>
-                                    <input type="time" class="form-control" name="finish" />
+                                    <input type="time" class="form-control" name="finish" required />
                                 </div>
                             </div>
                         </div>
@@ -181,6 +201,14 @@
                         <div class="form-group">
                             <label>Descripción</label>
                             <textarea name="descriptions" class="form-control" placeholder="Descripción breve de la conferencia" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="">Banner</label>
+                            <br>
+                            <div style="text-align:center; margin-top: 5px">
+                                <input type='file' name="banner" class="input-preview" id="input-preview-e" data-index="-e" />
+                                <img class="img-preview" id="img-preview-e" data-toggle="tooltip" title="Has click para agregar una imagen" data-index="-e" />
+                            </div>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -207,6 +235,8 @@
 @stop
 
 @section('javascript')
+    <script src="{{ url('js/image-preview.js') }}"></script>
+    <script src="{{ asset('js/app.js') }}"></script>
     <script>
         var search = '';
         var page_actual = 1;
@@ -227,27 +257,51 @@
             $('#data-list').html(`<div class="text-center"><img src="${loader}" height="200px"></div>`);
             list(search, page_actual);
 
+            $('.input-start').change(function(){
+                let hour_start = $(this).val();
+                let max_time = '{{ $suscription->status }}' == 1 ? '{{ $suscription->max_time }}' : '{{ $plan_free->max_time }}';
+                let hour = hour_start.split(':');
+                max_time = max_time.split(':');
+
+                // Crear la fecha maxima de finalización a partir de la hora de inicio y el máximo de horas permitidas
+                let hour_finish = parseInt(hour[0])+parseInt(max_time[0]); // Obtener la hora para verificar que no se pase de las 23:59
+                let finish = new Date(
+                    0, 0, 0,
+                    hour_finish <= 23 ? hour_finish : 23,
+                    hour_finish <= 23 ? parseInt(hour[1])+parseInt(max_time[1]) : 59,
+                    0
+                );
+                if($(this).data('name')=='start_create'){
+                    $('#form_create input[name="finish"]').attr('min', hour_start);
+                    $('#form_create input[name="finish"]').attr('max', `${finish.getHours().toString().padStart(2, 0)}:${finish.getMinutes().toString().padStart(2, 0)}`);
+                }else{
+                    $('#form_edit input[name="finish"]').attr('min', hour_start);
+                    $('#form_edit input[name="finish"]').attr('max', `${finish.getHours().toString().padStart(2, 0)}:${finish.getMinutes().toString().padStart(2, 0)}`);
+                }
+            });
+
             // Crear nueva conferencia
             $('#form_create').on('submit', function(e){
                 e.preventDefault();
                 let url = '{{ route("conferencias.store") }}';
-                $.post(url, $('#form_create').serialize(), function(res){
-                    Toast.fire({
-                        icon: 'success',
-                        title: 'Conferencia ingresada'
-                    });
-                    list(search, page_actual);
-                    $('#create_modal').modal('toggle');
-                    // setTimeout(() => {
-                    //     var win = window.open("{{ url('conferencia') }}/"+res.slug, '_blank');
-                    //     win.focus();
-                    // }, 3000);
-                })
-                .fail(function() {
-                    Toast.fire({
-                        icon: 'error',
-                        title: 'Ocurrió un error al crear la conferencia'
-                    });
+                let formData = new FormData(document.getElementById("form_create"));
+                formData.append("dato", "valor");
+                $.ajax({
+                    url, type: 'post', dataType: "html", data: formData, cache: false, contentType: false, processData: false,
+                    success: function(res){
+                        Toast.fire({
+                            icon: 'success',
+                            title: 'Conferencia ingresada'
+                        });
+                        list(search, page_actual);
+                        $('#create_modal').modal('toggle');
+                    },
+                    error: function() {
+                        Toast.fire({
+                            icon: 'error',
+                            title: 'Ocurrió un error al crear la conferencia'
+                        });
+                    }
                 });
             });
 
@@ -256,14 +310,85 @@
                 e.preventDefault();
                 let id = $('#edit_modal input[name="id"]').val();
                 let url = '{{ route("conferencias.update", ["conferencia" => "_id"]) }}';
-                $.post(url.replace('_id', id), $('#form_edit').serialize(), function(res){
-                    $('#edit_modal').modal('toggle');
-                    list(search, page_actual);
+                let formData = new FormData(document.getElementById("form_edit"));
+                formData.append("dato", "valor");
+                $.ajax({
+                    url: url.replace('_id', id), type: 'post', dataType: "html", data: formData, cache: false, contentType: false, processData: false,
+                    success: function(res){
+                        $('#edit_modal').modal('toggle');
+                        list(search, page_actual);
+                        Toast.fire({
+                            icon: 'success',
+                            title: 'Conferencia actualizada'
+                        });
+                    },
+                    error: function() {
+                        Toast.fire({
+                            icon: 'error',
+                            title: 'Ocurrió un error al editar la conferencia'
+                        });
+                    }
+                });
+            });
+
+            $('#form_petition').on('submit', function(e){
+                e.preventDefault();
+                let url = "{{ route('petition_user') }}";
+                $.post(url, $('#form_petition').serialize(), function(res){
                     Toast.fire({
                         icon: 'success',
-                        title: 'Conferencia actualizada'
+                        title: 'Solicitud realizada'
                     });
+                    $('#message-redirect').css('display', 'block');
+                    setTimeout(() => {
+                        location.reload();
+                    }, 3100);
                 });
+            });
+
+            $('#btn-request').click(function(){
+                let url = "{{ route('petition_user') }}";
+                Swal.fire({
+                    title: 'Deseas reenviar la solicitud?',
+                    text: "Se enviará una notificación a nuestro personal para que haga los cambios correspondientes",
+                    icon: 'question',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Si, reenviar!',
+                    cancelButtonText: 'Cancelar'
+                }).then((result) => {
+                    if (result.value) {
+                        $.post(url, $('#form_request').serialize(), function(res){
+                            Swal.fire('Reenviada!', 'Tu solicitud ha sido reenviada.', 'success');
+                        });
+                    }
+                })
+            });
+
+            // Escuchando uniones de participantes a las conferencias
+            Echo.channel('JoinMeetUserChannel-{{ Auth::user()->id }}')
+            .listen('.Modules\\Webstreaming\\Events\\JoinMeetUser', (e) => {
+                list(search, page_actual);
+            });
+
+            // Escuchando activación del plan solicitado
+            Echo.channel('SuscriptionActiveUserChannel-{{ Auth::user()->id }}')
+            .listen('.Modules\\Webstreaming\\Events\\SuscriptionActiveUser', (e) => {
+                Swal.fire({
+                    title: 'Tu suscripción ha sido activada',
+                    text: 'Para aplicar los cambios debe actualizar la página',
+                    icon: 'info',
+                    confirmButtonColor: '#3085d6',
+                    confirmButtonText: 'Actualizar',
+                    showCancelButton: true,
+                    cancelButtonText: 'Más tarde',
+                    cancelButtonColor: '#d33',
+                }).then((result) => {
+                    if (result.value) {
+                        location.reload();
+                    }
+                })
             });
         });
 
@@ -284,6 +409,12 @@
             $('#edit_modal input[name="start"]').val(data.start);
             $('#edit_modal input[name="finish"]').val(data.finish);
             $('#edit_modal textarea[name="descriptions"]').val(data.descriptions);
+            if(data.banner){
+                $(`#img-preview-e`).attr('src', `/storage/${data.banner}`);
+            }else{
+                $(`#img-preview-e`).attr('src', `/images/upload.png`);
+            }
+            
         }
 
         function copy(slug){

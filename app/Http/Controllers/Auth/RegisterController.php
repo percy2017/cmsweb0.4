@@ -12,6 +12,9 @@ use Illuminate\Support\Facades\Validator;
 use App\Module;
 use Modules\Webstreaming\Entities\PlanUser;
 
+// Events
+use Modules\Webstreaming\Events\SuscriptionUser;
+
 class RegisterController extends Controller
 {
     /*
@@ -92,6 +95,7 @@ class RegisterController extends Controller
                 ]);
                 session(['greetings_histream' => true]);
                 // Enviar notificación de nueva suscripción al módulo hiStream
+                event(new SuscriptionUser($user));
             }
         }
         return $user;

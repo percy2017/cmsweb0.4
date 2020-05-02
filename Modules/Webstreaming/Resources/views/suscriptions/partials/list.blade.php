@@ -36,9 +36,9 @@
                     @endswitch
                     <td>{{ date('d-m-Y H:i', strtotime($item->created_at)) }} <br> <small>{{ \Carbon\Carbon::parse($item->created_at)->diffForHumans() }}</small> </td>
                     <td class="no-sort no-click bread-actions">
-                        <a href="#" title="Borrar" class="btn btn-sm btn-danger pull-right delete" onclick="drop({{ $item->id }})">
+                        {{-- <a href="#" title="Borrar" class="btn btn-sm btn-danger pull-right delete" onclick="drop({{ $item->id }})">
                             <i class="voyager-trash"></i> <span class="hidden-xs hidden-sm">Borrar</span>
-                        </a>
+                        </a> --}}
                         @if ($item->status)
                             @if ($item->status==1)
                                 <a href="#" title="Dar de baja" class="btn btn-sm btn-warning pull-right delete" onclick="down({{ $item->id }})">

@@ -3,6 +3,7 @@
         <thead>
             <tr>
                 <th>Nombre</th>
+                <th>Participantes</th>
                 <th>Fecha y hora de inicio</th>
                 <th>Creación</th>
                 <th class="actions text-right">Acciones</th>
@@ -10,8 +11,9 @@
         </thead>
         <tbody id="body-list">
             @forelse ($meetings as $item)
-            <tr id="tr-{{ $item->id }}">
+            <tr>
                 <td id="td-name_{{ $item->id }}">{{ $item->name }} <button type="button" class="btn btn-link btn-copy" onclick="copy('{{ $item->slug }}')">Copiar</button> </td>
+                <td>{{ $item->participants_active }} <small>activo(s)</small><br> {{ $item->participants }} <small>total</small></td>
                 <td>{{ date('d-m-Y H:i', strtotime($item->day.' '.$item->start)) }} <br> <small>{{ \Carbon\Carbon::parse($item->day.' '.$item->start)->diffForHumans() }}</small> </td>
                 <td><small>{{ \Carbon\Carbon::parse($item->created_at)->diffForHumans() }}</small> </td>
                 <td class="no-sort no-click bread-actions">
