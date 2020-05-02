@@ -30,7 +30,7 @@ class PageTableSeeder extends Seeder
                     'type'   => 'image',
                     'name'   => 'imagen',
                     'label'  => 'Imagen',
-                    'value'  => 'users/histream/image1.png',
+                    'value'  => 'image1.png',
                     'width'  => 12
                 ],
 
@@ -109,7 +109,7 @@ class PageTableSeeder extends Seeder
                     'type'   => 'image',
                     'name'   => 'imagen_bl1',
                     'label'  => 'Imagen',
-                    'value'  => 'users/histream/image3.png',
+                    'value'  => 'image3.png',
                     'width'  => 6
                 ],
 
@@ -152,7 +152,7 @@ class PageTableSeeder extends Seeder
                     'type'   => 'image',
                     'name'   => 'imagen_bl2',
                     'label'  => 'Imagen',
-                    'value'  => 'users/histream/3.png',
+                    'value'  => '3.png',
                     'width'  => 12
                 ],
                 'title_h3' => [
@@ -305,7 +305,7 @@ class PageTableSeeder extends Seeder
                     'type'   => 'image',
                     'name'   => 'imagen_1',
                     'label'  => 'Imagen 1 ',
-                    'value'  => 'users/histream/image4.jpg',
+                    'value'  => 'image41.jpg',
                     'width'  => 6
                 ],
 
@@ -321,7 +321,7 @@ class PageTableSeeder extends Seeder
                     'type'   => 'image',
                     'name'   => 'imagen_2',
                     'label'  => 'Imagen 2',
-                    'value'  => 'users/histream/image4.jpg',
+                    'value'  => 'image42.jpg',
                     'width'  => 6
                 ],
 
@@ -337,7 +337,7 @@ class PageTableSeeder extends Seeder
                     'type'   => 'image',
                     'name'   => 'imagen_3',
                     'label'  => 'Imagen 3',
-                    'value'  => 'users/histream/image4.jpg',
+                    'value'  => 'image43.jpg',
                     'width'  => 6
                 ],
             ])
@@ -355,7 +355,7 @@ class PageTableSeeder extends Seeder
                     'type'   => 'image',
                     'name'   => 'imagen',
                     'label'  => 'Imagen',
-                    'value'  => 'users/histream/image5.jpg',
+                    'value'  => 'image5.jpg',
                     'width'  => 12
                 ],
 
