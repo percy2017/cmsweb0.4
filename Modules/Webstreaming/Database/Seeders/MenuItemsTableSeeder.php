@@ -113,21 +113,21 @@ class MenuItemsTableSeeder extends Seeder
                 'order'      => 1,
             ])->save();
         }
-        $menuItem = MenuItem::firstOrNew([
-            'menu_id' => $menu->id,
-            'title'   => 'Mi Plan',
-            'url'     => '',
-            'route'   => '/pasarela-de-pago',
-        ]);/** 4---- */
-        if (!$menuItem->exists) {
-            $menuItem->fill([
-                'target'     => '_self',
-                'icon_class' => 'voyager-double-right',
-                'color'      => null,
-                'parent_id'  => $HiStreamMenuItem->id,
-                'order'      => 1,
-            ])->save();
-        }
+        // $menuItem = MenuItem::firstOrNew([
+        //     'menu_id' => $menu->id,
+        //     'title'   => 'Mi Plan',
+        //     'url'     => '',
+        //     'route'   => '/pasarela-de-pago',
+        // ]);/** 4---- */
+        // if (!$menuItem->exists) {
+        //     $menuItem->fill([
+        //         'target'     => '_self',
+        //         'icon_class' => 'voyager-double-right',
+        //         'color'      => null,
+        //         'parent_id'  => $HiStreamMenuItem->id,
+        //         'order'      => 1,
+        //     ])->save();
+        // }
 
 
         /**

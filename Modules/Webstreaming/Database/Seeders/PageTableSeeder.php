@@ -44,10 +44,10 @@ class PageTableSeeder extends Seeder
                 ],
 
                 'parrafo_h6' => [
-                    'type'   => 'text',
+                    'type'   => 'text_area',
                     'name'   => 'parrafo_h6',
                     'label'  => 'Parrafo',
-                    'value'  => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Usted no sabe el dolor, evitar ningún vuelo a gran escala si el escape de salvia Esto permitió que le siguiese, ya que no era que el dolor es dolor de Cómodo.',
+                    'value'  => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Usted no sabe el dolor, evitar ningun vuelo a gran escala si el escape de salvia Esto permitio que le siguiese, ya que no era que el dolor es dolor de Comodo.',
                     'width'  => 6
                 ],
 
