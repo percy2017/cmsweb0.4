@@ -1,5 +1,5 @@
 <!-- Section: Features v.4 -->
-<section id="features" class="mb-5 pb-4">
+<section id="3" class="mb-5 pb-4">
 
     <!-- Section heading -->
     <h3 class="text-center title my-5 dark-grey-text font-weight-bold wow fadeIn" data-wow-delay="0.2s">
@@ -62,7 +62,7 @@
 
         <!-- Grid column -->
         <div class="col-lg-4 col-md-12 mb-1 text-center text-md-left">
-            <img src="{{ voyager::Image($data->imagen->value) }}" alt=""
+            <img src="{{ voyager::Image($data->imagen_bl2->value) }}" alt=""
                 class="z-depth-0 img-fluid">
         </div>
         <!-- Grid column -->

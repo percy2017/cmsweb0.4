@@ -91,6 +91,7 @@
 @stop
 
 @section('javascript')
+    <script src="{{ asset('js/app.js') }}"></script>
     <script>
         var search = '';
         var page_actual = 1;
@@ -126,6 +127,27 @@
                     })
                 });
             });
+
+            // Escuchando solicitudes de membresía
+            Echo.channel('SuscriptionUserChannel')
+            .listen('.Modules\\Webstreaming\\Events\\SuscriptionUser', (e) => {
+                list(search, page_actual);
+            });
+
+            // Escuchando solicitudes del cliente
+            Echo.channel('PetitionUserChannel')
+            .listen('.Modules\\Webstreaming\\Events\\PetitionUser', (e) => {
+                if(e.type == 'upgrade'){
+                    list(search, page_actual);
+                }else{
+                    Swal.fire({
+                        icon: 'info',
+                        title: 'Solicitud reenviada',
+                        text: `El cliente ${e.user.name} con numero de celular ${e.user.phone} ha reenviado la solicitud de aprobación de su plan`,
+                        // footer: '<a href>Why do I have this issue?</a>'
+                    })
+                }
+            });
             
         });
 
@@ -154,7 +176,7 @@
                 confirmButtonColor: '#3085d6',
                 confirmButtonText: 'Continuar',
                 showCancelButton: true,
-                cancelButtonText: 'cancelar',
+                cancelButtonText: 'Cancelar',
                 cancelButtonColor: '#d33',
             }).then((result) => {
                 if (result.value) {

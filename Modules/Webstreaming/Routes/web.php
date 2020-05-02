@@ -30,12 +30,13 @@ Route::group(['prefix' => 'admin'], function () {
 // Conferecias
 Route::resource('admin/conferencias', 'MeetingsController')->middleware('auth');
 Route::get('admin/conferencias/list/{search}', 'MeetingsController@list')->middleware('auth');
-Route::get('conferencia/{slug}', 'MeetingsController@join');
-Route::get('conferencia/error/{type}', 'MeetingsController@error');
+Route::get('conferencia/{slug}/{error?}', 'MeetingsController@join');
+Route::get('conferencia/join/{type}/{id}', 'MeetingsController@joined');
 
 // suscripciones
 Route::resource('admin/suscripciones', 'SuscriptionsController')->middleware('auth');
 Route::get('admin/suscripciones/list/{search}', 'SuscriptionsController@list')->middleware('auth');
+Route::post('admin/suscripciones/user/peticion', 'SuscriptionsController@petition')->middleware('auth')->name('petition_user');
 
 Route::get('register/{id}', function($id){
     session(['plan_id' => $id]);

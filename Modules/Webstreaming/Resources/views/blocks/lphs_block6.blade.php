@@ -2,7 +2,7 @@
 
 
     <!--Section: Content-->
-    <section class="text-center dark-grey-text">
+    <section  id="6" class="text-center dark-grey-text">
   
       <!-- Section heading -->
       <h3 class="font-weight-bold pb-2 mb-4">{{ $data->title_h3->value }}</h3>

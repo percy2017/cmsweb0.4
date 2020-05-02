@@ -40,9 +40,6 @@
                         <a class="dropdown-item title" href="/home">
                             <i class="fas fa-user-alt"></i> Perfil
                         </a>
-                        <a class="dropdown-item title" href="/plan">
-                            <i class="fab fa-sketch"></i> Mi Plan
-                        </a>
 
                         <a class="dropdown-item title" href="{{ route('logout') }}" onclick="event.preventDefault();
                                           document.getElementById('logout-form').submit();">

@@ -32,6 +32,6 @@ class CreateHsPlanUserTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('hs_suscription_user');
+        Schema::dropIfExists('hs_plan_user');
     }
 }

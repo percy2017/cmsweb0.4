@@ -24,10 +24,10 @@ class CreateHsMeetingsTable extends Migration
             $table->time('finish', 0)->nullable();
             $table->string('meeting_types')->nullable();
             $table->text('link')->nullable();
+            $table->string('banner')->nullable();
             $table->text('descriptions')->nullable();
-
-           
-
+            $table->integer('participants_active')->default(0)->nullable();
+            $table->integer('participants')->default(0)->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

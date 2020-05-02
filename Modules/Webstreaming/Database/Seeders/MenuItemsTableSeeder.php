@@ -58,7 +58,7 @@ class MenuItemsTableSeeder extends Seeder
             'title'   => 'Conferencias',
             'url'     => '',
             'route'   => 'conferencias.index',
-        ]);/** 1---- */
+        ]);
         if (!$menuItem->exists) {
             $menuItem->fill([
                 'target'     => '_self',
@@ -68,27 +68,27 @@ class MenuItemsTableSeeder extends Seeder
                 'order'      => $cont++,
             ])->save();
         }
-        $menuItem = MenuItem::firstOrNew([
-            'menu_id' => $menu->id,
-            'title'   => 'Reuniones',
-            'url'     => '',
-            'route'   => 'voyager.hs_meetings.index',
-        ]);   
-        if (!$menuItem->exists) {
-            $menuItem->fill([
-                'target'     => '_self',
-                'icon_class' => 'voyager-double-right',
-                'color'      => null,
-                'parent_id'  => $HiStreamMenuItem->id,
-                'order'      => 1,
-            ])->save();
-        } 
+        // $menuItem = MenuItem::firstOrNew([
+        //     'menu_id' => $menu->id,
+        //     'title'   => 'Reuniones',
+        //     'url'     => '',
+        //     'route'   => 'voyager.hs_meetings.index',
+        // ]);   
+        // if (!$menuItem->exists) {
+        //     $menuItem->fill([
+        //         'target'     => '_self',
+        //         'icon_class' => 'voyager-double-right',
+        //         'color'      => null,
+        //         'parent_id'  => $HiStreamMenuItem->id,
+        //         'order'      => 1,
+        //     ])->save();
+        // } 
         $menuItem = MenuItem::firstOrNew([
             'menu_id' => $menu->id,
             'title'   => 'Planes',
             'url'     => '',
             'route'   => 'voyager.hs_plans.index',
-        ]);/** 3---- */
+        ]);
         if (!$menuItem->exists) {
             $menuItem->fill([
                 'target'     => '_self',
@@ -98,21 +98,21 @@ class MenuItemsTableSeeder extends Seeder
                 'order'      => $cont++,
             ])->save();
         }
-        $menuItem = MenuItem::firstOrNew([
-            'menu_id' => $menu->id,
-            'title'   => 'Suscripciones',
-            'url'     => '',
-            'route'   => 'voyager.hs_plan_user.index',
-        ]);/** 4---- */
-        if (!$menuItem->exists) {
-            $menuItem->fill([
-                'target'     => '_self',
-                'icon_class' => 'voyager-double-right',
-                'color'      => null,
-                'parent_id'  => $HiStreamMenuItem->id,
-                'order'      => 1,
-            ])->save();
-        }
+        // $menuItem = MenuItem::firstOrNew([
+        //     'menu_id' => $menu->id,
+        //     'title'   => 'Suscripciones',
+        //     'url'     => '',
+        //     'route'   => 'voyager.hs_plan_user.index',
+        // ]);
+        // if (!$menuItem->exists) {
+        //     $menuItem->fill([
+        //         'target'     => '_self',
+        //         'icon_class' => 'voyager-double-right',
+        //         'color'      => null,
+        //         'parent_id'  => $HiStreamMenuItem->id,
+        //         'order'      => 1,
+        //     ])->save();
+        // }
         // $menuItem = MenuItem::firstOrNew([
         //     'menu_id' => $menu->id,
         //     'title'   => 'Mi Plan',

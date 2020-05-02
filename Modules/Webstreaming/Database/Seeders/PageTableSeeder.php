@@ -30,7 +30,7 @@ class PageTableSeeder extends Seeder
                     'type'   => 'image',
                     'name'   => 'imagen',
                     'label'  => 'Imagen',
-                    'value'  => 'images62.jpg',
+                    'value'  => 'users/histream/image1.png',
                     'width'  => 12
                 ],
 
@@ -39,7 +39,7 @@ class PageTableSeeder extends Seeder
                     'type'   => 'text',
                     'name'   => 'title_strong',
                     'label'  => 'Titulo en Negrita',
-                    'value'  => 'Agencia creativa',
+                    'value'  => 'Histream',
                     'width'  => 6
                 ],
 
@@ -47,7 +47,7 @@ class PageTableSeeder extends Seeder
                     'type'   => 'text_area',
                     'name'   => 'parrafo_h6',
                     'label'  => 'Parrafo',
-                    'value'  => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Usted no sabe el dolor, evitar ningun vuelo a gran escala si el escape de salvia Esto permitio que le siguiese, ya que no era que el dolor es dolor de Comodo.',
+                    'value'  => 'Nos gustaria que cualquier persona que va de un lado para otro lo utilice. Estamos en todas partes, asi que es muy importante tener una forma sencilla de realizar reuniones sobre la marcha',
                     'width'  => 6
                 ],
 
@@ -55,7 +55,7 @@ class PageTableSeeder extends Seeder
                     'type'   => 'text',
                     'name'   => 'btn_1',
                     'label'  => 'Titulo btn #1',
-                    'value'  => 'Portafolio',
+                    'value'  => 'Probar Demo',
                     'width'  => 3
                 ],
 
@@ -63,7 +63,7 @@ class PageTableSeeder extends Seeder
                     'type'   => 'text',
                     'name'   => 'btn_action_1',
                     'label'  => 'Accion del Btn #1',
-                    'value'  => '#',
+                    'value'  => 'https://demo.loginweb.dev',
                     'width'  => 3
                 ],
 
@@ -101,15 +101,15 @@ class PageTableSeeder extends Seeder
                     'type'   => 'text',
                     'name'   => 'title_h3',
                     'label'  => 'Titulo h3',
-                    'value'  => 'Construye tu marca con nosotros',
+                    'value'  => 'Reuniones de Histream.',
                     'width'  => 6
                 ],
 
-                'imagen' => [
+                'imagen_bl1' => [
                     'type'   => 'image',
-                    'name'   => 'imagen',
+                    'name'   => 'imagen_bl1',
                     'label'  => 'Imagen',
-                    'value'  => 'img_photos.png',
+                    'value'  => 'users/histream/image3.png',
                     'width'  => 6
                 ],
 
@@ -117,10 +117,7 @@ class PageTableSeeder extends Seeder
                     'type'   => 'text_area',
                     'name'   => 'parrafo_1',
                     'label'  => 'Parrafo 1',
-                    'value'  => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo animi
-                              soluta ratione quisquam, dicta
-                              ab cupiditate iure eaque? Repellendus voluptatum, magni impedit delectus, beatae maxime temporibus
-                              maiores quibusdam.',
+                    'value'  => 'hiStream es una potente solución de reuniones en línea creada para empresas de todos los tamaños. Nuestra experiencia de reunión fácil de usar está disponible en,',
                     'width'  => 12
                 ],
 
@@ -128,10 +125,7 @@ class PageTableSeeder extends Seeder
                     'type'   => 'text_area',
                     'name'   => 'parrafo_2',
                     'label'  => 'Parrafo 2',
-                    'value'  => 'Rem magnam ad perferendis iusto sint tempora ea voluptatibus iure,
-                              animi excepturi modi aut possimus
-                              in hic molestias repellendus illo ullam odit quia velit. Lorem ipsum dolor sit amet, consectetur
-                              adipisicing elit.',
+                    'value'  => 'dispositivos de escritorio y móviles para que pueda tener reuniones confiables y sin estrés en cualquier lugar y en cualquier momento. Con la más alta calidad de audio',
                     'width'  => 12
                 ],
 
@@ -139,9 +133,7 @@ class PageTableSeeder extends Seeder
                     'type'   => 'text_area',
                     'name'   => 'parrafo_3',
                     'label'  => 'Parrafo 3',
-                    'value'  => 'Incidunt eligendi mollitia labore ipsum ex fugit explicabo saepe
-                              error neque beatae in, expedita
-                              eveniet quae aliquam assumenda voluptatibus!',
+                    'value'  => 'y vídeo HD, herramientas de colaboración interactivas y capacidades de inteligencia, histream transforma las comunicaciones con una experiencia de reuniones más inteligente, rápida, atractiva y procesable.',
                     'width'  => 12
                 ],
             ])
@@ -156,25 +148,25 @@ class PageTableSeeder extends Seeder
             'details'     => json_encode([
 
           
-                'imagen' => [
+                'imagen_bl2' => [
                     'type'   => 'image',
-                    'name'   => 'imagen',
+                    'name'   => 'imagen_bl2',
                     'label'  => 'Imagen',
-                    'value'  => 'Small/admin-new.png',
+                    'value'  => 'users/histream/3.png',
                     'width'  => 12
                 ],
                 'title_h3' => [
                     'type'   => 'text',
                     'name'   => 'title_h3',
                     'label'  => 'Titulo h3',
-                    'value'  => 'Características impresionantes',
+                    'value'  => 'Funciones de Histream',
                     'width'  => 4
                 ],
                 'parrafo_p' => [
                     'type'   => 'text_area',
                     'name'   => 'parrafo_p',
                     'label'  => 'Parrafo p',
-                    'value'  => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aperitivos, que, para ellos, el rechazo de algunos y el propio dolor, el placer de los deberes de los antepasados, el sabio es cobardía vergonzosa de la mente, se vuelven ciegos para obtenerla.',
+                    'value'  => 'Las herramientas de colaboración integradas facilitan a los participantes compartir contenido para reuniones más interactivas y productivas en tiempo real.',
                     'width'  => 8
                 ],
 
@@ -182,7 +174,7 @@ class PageTableSeeder extends Seeder
                     'type'   => 'text',
                     'name'   => 'title_1',
                     'label'  => 'Titulo 1',
-                    'value'  => 'Diseño moderno',
+                    'value'  => 'Etherpad',
                     'width'  => 4
                 ],
 
@@ -190,7 +182,7 @@ class PageTableSeeder extends Seeder
                     'type'   => 'text_area',
                     'name'   => 'parrafo_1',
                     'label'  => 'Parrafo 1',
-                    'value'  => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Criticado por mayor abierta al mínimo.',
+                    'value'  => 'Editar documentos juntos usando Etherpad.',
                     'width'  => 8
                 ],
 
@@ -198,7 +190,7 @@ class PageTableSeeder extends Seeder
                     'type'   => 'text',
                     'name'   => 'title_2',
                     'label'  => 'Titulo 2',
-                    'value'  => 'Fácil de personalizar',
+                    'value'  => 'Fácil de usar',
                     'width'  => 4
                 ],
 
@@ -206,7 +198,7 @@ class PageTableSeeder extends Seeder
                     'type'   => 'text_area',
                     'name'   => 'parrafo_2',
                     'label'  => 'Parrafo 2',
-                    'value'  => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Para mayor sin duda puede abrir una empresa pequeña.',
+                    'value'  => 'No se requiere incorporación ni capacitación. Comience y únase a las reuniones en segundos.',
                     'width'  => 8
                 ],
 
@@ -214,7 +206,7 @@ class PageTableSeeder extends Seeder
                     'type'   => 'text',
                     'name'   => 'title_3',
                     'label'  => 'Titulo 3',
-                    'value'  => 'Diseños receptivos',
+                    'value'  => 'Chat en equipo',
                     'width'  => 4
                 ],
 
@@ -222,7 +214,7 @@ class PageTableSeeder extends Seeder
                     'type'   => 'text_area',
                     'name'   => 'parrafo_3',
                     'label'  => 'Parrafo 3',
-                    'value'  => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Criticado por mayores medios.',
+                    'value'  => 'Intercambie mensajes de texto instantáneos durante la llamada.',
                     'width'  => 8
                 ],
 
@@ -230,7 +222,7 @@ class PageTableSeeder extends Seeder
                     'type'   => 'text',
                     'name'   => 'title_4',
                     'label'  => 'Titulo 4',
-                    'value'  => 'Optimizado para SEO',
+                    'value'  => 'Valor excepcional',
                     'width'  => 4
                 ],
 
@@ -238,7 +230,7 @@ class PageTableSeeder extends Seeder
                     'type'   => 'text_area',
                     'name'   => 'parrafo_4',
                     'label'  => 'Parrafo 4',
-                    'value'  => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Criticado por mayores medios.',
+                    'value'  => 'Todas las características que necesita a una fracción del precio de la competencia. Hacemos que sea asequible para todo su equipo organizar grandes reuniones en línea.',
                     'width'  => 8
                 ],
 
@@ -246,7 +238,7 @@ class PageTableSeeder extends Seeder
                     'type'   => 'text',
                     'name'   => 'title_5',
                     'label'  => 'Titulo 5',
-                    'value'  => 'Soporte técnico',
+                    'value'  => 'Grabación de reuniones',
                     'width'  => 4
                 ],
 
@@ -254,7 +246,7 @@ class PageTableSeeder extends Seeder
                     'type'   => 'text_area',
                     'name'   => 'parrafo_5',
                     'label'  => 'Parrafo 5',
-                    'value'  => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Para mayor sin duda puede abrir una empresa pequeña.',
+                    'value'  => 'Grabe algunas reuniones o todas: con capacidades ilimitadas de almacenamiento de grabación y uso compartido, nadie tiene que perderse una reunión',
                     'width'  => 8
                 ],
 
@@ -262,7 +254,7 @@ class PageTableSeeder extends Seeder
                     'type'   => 'text',
                     'name'   => 'title_6',
                     'label'  => 'Titulo 6',
-                    'value'  => 'Alta calidad',
+                    'value'  => 'Uso compartido de pantalla',
                     'width'  => 4
                 ],
 
@@ -270,7 +262,7 @@ class PageTableSeeder extends Seeder
                     'type'   => 'text_area',
                     'name'   => 'parrafo_6',
                     'label'  => 'Parrafo 6',
-                    'value'  => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Criticado por mayor abierta al mínimo.',
+                    'value'  => 'Uso compartido de pantalla, opciones de audio integradas y cámaras de vídeo HD, y mucho más.',
                     'width'  => 8
                 ],
 
@@ -289,7 +281,7 @@ class PageTableSeeder extends Seeder
                     'type'   => 'text',
                     'name'   => 'title_strong',
                     'label'  => 'Titulo en Negrita',
-                    'value'  => 'tutorial video',
+                    'value'  => 'Video Tutorial',
                     'width'  => 6
                 ],
 
@@ -297,7 +289,7 @@ class PageTableSeeder extends Seeder
                     'type'   => 'text_area',
                     'name'   => 'parrafo_p',
                     'label'  => 'Parrafo',
-                    'value'  => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum quas, eos officia maiores ipsam ipsum dolores reiciendis ad voluptas, animi obcaecati adipisci sapiente mollitia.',
+                    'value'  => 'Mira como puedes Configurar y crear tus Reuniones.',
                     'width'  => 6
                 ],
 
@@ -313,7 +305,7 @@ class PageTableSeeder extends Seeder
                     'type'   => 'image',
                     'name'   => 'imagen_1',
                     'label'  => 'Imagen 1 ',
-                    'value'  => 'screen-video-1.jpg',
+                    'value'  => 'users/histream/image4.jpg',
                     'width'  => 6
                 ],
 
@@ -329,7 +321,7 @@ class PageTableSeeder extends Seeder
                     'type'   => 'image',
                     'name'   => 'imagen_2',
                     'label'  => 'Imagen 2',
-                    'value'  => 'screen-video-2.jpg',
+                    'value'  => 'users/histream/image4.jpg',
                     'width'  => 6
                 ],
 
@@ -345,7 +337,7 @@ class PageTableSeeder extends Seeder
                     'type'   => 'image',
                     'name'   => 'imagen_3',
                     'label'  => 'Imagen 3',
-                    'value'  => 'screen-video-3.jpg',
+                    'value'  => 'users/histream/image4.jpg',
                     'width'  => 6
                 ],
             ])
@@ -363,7 +355,7 @@ class PageTableSeeder extends Seeder
                     'type'   => 'image',
                     'name'   => 'imagen',
                     'label'  => 'Imagen',
-                    'value'  => 'img%20%287%29.jpg',
+                    'value'  => 'users/histream/image5.jpg',
                     'width'  => 12
                 ],
 
@@ -413,7 +405,7 @@ class PageTableSeeder extends Seeder
                     'type'   => 'text',
                     'name'   => 'parrafo_1',
                     'label'  => 'Parrafo #1',
-                    'value'  => 'Clientes felices',
+                    'value'  => 'Conferencias',
                     'width'  => 3
                 ],
 
@@ -429,7 +421,7 @@ class PageTableSeeder extends Seeder
                     'type'   => 'text',
                     'name'   => 'parrafo_3',
                     'label'  => 'Parrafo #3',
-                    'value'  => 'Premios ganadores',
+                    'value'  => 'Reuniones',
                     'width'  => 3
                 ],
 
@@ -437,7 +429,7 @@ class PageTableSeeder extends Seeder
                     'type'   => 'text',
                     'name'   => 'parrafo_4',
                     'label'  => 'Parrafo #4',
-                    'value'  => 'Tazas de café',
+                    'value'  => 'Usuarios',
                     'width'  => 3
                 ],
 
@@ -459,7 +451,7 @@ class PageTableSeeder extends Seeder
                     'type'   => 'text',
                     'name'   => 'title_strong',
                     'label'  => 'Titulo en Negrita',
-                    'value'  => 'Nuestros servicios',
+                    'value'  => 'Beneficios de las videoconferencias',
                     'width'  => 12
                 ],
 
@@ -467,7 +459,7 @@ class PageTableSeeder extends Seeder
                     'type'   => 'text',
                     'name'   => 'title_strong_1',
                     'label'  => 'Titulo en Negrita 1',
-                    'value'  => 'DISEÑO WEB',
+                    'value'  => 'FÁCIL DE USAR',
                     'width'  => 3
                 ],
 
@@ -475,7 +467,7 @@ class PageTableSeeder extends Seeder
                     'type'   => 'text_area',
                     'name'   => 'parrafo_1',
                     'label'  => 'Parrafo #1 ',
-                    'value'  => 'No hay nada de mi alma helvética kufiyya, Wes Anderson CRED no sé cómo la mano de obra del sabio earü excepteur cerveza artesanal. Para un vegano carnicero excepteur polainas vice lomo.',
+                    'value'  => 'No se requiere incorporación ni capacitación. Comience y únase a las reuniones en segundos.',
                     'width'  => 9
                 ],
                 
@@ -483,7 +475,7 @@ class PageTableSeeder extends Seeder
                     'type'   => 'text',
                     'name'   => 'title_strong_2',
                     'label'  => 'Titulo en Negrita 2',
-                    'value'  => 'DESARROLLO',
+                    'value'  => 'VALOR EXCEPCIONAL',
                     'width'  => 3
                 ],
 
@@ -491,14 +483,14 @@ class PageTableSeeder extends Seeder
                     'type'   => 'text_area',
                     'name'   => 'parrafo_2',
                     'label'  => 'Parrafo #2 ',
-                    'value'  => 'No hay nada de mi alma helvética kufiyya, Wes Anderson CRED no sé cómo la mano de obra del sabio earü excepteur cerveza artesanal. Para un vegano carnicero excepteur polainas vice lomo.',
+                    'value'  => 'Todas las características que necesita a una fracción del precio de la competencia. Hacemos que sea asequible para todo su equipo organizar grandes reuniones en línea.',
                     'width'  => 9
                 ],
 
                 'title_strong_3' => [
                     'type'   => 'text',
                     'name'   => 'title_strong_3',
-                    'label'  => 'Titulo en Negrita 3',
+                    'label'  => 'AUMENTAR LA PRODUCTIVIDAD',
                     'value'  => 'MARCA',
                     'width'  => 3
                 ],
@@ -507,7 +499,7 @@ class PageTableSeeder extends Seeder
                     'type'   => 'text_area',
                     'name'   => 'parrafo_3',
                     'label'  => 'Parrafo #3 ',
-                    'value'  => 'No hay nada de mi alma helvética kufiyya, Wes Anderson CRED no sé cómo la mano de obra del sabio earü excepteur cerveza artesanal. Para un vegano carnicero excepteur polainas vice lomo.',
+                    'value'  => 'Uso compartido de pantalla, opciones de audio integradas y cámaras de vídeo HD, transcripción de reuniones y mucho más.',
                     'width'  => 9
                 ],
 
@@ -515,7 +507,7 @@ class PageTableSeeder extends Seeder
                     'type'   => 'text',
                     'name'   => 'title_strong_4',
                     'label'  => 'Titulo en Negrita 4',
-                    'value'  => ' MÁRKETING',
+                    'value'  => 'CONOZCA EN CUALQUIER LUGAR',
                     'width'  => 3
                 ],
 
@@ -523,7 +515,7 @@ class PageTableSeeder extends Seeder
                     'type'   => 'text_area',
                     'name'   => 'parrafo_4',
                     'label'  => 'Parrafo #4 ',
-                    'value'  => 'No hay nada de mi alma helvética kufiyya, Wes Anderson CRED no sé cómo la mano de obra del sabio earü excepteur cerveza artesanal. Para un vegano carnicero excepteur polainas vice lomo.',
+                    'value'  => 'Organice y únase a las reuniones dondequiera que vaya con las aplicaciones de escritorio y móviles de AnyMeeting.',
                     'width'  => 9
                 ],
 

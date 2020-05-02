@@ -3,7 +3,9 @@
 namespace Modules\Webstreaming\Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use Illuminate\Database\Eloquent\Model;
+// use Illuminate\Database\Eloquent\Model;
+
+use Modules\Webstreaming\Entities\PlanUser;
 
 class PlanUserTableSeeder extends Seeder
 {
@@ -14,8 +16,15 @@ class PlanUserTableSeeder extends Seeder
      */
     public function run()
     {
-        Model::unguard();
+        // Model::unguard();
 
-        // $this->call("OthersTableSeeder");
+        $date = date('Y-m-d');
+        PlanUser::create([
+            'hs_plan_id' => 3,
+            'user_id' => 1,
+            'start' => $date,
+            'finish' => date('Y-m-d', strtotime($date."+1 years")),
+            'status' => 1
+        ]);
     }
 }
