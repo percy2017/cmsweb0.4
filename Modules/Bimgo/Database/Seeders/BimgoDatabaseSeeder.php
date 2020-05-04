@@ -18,5 +18,11 @@ class BimgoDatabaseSeeder extends Seeder
 
         $this->call(SeetingTableSeeder::class);
         $this->call(PageTableSeeder::class);
+        $this->call(DataTypeTableSeeder::class);
+        $this->call(DataRowsTableSeeder::class);
+        $this->call(PermissionsTableSeeder::class);
+        $this->call(MenuTableSeeder::class);
+        $this->call(MenuItemsTableSeeder::class);
+        $this->call(RolesTableSeeder::class);
     }
 }
