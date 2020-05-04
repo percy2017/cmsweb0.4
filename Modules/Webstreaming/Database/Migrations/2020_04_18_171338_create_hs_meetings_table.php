@@ -27,6 +27,7 @@ class CreateHsMeetingsTable extends Migration
             $table->string('banner')->nullable();
             $table->text('descriptions')->nullable();
             $table->integer('participants_active')->default(0)->nullable();
+            $table->integer('participants_reject')->default(0)->nullable();
             $table->integer('participants')->default(0)->nullable();
             $table->timestamps();
             $table->softDeletes();

@@ -16,3 +16,5 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/webstreaming', function (Request $request) {
     return $request->user();
 });
+
+Route::post('meet/info', 'ApiController@get_meeting');
