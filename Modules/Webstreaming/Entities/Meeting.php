@@ -23,6 +23,7 @@ class Meeting extends Model
         'banner',
         'descriptions',
         'participants_active',
+        'participants_reject',
         'participants',
     ];
 

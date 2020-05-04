@@ -10,7 +10,11 @@
         <a href="#" data-toggle="modal" data-target="#create_modal" class="btn btn-success btn-sm btn-add-new">
             <i class="voyager-plus"></i> <span>Crear</span>
         </a>
-        
+        @if ($suscription->hs_plan_id != 1)
+        <a href="#" data-toggle="modal" data-target="#modal_upgrade" style="border: 0px; margin-top: 3px" class="btn btn-dark btn-sm">
+            <i class="voyager-certificate"></i> <span>Cambiar de plan</span>
+        </a>
+        @endif
     </div>
 @stop
 
