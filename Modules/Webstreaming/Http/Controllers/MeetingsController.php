@@ -82,6 +82,8 @@ class MeetingsController extends Controller
         if($type=='increment'){
             $meet->participants_active++;
             $meet->participants++;
+        }elseif($type=='reject'){
+            $meet->participants_reject++;
         }else{
             $meet->participants_active--;
         }

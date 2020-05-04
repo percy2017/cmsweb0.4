@@ -124,6 +124,27 @@
       </div>
       <!-- First row -->
 
+      <!-- Modal -->
+      <div class="modal fade" id="modal_payment" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Pasarela de pago</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <p>Información de pasarela de pago</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" data-dismiss="modal">Entendido</button>
+              {{-- <button type="button" class="btn btn-primary">Save changes</button> --}}
+            </div>
+          </div>
+        </div>
+      </div>
+
       {{-- second row --}}
       @if(session('greetings_histream'))
         <div class="row">
@@ -156,4 +177,14 @@
       {{-- second row --}}
     </section>
   </div>
+@endsection
+
+@section('script')
+  <script>
+    @if(session('greetings_histream'))
+      $(document).ready(function(){
+        $('#modal_payment').modal('show')
+      });
+    @endif
+  </script>
 @endsection

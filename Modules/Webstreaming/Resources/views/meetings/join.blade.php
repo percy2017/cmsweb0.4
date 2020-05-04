@@ -74,6 +74,7 @@
                         let numberOfParticipants = api.getNumberOfParticipants();
                         if(newParticipant && numberOfParticipants > maxParticipants){
                             api.dispose();
+                            $.get('{{ url("conferencia/join/reject/".$meeting->id) }}');
                             window.location = '{{ url("conferencia/".$meeting->slug."/max_participants") }}'
                         }
                         newParticipant = false;
