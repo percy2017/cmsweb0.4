@@ -83,6 +83,56 @@ class DataTypeTableSeeder extends Seeder
                 ]
             ])->save();
         }
+
+
+        $dataType = $this->dataType('slug', 'bg_branch_offices');
+        if (!$dataType->exists) {
+            $dataType->fill([
+                'name'                  => 'bg_branch_offices',
+                'display_name_singular' => 'Sucursal',
+                'display_name_plural'   => 'Sucursales',
+                'icon'                  => 'voyager-play',
+                'model_name'            => 'Modules\\Bimgo\\Entities\\BgBranchOffice',
+                'policy_name'           => null,
+                'controller'            => 'Modules\\Bimgo\\Http\\Controllers\\OfficeController',
+                'generate_permissions'  => 1,
+                'description'           => null,
+                'server_side'           => 1,
+                'details'               => [
+                    'order_column'         => 'id',
+                    'order_display_column' => 'id',
+                    'order_direction'      => 'asc',
+                    'default_search_key'   => 'id',
+                    'scope'                => null
+                ]
+            ])->save();
+        }
+
+        $dataType = $this->dataType('slug', 'bg_product_offices');
+        if (!$dataType->exists) {
+            $dataType->fill([
+                'name'                  => 'bg_product_offices',
+                'display_name_singular' => 'Inventario',
+                'display_name_plural'   => 'Inventarios',
+                'icon'                  => 'voyager-play',
+                'model_name'            => 'Modules\\Bimgo\\Entities\\BgProductOffice',
+                'policy_name'           => null,
+                'controller'            => 'Modules\\Bimgo\\Http\\Controllers\\ProductOfficeController',
+                'generate_permissions'  => 1,
+                'description'           => null,
+                'server_side'           => 1,
+                'details'               => [
+                    'order_column'         => 'id',
+                    'order_display_column' => 'id',
+                    'order_direction'      => 'asc',
+                    'default_search_key'   => 'id',
+                    'scope'                => null
+                ]
+            ])->save();
+        }
+
+
+
     }
 
     protected function dataType($field, $for)

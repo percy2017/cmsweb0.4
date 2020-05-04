@@ -49,5 +49,20 @@ class MenuTableSeeder extends Seeder
                 'order'      => $postion++,
             ])->save();
         }
+        $menuItem = MenuItem::firstOrNew([
+            'menu_id' => $menu->id,
+            'title'   => 'Sucursales',
+            'url'     => '',
+            'route'   => 'voyager.bg_branch_offices.index',
+        ]);
+        if (!$menuItem->exists) {
+            $menuItem->fill([
+                'target'     => '_self',
+                'icon_class' => 'voyager-double-right',
+                'color'      => null,
+                'parent_id'  => $InventarioMenuItem->id,
+                'order'      => $postion++,
+            ])->save();
+        }
     }
 }

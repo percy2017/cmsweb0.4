@@ -34,6 +34,12 @@
 @stop
 
 @section('css')
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css" />
+  <style>
+      #map {
+          height: 340px;
+      }
+  </style>
 @stop
 
 @section('content')
@@ -42,6 +48,7 @@
 
 @section('javascript')
 <script src="//cdn.ckeditor.com/4.14.0/full/ckeditor.js"></script>
+<script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
 <script>
     $(document).ready(function () {
       ajax('{{ route('voyager.'.$dataType->name.'.show', $dataType->id) }}', 'get')

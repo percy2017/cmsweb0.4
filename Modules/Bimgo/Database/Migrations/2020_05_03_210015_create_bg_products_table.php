@@ -21,7 +21,8 @@ class CreateBgProductsTable extends Migration
             $table->string('images')->nullable();
             $table->integer('stock')->nullable();
             $table->double('price')->nullable();
-            
+            $table->string('description_long')->nullable();
+
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
 

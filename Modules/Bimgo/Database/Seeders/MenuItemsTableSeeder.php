@@ -18,11 +18,11 @@ class MenuItemsTableSeeder extends Seeder
         Menu::firstOrCreate([
             'name' => 'bg_categories',
         ]);
-
+        //-------------------------------------------------
         Menu::firstOrCreate([
             'name' => 'bg_sub_categories',
         ]);
-
+        //-------------------------------------------------
         Menu::firstOrCreate([
             'name' => 'bg_products',
         ]);
@@ -117,5 +117,76 @@ class MenuItemsTableSeeder extends Seeder
                 'order'      => 6,
             ])->save();
         }
+        //-------------------------------------------------
+
+        Menu::firstOrCreate([
+            'name' => 'bg_branch_offices',
+        ]);
+        $menu = Menu::where('name', 'bg_branch_offices')->firstOrFail();
+        $menuItem = MenuItem::firstOrNew([
+            'menu_id' => $menu->id,
+            'title'   => 'Nuevo',
+            'url'     => 'admin/bg_branch_offices/create',
+            'route'   => null
+        ]);
+        if (!$menuItem->exists) {
+            $menuItem->fill([
+                'target'     => '_self',
+                'icon_class' => null,
+                'color'      => null,
+                'parent_id'  => null,
+                'order'      => 1,
+            ])->save();
+        }
+        $menuItem = MenuItem::firstOrNew([
+            'menu_id' => $menu->id,
+            'title'   => 'Listar',
+            'url'     => 'admin/bg_branch_offices/1',
+            'route'   => null
+        ]);
+        if (!$menuItem->exists) {
+            $menuItem->fill([
+                'target'     => '_self',
+                'icon_class' => null,
+                'color'      => null,
+                'parent_id'  => null,
+                'order'      => 2,
+            ])->save();
+        }
+        $menuItem = MenuItem::firstOrNew([
+            'menu_id' => $menu->id,
+            'title'   => 'divider',
+            'url'     => null,
+            'route'   => null
+        ]);
+        if (!$menuItem->exists) {
+            $menuItem->fill([
+                'target'     => '_self',
+                'icon_class' => null,
+                'color'      => null,
+                'parent_id'  => null,
+                'order'      => 5,
+            ])->save();
+        }
+        $menuItem = MenuItem::firstOrNew([
+            'menu_id' => $menu->id,
+            'title'   => 'setting',
+            'url'     => null,
+            'route'   => null
+        ]);
+        if (!$menuItem->exists) {
+            $menuItem->fill([
+                'target'     => '_blank',
+                'icon_class' => null,
+                'color'      => null,
+                'parent_id'  => null,
+                'order'      => 6,
+            ])->save();
+        }
+         //-------------------------------------------------
+         Menu::firstOrCreate([
+            'name' => 'bg_product_offices',
+        ]);
+
     }
 }

@@ -14,8 +14,6 @@ class BimgoDatabaseSeeder extends Seeder
      */
     public function run()
     {
-        Model::unguard();
-
         $this->call(SeetingTableSeeder::class);
         $this->call(PageTableSeeder::class);
         $this->call(DataTypeTableSeeder::class);
@@ -24,5 +22,6 @@ class BimgoDatabaseSeeder extends Seeder
         $this->call(MenuTableSeeder::class);
         $this->call(MenuItemsTableSeeder::class);
         $this->call(RolesTableSeeder::class);
+        $this->call(DataDefaultTableSeeder::class);
     }
 }

@@ -260,6 +260,19 @@
                                                     data-on="{{ $row->details->on }}" {!! $checked ? 'checked="checked"' : '' !!} 
                                                     data-off="{{ $row->details->off }}">
                                             @break
+                                        @case('Map')
+                                            <label class="control-label" for="{{ $row->field }}">{{ $row->display_name }}</label>
+                                            @if(isset($row->details->tooltip))
+                                                <span class="voyager-question"
+                                                aria-hidden="true"
+                                                data-toggle="tooltip"
+                                                data-placement="{{ $row->details->tooltip->{'ubication'} }}"
+                                                title="{{ $row->details->tooltip->{'message'} }}"></span>
+                                            @endif
+                                            <div id="map"></div>
+                                            <input type="text" name="latitud" />
+                                            <input type="text" name="longitud" />
+                                            @break
                                     @endswitch        
                                 </div>
                             @endforeach
@@ -291,7 +304,6 @@
   </div>
 @endcan
 
-<script src="//cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
 <script>
 
     $('.form-group input[type=datetime]').each(function (idx, elt) {
@@ -368,5 +380,17 @@
    
     $('.form-group .ckeditor').each(function (idx, elt) {
         CKEDITOR.replace(elt.id);
+    });
+
+    //Mapa-----------------
+    $('document').ready(function () {
+        map = L.map('map').fitWorld();
+        L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+                maxZoom: 20,
+                attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
+                '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+                'Imagery ©️ <a href="https://www.mapbox.com/">Mapbox</a>',
+                id: 'mapbox.streets'
+            }).addTo(map);
     });
 </script>
