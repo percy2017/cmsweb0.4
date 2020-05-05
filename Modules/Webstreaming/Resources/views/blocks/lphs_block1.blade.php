@@ -22,9 +22,9 @@
             </h3>
 
             <!-- Description -->
-            <p align="justify" class="grey-text">{{ $data->parrafo_1->value }}</p>
-            <p align="justify" class="grey-text">{{ $data->parrafo_2->value }}</p>
-            <p align="justify" class="grey-text mb-5">{{ $data->parrafo_3->value }}</p>
+            <p align="justify" class="grey-text">{!! $data->parrafo_1->value !!}</p>
+           {{--  <p align="justify" class="grey-text">{{ $data->parrafo_2->value }}</p>
+            <p align="justify" class="grey-text mb-5">{{ $data->parrafo_3->value }}</p> --}}
 
         </div>
         <!-- Grid column -->

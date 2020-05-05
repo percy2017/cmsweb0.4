@@ -18,11 +18,11 @@
               {{ $collection['parrafo_h6']['value'] }}
             </h6>
             <br>
-            <a href="" class="btn btn-white btn-rounded blue-text font-weight-bold ml-lg-0 wow fadeIn"
+            <a href="{{ $collection['btn_action_1']['value'] }}" class="btn btn-white btn-rounded blue-text font-weight-bold ml-lg-0 wow fadeIn"
               data-wow-delay="0.3s">{{ $collection['btn_1']['value'] }}</a>
-            <a href="" class="btn pink-gradient white-text btn-rounded font-weight-bold wow fadeIn"
+            <a href="{{ $collection['btn_action_2']['value'] }}" target="_blank" class="btn pink-gradient white-text btn-rounded font-weight-bold wow fadeIn"
               data-wow-delay="0.3s">{{ $collection['btn_2']['value'] }}
-            </a>
+              </a>
           </div>
         </div>
 

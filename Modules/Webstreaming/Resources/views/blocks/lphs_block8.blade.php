@@ -1,100 +1,131 @@
-    <!-- Section: Contact v.2 -->
-    <section id="contact" class="mb-5">
+      <!-- Section: Team v.1 -->
+      <section class="team-section pb-5" id="team">
 
         <!-- Section heading -->
-        <h3 class="text-center title my-5 py-4 dark-grey-text font-weight-bold wow fadeIn" data-wow-delay="0.2s">
-          <strong>Contact us</strong>
+        <h3 class="text-center title my-5 dark-grey-text font-weight-bold wow fadeIn" data-wow-delay="0.2s">
+          <strong>Our amazing team</strong>
         </h3>
 
-        <!-- Section sescription -->
-        <p class="text-center grey-text my-5 w-responsive mx-auto wow fadeIn" data-wow-delay="0.2s">Lorem ipsum dolor
-          sit amet, consectetur adipisicing elit. Fugit, error amet numquam iure provident voluptate
+        <!-- Section description -->
+        <p class="text-center w-responsive mx-auto my-5 grey-text">Lorem ipsum dolor sit amet, consectetur adipisicing
+          elit. Fugit, error amet numquam iure provident voluptate
           esse quasi, veritatis totam voluptas nostrum quisquam eum porro a pariatur accusamus veniam.</p>
 
-        <div class="row wow fadeIn" data-wow-delay="0.4s">
+        <!-- Grid row -->
+        <div class="row text-center">
 
           <!-- Grid column -->
-          <div class="col-md-8 col-lg-9">
-            <form>
-              <!-- Grid row -->
-              <div class="row">
-                <!-- Grid column -->
-                <div class="col-md-6">
-                  <div class="md-form">
-                    <div class="md-form">
-                      <input type="text" id="form41" class="form-control">
-                      <label for="form41" class="">Your name</label>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Grid column -->
-                <div class="col-md-6">
-                  <div class="md-form">
-                    <div class="md-form">
-                      <input type="text" id="form52" class="form-control">
-                      <label for="form52" class="">Your email</label>
-                    </div>
-                  </div>
-                </div>
+          <div class="col-lg-3 col-md-6 mb-4">
+            <div class="card card-body">
+              <div class="avatar mx-auto mt-3 mb-3">
+                <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(25).jpg" class="rounded-circle"
+                  alt="First sample avatar image">
               </div>
-              <!-- Grid row -->
+              <h6 class="font-weight-bold title">Anna Deynah</h6>
 
-              <!-- Grid row -->
-              <div class="row">
-                <div class="col-md-12">
-                  <div class="md-form">
-                    <input type="text" id="form51" class="form-control">
-                    <label for="form51" class="">Subject</label>
-                  </div>
-                </div>
-              </div>
-              <!-- Grid row -->
+              <p class="font-small grey-text">Graphic designer</p>
 
-              <!-- Grid row -->
-              <div class="row">
-                <!-- Grid column -->
-                <div class="col-md-12">
-
-                  <div class="md-form">
-                    <textarea type="text" id="form76" class="md-textarea form-control" rows="3"></textarea>
-                    <label for="form76">Your message</label>
-                  </div>
-
-                </div>
-              </div>
-              <!-- Grid row -->
-            </form>
-
-            <div class="text-center text-md-left mb-5 mt-4">
-              <a class="btn btn-rounded btn-white font-weight-bold">Send</a>
+              <ul class="list-unstyled">
+                <!-- Facebook -->
+                <a class="p-2 m-2 fa-lg fb-ic">
+                  <i class="fab fa-facebook-f orange-text"> </i>
+                </a>
+                <!-- Twitter -->
+                <a class="p-2 m-2 fa-lg tw-ic">
+                  <i class="fab fa-twitter orange-text"> </i>
+                </a>
+                <!-- Instagram -->
+                <a class="p-2 m-2 fa-lg ins-ic">
+                  <i class="fab fa-instagram orange-text"> </i>
+                </a>
+              </ul>
             </div>
           </div>
           <!-- Grid column -->
 
           <!-- Grid column -->
-          <div class="col-md-4 col-lg-3">
-            <ul class="text-center list-unstyled float-md-right">
-              <li>
-                <i class="fas fa-map-marker-alt fa-2x title"></i>
-                <p>New York, NY 10012, USA</p>
-              </li>
+          <div class="col-lg-3 col-md-6 mb-4">
+            <div class="card card-body">
+              <div class="avatar mx-auto mt-3 mb-3">
+                <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(9).jpg" class="rounded-circle"
+                  alt="First sample avatar image">
+              </div>
+              <h6 class="font-weight-bold title">John Doe</h6>
 
-              <li>
-                <i class="fas fa-phone fa-2x title"></i>
-                <p>+ 01 234 567 89</p>
-              </li>
+              <p class="font-small grey-text">Web developer</p>
 
-              <li>
-                <i class="fas fa-envelope fa-2x title"></i>
-                <p>contact@gmail.com</p>
-              </li>
-            </ul>
+              <ul class="list-unstyled">
+                <!-- Facebook -->
+                <a class="p-2 m-2 fa-lg fb-ic">
+                  <i class="fab fa-facebook-f orange-text"> </i>
+                </a>
+                <!-- Instagram -->
+                <a class="p-2 m-2 fa-lg ins-ic">
+                  <i class="fab fa-instagram orange-text"> </i>
+                </a>
+              </ul>
+            </div>
+          </div>
+          <!-- Grid column -->
+
+          <!-- Grid column -->
+          <div class="col-lg-3 col-md-6 mb-4">
+            <div class="card card-body">
+              <div class="avatar mx-auto mt-3 mb-3">
+                <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(5).jpg" class="rounded-circle"
+                  alt="First sample avatar image">
+              </div>
+              <h6 class="font-weight-bold title">Maria Smith</h6>
+
+              <p class="font-small grey-text">Photographer</p>
+
+              <ul class="list-unstyled">
+                <!-- Facebook -->
+                <a class="p-2 m-2 fa-lg fb-ic">
+                  <i class="fab fa-facebook-f orange-text"> </i>
+                </a>
+                <!-- Instagram -->
+                <a class="p-2 m-2 fa-lg ins-ic">
+                  <i class="fab fa-instagram orange-text"> </i>
+                </a>
+                <!-- Dribbble -->
+                <a class="p-2 m-2 fa-lg ins-ic">
+                  <i class="fab fa-dribbble orange-text"> </i>
+                </a>
+              </ul>
+            </div>
+          </div>
+          <!-- Grid column -->
+
+          <!-- Grid column -->
+          <div class="col-lg-3 col-md-6 mb-4">
+            <div class="card card-body">
+              <div class="avatar mx-auto mt-3 mb-3">
+                <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(8).jpg" class="rounded-circle"
+                  alt="First sample avatar image">
+              </div>
+              <h6 class="font-weight-bold title">Tom Adams</h6>
+
+              <p class="font-small grey-text">Backend developer</p>
+
+              <ul class="list-unstyled">
+                <!-- Facebook -->
+                <a class="p-2 m-2 fa-lg fb-ic">
+                  <i class="fab fa-facebook-f orange-text"> </i>
+                </a>
+                <!-- Github -->
+                <a class="p-2 m-2 fa-lg ins-ic">
+                  <i class="fab fa-github orange-text"> </i>
+                </a>
+              </ul>
+            </div>
           </div>
           <!-- Grid column -->
 
         </div>
-      </section>
-      <!-- Section: Contact v.2 -->
+        <!-- Grid row -->
 
-    </div>
+      </section>
+      <!-- Section: Team v.1 -->
+
+      <hr>
