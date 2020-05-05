@@ -6,6 +6,7 @@ use Illuminate\Support\ServiceProvider;
 use TCG\Voyager\Facades\Voyager;
 use App\FormFields\Tracking;
 use App\FormFields\Slug;
+use App\FormFields\Map;
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -17,6 +18,7 @@ class AppServiceProvider extends ServiceProvider
     {
         Voyager::addFormField(Tracking::class);
         Voyager::addFormField(Slug::class);
+        Voyager::addFormField(Map::class);
     }
 
     /**
