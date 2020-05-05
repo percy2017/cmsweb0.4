@@ -17,12 +17,25 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+        {{-- <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> --}}
         @if (!$error)
             <style>
                 body, html, #meet {
                     margin: 0;
                     overflow-x: hidden; 
                     overflow-y: auto;
+                }
+                #dark_mask {
+                    position: fixed;
+                    background-color: rgba(0, 0, 0, 0.5);
+                    color: white;
+                    top: 0px;
+                    right: 0px;
+                    left: 0px;
+                    height: 100vh;
+                    z-index: 1000;
                 }
             </style>
         @else
@@ -46,11 +59,52 @@
     <body>
         @if (!$error)
             <div id="meet"></div>
+            <div id="countdown_message" style="display: none">
+                <div class="d-flex justify-content-center align-items-center" id="dark_mask">
+                    <h1 class="mr-3 pr-3 align-top inline-block align-content-center" id="message_finish">k</h1>
+                </div>
+            </div>
             <script src="{{ setting('histream.server').'/external_api.js' }}"></script>
             <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
             <script>
                 $(document).ready(function(){
                     $.get('{{ url("conferencia/join/increment/".$meeting->id) }}');
+                    let enable_alert = true;
+                    let alert_finish = false;
+                    let min_finish, sec_finish;
+                    setInterval(() => {
+                        var date = new Date();
+                        var finish = new Date({{ date("Y, m, d, H, i, s", strtotime($meeting->day.' '.$meeting->finish)) }});
+                        // Quitar 1 mes de la fecha generada en javascript
+                        let aux = finish.getMonth()-1;
+                        finish.setMonth(aux)
+                        min_finish = parseInt((finish-date)/(1000*60)%60);
+                        sec_finish = parseInt((finish-date)/1000);
+
+                        if(min_finish == 5 && enable_alert){
+                            alert_finish = true
+                            enable_alert =  false;
+                        }
+                        if(sec_finish <= 20){
+                            $('#countdown_message').css('display', 'block')
+                            $('#message_finish').text(`Tu reunión finalizará en ${sec_finish >= 0 ? sec_finish : 0} segundos.`)
+                        }
+                        if(sec_finish<0){
+                            window.location = '{{ url("conferencia/".$meeting->slug) }}/finish'
+                        }
+
+                        if(alert_finish){
+                            alert_finish = false;
+                            Swal.fire({
+                                icon: 'warning',
+                                title: 'Advertencia',
+                                text: 'Te quedan 5 minutos antes de que se acabe el tiempo de tu reunión!',
+                                footer: '<a href="https://histream.loginweb.dev">Por qué ocurre esto?</a>'
+                            })
+
+                        }
+                    }, 300);
                 });
                 
                 const domain = "{{ str_replace('https://', '', setting('histream.server')) }}";
