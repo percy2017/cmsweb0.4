@@ -167,27 +167,11 @@
           <!-- Card content -->
 
         </div>
-
-        <!-- Card -->
-
-      </div>
-      <!-- First column -->
-
-    </div>
     @endif
    
     {{-- second row --}}
   </section>
 </div>
-@endsection
-
-      @endif
-      @php
-        session()->forget('greetings_histream');
-      @endphp
-      {{-- second row --}}
-    </section>
-  </div>
 @endsection
 
 @section('script')
