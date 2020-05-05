@@ -7,9 +7,9 @@
     <!-- First row -->
     <div class="row">
       @if (session('status'))
-      <div class="alert alert-success" role="alert">
-        {{ session('status') }}
-      </div>
+        <div class="alert alert-success" role="alert">
+          {{ session('status') }}
+        </div>
       @endif
       <!-- First column -->
       <div class="col-lg-4 mb-4">
@@ -119,71 +119,9 @@
         <!-- Card -->
 
       </div>
-
-      <!-- First row -->
-
-      <!-- Modal -->
-      <div class="modal fade" id="modal_payment" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Pasarela de pago</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <p>Información de pasarela de pago</p>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-primary" data-dismiss="modal">Entendido</button>
-              {{-- <button type="button" class="btn btn-primary">Save changes</button> --}}
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {{-- second row --}}
-      @if(session('greetings_histream'))
-        <div class="row">
-          <!-- First column -->
-          <div class="col-lg-12 mb-4">
-    
-            <!-- Card -->
-            <div class="card card-cascade narrower">
-    
-              <!-- Card content -->
-              <div class="card-body card-body-cascade">
-                <div class="alert alert-primary" role="alert">
-                  {!! setting('histream.greetings') !!}
-                </div>
-                {!! setting('histream.tutorial') !!}
-              </div>
-              <!-- Card content -->
-    
-            </div>
-            {!! setting('histream.tutorial') !!}
-          </div>
-          <!-- Card content -->
-
-        </div>
-    @endif
-   
+    </div>
     {{-- second row --}}
   </section>
 </div>
 @endsection
 
-@section('script')
-  <script>
-    @if(session('greetings_histream'))
-      $(document).ready(function(){
-        $('#modal_payment').modal('show')
-      });
-    @endif
-  </script>
-@endsection
-
- @php
-    session()->forget('greetings_histream');
- @endphp

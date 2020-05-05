@@ -18,10 +18,6 @@ Route::get('/', 'FrontEndController@default')->name('page_default');
 
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/profile', function(){
-    return view('webstreaming::profile');
-});
-
 
 Route::get('login/{social}', 'SocialiteController@redirectToProvider')->name('socialLogin');
 Route::get('login/{social}/callback', 'SocialiteController@handleProviderCallback');

@@ -1,19 +1,32 @@
 <div class="table-responsive">
-    <table id="dataTable" class="table table-hover">
+    <table id="dataTable" class="table table-bordered table-hover">
         <thead>
             <tr>
+                <th>Banner</th>
                 <th>Nombre</th>
-                <th>Participantes</th>
-                <th>Fecha y hora de inicio</th>
-                <th>Creación</th>
+                <th>Inicia</th>
+                <th>Creado</th>
                 <th class="actions text-right">Acciones</th>
             </tr>
         </thead>
         <tbody id="body-list">
             @forelse ($meetings as $item)
+            @php
+                $image = $item->banner ? 'storage/'.$item->banner : '/images/upload.png';
+                $image_small = $item->banner ? str_replace('.' ,'_small.', 'storage/'.$item->banner) : '/images/upload.png';
+            @endphp
             <tr>
-                <td id="td-name_{{ $item->id }}">{{ $item->name }} <button type="button" class="btn btn-link btn-copy" onclick="copy('{{ $item->slug }}')">Copiar</button> </td>
-                <td>{{ $item->participants_active }} <small>activo(s)</small><br> {{ $item->participants }} <small>total</small></td>
+                <td class="text-center"><a href="{{ url($image) }}" data-fancybox="galeria1" data-caption="{{ $item->name }}"><img src="{{ url($image_small) }}" height="50px" alt="{{ $item->name }}"></a></td>
+                <td style="max-width: 400px">
+                    <b>{{ $item->name }}</b> <button type="button" class="btn btn-link btn-copy" onclick="copy('{{ $item->slug }}')">Copiar</button>
+                    <br>
+                    <small>{{ $item->descriptions }}</small>
+                    <hr style="margin-bottom:5px; margin-top: 10px">
+                    Participantes:
+                    <button class="btn btn-success btn-sm btn-badge" data-toggle="tooltip" title="Activos"><i class="voyager-smile"></i> {{ $item->participants_active }}</button>
+                    <button class="btn btn-danger btn-sm btn-badge" data-toggle="tooltip" title="Rechazados"><i class="voyager-frown"></i> {{ $item->participants_reject }}</button>
+                    <button class="btn btn-default btn-sm btn-badge" data-toggle="tooltip" title="Total"><i class="voyager-people"></i> {{ $item->participants }}</button>
+                </td>
                 <td>{{ date('d-m-Y H:i', strtotime($item->day.' '.$item->start)) }} <br> <small>{{ \Carbon\Carbon::parse($item->day.' '.$item->start)->diffForHumans() }}</small> </td>
                 <td><small>{{ \Carbon\Carbon::parse($item->created_at)->diffForHumans() }}</small> </td>
                 <td class="no-sort no-click bread-actions">
@@ -54,11 +67,14 @@
         color: #1D80DC !important;
         font-size: 12px;
     }
+    .btn-badge{
+        padding: 0px 10px
+    }
 </style>
 
 <script>
     $(document).ready(function(){
-
+        $('[data-toggle="tooltip"]').tooltip();
         $('.page-link').click(function(e){
             e.preventDefault();
             let link = $(this).attr('href');

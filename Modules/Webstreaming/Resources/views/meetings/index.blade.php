@@ -81,12 +81,9 @@
                                 @endforeach
                             </select>
                         </div>
-                        <div class="text-center" id="message-redirect" style="display: none">
-                            <p class="text-muted">Redireccinando...</p>
-                        </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-info pull-right">Solicitar</button>
+                        <button type="submit" class="btn btn-info pull-right" id="btn-petition">Solicitar</button>
                         <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Cancelar</button>
                     </div>
                 </div>
@@ -154,7 +151,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-success pull-right">Crear</button>
+                        <button type="submit" class="btn btn-success pull-right" id="btn-store">Crear</button>
                         <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Cancelar</button>
                     </div>
                 </div>
@@ -216,7 +213,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-info pull-right">Editar</button>
+                        <button type="submit" class="btn btn-info pull-right" id="btn-edit">Editar</button>
                         <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Cancelar</button>
                     </div>
                 </div>
@@ -231,6 +228,7 @@
 @stop
 
 @section('css')
+    <link href="{{url('js/plugins/fancybox/fancybox.min.css')}}" type="text/css" rel="stylesheet">
     <style>
         .form-p0{
             padding: 0px !important
@@ -239,6 +237,7 @@
 @stop
 
 @section('javascript')
+    <script src="{{url('js/plugins/fancybox/fancybox.min.js')}}" type="text/javascript"></script>
     <script src="{{ url('js/image-preview.js') }}"></script>
     <script src="{{ asset('js/app.js') }}"></script>
     <script>
@@ -287,6 +286,8 @@
             // Crear nueva conferencia
             $('#form_create').on('submit', function(e){
                 e.preventDefault();
+                $('#btn-store').html('<i class="fa fa-refresh fa-spin"></i> Creando...');
+                $('#btn-store').attr('disabled', 'disabled');
                 let url = '{{ route("conferencias.store") }}';
                 let formData = new FormData(document.getElementById("form_create"));
                 formData.append("dato", "valor");
@@ -299,6 +300,10 @@
                         });
                         list(search, page_actual);
                         $('#create_modal').modal('toggle');
+                        $('#btn-store').html('Crear');
+                        $('#btn-store').removeAttr('disabled');
+                        $('#form_create').trigger("reset");
+                        $(`#img-preview-c`).attr('src', `/images/upload.png`);
                     },
                     error: function() {
                         Toast.fire({
@@ -312,6 +317,8 @@
             // Editar conferencia
             $('#form_edit').on('submit', function(e){
                 e.preventDefault();
+                $('#btn-edit').html('<i class="fa fa-refresh fa-spin"></i> Editando...');
+                $('#btn-edit').attr('disabled', 'disabled');
                 let id = $('#edit_modal input[name="id"]').val();
                 let url = '{{ route("conferencias.update", ["conferencia" => "_id"]) }}';
                 let formData = new FormData(document.getElementById("form_edit"));
@@ -320,6 +327,8 @@
                     url: url.replace('_id', id), type: 'post', dataType: "html", data: formData, cache: false, contentType: false, processData: false,
                     success: function(res){
                         $('#edit_modal').modal('toggle');
+                        $('#btn-edit').html('Editar');
+                        $('#btn-edit').removeAttr('disabled');
                         list(search, page_actual);
                         Toast.fire({
                             icon: 'success',
@@ -337,16 +346,19 @@
 
             $('#form_petition').on('submit', function(e){
                 e.preventDefault();
+                $('#btn-petition').html('<i class="fa fa-refresh fa-spin"></i> Solicitando...');
+                $('#btn-petition').attr('disabled', 'disabled');
                 let url = "{{ route('petition_user') }}";
                 $.post(url, $('#form_petition').serialize(), function(res){
                     Toast.fire({
                         icon: 'success',
                         title: 'Solicitud realizada'
                     });
-                    $('#message-redirect').css('display', 'block');
+                    $('#btn-petition').html('Solicitar');
+                    $('#btn-petition').removeAttr('disabled');
                     setTimeout(() => {
                         location.reload();
-                    }, 3100);
+                    }, 2500);
                 });
             });
 
@@ -407,6 +419,7 @@
 
         function edit(reg){
             let data = JSON.parse(reg);
+            var date = new Date();
             $('#edit_modal input[name="id"]').val(data.id);
             $('#edit_modal input[name="name"]').val(data.name);
             $('#edit_modal input[name="day"]').val(data.day);
@@ -414,11 +427,18 @@
             $('#edit_modal input[name="finish"]').val(data.finish);
             $('#edit_modal textarea[name="descriptions"]').val(data.descriptions);
             if(data.banner){
-                $(`#img-preview-e`).attr('src', `/storage/${data.banner}`);
+                $(`#img-preview-e`).attr('src', `/storage/${data.banner.replace('.', '_small.')}`);
             }else{
                 $(`#img-preview-e`).attr('src', `/images/upload.png`);
             }
-            
+
+            let hora_actual = `${date.getHours().toString().padStart(2, 0)}:${date.getMinutes().toString().padStart(2, 0)}:00`
+            $('#edit_modal input[name="start"]').removeAttr('readonly')
+            $('#edit_modal input[name="finish"]').removeAttr('readonly')
+            if(hora_actual >= data.start && hora_actual <= data.finish){
+                $('#edit_modal input[name="start"]').attr('readonly', 'readonly');
+                $('#edit_modal input[name="finish"]').attr('readonly', 'readonly')
+            }
         }
 
         function copy(slug){

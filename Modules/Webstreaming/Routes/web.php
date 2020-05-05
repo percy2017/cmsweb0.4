@@ -16,15 +16,11 @@
 */
 
 Route::group(['prefix' => 'admin'], function () {
-    
-    
     Route::post('histream/search', 'WebstreamingController@search')->name('hs_earch');
     Route::get('histream/relationship/{id}/{table}/{key}/{type}', 'WebstreamingController@relationship')->name('hs_relationship');
     Route::get('histream/view/{table}/{id}', 'WebstreamingController@view')->name('hs_view');
     Route::get('histream/deletes/recovery/{table}/{id}', 'WebstreamingController@recovery')->name('hs_recovery');
     Route::get('histream/deletes/{table}', 'WebstreamingController@deletes')->name('hs_deletes');
-    
- 
 });
     
 // Conferecias

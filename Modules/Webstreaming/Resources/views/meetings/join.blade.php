@@ -86,7 +86,7 @@
                             alert_finish = true
                             enable_alert =  false;
                         }
-                        if(sec_finish <= 20){
+                        if(sec_finish <= 60){
                             $('#countdown_message').css('display', 'block')
                             $('#message_finish').text(`Tu reunión finalizará en ${sec_finish >= 0 ? sec_finish : 0} segundos.`)
                         }
@@ -102,7 +102,7 @@
                                 icon: 'warning',
                                 title: 'Advertencia',
                                 text: 'Te quedan 5 minutos antes de que se acabe el tiempo de tu reunión!',
-                                footer: '<a href="https://histream.loginweb.dev">Por qué ocurre esto?</a>'
+                                footer: '<a href="https://histream.loginweb.dev" target="_blank">Por qué ocurre esto?</a>'
                             })
 
                         }
