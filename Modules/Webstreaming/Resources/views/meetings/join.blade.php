@@ -93,9 +93,7 @@
                         if(sec_finish<0){
                             $('#countdown_message').css('display', 'none')
                             clearInterval(getFinishMeet);
-                            @if(Auth::user() && Auth::user()->id != $meeting->user_id)
-                                window.location = '{{ url("conferencia/".$meeting->slug) }}/finish';
-                            @endif
+                            window.location = '{{ url("conferencia/".$meeting->slug) }}/finish';
                         }
 
                         if(alert_finish){
