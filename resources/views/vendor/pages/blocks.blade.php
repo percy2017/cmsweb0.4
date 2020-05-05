@@ -96,7 +96,17 @@
                                                         'fas fa-home blue-text',
                                                         'fas fa-users white-text',
                                                         'fas fa-chart-bar blue-text',
-                                                        'far fa-calendar-alt mr-2'
+                                                        'far fa-calendar-alt mr-2',
+                                                        'fas fa-cogs orange-text fa-2x',
+                                                        'fas fa-edit orange-text fa-2x',
+                                                        'fas fa-comments orange-text fa-2x',
+                                                        'fab fa-whatsapp-square orange-text fa-2x',
+                                                        'fab fa-whatsapp orange-text fa-2x',
+                                                        'fab fa-youtube orange-text fa-2x',
+                                                        'fab fa-youtube-square orange-text fa-2x',
+                                                        'fas fa-video orange-text fa-2x',
+                                                        'fas fa-photo-video orange-text fa-2x',
+                                                        'fas fa-hand-holding-usd orange-text fa-2x'
                                                     ];
                                                 @endphp
                                                 <label>{{ $value['label'] }}</label>

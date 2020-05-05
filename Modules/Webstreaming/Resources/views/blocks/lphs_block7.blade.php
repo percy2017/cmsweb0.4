@@ -1,131 +1,115 @@
-      <!-- Section: Team v.1 -->
-      <section class="team-section pb-5" id="team">
+<br>
+<hr>
+<br>
+<section class="px-md-5 mx-md-5 text-center dark-grey-text" id="pasarela">
 
-        <!-- Section heading -->
-        <h3 class="text-center title my-5 dark-grey-text font-weight-bold wow fadeIn" data-wow-delay="0.2s">
-          <strong>Our amazing team</strong>
-        </h3>
+    <!--Grid row-->
+   {{--  <div class="row d-flex justify-content-center"> --}}
 
-        <!-- Section description -->
-        <p class="text-center w-responsive mx-auto my-5 grey-text">Lorem ipsum dolor sit amet, consectetur adipisicing
-          elit. Fugit, error amet numquam iure provident voluptate
-          esse quasi, veritatis totam voluptas nostrum quisquam eum porro a pariatur accusamus veniam.</p>
+        <!--Grid column-->
+      {{--   <div class="col-xl-6 col-md-8"> --}}
 
-        <!-- Grid row -->
-        <div class="row text-center">
+            <h3  class="font-weight-bold pb-3 mb-4">{{ $data->title_strong->value }}</h3>
 
-          <!-- Grid column -->
-          <div class="col-lg-3 col-md-6 mb-4">
-            <div class="card card-body">
-              <div class="avatar mx-auto mt-3 mb-3">
-                <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(25).jpg" class="rounded-circle"
-                  alt="First sample avatar image">
-              </div>
-              <h6 class="font-weight-bold title">Anna Deynah</h6>
+            <p class="text-muted w-responsive mx-auto mb-5">{{ $data->description->value }}</p>
 
-              <p class="font-small grey-text">Graphic designer</p>
+            {{-- <i class="btn btn-info btn-md ml-0 mb-5" href="#" role="button">Start now<i class="fa fa-magic ml-2"></i></i> --}}
+{{-- 
+        </div> --}}
+        <!--Grid column-->
+{{-- 
+    </div> --}}
+    <!--Grid row-->
 
-              <ul class="list-unstyled">
-                <!-- Facebook -->
-                <a class="p-2 m-2 fa-lg fb-ic">
-                  <i class="fab fa-facebook-f orange-text"> </i>
-                </a>
-                <!-- Twitter -->
-                <a class="p-2 m-2 fa-lg tw-ic">
-                  <i class="fab fa-twitter orange-text"> </i>
-                </a>
-                <!-- Instagram -->
-                <a class="p-2 m-2 fa-lg ins-ic">
-                  <i class="fab fa-instagram orange-text"> </i>
-                </a>
-              </ul>
+
+    <!--Grid row-->
+    <div class="row">
+
+        <div class="col-lg-4 col-m-12 mb-4">
+            <!-- Card Wider -->
+            <div class="card card-cascade wider">
+
+                <!-- Card image -->
+                <div class="view view-cascade overlay">
+                    <img class="card-img-top" src="{{ voyager::Image($data->image1->value) }}" alt="Card image cap">
+                    <a href="https://www.tigo.com.bo/tigo-money/ptm" target="_blank">
+                        <div class="mask rgba-white-slight"></div>
+                    </a>
+                </div>
+
+                <!-- Card content -->
+                <div class="card-body card-body-cascade text-center">
+
+                    <!-- Title -->
+                    <h5 class="card-title"><strong>{{ $data->title1->value }}</strong></h5>
+                    <!-- Subtitle -->
+                    <h5 class="blue-text pb-2"><strong>{{ $data->account1->value }}</strong></h5>
+                    <!-- Text -->
+
+                </div>
+
             </div>
-          </div>
-          <!-- Grid column -->
+            <!-- Card Wider -->
+        </div>
 
-          <!-- Grid column -->
-          <div class="col-lg-3 col-md-6 mb-4">
-            <div class="card card-body">
-              <div class="avatar mx-auto mt-3 mb-3">
-                <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(9).jpg" class="rounded-circle"
-                  alt="First sample avatar image">
-              </div>
-              <h6 class="font-weight-bold title">John Doe</h6>
+        <div class="col-lg-4 col-m-12 mb-4">
+            <!-- Card Wider -->
+            <div class="card card-cascade wider">
 
-              <p class="font-small grey-text">Web developer</p>
+                <!-- Card image -->
+                <div class="view view-cascade overlay">
+                    <img class="card-img-top" src="{{ voyager::Image($data->image2->value) }}" alt="Card image cap">
+                    <a href="https://youtu.be/udX7bIQ7_Dk" target="_blank">
+                        <div class="mask rgba-white-slight"></div>
+                    </a>
+                </div>
 
-              <ul class="list-unstyled">
-                <!-- Facebook -->
-                <a class="p-2 m-2 fa-lg fb-ic">
-                  <i class="fab fa-facebook-f orange-text"> </i>
-                </a>
-                <!-- Instagram -->
-                <a class="p-2 m-2 fa-lg ins-ic">
-                  <i class="fab fa-instagram orange-text"> </i>
-                </a>
-              </ul>
+                <!-- Card content -->
+                <div class="card-body card-body-cascade text-center">
+
+                    <!-- Title -->
+                    <h5 class="card-title"><strong>{{ $data->title2->value }}</strong></h5>
+                    <!-- Subtitle -->
+                    <h5 class="blue-text pb-2" title="Percy Alvarez Cruz cuenta Banco-BNB">
+                        <strong>{{ $data->account2->value }}</strong></h5>
+
+                </div>
+
             </div>
-          </div>
-          <!-- Grid column -->
+            <!-- Card Wider -->
+        </div>
 
-          <!-- Grid column -->
-          <div class="col-lg-3 col-md-6 mb-4">
-            <div class="card card-body">
-              <div class="avatar mx-auto mt-3 mb-3">
-                <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(5).jpg" class="rounded-circle"
-                  alt="First sample avatar image">
-              </div>
-              <h6 class="font-weight-bold title">Maria Smith</h6>
+        <div class="col-lg-4 col-m-12 mb-4">
+            <!-- Card Wider -->
+            <div class="card card-cascade wider">
 
-              <p class="font-small grey-text">Photographer</p>
+                <!-- Card image -->
+                <div class="view view-cascade overlay">
+                    <img class="card-img-top" src="{{ voyager::Image($data->image3->value) }}" alt="Card image cap">
+                    <a href="https://www.youtube.com/watch?v=6abmF9zwCgE">
+                        <div class="mask rgba-white-slight"></div>
+                    </a>
+                </div>
 
-              <ul class="list-unstyled">
-                <!-- Facebook -->
-                <a class="p-2 m-2 fa-lg fb-ic">
-                  <i class="fab fa-facebook-f orange-text"> </i>
-                </a>
-                <!-- Instagram -->
-                <a class="p-2 m-2 fa-lg ins-ic">
-                  <i class="fab fa-instagram orange-text"> </i>
-                </a>
-                <!-- Dribbble -->
-                <a class="p-2 m-2 fa-lg ins-ic">
-                  <i class="fab fa-dribbble orange-text"> </i>
-                </a>
-              </ul>
+                <!-- Card content -->
+                <div class="card-body card-body-cascade text-center">
+
+                    <!-- Title -->
+                    <h5 class="card-title"><strong>{{ $data->title3->value }}</strong></h5>
+                    <!-- Subtitle -->
+                    <h5 class="blue-text pb-2" title="Percy Alvarez Cruz cuenta Banco-union">
+                        <strong>{{ $data->account3->value }}</strong></h5>
+
+
+                </div>
+                <!-- Card Wider -->
             </div>
-          </div>
-          <!-- Grid column -->
 
-          <!-- Grid column -->
-          <div class="col-lg-3 col-md-6 mb-4">
-            <div class="card card-body">
-              <div class="avatar mx-auto mt-3 mb-3">
-                <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(8).jpg" class="rounded-circle"
-                  alt="First sample avatar image">
-              </div>
-              <h6 class="font-weight-bold title">Tom Adams</h6>
-
-              <p class="font-small grey-text">Backend developer</p>
-
-              <ul class="list-unstyled">
-                <!-- Facebook -->
-                <a class="p-2 m-2 fa-lg fb-ic">
-                  <i class="fab fa-facebook-f orange-text"> </i>
-                </a>
-                <!-- Github -->
-                <a class="p-2 m-2 fa-lg ins-ic">
-                  <i class="fab fa-github orange-text"> </i>
-                </a>
-              </ul>
-            </div>
-          </div>
-          <!-- Grid column -->
 
         </div>
-        <!-- Grid row -->
+        <!--/Grid row-->
+    </div>
 
-      </section>
-      <!-- Section: Team v.1 -->
-
-      <hr>
+</section>
+<!--Section: Content-->
+</div>

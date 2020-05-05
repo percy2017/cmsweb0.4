@@ -37,7 +37,7 @@
 
                     <div class="dropdown-menu dropdown-menu-right text-white" aria-labelledby="navbarDropdown">
 
-                        <a class="dropdown-item title" href="/home">
+                        <a class="dropdown-item title" href="/profile">
                             <i class="fas fa-user-alt"></i> Perfil
                         </a>
 

@@ -63,7 +63,7 @@ class PageTableSeeder extends Seeder
                     'type'   => 'text',
                     'name'   => 'btn_action_1',
                     'label'  => 'Accion del Btn #1',
-                    'value'  => 'https://demo.loginweb.dev',
+                    'value'  => 'https://live.loginweb.dev/demo',
                     'width'  => 3
                 ],
 
@@ -114,28 +114,14 @@ class PageTableSeeder extends Seeder
                 ],
 
                 'parrafo_1' => [
-                    'type'   => 'text_area',
+                    'type'   => 'rich_text_box',
                     'name'   => 'parrafo_1',
                     'label'  => 'Parrafo 1',
-                    'value'  => 'hiStream es una potente solución de reuniones en línea creada para empresas de todos los tamaños. Nuestra experiencia de reunión fácil de usar está disponible en,',
+                    'value'  => 'hiStream es una potente solución de reuniones en línea creada para empresas de todos los tamaños. Nuestra experiencia de reunión fácil de usar está disponible en,
+                    dispositivos de escritorio y móviles para que pueda tener reuniones confiables y sin estrés en cualquier lugar y en cualquier momento. Con la más alta calidad de audio
+                    y vídeo HD, herramientas de colaboración interactivas y capacidades de inteligencia, histream transforma las comunicaciones con una experiencia de reuniones más inteligente, rápida, atractiva y procesable.',
                     'width'  => 12
-                ],
-
-                'parrafo_2' => [
-                    'type'   => 'text_area',
-                    'name'   => 'parrafo_2',
-                    'label'  => 'Parrafo 2',
-                    'value'  => 'dispositivos de escritorio y móviles para que pueda tener reuniones confiables y sin estrés en cualquier lugar y en cualquier momento. Con la más alta calidad de audio',
-                    'width'  => 12
-                ],
-
-                'parrafo_3' => [
-                    'type'   => 'text_area',
-                    'name'   => 'parrafo_3',
-                    'label'  => 'Parrafo 3',
-                    'value'  => 'y vídeo HD, herramientas de colaboración interactivas y capacidades de inteligencia, histream transforma las comunicaciones con una experiencia de reuniones más inteligente, rápida, atractiva y procesable.',
-                    'width'  => 12
-                ],
+                ]
             ])
         ]);
         /** block 2 */
@@ -170,100 +156,141 @@ class PageTableSeeder extends Seeder
                     'width'  => 8
                 ],
 
+                'icons1' => [
+                    'type'   => 'select_dropdown',
+                    'name'   => 'icons1',
+                    'label'  => 'Icons #1',
+                    'value'  => 'fas fa-edit orange-text fa-2x',
+                    'width'  => 3
+                ],
                 'title_1' => [
                     'type'   => 'text',
                     'name'   => 'title_1',
                     'label'  => 'Titulo 1',
                     'value'  => 'Etherpad',
-                    'width'  => 4
+                    'width'  => 3
                 ],
-
                 'parrafo_1' => [
                     'type'   => 'text_area',
                     'name'   => 'parrafo_1',
                     'label'  => 'Parrafo 1',
                     'value'  => 'Editar documentos juntos usando Etherpad.',
-                    'width'  => 8
+                    'width'  => 6
                 ],
 
+
+                'icons2' => [
+                    'type'   => 'select_dropdown',
+                    'name'   => 'icons2',
+                    'label'  => 'Icons #2',
+                    'value'  => 'fas fa-cogs orange-text fa-2x',
+                    'width'  => 3
+                ],
                 'title_2' => [
                     'type'   => 'text',
                     'name'   => 'title_2',
                     'label'  => 'Titulo 2',
                     'value'  => 'Fácil de usar',
-                    'width'  => 4
+                    'width'  => 3
                 ],
-
                 'parrafo_2' => [
                     'type'   => 'text_area',
                     'name'   => 'parrafo_2',
                     'label'  => 'Parrafo 2',
                     'value'  => 'No se requiere incorporación ni capacitación. Comience y únase a las reuniones en segundos.',
-                    'width'  => 8
+                    'width'  => 6
                 ],
 
+
+                'icons3' => [
+                    'type'   => 'select_dropdown',
+                    'name'   => 'icons3',
+                    'label'  => 'Icons #3',
+                    'value'  => 'fas fa-comments orange-text fa-2x',
+                    'width'  => 3
+                ],
                 'title_3' => [
                     'type'   => 'text',
                     'name'   => 'title_3',
                     'label'  => 'Titulo 3',
                     'value'  => 'Chat en equipo',
-                    'width'  => 4
+                    'width'  => 3
                 ],
-
                 'parrafo_3' => [
                     'type'   => 'text_area',
                     'name'   => 'parrafo_3',
                     'label'  => 'Parrafo 3',
                     'value'  => 'Intercambie mensajes de texto instantáneos durante la llamada.',
-                    'width'  => 8
+                    'width'  => 6
                 ],
 
+
+                'icons4' => [
+                    'type'   => 'select_dropdown',
+                    'name'   => 'icons4',
+                    'label'  => 'Icons #4',
+                    'value'  => 'fas fa-hand-holding-usd orange-text fa-2x',
+                    'width'  => 3
+                ],
                 'title_4' => [
                     'type'   => 'text',
                     'name'   => 'title_4',
                     'label'  => 'Titulo 4',
                     'value'  => 'Valor excepcional',
-                    'width'  => 4
+                    'width'  => 3
                 ],
-
                 'parrafo_4' => [
                     'type'   => 'text_area',
                     'name'   => 'parrafo_4',
                     'label'  => 'Parrafo 4',
                     'value'  => 'Todas las características que necesita a una fracción del precio de la competencia. Hacemos que sea asequible para todo su equipo organizar grandes reuniones en línea.',
-                    'width'  => 8
+                    'width'  => 6
                 ],
 
+
+                'icons5' => [
+                    'type'   => 'select_dropdown',
+                    'name'   => 'icons5',
+                    'label'  => 'Icons #5',
+                    'value'  => 'fas fa-video orange-text fa-2x',
+                    'width'  => 3
+                ],
                 'title_5' => [
                     'type'   => 'text',
                     'name'   => 'title_5',
                     'label'  => 'Titulo 5',
                     'value'  => 'Grabación de reuniones',
-                    'width'  => 4
+                    'width'  => 3
                 ],
-
                 'parrafo_5' => [
                     'type'   => 'text_area',
                     'name'   => 'parrafo_5',
                     'label'  => 'Parrafo 5',
                     'value'  => 'Grabe algunas reuniones o todas: con capacidades ilimitadas de almacenamiento de grabación y uso compartido, nadie tiene que perderse una reunión',
-                    'width'  => 8
+                    'width'  => 6
                 ],
 
+
+                'icons6' => [
+                    'type'   => 'select_dropdown',
+                    'name'   => 'icons6',
+                    'label'  => 'Icons #6',
+                    'value'  => 'fas fa-file-video orange-text fa-2x',
+                    'width'  => 3
+                ],
                 'title_6' => [
                     'type'   => 'text',
                     'name'   => 'title_6',
                     'label'  => 'Titulo 6',
                     'value'  => 'Uso compartido de pantalla',
-                    'width'  => 4
+                    'width'  => 3
                 ],
-
                 'parrafo_6' => [
                     'type'   => 'text_area',
                     'name'   => 'parrafo_6',
                     'label'  => 'Parrafo 6',
                     'value'  => 'Uso compartido de pantalla, opciones de audio integradas y cámaras de vídeo HD, y mucho más.',
-                    'width'  => 8
+                    'width'  => 6
                 ],
 
             ])
@@ -777,5 +804,98 @@ class PageTableSeeder extends Seeder
                     ],
                 ])     
             ]);
+
+
+            Block::create([
+                'name'        => 'lphs_block7',
+                'title'       => 'Blocke #7 (Pasarela de Pago #7)',
+                'description' => 'Seccion Pasarela de Pago #7 para la plantilla LPHS',
+                'page_id'     => $page->id,
+                'position'    => 3,
+                'details'     => json_encode([
+                    'title_strong' => [
+                        'type'   => 'text',
+                        'name'   => 'title_strong',
+                        'label'  => 'Titulo en Negrita',
+                        'value'  => 'Pasarela de Pago',
+                        'width'  => 6
+                    ],
+                    'description'=> [
+                        'type'   => 'text_area',
+                        'name'   => 'description',
+                        'label'  => 'Descripcion',
+                        'value'  => 'Forma de pago',
+                        'width'  => 6
+                    ],
+    
+                    'image1'=> [
+                        'type'   => 'image',
+                        'name'   => 'image1',
+                        'label'  => 'Imagen #1',
+                        'value'  => 'default1.png',
+                        'width'  => 4
+                    ],
+                    'image2'=> [
+                        'type'   => 'image',
+                        'name'   => 'image2',
+                        'label'  => 'Imagen #2',
+                        'value'  => 'default2.png',
+                        'width'  => 4
+                    ],
+                    'image3'=> [
+                        'type'   => 'image',
+                        'name'   => 'image3',
+                        'label'  => 'Imagen #3',
+                        'value'  => 'default3.png',
+                        'width'  => 4
+                    ],
+    
+                    'title1' => [
+                        'type'   => 'text',
+                        'name'   => 'title1',
+                        'label'  => 'Titulo #1',
+                        'value'  => 'Tigo Money',
+                        'width'  => 4
+                    ],
+                    'title2' => [
+                        'type'   => 'text',
+                        'name'   => 'title2',
+                        'label'  => 'Titulo #2',
+                        'value'  => 'Banco BNB',
+                        'width'  => 4
+                    ],
+                     'title3' => [
+                        'type'   => 'text',
+                        'name'   => 'title3',
+                        'label'  => 'Titulo #3',
+                        'value'  => 'Banco Union',
+                        'width'  => 4
+                    ],
+    
+                    'account1' => [
+                        'type'   => 'text',
+                        'name'   => 'account1',
+                        'label'  => 'Cuenta #1',
+                        'value'  => 'Nro de Telefono: 78746621',
+                        'width'  => 4
+                    ],
+                    'account2' => [
+                        'type'   => 'text',
+                        'name'   => 'account2',
+                        'label'  => 'Cuenta #2',
+                        'value'  => 'Nro de Cuenta: 8500183080',
+                        'width'  => 4
+                    ],
+                    'account3' => [
+                        'type'   => 'text',
+                        'name'   => 'account3',
+                        'label'  => 'Cuenta #3',
+                        'value'  => 'Nro de Cuenta: 10000013879305',
+                        'width'  => 4
+                    ]
+                    
+                ])    
+            ]);
+
     }
 }

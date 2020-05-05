@@ -19,7 +19,7 @@
             <!-- Grid row -->
             <div class="row mb-3">
                 <div class="col-2">
-                    <i class="fas fa-edit orange-text fa-2x"></i>
+                    <i class="{{ $data->icons1->value }}"></i>
                 </div>
                 <div class="col-10 mb-2">
                     <h5 class="font-weight-bold title">{{ $data->title_1->value }}</h5>
@@ -33,7 +33,7 @@
             <!-- Grid row -->
             <div class="row mb-3">
                 <div class="col-2">
-                    <i class="fas fa-cogs orange-text fa-2x"></i>
+                    <i class="{{ $data->icons2->value }}"></i>
                 </div>
                 <div class="col-10 mb-2">
                     <h5 class="font-weight-bold title">{{ $data->title_2->value }}</h5>
@@ -47,7 +47,7 @@
             <!-- Grid row -->
             <div class="row">
                 <div class="col-2">
-                    <i class="fas fa-tablet-alt orange-text fa-2x"></i>
+                    <i class="{{ $data->icons3->value }}"></i>
                 </div>
                 <div class="col-10 mb-2">
                     <h5 class="font-weight-bold title">{{ $data->title_3->value }}</h5>
@@ -72,7 +72,7 @@
             <!-- Grid row -->
             <div class="row mb-3">
                 <div class="col-2">
-                    <i class="fas fa-chart-line orange-text fa-2x"></i>
+                    <i class="{{ $data->icons4->value }}"></i>
                 </div>
                 <div class="col-10 mb-2">
                     <h5 class="font-weight-bold title">{{ $data->title_4->value }}</h5>
@@ -86,7 +86,7 @@
             <!-- Grid row -->
             <div class="row mb-3">
                 <div class="col-2">
-                    <i class="fas fa-users orange-text fa-2x"></i>
+                    <i class="{{ $data->icons5->value }}"></i>
                 </div>
                 <div class="col-10 mb-2">
                     <h5 class="font-weight-bold title">{{ $data->title_5->value }}</h5>
@@ -100,7 +100,7 @@
             <!-- Grid row -->
             <div class="row">
                 <div class="col-2">
-                    <i class="far fa-gem orange-text fa-2x"></i>
+                    <i class="{{ $data->icons6->value }}"></i>
                 </div>
                 <div class="col-10 mb-2">
                     <h5 class="font-weight-bold title">{{ $data->title_6->value }}</h5>
