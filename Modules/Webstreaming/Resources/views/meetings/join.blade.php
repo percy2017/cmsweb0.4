@@ -91,8 +91,11 @@
                             $('#message_finish').text(`Tu reunión finalizará en ${sec_finish >= 0 ? sec_finish : 0} segundos.`)
                         }
                         if(sec_finish<0){
+                            $('#countdown_message').css('display', 'none')
                             clearInterval(getFinishMeet);
-                            window.location = '{{ url("conferencia/".$meeting->slug) }}/finish'
+                            @if(Auth::user() && Auth::user()->id != $meeting->user_id)
+                                window.location = '{{ url("conferencia/".$meeting->slug) }}/finish';
+                            @endif
                         }
 
                         if(alert_finish){
