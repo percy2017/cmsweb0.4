@@ -44,9 +44,7 @@ class MeetingsController extends Controller
     }
 
     public function list(){
-        $meetings = Auth::user()->role_id == 1 ? 
-        Meeting::where('deleted_at', null)->orderBy('id', 'Desc')->paginate(10) :
-        Meeting::where('deleted_at', null)->where('user_id', Auth::user()->id)->orderBy('id', 'Desc')->paginate(10);
+        $meetings = Meeting::where('deleted_at', null)->where('user_id', Auth::user()->id)->orderBy('id', 'Desc')->paginate(10);
         return view('webstreaming::meetings.partials.list', compact('meetings'));
     }
 
@@ -77,15 +75,21 @@ class MeetingsController extends Controller
         }
     }
 
-    public function joined($type, $id){
+    public function joined($type, $id, $quantity = null){
         $meet = Meeting::findOrFail($id);
-        if($type=='increment'){
-            $meet->participants_active++;
-            $meet->participants++;
-        }elseif($type=='reject'){
-            $meet->participants_reject++;
-        }else{
-            $meet->participants_active--;
+        switch ($type) {
+            case 'increment':
+                $meet->participants++;
+                break;
+            case 'update_active':
+                $meet->participants_active =  $quantity;
+                break;
+            case 'decrement':
+                $meet->participants_active = $meet->participants_active > 0 ? $meet->participants_active-- : 0;
+                break;
+            case 'reject':
+                $meet->participants_reject++;
+                break;
         }
         $meet->save();
         event(new JoinMeetUser($meet->user_id));
