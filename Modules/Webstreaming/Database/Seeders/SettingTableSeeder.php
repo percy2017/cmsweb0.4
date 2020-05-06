@@ -31,6 +31,8 @@ class SettingTableSeeder extends Seeder
         DB::table('settings')
             ->where('key', 'site.page')
             ->update(['value' => 'landing-page-histream']);
+        
+        $cont = 1;
 
         DB::table('settings')->insert([
             'key' => 'histream.server',
@@ -38,7 +40,17 @@ class SettingTableSeeder extends Seeder
             'value' => 'https://live.loginweb.dev',
             'details' => '',
             'type' => 'text',
-            'order' => 1,
+            'order' => $cont++,
+            'group' => 'HiStream'
+        ]);
+
+        DB::table('settings')->insert([
+            'key' => 'histream.app_android',
+            'display_name' => 'App Android',
+            'value' => 'https://play.google.com/store/apps/details?id=com.loginweb.histream',
+            'details' => '',
+            'type' => 'text',
+            'order' => $cont++,
             'group' => 'HiStream'
         ]);
 
@@ -51,7 +63,7 @@ class SettingTableSeeder extends Seeder
             <p class="mb-0" style="box-sizing: border-box; margin-top: 0px; color: #004085; font-family: Roboto, sans-serif; font-size: 16px; margin-bottom: 0px !important;">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p>',
             'details' => '',
             'type' => 'rich_text_box',
-            'order' => 2,
+            'order' => $cont++,
             'group' => 'HiStream'
         ]);
        /*  $setting = $this->findSetting('site.pag_icon');
@@ -85,11 +97,21 @@ class SettingTableSeeder extends Seeder
             <li><span style="color: #000000; font-family:  Arial, sans-serif; text-align: justify;">amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore</span></li>
             </ul>
             <div class="text-center">
-            <p><iframe src="https://www.youtube.com/embed/N00DzBNPJEw?list=TLPQMjMwNDIwMjC12DxRUG6F4w" width="806" height="453" frameborder="0" allowfullscreen=""></iframe></p>
+            <p><iframe width="560" height="315" src="https://www.youtube.com/embed/N00DzBNPJEw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
             </div>',
             'details' => '',
             'type' => 'rich_text_box',
-            'order' => 3,
+            'order' => $cont++,
+            'group' => 'HiStream'
+        ]);
+
+        DB::table('settings')->insert([
+            'key' => 'histream.video_tutorial',
+            'display_name' => 'Video Tutorial',
+            'value' => 'https://www.youtube.com/watch?v=N00DzBNPJEw',
+            'details' => '',
+            'type' => 'text',
+            'order' => 4,
             'group' => 'HiStream'
         ]);
 
@@ -99,7 +121,7 @@ class SettingTableSeeder extends Seeder
             'value' => 'Tu suscripción será aprobada en unos momentos por nuestro personal, mientras tanto tendras las opciones del plan gratuito.',
             'details' => '',
             'type' => 'text_area',
-            'order' => 4,
+            'order' => $cont++,
             'group' => 'HiStream'
         ]);
 
@@ -109,7 +131,7 @@ class SettingTableSeeder extends Seeder
             'value' => 'Tu suscripción es gratuita por lo que solo tendras un número limitado de conferencias e invitados.',
             'details' => '',
             'type' => 'text_area',
-            'order' => 5,
+            'order' => $cont++,
             'group' => 'HiStream'
         ]);
 
@@ -119,7 +141,7 @@ class SettingTableSeeder extends Seeder
             'value' => 'Tus suscripción ha vencido, por el momento solo podras acceder a las opciones que incluye el plan gratuito.',
             'details' => '',
             'type' => 'text_area',
-            'order' => 6,
+            'order' => $cont++,
             'group' => 'HiStream'
         ]);
     }
