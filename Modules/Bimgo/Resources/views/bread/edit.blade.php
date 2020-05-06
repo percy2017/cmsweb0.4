@@ -24,210 +24,220 @@
                             $myfield = $row->field;
                             @endphp
                             @switch($row->type)
-                            @case('relationship')
-                            <label class="control-label" for="{{ $row->field }}">{{ $row->display_name }}</label>
-                            @if(isset($row->details->tooltip))
-                            <span class="voyager-question" aria-hidden="true" data-toggle="tooltip"
-                                data-placement="{{ $row->details->tooltip->{'ubication'} }}"
-                                title="{{ $row->details->tooltip->{'message'} }}"></span>
-                            @endif
-                            @if($row->details->{'type'} == 'belongsTo')
-                            <select class="form-control select2" name="{{ $row->details->{'column'} }}"
-                                id="{{ $row->details->{'column'} }}">
-                                @php
-                                $model = app($row->details->model);
-                                $query = $model::all();
-                                $key = $row->details->column;
-                                @endphp
-                                <option disabled>-- Seleciona datos --</option>
-                                @foreach($query as $relationshipData)
-                                <option value="{{ $relationshipData->{$row->details->key} }}" @if($relationshipData->
-                                    {$row->details->key}==$data->$key) selected
-                                    @endif>{{ $relationshipData->{$row->details->label} }}</option>
-                                @endforeach
-                            </select>
-                            @elseif($row->details->{'type'} == 'belongsToMany')
-                            @php
-                            $model = app($row->details->model);
-                            $query = $model::all();
+                                @case('relationship')
+                                    <label class="control-label" for="{{ $row->field }}">{{ $row->display_name }}</label>
+                                    @if(isset($row->details->tooltip))
+                                        <span class="voyager-question" aria-hidden="true" data-toggle="tooltip"
+                                        data-placement="{{ $row->details->tooltip->{'ubication'} }}"
+                                        title="{{ $row->details->tooltip->{'message'} }}"></span>
+                                    @endif
+                                    @if($row->details->{'type'} == 'belongsTo')
+                                        <select class="form-control select2" name="{{ $row->details->{'column'} }}"
+                                        id="{{ $row->details->{'column'} }}">
+                                        @php
+                                        $model = app($row->details->model);
+                                        $query = $model::all();
+                                        $key = $row->details->column;
+                                        @endphp
+                                        <option disabled>-- Seleciona datos --</option>
+                                        @foreach($query as $relationshipData)
+                                        <option value="{{ $relationshipData->{$row->details->key} }}" @if($relationshipData->
+                                            {$row->details->key}==$data->$key) selected
+                                            @endif>{{ $relationshipData->{$row->details->label} }}</option>
+                                        @endforeach
+                                    </select>
+                                    @elseif($row->details->{'type'} == 'belongsToMany')
+                                    @php
+                                    $model = app($row->details->model);
+                                    $query = $model::all();
 
-                            $mymodel = app($row->details->attributes->model);
-                            $mycolumn = $row->details->attributes->{'column'};
-                            $mykey = $row->details->attributes->{'key'};
-                            $myquery = $mymodel::where($mycolumn, $data->id)->get();
+                                    $mymodel = app($row->details->attributes->model);
+                                    $mycolumn = $row->details->attributes->{'column'};
+                                    $mykey = $row->details->attributes->{'key'};
+                                    $myquery = $mymodel::where($mycolumn, $data->id)->get();
 
-                            $myrelationships = false;
-                            @endphp
-                            <select class="form-control select2" name="{{ $row->field }}[]" id="{{ $row->field }}"
-                                multiple>
-                                <option disabled>-- Seleciona un dato --</option>
-                                @foreach($query as $relationshipData)
-                                @foreach ($myquery as $item)
-                                @if ($item->$mykey == $relationshipData->{$row->details->key})
-                                @php $myrelationships = true; @endphp
-                                @break
-                                @endif
-                                @endforeach
-                                <option value="{{ $relationshipData->{$row->details->key} }}" @if($myrelationships)
-                                    selected @endif>{{ $relationshipData->{$row->details->label} }}</option>
-                                @php $myrelationships = false; @endphp
-                                @endforeach
-                            </select>
+                                    $myrelationships = false;
+                                    @endphp
+                                    <select class="form-control select2" name="{{ $row->field }}[]" id="{{ $row->field }}"
+                                        multiple>
+                                        <option disabled>-- Seleciona un dato --</option>
+                                        @foreach($query as $relationshipData)
+                                        @foreach ($myquery as $item)
+                                        @if ($item->$mykey == $relationshipData->{$row->details->key})
+                                        @php $myrelationships = true; @endphp
+                                        @break
+                                        @endif
+                                        @endforeach
+                                        <option value="{{ $relationshipData->{$row->details->key} }}" @if($myrelationships)
+                                            selected @endif>{{ $relationshipData->{$row->details->label} }}</option>
+                                        @php $myrelationships = false; @endphp
+                                        @endforeach
+                                    </select>
+                                    @endif
+                                    @break
+                                @case('select_dropdown')
+                                    <label class="control-label" for="{{ $row->field }}">{{ $row->display_name }}</label>
+                                    @if(isset($row->details->tooltip))
+                                    <span class="voyager-question" aria-hidden="true" data-toggle="tooltip"
+                                        data-placement="{{ $row->details->tooltip->{'ubication'} }}"
+                                        title="{{ $row->details->tooltip->{'message'} }}"></span>
+                                    @endif
+                                    <select class="form-control select2" name="{{ $row->field }}" id="{{ $row->field }}"
+                                        @if($row->required == 1) required @endif>
+                                        <option disabled>-- Seleciona un dato --</option>
+                                        @foreach ($row->details->options as $item)
+                                        <option value="{{ $item }}" @if($item==$data->$myfield) selected @endif>{{ $item }}
+                                        </option>
+                                        @endforeach
+                                    </select>
+                                    @break
+                                @case('text')
+                                    <label class="control-label" for="{{ $row->field }}"
+                                        id="{{ $row->field }}">{{ $row->display_name }}</label>
+                                    @if(isset($row->details->tooltip))
+                                    <span class="voyager-question" aria-hidden="true" data-toggle="tooltip"
+                                        data-placement="{{ $row->details->tooltip->{'ubication'} }}"
+                                        title="{{ $row->details->tooltip->{'message'} }}"></span>
+                                    @endif
+                                    <input type="text" class="form-control" name="{{ $row->field }}" id="{{ $row->field }}"
+                                        value="{{ $data->$myfield }}">
+                                    @break
+                                @case('password')
+                                    <label class="control-label" for="{{ $row->field }}"
+                                        id="{{ $row->field }}">{{ $row->display_name }}</label>
+                                    @if(isset($row->details->tooltip))
+                                    <span class="voyager-question" aria-hidden="true" data-toggle="tooltip"
+                                        data-placement="{{ $row->details->tooltip->{'ubication'} }}"
+                                        title="{{ $row->details->tooltip->{'message'} }}"></span>
+                                    @endif
+                                    <input type="password" class="form-control" name="{{ $row->field }}" id="{{ $row->field }}"
+                                        value="{{ $data->$myfield }}">
+                                    @break
+                                @case('number')
+                                    <label class="control-label" for="{{ $row->field }}">{{ $row->display_name }}</label>
+                                    @if(isset($row->details->tooltip))
+                                    <span class="voyager-question" aria-hidden="true" data-toggle="tooltip"
+                                        data-placement="{{ $row->details->tooltip->{'ubication'} }}"
+                                        title="{{ $row->details->tooltip->{'message'} }}"></span>
+                                    @endif
+                                    <input type="number" class="form-control" name="{{ $row->field }}" id="{{ $row->field }}"
+                                        value="{{ $data->$myfield }}">
+                                    @break
+                                @case('text_area')
+                                    <label class="control-label" for="{{ $row->field }}">{{ $row->display_name }}</label>
 
-                            @endif
-                            @break
-                            @case('select_dropdown')
-                            <label class="control-label" for="{{ $row->field }}">{{ $row->display_name }}</label>
-                            @if(isset($row->details->tooltip))
-                            <span class="voyager-question" aria-hidden="true" data-toggle="tooltip"
-                                data-placement="{{ $row->details->tooltip->{'ubication'} }}"
-                                title="{{ $row->details->tooltip->{'message'} }}"></span>
-                            @endif
-                            <select class="form-control select2" name="{{ $row->field }}" id="{{ $row->field }}"
-                                @if($row->required == 1) required @endif>
-                                <option disabled>-- Seleciona un dato --</option>
-                                @foreach ($row->details->options as $item)
-                                <option value="{{ $item }}" @if($item==$data->$myfield) selected @endif>{{ $item }}
-                                </option>
-                                @endforeach
-                            </select>
-                            @break
-                            @case('text')
-                            <label class="control-label" for="{{ $row->field }}"
-                                id="{{ $row->field }}">{{ $row->display_name }}</label>
-                            @if(isset($row->details->tooltip))
-                            <span class="voyager-question" aria-hidden="true" data-toggle="tooltip"
-                                data-placement="{{ $row->details->tooltip->{'ubication'} }}"
-                                title="{{ $row->details->tooltip->{'message'} }}"></span>
-                            @endif
-                            <input type="text" class="form-control" name="{{ $row->field }}" id="{{ $row->field }}"
-                                value="{{ $data->$myfield }}">
-                            @break
-                            @case('password')
-                            <label class="control-label" for="{{ $row->field }}"
-                                id="{{ $row->field }}">{{ $row->display_name }}</label>
-                            @if(isset($row->details->tooltip))
-                            <span class="voyager-question" aria-hidden="true" data-toggle="tooltip"
-                                data-placement="{{ $row->details->tooltip->{'ubication'} }}"
-                                title="{{ $row->details->tooltip->{'message'} }}"></span>
-                            @endif
-                            <input type="password" class="form-control" name="{{ $row->field }}" id="{{ $row->field }}"
-                                value="{{ $data->$myfield }}">
-                            @break
-                            @case('number')
-                            <label class="control-label" for="{{ $row->field }}">{{ $row->display_name }}</label>
-                            @if(isset($row->details->tooltip))
-                            <span class="voyager-question" aria-hidden="true" data-toggle="tooltip"
-                                data-placement="{{ $row->details->tooltip->{'ubication'} }}"
-                                title="{{ $row->details->tooltip->{'message'} }}"></span>
-                            @endif
-                            <input type="number" class="form-control" name="{{ $row->field }}" id="{{ $row->field }}"
-                                value="{{ $data->$myfield }}">
-
-                            @break
-                            @case('text_area')
-                            <label class="control-label" for="{{ $row->field }}">{{ $row->display_name }}</label>
-
-                            @if(isset($row->details->tooltip))
-                            <span class="voyager-question" aria-hidden="true" data-toggle="tooltip"
-                                data-placement="{{ $row->details->tooltip->{'ubication'} }}"
-                                title="{{ $row->details->tooltip->{'message'} }}"></span>
-                            @endif
-                            <textarea class="form-control" name="{{ $row->field }}"
-                                id="{{ $row->field }}">{{ $data->$myfield }}</textarea>
-                            @break
-                            @case('timestamp')
-                            <label class="control-label" for="{{ $row->field }}">{{ $row->display_name }}</label>
-                            @if(isset($row->details->tooltip))
-                            <span class="voyager-question" aria-hidden="true" data-toggle="tooltip"
-                                data-placement="{{ $row->details->tooltip->{'ubication'} }}"
-                                title="{{ $row->details->tooltip->{'message'} }}"></span>
-                            @endif
-                            <input type="datetime" class="form-control datepicker" name="{{ $row->field }}"
-                                id="{{ $row->field }}" value="{{ $data->$myfield }}">
-                            @break
-                            @case('time')
-                                <label class="control-label" for="{{ $row->field }}">{{ $row->display_name }}</label>
-                                @if(isset($row->details->tooltip))
-                                <span class="voyager-question" aria-hidden="true" data-toggle="tooltip"
-                                data-placement="{{ $row->details->tooltip->{'ubication'} }}"
-                                title="{{ $row->details->tooltip->{'message'} }}"></span>
-                            @endif
-                            <input type="time" class="form-control datepicker" name="{{ $row->field }}"
-                                id="{{ $row->field }}" value="{{ $data->$myfield }}">
-                            @break
-                            @case('date')
-                            <label class="control-label" for="{{ $row->field }}">{{ $row->display_name }}</label>
-                            @if(isset($row->details->tooltip))
-                                <span class="voyager-question"
-                                aria-hidden="true"
-                                data-toggle="tooltip"
-                                data-placement="{{ $row->details->tooltip->{'ubication'} }}"
-                                title="{{ $row->details->tooltip->{'message'} }}"></span>
-                            @endif
-                            <input 
-                                type="date" 
-                                class="form-control datepicker" 
-                                name="{{ $row->field }}" 
-                                id="{{ $row->field }}" 
-                                value="@if(isset($dataTypeContent->{$row->field})){{ \Carbon\Carbon::parse(old($row->field, $dataTypeContent->{$row->field}))->format('m/d/Y g:i A') }}@else{{old($row->field)}}@endif">
-                            @break        
-                            @case('rich_text_box')
-                            <label class="control-label" for="{{ $row->field }}">{{ $row->display_name }}</label>
-                            @if(isset($row->details->tooltip))
-                            <span class="voyager-question" aria-hidden="true" data-toggle="tooltip"
-                                data-placement="{{ $row->details->tooltip->{'ubication'} }}"
-                                title="{{ $row->details->tooltip->{'message'} }}"></span>
-                            @endif
-                            <textarea class="ckeditor" name="{{ $row->field }}"
-                                id="{{ $row->field }}">{!! htmlspecialchars_decode($data->$myfield) !!}</textarea>
-                            @break
-                            @case('image')
-                            <label class="control-label" for="{{ $row->field }}">{{ $row->display_name }}</label>
-                            @if(isset($row->details->tooltip))
-                            <span class="voyager-question" aria-hidden="true" data-toggle="tooltip"
-                                data-placement="{{ $row->details->tooltip->{'ubication'} }}"
-                                title="{{ $row->details->tooltip->{'message'} }}"></span>
-                            @endif
-                            <img class="img-responsive" src="{{ Voyager::Image($data->$myfield) }}" width="60%">
-                            <input type="file" name="{{ $row->field }}" id="{{ $row->field }}" accept="image/*">
-                            @break
-                            @case('multiple_images')
-                            <label class="control-label" for="{{ $row->field }}">{{ $row->display_name }}</label>
-                            @if(isset($row->details->tooltip))
-                            <span class="voyager-question" aria-hidden="true" data-toggle="tooltip"
-                                data-placement="{{ $row->details->tooltip->{'ubication'} }}"
-                                title="{{ $row->details->tooltip->{'message'} }}"></span>
-                            @endif
-                            @php
-                            $images_field = $data->{$row->field};
-                            @endphp
-                            @if(isset($images_field))
-                            <div class="row">
-                                @foreach (json_decode($images_field) as $item)
-                                <div class="form-group col-md-{{ 12/count(json_decode($images_field)) }}">
-                                    <img class="img-responsive" src="{{ Voyager::image($item) }}">
-                                </div>
-                                @endforeach
-                            </div>
-                            @endif
-                            <input type="file" name="{{ $row->field }}[]" id="{{ $row->field }}" multiple="multiple"
-                                accept="image/*">
-                            @break
-                            @case('checkbox')
-                            <label class="control-label" for="{{ $row->field }}">{{ $row->display_name }}</label>
-                            @if(isset($row->details->tooltip))
-                            <span class="voyager-question" aria-hidden="true" data-toggle="tooltip"
-                                data-placement="{{ $row->details->tooltip->{'ubication'} }}"
-                                title="{{ $row->details->tooltip->{'message'} }}"></span>
-                            @endif
-                            <br />
-                            <?php $checked = $data->$myfield ?>
-
-                            <input type="checkbox" name="{{ $row->field }}" id="{{ $row->field }}" class="toggleswitch"
-                                data-on="{{ $row->details->on }}" {!! $checked ? 'checked="checked"' : '' !!}
-                                data-off="{{ $row->details->off }}">
-                            @break
+                                    @if(isset($row->details->tooltip))
+                                    <span class="voyager-question" aria-hidden="true" data-toggle="tooltip"
+                                        data-placement="{{ $row->details->tooltip->{'ubication'} }}"
+                                        title="{{ $row->details->tooltip->{'message'} }}"></span>
+                                    @endif
+                                    <textarea class="form-control" name="{{ $row->field }}"
+                                        id="{{ $row->field }}">{{ $data->$myfield }}</textarea>
+                                    @break
+                                @case('timestamp')
+                                    <label class="control-label" for="{{ $row->field }}">{{ $row->display_name }}</label>
+                                    @if(isset($row->details->tooltip))
+                                    <span class="voyager-question" aria-hidden="true" data-toggle="tooltip"
+                                        data-placement="{{ $row->details->tooltip->{'ubication'} }}"
+                                        title="{{ $row->details->tooltip->{'message'} }}"></span>
+                                    @endif
+                                    <input type="datetime" class="form-control datepicker" name="{{ $row->field }}"
+                                        id="{{ $row->field }}" value="{{ $data->$myfield }}">
+                                    @break
+                                @case('time')
+                                    <label class="control-label" for="{{ $row->field }}">{{ $row->display_name }}</label>
+                                    @if(isset($row->details->tooltip))
+                                    <span class="voyager-question" aria-hidden="true" data-toggle="tooltip"
+                                    data-placement="{{ $row->details->tooltip->{'ubication'} }}"
+                                    title="{{ $row->details->tooltip->{'message'} }}"></span>
+                                    @endif
+                                    <input type="time" class="form-control datepicker" name="{{ $row->field }}"
+                                        id="{{ $row->field }}" value="{{ $data->$myfield }}">
+                                    @break
+                                @case('date')
+                                    <label class="control-label" for="{{ $row->field }}">{{ $row->display_name }}</label>
+                                    @if(isset($row->details->tooltip))
+                                        <span class="voyager-question"
+                                        aria-hidden="true"
+                                        data-toggle="tooltip"
+                                        data-placement="{{ $row->details->tooltip->{'ubication'} }}"
+                                        title="{{ $row->details->tooltip->{'message'} }}"></span>
+                                    @endif
+                                    <input 
+                                        type="date" 
+                                        class="form-control datepicker" 
+                                        name="{{ $row->field }}" 
+                                        id="{{ $row->field }}" 
+                                        value="@if(isset($dataTypeContent->{$row->field})){{ \Carbon\Carbon::parse(old($row->field, $dataTypeContent->{$row->field}))->format('m/d/Y g:i A') }}@else{{old($row->field)}}@endif">
+                                    @break        
+                                @case('rich_text_box')
+                                    <label class="control-label" for="{{ $row->field }}">{{ $row->display_name }}</label>
+                                    @if(isset($row->details->tooltip))
+                                    <span class="voyager-question" aria-hidden="true" data-toggle="tooltip"
+                                        data-placement="{{ $row->details->tooltip->{'ubication'} }}"
+                                        title="{{ $row->details->tooltip->{'message'} }}"></span>
+                                    @endif
+                                    <textarea class="ckeditor" name="{{ $row->field }}"
+                                        id="{{ $row->field }}">{!! htmlspecialchars_decode($data->$myfield) !!}</textarea>
+                                    @break
+                                @case('image')
+                                    <label class="control-label" for="{{ $row->field }}">{{ $row->display_name }}</label>
+                                    @if(isset($row->details->tooltip))
+                                    <span class="voyager-question" aria-hidden="true" data-toggle="tooltip"
+                                        data-placement="{{ $row->details->tooltip->{'ubication'} }}"
+                                        title="{{ $row->details->tooltip->{'message'} }}"></span>
+                                    @endif
+                                    <img class="img-responsive" src="{{ Voyager::Image($data->$myfield) }}" width="60%">
+                                    <input type="file" name="{{ $row->field }}" id="{{ $row->field }}" accept="image/*">
+                                    @break
+                                @case('multiple_images')
+                                    <label class="control-label" for="{{ $row->field }}">{{ $row->display_name }}</label>
+                                    @if(isset($row->details->tooltip))
+                                        <span class="voyager-question" aria-hidden="true" data-toggle="tooltip"
+                                        data-placement="{{ $row->details->tooltip->{'ubication'} }}"
+                                        title="{{ $row->details->tooltip->{'message'} }}"></span>
+                                    @endif
+                                    @php
+                                        $images_field = $data->{$row->field};
+                                    @endphp
+                                    @if(isset($images_field))
+                                        <div class="row">
+                                        @foreach (json_decode($images_field) as $item)
+                                            <div class="form-group col-md-{{ 12/count(json_decode($images_field)) }}">
+                                                <img class="img-responsive" src="{{ Voyager::image($item) }}">
+                                            </div>
+                                        @endforeach
+                                    </div>
+                                    @endif
+                                    <input type="file" name="{{ $row->field }}[]" id="{{ $row->field }}" multiple="multiple"
+                                        accept="image/*">
+                                    @break
+                                @case('checkbox')
+                                    <label class="control-label" for="{{ $row->field }}">{{ $row->display_name }}</label>
+                                    @if(isset($row->details->tooltip))
+                                        <span class="voyager-question" aria-hidden="true" data-toggle="tooltip"
+                                        data-placement="{{ $row->details->tooltip->{'ubication'} }}"
+                                        title="{{ $row->details->tooltip->{'message'} }}"></span>
+                                    @endif
+                                    <br />
+                                    <?php $checked = $data->$myfield ?>
+                                    <input type="checkbox" name="{{ $row->field }}" id="{{ $row->field }}" class="toggleswitch"
+                                        data-on="{{ $row->details->on }}" {!! $checked ? 'checked="checked"' : '' !!}
+                                        data-off="{{ $row->details->off }}">
+                                    @break
+                                @case('Map')
+                                    <label class="control-label" for="{{ $row->field }}">{{ $row->display_name }}</label>
+                                    @if(isset($row->details->tooltip))
+                                        <span class="voyager-question"
+                                        aria-hidden="true"
+                                        data-toggle="tooltip"
+                                        data-placement="{{ $row->details->tooltip->{'ubication'} }}"
+                                        title="{{ $row->details->tooltip->{'message'} }}"></span>
+                                    @endif
+                                    <div id="map"></div>
+                                    <input type="hidden" id="latitud" name="latitud" value="{{ $data->latitud }}" />
+                                    <input type="hidden" id="longitud" name="longitud" value="{{ $data->longitud }}" />
+                                    @break
                             @endswitch
                         </div>
                         @endforeach
@@ -307,7 +317,6 @@
                     contentType : false,
                     processData : false,
                     success: function (data) {
-                       
                         if(data.error)
                         {
                             let message='';
@@ -333,8 +342,47 @@
             }
         })
     });
-
-     $('.form-group .ckeditor').each(function (idx, elt) {
+    $('.form-group .ckeditor').each(function (idx, elt) {
         CKEDITOR.replace(elt.id);
+    });
+
+
+    //Mapa-------------------------------------
+    $('document').ready(function () {
+        var map;
+        var marcador;
+        map = L.map('map').fitWorld();
+        L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+                maxZoom: 20,
+                attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
+                '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+                'Imagery ©️ <a href="https://www.mapbox.com/">Mapbox</a>',
+                id: 'mapbox.streets'
+            }).addTo(map);
+
+        function onLocationFound(e) 
+        {
+            $('#latitud').val('{{ $data->latitud }}');
+            $('#longitud').val('{{ $data->longitud }}');
+            marcador =  L.marker(L.latLng('{{ $data->latitud }}', '{{ $data->longitud }}'), {
+                        draggable: true
+                        }).addTo(map)
+                        .bindPopup("Localización").openPopup()
+                        .on('drag', function(e) {
+                            $('#latitud').val(e.latlng.lat);
+                            $('#longitud').val(e.latlng.lng);
+                        });
+            map.setView(L.latLng('{{ $data->latitud }}', '{{ $data->longitud }}'));
+        }
+
+        function onLocationError(e) {
+            alert(e.message);
+        }
+
+        map.on('locationfound', onLocationFound);
+        map.on('locationerror', onLocationError);
+
+        map.locate();
+        map.setZoom(13);
     });
 </script>

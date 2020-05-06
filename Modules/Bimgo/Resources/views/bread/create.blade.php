@@ -270,8 +270,8 @@
                                                 title="{{ $row->details->tooltip->{'message'} }}"></span>
                                             @endif
                                             <div id="map"></div>
-                                            <input type="text" name="latitud" />
-                                            <input type="text" name="longitud" />
+                                            <input type="hidden" id="latitud" name="latitud" />
+                                            <input type="hidden" id="longitud" name="longitud" />
                                             @break
                                     @endswitch        
                                 </div>
@@ -384,6 +384,8 @@
 
     //Mapa-----------------
     $('document').ready(function () {
+        var map;
+        var marcador;
         map = L.map('map').fitWorld();
         L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
                 maxZoom: 20,
@@ -392,5 +394,31 @@
                 'Imagery ©️ <a href="https://www.mapbox.com/">Mapbox</a>',
                 id: 'mapbox.streets'
             }).addTo(map);
+
+        function onLocationFound(e) 
+        {
+            $('#latitud').val(e.latlng.lat);
+            $('#longitud').val(e.latlng.lng);
+            marcador =  L.marker(e.latlng, {
+                        draggable: true
+                        }).addTo(map)
+                        .bindPopup("Localización actual").openPopup()
+                        .on('drag', function(e) {
+                            $('#latitud').val(e.latlng.lat);
+                            $('#longitud').val(e.latlng.lng);
+                        });
+            map.setView(e.latlng);
+        }
+
+        function onLocationError(e) {
+            alert(e.message);
+        }
+
+        map.on('locationfound', onLocationFound);
+        map.on('locationerror', onLocationError);
+
+        map.locate();
+        map.setZoom(13);
     });
+
 </script>

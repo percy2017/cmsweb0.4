@@ -19,8 +19,11 @@ class CreateBgBranchOfficesTable extends Migration
             $table->string('description')->nullable();
             $table->string('adress')->nullable();
             $table->string('phone')->nullable();
+
+            $table->string('map')->nullable();
             $table->string('latitud')->nullable();
             $table->string('longitud')->nullable();
+            
             $table->timestamps();
             $table->softDeletes();
         });

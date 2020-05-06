@@ -8,5 +8,5 @@ class BgBranchOffice extends Model
 {
     use SoftDeletes;
     protected $table = 'bg_branch_offices';
-    protected $fillable = ['name', 'description', 'adress', 'phone', 'map'];
+    protected $fillable = ['name', 'description', 'adress', 'phone', 'map', 'latitud', 'longitud'];
 }
