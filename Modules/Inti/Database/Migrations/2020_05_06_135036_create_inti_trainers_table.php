@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateIntiCoursesTable extends Migration
+class CreateIntiTrainersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,24 +13,23 @@ class CreateIntiCoursesTable extends Migration
      */
     public function up()
     {
-        Schema::create('inti_courses', function (Blueprint $table) {
+        Schema::create('inti_trainers', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('title');
+            $table->string('full_name');
             $table->string('slug')->unique();
-            $table->string('description')->nullable();
-            $table->string('price')->nullable();
-            $table->string('images')->nullable();
+            $table->string('photo')->nullable();
+            $table->string('phone')->nullable();
+            $table->string('profession')->nullable();
+            $table->string('curriculum_vitae')->nullable();
+            $table->string('skills')->nullable();
             $table->text('body')->nullable();
-            $table->integer('seats')->nullable();
-
-            $table->unsignedBigInteger('category_id');
-            $table->foreign('category_id')->references('id')->on('inti_categories');
 
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
-            
+
             $table->timestamps();
             $table->softDeletes();
+            
         });
     }
 
@@ -41,6 +40,6 @@ class CreateIntiCoursesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('inti_courses');
+        Schema::dropIfExists('inti_trainers');
     }
 }

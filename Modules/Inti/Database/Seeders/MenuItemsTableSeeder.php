@@ -4,9 +4,9 @@ namespace Modules\Inti\Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
-use TCG\Voyager\Models\MenuItem;
 use TCG\Voyager\Models\Menu;
-class MenusTableSeeder extends Seeder
+use TCG\Voyager\Models\MenuItem;
+class MenuItemsTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,65 +15,20 @@ class MenusTableSeeder extends Seeder
      */
     public function run()
     {
-        $menu = Menu::where('name', 'admin')->firstOrFail();
-
-        $CursosMenuItem = MenuItem::firstOrNew([
-            'menu_id' => $menu->id,
-            'title'   => 'Inti',
-            'url'     => '',
-        ]);/** INTI - MODULE */
-        if (!$CursosMenuItem->exists) {
-            $CursosMenuItem->fill([
-                'target'     => '_self',
-                'icon_class' => 'voyager-lightbulb',
-                'color'      => null,
-                'parent_id'  => null,
-                'order'      => 2,
-            ])->save();
-        }
-        $menuItem = MenuItem::firstOrNew([
-            'menu_id' => $menu->id,
-            'title'   => 'Cursos',
-            'url'     => '',
-            'route'   => 'voyager.inti_courses.index',
-        ]);/** courses */
-        if (!$menuItem->exists) {
-            $menuItem->fill([
-                'target'     => '_self',
-                'icon_class' => 'voyager-double-right',
-                'color'      => null,
-                'parent_id'  => $CursosMenuItem->id,
-                'order'      => 1,
-            ])->save();
-        }
-        $menuItem = MenuItem::firstOrNew([
-            'menu_id' => $menu->id,
-            'title'   => 'Trainers',
-            'url'     => '',
-            'route'   => 'voyager.inti_trainers.index',
-        ]);/** trainers */
-        if (!$menuItem->exists) {
-            $menuItem->fill([
-                'target'     => '_self',
-                'icon_class' => 'voyager-double-right',
-                'color'      => null,
-                'parent_id'  => $CursosMenuItem->id,
-                'order'      => 1,
-            ])->save();
-        }
-        
-
-        // ------------------- Menu Landing Page Inti ----------------------------------------
-        // -------------------------------------------------
+        /**
+         * ------------------------------------------------
+         *            Menu  dropdown-toggle
+         * -----------------------------------------------
+         */
         Menu::firstOrCreate([
-            'name' => 'LandingPageInti',
+            'name' => 'inti_courses',
         ]);
-        $menu = Menu::where('name', 'LandingPageInti')->firstOrFail();
+        $menu = Menu::where('name', 'inti_courses')->firstOrFail();
         $menuItem = MenuItem::firstOrNew([
             'menu_id' => $menu->id,
-            'title'   => 'Documentacion',
-            'url'     => '/docs',
-            'route'   => null,
+            'title'   => 'Nuevo',
+            'url'     => 'admin/inti_courses/create',
+            'route'   => null
         ]);
         if (!$menuItem->exists) {
             $menuItem->fill([
@@ -84,55 +39,16 @@ class MenusTableSeeder extends Seeder
                 'order'      => 1,
             ])->save();
         }
-
         $menuItem = MenuItem::firstOrNew([
             'menu_id' => $menu->id,
-            'title'   => 'Politicas y Privacidad',
-            'url'     => '/politica-privacidad',
-            'route'   => null,
+            'title'   => 'Categoria',
+            'url'     => 'admin/inti_categories/create',
+            'route'   => null
         ]);
         if (!$menuItem->exists) {
             $menuItem->fill([
                 'target'     => '_self',
                 'icon_class' => null,
-                'color'      => null,
-                'parent_id'  => null,
-                'order'      => 2,
-            ])->save();
-        }
-        $menuItem = MenuItem::firstOrNew([
-            'menu_id' => $menu->id,
-            'title'   => 'Terminos y Condiciones',
-            'url'     => '/terminos-condiones',
-            'route'   => null,
-        ]);
-        if (!$menuItem->exists) {
-            $menuItem->fill([
-                'target'     => '_self',
-                'icon_class' => null,
-                'color'      => null,
-                'parent_id'  => null,
-                'order'      => 2,
-            ])->save();
-        }
-        // ------------------- Menu Landing Page ----------------------------------------
-
-         // Menu Social ----------------------------------------
-        //----------------------------------------------------
-        Menu::firstOrCreate([
-            'name' => 'LandingPageMenuSocial',
-        ]);
-        $menu = Menu::where('name', 'LandingPageMenuSocial')->firstOrFail();
-        $menuItem = MenuItem::firstOrNew([
-            'menu_id' => $menu->id,
-            'title'   => 'facebbok',
-            'url'     => '#',
-            'route'   => null,
-        ]);
-        if (!$menuItem->exists) {
-            $menuItem->fill([
-                'target'     => '_self',
-                'icon_class' => 'ti-facebook',
                 'color'      => null,
                 'parent_id'  => null,
                 'order'      => 1,
@@ -140,14 +56,29 @@ class MenusTableSeeder extends Seeder
         }
         $menuItem = MenuItem::firstOrNew([
             'menu_id' => $menu->id,
-            'title'   => 'twitter',
-            'url'     => '#',
-            'route'   => null,
+            'title'   => 'Listar',
+            'url'     => 'admin/inti_courses/1',
+            'route'   => null
         ]);
         if (!$menuItem->exists) {
             $menuItem->fill([
                 'target'     => '_self',
-                'icon_class' => 'ti-twitter-alt',
+                'icon_class' => null,
+                'color'      => null,
+                'parent_id'  => null,
+                'order'      => 1,
+            ])->save();
+        }
+        $menuItem = MenuItem::firstOrNew([
+            'menu_id' => $menu->id,
+            'title'   => 'divider',
+            'url'     => null,
+            'route'   => null
+        ]);
+        if (!$menuItem->exists) {
+            $menuItem->fill([
+                'target'     => '_self',
+                'icon_class' => null,
                 'color'      => null,
                 'parent_id'  => null,
                 'order'      => 2,
@@ -155,36 +86,87 @@ class MenusTableSeeder extends Seeder
         }
         $menuItem = MenuItem::firstOrNew([
             'menu_id' => $menu->id,
-            'title'   => 'instagram',
-            'url'     => '#',
-            'route'   => null,
+            'title'   => 'setting',
+            'url'     => null,
+            'route'   => null
         ]);
         if (!$menuItem->exists) {
             $menuItem->fill([
-                'target'     => '_self',
-                'icon_class' => 'ti-instagram',
+                'target'     => '_blank',
+                'icon_class' => null,
                 'color'      => null,
                 'parent_id'  => null,
                 'order'      => 3,
             ])->save();
         }
-        
+
+
+
+        //-------------------------------------------
+        Menu::firstOrCreate([
+            'name' => 'inti_trainers',
+        ]);
+        $menu = Menu::where('name', 'inti_trainers')->firstOrFail();
         $menuItem = MenuItem::firstOrNew([
             'menu_id' => $menu->id,
-            'title'   => 'skype',
-            'url'     => '#',
-            'route'   => null,
+            'title'   => 'Nuevo',
+            'url'     => 'admin/inti_trainers/create',
+            'route'   => null
         ]);
         if (!$menuItem->exists) {
             $menuItem->fill([
                 'target'     => '_self',
-                'icon_class' => 'ti-skype',
+                'icon_class' => null,
                 'color'      => null,
                 'parent_id'  => null,
-                'order'      => 4,
+                'order'      => 1,
             ])->save();
         }
-        // Menu Social ----------------------------------------
-
+     
+        $menuItem = MenuItem::firstOrNew([
+            'menu_id' => $menu->id,
+            'title'   => 'Listar',
+            'url'     => 'admin/inti_trainers/1',
+            'route'   => null
+        ]);
+        if (!$menuItem->exists) {
+            $menuItem->fill([
+                'target'     => '_self',
+                'icon_class' => null,
+                'color'      => null,
+                'parent_id'  => null,
+                'order'      => 1,
+            ])->save();
+        }
+        $menuItem = MenuItem::firstOrNew([
+            'menu_id' => $menu->id,
+            'title'   => 'divider',
+            'url'     => null,
+            'route'   => null
+        ]);
+        if (!$menuItem->exists) {
+            $menuItem->fill([
+                'target'     => '_self',
+                'icon_class' => null,
+                'color'      => null,
+                'parent_id'  => null,
+                'order'      => 2,
+            ])->save();
+        }
+        $menuItem = MenuItem::firstOrNew([
+            'menu_id' => $menu->id,
+            'title'   => 'setting',
+            'url'     => null,
+            'route'   => null
+        ]);
+        if (!$menuItem->exists) {
+            $menuItem->fill([
+                'target'     => '_blank',
+                'icon_class' => null,
+                'color'      => null,
+                'parent_id'  => null,
+                'order'      => 3,
+            ])->save();
+        }
     }
 }
