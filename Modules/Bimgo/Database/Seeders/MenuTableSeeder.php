@@ -28,7 +28,7 @@ class MenuTableSeeder extends Seeder
                 'target'     => '_self',
                 'icon_class' => 'voyager-data',
                 'color'      => null,
-                'parent_id'  => null,
+                'parent_id'  => null, //menu desplegable
                 'order'      => 2,
             ])->save();
         }
@@ -54,6 +54,21 @@ class MenuTableSeeder extends Seeder
             'title'   => 'Sucursales',
             'url'     => '',
             'route'   => 'voyager.bg_branch_offices.index',
+        ]);
+        if (!$menuItem->exists) {
+            $menuItem->fill([
+                'target'     => '_self',
+                'icon_class' => 'voyager-double-right',
+                'color'      => null,
+                'parent_id'  => $InventarioMenuItem->id,
+                'order'      => $postion++,
+            ])->save();
+        }
+        $menuItem = MenuItem::firstOrNew([
+            'menu_id' => $menu->id,
+            'title'   => 'Traspasos',
+            'url'     => '',
+            'route'   => 'voyager.bg_transfers.index',
         ]);
         if (!$menuItem->exists) {
             $menuItem->fill([

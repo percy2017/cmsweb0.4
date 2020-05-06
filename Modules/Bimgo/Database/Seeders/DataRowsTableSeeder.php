@@ -21,6 +21,7 @@ class DataRowsTableSeeder extends Seeder
         $ProductDataType = DataType::where('slug', 'bg_products')->firstOrFail();
         $SucursalDataType = DataType::where('slug', 'bg_branch_offices')->firstOrFail();
         $InventarioDataType = DataType::where('slug', 'bg_product_offices')->firstOrFail();
+        $tansferDataType = DataType::where('slug', 'bg_transfers')->firstOrFail();
 
 
          /**
@@ -1054,6 +1055,129 @@ class DataRowsTableSeeder extends Seeder
             ])->save();
         }
 
+
+
+
+               /**
+         * ------------------------------------------------
+         *               Formulario Traspaso
+         * -----------------------------------------------
+         */
+        $postion = 1;
+        $dataRow = $this->dataRow($tansferDataType, 'id');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'number',
+                'display_name' => __('voyager::seeders.data_rows.id'),
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 0,
+                'add'          => 0,
+                'delete'       => 0,
+                'details'      => [
+                    'display' => [
+                        'width' => '6'
+                    ]
+                ],
+                'order'        => $postion++,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($tansferDataType, 'description');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'text_area',
+                'display_name' => 'Descripcion',
+                'required'     => 0,
+                'browse'       => 0,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'details'      => [
+                    'display' => [
+                        'width' => '12'
+                    ]
+                ],
+                'order'  => $postion++,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($tansferDataType, 'user_id');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'Traking',
+                'display_name' => 'Traking',
+                'required'     => 0,
+                'browse'       => 0,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'order'        => $postion++,
+                'details'      => [
+                    'display'   => [
+                        'width'  => '3',
+                    ],
+                ]
+            ])->save();
+        }
+        $dataRow = $this->dataRow($tansferDataType, 'created_at');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'timestamp',
+                'display_name' => __('voyager::seeders.data_rows.created_at'),
+                'required'     => 0,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 0,
+                'add'          => 0,
+                'delete'       => 0,
+                'order'        => $postion++,
+                'details'      => [
+                    'display' => [
+                        'width' => '3'
+                    ]
+                ]
+            ])->save();
+        }
+        $dataRow = $this->dataRow($tansferDataType, 'updated_at');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'timestamp',
+                'display_name' => __('voyager::seeders.data_rows.updated_at'),
+                'required'     => 0,
+                'browse'       => 0,
+                'read'         => 1,
+                'edit'         => 0,
+                'add'          => 0,
+                'delete'       => 0,
+                'order'        => $postion++,
+                'details'      => [
+                    'display' => [
+                        'width' => '3'
+                    ]
+                ]
+            ])->save();
+        }
+        $dataRow = $this->dataRow($tansferDataType, 'deleted_at');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'timestamp',
+                'display_name' => 'deleted_at',
+                'required'     => 0,
+                'browse'       => 0,
+                'read'         => 1,
+                'edit'         => 0,
+                'add'          => 0,
+                'delete'       => 0,
+                'order'        => $postion++,
+                'details'      => [
+                    'display' => [
+                        'width' => '3'
+                    ]
+                ]
+            ])->save();
+        }
 
 
 

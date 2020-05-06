@@ -131,6 +131,30 @@ class DataTypeTableSeeder extends Seeder
             ])->save();
         }
 
+        $dataType = $this->dataType('slug', 'bg_transfers');
+        if (!$dataType->exists) {
+            $dataType->fill([
+                'name'                  => 'bg_transfers',
+                'display_name_singular' => 'Traspaso',
+                'display_name_plural'   => 'Traspasos',
+                'icon'                  => 'voyager-play',
+                'model_name'            => 'Modules\\Bimgo\\Entities\\BgTransfer',
+                'policy_name'           => null,
+                'controller'            => 'Modules\\Bimgo\\Http\\Controllers\\TransferController',
+                'generate_permissions'  => 1,
+                'description'           => null,
+                'server_side'           => 1,
+                'details'               => [
+                    'order_column'         => 'id',
+                    'order_display_column' => 'id',
+                    'order_direction'      => 'asc',
+                    'default_search_key'   => 'id',
+                    'scope'                => null
+                ]
+            ])->save();
+        }
+
+
 
 
     }
