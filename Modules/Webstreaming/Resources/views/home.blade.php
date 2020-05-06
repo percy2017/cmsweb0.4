@@ -221,6 +221,9 @@
             </div>
         </div>
     </body>
+    <!-- JQuery -->
+    <script type="text/javascript" src="{{ asset('vendor/histream/js/jquery-3.4.1.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('vendor/histream/js/bootstrap.min.js') }}"></script>    
     <script>
         @if(session('greetings_histream'))
             $(document).ready(function(){
