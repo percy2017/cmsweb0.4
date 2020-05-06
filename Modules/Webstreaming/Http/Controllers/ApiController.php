@@ -15,7 +15,7 @@ class ApiController extends Controller
         $server = setting('histream.server');
         $meeting = Meeting::where('slug', $request->slug)->where('deleted_at', null)->first();
         if($meeting){
-            return response(['data' => ['server' => $server, 'name' => $meeting->name]]);
+            return response(['data' => ['server' => $server,  'id' => $meeting->id, 'name' => $meeting->name, 'start' => $meeting->start, 'finish' => $meeting->finish]]);
         }else{
             return response(['data' => ['error' => 'not found']]);
         }

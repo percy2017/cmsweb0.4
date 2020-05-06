@@ -73,7 +73,7 @@
                     let enable_alert = true;
                     let alert_finish = false;
                     let min_finish, sec_finish;
-                    setInterval(() => {
+                    let getFinishMeet = setInterval(() => {
                         var date = new Date();
                         var finish = new Date({{ date("Y, m, d, H, i, s", strtotime($meeting->day.' '.$meeting->finish)) }});
                         // Quitar 1 mes de la fecha generada en javascript
@@ -86,12 +86,14 @@
                             alert_finish = true
                             enable_alert =  false;
                         }
-                        if(sec_finish <= 20){
+                        if(sec_finish <= 60){
                             $('#countdown_message').css('display', 'block')
                             $('#message_finish').text(`Tu reunión finalizará en ${sec_finish >= 0 ? sec_finish : 0} segundos.`)
                         }
                         if(sec_finish<0){
-                            window.location = '{{ url("conferencia/".$meeting->slug) }}/finish'
+                            $('#countdown_message').css('display', 'none')
+                            clearInterval(getFinishMeet);
+                            window.location = '{{ url("conferencia/".$meeting->slug) }}/finish';
                         }
 
                         if(alert_finish){
@@ -100,7 +102,7 @@
                                 icon: 'warning',
                                 title: 'Advertencia',
                                 text: 'Te quedan 5 minutos antes de que se acabe el tiempo de tu reunión!',
-                                footer: '<a href="https://histream.loginweb.dev">Por qué ocurre esto?</a>'
+                                footer: '<a href="https://histream.loginweb.dev" target="_blank">Por qué ocurre esto?</a>'
                             })
 
                         }
@@ -194,7 +196,7 @@
                 var days, hours, minutes, seconds, diff;
                 $(document).ready(function(){
                 @if($error == 'not_start')
-                    setInterval(() => {
+                    let getStarthMeet = setInterval(() => {
                         var date = new Date();
                         var start = new Date({{ date("Y, m, d, H, i, s", strtotime($meeting->day.' '.$meeting->start)) }});
                         // Quitar 1 mes de la fecha generada en javascript
@@ -210,6 +212,7 @@
                             <h3>${days ? (days == 1 ? days+'<small>día </small> ' : days+'<small>días </small> ') : ''} ${hours+'<small>h </small>'} : ${minutes+'<small>m </small>'} : ${seconds+'<small>s </small>'}</h3>
                         `);
                         if(diff<0){
+                            clearInterval(getStarthMeet);
                             window.location = '{{ url("conferencia/".$meeting->slug) }}'
                         }
                     }, 300);
