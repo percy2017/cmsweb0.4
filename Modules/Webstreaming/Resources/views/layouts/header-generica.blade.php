@@ -1,0 +1,1 @@
+@include('webstreaming::layouts.navbar')

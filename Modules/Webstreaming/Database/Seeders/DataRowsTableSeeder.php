@@ -29,7 +29,7 @@ class DataRowsTableSeeder extends Seeder
         $dataRow = $this->dataRow($ChatDataType, 'id');
         if (!$dataRow->exists) {
             $dataRow->fill([
-                'type'         => 'number',
+                'type'         => 'date',
                 'display_name' => __('voyager::seeders.data_rows.id'),
                 'required'     => 1,
                 'browse'       => 1,
@@ -84,15 +84,15 @@ class DataRowsTableSeeder extends Seeder
                 'delete'       => 0,
                 'order'        => $postion++,
                 'details'      => [
-                    'display'   => [
-                        'options' => [
-                            'option1' => 'Privado',
-                            'option2' => 'publico'
-                        ],
-                        'display'   => [
-                            'width'  => '6',
-                        ]
+
+                    'options' => [
+                        'option1' => 'Privado',
+                        'option2' => 'publico'
                     ],
+                    'display'   => [
+                        'width'  => '6',
+                    ]
+
                 ]
             ])->save();
         }
@@ -177,7 +177,7 @@ class DataRowsTableSeeder extends Seeder
                     'pivot_table' => 'hs_meetings',
                     'pivot'       => 0,
                 ],
-                'order'=> $postion++,
+                'order' => $postion++,
 
             ])->save();
         }
@@ -418,14 +418,14 @@ class DataRowsTableSeeder extends Seeder
                 ]
             ])->save();
         }
-        
+
 
         /**
          * ---------------------------------------------------------------------------
          *          Reuniones - FORMULARIO
          * --------------------------------------------------------------------------
          */
-        
+
         $dataRow = $this->dataRow($MeetingDataType, 'id');
         if (!$dataRow->exists) {
             $dataRow->fill([
@@ -459,9 +459,9 @@ class DataRowsTableSeeder extends Seeder
                 'delete'       => 0,
                 'order'        => $postion++,
                 'details'      => [
-                    'options'=>[
-                        'option1'=>'Conferencia',
-                        'option2'=>'Video blog'
+                    'options' => [
+                        'option1' => 'Conferencia',
+                        'option2' => 'Video blog'
                     ],
                     'display'   => [
                         'width'  => '6',
@@ -558,9 +558,9 @@ class DataRowsTableSeeder extends Seeder
                 'delete'       => 0,
                 'order'        => $postion++,
                 'details'      => [
-                    'options'=>[
-                        'option1'=>'Conferencia',
-                        'option2'=>'Video blog'
+                    'options' => [
+                        'option1' => 'Conferencia',
+                        'option2' => 'Video blog'
                     ],
                     'display'   => [
                         'width'  => '6',
@@ -692,7 +692,7 @@ class DataRowsTableSeeder extends Seeder
          *          plan-user - FORMULARIO
          * --------------------------------------------------------------------------
          */
-        
+
         $dataRow = $this->dataRow($PlanUserDataType, 'id');
         if (!$dataRow->exists) {
             $dataRow->fill([
@@ -712,7 +712,7 @@ class DataRowsTableSeeder extends Seeder
                 'order' => $postion++,
             ])->save();
         }
-   /*      $dataRow = $this->dataRow($PlanUserDataType, 'plan_belongsto_user_relationship');
+        /*      $dataRow = $this->dataRow($PlanUserDataType, 'plan_belongsto_user_relationship');
         if (!$dataRow->exists) {
             $dataRow->fill([
                 'type'         => 'relationship',
@@ -883,15 +883,12 @@ class DataRowsTableSeeder extends Seeder
                 ]
             ])->save();
         }
-
-
-
     }
-   
 
 
-    
-     /**
+
+
+    /**
      * [dataRow description].
      *
      * @param [type] $type  [description]

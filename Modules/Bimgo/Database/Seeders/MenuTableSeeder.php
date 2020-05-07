@@ -79,8 +79,7 @@ class MenuTableSeeder extends Seeder
                 'order'      => $postion++,
             ])->save();
         }
-
-        $menuItem = MenuItem::firstOrNew([
+      $menuItem = MenuItem::firstOrNew([
             'menu_id' => $menu->id,
             'title'   => 'Clientes',
             'url'     => '',
@@ -111,5 +110,90 @@ class MenuTableSeeder extends Seeder
                 'order'      => $postion++,
             ])->save();
         }
+
+            
+        /**
+         ********************************************
+         *      menu Navbar - Landing page Bimgo 
+         ********************************************
+        */
+
+        Menu::firstOrCreate([
+            'name' => 'LandingPageBimgo',
+        ]);
+        $menu = Menu::where('name', 'LandingPageBimgo')->firstOrFail();
+
+        /** title 1 */
+        $menuItem = MenuItem::firstOrNew([
+            'menu_id' => $menu->id,
+            'title'   => 'About Us',
+            'url'     => '#1',
+            'route'   => null,
+        ]);
+        if (!$menuItem->exists) {
+            $menuItem->fill([
+                'target'     => '_self',
+                'icon_class' => null,
+                'color'      => null,
+                'parent_id'  => null,
+                'order'      => 1,
+            ])->save();
+        }  
+        
+        /** title 2 */
+        $menuItem = MenuItem::firstOrNew([
+            'menu_id' => $menu->id,
+            'title'   => 'Article',
+            'url'     => '#2',
+            'route'   => null,
+        ]);
+        if (!$menuItem->exists) {
+            $menuItem->fill([
+                'target'     => '_self',
+                'icon_class' => null,
+                'color'      => null,
+                'parent_id'  => null,
+                'order'      => 2,
+            ])->save();
+        }  
+        
+        /** title 3 */
+        $menuItem = MenuItem::firstOrNew([
+            'menu_id' => $menu->id,
+            'title'   => 'Memberships',
+            'url'     => '#3',
+            'route'   => null,
+        ]);
+        if (!$menuItem->exists) {
+            $menuItem->fill([
+                'target'     => '_self',
+                'icon_class' => null,
+                'color'      => null,
+                'parent_id'  => null,
+                'order'      => 3,
+            ])->save();
+        }   
+
+        /** title 4 */
+        $ /** title 4 */
+        $menuItem = MenuItem::firstOrNew([
+            'menu_id' => $menu->id,
+            'title'   => 'Contant Us',
+            'url'     => '#4',
+            'route'   => null,
+        ]);
+        if (!$menuItem->exists) {
+            $menuItem->fill([
+                'target'     => '_self',
+                'icon_class' => null,
+                'color'      => null,
+                'parent_id'  => null,
+                'order'      => 4,
+            ])->save();
+        }   
+
+      
+
+
     }
 }
