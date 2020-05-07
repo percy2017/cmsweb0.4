@@ -22,6 +22,8 @@ class PermissionsTableSeeder extends Seeder
         Permission::generateFor('bg_branch_offices');
         Permission::generateFor('bg_product_offices');
         Permission::generateFor('bg_transfers');
+        Permission::generateFor('bg_customers');
+        Permission::generateFor('bg_cashes');
 
         $role = Role::where('name', 'admin')->firstOrFail();
 
@@ -82,7 +84,33 @@ class PermissionsTableSeeder extends Seeder
 
          //--------------------------------------------------------------------------------
        
+        $permissions = Permission::where('table_name', 'bg_customers')->get();
+        foreach ($permissions as $key) {
+            $rp = DB::table('permission_role')->where('permission_id', $key->id)->first();
+            if (!$rp) {
+                DB::table('permission_role')->insert([
+                    'permission_id' => $key->id, 
+                    'role_id' => $role->id
+                ]);
+            }
+        }
+
+        //--------------------------------------------------------------------------------
+       
         $permissions = Permission::where('table_name', 'bg_transfers')->get();
+        foreach ($permissions as $key) {
+            $rp = DB::table('permission_role')->where('permission_id', $key->id)->first();
+            if (!$rp) {
+                DB::table('permission_role')->insert([
+                    'permission_id' => $key->id, 
+                    'role_id' => $role->id
+                ]);
+            }
+        }
+
+        //--------------------------------------------------------------------------------
+       
+        $permissions = Permission::where('table_name', 'bg_cashes')->get();
         foreach ($permissions as $key) {
             $rp = DB::table('permission_role')->where('permission_id', $key->id)->first();
             if (!$rp) {

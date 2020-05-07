@@ -155,6 +155,53 @@ class DataTypeTableSeeder extends Seeder
         }
 
 
+        $dataType = $this->dataType('slug', 'bg_customers');
+        if (!$dataType->exists) {
+            $dataType->fill([
+                'name'                  => 'bg_customers',
+                'display_name_singular' => 'Cliente',
+                'display_name_plural'   => 'Clientes',
+                'icon'                  => 'voyager-play',
+                'model_name'            => 'Modules\\Bimgo\\Entities\\BgCustomer',
+                'policy_name'           => null,
+                'controller'            => 'Modules\\Bimgo\\Http\\Controllers\\CustomerController',
+                'generate_permissions'  => 1,
+                'description'           => null,
+                'server_side'           => 1,
+                'details'               => [
+                    'order_column'         => 'id',
+                    'order_display_column' => 'id',
+                    'order_direction'      => 'asc',
+                    'default_search_key'   => 'id',
+                    'scope'                => null
+                ]
+            ])->save();
+        }
+
+        $dataType = $this->dataType('slug', 'bg_cashes');
+        if (!$dataType->exists) {
+            $dataType->fill([
+                'name'                  => 'bg_cashes',
+                'display_name_singular' => 'Caja',
+                'display_name_plural'   => 'Cajas',
+                'icon'                  => 'voyager-play',
+                'model_name'            => 'Modules\\Bimgo\\Entities\\BgCash',
+                'policy_name'           => null,
+                'controller'            => 'Modules\\Bimgo\\Http\\Controllers\\CaschController',
+                'generate_permissions'  => 1,
+                'description'           => null,
+                'server_side'           => 1,
+                'details'               => [
+                    'order_column'         => 'id',
+                    'order_display_column' => 'id',
+                    'order_direction'      => 'asc',
+                    'default_search_key'   => 'id',
+                    'scope'                => null
+                ]
+            ])->save();
+        }
+
+
 
 
     }
