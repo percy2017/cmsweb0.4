@@ -124,18 +124,18 @@
                                                     @endforeach
                                                 </select>
                                             </div>
-                                        @break
+                                            @break
                                         @case('space')
                                             <div class="col-md-12">
                                                 <hr />
                                             </div>
-                                        @break
+                                            @break
                                         @case('number')
                                             <div class="form-group col-md-{{ $value['width'] }}">
                                                 <label>{{ $value['label'] }}</label>
                                                 <input type="number" class="form-control" name="{{ $value['name'] }}"  placeholder="" value="{{ $value['value'] }}">
                                             </div>
-                                        @break
+                                            @break
                                     @endswitch
                                     {{-- {{ dd($value['type']) }} --}}
                                 @endforeach

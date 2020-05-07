@@ -128,7 +128,7 @@ return [
         // Add custom list items to navbar's dropdown
         'navbar_items' => [
             'voyager::generic.profile' => [
-                'route'      => 'voyager.profile',
+                'route'      => '/home',
                 'classes'    => 'class-full-of-rum',
                 'icon_class' => 'voyager-person',
             ],

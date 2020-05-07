@@ -25,7 +25,6 @@ class PageTableSeeder extends Seeder
             'direction'   =>  'webstreaming::index',
             'description' =>  'Pagina de destino de HiStream.',
             'details'     =>   json_encode([
-
                 'imagen' => [
                     'type'   => 'image',
                     'name'   => 'imagen',
@@ -33,8 +32,6 @@ class PageTableSeeder extends Seeder
                     'value'  => 'image1.png',
                     'width'  => 12
                 ],
-
-
                 'title_strong' => [
                     'type'   => 'text',
                     'name'   => 'title_strong',
@@ -42,7 +39,6 @@ class PageTableSeeder extends Seeder
                     'value'  => 'Histream',
                     'width'  => 6
                 ],
-
                 'parrafo_h6' => [
                     'type'   => 'text_area',
                     'name'   => 'parrafo_h6',
@@ -50,7 +46,6 @@ class PageTableSeeder extends Seeder
                     'value'  => 'Nos gustaria que cualquier persona que va de un lado para otro lo utilice. Estamos en todas partes, asi que es muy importante tener una forma sencilla de realizar reuniones sobre la marcha',
                     'width'  => 6
                 ],
-
                 'btn_1' => [
                     'type'   => 'text',
                     'name'   => 'btn_1',
@@ -58,7 +53,6 @@ class PageTableSeeder extends Seeder
                     'value'  => 'Probar Demo',
                     'width'  => 3
                 ],
-
                 'btn_action_1' => [
                     'type'   => 'text',
                     'name'   => 'btn_action_1',
@@ -66,9 +60,6 @@ class PageTableSeeder extends Seeder
                     'value'  => 'https://live.loginweb.dev/demo',
                     'width'  => 3
                 ],
-
-
-
                 'btn_2' => [
                     'type'   => 'text',
                     'name'   => 'btn_2',
@@ -76,7 +67,6 @@ class PageTableSeeder extends Seeder
                     'value'  => 'Mas Informacion',
                     'width'  => 3
                 ],
-
                 'btn_action_2' => [
                     'type'   => 'text',
                     'name'   => 'btn_action_2',
@@ -96,7 +86,6 @@ class PageTableSeeder extends Seeder
             'page_id'     => $page->id,
             'position'    => 1,
             'details'     => json_encode([
-
                 'title_h3' => [
                     'type'   => 'text',
                     'name'   => 'title_h3',
@@ -104,7 +93,6 @@ class PageTableSeeder extends Seeder
                     'value'  => 'Reuniones de Histream.',
                     'width'  => 6
                 ],
-
                 'imagen_bl1' => [
                     'type'   => 'image',
                     'name'   => 'imagen_bl1',
@@ -112,7 +100,6 @@ class PageTableSeeder extends Seeder
                     'value'  => 'image3.png',
                     'width'  => 6
                 ],
-
                 'parrafo_1' => [
                     'type'   => 'rich_text_box',
                     'name'   => 'parrafo_1',
@@ -132,8 +119,6 @@ class PageTableSeeder extends Seeder
             'page_id'     => $page->id,
             'position'    => 1,
             'details'     => json_encode([
-
-          
                 'imagen_bl2' => [
                     'type'   => 'image',
                     'name'   => 'imagen_bl2',
@@ -177,8 +162,6 @@ class PageTableSeeder extends Seeder
                     'value'  => 'Editar documentos juntos usando Etherpad.',
                     'width'  => 6
                 ],
-
-
                 'icons2' => [
                     'type'   => 'select_dropdown',
                     'name'   => 'icons2',
@@ -200,8 +183,6 @@ class PageTableSeeder extends Seeder
                     'value'  => 'No se requiere incorporación ni capacitación. Comience y únase a las reuniones en segundos.',
                     'width'  => 6
                 ],
-
-
                 'icons3' => [
                     'type'   => 'select_dropdown',
                     'name'   => 'icons3',
@@ -223,8 +204,6 @@ class PageTableSeeder extends Seeder
                     'value'  => 'Intercambie mensajes de texto instantáneos durante la llamada.',
                     'width'  => 6
                 ],
-
-
                 'icons4' => [
                     'type'   => 'select_dropdown',
                     'name'   => 'icons4',
@@ -246,8 +225,6 @@ class PageTableSeeder extends Seeder
                     'value'  => 'Todas las características que necesita a una fracción del precio de la competencia. Hacemos que sea asequible para todo su equipo organizar grandes reuniones en línea.',
                     'width'  => 6
                 ],
-
-
                 'icons5' => [
                     'type'   => 'select_dropdown',
                     'name'   => 'icons5',
@@ -269,8 +246,6 @@ class PageTableSeeder extends Seeder
                     'value'  => 'Grabe algunas reuniones o todas: con capacidades ilimitadas de almacenamiento de grabación y uso compartido, nadie tiene que perderse una reunión',
                     'width'  => 6
                 ],
-
-
                 'icons6' => [
                     'type'   => 'select_dropdown',
                     'name'   => 'icons6',
@@ -303,7 +278,6 @@ class PageTableSeeder extends Seeder
             'page_id'     => $page->id,
             'position'    => 1,
             'details'     => json_encode([
-
                 'title_strong' => [
                     'type'   => 'text',
                     'name'   => 'title_strong',
@@ -311,7 +285,6 @@ class PageTableSeeder extends Seeder
                     'value'  => 'Video Tutorial',
                     'width'  => 6
                 ],
-
                 'parrafo_p' => [
                     'type'   => 'text_area',
                     'name'   => 'parrafo_p',
@@ -319,7 +292,6 @@ class PageTableSeeder extends Seeder
                     'value'  => 'Mira como puedes Configurar y crear tus Reuniones.',
                     'width'  => 6
                 ],
-
                 'urlvideo_1' => [
                     'type'   => 'text',
                     'name'   => 'urlvideo_1',
@@ -327,7 +299,6 @@ class PageTableSeeder extends Seeder
                     'value'  => 'https://www.youtube.com/embed/A3PDXmYoF5U',
                     'width'  => 6
                 ],
-
                 'imagen_1' => [
                     'type'   => 'image',
                     'name'   => 'imagen_1',
@@ -335,7 +306,6 @@ class PageTableSeeder extends Seeder
                     'value'  => 'image41.jpg',
                     'width'  => 6
                 ],
-
                 'urlvideo_2' => [
                     'type'   => 'text',
                     'name'   => 'urlvideo_2',
@@ -343,7 +313,6 @@ class PageTableSeeder extends Seeder
                     'value'  => 'https://www.youtube.com/embed/wTcNtgA6gHs',
                     'width'  => 6
                 ],
-
                 'imagen_2' => [
                     'type'   => 'image',
                     'name'   => 'imagen_2',
@@ -351,7 +320,6 @@ class PageTableSeeder extends Seeder
                     'value'  => 'image42.jpg',
                     'width'  => 6
                 ],
-
                 'urlvideo_3' => [
                     'type'   => 'text',
                     'name'   => 'urlvideo_3',
@@ -359,7 +327,6 @@ class PageTableSeeder extends Seeder
                     'value'  => 'https://www.youtube.com/embed/vlDzYIIOYmM',
                     'width'  => 6
                 ],
-
                 'imagen_3' => [
                     'type'   => 'image',
                     'name'   => 'imagen_3',
@@ -377,7 +344,6 @@ class PageTableSeeder extends Seeder
             'page_id'     => $page->id,
             'position'    => 1,
             'details'     => json_encode([
-
                 'imagen' => [
                     'type'   => 'image',
                     'name'   => 'imagen',
@@ -385,8 +351,6 @@ class PageTableSeeder extends Seeder
                     'value'  => 'image5.jpg',
                     'width'  => 12
                 ],
-
-
                 'title_strong' => [
                     'type'   => 'text',
                     'name'   => 'title_strong',
@@ -394,7 +358,6 @@ class PageTableSeeder extends Seeder
                     'value'  => 'Algunos hechos sobre nosotros',
                     'width'  => 12
                 ],
-
                 'title_1' => [
                     'type'   => 'text',
                     'name'   => 'title_1',
@@ -402,7 +365,6 @@ class PageTableSeeder extends Seeder
                     'value'  => '+950',
                     'width'  => 3
                 ],
-
                 'title_2' => [
                     'type'   => 'text',
                     'name'   => 'title_2',
@@ -410,7 +372,6 @@ class PageTableSeeder extends Seeder
                     'value'  => '+150',
                     'width'  => 3
                 ],
-
                 'title_3' => [
                     'type'   => 'text',
                     'name'   => 'title_3',
@@ -418,7 +379,6 @@ class PageTableSeeder extends Seeder
                     'value'  => '+85',
                     'width'  => 3
                 ],
-
                 'title_4' => [
                     'type'   => 'text',
                     'name'   => 'title_4',
@@ -426,8 +386,6 @@ class PageTableSeeder extends Seeder
                     'value'  => '+246',
                     'width'  => 3
                 ],
-
-
                 'parrafo_1' => [
                     'type'   => 'text',
                     'name'   => 'parrafo_1',
@@ -435,7 +393,6 @@ class PageTableSeeder extends Seeder
                     'value'  => 'Conferencias',
                     'width'  => 3
                 ],
-
                 'parrafo_2' => [
                     'type'   => 'text',
                     'name'   => 'parrafo_2',
@@ -443,7 +400,6 @@ class PageTableSeeder extends Seeder
                     'value'  => 'Proyectos completados',
                     'width'  => 3
                 ],
-
                 'parrafo_3' => [
                     'type'   => 'text',
                     'name'   => 'parrafo_3',
@@ -451,7 +407,6 @@ class PageTableSeeder extends Seeder
                     'value'  => 'Reuniones',
                     'width'  => 3
                 ],
-
                 'parrafo_4' => [
                     'type'   => 'text',
                     'name'   => 'parrafo_4',
@@ -459,12 +414,8 @@ class PageTableSeeder extends Seeder
                     'value'  => 'Usuarios',
                     'width'  => 3
                 ],
-
-
-
             ])
         ]);
-
         /** block 5 */
         Block::create([
             'name'        => 'lphs_block5',
@@ -473,7 +424,6 @@ class PageTableSeeder extends Seeder
             'page_id'     => $page->id,
             'position'    => 1,
             'details'     => json_encode([
-
                 'title_strong' => [
                     'type'   => 'text',
                     'name'   => 'title_strong',
@@ -481,7 +431,6 @@ class PageTableSeeder extends Seeder
                     'value'  => 'Beneficios de las videoconferencias',
                     'width'  => 12
                 ],
-
                 'title_strong_1' => [
                     'type'   => 'text',
                     'name'   => 'title_strong_1',
@@ -489,7 +438,6 @@ class PageTableSeeder extends Seeder
                     'value'  => 'FÁCIL DE USAR',
                     'width'  => 3
                 ],
-
                 'parrafo_1' => [
                     'type'   => 'text_area',
                     'name'   => 'parrafo_1',
@@ -497,7 +445,6 @@ class PageTableSeeder extends Seeder
                     'value'  => 'No se requiere incorporación ni capacitación. Comience y únase a las reuniones en segundos.',
                     'width'  => 9
                 ],
-                
                 'title_strong_2' => [
                     'type'   => 'text',
                     'name'   => 'title_strong_2',
@@ -505,7 +452,6 @@ class PageTableSeeder extends Seeder
                     'value'  => 'VALOR EXCEPCIONAL',
                     'width'  => 3
                 ],
-
                 'parrafo_2' => [
                     'type'   => 'text_area',
                     'name'   => 'parrafo_2',
@@ -513,7 +459,6 @@ class PageTableSeeder extends Seeder
                     'value'  => 'Todas las características que necesita a una fracción del precio de la competencia. Hacemos que sea asequible para todo su equipo organizar grandes reuniones en línea.',
                     'width'  => 9
                 ],
-
                 'title_strong_3' => [
                     'type'   => 'text',
                     'name'   => 'title_strong_3',
@@ -521,7 +466,6 @@ class PageTableSeeder extends Seeder
                     'value'  => 'MARCA',
                     'width'  => 3
                 ],
-
                 'parrafo_3' => [
                     'type'   => 'text_area',
                     'name'   => 'parrafo_3',
@@ -529,7 +473,6 @@ class PageTableSeeder extends Seeder
                     'value'  => 'Uso compartido de pantalla, opciones de audio integradas y cámaras de vídeo HD, transcripción de reuniones y mucho más.',
                     'width'  => 9
                 ],
-
                 'title_strong_4' => [
                     'type'   => 'text',
                     'name'   => 'title_strong_4',
@@ -537,7 +480,6 @@ class PageTableSeeder extends Seeder
                     'value'  => 'CONOZCA EN CUALQUIER LUGAR',
                     'width'  => 3
                 ],
-
                 'parrafo_4' => [
                     'type'   => 'text_area',
                     'name'   => 'parrafo_4',
@@ -545,9 +487,6 @@ class PageTableSeeder extends Seeder
                     'value'  => 'Organice y únase a las reuniones dondequiera que vaya con las aplicaciones de escritorio y móviles de AnyMeeting.',
                     'width'  => 9
                 ],
-
-                
-
             ])
         ]);
 
@@ -559,7 +498,6 @@ class PageTableSeeder extends Seeder
                 'page_id'     => $page->id,
                 'position'    => 1,
                 'details'     => json_encode([
-                    
                     'title_h3' => [
                         'type'   => 'text',
                         'name'   => 'title_h3',
@@ -672,7 +610,6 @@ class PageTableSeeder extends Seeder
                         'value'  => '100',
                         'width'  => 6
                     ], 
-                   
                     /**contenido del plan 2 */
                     'pricing2_content1' => [
                         'type'   => 'text',
@@ -827,7 +764,6 @@ class PageTableSeeder extends Seeder
                         'value'  => 'Forma de pago',
                         'width'  => 6
                     ],
-    
                     'image1'=> [
                         'type'   => 'image',
                         'name'   => 'image1',
@@ -849,7 +785,6 @@ class PageTableSeeder extends Seeder
                         'value'  => 'default3.png',
                         'width'  => 4
                     ],
-    
                     'title1' => [
                         'type'   => 'text',
                         'name'   => 'title1',
@@ -871,7 +806,6 @@ class PageTableSeeder extends Seeder
                         'value'  => 'Banco Union',
                         'width'  => 4
                     ],
-    
                     'account1' => [
                         'type'   => 'text',
                         'name'   => 'account1',

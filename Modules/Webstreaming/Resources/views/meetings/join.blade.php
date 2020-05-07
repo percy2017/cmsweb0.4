@@ -72,17 +72,19 @@
                     $.get('{{ url("conferencia/join/increment/".$meeting->id) }}');
                     let enable_alert = true;
                     let alert_finish = false;
-                    let min_finish, sec_finish;
+                    let hour_finish, min_finish, sec_finish;
                     let getFinishMeet = setInterval(() => {
                         var date = new Date();
                         var finish = new Date({{ date("Y, m, d, H, i, s", strtotime($meeting->day.' '.$meeting->finish)) }});
                         // Quitar 1 mes de la fecha generada en javascript
                         let aux = finish.getMonth()-1;
                         finish.setMonth(aux)
+
+                        hour_finish = parseInt((finish-date)/(1000*60*60));
                         min_finish = parseInt((finish-date)/(1000*60)%60);
                         sec_finish = parseInt((finish-date)/1000);
 
-                        if(min_finish == 5 && enable_alert){
+                        if(hour_finish == 0 && min_finish == 5 && enable_alert){
                             alert_finish = true
                             enable_alert =  false;
                         }
@@ -111,7 +113,7 @@
                 
                 const domain = "{{ str_replace('https://', '', setting('histream.server')) }}";
                 const options = {
-                    roomName: '{{ $meeting->name }}',
+                    roomName: '{{ $meeting->slug }}',
                     // width: screen.width,
                     height: screen.height-100,
                     parentNode: document.querySelector('#meet'),
@@ -126,16 +128,22 @@
                 let maxParticipants = '{{ $plan_user->status }}' == 1 ? '{{ $plan_user->max_person }}' : '{{ $plan_free->max_person }}';
                 const api = new JitsiMeetExternalAPI(domain, options);
                 api.addEventListener('participantJoined', res=>{
+                    // Update numbre of participants
+                    $.get('{{ url("conferencia/join/update_active/".$meeting->id) }}/'+api.getNumberOfParticipants());
                     setTimeout(() => {
-                        let numberOfParticipants = api.getNumberOfParticipants();
-                        if(newParticipant && numberOfParticipants > maxParticipants){
+                        if(newParticipant && api.getNumberOfParticipants() > maxParticipants){
                             api.dispose();
-                            $.get('{{ url("conferencia/join/reject/".$meeting->id) }}');
                             window.location = '{{ url("conferencia/".$meeting->slug."/max_participants") }}'
                         }
                         newParticipant = false;
                     }, 1000);
                 });
+
+                @if(Auth::user())
+                    setInterval(() => {
+                        $.get('{{ url("conferencia/join/update_active/".$meeting->id) }}/'+api.getNumberOfParticipants());
+                    }, 60000);
+                @endif
 
                 // Deshabilitar que se es nuevo participante en caso de ser el moderador
                 setTimeout(() => {
@@ -195,28 +203,31 @@
             <script>
                 var days, hours, minutes, seconds, diff;
                 $(document).ready(function(){
-                @if($error == 'not_start')
-                    let getStarthMeet = setInterval(() => {
-                        var date = new Date();
-                        var start = new Date({{ date("Y, m, d, H, i, s", strtotime($meeting->day.' '.$meeting->start)) }});
-                        // Quitar 1 mes de la fecha generada en javascript
-                        let aux = start.getMonth()-1;
-                        start.setMonth(aux)
-                        diff = start-date;
-                        days = parseInt(diff/(1000*60*60*24));
-                        hours = parseInt(diff/(1000*60*60)%24).toString().padStart(2, 0);
-                        minutes = parseInt(diff/(1000*60)%60).toString().padStart(2, 0);
-                        seconds = parseInt(diff/(1000)%60).toString().padStart(2, 0);
-                        $('#counter').html(`
-                            <h5>Inicia en</h5>
-                            <h3>${days ? (days == 1 ? days+'<small>día </small> ' : days+'<small>días </small> ') : ''} ${hours+'<small>h </small>'} : ${minutes+'<small>m </small>'} : ${seconds+'<small>s </small>'}</h3>
-                        `);
-                        if(diff<0){
-                            clearInterval(getStarthMeet);
-                            window.location = '{{ url("conferencia/".$meeting->slug) }}'
-                        }
-                    }, 300);
-                @endif
+                    @if($error == 'not_start')
+                        let getStarthMeet = setInterval(() => {
+                            var date = new Date();
+                            var start = new Date({{ date("Y, m, d, H, i, s", strtotime($meeting->day.' '.$meeting->start)) }});
+                            // Quitar 1 mes de la fecha generada en javascript
+                            let aux = start.getMonth()-1;
+                            start.setMonth(aux)
+                            diff = start-date;
+                            days = parseInt(diff/(1000*60*60*24));
+                            hours = parseInt(diff/(1000*60*60)%24).toString().padStart(2, 0);
+                            minutes = parseInt(diff/(1000*60)%60).toString().padStart(2, 0);
+                            seconds = parseInt(diff/(1000)%60).toString().padStart(2, 0);
+                            $('#counter').html(`
+                                <h5>Inicia en</h5>
+                                <h3>${days ? (days == 1 ? days+'<small>día </small> ' : days+'<small>días </small> ') : ''} ${hours+'<small>h </small>'} : ${minutes+'<small>m </small>'} : ${seconds+'<small>s </small>'}</h3>
+                            `);
+                            if(diff<0){
+                                clearInterval(getStarthMeet);
+                                window.location = '{{ url("conferencia/".$meeting->slug) }}'
+                            }
+                        }, 300);
+                    @endif
+                    @if($error == 'max_participants')
+                        $.get('{{ url("conferencia/join/reject/".$meeting->id) }}');
+                    @endif
                 });
             </script>
         @endif

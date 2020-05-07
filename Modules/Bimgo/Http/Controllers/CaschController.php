@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Inti\Http\Controllers;
+namespace Modules\Bimgo\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -13,9 +13,9 @@ use Illuminate\Support\Str;
 use Carbon\Carbon;
 use Validator;
 
-class CoursesController extends Controller
+class CaschController extends Controller
 {
-    public $table = 'inti_courses';
+    public $table = 'bg_cashes';
     public $dataType;
     public $dataRowsAdd;
     public $dataRowsEdit;
@@ -35,7 +35,7 @@ class CoursesController extends Controller
 
     public function index()
     {
-        return view('inti::bread.index', [
+        return view('bimgo::bread.index', [
             'dataType' =>  $this->dataType,
             'menuItems' => $this->menuItems
         ]);
@@ -43,7 +43,7 @@ class CoursesController extends Controller
 
     public function create()
     {
-        return view('inti::bread.create', [
+        return view('bimgo::bread.create', [
             'dataType' => $this->dataType,
             'dataRows'=>$this->dataRowsAdd
         ]); 
@@ -76,18 +76,6 @@ class CoursesController extends Controller
                     if($request->hasFile($aux)){
                         $image=Storage::disk('public')->put($this->dataType->name.'/'.date('F').date('Y'), $request->file($aux));
                         $data->$aux = $image;
-                    }
-                    break;
-                case 'multiple_images':
-                    $image_array = array();
-                    if($request->hasFile($aux)){
-                        foreach($request->file($aux) as $image)
-                        {
-                            $array = Storage::disk('public')->put('products/'.date('F').date('Y'), $image);
-                            array_push($image_array, $array);
-                        }
-                        // return $image_array;
-                        $data->$aux = json_encode($image_array);
                     }
                     break;
                 case 'relationship':
@@ -135,7 +123,7 @@ class CoursesController extends Controller
     public function show($id = null)
     {
         $dataTypeContent = $this->dataType->model_name::orderBy($this->dataType->details->{'order_column'}, $this->dataType->details->{'order_direction'})->paginate(setting('admin.pagination')); 
-        return view('inti::bread.show', [
+        return view('bimgo::bread.show', [
             'dataType' =>  $this->dataType,
             'dataTypeContent' => $dataTypeContent
         ]);
@@ -144,7 +132,7 @@ class CoursesController extends Controller
     public function edit($id)
     {
         $data = $this->dataType->model_name::find($id);
-        return view('inti::bread.edit', [
+        return view('bimgo::bread.edit', [
             'dataType' => $this->dataType,
             'dataRows'=> $this->dataRowsEdit,
             'data' => $data
@@ -184,17 +172,6 @@ class CoursesController extends Controller
                         }
                     }
                     break;
-                case 'multiple_images':
-                    $image_array = array();
-                    if($request->hasFile($aux)){
-                        foreach($request->file($aux) as $image)
-                        {
-                            $array = Storage::disk('public')->put('products/'.date('F').date('Y'), $image);
-                            array_push($image_array, $array);
-                        }
-                        $data->$aux = json_encode($image_array);
-                    }
-                    break;
                 case 'checkbox':
                     $data->$aux = $request->$aux ? 1 : 0;
                     break;  
@@ -204,12 +181,6 @@ class CoursesController extends Controller
                 case 'Slug':
                     $myslug = $key->details->slugify->{'origin'};
                     $data->$aux = Str::slug($request->$myslug);
-                    break; 
-                case 'select_multiple':
-                    return $aux;
-                    if($request->input($aux)){
-                        $data->$aux = json_encode($aux);
-                    }
                     break; 
                 default:
                     $data->$aux = $request->$aux;
