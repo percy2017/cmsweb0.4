@@ -739,7 +739,7 @@ class DataRowsTableSeeder extends Seeder
                 'delete'       => 0,
                 'details'      => [
                     'slugify' => [
-                        'origin' => 'title',
+                        'origin' => 'full_name',
                         'forceUpdate' => true
                     ],
                     'display' => [

@@ -276,7 +276,6 @@
                                     @endswitch        
                                 </div>
                             @endforeach
-                            
                         </div>
                         <div class="form-group text-center">
                             <hr/>

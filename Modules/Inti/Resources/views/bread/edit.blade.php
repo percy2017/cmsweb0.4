@@ -268,6 +268,42 @@
                                             <input type="hidden" id="latitud" name="latitud" value="{{ $data->latitud }}" />
                                             <input type="hidden" id="longitud" name="longitud" value="{{ $data->longitud }}" />
                                             @break
+                                        @case('file')
+                                            <label class="control-label" for="{{ $row->field }}">{{ $row->display_name }}</label>
+                                            @if(isset($row->details->tooltip))
+                                                <span class="voyager-question"
+                                                aria-hidden="true"
+                                                data-toggle="tooltip"
+                                                data-placement="{{ $row->details->tooltip->{'ubication'} }}"
+                                                title="{{ $row->details->tooltip->{'message'} }}"></span>
+                                            @endif
+                                            <a href="{{ Voyager::Image($data->$myfield) }}" target="_blank">Click para ver el Doc</a>
+                                            <input 
+                                                type="file" 
+                                                name="{{ $row->field }}" 
+                                                id="{{ $row->field }}" 
+                                                accept=".pdf, .docx">
+                                            @break 
+                                        @case('select_multiple')
+                                            <label class="control-label" for="{{ $row->field }}">{{ $row->display_name }}</label>
+                                            @if(isset($row->details->tooltip))
+                                                <span class="voyager-question"
+                                                aria-hidden="true"
+                                                data-toggle="tooltip"
+                                                data-placement="{{ $row->details->tooltip->{'ubication'} }}"
+                                                title="{{ $row->details->tooltip->{'message'} }}"></span>
+                                            @endif
+                                            {{ $data->$myfield }}
+                                            <select 
+                                                class="form-control select2" 
+                                                name="{{ $row->field }}[]" 
+                                                id="{{ $row->field }}" multiple>
+                                                <option disabled>-- Seleciona un dato --</option>
+                                                @foreach ($data->$myfield as $item)
+                                                    {{-- <option value="{{ $item }}">{{ $item }}</option> --}}
+                                                @endforeach
+                                            </select>
+                                            @break
                                     @endswitch    
                                 </div>
                             @endforeach

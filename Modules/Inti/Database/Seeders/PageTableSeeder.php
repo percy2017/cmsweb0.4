@@ -48,7 +48,7 @@ class PageTableSeeder extends Seeder
                     ],
                     'btn_action1' => [
                         'type'   => 'text',
-                        'name'   => 'buton_action1',
+                        'name'   => 'btn_action1',
                         'label'  => 'Accion del boton (banner)',
                         'value'  => '#',
                         'width'  => 6

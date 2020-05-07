@@ -108,6 +108,7 @@ class TrainerController extends Controller
                     $data->$aux = Str::slug($request->$myslug);
                     break; 
                 case 'select_multiple':
+                    // return $request->$aux;
                     if($request->input($aux)){
                         $data->$aux = json_encode($request->$aux);
                     }
