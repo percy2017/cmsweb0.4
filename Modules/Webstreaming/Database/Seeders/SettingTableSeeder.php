@@ -46,9 +46,9 @@ class SettingTableSeeder extends Seeder
             'key' => 'histream.greetings',
             'display_name' => 'Bienvenida',
             'value' => '<h4 class="alert-heading" style="box-sizing: border-box; margin-top: 0px; margin-bottom: 0.5rem; font-weight: 400; line-height: 1.2; font-size: 1.5rem; color: #004085; font-family: Roboto, sans-serif;">Bienvenido!</h4>
-            <p style="box-sizing: border-box; margin-top: 0px; margin-bottom: 1rem; color: #004085; font-family: Roboto, sans-serif; font-size: 16px;">Aww yeah, you successfully read this important alert message. This example text is going to run a bit longer so that you can see how spacing within an alert works with this kind of content.</p>
+            <p style="box-sizing: border-box; margin-top: 0px; margin-bottom: 1rem; color: #004085; font-family: Roboto, sans-serif; font-size: 16px;">A la plataforma de Histream, en esta plataforma podras crear reuniones y conferencias y invitar a tu participantes, tambien con esta herramienta tendras la opcion de realizar teletrabajo.</p>
             <hr style="box-sizing: content-box; height: 0px; overflow: visible; margin-top: 1rem; margin-bottom: 1rem; border-right: 0px; border-bottom: 0px; border-left: 0px; border-image: initial; border-top-style: solid; border-top-color: #9fcdff; color: #004085; font-family: Roboto, sans-serif; font-size: 16px;" />
-            <p class="mb-0" style="box-sizing: border-box; margin-top: 0px; color: #004085; font-family: Roboto, sans-serif; font-size: 16px; margin-bottom: 0px !important;">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p>',
+            <p class="mb-0" style="box-sizing: border-box; margin-top: 0px; color: #004085; font-family: Roboto, sans-serif; font-size: 16px; margin-bottom: 0px !important;">Histream, te permite compartir tu reunion alas difrentes redes sociales y grabarlas para compartirlas a tus oyentes.</p>',
             'details' => '',
             'type' => 'rich_text_box',
             'order' => 2,
@@ -76,16 +76,11 @@ class SettingTableSeeder extends Seeder
             'key' => 'histream.tutorial',
             'display_name' => 'Tutorial',
             'value' => '<h2>&nbsp;</h2>
-            <h2>El pasaje est&aacute;ndar Lorem Ipsum, usado desde el a&ntilde;o 1500.</h2>
-            <p style="margin: 0px 0px 15px; padding: 0px; text-align: justify; color: #000000; font-family:  Arial, sans-serif;">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
-            <ul>
-            <li><span style="color: #000000; font-family:  Arial, sans-serif; text-align: justify;">amet, consectetur adipiscing elit, sed or incididunt ut labore</span></li>
-            <li><span style="color: #000000; font-family:  Arial, sans-serif; text-align: justify;">amet, consg elit, sed do eiusmod tempor incididunt ut labore</span></li>
-            <li><span style="color: #000000; font-family:  Arial, sans-serif; text-align: justify;">amet, consectetur adipiscing elit, sed do ent ut labore</span></li>
-            <li><span style="color: #000000; font-family:  Arial, sans-serif; text-align: justify;">amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore</span></li>
-            </ul>
+            <h2>Como Crear una Reunion</h2>
+            <p style="margin: 0px 0px 15px; padding: 0px; text-align: justify; color: #000000; font-family:  Arial, sans-serif;">"En este video vamos a ver, lo facil que es crear una reuion en la plataforma  de Histream."</p>
+            
             <div class="text-center">
-            <p><iframe src="https://www.youtube.com/embed/N00DzBNPJEw?list=TLPQMjMwNDIwMjC12DxRUG6F4w" width="806" height="453" frameborder="0" allowfullscreen=""></iframe></p>
+            <p><iframe src="https://www.youtube.com/embed/IF4WsxTWbyA" frameborder="0" allowfullscreen=""></iframe></p>
             </div>',
             'details' => '',
             'type' => 'rich_text_box',

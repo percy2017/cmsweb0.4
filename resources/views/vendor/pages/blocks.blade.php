@@ -64,6 +64,12 @@
                                                 <input type="text" class="form-control" name="{{ $value['name'] }}" placeholder="" value="{{ $value['value'] }}">
                                             </div>
                                             @break
+                                        @case('rich_text_box')
+                                            <div class="form-group col-md-{{ $value['width'] }}">
+                                                <label>{{ $value['label'] }}</label>
+                                                <textarea class="ckeditor" name="{{ $value['name'] }}" rows="5">{{ $value['value'] }}</textarea>
+                                            </div>
+                                            @break
                                         @case('text_area')
                                             <div class="form-group col-md-{{ $value['width'] }}">
                                                 <label>{{ $value['label'] }}</label>
@@ -154,5 +160,5 @@
 
 
 @section('javascript')
-
+<script src="//cdn.ckeditor.com/4.14.0/full/ckeditor.js"></script>
 @endsection
