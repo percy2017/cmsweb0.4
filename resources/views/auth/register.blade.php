@@ -19,7 +19,6 @@
     <div class="row justify-content-center py-4">
 
         <section class="form-elegant">
-
             <!--Form without header-->
             <form method="POST" action="{{ route('register') }}">
                 @csrf
@@ -33,7 +32,6 @@
                         </div>
 
                         <!--Body-->
-                    
                         <div class="md-form">
                             <input type="text" id="name" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required>
                             <label for="name">Nombre completo</label>
@@ -45,8 +43,16 @@
                         </div>
 
                         <div class="md-form">
-                            <input type="text" id="email" class="form-control @error('name') is-invalid @enderror" name="email" value="{{ old('name') }}" required>
-                            <label for="email">tu email</label>
+                            <input type="email" id="email" class="form-control @error('name') is-invalid @enderror" name="email" value="{{ old('email') }}" required>
+                            <label for="email">Tu email</label>
+                            @error('email')
+                                <div class="text-center">
+                                    <b  style="color: #dc3545; font-size:12px">El email ingresado es inválido o ya existe</b>
+                                </div>
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
 
                         <div class="md-form">

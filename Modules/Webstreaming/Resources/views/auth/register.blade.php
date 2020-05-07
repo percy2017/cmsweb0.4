@@ -1,5 +1,5 @@
 <div class="md-form">
-    <input type="tel" id="phome" class="form-control @error('phome') is-invalid @enderror" name="phone" required>
+    <input type="tel" id="phome" class="form-control @error('phome') is-invalid @enderror" name="phone" value="{{ old('phone') }}" required>
     <label for="password">Número de celular</label>
     @error('phome')
         <span class="invalid-feedback" role="alert">
