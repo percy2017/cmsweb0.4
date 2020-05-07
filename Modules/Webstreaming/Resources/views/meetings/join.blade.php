@@ -215,13 +215,15 @@
                             hours = parseInt(diff/(1000*60*60)%24).toString().padStart(2, 0);
                             minutes = parseInt(diff/(1000*60)%60).toString().padStart(2, 0);
                             seconds = parseInt(diff/(1000)%60).toString().padStart(2, 0);
-                            $('#counter').html(`
-                                <h5>Inicia en</h5>
-                                <h3>${days ? (days == 1 ? days+'<small>día </small> ' : days+'<small>días </small> ') : ''} ${hours+'<small>h </small>'} : ${minutes+'<small>m </small>'} : ${seconds+'<small>s </small>'}</h3>
-                            `);
-                            if(diff<0){
+                            
+                            if(diff<300){
                                 clearInterval(getStarthMeet);
                                 window.location = '{{ url("conferencia/".$meeting->slug) }}'
+                            }else{
+                                $('#counter').html(`
+                                    <h5>Inicia en</h5>
+                                    <h3>${days ? (days == 1 ? days+'<small>día </small> ' : days+'<small>días </small> ') : ''} ${hours+'<small>h </small>'} : ${minutes+'<small>m </small>'} : ${(seconds > 0 ? seconds : '00')+'<small>s </small>'}</h3>
+                                `);
                             }
                         }, 300);
                     @endif

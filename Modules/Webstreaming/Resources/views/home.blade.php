@@ -112,9 +112,10 @@
                                         @forelse ($meetings as $item)
                                             <li class="list-group-item d-flex justify-content-between align-items-center">
                                                 <h4>
-                                                    {{ strlen($item->name) <= 35 ? $item->name : substr($item->name, 0, 35).'...' }}
-                                                    <br>
-                                                    @if ($item->start <= date('H:i:s') && $item->finish >= date('H:i:s'))
+                                                    <span class="d-inline-block text-truncate" style="max-width: 280px;">{{ $item->name }}</span><br>
+                                                    @if ($item->day==date('Y-m-d') && $item->finish < date('H:i:s'))
+                                                        <span class="badge badge-warning badge-pill"> Finalizada {{ \Carbon\Carbon::parse($item->day.' '.$item->finish)->diffForHumans() }}</span>
+                                                    @elseif ($item->day==date('Y-m-d') && $item->start <= date('H:i:s') && $item->finish >= date('H:i:s'))
                                                         <span class="badge badge-danger badge-pill"> <i class="fa fa-circle faa-flash animated"></i> En curso</span>
                                                     @elseif ($item->day==date('Y-m-d'))
                                                         <span class="badge badge-success badge-pill">Hoy</span>
@@ -123,7 +124,9 @@
                                                         <span class="badge badge-primary badge-pill">{{ \Carbon\Carbon::parse($item->day.' '.$item->start)->diffForHumans() }}</span>
                                                     @endif
                                                 </h4>
-                                                <a href="{{ url('conferencia/'.$item->slug) }}" target="_blank"><i class="fa fa-external-link"></i></a>
+                                                @if ($item->day.' '.$item->finish >= date('Y-m-d H:i:s'))
+                                                    <a href="{{ url('conferencia/'.$item->slug) }}" target="_blank"><i class="fa fa-external-link"></i></a>
+                                                @endif
                                             </li>
                                         @empty
                                             <h4 class="text-center">Ninguna</h4>
