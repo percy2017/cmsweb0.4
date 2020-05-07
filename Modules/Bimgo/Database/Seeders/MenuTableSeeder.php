@@ -79,5 +79,37 @@ class MenuTableSeeder extends Seeder
                 'order'      => $postion++,
             ])->save();
         }
+
+        $menuItem = MenuItem::firstOrNew([
+            'menu_id' => $menu->id,
+            'title'   => 'Clientes',
+            'url'     => '',
+            'route'   => 'voyager.bg_customers.index',
+        ]);
+        if (!$menuItem->exists) {
+            $menuItem->fill([
+                'target'     => '_self',
+                'icon_class' => 'voyager-double-right',
+                'color'      => null,
+                'parent_id'  => $InventarioMenuItem->id,
+                'order'      => $postion++,
+            ])->save();
+        }
+
+        $menuItem = MenuItem::firstOrNew([
+            'menu_id' => $menu->id,
+            'title'   => 'Cajas',
+            'url'     => '',
+            'route'   => 'voyager.bg_cashes.index',
+        ]);
+        if (!$menuItem->exists) {
+            $menuItem->fill([
+                'target'     => '_self',
+                'icon_class' => 'voyager-double-right',
+                'color'      => null,
+                'parent_id'  => $InventarioMenuItem->id,
+                'order'      => $postion++,
+            ])->save();
+        }
     }
 }
