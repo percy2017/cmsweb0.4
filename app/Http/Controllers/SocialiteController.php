@@ -3,6 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
+
+use App\User;
+use App\Module;
+use Modules\Webstreaming\Entities\PlanUser;
 
 // Events
 use Modules\Webstreaming\Events\SuscriptionUser;
@@ -19,10 +25,10 @@ class SocialiteController extends Controller
      {
          $auth_user = Socialite::driver($social)->user();
          if($auth_user){
-             if(!empty($auth_user->email)){
-                 $user = User::where('email', $auth_user->email)->first();
-                 if($user){
-                     Auth::login($user, true);
+            if(!empty($auth_user->email)) {
+                $user = User::where('email', $auth_user->email)->first();
+                if($user) {
+                    Auth::login($user, true);
                 }else{
                     $user = new User;
                     $user->name = $auth_user->name;
@@ -36,10 +42,6 @@ class SocialiteController extends Controller
                     $module_histream = Module::find(2);
                     if($module_histream){
                         if ($module_histream->installed){
-
-                            $user->phone = $auth_user->phone;
-                            $user->save();
-
                             PlanUser::create([
                                 'hs_plan_id' => 1,
                                 'user_id' => $user->id,
@@ -53,10 +55,10 @@ class SocialiteController extends Controller
                     Auth::login($user, true);
                 }
                 return redirect('/home');
-             }
-         }else{
-             return 'Ops..!! Hubo Problema el usuario necesita un email.!';
-         }
+            }
+        } else {
+        return 'Ops..!! Hubo Problema el usuario necesita un email.!';
+        }
      }
  
 }
