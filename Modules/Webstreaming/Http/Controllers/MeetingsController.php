@@ -15,6 +15,8 @@ use App\Http\Controllers\LoginwebController as Loginweb;
 use Modules\Webstreaming\Entities\Meeting;
 use Modules\Webstreaming\Entities\PlanUser;
 use Modules\Webstreaming\Entities\Plan;
+use Modules\Webstreaming\Entities\MeetingParticipant;
+use Modules\Webstreaming\Entities\Participant;
 
 // Events
 use Modules\Webstreaming\Events\JoinMeetUser;
@@ -44,7 +46,13 @@ class MeetingsController extends Controller
     }
 
     public function list(){
-        $meetings = Meeting::where('deleted_at', null)->where('user_id', Auth::user()->id)->orderBy('id', 'Desc')->paginate(10);
+        // $meetings = Meeting::where('deleted_at', null)->where('user_id', Auth::user()->id)->orderBy('id', 'Desc')->paginate(10);
+        $meetings = DB::table('hs_meetings as m')
+                        ->join('hs_meeting_participant as mp', 'mp.hs_meeting_id', 'm.id')
+                        ->select('m.*', DB::raw('count("mp.id") as suscriptions'))
+                        ->where('deleted_at', null)
+                        ->where('user_id', Auth::user()->id)
+                        ->orderBy('id', 'Desc')->groupBy('m.id')->paginate(10);
         return view('webstreaming::meetings.partials.list', compact('meetings'));
     }
 
@@ -93,6 +101,61 @@ class MeetingsController extends Controller
         }
         $meet->save();
         event(new JoinMeetUser($meet->user_id));
+    }
+
+    public function suscribe(Request $request){
+        DB::beginTransaction();
+        try {
+            $participant = Participant::firstOrNew([
+                'phone' => $request->phone,
+                'email' => $request->email,
+            ]);
+            $participant->fill([
+                'name' => $request->name,
+                'city' => $request->city
+            ])->save();
+
+            $suscription = MeetingParticipant::firstOrNew([
+                'hs_meeting_id' => $request->meeting_id,
+                'hs_participant_id' => $participant->id,
+            ]);
+            $suscription->fill([
+                'join' => date('H:i:s')
+            ])->save();
+        
+            DB::commit();
+            session(['suscription_histream' => json_encode($participant)]);
+            event(new JoinMeetUser(Meeting::findOrFail($request->meeting_id)->user_id));
+            return response()->json($participant);
+        } catch (\Exception $e) {
+            DB::rollback();
+            return response()->json(['error' => 'Ocurrió un error en nuestro servidor.']);
+        }
+    }
+
+    public function suscribe_join($meeting_id, $suscribe_id, $type){
+        $suscription = MeetingParticipant::firstOrNew([
+            'hs_meeting_id' => $meeting_id,
+            'hs_participant_id' => $suscribe_id,
+        ]);
+        if($type == 'join'){
+            $suscription->fill([
+                'join' => date('H:i:s')
+            ])->save();
+        }else{
+            $suscription->fill([
+                'exit' => date('H:i:s')
+            ])->save();
+        }
+    }
+
+    public function suscribes_list($meeting_id){
+        $suscribs = DB::table('hs_participants as p')
+                            ->join('hs_meeting_participant as mp', 'mp.hs_participant_id', 'p.id')
+                            ->select('p.*')
+                            ->where('hs_meeting_id', $meeting_id)
+                            ->get();
+        return view('webstreaming::meetings.partials.list_suscribs', compact('suscribs'));
     }
 
     /**

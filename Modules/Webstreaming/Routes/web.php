@@ -26,8 +26,11 @@ Route::group(['prefix' => 'admin'], function () {
 // Conferecias
 Route::resource('admin/conferencias', 'MeetingsController')->middleware('auth');
 Route::get('admin/conferencias/list/{search}', 'MeetingsController@list')->middleware('auth');
+Route::get('admin/conferencias/suscribes/list/{meeting_id}', 'MeetingsController@suscribes_list')->middleware('auth');
 Route::get('conferencia/{slug}/{error?}', 'MeetingsController@join');
 Route::get('conferencia/join/{type}/{id}/{quantity?}', 'MeetingsController@joined');
+Route::post('conferencia/suscribe', 'MeetingsController@suscribe')->name('conferencia.suscribe');
+Route::get('conferencia/suscribe/{meet_id}/{suscribe_id}/{type}', 'MeetingsController@suscribe_join');
 
 // suscripciones
 Route::resource('admin/suscripciones', 'SuscriptionsController')->middleware('auth');

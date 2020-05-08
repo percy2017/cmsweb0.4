@@ -36,6 +36,9 @@
                     <a href="#" title="Editar" class="btn btn-sm btn-primary pull-right edit" data-toggle="modal" data-target="#edit_modal" onclick="edit('{{ json_encode($item) }}')">
                         <i class="voyager-edit"></i> <span class="hidden-xs hidden-sm">Editar</span>
                     </a>
+                    <a href="#" title="Suscritos" class="btn btn-sm btn-success pull-right edit" data-toggle="modal" data-target="#modal_participants" onclick="suscribs_list({{ $item->id }})">
+                        <i class="voyager-people"></i> <span class="hidden-xs hidden-sm">Suscritos ({{ $item->suscriptions }})</span>
+                    </a>
                     <a href="{{ url('conferencia/'.$item->slug) }}" title="Ir" target="_blank" class="btn btn-sm btn-warning pull-right view">
                         <i class="voyager-eye"></i> <span class="hidden-xs hidden-sm">Ir</span>
                     </a>
