@@ -52,15 +52,22 @@ class CustomerController extends Controller
     public function store(Request $request)
     {
         // return $request;
-        //----------------VALIDATIONS-----------------------------------------
-        // $validator = Validator::make($request->all(), [
-        //     'id' => 'required',
-        // ]);
-        // if ($validator->fails())
-        // {
-        //     return response()->json(['error'=>$validator->errors()]);
-        // }
-        //----------------VALIDATIONS --------------------------------------
+        // ----------------VALIDATIONS-----------------------------------------
+        $validator = Validator::make($request->all(), [
+            'nit' => 'required|unique:bg_customers',
+            'name' => 'required',
+            'type_person' => 'required',
+        ],[
+            'nit.required' => 'NIT es requerido',
+            'nit.unique' => 'El NIT ya que existe en la base de datos',
+            'name.required' => 'Empresa es requerido',
+            'type_person.required' => 'Tipo de Persona es requerido'
+        ]);
+        if ($validator->fails())
+        {
+            return response()->json(['error'=>$validator->errors()]);
+        }
+        // ----------------VALIDATIONS --------------------------------------
            
         //------------------ REGISTRO-------------------------------------
         $data = new $this->dataType->model_name;

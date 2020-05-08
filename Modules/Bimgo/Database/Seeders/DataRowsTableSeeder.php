@@ -1227,6 +1227,31 @@ class DataRowsTableSeeder extends Seeder
             ])->save();
         }
 
+        $dataRow = $this->dataRow($customerDataType, 'type_person');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'select_dropdown',
+                'display_name' => 'Tipo de Persona',
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'details'      => [
+                    'options'  =>[
+                        '' => '',
+                        'Natural' => 'Natural',
+                        'Juridica' => 'Juridica'
+                    ],
+                    'display'  => [
+                        'width' => '6'
+                    ]
+                ],
+                'order'        => $postion++,
+            ])->save();
+        }
+
         $dataRow = $this->dataRow($customerDataType, 'nit');
         if (!$dataRow->exists) {
             $dataRow->fill([
@@ -1251,7 +1276,7 @@ class DataRowsTableSeeder extends Seeder
         if (!$dataRow->exists) {
             $dataRow->fill([
                 'type'         => 'number',
-                'display_name' => 'celular',
+                'display_name' => 'Celular',
                 'required'     => 1,
                 'browse'       => 1,
                 'read'         => 1,
@@ -1266,10 +1291,31 @@ class DataRowsTableSeeder extends Seeder
                 'order'        => $postion++,
             ])->save();
         }
+
+        $dataRow = $this->dataRow($customerDataType, 'phone_number');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'number',
+                'display_name' => 'Numero Telefonico',
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'details'      => [
+                    'display' => [
+                        'width' => '6'
+                    ]
+                ],
+                'order'        => $postion++,
+            ])->save();
+        }
+
         $dataRow = $this->dataRow($customerDataType, 'adress');
         if (!$dataRow->exists) {
             $dataRow->fill([
-                'type'         => 'text',
+                'type'         => 'text_area',
                 'display_name' => 'Direccion',
                 'required'     => 1,
                 'browse'       => 1,
