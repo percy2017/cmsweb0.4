@@ -48,11 +48,20 @@ class MeetingsController extends Controller
     public function list(){
         // $meetings = Meeting::where('deleted_at', null)->where('user_id', Auth::user()->id)->orderBy('id', 'Desc')->paginate(10);
         $meetings = DB::table('hs_meetings as m')
-                        ->join('hs_meeting_participant as mp', 'mp.hs_meeting_id', 'm.id')
-                        ->select('m.*', DB::raw('count("mp.id") as suscriptions'))
+                        // ->join('hs_meeting_participant as mp', 'mp.hs_meeting_id', 'm.id')
+                        ->select('m.*', 'm.deleted_at as suscriptions')
                         ->where('deleted_at', null)
                         ->where('user_id', Auth::user()->id)
-                        ->orderBy('id', 'Desc')->groupBy('m.id')->paginate(10);
+                        ->orderBy('id', 'Desc')->paginate(10);
+        $cont = 0;
+        foreach ($meetings as $item) {
+            $aux = DB::table('hs_meeting_participant')
+                        ->select('*')
+                        ->where('hs_meeting_id', $item->id)
+                        ->count();
+            $meetings[$cont]->suscriptions = $aux;
+            $cont++;
+        }
         return view('webstreaming::meetings.partials.list', compact('meetings'));
     }
 
