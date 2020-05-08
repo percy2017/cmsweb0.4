@@ -15,6 +15,9 @@ class MenuItemsTableSeeder extends Seeder
      */
     public function run()
     {
+        Menu::firstOrCreate([
+            'name' => 'inti_categories',
+        ]);
         /**
          * ------------------------------------------------
          *            Menu  dropdown-toggle
@@ -102,7 +105,7 @@ class MenuItemsTableSeeder extends Seeder
 
 
 
-        //-------------------------------------------
+        //------------------Entreanadores-------------------------
         Menu::firstOrCreate([
             'name' => 'inti_trainers',
         ]);
@@ -127,6 +130,76 @@ class MenuItemsTableSeeder extends Seeder
             'menu_id' => $menu->id,
             'title'   => 'Listar',
             'url'     => 'admin/inti_trainers/1',
+            'route'   => null
+        ]);
+        if (!$menuItem->exists) {
+            $menuItem->fill([
+                'target'     => '_self',
+                'icon_class' => null,
+                'color'      => null,
+                'parent_id'  => null,
+                'order'      => 1,
+            ])->save();
+        }
+        $menuItem = MenuItem::firstOrNew([
+            'menu_id' => $menu->id,
+            'title'   => 'divider',
+            'url'     => null,
+            'route'   => null
+        ]);
+        if (!$menuItem->exists) {
+            $menuItem->fill([
+                'target'     => '_self',
+                'icon_class' => null,
+                'color'      => null,
+                'parent_id'  => null,
+                'order'      => 2,
+            ])->save();
+        }
+        $menuItem = MenuItem::firstOrNew([
+            'menu_id' => $menu->id,
+            'title'   => 'setting',
+            'url'     => null,
+            'route'   => null
+        ]);
+        if (!$menuItem->exists) {
+            $menuItem->fill([
+                'target'     => '_blank',
+                'icon_class' => null,
+                'color'      => null,
+                'parent_id'  => null,
+                'order'      => 3,
+            ])->save();
+        }
+
+
+
+
+        //-------------Calendario------------------------------
+        Menu::firstOrCreate([
+            'name' => 'inti_schedules',
+        ]);
+        $menu = Menu::where('name', 'inti_schedules')->firstOrFail();
+        $menuItem = MenuItem::firstOrNew([
+            'menu_id' => $menu->id,
+            'title'   => 'Nuevo',
+            'url'     => 'admin/inti_schedules/create',
+            'route'   => null
+        ]);
+        if (!$menuItem->exists) {
+            $menuItem->fill([
+                'target'     => '_self',
+                'icon_class' => null,
+                'color'      => null,
+                'parent_id'  => null,
+                'order'      => 1,
+            ])->save();
+        }
+     
+        $menuItem = MenuItem::firstOrNew([
+            'menu_id' => $menu->id,
+            'title'   => 'Listar',
+            'url'     => 'admin/inti_schedules/1',
             'route'   => null
         ]);
         if (!$menuItem->exists) {

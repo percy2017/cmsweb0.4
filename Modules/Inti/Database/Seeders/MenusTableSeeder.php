@@ -48,9 +48,24 @@ class MenusTableSeeder extends Seeder
         }
         $menuItem = MenuItem::firstOrNew([
             'menu_id' => $menu->id,
-            'title'   => 'Trainers',
+            'title'   => 'Entrenadores',
             'url'     => '',
             'route'   => 'voyager.inti_trainers.index',
+        ]);/** trainers */
+        if (!$menuItem->exists) {
+            $menuItem->fill([
+                'target'     => '_self',
+                'icon_class' => 'voyager-double-right',
+                'color'      => null,
+                'parent_id'  => $CursosMenuItem->id,
+                'order'      => 1,
+            ])->save();
+        }
+        $menuItem = MenuItem::firstOrNew([
+            'menu_id' => $menu->id,
+            'title'   => 'Calendarios',
+            'url'     => '',
+            'route'   => 'voyager.inti_schedules.index',
         ]);/** trainers */
         if (!$menuItem->exists) {
             $menuItem->fill([

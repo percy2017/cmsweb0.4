@@ -299,8 +299,8 @@
                                                 name="{{ $row->field }}[]" 
                                                 id="{{ $row->field }}" multiple>
                                                 <option disabled>-- Seleciona un dato --</option>
-                                                @foreach ($data->$myfield as $item)
-                                                    {{-- <option value="{{ $item }}">{{ $item }}</option> --}}
+                                                @foreach ($row->details->options  as $item)
+                                                    <option value="{{ $item }}">{{ $item }}</option>
                                                 @endforeach
                                             </select>
                                             @break
