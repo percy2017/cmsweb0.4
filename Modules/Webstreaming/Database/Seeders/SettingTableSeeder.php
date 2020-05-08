@@ -37,7 +37,7 @@ class SettingTableSeeder extends Seeder
         DB::table('settings')->insert([
             'key' => 'histream.server',
             'display_name' => 'Servidor',
-            'value' => 'https://live.loginweb.dev',
+            'value' => 'https://virtual.histream.live',
             'details' => '',
             'type' => 'text',
             'order' => $cont++,
