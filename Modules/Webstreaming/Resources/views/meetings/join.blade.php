@@ -4,6 +4,15 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
+        <!-- Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+
+
+        <script type="text/javascript" src="{{ asset('vendor/histream/js/jquery-3.4.1.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('vendor/histream/js/popper.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('vendor/histream/js/bootstrap.min.js') }}"></script>
+
         @if($error != 'notfound')
             <title>{{ $meeting->name }}</title>
             <meta property="og:url"           content="{{ url('conferencia/'.$meeting->slug) }}" />
@@ -15,11 +24,6 @@
             <title>HiStream | Error</title>
         @endif
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-        <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-        <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-        {{-- <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> --}}
         @if (!$error)
             <style>
                 body, html, #meet {
@@ -39,9 +43,6 @@
                 }
             </style>
         @else
-            <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-            <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-            <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
             <style>
                 body {
                     background: #0A68BF;
@@ -65,7 +66,6 @@
                 </div>
             </div>
             <script src="{{ setting('histream.server').'/external_api.js' }}"></script>
-            <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
             <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
             <script>
                 $(document).ready(function(){
@@ -142,7 +142,7 @@
                 @if(Auth::user())
                     setInterval(() => {
                         $.get('{{ url("conferencia/join/update_active/".$meeting->id) }}/'+api.getNumberOfParticipants());
-                    }, 60000);
+                    }, 30000);
                 @endif
 
                 // Deshabilitar que se es nuevo participante en caso de ser el moderador
@@ -152,6 +152,10 @@
 
                 function warning(){
                     $.get('{{ url("conferencia/join/decrement/".$meeting->id) }}');
+                    let suscription = JSON.parse(sessionStorage.getItem('suscription_histream'));
+                    if(suscription.id){
+                        $.get('{{ url("conferencia/suscribe/".$meeting->id) }}/'+suscription.id+'/exit');
+                    }
                     // return "";
                 }
                 window.onbeforeunload = warning;
@@ -233,5 +237,85 @@
                 });
             </script>
         @endif
+
+        {{-- Suscripción --}}
+        <!-- Modal -->
+        <form id="form-suscribe" action="{{ route('conferencia.suscribe') }}" method="post">
+            <div class="modal fade modal-primary" style="color: black" id="modal_suscription" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" data-backdrop="static" data-keyboard="false" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Suscríbete</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <input type="hidden" name="meeting_id" value="{{ $meeting->id }}">
+                            @csrf
+                            <div class="form-group">
+                                <label>Nombre completo <i class="text-primary" data-toggle="tooltip" title="Requerido">*</i></label>
+                                <input type="text" name="name" class="form-control" placeholder="John Doe" required>
+                            </div>
+                            <div class="form-group">
+                                <label>N&deg; de celular <i class="text-primary" data-toggle="tooltip" title="Requerido">*</i></label>
+                                <input type="tel" name="phone" class="form-control" placeholder="75199157" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input type="email" name="email" class="form-control" placeholder="john.doe@example.com">
+                                <small class="text-muted">Con tu email podremos agregar tu gravatar y podrás recibir notificaciones.</small>
+                            </div>
+                            <div class="form-group">
+                                <label>Localidad</label>
+                                <input type="text" name="city" class="form-control" placeholder="Trinidad - Beni">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" data-dismiss="modal" class="btn btn-secondary" onclick="notSuscribe()">Omitir</button>
+                            <button type="submit" class="btn btn-primary" id="btn-suscribe">Suscribirme</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+            <script>
+                $(document).ready(function(){
+                    $('[data-toggle="tooltip"]').tooltip();
+
+                    if("{{ session('suscription_histream') }}"){
+                        let suscription = JSON.parse(@json(session('suscription_histream')));
+                        if(api && suscription.id){
+                            api.executeCommand('displayName', suscription.name);
+                            api.executeCommand('email', suscription.email);
+                            $.get('{{ url("conferencia/suscribe/".$meeting->id) }}/'+suscription.id+'/join');
+                        }
+                    }else{
+                        $('#modal_suscription').modal('toggle');
+                    }
+
+                    $('#form-suscribe').on('submit', function(e){
+                        e.preventDefault();
+                        $('#btn-suscribe').html('<i class="fa fa-refresh fa-spin"></i> Suscribiendo...');
+                        $('#btn-suscribe').attr('disabled', 'disabled');
+                        $.post($(this).attr('action'), $(this).serialize(), function(res){
+                            $('#modal_suscription').modal('toggle');
+                            $('#btn-suscribe').html('Suscribirme');
+                            $('#btn-suscribe').removeAttr('disabled');
+                            if(api){
+                                api.executeCommand('displayName', res.name);
+                                api.executeCommand('email', res.email);
+                            }
+                        })
+                    });
+                });
+
+                function notSuscribe(){
+                    {{ session(['suscription_histream' => '{}']) }}
+                }
+            </script>
     </body>
 </html>
+{{-- @php
+    session()->forget('suscription_histream');
+@endphp --}}
