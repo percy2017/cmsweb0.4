@@ -112,6 +112,15 @@ class SettingTableSeeder extends Seeder
             'order' => 4,
             'group' => 'HiStream'
         ]);
+        DB::table('settings')->insert([
+            'key' => 'histream.descripcion',
+            'display_name' => 'Descripcion',
+            'value' => 'Histream te la bienvenida. cualquier duda no dudes en comunicarte con nosotros',
+            'details' => '',
+            'type' => 'text_area',
+            'order' => 5,
+            'group' => 'HiStream'
+        ]);
 
         DB::table('settings')->insert([
             'key' => 'histream.waiting',
