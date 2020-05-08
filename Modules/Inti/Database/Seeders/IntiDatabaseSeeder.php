@@ -20,6 +20,7 @@ class IntiDatabaseSeeder extends Seeder
         $this->call(DataRowsTableSeeder::class);
         $this->call(PermissionTableSeeder::class);
         $this->call(MenusTableSeeder::class);
+        $this->call(MenuItemsTableSeeder::class);
         $this->call(SeetingTableSeeder::class);
         $this->call(PageTableSeeder::class);
     }

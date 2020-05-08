@@ -52,13 +52,14 @@ class CategoryController extends Controller
     {
         // return $request;
         //----------------VALIDATIONS-----------------------------------------
-        // $validator = Validator::make($request->all(), [
-        //     'id' => 'required',
-        // ]);
-        // if ($validator->fails())
-        // {
-        //     return response()->json(['error'=>$validator->errors()]);
-        // }
+        $validator = Validator::make($request->all(), [
+            'title' => 'required|unique:inti_categories',
+            // 'description' => 'required',
+        ]);
+        if ($validator->fails())
+        {
+            return response()->json(['error'=>$validator->errors()]);
+        }
         //----------------VALIDATIONS --------------------------------------
            
         //------------------ REGISTRO-------------------------------------

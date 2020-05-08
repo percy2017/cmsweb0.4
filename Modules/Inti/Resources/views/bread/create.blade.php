@@ -80,7 +80,6 @@
                                                     <option value="{{ $item }}">{{ $item }}</option>
                                                 @endforeach
                                             </select>
-                                            
                                             @break
                                         @case('text')
                                             <label class="control-label" for="{{ $row->field }}"  id="{{ $row->field }}">{{ $row->display_name }}</label>
@@ -227,10 +226,56 @@
                                                     data-on="{{ $row->details->on }}" {!! $checked ? 'checked="checked"' : '' !!} 
                                                     data-off="{{ $row->details->off }}">
                                             @break
+                                        @case('Map')
+                                            <label class="control-label" for="{{ $row->field }}">{{ $row->display_name }}</label>
+                                            @if(isset($row->details->tooltip))
+                                                <span class="voyager-question"
+                                                aria-hidden="true"
+                                                data-toggle="tooltip"
+                                                data-placement="{{ $row->details->tooltip->{'ubication'} }}"
+                                                title="{{ $row->details->tooltip->{'message'} }}"></span>
+                                            @endif
+                                            <div id="map"></div>
+                                            <input type="hidden" id="latitud" name="latitud" />
+                                            <input type="hidden" id="longitud" name="longitud" />
+                                            @break
+                                        @case('file')
+                                            <label class="control-label" for="{{ $row->field }}">{{ $row->display_name }}</label>
+                                            @if(isset($row->details->tooltip))
+                                                <span class="voyager-question"
+                                                aria-hidden="true"
+                                                data-toggle="tooltip"
+                                                data-placement="{{ $row->details->tooltip->{'ubication'} }}"
+                                                title="{{ $row->details->tooltip->{'message'} }}"></span>
+                                            @endif
+                                            <input 
+                                                type="file" 
+                                                name="{{ $row->field }}" 
+                                                id="{{ $row->field }}" 
+                                                accept=".pdf, .docx">
+                                            @break 
+                                        @case('select_multiple')
+                                            <label class="control-label" for="{{ $row->field }}">{{ $row->display_name }}</label>
+                                            @if(isset($row->details->tooltip))
+                                                <span class="voyager-question"
+                                                aria-hidden="true"
+                                                data-toggle="tooltip"
+                                                data-placement="{{ $row->details->tooltip->{'ubication'} }}"
+                                                title="{{ $row->details->tooltip->{'message'} }}"></span>
+                                            @endif
+                                            <select 
+                                                class="form-control select2" 
+                                                name="{{ $row->field }}[]" 
+                                                id="{{ $row->field }}" multiple>
+                                                <option disabled>-- Seleciona un dato --</option>
+                                                @foreach ($row->details->options  as $item)
+                                                    <option value="{{ $item }}">{{ $item }}</option>
+                                                @endforeach
+                                            </select>
+                                            @break
                                     @endswitch        
                                 </div>
                             @endforeach
-                            
                         </div>
                         <div class="form-group text-center">
                             <hr/>
@@ -335,5 +380,44 @@
    
     $('.form-group .ckeditor').each(function (idx, elt) {
         CKEDITOR.replace(elt.id);
+    });
+
+    //Mapa-----------------
+    $('document').ready(function () {
+        var map;
+        var marcador;
+        map = L.map('map').fitWorld();
+        L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+                maxZoom: 20,
+                attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
+                '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+                'Imagery ©️ <a href="https://www.mapbox.com/">Mapbox</a>',
+                id: 'mapbox.streets'
+            }).addTo(map);
+
+        function onLocationFound(e) 
+        {
+            $('#latitud').val(e.latlng.lat);
+            $('#longitud').val(e.latlng.lng);
+            marcador =  L.marker(e.latlng, {
+                        draggable: true
+                        }).addTo(map)
+                        .bindPopup("Localización actual").openPopup()
+                        .on('drag', function(e) {
+                            $('#latitud').val(e.latlng.lat);
+                            $('#longitud').val(e.latlng.lng);
+                        });
+            map.setView(e.latlng);
+        }
+
+        function onLocationError(e) {
+            alert(e.message);
+        }
+
+        map.on('locationfound', onLocationFound);
+        map.on('locationerror', onLocationError);
+
+        map.locate();
+        map.setZoom(13);
     });
 </script>

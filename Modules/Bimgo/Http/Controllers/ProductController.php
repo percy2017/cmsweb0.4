@@ -78,6 +78,18 @@ class ProductController extends Controller
                         $data->$aux = $image;
                     }
                     break;
+                case 'multiple_images':
+                    $image_array = array();
+                    if($request->hasFile($aux)){
+                        foreach($request->file($aux) as $image)
+                        {
+                            $array = Storage::disk('public')->put('products/'.date('F').date('Y'), $image);
+                            array_push($image_array, $array);
+                        }
+                        // return $image_array;
+                        $data->$aux = json_encode($image_array);
+                    }
+                    break;    
                 case 'relationship':
                     if ($key->details->{'type'} == 'belongsToMany') {
                         if ($request->$aux) {
@@ -163,6 +175,17 @@ class ProductController extends Controller
                     if($request->hasFile($aux)){
                         $image=Storage::disk('public')->put($this->dataType->name.'/'.date('F').date('Y'), $request->file($aux));
                         $data->$aux = $image;
+                    }
+                    break;
+                case 'multiple_images':
+                    $image_array = array();
+                    if($request->hasFile($aux)){
+                        foreach($request->file($aux) as $image)
+                        {
+                            $array = Storage::disk('public')->put('products/'.date('F').date('Y'), $image);
+                            array_push($image_array, $array);
+                        }
+                        $data->$aux = json_encode($image_array);
                     }
                     break;
                 case 'relationship':

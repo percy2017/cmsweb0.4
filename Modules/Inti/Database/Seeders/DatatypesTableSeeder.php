@@ -59,6 +59,51 @@ class DatatypesTableSeeder extends Seeder
                 ]
             ])->save();
         }
+
+        $dataType = $this->dataType('slug', 'inti_trainers');
+        if (!$dataType->exists) {
+            $dataType->fill([
+                'name'                  => 'inti_trainers',
+                'display_name_singular' => 'Entrenador',
+                'display_name_plural'   => 'Entrenadores',
+                'icon'                  => 'voyager-play',
+                'model_name'            => 'Modules\\Inti\\Entities\\IntiTrainer',
+                'policy_name'           => null,
+                'controller'            => 'Modules\\Inti\\Http\\Controllers\\TrainerController',
+                'generate_permissions'  => 1,
+                'description'           => null,
+                'server_side'           => 1,
+                'details'               => [
+                    'order_column'         => 'id',
+                    'order_display_column' => 'id',
+                    'order_direction'      => 'asc',
+                    'default_search_key'   => 'id',
+                    'scope'                => null
+                ]
+            ])->save();
+        }
+        $dataType = $this->dataType('slug', 'inti_schedules');
+        if (!$dataType->exists) {
+            $dataType->fill([
+                'name'                  => 'inti_schedules',
+                'display_name_singular' => 'Calendario',
+                'display_name_plural'   => 'Calendarios',
+                'icon'                  => 'voyager-play',
+                'model_name'            => 'Modules\\Inti\\Entities\\IntiSchedule',
+                'policy_name'           => null,
+                'controller'            => 'Modules\\Inti\\Http\\Controllers\\ScheduleController',
+                'generate_permissions'  => 1,
+                'description'           => null,
+                'server_side'           => 1,
+                'details'               => [
+                    'order_column'         => 'id',
+                    'order_display_column' => 'id',
+                    'order_direction'      => 'asc',
+                    'default_search_key'   => 'id',
+                    'scope'                => null
+                ]
+            ])->save();
+        }
     }
     
     protected function dataType($field, $for)

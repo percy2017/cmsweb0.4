@@ -13,9 +13,9 @@ use Illuminate\Support\Str;
 use Carbon\Carbon;
 use Validator;
 
-class CoursesController extends Controller
+class TrainerController extends Controller
 {
-    public $table = 'inti_courses';
+    public $table = 'inti_trainers';
     public $dataType;
     public $dataRowsAdd;
     public $dataRowsEdit;
@@ -107,6 +107,18 @@ class CoursesController extends Controller
                     $myslug = $key->details->slugify->{'origin'};
                     $data->$aux = Str::slug($request->$myslug);
                     break; 
+                case 'select_multiple':
+                    // return $request->$aux;
+                    if($request->input($aux)){
+                        $data->$aux = json_encode($request->$aux);
+                    }
+                    break; 
+                case 'file':
+                    if($request->hasFile($aux)){
+                        $image=Storage::disk('public')->put($this->dataType->name.'/'.date('F').date('Y'), $request->file($aux));
+                        $data->$aux = $image;
+                    }
+                    break;
                 default:
                     $data->$aux = $request->$aux;
                     break;
@@ -204,12 +216,6 @@ class CoursesController extends Controller
                 case 'Slug':
                     $myslug = $key->details->slugify->{'origin'};
                     $data->$aux = Str::slug($request->$myslug);
-                    break; 
-                case 'select_multiple':
-                    return $aux;
-                    if($request->input($aux)){
-                        $data->$aux = json_encode($aux);
-                    }
                     break; 
                 default:
                     $data->$aux = $request->$aux;

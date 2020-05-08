@@ -103,7 +103,10 @@ class PageController extends Controller
                     {
                     }else
                     {
-                        $mijson = str_replace($value['value'], $request[$value['name']], $mijson);
+                        $mijson_aux = json_decode($mijson, true);
+                        $mijson_aux[$value['name']]['value'] = $request[$value['name']];
+                        $mijson = json_encode($mijson_aux);
+                        // $mijson = str_replace($value['value'], $request[$value['name']], $mijson);
                     }
                 }
                 if($request->hasFile($value['name']))
