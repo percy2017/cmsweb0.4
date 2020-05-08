@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Module;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Laravel\Socialite\Facades\Socialite;
-
 // Events
+use Laravel\Socialite\Facades\Socialite;
+// Events
+use Modules\Webstreaming\Entities\PlanUser;
 use Modules\Webstreaming\Events\SuscriptionUser;
 
 class SocialiteController extends Controller
