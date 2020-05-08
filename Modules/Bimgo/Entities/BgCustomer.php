@@ -9,5 +9,5 @@ class BgCustomer extends Model
 {
     use SoftDeletes;
     protected $table = 'bg_customers';
-    protected $fillable = ['name', 'nit', 'phone', 'adress', 'user_id'];
+    protected $fillable = ['name', 'nit', 'phone', 'phone_number','type_person','adress', 'user_id'];
 }

@@ -17,7 +17,9 @@ class CreateBgCustomersTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('nit');
+            $table->string('type_person');
             $table->string('phone')->nullable();
+            $table->string('phone_number')->nullable();
             $table->string('adress');
 
             $table->unsignedBigInteger('user_id');

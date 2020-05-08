@@ -96,7 +96,7 @@
                                                 class="form-control" 
                                                 name="{{ $row->field }}" 
                                                 id="{{ $row->field }}"  
-                                                placeholder="{{ $row->field }}" 
+                                                placeholder="{{ $row->display_name }}" 
                                                 value="@if(isset($row->details->{'default'})){{ $row->details->{'default'} }}@endif">
                                             @break
                                         @case('password')
