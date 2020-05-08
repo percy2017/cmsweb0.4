@@ -51,7 +51,7 @@
                                     <div class="col-lg-3 order-lg-2">
                                         <div class="card-profile-image">
                                             <a href="#">
-                                                <img src="{{ strpos(Voyager::Image(Auth::user()->avatar), 'https') ? Auth::user()->avatar : Voyager::Image(Auth::user()->avatar) }}" class="rounded-circle">
+                                                <img src="{{ strpos(Voyager::Image(Auth::user()->avatar), 'https') === false ? Voyager::Image(Auth::user()->avatar) : Auth::user()->avatar }}" class="rounded-circle">
                                             </a>
                                         </div>
                                     </div>
