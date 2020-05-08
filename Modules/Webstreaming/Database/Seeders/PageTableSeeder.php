@@ -78,46 +78,7 @@ class PageTableSeeder extends Seeder
             ])
         ]);
 
-        Block::where('deleted_at', false)->delete();
-        $page = Page::create([
-            'name'        =>  'politica privacidad',
-            'slug'        =>  'politica-privacidad',
-            'user_id'     =>  1,
-            'direction'   =>  'webstreaming::pages.generica',
-            'description' =>  'Pagina de politicas y privacidad de HiStream.',
-            'details'     =>   json_encode([
-                
-                'contenido1' => [
-                    'type'   => 'rich_text_box',
-                    'name'   => 'contenido1',
-                    'label'  => 'Parrafo',
-                    'value'  => 'Soy un text',
-                    'width'  => 12
-                ],
-                
-
-            ])
-        ]);
-        Block::where('deleted_at', false)->delete();
-        $page = Page::create([
-            'name'        =>  'terminos condiones',
-            'slug'        =>  'terminos-condiones',
-            'user_id'     =>  1,
-            'direction'   =>  'webstreaming::pages.generica',
-            'description' =>  'Pagina de terminos y condiones de HiStream.',
-            'details'     =>   json_encode([
-                
-                'contenido2' => [
-                    'type'   => 'rich_text_box',
-                    'name'   => 'contenido2',
-                    'label'  => 'Parrafo',
-                    'value'  => 'Soy un text',
-                    'width'  => 12
-                ],
-                
-
-            ])
-        ]);        
+              
         /** block 1 */
         Block::create([
             'name'        => 'lphs_block1',
@@ -870,5 +831,46 @@ class PageTableSeeder extends Seeder
             ])    
         ]);
 
+
+        
+        $page = Page::create([
+            'name'        =>  'politica privacidad',
+            'slug'        =>  'politica-privacidad',
+            'user_id'     =>  1,
+            'direction'   =>  'webstreaming::pages.generica',
+            'description' =>  'Pagina de politicas y privacidad de HiStream.',
+            'details'     =>   json_encode([
+                
+                'contenido1' => [
+                    'type'   => 'rich_text_box',
+                    'name'   => 'contenido1',
+                    'label'  => 'Parrafo',
+                    'value'  => 'Soy un text',
+                    'width'  => 12
+                ],
+                
+
+            ])
+        ]);
+     
+        $page = Page::create([
+            'name'        =>  'terminos condiones',
+            'slug'        =>  'terminos-condiones',
+            'user_id'     =>  1,
+            'direction'   =>  'webstreaming::pages.generica',
+            'description' =>  'Pagina de terminos y condiones de HiStream.',
+            'details'     =>   json_encode([
+                
+                'contenido' => [
+                    'type'   => 'rich_text_box',
+                    'name'   => 'contenido',
+                    'label'  => 'Parrafo',
+                    'value'  => 'Soy un text',
+                    'width'  => 12
+                ],
+                
+
+            ])
+        ]);  
     }
 }
