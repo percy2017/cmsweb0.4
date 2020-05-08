@@ -71,24 +71,25 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        $module_histream = Module::find(2);
+        
 
         $user = new User;
         $user->name = $data['name'];
         $user->email = $data['email'];
         $user->role_id = 3;
         $user->password = Hash::make($data['password']);
-        if($module_histream){
-            if ($module_histream->installed){
-                $user->phone = $data['phone'];
-            }
-        }
         $user->save();
 
+        // Si existe el módulo HiStrean creamos la suscripción
+        $module_histream = Module::find(2);
         if($module_histream){
             if ($module_histream->installed){
+                
+                $user->phone = $data['phone'];
+                $user->save();
+
                 $status = $data['plan_id'] <= 1 ? 1 : null;
-                $plan_user = PlanUser::create([
+                PlanUser::create([
                     'hs_plan_id' => $data['plan_id'],
                     'user_id' => $user->id,
                     'status' => $status

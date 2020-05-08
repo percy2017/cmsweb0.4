@@ -1,12 +1,12 @@
 @extends('webstreaming::layouts.master')
 @section('header')
-    @include('webstreaming::layouts.navbar')
+    @include('webstreaming::layouts.header-generica')
 @endsection
 @section('content')
     @foreach ($blocks as $item) 
         @switch($item->type)
             @case('dinamyc-data')
-                @include('inti::blocks.pages.'.$item->name, ['data' => json_decode($item->details)])
+                @include('webstreaming::blocks.pages.'.$item->name, ['data' => json_decode($item->details)])
                 @break
             @case('controller')
                 <div id="{{ $item->title }}"></div>

@@ -49,29 +49,29 @@ class PageTableSeeder extends Seeder
                 'btn_1' => [
                     'type'   => 'text',
                     'name'   => 'btn_1',
-                    'label'  => 'Titulo btn #1',
+                    'label'  => 'Titulo btn 1',
                     'value'  => 'Probar Demo',
                     'width'  => 3
                 ],
                 'btn_action_1' => [
                     'type'   => 'text',
                     'name'   => 'btn_action_1',
-                    'label'  => 'Accion del Btn #1',
+                    'label'  => 'Accion del Btn 1',
                     'value'  => 'https://live.loginweb.dev/demo',
                     'width'  => 3
                 ],
                 'btn_2' => [
                     'type'   => 'text',
                     'name'   => 'btn_2',
-                    'label'  => 'Titulo btn #2',
+                    'label'  => 'Titulo btn 2',
                     'value'  => 'Mas Informacion',
                     'width'  => 3
                 ],
                 'btn_action_2' => [
                     'type'   => 'text',
                     'name'   => 'btn_action_2',
-                    'label'  => 'Accion del Btn #2',
-                    'value'  => '#',
+                    'label'  => 'Accion del Btn 2',
+                    'value'  => 'null',
                     'width'  => 3
                 ],
 
@@ -81,8 +81,8 @@ class PageTableSeeder extends Seeder
         /** block 1 */
         Block::create([
             'name'        => 'lphs_block1',
-            'title'       => 'Blocke #1 (Sesion heading  start #1)',
-            'description' => 'Seccion  heading  #1 para la plantilla LPHS',
+            'title'       => 'Blocke 1 (Sesion heading  start 1)',
+            'description' => 'Seccion  heading  1 para la plantilla LPHS',
             'page_id'     => $page->id,
             'position'    => 1,
             'details'     => json_encode([
@@ -114,8 +114,8 @@ class PageTableSeeder extends Seeder
         /** block 2 */
         Block::create([
             'name'        => 'lphs_block2',
-            'title'       => 'Blocke #2 ( Section Awesome features start #2)',
-            'description' => 'Seccion Section Awesome features  #2 para la plantilla LPHS',
+            'title'       => 'Blocke 2 ( Section Awesome features start 2)',
+            'description' => 'Seccion Section Awesome features  2 para la plantilla LPHS',
             'page_id'     => $page->id,
             'position'    => 1,
             'details'     => json_encode([
@@ -144,7 +144,7 @@ class PageTableSeeder extends Seeder
                 'icons1' => [
                     'type'   => 'select_dropdown',
                     'name'   => 'icons1',
-                    'label'  => 'Icons #1',
+                    'label'  => 'Icons 1',
                     'value'  => 'fas fa-edit orange-text fa-2x',
                     'width'  => 3
                 ],
@@ -165,7 +165,7 @@ class PageTableSeeder extends Seeder
                 'icons2' => [
                     'type'   => 'select_dropdown',
                     'name'   => 'icons2',
-                    'label'  => 'Icons #2',
+                    'label'  => 'Icons 2',
                     'value'  => 'fas fa-cogs orange-text fa-2x',
                     'width'  => 3
                 ],
@@ -186,7 +186,7 @@ class PageTableSeeder extends Seeder
                 'icons3' => [
                     'type'   => 'select_dropdown',
                     'name'   => 'icons3',
-                    'label'  => 'Icons #3',
+                    'label'  => 'Icons 3',
                     'value'  => 'fas fa-comments orange-text fa-2x',
                     'width'  => 3
                 ],
@@ -207,7 +207,7 @@ class PageTableSeeder extends Seeder
                 'icons4' => [
                     'type'   => 'select_dropdown',
                     'name'   => 'icons4',
-                    'label'  => 'Icons #4',
+                    'label'  => 'Icons 4',
                     'value'  => 'fas fa-hand-holding-usd orange-text fa-2x',
                     'width'  => 3
                 ],
@@ -228,7 +228,7 @@ class PageTableSeeder extends Seeder
                 'icons5' => [
                     'type'   => 'select_dropdown',
                     'name'   => 'icons5',
-                    'label'  => 'Icons #5',
+                    'label'  => 'Icons 5',
                     'value'  => 'fas fa-video orange-text fa-2x',
                     'width'  => 3
                 ],
@@ -249,7 +249,7 @@ class PageTableSeeder extends Seeder
                 'icons6' => [
                     'type'   => 'select_dropdown',
                     'name'   => 'icons6',
-                    'label'  => 'Icons #6',
+                    'label'  => 'Icons 6',
                     'value'  => 'fas fa-file-video orange-text fa-2x',
                     'width'  => 3
                 ],
@@ -273,8 +273,8 @@ class PageTableSeeder extends Seeder
         /** block 3 */
         Block::create([
             'name'        => 'lphs_block3',
-            'title'       => 'Blocke #3 (tutorial video start #3)',
-            'description' => 'Seccion tutorial video #3 para la plantilla LPHS',
+            'title'       => 'Blocke 3 (tutorial video start 3)',
+            'description' => 'Seccion tutorial video 3 para la plantilla LPHS',
             'page_id'     => $page->id,
             'position'    => 1,
             'details'     => json_encode([
@@ -295,7 +295,7 @@ class PageTableSeeder extends Seeder
                 'urlvideo_1' => [
                     'type'   => 'text',
                     'name'   => 'urlvideo_1',
-                    'label'  => 'ingrese el link #1',
+                    'label'  => 'ingrese el link 1',
                     'value'  => 'https://www.youtube.com/embed/A3PDXmYoF5U',
                     'width'  => 6
                 ],
@@ -309,7 +309,7 @@ class PageTableSeeder extends Seeder
                 'urlvideo_2' => [
                     'type'   => 'text',
                     'name'   => 'urlvideo_2',
-                    'label'  => 'ingrese el link #2',
+                    'label'  => 'ingrese el link 2',
                     'value'  => 'https://www.youtube.com/embed/wTcNtgA6gHs',
                     'width'  => 6
                 ],
@@ -323,7 +323,7 @@ class PageTableSeeder extends Seeder
                 'urlvideo_3' => [
                     'type'   => 'text',
                     'name'   => 'urlvideo_3',
-                    'label'  => 'ingrese el link #3',
+                    'label'  => 'ingrese el link 3',
                     'value'  => 'https://www.youtube.com/embed/vlDzYIIOYmM',
                     'width'  => 6
                 ],
@@ -339,8 +339,8 @@ class PageTableSeeder extends Seeder
         /** block 4 */
         Block::create([
             'name'        => 'lphs_block4',
-            'title'       => 'Blocke #4 ( Some facts about us start #4)',
-            'description' => 'Seccion  Some facts about us #4 para la plantilla LPHS',
+            'title'       => 'Blocke 4 ( Some facts about us start 4)',
+            'description' => 'Seccion  Some facts about us 4 para la plantilla LPHS',
             'page_id'     => $page->id,
             'position'    => 1,
             'details'     => json_encode([
@@ -361,56 +361,56 @@ class PageTableSeeder extends Seeder
                 'title_1' => [
                     'type'   => 'text',
                     'name'   => 'title_1',
-                    'label'  => 'Titulo #1',
+                    'label'  => 'Titulo 1',
                     'value'  => '+950',
                     'width'  => 3
                 ],
                 'title_2' => [
                     'type'   => 'text',
                     'name'   => 'title_2',
-                    'label'  => 'Titulo #2',
+                    'label'  => 'Titulo 2',
                     'value'  => '+150',
                     'width'  => 3
                 ],
                 'title_3' => [
                     'type'   => 'text',
                     'name'   => 'title_3',
-                    'label'  => 'Titulo #3',
+                    'label'  => 'Titulo 3',
                     'value'  => '+85',
                     'width'  => 3
                 ],
                 'title_4' => [
                     'type'   => 'text',
                     'name'   => 'title_4',
-                    'label'  => 'Titulo #4',
+                    'label'  => 'Titulo 4',
                     'value'  => '+246',
                     'width'  => 3
                 ],
                 'parrafo_1' => [
                     'type'   => 'text',
                     'name'   => 'parrafo_1',
-                    'label'  => 'Parrafo #1',
+                    'label'  => 'Parrafo 1',
                     'value'  => 'Conferencias',
                     'width'  => 3
                 ],
                 'parrafo_2' => [
                     'type'   => 'text',
                     'name'   => 'parrafo_2',
-                    'label'  => 'Parrafo #2',
+                    'label'  => 'Parrafo 2',
                     'value'  => 'Proyectos completados',
                     'width'  => 3
                 ],
                 'parrafo_3' => [
                     'type'   => 'text',
                     'name'   => 'parrafo_3',
-                    'label'  => 'Parrafo #3',
+                    'label'  => 'Parrafo 3',
                     'value'  => 'Reuniones',
                     'width'  => 3
                 ],
                 'parrafo_4' => [
                     'type'   => 'text',
                     'name'   => 'parrafo_4',
-                    'label'  => 'Parrafo #4',
+                    'label'  => 'Parrafo 4',
                     'value'  => 'Usuarios',
                     'width'  => 3
                 ],
@@ -419,8 +419,8 @@ class PageTableSeeder extends Seeder
         /** block 5 */
         Block::create([
             'name'        => 'lphs_block5',
-            'title'       => 'Blocke #5 (Our services start #5)',
-            'description' => 'Seccion Our services  #5 para la plantilla LPHS',
+            'title'       => 'Blocke 5 (Our services start 5)',
+            'description' => 'Seccion Our services  5 para la plantilla LPHS',
             'page_id'     => $page->id,
             'position'    => 1,
             'details'     => json_encode([
@@ -441,7 +441,7 @@ class PageTableSeeder extends Seeder
                 'parrafo_1' => [
                     'type'   => 'text_area',
                     'name'   => 'parrafo_1',
-                    'label'  => 'Parrafo #1 ',
+                    'label'  => 'Parrafo 1 ',
                     'value'  => 'No se requiere incorporación ni capacitación. Comience y únase a las reuniones en segundos.',
                     'width'  => 9
                 ],
@@ -455,7 +455,7 @@ class PageTableSeeder extends Seeder
                 'parrafo_2' => [
                     'type'   => 'text_area',
                     'name'   => 'parrafo_2',
-                    'label'  => 'Parrafo #2 ',
+                    'label'  => 'Parrafo 2 ',
                     'value'  => 'Todas las características que necesita a una fracción del precio de la competencia. Hacemos que sea asequible para todo su equipo organizar grandes reuniones en línea.',
                     'width'  => 9
                 ],
@@ -469,7 +469,7 @@ class PageTableSeeder extends Seeder
                 'parrafo_3' => [
                     'type'   => 'text_area',
                     'name'   => 'parrafo_3',
-                    'label'  => 'Parrafo #3 ',
+                    'label'  => 'Parrafo 3 ',
                     'value'  => 'Uso compartido de pantalla, opciones de audio integradas y cámaras de vídeo HD, transcripción de reuniones y mucho más.',
                     'width'  => 9
                 ],
@@ -483,7 +483,7 @@ class PageTableSeeder extends Seeder
                 'parrafo_4' => [
                     'type'   => 'text_area',
                     'name'   => 'parrafo_4',
-                    'label'  => 'Parrafo #4 ',
+                    'label'  => 'Parrafo 4 ',
                     'value'  => 'Organice y únase a las reuniones dondequiera que vaya con las aplicaciones de escritorio y móviles de AnyMeeting.',
                     'width'  => 9
                 ],
@@ -493,8 +493,8 @@ class PageTableSeeder extends Seeder
                /** block 6 */
                Block::create([
                 'name'        => 'lphs_block6',
-                'title'       => 'Blocke #6 (nuestros planes start #6)',
-                'description' => 'Seccion nuestros planes  #6 para la plantilla LPHS',
+                'title'       => 'Blocke 6 (nuestros planes start 6)',
+                'description' => 'Seccion nuestros planes  6 para la plantilla LPHS',
                 'page_id'     => $page->id,
                 'position'    => 1,
                 'details'     => json_encode([
@@ -508,7 +508,7 @@ class PageTableSeeder extends Seeder
                     'parrafo' => [
                         'type'   => 'text_area',
                         'name'   => 'parrafo',
-                        'label'  => 'Parrafo #1',
+                        'label'  => 'Parrafo 1',
                         'value'  => 'Escoge el plan que se adapte a ti',
                         'width'  => 6
                     ], 
@@ -527,7 +527,7 @@ class PageTableSeeder extends Seeder
                     'pricing1_price1' => [
                         'type'   => 'text',
                         'name'   => 'pricing1_price1',
-                        'label'  => 'precio #1 - plan 1',
+                        'label'  => 'precio 1 - plan 1',
                         'value'  => '0',
                         'width'  => 6
                     ],  
@@ -539,35 +539,35 @@ class PageTableSeeder extends Seeder
                     'pricing1_content1' => [
                         'type'   => 'text',
                         'name'   => 'pricing1_content1',
-                        'label'  => 'contenido #1 - plan 1',
+                        'label'  => 'contenido 1 - plan 1',
                         'value'  => '5 conferencias diarias',
                         'width'  => 6
                     ], 
                     'pricing1_content2' => [
                         'type'   => 'text',
                         'name'   => 'pricing1_content2',
-                        'label'  => 'contenido #2 - plan 1',
+                        'label'  => 'contenido 2 - plan 1',
                         'value'  => '10 participantes',
                         'width'  => 6
                     ],
                     'pricing1_content3' => [
                         'type'   => 'text',
                         'name'   => 'pricing1_content3',
-                        'label'  => 'contenido #3 - plan 1',
+                        'label'  => 'contenido 3 - plan 1',
                         'value'  => '1 hora de reunión',
                         'width'  => 4
                     ],
                     'pricing1_content4' => [
                         'type'   => 'text',
                         'name'   => 'pricing1_content4',
-                        'label'  => 'contenido #4 - plan 1',
+                        'label'  => 'contenido 4 - plan 1',
                         'value'  => '',
                         'width'  => 4
                     ],
                     'pricing1_content5' => [
                         'type'   => 'text',
                         'name'   => 'pricing1_content5',
-                        'label'  => 'contenido #5 - plan 1',
+                        'label'  => 'contenido 5 - plan 1',
                         'value'  => '',
                         'width'  => 4
                     ],  
@@ -614,35 +614,35 @@ class PageTableSeeder extends Seeder
                     'pricing2_content1' => [
                         'type'   => 'text',
                         'name'   => 'pricing2_content1',
-                        'label'  => 'contenido #1 - plan 2',
+                        'label'  => 'contenido 1 - plan 2',
                         'value'  => '10 conferencias diarias',
                         'width'  => 6
                     ], 
                     'pricing2_content2' => [
                         'type'   => 'text',
                         'name'   => 'pricing2_content2',
-                        'label'  => 'contenido #2 - plan 2',
+                        'label'  => 'contenido 2 - plan 2',
                         'value'  => '50 participantes',
                         'width'  => 6
                     ],
                     'pricing2_content3' => [
                         'type'   => 'text',
                         'name'   => 'pricing2_content3',
-                        'label'  => 'contenido #3 - plan 2',
+                        'label'  => 'contenido 3 - plan 2',
                         'value'  => '5 horas de reunión',
                         'width'  => 4
                     ],
                     'pricing2_content4' => [
                         'type'   => 'text',
                         'name'   => 'pricing2_content4',
-                        'label'  => 'contenido #4 - plan 2',
+                        'label'  => 'contenido 4 - plan 2',
                         'value'  => '',
                         'width'  => 4
                     ],
                     'pricing2_content5' => [
                         'type'   => 'text',
                         'name'   => 'pricing2_content5',
-                        'label'  => 'contenido #5 - plan 2',
+                        'label'  => 'contenido 5 - plan 2',
                         'value'  => '',
                         'width'  => 4
                     ], 
@@ -688,35 +688,35 @@ class PageTableSeeder extends Seeder
                     'pricing3_content1' => [
                         'type'   => 'text',
                         'name'   => 'pricing3_content1',
-                        'label'  => 'contenido #1 - plan 3',
+                        'label'  => 'contenido 1 - plan 3',
                         'value'  => 'Panel administrativo',
                         'width'  => 6
                     ], 
                     'pricing3_content2' => [
                         'type'   => 'text',
                         'name'   => 'pricing3_content2',
-                        'label'  => 'contenido #2 - plan 3',
+                        'label'  => 'contenido 2 - plan 3',
                         'value'  => 'soporte tecnico',
                         'width'  => 6
                     ],
                     'pricing3_content3' => [
                         'type'   => 'text',
                         'name'   => 'pricing3_content3',
-                        'label'  => 'contenido #3 - plan 3',
+                        'label'  => 'contenido 3 - plan 3',
                         'value'  => 'No hay límite de participantes y duración.',
                         'width'  => 4
                     ],
                     'pricing3_content4' => [
                         'type'   => 'text',
                         'name'   => 'pricing3_content4',
-                        'label'  => 'contenido #4 - plan 3',
+                        'label'  => 'contenido 4 - plan 3',
                         'value'  => '',
                         'width'  => 4
                     ],
                     'pricing3_content5' => [
                         'type'   => 'text',
                         'name'   => 'pricing3_content5',
-                        'label'  => 'contenido #5 - plan 3',
+                        'label'  => 'contenido 5 - plan 3',
                         'value'  => '',
                         'width'  => 4
                     ],  
@@ -728,14 +728,14 @@ class PageTableSeeder extends Seeder
                     'btn_name3' => [
                         'type'   => 'text',
                         'name'   => 'btn_name3',
-                        'label'  => 'Nombre del boton #3',
+                        'label'  => 'Nombre del boton 3',
                         'value'  => 'probar ahora',
                         'width'  => 6
                     ],
                     'btn_action3' => [
                         'type'   => 'text',
                         'name'   => 'btn_action3',
-                        'label'  => 'Accion del boton #3',
+                        'label'  => 'Accion del boton 3',
                         'value'  => '/register/3',
                         'width'  => 6
                     ],
@@ -745,8 +745,8 @@ class PageTableSeeder extends Seeder
 
             Block::create([
                 'name'        => 'lphs_block7',
-                'title'       => 'Blocke #7 (Pasarela de Pago #7)',
-                'description' => 'Seccion Pasarela de Pago #7 para la plantilla LPHS',
+                'title'       => 'Blocke 7 (Pasarela de Pago 7)',
+                'description' => 'Seccion Pasarela de Pago 7 para la plantilla LPHS',
                 'page_id'     => $page->id,
                 'position'    => 3,
                 'details'     => json_encode([
@@ -767,63 +767,63 @@ class PageTableSeeder extends Seeder
                     'image1'=> [
                         'type'   => 'image',
                         'name'   => 'image1',
-                        'label'  => 'Imagen #1',
+                        'label'  => 'Imagen 1',
                         'value'  => 'default1.png',
                         'width'  => 4
                     ],
                     'image2'=> [
                         'type'   => 'image',
                         'name'   => 'image2',
-                        'label'  => 'Imagen #2',
+                        'label'  => 'Imagen 2',
                         'value'  => 'default2.png',
                         'width'  => 4
                     ],
                     'image3'=> [
                         'type'   => 'image',
                         'name'   => 'image3',
-                        'label'  => 'Imagen #3',
+                        'label'  => 'Imagen 3',
                         'value'  => 'default3.png',
                         'width'  => 4
                     ],
                     'title1' => [
                         'type'   => 'text',
                         'name'   => 'title1',
-                        'label'  => 'Titulo #1',
+                        'label'  => 'Titulo 1',
                         'value'  => 'Tigo Money',
                         'width'  => 4
                     ],
                     'title2' => [
                         'type'   => 'text',
                         'name'   => 'title2',
-                        'label'  => 'Titulo #2',
+                        'label'  => 'Titulo 2',
                         'value'  => 'Banco BNB',
                         'width'  => 4
                     ],
                      'title3' => [
                         'type'   => 'text',
                         'name'   => 'title3',
-                        'label'  => 'Titulo #3',
+                        'label'  => 'Titulo 3',
                         'value'  => 'Banco Union',
                         'width'  => 4
                     ],
                     'account1' => [
                         'type'   => 'text',
                         'name'   => 'account1',
-                        'label'  => 'Cuenta #1',
+                        'label'  => 'Cuenta 1',
                         'value'  => 'Nro de Telefono: 78746621',
                         'width'  => 4
                     ],
                     'account2' => [
                         'type'   => 'text',
                         'name'   => 'account2',
-                        'label'  => 'Cuenta #2',
+                        'label'  => 'Cuenta 2',
                         'value'  => 'Nro de Cuenta: 8500183080',
                         'width'  => 4
                     ],
                     'account3' => [
                         'type'   => 'text',
                         'name'   => 'account3',
-                        'label'  => 'Cuenta #3',
+                        'label'  => 'Cuenta 3',
                         'value'  => 'Nro de Cuenta: 10000013879305',
                         'width'  => 4
                     ]

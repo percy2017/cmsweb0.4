@@ -2,7 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Laravel\Socialite\Facades\Socialite;
+
+// Events
+use Modules\Webstreaming\Events\SuscriptionUser;
 
 class SocialiteController extends Controller
 {
@@ -20,18 +27,36 @@ class SocialiteController extends Controller
                  $user = User::where('email', $auth_user->email)->first();
                  if($user){
                      Auth::login($user, true);
-                 }else{
-                     $user = User::create([
-                                 'name' => $auth_user->name,
-                                 'email' => $auth_user->email ?? trim(str_ireplace(' ', '.', $auth_user->name)).'.'.rand(1001, 9999).'@loginweb.dev',
-                                 'password' => Hash::make('password'),
-                                 'avatar' => $auth_user->avatar,
-                                 'role_id' => 2
-                             ]);
- 
-                     Auth::login($user, true);
-                 }
-                 return redirect('/');
+                }else{
+                    $user = new User;
+                    $user->name = $auth_user->name;
+                    $user->email = $auth_user->email ?? trim(str_ireplace(' ', '.', $auth_user->name)).'.'.rand(1001, 9999).'@loginweb.dev';
+                    $user->role_id = 3;
+                    $user->password = Hash::make("loginweb_$social");
+                    $user->avatar = $auth_user->avatar;
+                    $user->save();
+
+                    // Si existe el módulo HiStrean creamos la suscripción
+                    $module_histream = Module::find(2);
+                    if($module_histream){
+                        if ($module_histream->installed){
+
+                            $user->phone = $auth_user->phone;
+                            $user->save();
+
+                            PlanUser::create([
+                                'hs_plan_id' => 1,
+                                'user_id' => $user->id,
+                                'status' => 1
+                            ]);
+                            session(['greetings_histream' => true]);
+                            // Enviar notificación de nueva suscripción al módulo hiStream
+                            event(new SuscriptionUser($user));
+                        }
+                    }
+                    Auth::login($user, true);
+                }
+                return redirect('/home');
              }
          }else{
              return 'Ops..!! Hubo Problema el usuario necesita un email.!';

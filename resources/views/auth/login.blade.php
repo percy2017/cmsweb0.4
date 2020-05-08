@@ -55,22 +55,25 @@
 
                         <div class="text-center mb-3">
                             <button type="submit" class="btn blue-gradient btn-block btn-rounded z-depth-1a">Ingresar</button>
-                                <a href="/" class="btn btn-block btn-white btn-rounded z-depth-1a">Volver al Home</a> 
+
+                             {{-- <a href="/" class="btn btn-block btn-white btn-rounded z-depth-1a">Volver al Home</a>  --}}
                         </div>
 
-                        
-                        <p class="font-small dark-grey-text text-right d-flex justify-content-center mb-3 pt-2"> o ingresar con:</p>
+                    </form>
+                    <p class="font-small dark-grey-text text-right d-flex justify-content-center mb-3 pt-2"> o ingresar con:
+                    </p>
 
-                        <div class="row my-3 d-flex justify-content-center">
-                            <!--Facebook-->
-                            <a href="{{ route('socialLogin', 'facebook') }}" type="button" class="btn btn-white btn-rounded mr-md-3 z-depth-1a"><i
-                                class="fab fa-facebook-f blue-text text-center"></i></a>
-                            
-                            <!--Google +-->
-                            <a href="{{ route('socialLogin', 'google') }}" type="button" class="btn btn-white btn-rounded z-depth-1a"><i
-                                class="fab fa-google-plus-g blue-text"></i></a>
-                        </div>
-
+                    <div class="row my-3 d-flex justify-content-center">
+                        <!--Facebook-->
+                       {{--<a href="{{ route('socialLogin', 'facebook') }}" type="button" class="btn btn-white btn-rounded mr-md-3 z-depth-1a"><i
+                            class="fab fa-facebook-f blue-text text-center"></i>
+                        </a> --}}
+                        <a  href="{{ route('socialLogin', 'facebook') }}" type="button" class="btn  blue-gradient btn-rounded  btn-fb"><i class="fab fa-facebook-f pr-1"></i> Facebook</a>
+                        <a href="{{ route('socialLogin', 'google') }}" type="button" class="btn btn-rounded btn-gplus"><i class="fab fa-google-plus-g pr-1"></i> Google   </a>
+                        <!--Google +-->
+                        {{-- <a href="{{ route('socialLogin', 'google') }}" type="button" class="btn btn-white btn-rounded z-depth-1a"><i
+                            class="fab fa-google-plus-g blue-text">
+                        </i></a> --}}
                     </div>
 
                     <!--Footer-->
