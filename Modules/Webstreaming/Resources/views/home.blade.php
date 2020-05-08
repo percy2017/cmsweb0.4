@@ -32,8 +32,7 @@
                 <div class="row">
                     <div class="col-lg-8 col-md-10">
                         <h1 class="display-2 text-white">Bienvenido, {{ Auth::user()->name }}</h1>
-                        <p class="text-white mt-0 mb-5">This is your profile page. You can see the progress you've made with
-                        your work and manage your projects or assigned tasks</p>
+                        <p class="text-white mt-0 mb-5">{{ setting('histream.descripcion') }}</p>
                         <a href="{{ route('voyager.dashboard').'/conferencias' }}" class="btn btn-neutral">Ir a Panel de Control</a>
                     </div>
                 </div>
@@ -67,16 +66,16 @@
                                         <div class="col">
                                             <div class="card-profile-stats d-flex justify-content-center">
                                                 <div>
-                                                    <span class="heading">22</span>
-                                                    <span class="description">Friends</span>
+                                                    <span class="heading">5</span>
+                                                    <span class="description">Conferencias</span>
                                                 </div>
                                                 <div>
                                                     <span class="heading">10</span>
-                                                    <span class="description">Photos</span>
+                                                    <span class="description">Particpantes</span>
                                                 </div>
-                                                <div>
-                                                    <span class="heading">89</span>
-                                                    <span class="description">Comments</span>
+                                                <div>s
+                                                    <span class="heading">1 hr</span>
+                                                    <span class="description">Hora de Reuniones</span>
                                                 </div>
                                             </div>
                                         </div>

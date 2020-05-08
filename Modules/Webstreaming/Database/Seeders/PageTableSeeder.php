@@ -78,6 +78,46 @@ class PageTableSeeder extends Seeder
             ])
         ]);
 
+        Block::where('deleted_at', false)->delete();
+        $page = Page::create([
+            'name'        =>  'politica privacidad',
+            'slug'        =>  'politica-privacidad',
+            'user_id'     =>  1,
+            'direction'   =>  'webstreaming::pages.generica',
+            'description' =>  'Pagina de politicas y privacidad de HiStream.',
+            'details'     =>   json_encode([
+                
+                'contenido1' => [
+                    'type'   => 'rich_text_box',
+                    'name'   => 'contenido1',
+                    'label'  => 'Parrafo',
+                    'value'  => 'Soy un text',
+                    'width'  => 12
+                ],
+                
+
+            ])
+        ]);
+        Block::where('deleted_at', false)->delete();
+        $page = Page::create([
+            'name'        =>  'terminos condiones',
+            'slug'        =>  'terminos-condiones',
+            'user_id'     =>  1,
+            'direction'   =>  'webstreaming::pages.generica',
+            'description' =>  'Pagina de terminos y condiones de HiStream.',
+            'details'     =>   json_encode([
+                
+                'contenido2' => [
+                    'type'   => 'rich_text_box',
+                    'name'   => 'contenido2',
+                    'label'  => 'Parrafo',
+                    'value'  => 'Soy un text',
+                    'width'  => 12
+                ],
+                
+
+            ])
+        ]);        
         /** block 1 */
         Block::create([
             'name'        => 'lphs_block1',
@@ -490,346 +530,345 @@ class PageTableSeeder extends Seeder
             ])
         ]);
 
-               /** block 6 */
-               Block::create([
-                'name'        => 'lphs_block6',
-                'title'       => 'Blocke 6 (nuestros planes start 6)',
-                'description' => 'Seccion nuestros planes  6 para la plantilla LPHS',
-                'page_id'     => $page->id,
-                'position'    => 1,
-                'details'     => json_encode([
-                    'title_h3' => [
-                        'type'   => 'text',
-                        'name'   => 'title_h3',
-                        'label'  => 'Titulo en Negrita',
-                        'value'  => 'Nuestros Planes',
-                        'width'  => 6
-                    ],  
-                    'parrafo' => [
-                        'type'   => 'text_area',
-                        'name'   => 'parrafo',
-                        'label'  => 'Parrafo 1',
-                        'value'  => 'Escoge el plan que se adapte a ti',
-                        'width'  => 6
-                    ], 
-                    'space1' => [
-                        'type'  => 'space',
-                        'name'  => 'space1',
-                    ],   
-                    /**encabezado del plan 1 */
-                    'pricing1_title' => [
-                        'type'   => 'text',
-                        'name'   => 'pricing1_title',
-                        'label'  => 'Titulo del plan 1',
-                        'value'  => 'Gratis',
-                        'width'  => 6
-                    ],
-                    'pricing1_price1' => [
-                        'type'   => 'text',
-                        'name'   => 'pricing1_price1',
-                        'label'  => 'precio 1 - plan 1',
-                        'value'  => '0',
-                        'width'  => 6
-                    ],  
-                    'space2' => [
-                        'type'  => 'space',
-                        'name'  => 'space2',
-                    ],
-                    /**contenido del plan 1 */
-                    'pricing1_content1' => [
-                        'type'   => 'text',
-                        'name'   => 'pricing1_content1',
-                        'label'  => 'contenido 1 - plan 1',
-                        'value'  => '5 conferencias diarias',
-                        'width'  => 6
-                    ], 
-                    'pricing1_content2' => [
-                        'type'   => 'text',
-                        'name'   => 'pricing1_content2',
-                        'label'  => 'contenido 2 - plan 1',
-                        'value'  => '10 participantes',
-                        'width'  => 6
-                    ],
-                    'pricing1_content3' => [
-                        'type'   => 'text',
-                        'name'   => 'pricing1_content3',
-                        'label'  => 'contenido 3 - plan 1',
-                        'value'  => '1 hora de reunión',
-                        'width'  => 4
-                    ],
-                    'pricing1_content4' => [
-                        'type'   => 'text',
-                        'name'   => 'pricing1_content4',
-                        'label'  => 'contenido 4 - plan 1',
-                        'value'  => '',
-                        'width'  => 4
-                    ],
-                    'pricing1_content5' => [
-                        'type'   => 'text',
-                        'name'   => 'pricing1_content5',
-                        'label'  => 'contenido 5 - plan 1',
-                        'value'  => '',
-                        'width'  => 4
-                    ],  
-                    'space4' => [
-                        'type'  => 'space',
-                        'name'  => 'space4',
-                    ],
-                    /**button name  and action */
-                    'btn_name' => [
-                        'type'   => 'text',
-                        'name'   => 'btn_name',
-                        'label'  => 'Nombre del boton',
-                        'value'  => 'probar ahora',
-                        'width'  => 6
-                    ],
-                    'btn_action' => [
-                        'type'   => 'text',
-                        'name'   => 'btn_action',
-                        'label'  => 'Accion del boton',
-                        'value'  => '/register',
-                        'width'  => 6
-                    ],
-                    'space5' => [
-                        'type'  => 'space',
-                        'name'  => 'space5',
-                    ],
+        /** block 6 */
+        Block::create([
+            'name'        => 'lphs_block6',
+            'title'       => 'Blocke 6 (nuestros planes start 6)',
+            'description' => 'Seccion nuestros planes  6 para la plantilla LPHS',
+            'page_id'     => $page->id,
+            'position'    => 1,
+            'details'     => json_encode([
+                'title_h3' => [
+                    'type'   => 'text',
+                    'name'   => 'title_h3',
+                    'label'  => 'Titulo en Negrita',
+                    'value'  => 'Nuestros Planes',
+                    'width'  => 6
+                ],  
+                'parrafo' => [
+                    'type'   => 'text_area',
+                    'name'   => 'parrafo',
+                    'label'  => 'Parrafo 1',
+                    'value'  => 'Escoge el plan que se adapte a ti',
+                    'width'  => 6
+                ], 
+                'space1' => [
+                    'type'  => 'space',
+                    'name'  => 'space1',
+                ],   
+                /**encabezado del plan 1 */
+                'pricing1_title' => [
+                    'type'   => 'text',
+                    'name'   => 'pricing1_title',
+                    'label'  => 'Titulo del plan 1',
+                    'value'  => 'Gratis',
+                    'width'  => 6
+                ],
+                'pricing1_price1' => [
+                    'type'   => 'text',
+                    'name'   => 'pricing1_price1',
+                    'label'  => 'precio 1 - plan 1',
+                    'value'  => '0',
+                    'width'  => 6
+                ],  
+                'space2' => [
+                    'type'  => 'space',
+                    'name'  => 'space2',
+                ],
+                /**contenido del plan 1 */
+                'pricing1_content1' => [
+                    'type'   => 'text',
+                    'name'   => 'pricing1_content1',
+                    'label'  => 'contenido 1 - plan 1',
+                    'value'  => '5 conferencias diarias',
+                    'width'  => 6
+                ], 
+                'pricing1_content2' => [
+                    'type'   => 'text',
+                    'name'   => 'pricing1_content2',
+                    'label'  => 'contenido 2 - plan 1',
+                    'value'  => '10 participantes',
+                    'width'  => 6
+                ],
+                'pricing1_content3' => [
+                    'type'   => 'text',
+                    'name'   => 'pricing1_content3',
+                    'label'  => 'contenido 3 - plan 1',
+                    'value'  => '1 hora de reunión',
+                    'width'  => 4
+                ],
+                'pricing1_content4' => [
+                    'type'   => 'text',
+                    'name'   => 'pricing1_content4',
+                    'label'  => 'contenido 4 - plan 1',
+                    'value'  => '',
+                    'width'  => 4
+                ],
+                'pricing1_content5' => [
+                    'type'   => 'text',
+                    'name'   => 'pricing1_content5',
+                    'label'  => 'contenido 5 - plan 1',
+                    'value'  => '',
+                    'width'  => 4
+                ],  
+                'space4' => [
+                    'type'  => 'space',
+                    'name'  => 'space4',
+                ],
+                /**button name  and action */
+                'btn_name' => [
+                    'type'   => 'text',
+                    'name'   => 'btn_name',
+                    'label'  => 'Nombre del boton',
+                    'value'  => 'probar ahora',
+                    'width'  => 6
+                ],
+                'btn_action' => [
+                    'type'   => 'text',
+                    'name'   => 'btn_action',
+                    'label'  => 'Accion del boton',
+                    'value'  => '/register',
+                    'width'  => 6
+                ],
+                'space5' => [
+                    'type'  => 'space',
+                    'name'  => 'space5',
+                ],
 
-                    /**encabezado del plan 2 */
-                    'pricing2_title' => [
-                        'type'   => 'text',
-                        'name'   => 'pricing2_title',
-                        'label'  => 'Titulo del plan 2',
-                        'value'  => 'Profesional',
-                        'width'  => 6
-                    ],
-                    'pricing2_price1' => [
-                        'type'   => 'text',
-                        'name'   => 'pricing2_price1',
-                        'label'  => 'precio - plan 2',
-                        'value'  => '100',
-                        'width'  => 6
-                    ], 
-                    /**contenido del plan 2 */
-                    'pricing2_content1' => [
-                        'type'   => 'text',
-                        'name'   => 'pricing2_content1',
-                        'label'  => 'contenido 1 - plan 2',
-                        'value'  => '10 conferencias diarias',
-                        'width'  => 6
-                    ], 
-                    'pricing2_content2' => [
-                        'type'   => 'text',
-                        'name'   => 'pricing2_content2',
-                        'label'  => 'contenido 2 - plan 2',
-                        'value'  => '50 participantes',
-                        'width'  => 6
-                    ],
-                    'pricing2_content3' => [
-                        'type'   => 'text',
-                        'name'   => 'pricing2_content3',
-                        'label'  => 'contenido 3 - plan 2',
-                        'value'  => '5 horas de reunión',
-                        'width'  => 4
-                    ],
-                    'pricing2_content4' => [
-                        'type'   => 'text',
-                        'name'   => 'pricing2_content4',
-                        'label'  => 'contenido 4 - plan 2',
-                        'value'  => '',
-                        'width'  => 4
-                    ],
-                    'pricing2_content5' => [
-                        'type'   => 'text',
-                        'name'   => 'pricing2_content5',
-                        'label'  => 'contenido 5 - plan 2',
-                        'value'  => '',
-                        'width'  => 4
-                    ], 
-                    'space8' => [
-                        'type'  => 'space',
-                        'name'  => 'space8',
-                    ], 
-                    /**button name  and action */
-                    'btn_name2' => [
-                        'type'   => 'text',
-                        'name'   => 'btn_name2',
-                        'label'  => 'Nombre del boton',
-                        'value'  => 'probar ahora',
-                        'width'  => 6
-                    ],
-                    'btn_action2' => [
-                        'type'   => 'text',
-                        'name'   => 'btn_action2',
-                        'label'  => 'Accion del boton',
-                        'value'  => '/register/2',
-                        'width'  => 6
-                    ],
-                    'space9' => [
-                        'type'  => 'space',
-                        'name'  => 'space9',
-                    ], 
-                    /**encabezado del plan 3 */
-                    'pricing3_title' => [
-                        'type'   => 'text',
-                        'name'   => 'pricing3_title',
-                        'label'  => 'Titulo del plan 3',
-                        'value'  => 'Empresarial',
-                        'width'  => 6
-                    ],
-                    'pricing3_price1' => [
-                        'type'   => 'text',
-                        'name'   => 'pricing3_price1',
-                        'label'  => 'precio - plan 3',
-                        'value'  => '200',
-                        'width'  => 6
-                    ],  
-                    /**contenido del plan 3 */
-                    'pricing3_content1' => [
-                        'type'   => 'text',
-                        'name'   => 'pricing3_content1',
-                        'label'  => 'contenido 1 - plan 3',
-                        'value'  => 'Panel administrativo',
-                        'width'  => 6
-                    ], 
-                    'pricing3_content2' => [
-                        'type'   => 'text',
-                        'name'   => 'pricing3_content2',
-                        'label'  => 'contenido 2 - plan 3',
-                        'value'  => 'soporte tecnico',
-                        'width'  => 6
-                    ],
-                    'pricing3_content3' => [
-                        'type'   => 'text',
-                        'name'   => 'pricing3_content3',
-                        'label'  => 'contenido 3 - plan 3',
-                        'value'  => 'No hay límite de participantes y duración.',
-                        'width'  => 4
-                    ],
-                    'pricing3_content4' => [
-                        'type'   => 'text',
-                        'name'   => 'pricing3_content4',
-                        'label'  => 'contenido 4 - plan 3',
-                        'value'  => '',
-                        'width'  => 4
-                    ],
-                    'pricing3_content5' => [
-                        'type'   => 'text',
-                        'name'   => 'pricing3_content5',
-                        'label'  => 'contenido 5 - plan 3',
-                        'value'  => '',
-                        'width'  => 4
-                    ],  
-                    'space10' => [
-                        'type'  => 'space',
-                        'name'  => 'space10',
-                    ], 
-                    /**button name  and action */
-                    'btn_name3' => [
-                        'type'   => 'text',
-                        'name'   => 'btn_name3',
-                        'label'  => 'Nombre del boton 3',
-                        'value'  => 'probar ahora',
-                        'width'  => 6
-                    ],
-                    'btn_action3' => [
-                        'type'   => 'text',
-                        'name'   => 'btn_action3',
-                        'label'  => 'Accion del boton 3',
-                        'value'  => '/register/3',
-                        'width'  => 6
-                    ],
-                ])     
-            ]);
+                /**encabezado del plan 2 */
+                'pricing2_title' => [
+                    'type'   => 'text',
+                    'name'   => 'pricing2_title',
+                    'label'  => 'Titulo del plan 2',
+                    'value'  => 'Profesional',
+                    'width'  => 6
+                ],
+                'pricing2_price1' => [
+                    'type'   => 'text',
+                    'name'   => 'pricing2_price1',
+                    'label'  => 'precio - plan 2',
+                    'value'  => '100',
+                    'width'  => 6
+                ], 
+                /**contenido del plan 2 */
+                'pricing2_content1' => [
+                    'type'   => 'text',
+                    'name'   => 'pricing2_content1',
+                    'label'  => 'contenido 1 - plan 2',
+                    'value'  => '10 conferencias diarias',
+                    'width'  => 6
+                ], 
+                'pricing2_content2' => [
+                    'type'   => 'text',
+                    'name'   => 'pricing2_content2',
+                    'label'  => 'contenido 2 - plan 2',
+                    'value'  => '50 participantes',
+                    'width'  => 6
+                ],
+                'pricing2_content3' => [
+                    'type'   => 'text',
+                    'name'   => 'pricing2_content3',
+                    'label'  => 'contenido 3 - plan 2',
+                    'value'  => '5 horas de reunión',
+                    'width'  => 4
+                ],
+                'pricing2_content4' => [
+                    'type'   => 'text',
+                    'name'   => 'pricing2_content4',
+                    'label'  => 'contenido 4 - plan 2',
+                    'value'  => '',
+                    'width'  => 4
+                ],
+                'pricing2_content5' => [
+                    'type'   => 'text',
+                    'name'   => 'pricing2_content5',
+                    'label'  => 'contenido 5 - plan 2',
+                    'value'  => '',
+                    'width'  => 4
+                ], 
+                'space8' => [
+                    'type'  => 'space',
+                    'name'  => 'space8',
+                ], 
+                /**button name  and action */
+                'btn_name2' => [
+                    'type'   => 'text',
+                    'name'   => 'btn_name2',
+                    'label'  => 'Nombre del boton',
+                    'value'  => 'probar ahora',
+                    'width'  => 6
+                ],
+                'btn_action2' => [
+                    'type'   => 'text',
+                    'name'   => 'btn_action2',
+                    'label'  => 'Accion del boton',
+                    'value'  => '/register/2',
+                    'width'  => 6
+                ],
+                'space9' => [
+                    'type'  => 'space',
+                    'name'  => 'space9',
+                ], 
+                /**encabezado del plan 3 */
+                'pricing3_title' => [
+                    'type'   => 'text',
+                    'name'   => 'pricing3_title',
+                    'label'  => 'Titulo del plan 3',
+                    'value'  => 'Empresarial',
+                    'width'  => 6
+                ],
+                'pricing3_price1' => [
+                    'type'   => 'text',
+                    'name'   => 'pricing3_price1',
+                    'label'  => 'precio - plan 3',
+                    'value'  => '200',
+                    'width'  => 6
+                ],  
+                /**contenido del plan 3 */
+                'pricing3_content1' => [
+                    'type'   => 'text',
+                    'name'   => 'pricing3_content1',
+                    'label'  => 'contenido 1 - plan 3',
+                    'value'  => 'Panel administrativo',
+                    'width'  => 6
+                ], 
+                'pricing3_content2' => [
+                    'type'   => 'text',
+                    'name'   => 'pricing3_content2',
+                    'label'  => 'contenido 2 - plan 3',
+                    'value'  => 'soporte tecnico',
+                    'width'  => 6
+                ],
+                'pricing3_content3' => [
+                    'type'   => 'text',
+                    'name'   => 'pricing3_content3',
+                    'label'  => 'contenido 3 - plan 3',
+                    'value'  => 'No hay límite de participantes y duración.',
+                    'width'  => 4
+                ],
+                'pricing3_content4' => [
+                    'type'   => 'text',
+                    'name'   => 'pricing3_content4',
+                    'label'  => 'contenido 4 - plan 3',
+                    'value'  => '',
+                    'width'  => 4
+                ],
+                'pricing3_content5' => [
+                    'type'   => 'text',
+                    'name'   => 'pricing3_content5',
+                    'label'  => 'contenido 5 - plan 3',
+                    'value'  => '',
+                    'width'  => 4
+                ],  
+                'space10' => [
+                    'type'  => 'space',
+                    'name'  => 'space10',
+                ], 
+                /**button name  and action */
+                'btn_name3' => [
+                    'type'   => 'text',
+                    'name'   => 'btn_name3',
+                    'label'  => 'Nombre del boton 3',
+                    'value'  => 'probar ahora',
+                    'width'  => 6
+                ],
+                'btn_action3' => [
+                    'type'   => 'text',
+                    'name'   => 'btn_action3',
+                    'label'  => 'Accion del boton 3',
+                    'value'  => '/register/3',
+                    'width'  => 6
+                ],
+            ])     
+        ]);
 
-
-            Block::create([
-                'name'        => 'lphs_block7',
-                'title'       => 'Blocke 7 (Pasarela de Pago 7)',
-                'description' => 'Seccion Pasarela de Pago 7 para la plantilla LPHS',
-                'page_id'     => $page->id,
-                'position'    => 3,
-                'details'     => json_encode([
-                    'title_strong' => [
-                        'type'   => 'text',
-                        'name'   => 'title_strong',
-                        'label'  => 'Titulo en Negrita',
-                        'value'  => 'Pasarela de Pago',
-                        'width'  => 6
-                    ],
-                    'description'=> [
-                        'type'   => 'text_area',
-                        'name'   => 'description',
-                        'label'  => 'Descripcion',
-                        'value'  => 'Forma de pago',
-                        'width'  => 6
-                    ],
-                    'image1'=> [
-                        'type'   => 'image',
-                        'name'   => 'image1',
-                        'label'  => 'Imagen 1',
-                        'value'  => 'default1.png',
-                        'width'  => 4
-                    ],
-                    'image2'=> [
-                        'type'   => 'image',
-                        'name'   => 'image2',
-                        'label'  => 'Imagen 2',
-                        'value'  => 'default2.png',
-                        'width'  => 4
-                    ],
-                    'image3'=> [
-                        'type'   => 'image',
-                        'name'   => 'image3',
-                        'label'  => 'Imagen 3',
-                        'value'  => 'default3.png',
-                        'width'  => 4
-                    ],
-                    'title1' => [
-                        'type'   => 'text',
-                        'name'   => 'title1',
-                        'label'  => 'Titulo 1',
-                        'value'  => 'Tigo Money',
-                        'width'  => 4
-                    ],
-                    'title2' => [
-                        'type'   => 'text',
-                        'name'   => 'title2',
-                        'label'  => 'Titulo 2',
-                        'value'  => 'Banco BNB',
-                        'width'  => 4
-                    ],
-                     'title3' => [
-                        'type'   => 'text',
-                        'name'   => 'title3',
-                        'label'  => 'Titulo 3',
-                        'value'  => 'Banco Union',
-                        'width'  => 4
-                    ],
-                    'account1' => [
-                        'type'   => 'text',
-                        'name'   => 'account1',
-                        'label'  => 'Cuenta 1',
-                        'value'  => 'Nro de Telefono: 78746621',
-                        'width'  => 4
-                    ],
-                    'account2' => [
-                        'type'   => 'text',
-                        'name'   => 'account2',
-                        'label'  => 'Cuenta 2',
-                        'value'  => 'Nro de Cuenta: 8500183080',
-                        'width'  => 4
-                    ],
-                    'account3' => [
-                        'type'   => 'text',
-                        'name'   => 'account3',
-                        'label'  => 'Cuenta 3',
-                        'value'  => 'Nro de Cuenta: 10000013879305',
-                        'width'  => 4
-                    ]
-                    
-                ])    
-            ]);
+        Block::create([
+            'name'        => 'lphs_block7',
+            'title'       => 'Blocke 7 (Pasarela de Pago 7)',
+            'description' => 'Seccion Pasarela de Pago 7 para la plantilla LPHS',
+            'page_id'     => $page->id,
+            'position'    => 3,
+            'details'     => json_encode([
+                'title_strong' => [
+                    'type'   => 'text',
+                    'name'   => 'title_strong',
+                    'label'  => 'Titulo en Negrita',
+                    'value'  => 'Pasarela de Pago',
+                    'width'  => 6
+                ],
+                'description'=> [
+                    'type'   => 'text_area',
+                    'name'   => 'description',
+                    'label'  => 'Descripcion',
+                    'value'  => 'Forma de pago',
+                    'width'  => 6
+                ],
+                'image1'=> [
+                    'type'   => 'image',
+                    'name'   => 'image1',
+                    'label'  => 'Imagen 1',
+                    'value'  => 'default1.png',
+                    'width'  => 4
+                ],
+                'image2'=> [
+                    'type'   => 'image',
+                    'name'   => 'image2',
+                    'label'  => 'Imagen 2',
+                    'value'  => 'default2.png',
+                    'width'  => 4
+                ],
+                'image3'=> [
+                    'type'   => 'image',
+                    'name'   => 'image3',
+                    'label'  => 'Imagen 3',
+                    'value'  => 'default3.png',
+                    'width'  => 4
+                ],
+                'title1' => [
+                    'type'   => 'text',
+                    'name'   => 'title1',
+                    'label'  => 'Titulo 1',
+                    'value'  => 'Tigo Money',
+                    'width'  => 4
+                ],
+                'title2' => [
+                    'type'   => 'text',
+                    'name'   => 'title2',
+                    'label'  => 'Titulo 2',
+                    'value'  => 'Banco BNB',
+                    'width'  => 4
+                ],
+                    'title3' => [
+                    'type'   => 'text',
+                    'name'   => 'title3',
+                    'label'  => 'Titulo 3',
+                    'value'  => 'Banco Union',
+                    'width'  => 4
+                ],
+                'account1' => [
+                    'type'   => 'text',
+                    'name'   => 'account1',
+                    'label'  => 'Cuenta 1',
+                    'value'  => 'Nro de Telefono: 78746621',
+                    'width'  => 4
+                ],
+                'account2' => [
+                    'type'   => 'text',
+                    'name'   => 'account2',
+                    'label'  => 'Cuenta 2',
+                    'value'  => 'Nro de Cuenta: 8500183080',
+                    'width'  => 4
+                ],
+                'account3' => [
+                    'type'   => 'text',
+                    'name'   => 'account3',
+                    'label'  => 'Cuenta 3',
+                    'value'  => 'Nro de Cuenta: 10000013879305',
+                    'width'  => 4
+                ]
+                
+            ])    
+        ]);
 
     }
 }
