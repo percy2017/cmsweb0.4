@@ -51,6 +51,8 @@
     <!--  MDB core JavaScript  -->
     <script type="text/javascript" src="{{ asset('vendor/histream/js/mdb.min.js') }}"></script>
 
+    
+
     <!-- Your custom scripts (optional) -->
     <script type="text/javascript">
       // Material Select Initialization
