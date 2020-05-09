@@ -97,6 +97,7 @@
         var page_actual = 1;
         var loader = '{{ url("images/loading.gif") }}';
         $(document).ready(function(){
+            Notification.requestPermission();
             // Obtener lista de suscripciones
             $('#data-list').html(`<div class="text-center"><img src="${loader}" height="200px"></div>`);
             list(search, page_actual);
@@ -132,6 +133,12 @@
             Echo.channel('SuscriptionUserChannel')
             .listen('.Modules\\Webstreaming\\Events\\SuscriptionUser', (e) => {
                 list(search, page_actual);
+                if(Notification.permission==='granted'){
+                    let notificacion = new Notification('Nueva suscripción!',{
+                        body: `El cliente ${e.user.name} se ha suscrito`,
+                        icon: "{{ url('images/icons/icon-512x512.png') }}"
+                    });
+                }
             });
 
             // Escuchando solicitudes del cliente
@@ -145,7 +152,13 @@
                         title: 'Solicitud reenviada',
                         text: `El cliente ${e.user.name} con numero de celular ${e.user.phone} ha reenviado la solicitud de aprobación de su plan`,
                         // footer: '<a href>Why do I have this issue?</a>'
-                    })
+                    });
+                    if(Notification.permission==='granted'){
+                        let notificacion = new Notification('Solicitud reenviada!',{
+                            body: `El cliente ${e.user.name} te ha reenviado su solicitud`,
+                            icon: "{{ url('images/icons/icon-512x512.png') }}"
+                        });
+                    }
                 }
             });
             

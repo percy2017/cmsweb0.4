@@ -3,11 +3,11 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="shortcut icon" href="{{ url('images/icons/icon-512x512.png') }}" type="image/x-icon">
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
         <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-
 
         <script type="text/javascript" src="{{ asset('vendor/histream/js/jquery-3.4.1.min.js') }}"></script>
         <script type="text/javascript" src="{{ asset('vendor/histream/js/popper.min.js') }}"></script>
@@ -246,9 +246,9 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title" id="exampleModalLabel">Suscríbete</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            {{-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
-                            </button>
+                            </button> --}}
                         </div>
                         <div class="modal-body">
                             <input type="hidden" name="meeting_id" value="{{ $meeting->id }}">
@@ -291,7 +291,9 @@
                             $.get('{{ url("conferencia/suscribe/".$meeting->id) }}/'+suscription.id+'/join');
                         }
                     }else{
-                        $('#modal_suscription').modal('toggle');
+                        if("{{ Auth::user() }}"){
+                            $('#modal_suscription').modal('toggle');
+                        }
                     }
 
                     $('#form-suscribe').on('submit', function(e){
