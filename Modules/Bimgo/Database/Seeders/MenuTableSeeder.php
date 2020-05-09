@@ -78,8 +78,26 @@ class MenuTableSeeder extends Seeder
                 'parent_id'  => $InventarioMenuItem->id,
                 'order'      => $postion++,
             ])->save();
+        }       
+
+        
+
+        $VentasMenuItem = MenuItem::firstOrNew([
+            'menu_id' => $menu->id,
+            'title'   => 'Ventas',
+            'url'     => '',
+        ]);
+        if (!$VentasMenuItem->exists) {
+            $VentasMenuItem->fill([
+                'target'     => '_self',
+                'icon_class' => 'voyager-data',
+                'color'      => null,
+                'parent_id'  => null, //menu desplegable
+                'order'      => 3,
+            ])->save();
         }
-      $menuItem = MenuItem::firstOrNew([
+
+        $menuItem = MenuItem::firstOrNew([
             'menu_id' => $menu->id,
             'title'   => 'Clientes',
             'url'     => '',
@@ -90,8 +108,24 @@ class MenuTableSeeder extends Seeder
                 'target'     => '_self',
                 'icon_class' => 'voyager-double-right',
                 'color'      => null,
-                'parent_id'  => $InventarioMenuItem->id,
-                'order'      => $postion++,
+                'parent_id'  => $VentasMenuItem->id,
+                // 'order'      => $postion++,
+                'order'      => 1,
+            ])->save();
+        }
+
+        $ComprasMenuItem = MenuItem::firstOrNew([
+            'menu_id' => $menu->id,
+            'title'   => 'Compras',
+            'url'     => '',
+        ]);
+        if (!$ComprasMenuItem->exists) {
+            $ComprasMenuItem->fill([
+                'target'     => '_self',
+                'icon_class' => 'voyager-data',
+                'color'      => null,
+                'parent_id'  => null, //menu desplegable
+                'order'      => 4,
             ])->save();
         }
 
@@ -106,8 +140,8 @@ class MenuTableSeeder extends Seeder
                 'target'     => '_self',
                 'icon_class' => 'voyager-double-right',
                 'color'      => null,
-                'parent_id'  => $InventarioMenuItem->id,
-                'order'      => $postion++,
+                'parent_id'  => $ComprasMenuItem->id,
+                'order'      =>  1,
             ])->save();
         }
 

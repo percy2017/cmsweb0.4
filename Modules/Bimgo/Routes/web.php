@@ -17,3 +17,4 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('bimgo/deletes/recovery/{table}/{id}', 'BimgoController@recovery')->name('bg_recovery');
     Route::get('bimgo/deletes/{table}', 'BimgoController@deletes')->name('bg_deletes');
 });
+

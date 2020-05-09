@@ -20,7 +20,7 @@ class CreateBgCustomersTable extends Migration
             $table->string('type_person');
             $table->string('phone')->nullable();
             $table->string('phone_number')->nullable();
-            $table->string('adress');
+            $table->string('adress')->nullable();
 
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');

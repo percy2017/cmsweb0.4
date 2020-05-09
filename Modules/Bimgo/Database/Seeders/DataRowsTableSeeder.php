@@ -1332,6 +1332,26 @@ class DataRowsTableSeeder extends Seeder
             ])->save();
         }
 
+        // $dataRow = $this->dataRow($customerDataType, 'correo');
+        // if (!$dataRow->exists) {
+        //     $dataRow->fill([
+        //         'type'         => 'text',
+        //         'display_name' => 'Correo',
+        //         // 'required'     => 1,
+        //         'browse'       => 1,
+        //         'read'         => 1,
+        //         'edit'         => 1,
+        //         'add'          => 1,
+        //         'delete'       => 0,
+        //         'details'      => [
+        //             'display' => [
+        //                 'width' => '6'
+        //             ]
+        //         ],
+        //         'order'        => $postion++,
+        //     ])->save();
+        // }
+
         $dataRow = $this->dataRow($customerDataType, 'user_id');
         if (!$dataRow->exists) {
             $dataRow->fill([
