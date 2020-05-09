@@ -13,6 +13,7 @@
         <link rel="stylesheet" href="{{ asset('css/nucleo.css') }}">
         <link rel="stylesheet" href="{{ asset('css/all.min.css') }}">
         <link rel="stylesheet" href="{{ asset('css/argon.min.css?v=1.2.0') }}" type="text/css">
+        <link rel="shortcut icon" href="/images/icons/icon-512x512.png" type="image/x-icon">
         <script src="https://kit.fontawesome.com/72111250ba.js" crossorigin="anonymous"></script>
         <title>HiStream | Bienvenido</title>
     </head>
@@ -65,18 +66,18 @@
                                     <div class="row">
                                         <div class="col">
                                             <div class="card-profile-stats d-flex justify-content-center">
-                                                <div>
-                                                    <span class="heading">5</span>
-                                                    <span class="description">Conferencias</span>
+                                              {{-- <div>
+                                                    <span class="heading">22</span>
+                                                    <span class="description">Friends</span>
                                                 </div>
                                                 <div>
                                                     <span class="heading">10</span>
-                                                    <span class="description">Particpantes</span>
+                                                    <span class="description">Photos</span>
                                                 </div>
-                                                <div>s
-                                                    <span class="heading">1 hr</span>
-                                                    <span class="description">Hora de Reuniones</span>
-                                                </div>
+                                                <div>
+                                                    <span class="heading">89</span>
+                                                    <span class="description">Comments</span>
+                                                </div> --}}
                                             </div>
                                         </div>
                                     </div>
