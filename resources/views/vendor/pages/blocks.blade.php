@@ -12,6 +12,10 @@
             <span class="glyphicon glyphicon-list"></span>&nbsp;
             {{ __('voyager::generic.return_to_list') }}
         </a>
+        <a href="{{ route('voyager.blocks.create') }}" class="btn btn-primary">
+            <span class="glyphicon glyphicon-plus"></span>&nbsp;
+            Nuevo Blocke
+        </a>
     </div>
 @stop
 
@@ -160,5 +164,5 @@
 
 
 @section('javascript')
-<script src="//cdn.ckeditor.com/4.14.0/full/ckeditor.js"></script>
+    <script src="//cdn.ckeditor.com/4.14.0/full/ckeditor.js"></script>
 @endsection

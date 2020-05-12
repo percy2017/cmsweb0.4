@@ -34,8 +34,9 @@
         gtag('config', '{{ setting('site.google_analytics_tracking_id') }}');
         </script>
         <!-- Facebook Pixel Code -->
+
         <script>
-            !function(f,b,e,v,n,t,s)
+        !function(f,b,e,v,n,t,s)
         {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
         n.callMethod.apply(n,arguments):n.queue.push(arguments)};
         if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
@@ -43,12 +44,12 @@
         t.src=v;s=b.getElementsByTagName(e)[0];
         s.parentNode.insertBefore(t,s)}(window, document,'script',
         'https://connect.facebook.net/en_US/fbevents.js');
-        fbq('init', '2305516163092209');
+        fbq('init', '{{ setting('histream.pixel_facebook') }}');
         fbq('track', 'PageView');
         </script>
         <noscript><img height="1" width="1" style="display:none"
-                src="https://www.facebook.com/tr?id=2305516163092209&ev=PageView&noscript=1" />
-        </noscript>
+        src="https://www.facebook.com/tr?id={{ 'histream.pixel_facebook' }}&ev=PageView&noscript=1"
+        /></noscript>
         <!-- End Facebook Pixel Code -->
     </head>
 
@@ -69,7 +70,6 @@
         <script type="text/javascript" src="{{ asset('vendor/histream/js/bootstrap.min.js') }}"></script>
         <!-- MDB core JavaScript -->
         <script type="text/javascript" src="{{ asset('vendor/histream/js/mdb.min.js') }}"></script>
-
         <!-- Custom scripts -->
         <script>
             // Animation init
@@ -90,7 +90,10 @@
             });
 
         </script>
-
+        @yield('javascript')
+        <script>
+            $( "blockquote" ).addClass( "blockquote" );
+        </script>
     </body>
 
 </html>

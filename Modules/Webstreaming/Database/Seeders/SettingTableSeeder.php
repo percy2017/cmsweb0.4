@@ -151,6 +151,15 @@ class SettingTableSeeder extends Seeder
             'order' => $cont++,
             'group' => 'HiStream'
         ]);
+        DB::table('settings')->insert([
+            'key' => 'histream.pixel_facebook',
+            'display_name' => 'Pixel de Facebook',
+            'value' => '',
+            'details' => '',
+            'type' => 'text_area',
+            'order' => $cont++,
+            'group' => 'HiStream'
+        ]);
     }
     /**
      * [setting description].

@@ -36,7 +36,7 @@
 <main>
 
   @foreach ($blocks as $item)
-  @include('webstreaming::blocks.'.$item->name, ['data' => json_decode($item->details)])
+    @include('webstreaming::blocks.'.$item->name, ['data' => json_decode($item->details)])
   @endforeach
    
 </main>

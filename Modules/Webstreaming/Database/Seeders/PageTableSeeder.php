@@ -17,7 +17,9 @@ class PageTableSeeder extends Seeder
     public function run()
     {
         Page::where('user_id', 1)->delete();
-        Block::where('deleted_at', false)->delete();
+        Block::where('deleted_at', null)->delete();
+
+        //---------------------------------------------
         $page = Page::create([
             'name'        =>  'Landing Page HiStream',
             'slug'        =>  'landing-page-histream',
@@ -78,14 +80,15 @@ class PageTableSeeder extends Seeder
             ])
         ]);
 
-              
+        $count=1;
         /** block 1 */
         Block::create([
             'name'        => 'lphs_block1',
             'title'       => 'Blocke 1 (Sesion heading  start 1)',
             'description' => 'Seccion  heading  1 para la plantilla LPHS',
             'page_id'     => $page->id,
-            'position'    => 1,
+            'position'    => $count++,
+            'type'        => 'dinamyc-data',
             'details'     => json_encode([
                 'title_h3' => [
                     'type'   => 'text',
@@ -118,7 +121,8 @@ class PageTableSeeder extends Seeder
             'title'       => 'Blocke 2 ( Section Awesome features start 2)',
             'description' => 'Seccion Section Awesome features  2 para la plantilla LPHS',
             'page_id'     => $page->id,
-            'position'    => 1,
+            'position'    => $count++,
+            'type'        => 'dinamyc-data',
             'details'     => json_encode([
                 'imagen_bl2' => [
                     'type'   => 'image',
@@ -277,7 +281,8 @@ class PageTableSeeder extends Seeder
             'title'       => 'Blocke 3 (tutorial video start 3)',
             'description' => 'Seccion tutorial video 3 para la plantilla LPHS',
             'page_id'     => $page->id,
-            'position'    => 1,
+            'position'    => $count++,
+            'type'        => 'dinamyc-data',
             'details'     => json_encode([
                 'title_strong' => [
                     'type'   => 'text',
@@ -343,7 +348,8 @@ class PageTableSeeder extends Seeder
             'title'       => 'Blocke 4 ( Some facts about us start 4)',
             'description' => 'Seccion  Some facts about us 4 para la plantilla LPHS',
             'page_id'     => $page->id,
-            'position'    => 1,
+            'position'    => $count++,
+            'type'        => 'dinamyc-data',
             'details'     => json_encode([
                 'imagen' => [
                     'type'   => 'image',
@@ -423,7 +429,8 @@ class PageTableSeeder extends Seeder
             'title'       => 'Blocke 5 (Our services start 5)',
             'description' => 'Seccion Our services  5 para la plantilla LPHS',
             'page_id'     => $page->id,
-            'position'    => 1,
+            'position'    => $count++,
+            'type'        => 'dinamyc-data',
             'details'     => json_encode([
                 'title_strong' => [
                     'type'   => 'text',
@@ -490,14 +497,14 @@ class PageTableSeeder extends Seeder
                 ],
             ])
         ]);
-
         /** block 6 */
         Block::create([
             'name'        => 'lphs_block6',
             'title'       => 'Blocke 6 (nuestros planes start 6)',
             'description' => 'Seccion nuestros planes  6 para la plantilla LPHS',
             'page_id'     => $page->id,
-            'position'    => 1,
+            'position'    => $count++,
+            'type'        => 'dinamyc-data',
             'details'     => json_encode([
                 'title_h3' => [
                     'type'   => 'text',
@@ -742,13 +749,13 @@ class PageTableSeeder extends Seeder
                 ],
             ])     
         ]);
-
         Block::create([
             'name'        => 'lphs_block7',
             'title'       => 'Blocke 7 (Pasarela de Pago 7)',
             'description' => 'Seccion Pasarela de Pago 7 para la plantilla LPHS',
             'page_id'     => $page->id,
-            'position'    => 3,
+            'position'    => $count++,
+            'type'        => 'dinamyc-data',
             'details'     => json_encode([
                 'title_strong' => [
                     'type'   => 'text',
@@ -832,7 +839,7 @@ class PageTableSeeder extends Seeder
         ]);
 
 
-        
+        //----------------------------------------------------------------------
         $page = Page::create([
             'name'        =>  'politica privacidad',
             'slug'        =>  'politica-privacidad',
@@ -840,7 +847,6 @@ class PageTableSeeder extends Seeder
             'direction'   =>  'webstreaming::pages.generica',
             'description' =>  'Pagina de politicas y privacidad de HiStream.',
             'details'     =>   json_encode([
-                
                 'contenido1' => [
                     'type'   => 'rich_text_box',
                     'name'   => 'contenido1',
@@ -848,11 +854,29 @@ class PageTableSeeder extends Seeder
                     'value'  => 'Soy un text',
                     'width'  => 12
                 ],
-                
-
             ])
         ]);
-     
+        $count=1;
+        Block::create([
+            'name'        => 'body',
+            'title'       => 'Blocke Editor HTML',
+            'description' => 'Blocke Generico para Editar el HTML',
+            'page_id'     => $page->id,
+            'position'    => $count++,
+            'type'        => 'dinamyc-data',
+            'details'     => json_encode([
+                'body' => [
+                    'type'   => 'rich_text_box',
+                    'name'   => 'body',
+                    'label'  => 'Editor HTML',
+                    'value'  => null,
+                    'width'  => 12
+                ]
+            ])    
+        ]);
+
+
+        //-------------------------------------------------------------
         $page = Page::create([
             'name'        =>  'terminos condiones',
             'slug'        =>  'terminos-condiones',
@@ -860,7 +884,6 @@ class PageTableSeeder extends Seeder
             'direction'   =>  'webstreaming::pages.generica',
             'description' =>  'Pagina de terminos y condiones de HiStream.',
             'details'     =>   json_encode([
-                
                 'contenido' => [
                     'type'   => 'rich_text_box',
                     'name'   => 'contenido',
@@ -868,9 +891,25 @@ class PageTableSeeder extends Seeder
                     'value'  => 'Soy un text',
                     'width'  => 12
                 ],
-                
-
             ])
         ]);  
+        $count=1;
+        Block::create([
+            'name'        => 'body',
+            'title'       => 'Blocke Editor HTML',
+            'description' => 'Blocke Generico para Editar el HTML',
+            'page_id'     => $page->id,
+            'position'    => $count++,
+            'type'        => 'dinamyc-data',
+            'details'     => json_encode([
+                'body' => [
+                    'type'   => 'rich_text_box',
+                    'name'   => 'body',
+                    'label'  => 'Editor HTML',
+                    'value'  => null,
+                    'width'  => 12
+                ]
+            ])    
+        ]);
     }
 }
