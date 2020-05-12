@@ -1,4 +1,4 @@
-    <section id ="4"class="p-1 mb-5 pb-4">
+    <section id ="4" class="p-1 mb-5 pb-4">
         <!-- Section heading -->
         <h3 class="text-center title my-5 dark-grey-text font-weight-bold wow fadeIn" data-wow-delay="0.2s">
             <strong>{{ $data->title_strong->value }}</strong>
@@ -58,8 +58,7 @@
                 <!--Modal: Name-->
 
                 <div class="view ">
-                    <img class="img-fluid z-depth-1" src="{{ voyager::Image($data->imagen_1->value) }}"
-                        alt="Video title">
+                    <img class="img-fluid z-depth-1" src="{{ voyager::Image($data->imagen_1->value) }}" alt="Video title">
                     <div class="mask flex-center rgba-black-light">
                         <a id="play" class="btn-floating btn-danger btn-lg" data-toggle="modal" data-target="#modal1"><i
                                 class="fas fa-play"></i></a>
@@ -117,8 +116,7 @@
                 <!--Modal: Name-->
 
                 <div class="view ">
-                    <img class="img-fluid z-depth-1" src="{{ voyager::Image($data->imagen_2->value) }}"
-                        alt="Video title">
+                    <img class="img-fluid z-depth-1" src="{{ voyager::Image($data->imagen_2->value) }}" alt="Video title">
                     <div class="mask flex-center rgba-black-light">
                         <a id="play" class="btn-floating btn-danger btn-lg" data-toggle="modal" data-target="#modal6"><i
                                 class="fas fa-play"></i></a>
@@ -174,8 +172,7 @@
                 <!--Modal: Name-->
 
                 <div class="view ">
-                    <img class="img-fluid z-depth-1" src="{{ voyager::Image($data->imagen_3->value) }}""
-                        alt="Video title">
+                    <img class="img-fluid z-depth-1" src="{{ voyager::Image($data->imagen_3->value) }}" alt="Video title">
                     <div class="mask flex-center rgba-black-light">
                         <a id="play" class="btn-floating btn-danger btn-lg" data-toggle="modal" data-target="#modal4"><i
                                 class="fas fa-play"></i></a>

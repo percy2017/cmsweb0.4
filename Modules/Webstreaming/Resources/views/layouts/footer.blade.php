@@ -72,7 +72,7 @@
             <a href="https://play.google.com/store/apps/dev?id=8983547128702673310&hl=es" target="_blanck">Descargar App</a>
           </p>
           <p>
-            <a href="https://loginweb.dev"target="_blanck">Servicios</a>
+            <a href="https://loginweb.dev" target="_blanck">Servicios</a>
           </p>
         </div>
         <!--/.Second column-->

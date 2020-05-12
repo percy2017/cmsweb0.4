@@ -4,7 +4,7 @@
 @include('webstreaming::layouts.navbar')
 <!-- Navbar -->
 <!--Intro Section-->
-<section id="1"class="view intro-2" style="background-image: url('https://user-images.githubusercontent.com/14111379/79811836-16fec980-8345-11ea-8d3e-ced882b30e0c.png');">
+<section id="1" class="view intro-2" style="background-image: url('https://user-images.githubusercontent.com/14111379/79811836-16fec980-8345-11ea-8d3e-ced882b30e0c.png');">
   <div class="mask">
     <div class="container h-100 d-flex justify-content-center align-items-center">
       <div class="row flex-center pt-5 mt-3">

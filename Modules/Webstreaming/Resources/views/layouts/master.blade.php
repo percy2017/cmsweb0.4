@@ -21,6 +21,8 @@
         <!-- Material Design Bootstrap -->
         <link href="{{ asset('vendor/histream/css/mdb.min.css') }}" rel="stylesheet">
         @yield('css')
+        <link rel="stylesheet" href="{{ asset('vendor/whatsapp/floating-wpp.css') }}">
+        <link rel="stylesheet" href="{{ asset('vendor/up/css/floating-totop-button.css') }}">
         @laravelPWA
         {{--  google analityc  --}}
         <script async
@@ -48,7 +50,7 @@
         fbq('track', 'PageView');
         </script>
         <noscript><img height="1" width="1" style="display:none"
-        src="https://www.facebook.com/tr?id={{ 'histream.pixel_facebook' }}&ev=PageView&noscript=1"
+        src="https://www.facebook.com/tr?id={{ setting('histream.pixel_facebook') }}&ev=PageView&noscript=1"
         /></noscript>
         <!-- End Facebook Pixel Code -->
     </head>
@@ -61,7 +63,7 @@
         </header>
         @yield('content')
         @include('webstreaming::layouts.footer')
-
+        <div id="myWP"></div> 
         <!-- JQuery -->
         <script type="text/javascript" src="{{ asset('vendor/histream/js/jquery-3.4.1.min.js') }}"></script>
         <!-- Bootstrap tooltips -->
@@ -71,6 +73,9 @@
         <!-- MDB core JavaScript -->
         <script type="text/javascript" src="{{ asset('vendor/histream/js/mdb.min.js') }}"></script>
         <!-- Custom scripts -->
+
+        <script src="{{ asset('vendor/whatsapp/floating-wpp.js') }}"></script>
+        <script src="{{ asset('vendor/up/js/floating-totop-button.js') }}"></script>
         <script>
             // Animation init
             new WOW().init();
@@ -87,6 +92,38 @@
                 $("#gallery").fadeTo(300, 1);
                 }, 300);
             });
+            });
+
+
+            // whatsapp ----------------------------------------------------------------------------------
+            $('#myWP').floatingWhatsApp({
+            phone: '{{ setting('whatsapp.phone') }}',
+            popupMessage: '{{ setting('whatsapp.popupMessage') }}',
+            message: '{{ setting('whatsapp.message') }}',
+            showPopup: true,
+            showOnIE: true,
+            headerTitle: '{{ setting('whatsapp.headerTitle') }}',
+            headerColor: '{{ setting('whatsapp.color') }}',
+            backgroundColor: '{{ setting('whatsapp.color') }}',
+            buttonImage: '<img src="{{ Voyager::Image(setting('whatsapp.buttonImage' )) }}" />',
+            position: '{{ setting('whatsapp.position') }}',
+            autoOpenTimeout: {{ setting('whatsapp.autoOpenTimeout') }},
+            size: '{{ setting('whatsapp.size') }}'
+            });
+
+            // buttun up ----------------------------------------------------------------------
+            $("body").toTopButton({
+            // path to icons
+            imagePath: 'vendor/up/img/icons/',
+            // arrow, arrow-circle, caret, caret-circle, circle, circle-o, arrow-l, drop, rise, top
+            // or your own SVG icon
+            arrowType: 'arrow',
+            // 'w' = white
+            // 'b' = black
+            iconColor: 'w',
+            // icon shadow
+            // from 1 to 16
+            iconShadow: 6
             });
 
         </script>
