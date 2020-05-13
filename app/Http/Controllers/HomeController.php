@@ -43,7 +43,8 @@ class HomeController extends Controller
                                         ->where('day', '>=', date('Y-m-d'))
                                         ->orderBy('day', 'ASC')
                                         ->orderBy('start', 'ASC')->limit(5)->get();
-                    return view('webstreaming::home', compact('suscription', 'meetings'));
+                    $meetings_count = Meeting::where('deleted_at', null)->where('user_id', Auth::user()->id)->count();
+                    return view('webstreaming::home', compact('suscription', 'meetings', 'meetings_count'));
                 default:
                     return view('home');
             }

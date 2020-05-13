@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 // Models
 use App\User;
@@ -45,7 +47,7 @@ class SuscriptionsController extends Controller
         $user = User::find($plan_user->user_id)->only(['id', 'name', 'phone']);
         if($request->type=='upgrade'){
             $plan_user->hs_plan_id = $request->plan_id;
-            $plan_user->status = null;
+            $plan_user->status = $request->plan_id == 1 ? 1 : null;
             $plan_user->save();
 
             // Event
@@ -150,6 +152,30 @@ class SuscriptionsController extends Controller
             return redirect()->route('conferencias.index')->with(['message' => 'Conferencia ingresada exitosamente.', 'alert-type' => 'success']);
         } catch (\Throwable $th) {
             return redirect()->route('conferencias.index')->with(['message' => 'Ocurrió un error inesperado.', 'alert-type' => 'error']);
+        }
+    }
+
+    public function update_user(Request $request){
+        DB::beginTransaction();
+        try {
+            $user = User::find($request->id);
+            $user->name = $request->name;
+            $user->email = $request->email;
+            $user->phone = $request->phone;
+            if(!empty($request->password) && !empty($request->password_repeat)){
+                $credentials = ['email' => $request->email, 'password' => $request->password];
+                if (Auth::attempt($credentials)) {
+                    $user->password = Hash::make($request->password_repeat);
+                }else{
+                    return response()->json(['error' => 'La contraseña actual es incorrecta.']);
+                }
+            }
+            $user->save();
+            DB::commit();
+            return response()->json($user->only('name', 'phone', 'email'));
+        } catch (\Exception $e) {
+            DB::rollback();
+            return response()->json(['error' => 'El Email ya existe, intente con otro.']);
         }
     }
 
