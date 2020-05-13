@@ -32,7 +32,7 @@
                 @endif
                 <div class="row">
                     <div class="col-lg-8 col-md-10">
-                        <h1 class="display-2 text-white">Bienvenido, {{ Auth::user()->name }}</h1>
+                        <h1 class="display-2 text-white" id="h1-user_name">Bienvenido, {{ Auth::user()->name }}</h1>
                         <p class="text-white mt-0 mb-5">{{ setting('histream.descripcion') }}</p>
                         <a href="{{ route('voyager.dashboard').'/conferencias' }}" class="btn btn-neutral">Ir a Panel de Control</a>
                     </div>
@@ -51,7 +51,7 @@
                                     <div class="col-lg-3 order-lg-2">
                                         <div class="card-profile-image">
                                             <a href="#">
-                                                <img src="{{ strpos(Voyager::Image(Auth::user()->avatar), 'https') === false ? Voyager::Image(Auth::user()->avatar) : Auth::user()->avatar }}" class="rounded-circle">
+                                                <img src="{{ strpos(Auth::user()->avatar, 'https') === false ? Voyager::Image(Auth::user()->avatar) : Auth::user()->avatar }}" width="150px" class="rounded-circle">
                                             </a>
                                         </div>
                                     </div>
@@ -66,15 +66,15 @@
                                     <div class="row">
                                         <div class="col">
                                             <div class="card-profile-stats d-flex justify-content-center">
-                                              {{-- <div>
-                                                    <span class="heading">22</span>
-                                                    <span class="description">Friends</span>
+                                                <div>
+                                                    <span class="heading">{{ $meetings_count }}</span>
+                                                    <span class="description">Reuniones</span>
                                                 </div>
                                                 <div>
-                                                    <span class="heading">10</span>
-                                                    <span class="description">Photos</span>
+                                                    <span class="heading">0</span>
+                                                    <span class="description">Grabaciones</span>
                                                 </div>
-                                                <div>
+                                                {{-- <div>
                                                     <span class="heading">89</span>
                                                     <span class="description">Comments</span>
                                                 </div> --}}
@@ -82,7 +82,7 @@
                                         </div>
                                     </div>
                                     <div class="text-center">
-                                        <h5 class="h3">{{ Auth::user()->name }}</h5>
+                                        {{-- <h5 class="h3">{{ Auth::user()->name }}</h5> --}}
                                         {{-- <div class="h5 font-weight-300">
                                             <i class="ni location_pin mr-2"></i>Bucharest, Romania
                                         </div> --}}
@@ -191,28 +191,27 @@
                                 <div class="card-header">
                                     <div class="row align-items-center">
                                         <div class="col-8">
-                                            <h2 class="mb-0">Información</h2>
+                                            <h3 class="mb-0">Datos personales</h3>
                                         </div>
                                         <div class="col-4 text-right">
-                                            {{-- <button class="btn btn-primary btn-sm">Editar <i class="fa fa-edit"></i></button> --}}
+                                            <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modal_update" >Editar <i class="fa fa-edit"></i></button>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="card-body">
                                     <form _lpchecked="1">
-                                        <h3 class="mb-4">Datos personales</h3>
                                         <div class="pl-lg-4">
                                             <div class="row">
                                                 <div class="col-lg-6">
                                                     <div class="form-group">
                                                         <label class="form-control-label" for="input-username">Nombre Completo</label>
-                                                        <p>{{ Auth::user()->name }}</p>
+                                                        <p id="label-user_name">{{ Auth::user()->name }}</p>
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-6">
                                                     <div class="form-group">
                                                         <label class="form-control-label" for="input-email">Email</label>
-                                                        <p>{{ Auth::user()->email }}</p>
+                                                        <p id="label-user_email">{{ Auth::user()->email }}</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -220,12 +219,12 @@
                                                 <div class="col-lg-6">
                                                     <div class="form-group">
                                                         <label class="form-control-label" for="input-email">N&deg; de celular</label>
-                                                        <p>{{ Auth::user()->phone ?? 'No definido' }}</p>
+                                                        <p id="label-user_phone">{{ Auth::user()->phone ?? 'No definido' }}</p>
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-6">
                                                     <div class="form-group">
-                                                        <label class="form-control-label" for="input-last-name">Registro</label>
+                                                        <label class="form-control-label" for="input-last-name">Fecha de registro</label>
                                                         <p>
                                                             @php
                                                                 $fecha = \Carbon\Carbon::parse(Auth::user()->created_at);
@@ -237,7 +236,22 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <h3 class="mb-4">Datos de suscripción</h3>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header">
+                                    <div class="row align-items-center">
+                                        <div class="col-8">
+                                            <h3 class="mb-0">Datos de suscripción</h3>
+                                        </div>
+                                        <div class="col-4 text-right">
+                                            <button class="btn btn-info btn-sm" data-toggle="modal" data-target="#modal_upgrade" >Editar <i class="fa fa-edit"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <form _lpchecked="1">
                                         <div class="pl-lg-4">
                                             <div class="row">
                                                 <div class="col-lg-6">
@@ -254,7 +268,7 @@
                                                 </div>
                                                 <div class="col-lg-6">
                                                     <div class="form-group">
-                                                        <label class="form-control-label" for="input-email">Inicio</label>
+                                                        <label class="form-control-label" for="input-email">Fecha de inicio</label>
                                                         <p>
                                                             @php
                                                                 $fecha = $suscription->start ? \Carbon\Carbon::parse($suscription->start) : 'No definido';
@@ -288,6 +302,51 @@
             </div>
         </div>
 
+        @include('webstreaming::meetings.partials.modal_upgrade', ['suscription_id' => $suscription->id])
+
+        <form id="form_update" action="" method="POST">
+            <div class="modal fade" id="modal_update" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel"> <i class="fa fa-edit"></i> Editar información</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                {{ csrf_field() }}
+                                <input type="hidden" name="id" value="{{ Auth::user()->id }}">
+                                <input type="text" name="name" class="form-control" value="{{ Auth::user()->name }}" placeholder="Nombre completo" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="tel" name="phone" class="form-control" value="{{ Auth::user()->phone }}" placeholder="N&deg; de celular">
+                            </div>
+                            <div class="form-group">
+                                <input type="email" name="email" class="form-control" value="{{ Auth::user()->email }}" placeholder="Email" required>
+                            </div>
+                            <div class="alert alert-primary">
+                                <small>En caso de editar la contraseña debe ingresar su contraseña antigua y la nueva, caso contrario dejar los espacios vacíos.</small>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-md-6">
+                                    <input type="password" name="password" placeholder="Contraseña actual" minlength="8" maxlength="50" value="" class="form-control">
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <input type="password" name="password_repeat" placeholder="Nueva contraseña" minlength="8" maxlength="50" value="" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                            <button type="submit" class="btn btn-primary" id="btn-update">Actualizar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+
         @if(session('greetings_histream'))
             <!-- Modal -->
             <div class="modal fade" id="modal_payment" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -314,7 +373,69 @@
     </body>
     <!-- JQuery -->
     <script type="text/javascript" src="{{ asset('vendor/histream/js/jquery-3.4.1.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('vendor/histream/js/bootstrap.min.js') }}"></script>    
+    <script type="text/javascript" src="{{ asset('vendor/histream/js/bootstrap.min.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <script>
+        $(document).ready(function(){
+            const Toast = Swal.mixin({
+                                toast: true,
+                                position: 'bottom-end',
+                                showConfirmButton: false,
+                                timer: 3000,
+                                timerProgressBar: true,
+                                onOpen: (toast) => {
+                                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                                }
+                            });
+
+            $('#form_petition').on('submit', function(e){
+                e.preventDefault();
+                $('#btn-petition').html('<i class="fa fa-refresh fa-spin"></i> Solicitando...');
+                $('#btn-petition').attr('disabled', 'disabled');
+                let url = "{{ route('user_petition') }}";
+                $.post(url, $(this).serialize(), function(res){
+                    Toast.fire({
+                        icon: 'success',
+                        title: 'Solicitud realizada'
+                    });
+                    $('#btn-petition').html('Solicitar');
+                    $('#btn-petition').removeAttr('disabled');
+                    $('#modal_upgrade').modal('toggle');
+                    setTimeout(() => {
+                        location.reload();
+                    }, 2500);
+                });
+            });
+
+            $('#form_update').on('submit', function(e){
+                e.preventDefault();
+                $('#btn-update').html('<i class="fa fa-refresh fa-spin"></i> Actualizando...');
+                $('#btn-update').attr('disabled', 'disabled');
+                let url = "{{ route('user_edit') }}";
+                $.post(url, $(this).serialize(), function(res){
+                    if(!res.error){
+                        Toast.fire({
+                            icon: 'success',
+                            title: 'Perfil editado correctamente'
+                        });
+                        $('#modal_update').modal('toggle');
+                        $('#label-user_name').text(res.name);
+                        $('#h1-user_name').text(`Bienvenido, ${res.name}`);
+                        $('#label-user_email').text(res.email);
+                        $('#label-user_phone').text(res.phone);
+                    }else{
+                        Toast.fire({
+                            icon: 'error',
+                            title: res.error
+                        });
+                    }
+                    $('#btn-update').html('Actualizar');
+                    $('#btn-update').removeAttr('disabled');
+                });
+            });
+        });    
+    </script> 
     <script>
         @if(session('greetings_histream'))
             $(document).ready(function(){
