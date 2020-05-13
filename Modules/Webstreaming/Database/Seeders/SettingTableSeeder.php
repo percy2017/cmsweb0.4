@@ -37,7 +37,7 @@ class SettingTableSeeder extends Seeder
         DB::table('settings')->insert([
             'key' => 'histream.server',
             'display_name' => 'Servidor',
-            'value' => 'https://live.loginweb.dev',
+            'value' => 'https://virtual.histream.live',
             'details' => '',
             'type' => 'text',
             'order' => $cont++,
@@ -110,6 +110,15 @@ class SettingTableSeeder extends Seeder
             'details' => '',
             'type' => 'text',
             'order' => 4,
+            'group' => 'HiStream'
+        ]);
+        DB::table('settings')->insert([
+            'key' => 'histream.descripcion',
+            'display_name' => 'Descripcion',
+            'value' => 'Histream te la bienvenida. cualquier duda no dudes en comunicarte con nosotros',
+            'details' => '',
+            'type' => 'text_area',
+            'order' => 5,
             'group' => 'HiStream'
         ]);
 

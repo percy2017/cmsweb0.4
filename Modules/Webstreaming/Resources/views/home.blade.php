@@ -33,8 +33,7 @@
                 <div class="row">
                     <div class="col-lg-8 col-md-10">
                         <h1 class="display-2 text-white" id="h1-user_name">Bienvenido, {{ Auth::user()->name }}</h1>
-                        <p class="text-white mt-0 mb-5">This is your profile page. You can see the progress you've made with
-                        your work and manage your projects or assigned tasks</p>
+                        <p class="text-white mt-0 mb-5">{{ setting('histream.descripcion') }}</p>
                         <a href="{{ route('voyager.dashboard').'/conferencias' }}" class="btn btn-neutral">Ir a Panel de Control</a>
                     </div>
                 </div>
