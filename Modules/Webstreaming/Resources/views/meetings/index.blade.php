@@ -59,7 +59,7 @@
     </div>
 
     {{-- Modals --}}
-    <form id="form_petition" action="{{ route('petition_user') }}" method="POST">
+    {{-- <form id="form_petition" action="{{ route('user_petition') }}" method="POST">
         <div class="modal modal-info fade" tabindex="-1" id="modal_upgrade" role="dialog">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -89,7 +89,8 @@
                 </div>
             </div>
         </div>
-    </form>
+    </form> --}}
+    @include('webstreaming::meetings.partials.modal_upgrade', ['suscription_id' => $suscription->id])
 
     <form id="form_request">
         {{ csrf_field() }}
@@ -368,7 +369,7 @@
                 e.preventDefault();
                 $('#btn-petition').html('<i class="fa fa-refresh fa-spin"></i> Solicitando...');
                 $('#btn-petition').attr('disabled', 'disabled');
-                let url = "{{ route('petition_user') }}";
+                let url = "{{ route('user_petition') }}";
                 $.post(url, $('#form_petition').serialize(), function(res){
                     Toast.fire({
                         icon: 'success',
@@ -383,7 +384,7 @@
             });
 
             $('#btn-request').click(function(){
-                let url = "{{ route('petition_user') }}";
+                let url = "{{ route('user_petition') }}";
                 Swal.fire({
                     title: 'Deseas reenviar la solicitud?',
                     text: "Se enviará una notificación a nuestro personal para que haga los cambios correspondientes",
