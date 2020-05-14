@@ -199,7 +199,7 @@ class SettingsTableSeeder extends Seeder
         $setting = $this->findSetting('whatsapp.headerTitle');
         if (!$setting->exists) {
             $setting->fill([
-                'display_name' => 'Titulo',
+                'display_name' => 'Titulo Header',
                 'value'        => 'Mi Chat',
                 'details'      => '',
                 'type'         => 'text',
@@ -243,7 +243,7 @@ class SettingsTableSeeder extends Seeder
         $setting = $this->findSetting('whatsapp.autoOpenTimeout');
         if (!$setting->exists) {
             $setting->fill([
-                'display_name' => 'Timepo de espera para abrir',
+                'display_name' => 'Tiempo de espera para abrir',
                 'value'        => '50000',
                 'details'      => '',
                 'type'         => 'text',
