@@ -20,6 +20,7 @@ class BlockController extends Controller
         $blocks = Block::where('page_id', $page_id)->orderBy('position', 'asc')->get();
         $dataType = Voyager::model('DataType')->where('slug', '=', 'blocks')->first();
         // dd($page, $blocks, $dataType);
+        // return $page;
         return view('vendor.pages.blocks', [
             'blocks' => $blocks,
             'dataType' =>  $dataType,

@@ -60,89 +60,121 @@
                                 </div>
                             
                                 {{-- {{ dd(json_decode($block->details, true)) }} --}}
-                                @foreach (json_decode($block->details, true) as $item => $value)
-                                    @switch($value['type'])
-                                        @case('text')
-                                            <div class="form-group col-md-{{ $value['width'] }}">
-                                                <label>{{ $value['label'] }}</label>
-                                                <input type="text" class="form-control" name="{{ $value['name'] }}" placeholder="" value="{{ $value['value'] }}">
+                                @switch($block->type)
+                                    @case('dinamyc-data')
+                                        @if($block->details)
+                                            @foreach (json_decode($block->details, true) as $item => $value)
+                                                @switch($value['type'])
+                                                    @case('text')
+                                                        <div class="form-group col-md-{{ $value['width'] }}">
+                                                            <label>{{ $value['label'] }}</label>
+                                                            <input type="text" class="form-control" name="{{ $value['name'] }}" placeholder="" value="{{ $value['value'] }}">
+                                                        </div>
+                                                        @break
+                                                    @case('rich_text_box')
+                                                        <div class="form-group col-md-{{ $value['width'] }}">
+                                                            <label>{{ $value['label'] }}</label>
+                                                            <textarea class="ckeditor" name="{{ $value['name'] }}" rows="5">{{ $value['value'] }}</textarea>
+                                                        </div>
+                                                        @break
+                                                    @case('text_area')
+                                                        <div class="form-group col-md-{{ $value['width'] }}">
+                                                            <label>{{ $value['label'] }}</label>
+                                                            <textarea class="form-control" name="{{ $value['name'] }}" rows="3">{{ $value['value'] }}</textarea>
+                                                        </div>
+                                                        @break
+                                                    @case('image')
+                                                        <div class="form-group col-md-{{ $value['width'] }}">
+                                                            <label>{{ $value['label'] }}</label>
+                                                            <a href="#" class="voyager-x remove-single-image" style="position:absolute;">Delete</a>
+                                                
+                                                            <img src="{{ Voyager::Image($value['value']) }}" style="max-width:200px; height:auto; clear:both; display:block; padding:2px; border:1px solid #ddd; margin-bottom:10px;">
+                                                            <input type="file" value="{{ $value['value'] }}" name="{{ $value['name'] }}" accept="image/*">
+                                                            {{--  <input type="hidden" name="{{ $value['name'] }}-aux" value="{{ $value['value'] }}" />  --}}
+                                                        </div>
+                                                        @break
+                                                    @case('select_dropdown')
+                                                        <div class="form-group col-md-{{ $value['width'] }}">
+                                                            @php
+                                                                $miarray = [
+                                                                    'fas fa-cogs blue-text',
+                                                                    'fas fa-book blue-text',
+                                                                    'fas fa-users blue-text',
+                                                                    'fas fa-tablet-alt blue-text',
+                                                                    'fas fa-level-up-alt blue-text',
+                                                                    'fas fa-phone blue-text',
+                                                                    'far fa-object-group blue-text',
+                                                                    'fas fa-rocket blue-text',
+                                                                    'fas fa-cloud-upload-alt blue-text',
+                                                                    'fas fa-home blue-text',
+                                                                    'fas fa-users white-text',
+                                                                    'fas fa-chart-bar blue-text',
+                                                                    'far fa-calendar-alt mr-2',
+                                                                    'fas fa-cogs orange-text fa-2x',
+                                                                    'fas fa-edit orange-text fa-2x',
+                                                                    'fas fa-comments orange-text fa-2x',
+                                                                    'fab fa-whatsapp-square orange-text fa-2x',
+                                                                    'fab fa-whatsapp orange-text fa-2x',
+                                                                    'fab fa-youtube orange-text fa-2x',
+                                                                    'fab fa-youtube-square orange-text fa-2x',
+                                                                    'fas fa-video orange-text fa-2x',
+                                                                    'fas fa-photo-video orange-text fa-2x',
+                                                                    'fas fa-hand-holding-usd orange-text fa-2x'
+                                                                ];
+                                                            @endphp
+                                                            <label>{{ $value['label'] }}</label>
+                                                            <select class="form-control select2" name="{{ $value['name'] }}">
+                                                                @foreach ($miarray as $item)
+                                                                    <option value="{{ $item }}" @if($value['value'] === $item)selected="selected"@endif>
+                                                                        {{ $item }}
+                                                                    </option>
+                                                                @endforeach
+                                                            </select>
+                                                        </div>
+                                                        @break
+                                                    @case('space')
+                                                        <div class="col-md-12">
+                                                            <hr />
+                                                        </div>
+                                                        @break
+                                                    @case('number')
+                                                        <div class="form-group col-md-{{ $value['width'] }}">
+                                                            <label>{{ $value['label'] }}</label>
+                                                            <input type="number" class="form-control" name="{{ $value['name'] }}"  placeholder="" value="{{ $value['value'] }}">
+                                                        </div>
+                                                        @break
+                                                @endswitch
+                                                {{-- {{ dd($value['type']) }} --}}
+                                            @endforeach
+                                            {{-- <div class="text-center">
+                                                <code>Blocks Type dinamyc-data</code>
+                                            </div> --}}
+                                        @else
+                                            <div class="text-center">
+                                                <code>No hay Detalles</code>
                                             </div>
-                                            @break
-                                        @case('rich_text_box')
-                                            <div class="form-group col-md-{{ $value['width'] }}">
-                                                <label>{{ $value['label'] }}</label>
-                                                <textarea class="ckeditor" name="{{ $value['name'] }}" rows="5">{{ $value['value'] }}</textarea>
-                                            </div>
-                                            @break
-                                        @case('text_area')
-                                            <div class="form-group col-md-{{ $value['width'] }}">
-                                                <label>{{ $value['label'] }}</label>
-                                                <textarea class="form-control" name="{{ $value['name'] }}" rows="3">{{ $value['value'] }}</textarea>
-                                            </div>
-                                            @break
-                                        @case('image')
-                                            <div class="form-group col-md-{{ $value['width'] }}">
-                                                <label>{{ $value['label'] }}</label>
-                                                <a href="#" class="voyager-x remove-single-image" style="position:absolute;">Delete</a>
-                                     
-                                                <img src="{{ Voyager::Image($value['value']) }}" style="max-width:200px; height:auto; clear:both; display:block; padding:2px; border:1px solid #ddd; margin-bottom:10px;">
-                                                <input type="file" value="{{ $value['value'] }}" name="{{ $value['name'] }}" accept="image/*">
-                                                {{--  <input type="hidden" name="{{ $value['name'] }}-aux" value="{{ $value['value'] }}" />  --}}
-                                            </div>
-                                            @break
-                                        @case('select_dropdown')
-                                            <div class="form-group col-md-{{ $value['width'] }}">
-                                                @php
-                                                    $miarray = [
-                                                        'fas fa-cogs blue-text',
-                                                        'fas fa-book blue-text',
-                                                        'fas fa-users blue-text',
-                                                        'fas fa-tablet-alt blue-text',
-                                                        'fas fa-level-up-alt blue-text',
-                                                        'fas fa-phone blue-text',
-                                                        'far fa-object-group blue-text',
-                                                        'fas fa-rocket blue-text',
-                                                        'fas fa-cloud-upload-alt blue-text',
-                                                        'fas fa-home blue-text',
-                                                        'fas fa-users white-text',
-                                                        'fas fa-chart-bar blue-text',
-                                                        'far fa-calendar-alt mr-2',
-                                                        'fas fa-cogs orange-text fa-2x',
-                                                        'fas fa-edit orange-text fa-2x',
-                                                        'fas fa-comments orange-text fa-2x',
-                                                        'fab fa-whatsapp-square orange-text fa-2x',
-                                                        'fab fa-whatsapp orange-text fa-2x',
-                                                        'fab fa-youtube orange-text fa-2x',
-                                                        'fab fa-youtube-square orange-text fa-2x',
-                                                        'fas fa-video orange-text fa-2x',
-                                                        'fas fa-photo-video orange-text fa-2x',
-                                                        'fas fa-hand-holding-usd orange-text fa-2x'
-                                                    ];
-                                                @endphp
-                                                <label>{{ $value['label'] }}</label>
-                                                <select class="form-control select2" name="{{ $value['name'] }}">
-                                                    @foreach ($miarray as $item)
-                                                        <option value="{{ $item }}" @if($value['value'] === $item)selected="selected"@endif>
-                                                            {{ $item }}
-                                                        </option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                            @break
-                                        @case('space')
-                                            <div class="col-md-12">
-                                                <hr />
-                                            </div>
-                                            @break
-                                        @case('number')
-                                            <div class="form-group col-md-{{ $value['width'] }}">
-                                                <label>{{ $value['label'] }}</label>
-                                                <input type="number" class="form-control" name="{{ $value['name'] }}"  placeholder="" value="{{ $value['value'] }}">
-                                            </div>
-                                            @break
+                                        @endif
+                                        @break
+                                    @case('controller')
+                                    {{-- {{ dd($block->details) }} --}}
+                                    @foreach (json_decode($block->details, true) as $item => $value)
+                                        @switch($value['type'])
+                                            @case('text')
+                                                <div class="form-group col-md-{{ $value['width'] }}">
+                                                    <label>{{ $value['label'] }}</label>
+                                                    <input type="text" class="form-control" name="{{ $value['name'] }}" placeholder="" value="{{ $value['value'] }}">
+                                                </div>
+                                                @break
+                                        @endswitch
+                                        {{-- {{ dd($value['type']) }} --}}
+                                        @endforeach
+                                        <div class="text-center">
+                                            <code>Blocks Type Controller</code>
+                                        </div>
+                                        @break                                        
                                     @endswitch
-                                    {{-- {{ dd($value['type']) }} --}}
-                                @endforeach
+                                
+                                
                                 <div class="form-group col-md-12">
                                     <hr />
                                 </div>
