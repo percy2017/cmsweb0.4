@@ -18,6 +18,8 @@
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
         <!-- Bootstrap core CSS -->
         <link href="{{ asset('vendor/histream/css/bootstrap.min.css') }}" rel="stylesheet">
+        <link href="{{ asset('vendor/histream/css/aos.css') }}" rel="stylesheet">
+        <link href="{{ asset('vendor/histream/css/style1.css') }}" rel="stylesheet">
         <!-- Material Design Bootstrap -->
         <link href="{{ asset('vendor/histream/css/mdb.min.css') }}" rel="stylesheet">
         @yield('css')
