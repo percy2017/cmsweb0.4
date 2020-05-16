@@ -1,0 +1,131 @@
+/*------------------------------------------------------------------**/
+
+.banner {
+    padding: 180px 0 100px;
+  }
+  
+  .banner .block h1 {
+    margin-bottom: 13px;
+  }
+  
+  .banner .block p {
+    font-size: 20px;
+    margin-bottom: 30px;
+  }
+  
+  .banner .block .video {
+    width: 80%;
+    margin: 0 auto;
+  }
+  
+  @media (max-width: 768px) {
+    .banner .block .video {
+      width: 100%;
+    }
+  }
+  
+  .banner .block ul.clients-logo {
+    margin-top: 30px;
+  }
+  
+  .banner .block ul.clients-logo li {
+    margin-left: 30px;
+  }
+  
+  @media (max-width: 480px) {
+    .banner .block ul.clients-logo li {
+      margin-bottom: 20px;
+    }
+  }
+  
+  .banner .block ul.clients-logo li:first-child {
+    margin-left: 0;
+  }
+  
+  /*------------------------------------------------------------------**/
+  
+  /**------------------------------------------------------------------------------------*/
+  
+  .banner-full .image {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .banner-full .image img {
+    height: 625px;
+  }
+  
+  @media (max-width: 768px) {
+    .banner-full .image {
+      margin-bottom: 30px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .banner-full .block {
+      text-align: center;
+    }
+  }
+  
+  .banner-full .block .logo {
+    margin-bottom: 40px;
+  }
+  
+  .banner-full .block h1 {
+    margin-bottom: 40px;
+  }
+  
+  .banner-full .block p {
+    font-size: 20px;
+    margin-bottom: 50px;
+  }
+  
+  .banner-full .block .app {
+    margin-bottom: 20px;
+  }
+  
+  /**-------------------------------------*/
+  
+  .list-inline {
+    padding-left: 0;
+    list-style: none
+  }
+  .list-inline-item {
+    display: inline-block
+  }
+  
+  .list-inline-item:not(:last-child) {
+    margin-right: .5rem
+  }
+  
+  @media (max-width: 400px) {
+    ul.app-badge li {
+      margin-bottom: 10px;
+    }
+  }
+  ul.app-badge {
+    margin-bottom: 60px;
+ }
+  ul.app-badge li a img {
+    width: 150px;
+    height: auto;
+ }
+  ul.post-tag {
+    margin-bottom: 20px;
+ }
+  ul.post-tag li {
+    font-size: 14px;
+ }
+  ul.post-tag li img {
+    width: 25px;
+    height: 25px;
+    border-radius: 100%;
+    margin-right: 5px;
+ }
+  ul.post-tag li a {
+    font-size: 14px;
+ }
+  ul.post-tag li:last-child {
+    margin-left: 25px;
+ }
+  
