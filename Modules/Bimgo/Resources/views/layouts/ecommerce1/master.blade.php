@@ -17,6 +17,7 @@
     <style>
 
     </style>
+    @yield('css')
     @laravelPWA
 </head>
 

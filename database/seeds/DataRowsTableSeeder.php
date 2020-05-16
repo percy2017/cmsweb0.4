@@ -567,6 +567,25 @@ class DataRowsTableSeeder extends Seeder
                 ]
             ])->save();
         }
+        $dataRow = $this->dataRow($BlockDataType, 'page_id');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'hidden',
+                'display_name' => 'page_id',
+                'required'     => 1,
+                'browse'       => 0,
+                'read'         => 0,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'order'        => $count++,
+                'details' => [
+                    'display' => [
+                        'width' => 6
+                    ]
+                ]
+            ])->save();
+        }
         $dataRow = $this->dataRow($BlockDataType, 'block_belongsto_page_relationship');
         if (!$dataRow->exists) {
             $dataRow->fill([
@@ -726,7 +745,6 @@ class DataRowsTableSeeder extends Seeder
                 'order'        => $count++,
             ])->save();
         }
-
         $dataRow = $this->dataRow($BlockDataType, 'updated_at');
         if (!$dataRow->exists) {
             $dataRow->fill([

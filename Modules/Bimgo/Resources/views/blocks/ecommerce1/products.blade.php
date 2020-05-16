@@ -22,7 +22,7 @@
                             <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/13.jpg"
                                 class="img-fluid" alt="">
 
-                            <a>
+                            <a href="{{ url('product') }}">
 
                                 <div class="mask rgba-white-slight"></div>
 
@@ -35,7 +35,7 @@
                             <div class="card-body">
 
                             <!-- Category & Title -->
-                            <h5 class="card-title mb-1"><strong><a href="" class="dark-grey-text">Asus CT-567</a></strong>
+                            <h5 class="card-title mb-1"><strong><a href="{{ url('product-details') }}" class="dark-grey-text">Asus CT-567</a></strong>
                             </h5>
 
                             <span class="badge badge-danger mb-2">bestseller</span>

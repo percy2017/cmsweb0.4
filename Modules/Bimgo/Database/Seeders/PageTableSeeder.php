@@ -172,6 +172,109 @@ class PageTableSeeder extends Seeder
                     ]
                 ])    
             ]);
+
+            $page = Page::create([
+                'name'        =>  'category',
+                'slug'        =>  'category',
+                'user_id'     =>  1,
+                'direction'   =>  'bimgo::pages.generica1',
+                'description' =>  'Pagina Category predeterminada para comercio electronico v1'
+            ]);
+                $count=1;
+                Block::create([
+                    'name'        => 'ecommerce1.category',
+                    'title'       => 'Categoria',
+                    'description' => 'Categoria',
+                    'page_id'     => $page->id,
+                    'position'    => $count++,
+                    'type'        => 'controller',
+                    'details'     => json_encode([
+                        'title' => [
+                            'type'   => 'text',
+                            'name'   => 'title',
+                            'label'  => 'Encabezado',
+                            'value'  => 'Modules\\Bimgo\\Http\\Controllers\\Ecommerce1Controller@category',
+                            'width'  => 12
+                        ]
+                    ])    
+                ]);
+
+            $page = Page::create([
+                'name'        =>  'product',
+                'slug'        =>  'product',
+                'user_id'     =>  1,
+                'direction'   =>  'bimgo::pages.generica1',
+                'description' =>  'Pagina Product predeterminada para comercio electronico v1'
+            ]);
+                $count=1;
+                Block::create([
+                    'name'        => 'ecommerce1.product',
+                    'title'       => 'Product',
+                    'description' => 'Product',
+                    'page_id'     => $page->id,
+                    'position'    => $count++,
+                    'type'        => 'controller',
+                    'details'     => json_encode([
+                        'title' => [
+                            'type'   => 'text',
+                            'name'   => 'title',
+                            'label'  => 'Encabezado',
+                            'value'  => 'Modules\\Bimgo\\Http\\Controllers\\Ecommerce1Controller@product',
+                            'width'  => 12
+                        ]
+                    ])    
+                ]);
+
+            $page = Page::create([
+                'name'        =>  'cart',
+                'slug'        =>  'cart',
+                'user_id'     =>  1,
+                'direction'   =>  'bimgo::pages.generica1',
+                'description' =>  'Pagina Cart predeterminada para comercio electronico v1'
+            ]);
+                $count=1;
+                Block::create([
+                    'name'        => 'ecommerce1.cart',
+                    'title'       => 'Cart',
+                    'description' => 'Cart',
+                    'page_id'     => $page->id,
+                    'position'    => $count++,
+                    'type'        => 'controller',
+                    'details'     => json_encode([
+                        'title' => [
+                            'type'   => 'text',
+                            'name'   => 'title',
+                            'label'  => 'Encabezado',
+                            'value'  => 'Modules\\Bimgo\\Http\\Controllers\\Ecommerce1Controller@cart',
+                            'width'  => 12
+                        ]
+                    ])    
+                ]);
+            $page = Page::create([
+                'name'        =>  'Tele Venta',
+                'slug'        =>  'tele-venta',
+                'user_id'     =>  1,
+                'direction'   =>  'bimgo::pages.generica1',
+                'description' =>  'Pagina Tele Venta predeterminada para comercio electronico v1'
+            ]);
+                $count=1;
+                Block::create([
+                    'name'        => 'ecommerce1.cart',
+                    'title'       => 'Cart',
+                    'description' => 'Cart',
+                    'page_id'     => $page->id,
+                    'position'    => $count++,
+                    'type'        => 'controller',
+                    'details'     => json_encode([
+                        'title' => [
+                            'type'   => 'text',
+                            'name'   => 'title',
+                            'label'  => 'Encabezado',
+                            'value'  => 'Modules\\Bimgo\\Http\\Controllers\\Ecommerce1Controller@tele-venta',
+                            'width'  => 12
+                        ]
+                    ])    
+                ]);
         //--------------------------------------------------------------------------
         $page = Page::create([
             'name'        =>  'Ecommerce-2',

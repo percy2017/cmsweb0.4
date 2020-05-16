@@ -5,7 +5,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark primary-color mt-5">
 
       <!-- Navbar brand -->
-      <a class="font-weight-bold white-text mr-4" href="#">Categories</a>
+      <a class="font-weight-bold white-text mr-4" href="{{ url('category') }}">Categories</a>
 
       <!-- Collapse button -->
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent1"

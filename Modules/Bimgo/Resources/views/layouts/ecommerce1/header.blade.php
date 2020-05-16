@@ -9,7 +9,7 @@
 
         <div class="logo-wrapper waves-light">
 
-          <a href="#"><img src="https://mdbootstrap.com/img/logo/mdb-transparent.png" class="img-fluid flex-center"></a>
+          <a href="{{ url('/') }}"><img src="https://mdbootstrap.com/img/logo/mdb-transparent.png" class="img-fluid flex-center"></a>
 
         </div>
 
@@ -176,8 +176,8 @@
 
         </div>
 
-        <a class="navbar-brand font-weight-bold" href="#"><strong>SHOP</strong></a>
-
+        <a class="navbar-brand font-weight-bold" href="{{ url('/') }}"><strong>{{ setting('site.title') }}</strong></a>
+        <a class="navbar-brand font-weight-bold" href="{{ url('/tele-venta') }}"><i class="fas fa-tv blue-text" aria-hidden="true"></i><strong> Tele Venta</strong></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-4"
           aria-controls="navbarSupportedContent-4" aria-expanded="false" aria-label="Toggle navigation">
 
@@ -189,19 +189,45 @@
 
           <ul class="navbar-nav ml-auto">
 
-            <li class="nav-item">
+          
+            <li class="nav-item ">
+{{--  
+              <a class="nav-link dark-grey-text font-weight-bold" href="{{ url('cart') }}" data-toggle="modal"
+                data-target="#cart-modal-ex">  --}}
+              <a class="nav-link dark-grey-text font-weight-bold" href="{{ url('cart') }}">
 
-              <a class="nav-link dark-grey-text font-weight-bold" href="#"><i class="fas fa-envelope blue-text"></i>
-                Contact <span class="sr-only">(current)</span></a>
+                <span class="badge danger-color">4</span>
+
+                <i class="fas fa-shopping-cart blue-text" aria-hidden="true"></i>
+
+                <span class="clearfix d-none d-sm-inline-block">Cart</span>
+
+              </a>
 
             </li>
 
-            <li class="nav-item ml-3">
+            
+            <li class="nav-item ">
 
-              <a class="nav-link dark-grey-text font-weight-bold" href="#"><i class="fas fa-cog blue-text"></i>
-                Settings</a>
+              <a class="nav-link dark-grey-text font-weight-bold" href="#" data-toggle="modal"
+                data-target="#cart-modal-ex">
+
+                <span class="badge success-color">1</span>
+
+                <i class="fas fa-bell blue-text" aria-hidden="true"></i>
+
+                {{--  <span class="clearfix d-none d-sm-inline-block">Cart</span>  --}}
+
+              </a>
 
             </li>
+
+            {{--  <li class="nav-item ml-3">
+
+              <a class="nav-link dark-grey-text font-weight-bold" href="#"><i class="fas fa-bell blue-text"></i>
+                <small>0</small></a>
+
+            </li>  --}}
 
             <li class="nav-item dropdown ml-3">
 

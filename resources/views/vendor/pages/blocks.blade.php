@@ -156,21 +156,26 @@
                                         @endif
                                         @break
                                     @case('controller')
-                                    {{-- {{ dd($block->details) }} --}}
-                                    @foreach (json_decode($block->details, true) as $item => $value)
-                                        @switch($value['type'])
-                                            @case('text')
-                                                <div class="form-group col-md-{{ $value['width'] }}">
-                                                    <label>{{ $value['label'] }}</label>
-                                                    <input type="text" class="form-control" name="{{ $value['name'] }}" placeholder="" value="{{ $value['value'] }}">
+                                        @if($block->details)
+                                            @foreach (json_decode($block->details, true) as $item => $value)
+                                                @switch($value['type'])
+                                                    @case('text')
+                                                        <div class="form-group col-md-{{ $value['width'] }}">
+                                                            <label>{{ $value['label'] }}</label>
+                                                            <input type="text" class="form-control" name="{{ $value['name'] }}" placeholder="" value="{{ $value['value'] }}">
+                                                        </div>
+                                                        @break
+                                                @endswitch
+                                                {{-- {{ dd($value['type']) }} --}}
+                                                @endforeach
+                                                <div class="text-center">
+                                                    <code>Blocks Type Controller</code>
                                                 </div>
-                                                @break
-                                        @endswitch
-                                        {{-- {{ dd($value['type']) }} --}}
-                                        @endforeach
-                                        <div class="text-center">
-                                            <code>Blocks Type Controller</code>
-                                        </div>
+                                        @else
+                                            <div class="text-center">
+                                                <code>No hay Detalles</code>
+                                            </div>
+                                        @endif
                                         @break                                        
                                     @endswitch
                                 
