@@ -24,7 +24,7 @@
                             <strong>{{ $data->title_strong_1->value }}</strong>
                         </p>
                         <p class="grey-text font-small mx-4">
-                            {{ $data->parrafo_1->value }}
+                            {!! $data->parrafo_1->value !!}
                             <p class="font-small font-weight-bold orange-text mx-4 mb-0">
                                 <a>Leer más</a>
                             </p>
@@ -46,7 +46,7 @@
                             <strong>{{ $data->title_strong_2->value }}</strong>
                         </p>
                         <p class="grey-text font-small mx-4">
-                            {{ $data->parrafo_2->value }}
+                            {!! $data->parrafo_2->value !!}
                             <p class="font-small font-weight-bold orange-text mx-4 mb-0">
                                 <a>Leer más</a>
                             </p>
@@ -68,7 +68,7 @@
                             <strong>{{ $data->title_strong_3->value }}</strong>
                         </p>
                         <p class="grey-text font-small mx-4">
-                            {{ $data->parrafo_3->value }}
+                            {!! $data->parrafo_3->value !!}
                             <p class="font-small font-weight-bold orange-text mx-4 mb-0">
                                 <a>Leer más</a>
                             </p>
@@ -90,7 +90,7 @@
                             <strong>{{ $data->title_strong_4->value }}</strong>
                         </p>
                         <p class="grey-text font-small mx-4">
-                            {{ $data->parrafo_4->value }}
+                            {!! $data->parrafo_4->value !!}
                             <p class="font-small font-weight-bold orange-text mx-4 mb-0">
                                 <a>Leer más</a>
                             </p>

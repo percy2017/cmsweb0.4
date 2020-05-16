@@ -24,7 +24,7 @@
                 <div class="col-10 mb-2">
                     <h5 class="font-weight-bold title">{{ $data->title_1->value }}</h5>
                     <p class="grey-text">
-                        {{ $data->parrafo_1->value }}
+                        {!! $data->parrafo_1->value !!}
                     </p>
                 </div>
             </div>
@@ -38,7 +38,7 @@
                 <div class="col-10 mb-2">
                     <h5 class="font-weight-bold title">{{ $data->title_2->value }}</h5>
                     <p class="grey-text">
-                        {{ $data->parrafo_2->value }}
+                        {!! $data->parrafo_2->value !!}
                     </p>
                 </div>
             </div>
@@ -52,7 +52,7 @@
                 <div class="col-10 mb-2">
                     <h5 class="font-weight-bold title">{{ $data->title_3->value }}</h5>
                     <p class="grey-text">
-                        {{ $data->parrafo_3->value }}
+                        {!! $data->parrafo_3->value !!}
                     </p>
                 </div>
             </div>
@@ -62,7 +62,7 @@
 
         <!-- Grid column -->
         <div class="col-lg-4 col-md-12 mb-1 text-center text-md-left">
-            <img src="{{ voyager::Image($data->imagen_bl2->value) }}" alt=""
+            <img src="{!! voyager::Image($data->imagen_bl2->value) !!}" alt=""
                 class="z-depth-0 img-fluid">
         </div>
         <!-- Grid column -->
@@ -77,7 +77,7 @@
                 <div class="col-10 mb-2">
                     <h5 class="font-weight-bold title">{{ $data->title_4->value }}</h5>
                     <p class="grey-text">
-                        {{ $data->parrafo_4->value }}
+                        {!! $data->parrafo_4->value !!}
                     </p>
                 </div>
             </div>
@@ -91,7 +91,7 @@
                 <div class="col-10 mb-2">
                     <h5 class="font-weight-bold title">{{ $data->title_5->value }}</h5>
                     <p class="grey-text">
-                        {{ $data->parrafo_5->value }}
+                        {!! $data->parrafo_5->value !!}
                     </p>
                 </div>
             </div>
@@ -105,7 +105,7 @@
                 <div class="col-10 mb-2">
                     <h5 class="font-weight-bold title">{{ $data->title_6->value }}</h5>
                     <p class="grey-text">
-                        {{ $data->parrafo_6->value }}
+                        {!! $data->parrafo_6->value !!}
                     </p>
                 </div>
             </div>

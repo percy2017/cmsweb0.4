@@ -2,10 +2,11 @@
 
 namespace Modules\Webstreaming\Database\Seeders;
 
-use Illuminate\Database\Seeder;
-use Illuminate\Database\Eloquent\Model;
 use App\Page;
 use App\Block;
+use App\Module;
+use Illuminate\Database\Seeder;
+use Illuminate\Database\Eloquent\Model;
 
 class PageTableSeeder extends Seeder
 {
@@ -16,6 +17,11 @@ class PageTableSeeder extends Seeder
      */
     public function run()
     {
+        $module=Module::where('id', 2)->first();
+        $module->installed=true;
+        $module->save();
+        Module::where('installed', false)->delete();
+        
         Page::where('user_id', 1)->delete();
         Block::where('deleted_at', null)->delete();
 
@@ -161,7 +167,7 @@ class PageTableSeeder extends Seeder
                     'width'  => 3
                 ],
                 'parrafo_1' => [
-                    'type'   => 'text_area',
+                    'type'   => 'rich_text_box',
                     'name'   => 'parrafo_1',
                     'label'  => 'Parrafo 1',
                     'value'  => 'Editar documentos juntos usando Etherpad.',
@@ -182,7 +188,7 @@ class PageTableSeeder extends Seeder
                     'width'  => 3
                 ],
                 'parrafo_2' => [
-                    'type'   => 'text_area',
+                    'type'   => 'rich_text_box',
                     'name'   => 'parrafo_2',
                     'label'  => 'Parrafo 2',
                     'value'  => 'No se requiere incorporación ni capacitación. Comience y únase a las reuniones en segundos.',
@@ -203,7 +209,7 @@ class PageTableSeeder extends Seeder
                     'width'  => 3
                 ],
                 'parrafo_3' => [
-                    'type'   => 'text_area',
+                    'type'   => 'rich_text_box',
                     'name'   => 'parrafo_3',
                     'label'  => 'Parrafo 3',
                     'value'  => 'Intercambie mensajes de texto instantáneos durante la llamada.',
@@ -224,7 +230,7 @@ class PageTableSeeder extends Seeder
                     'width'  => 3
                 ],
                 'parrafo_4' => [
-                    'type'   => 'text_area',
+                    'type'   => 'rich_text_box',
                     'name'   => 'parrafo_4',
                     'label'  => 'Parrafo 4',
                     'value'  => 'Todas las características que necesita a una fracción del precio de la competencia. Hacemos que sea asequible para todo su equipo organizar grandes reuniones en línea.',
@@ -245,7 +251,7 @@ class PageTableSeeder extends Seeder
                     'width'  => 3
                 ],
                 'parrafo_5' => [
-                    'type'   => 'text_area',
+                    'type'   => 'rich_text_box',
                     'name'   => 'parrafo_5',
                     'label'  => 'Parrafo 5',
                     'value'  => 'Grabe algunas reuniones o todas: con capacidades ilimitadas de almacenamiento de grabación y uso compartido, nadie tiene que perderse una reunión',
@@ -266,7 +272,7 @@ class PageTableSeeder extends Seeder
                     'width'  => 3
                 ],
                 'parrafo_6' => [
-                    'type'   => 'text_area',
+                    'type'   => 'rich_text_box',
                     'name'   => 'parrafo_6',
                     'label'  => 'Parrafo 6',
                     'value'  => 'Uso compartido de pantalla, opciones de audio integradas y cámaras de vídeo HD, y mucho más.',
@@ -447,7 +453,7 @@ class PageTableSeeder extends Seeder
                     'width'  => 3
                 ],
                 'parrafo_1' => [
-                    'type'   => 'text_area',
+                    'type'   => 'rich_text_box',
                     'name'   => 'parrafo_1',
                     'label'  => 'Parrafo 1 ',
                     'value'  => 'No se requiere incorporación ni capacitación. Comience y únase a las reuniones en segundos.',
@@ -461,7 +467,7 @@ class PageTableSeeder extends Seeder
                     'width'  => 3
                 ],
                 'parrafo_2' => [
-                    'type'   => 'text_area',
+                    'type'   => 'rich_text_box',
                     'name'   => 'parrafo_2',
                     'label'  => 'Parrafo 2 ',
                     'value'  => 'Todas las características que necesita a una fracción del precio de la competencia. Hacemos que sea asequible para todo su equipo organizar grandes reuniones en línea.',
@@ -475,7 +481,7 @@ class PageTableSeeder extends Seeder
                     'width'  => 3
                 ],
                 'parrafo_3' => [
-                    'type'   => 'text_area',
+                    'type'   => 'rich_text_box',
                     'name'   => 'parrafo_3',
                     'label'  => 'Parrafo 3 ',
                     'value'  => 'Uso compartido de pantalla, opciones de audio integradas y cámaras de vídeo HD, transcripción de reuniones y mucho más.',
@@ -489,7 +495,7 @@ class PageTableSeeder extends Seeder
                     'width'  => 3
                 ],
                 'parrafo_4' => [
-                    'type'   => 'text_area',
+                    'type'   => 'rich_text_box',
                     'name'   => 'parrafo_4',
                     'label'  => 'Parrafo 4 ',
                     'value'  => 'Organice y únase a las reuniones dondequiera que vaya con las aplicaciones de escritorio y móviles de AnyMeeting.',
