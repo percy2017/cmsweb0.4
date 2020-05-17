@@ -755,6 +755,7 @@ class PageTableSeeder extends Seeder
                 ],
             ])     
         ]);
+        /** block 7 */
         Block::create([
             'name'        => 'lphs_block7',
             'title'       => 'Blocke 7 (Pasarela de Pago 7)',
@@ -843,7 +844,77 @@ class PageTableSeeder extends Seeder
                 
             ])    
         ]);
-
+        /** block 8 */
+        Block::create([
+            'name'        => 'lphs_block8',
+            'title'       => 'Blocke 8 (Donwload App Movil 8)',
+            'description' => 'Seccion Donwload App Movil  para la plantilla LPHS',
+            'page_id'     => $page->id,
+            'position'    => $count++,
+            'type'        => 'dinamyc-data',
+            'details'     => json_encode([
+                'brand' => [
+                    'type'   => 'image',
+                    'name'   => 'brand',
+                    'label'  => 'Marca de la empresa',
+                    'value'  => 'brand.png',
+                    'width'  => 6
+                ],
+                'iphone' => [
+                    'type'   => 'image',
+                    'name'   => 'iphone',
+                    'label'  => 'Iphone Histream',
+                    'value'  => 'iphone.png',
+                    'width'  => 6
+                ],
+                'title_strong' => [
+                    'type'   => 'rich_text_box',
+                    'name'   => 'title_strong',
+                    'label'  => 'Titulo en Negrita',
+                    'value'  => 'Introducing Game Changing
+                    <br>Lifestyle Apps',
+                    'width'  => 12
+                ],
+                'parrafo' => [
+                    'type'   => 'rich_text_box',
+                    'name'   => 'parrafo',
+                    'label'  => 'editor html',
+                    'value'  => 'The simple, intuitive app that makes it easy
+                    <br>to make happy, manage your lifestyle,
+                    <br>and work balances faster.',
+                    'width'  => 12
+                ],
+                'image1' => [
+                    'type'   => 'image',
+                    'name'   => 'image1',
+                    'label'  => 'imagen play store',
+                    'value'  => 'playstore.png',
+                    'width'  => 6
+                ],
+                'image2' => [
+                    'type'   => 'image',
+                    'name'   => 'image2',
+                    'label'  => 'imagen app store',
+                    'value'  => 'appstore.png',
+                    'width'  => 6
+                ],
+                'action1' => [
+                    'type'   => 'text_area',
+                    'name'   => 'action1',
+                    'label'  => 'accion de la imagen 1',
+                    'value'  => 'null',
+                    'width'  => 6
+                ],
+                'action2' => [
+                    'type'   => 'text_area',
+                    'name'   => 'action2',
+                    'label'  => 'accion de la imagen 2',
+                    'value'  => 'null',
+                    'width'  => 6
+                ],
+            ])    
+        ]);            
+           
 
         //----------------------------------------------------------------------
         $page = Page::create([
