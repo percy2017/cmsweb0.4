@@ -56,7 +56,7 @@
                         <div class="text-center mb-3">
                             <button type="submit" class="btn blue-gradient btn-block btn-rounded z-depth-1a">Ingresar</button>
 
-                             {{-- <a href="/" class="btn btn-block btn-white btn-rounded z-depth-1a">Volver al Home</a>  --}}
+                             <a href="/" class="btn btn-block btn-white btn-rounded z-depth-1a">Volver al Home</a> 
                         </div>
 
                     </form>

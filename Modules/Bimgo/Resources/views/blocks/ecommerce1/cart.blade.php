@@ -291,11 +291,11 @@
 
                     <td colspan="3" class="text-right">
 
-                      <button type="button" class="btn btn-primary btn-rounded">Complete purchase
+                      <a href="{{ url('pagos') }}" class="btn btn-primary btn-rounded">Complete purchase
 
                         <i class="fas fa-angle-right right"></i>
 
-                      </button>
+                      </a>
 
                     </td>
 

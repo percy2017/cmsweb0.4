@@ -249,9 +249,9 @@
 
                   <div class="col-md-12 text-center text-md-left text-md-right">
 
-                    <button class="btn btn-primary btn-rounded">
+                    <a class="btn btn-primary btn-rounded" href="{{ url('cart') }}">
 
-                      <i class="fas fa-cart-plus mr-2" aria-hidden="true"></i> Add to cart</button>
+                      <i class="fas fa-cart-plus mr-2" aria-hidden="true"></i> Add to cart</a>
 
                   </div>
 

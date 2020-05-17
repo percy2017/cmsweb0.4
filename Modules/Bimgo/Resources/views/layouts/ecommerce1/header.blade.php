@@ -228,22 +228,30 @@
                 <small>0</small></a>
 
             </li>  --}}
-
-            <li class="nav-item dropdown ml-3">
-
-              <a class="nav-link dropdown-toggle dark-grey-text font-weight-bold" id="navbarDropdownMenuLink-4"
-                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user blue-text"></i>
-                Profile </a>
-
-              <div class="dropdown-menu dropdown-menu-right dropdown-cyan" aria-labelledby="navbarDropdownMenuLink-4">
-
-                <a class="dropdown-item waves-effect waves-light" href="#">My account</a>
-
-                <a class="dropdown-item waves-effect waves-light" href="#">Log out</a>
-
-              </div>
-
-            </li>
+            @guest
+              <li class="nav-item dropdown ml-3">
+                <a class="nav-link dropdown-toggle dark-grey-text font-weight-bold" id="navbarDropdownMenuLink-4"
+                  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user blue-text"></i>
+                  Ingreso </a>
+                <div class="dropdown-menu dropdown-menu-right dropdown-cyan" aria-labelledby="navbarDropdownMenuLink-4">
+                  <a class="dropdown-item waves-effect waves-light" href="{{ route('login') }}">Login</a>
+                  <a class="dropdown-item waves-effect waves-light" href="{{ route('register') }}">Register</a>
+                </div>
+              </li>
+            @else
+              <li class="nav-item dropdown ml-3">
+                <a class="nav-link dropdown-toggle dark-grey-text font-weight-bold" id="navbarDropdownMenuLink-4"
+                  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user blue-text"></i>
+                  Profile </a>
+                <div class="dropdown-menu dropdown-menu-right dropdown-cyan" aria-labelledby="navbarDropdownMenuLink-4">
+                  <a class="dropdown-item waves-effect waves-light" href="/home">Perfil</a>
+                  <a class="dropdown-item waves-effect waves-light" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Salir</a>
+                </div>
+              </li>
+              <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                @csrf
+              </form>
+            @endguest
 
           </ul>
 

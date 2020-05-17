@@ -81,7 +81,7 @@ class MenuTableSeeder extends Seeder
         }       
 
         
-
+        //------------------------------------------------------------------------------------
         $VentasMenuItem = MenuItem::firstOrNew([
             'menu_id' => $menu->id,
             'title'   => 'Ventas',
@@ -90,7 +90,7 @@ class MenuTableSeeder extends Seeder
         if (!$VentasMenuItem->exists) {
             $VentasMenuItem->fill([
                 'target'     => '_self',
-                'icon_class' => 'voyager-data',
+                'icon_class' => 'voyager-shop',
                 'color'      => null,
                 'parent_id'  => null, //menu desplegable
                 'order'      => 3,
@@ -114,6 +114,7 @@ class MenuTableSeeder extends Seeder
             ])->save();
         }
 
+        //------------------------------------------------------------------------------------
         $ComprasMenuItem = MenuItem::firstOrNew([
             'menu_id' => $menu->id,
             'title'   => 'Compras',
@@ -122,7 +123,7 @@ class MenuTableSeeder extends Seeder
         if (!$ComprasMenuItem->exists) {
             $ComprasMenuItem->fill([
                 'target'     => '_self',
-                'icon_class' => 'voyager-data',
+                'icon_class' => 'voyager-archive',
                 'color'      => null,
                 'parent_id'  => null, //menu desplegable
                 'order'      => 4,
