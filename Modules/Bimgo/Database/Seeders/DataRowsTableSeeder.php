@@ -24,6 +24,9 @@ class DataRowsTableSeeder extends Seeder
         $tansferDataType = DataType::where('slug', 'bg_transfers')->firstOrFail();
         $customerDataType = DataType::where('slug', 'bg_customers')->firstOrFail();
         $cashDataType = DataType::where('slug', 'bg_cashes')->firstOrFail();
+        $saleDataType = DataType::where('slug', 'bg_sales')->firstOrFail();
+        $seatDataType = DataType::where('slug', 'bg_seats')->firstOrFail();
+        $dosificacionDataType = DataType::where('slug', 'bg_dosificacions')->firstOrFail();
 
 
          /**
@@ -1482,7 +1485,7 @@ class DataRowsTableSeeder extends Seeder
         $dataRow = $this->dataRow($cashDataType, 'apertura');
         if (!$dataRow->exists) {
             $dataRow->fill([
-                'type'         => 'text',
+                'type'         => 'number',                
                 'display_name' => 'Apertura',
                 'required'     => 1,
                 'browse'       => 1,
@@ -1492,7 +1495,7 @@ class DataRowsTableSeeder extends Seeder
                 'delete'       => 0,
                 'details'      => [
                     'display' => [
-                        'width' => '4'
+                        'width' => '4',
                     ]
                 ],
                 'order'        => $postion++,
@@ -1522,7 +1525,7 @@ class DataRowsTableSeeder extends Seeder
         $dataRow = $this->dataRow($cashDataType, 'fecha_apertura');
         if (!$dataRow->exists) {
             $dataRow->fill([
-                'type'         => 'text',
+                'type'         => 'date',
                 'display_name' => 'Fecha Apertura',
                 'required'     => 1,
                 'browse'       => 1,
@@ -1542,7 +1545,7 @@ class DataRowsTableSeeder extends Seeder
         $dataRow = $this->dataRow($cashDataType, 'fecha_cierre');
         if (!$dataRow->exists) {
             $dataRow->fill([
-                'type'         => 'text',
+                'type'         => 'date',
                 'display_name' => 'Fecha Cierre',
                 'required'     => 1,
                 'browse'       => 1,
@@ -1562,7 +1565,7 @@ class DataRowsTableSeeder extends Seeder
         $dataRow = $this->dataRow($cashDataType, 'monto_inicial');
         if (!$dataRow->exists) {
             $dataRow->fill([
-                'type'         => 'text',
+                'type'         => 'number',
                 'display_name' => 'Monto_Inicial',
                 'required'     => 1,
                 'browse'       => 1,
@@ -1582,7 +1585,7 @@ class DataRowsTableSeeder extends Seeder
         $dataRow = $this->dataRow($cashDataType, 'monto_final');
         if (!$dataRow->exists) {
             $dataRow->fill([
-                'type'         => 'text',
+                'type'         => 'number',
                 'display_name' => 'Monto Final',
                 'required'     => 1,
                 'browse'       => 1,
@@ -1602,7 +1605,7 @@ class DataRowsTableSeeder extends Seeder
         $dataRow = $this->dataRow($cashDataType, 'monto_real');
         if (!$dataRow->exists) {
             $dataRow->fill([
-                'type'         => 'text',
+                'type'         => 'number',
                 'display_name' => 'Monto Real',
                 'required'     => 1,
                 'browse'       => 1,
@@ -1622,7 +1625,7 @@ class DataRowsTableSeeder extends Seeder
         $dataRow = $this->dataRow($cashDataType, 'monto_faltante');
         if (!$dataRow->exists) {
             $dataRow->fill([
-                'type'         => 'text',
+                'type'         => 'number',
                 'display_name' => 'Monto Faltante',
                 'required'     => 1,
                 'browse'       => 1,
@@ -1642,7 +1645,7 @@ class DataRowsTableSeeder extends Seeder
         $dataRow = $this->dataRow($cashDataType, 'total_egreso');
         if (!$dataRow->exists) {
             $dataRow->fill([
-                'type'         => 'text',
+                'type'         => 'number',
                 'display_name' => 'Total Egreso',
                 'required'     => 1,
                 'browse'       => 1,
@@ -1662,7 +1665,7 @@ class DataRowsTableSeeder extends Seeder
         $dataRow = $this->dataRow($cashDataType, 'total_ingreso');
         if (!$dataRow->exists) {
             $dataRow->fill([
-                'type'         => 'text',
+                'type'         => 'number',
                 'display_name' => 'Total Ingreso',
                 'required'     => 1,
                 'browse'       => 1,
@@ -1679,12 +1682,32 @@ class DataRowsTableSeeder extends Seeder
             ])->save();
         }
 
-        $dataRow = $this->dataRow($cashDataType, 'estado');
+        // $dataRow = $this->dataRow($cashDataType, 'estado');
+        // if (!$dataRow->exists) {
+        //     $dataRow->fill([
+        //         'type'         => 'text',
+        //         'display_name' => 'Estado',
+        //         'required'     => 1,
+        //         'browse'       => 1,
+        //         'read'         => 1,
+        //         'edit'         => 1,
+        //         'add'          => 1,
+        //         'delete'       => 0,
+        //         'details'      => [
+        //             'display' => [
+        //                 'width' => '4'
+        //             ]
+        //         ],
+        //         'order'        => $postion++,
+        //     ])->save();
+        // }
+
+        $dataRow = $this->dataRow($cashDataType, 'cash_belongsto_branchoffice_relationship');
         if (!$dataRow->exists) {
             $dataRow->fill([
-                'type'         => 'text',
-                'display_name' => 'Estado',
-                'required'     => 1,
+                'type'         => 'relationship',
+                'display_name' => 'Sucursal',
+                'required'     => 0,
                 'browse'       => 1,
                 'read'         => 1,
                 'edit'         => 1,
@@ -1692,10 +1715,19 @@ class DataRowsTableSeeder extends Seeder
                 'delete'       => 0,
                 'details'      => [
                     'display' => [
-                        'width' => '4'
-                    ]
+                        'width' => 4
+                    ],
+                    'model'       => 'Modules\\Bimgo\\Entities\\BgBranchOffice',
+                    'table'       => 'bg_branch_offices',
+                    'type'        => 'belongsTo',
+                    'column'      => 'sucursal_id',
+                    'key'         => 'id',
+                    'label'       => 'name',
+                    'pivot_table' => 'sucursal_id',
+                    'pivot'       => 0,
                 ],
-                'order'        => $postion++,
+                'order'=> $postion++,
+
             ])->save();
         }
 
@@ -1760,6 +1792,893 @@ class DataRowsTableSeeder extends Seeder
         }
 
         $dataRow = $this->dataRow($cashDataType, 'deleted_at');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'timestamp',
+                'display_name' => 'deleted_at',
+                'required'     => 0,
+                'browse'       => 0,
+                'read'         => 1,
+                'edit'         => 0,
+                'add'          => 0,
+                'delete'       => 0,
+                'order'        => $postion++,
+                'details'      => [
+                    'display' => [
+                        'width' => '4'
+                    ]
+                ]
+            ])->save();
+        }
+
+        /**
+         * ------------------------------------------------
+         *               Formulario Sale
+         * -----------------------------------------------
+         */
+        $postion = 1;
+        $dataRow = $this->dataRow($saleDataType, 'id');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'number',
+                'display_name' => __('voyager::seeders.data_rows.id'),
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 0,
+                'add'          => 0,
+                'delete'       => 0,
+                'details'      => [
+                    'display' => [
+                        'width' => '4'
+                    ]
+                ],
+                'order'        => $postion++,
+            ])->save();
+        }
+
+        $dataRow = $this->dataRow($saleDataType, 'amount');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'number',
+                'display_name' => 'Cantidad',
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'details'      => [
+                    'display' => [
+                        'width' => '4'
+                    ]
+                ],
+                'order'        => $postion++,
+            ])->save();
+        }
+
+        $dataRow = $this->dataRow($saleDataType, 'tipo_venta');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'text',
+                'display_name' => 'Tipo de Venta',
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'details'      => [
+                    'display' => [
+                        'width' => '4'
+                    ]
+                ],
+                'order'        => $postion++,
+            ])->save();
+        }
+
+        $dataRow = $this->dataRow($saleDataType, 'pagada');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'text',
+                'display_name' => 'pagada',
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'details'      => [
+                    'display' => [
+                        'width' => '4'
+                    ]
+                ],
+                'order'        => $postion++,
+            ])->save();
+        }
+
+        $dataRow = $this->dataRow($saleDataType, 'importe');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'number',
+                'display_name' => 'Importe',
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'details'      => [
+                    'display' => [
+                        'width' => '4'
+                    ]
+                ],
+                'order'        => $postion++,
+            ])->save();
+        }
+
+        $dataRow = $this->dataRow($saleDataType, 'importe_ice');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'number',
+                'display_name' => 'Importe Ice',
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'details'      => [
+                    'display' => [
+                        'width' => '4'
+                    ]
+                ],
+                'order'        => $postion++,
+            ])->save();
+        }
+
+        $dataRow = $this->dataRow($saleDataType, 'importe_exento');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'number',
+                'display_name' => 'Importe Exento',
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'details'      => [
+                    'display' => [
+                        'width' => '4'
+                    ]
+                ],
+                'order'        => $postion++,
+            ])->save();
+        }
+
+        $dataRow = $this->dataRow($saleDataType, 'tasa_cero');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'number',
+                'display_name' => 'tasa cero',
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'details'      => [
+                    'display' => [
+                        'width' => '4'
+                    ]
+                ],
+                'order'        => $postion++,
+            ])->save();
+        }
+
+        $dataRow = $this->dataRow($saleDataType, 'subtotal');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'number',
+                'display_name' => 'Sub Total',
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'details'      => [
+                    'display' => [
+                        'width' => '4'
+                    ]
+                ],
+                'order'        => $postion++,
+            ])->save();
+        }
+
+        $dataRow = $this->dataRow($saleDataType, 'descuentos');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'number',
+                'display_name' => 'Descuentos',
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'details'      => [
+                    'display' => [
+                        'width' => '4'
+                    ]
+                ],
+                'order'        => $postion++,
+            ])->save();
+        }
+
+        $dataRow = $this->dataRow($saleDataType, 'importe_base');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'number',
+                'display_name' => 'Importe Base',
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'details'      => [
+                    'display' => [
+                        'width' => '4'
+                    ]
+                ],
+                'order'        => $postion++,
+            ])->save();
+        }
+
+        $dataRow = $this->dataRow($saleDataType, 'debito_fiscal');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'number',
+                'display_name' => 'Debito Fiscal',
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'details'      => [
+                    'display' => [
+                        'width' => '4'
+                    ]
+                ],
+                'order'        => $postion++,
+            ])->save();
+        }
+
+        $dataRow = $this->dataRow($saleDataType, 'cobro_adicional');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'number',
+                'display_name' => 'Cobro Adicional',
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'details'      => [
+                    'display' => [
+                        'width' => '4'
+                    ]
+                ],
+                'order'        => $postion++,
+            ])->save();
+        }
+
+        $dataRow = $this->dataRow($saleDataType, 'monto_recibido');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'number',
+                'display_name' => 'Monto Recibido',
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'details'      => [
+                    'display' => [
+                        'width' => '4'
+                    ]
+                ],
+                'order'        => $postion++,
+            ])->save();
+        }
+
+        $dataRow = $this->dataRow($saleDataType, 'venta_tipo');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'number',
+                'display_name' => 'venta tipo',
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'details'      => [
+                    'display' => [
+                        'width' => '4'
+                    ]
+                ],
+                'order'        => $postion++,
+            ])->save();
+        }
+
+        $dataRow = $this->dataRow($saleDataType, 'sale_belongsto_cash_relationship');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'relationship',
+                'display_name' => 'Caja',
+                'required'     => 0,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'details'      => [
+                    'display' => [
+                        'width' => 4
+                    ],
+                    'model'       => 'Modules\\Bimgo\\Entities\\BgCash',
+                    'table'       => 'bg_cashes',
+                    'type'        => 'belongsTo',
+                    'column'      => 'caja_id',
+                    'key'         => 'id',
+                    'label'       => 'name',
+                    'pivot_table' => 'caja_id',
+                    'pivot'       => 0,
+                ],
+                'order'=> $postion++,
+
+            ])->save();
+        }
+
+        $dataRow = $this->dataRow($saleDataType, 'sale_belongsto_customer_relationship');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'relationship',
+                'display_name' => 'Cliente',
+                'required'     => 0,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'details'      => [
+                    'display' => [
+                        'width' => 4
+                    ],
+                    'model'       => 'Modules\\Bimgo\\Entities\\BgCustomer',
+                    'table'       => 'bg_customers',
+                    'type'        => 'belongsTo',
+                    'column'      => 'customer_id',
+                    'key'         => 'id',
+                    'label'       => 'name',
+                    'pivot_table' => 'customer_id',
+                    'pivot'       => 0,
+                ],
+                'order'=> $postion++,
+
+            ])->save();
+        }
+
+        $dataRow = $this->dataRow($saleDataType, 'user_id');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'Traking',
+                'display_name' => 'Traking',
+                'required'     => 0,
+                'browse'       => 0,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'order'        => $postion++,
+                'details'      => [
+                    'display'   => [
+                        'width'  => '4',
+                    ],
+                ]
+            ])->save();
+        }
+
+        $dataRow = $this->dataRow($saleDataType, 'created_at');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'timestamp',
+                'display_name' => __('voyager::seeders.data_rows.created_at'),
+                'required'     => 0,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 0,
+                'add'          => 0,
+                'delete'       => 0,
+                'order'        => $postion++,
+                'details'      => [
+                    'display' => [
+                        'width' => '4'
+                    ]
+                ]
+            ])->save();
+        }
+
+        $dataRow = $this->dataRow($saleDataType, 'updated_at');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'timestamp',
+                'display_name' => __('voyager::seeders.data_rows.updated_at'),
+                'required'     => 0,
+                'browse'       => 0,
+                'read'         => 1,
+                'edit'         => 0,
+                'add'          => 0,
+                'delete'       => 0,
+                'order'        => $postion++,
+                'details'      => [
+                    'display' => [
+                        'width' => '4'
+                    ]
+                ]
+            ])->save();
+        }
+
+        $dataRow = $this->dataRow($saleDataType, 'deleted_at');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'timestamp',
+                'display_name' => 'deleted_at',
+                'required'     => 0,
+                'browse'       => 0,
+                'read'         => 1,
+                'edit'         => 0,
+                'add'          => 0,
+                'delete'       => 0,
+                'order'        => $postion++,
+                'details'      => [
+                    'display' => [
+                        'width' => '4'
+                    ]
+                ]
+            ])->save();
+        }
+
+        /**
+         * ------------------------------------------------
+         *               Formulario Asientos
+         * -----------------------------------------------
+         */
+        $postion = 1;
+        $dataRow = $this->dataRow($seatDataType, 'id');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'number',
+                'display_name' => __('voyager::seeders.data_rows.id'),
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 0,
+                'add'          => 0,
+                'delete'       => 0,
+                'details'      => [
+                    'display' => [
+                        'width' => '4'
+                    ]
+                ],
+                'order'        => $postion++,
+            ])->save();
+        }
+
+        $dataRow = $this->dataRow($seatDataType, 'concepto');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'text',
+                'display_name' => 'Concepto',
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'details'      => [
+                    'display' => [
+                        'width' => '4'
+                    ]
+                ],
+                'order'        => $postion++,
+            ])->save();
+        }
+
+        $dataRow = $this->dataRow($seatDataType, 'tipo');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'text',
+                'display_name' => 'Tipo',
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'details'      => [
+                    'display' => [
+                        'width' => '4'
+                    ]
+                ],
+                'order'        => $postion++,
+            ])->save();
+        }
+
+        $dataRow = $this->dataRow($seatDataType, 'fecha');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'date',
+                'display_name' => 'fecha',
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'details'      => [
+                    'display' => [
+                        'width' => '4'
+                    ]
+                ],
+                'order'        => $postion++,
+            ])->save();
+        }
+
+        $dataRow = $this->dataRow($seatDataType, 'hora');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'time',
+                'display_name' => 'Hora',
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'details'      => [
+                    'display' => [
+                        'width' => '4'
+                    ]
+                ],
+                'order'        => $postion++,
+            ])->save();
+        }
+
+
+        $dataRow = $this->dataRow($seatDataType, 'user_id');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'Traking',
+                'display_name' => 'Traking',
+                'required'     => 0,
+                'browse'       => 0,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'order'        => $postion++,
+                'details'      => [
+                    'display'   => [
+                        'width'  => '4',
+                    ],
+                ]
+            ])->save();
+        }
+
+        $dataRow = $this->dataRow($seatDataType, 'created_at');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'timestamp',
+                'display_name' => __('voyager::seeders.data_rows.created_at'),
+                'required'     => 0,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 0,
+                'add'          => 0,
+                'delete'       => 0,
+                'order'        => $postion++,
+                'details'      => [
+                    'display' => [
+                        'width' => '4'
+                    ]
+                ]
+            ])->save();
+        }
+
+        $dataRow = $this->dataRow($seatDataType, 'updated_at');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'timestamp',
+                'display_name' => __('voyager::seeders.data_rows.updated_at'),
+                'required'     => 0,
+                'browse'       => 0,
+                'read'         => 1,
+                'edit'         => 0,
+                'add'          => 0,
+                'delete'       => 0,
+                'order'        => $postion++,
+                'details'      => [
+                    'display' => [
+                        'width' => '4'
+                    ]
+                ]
+            ])->save();
+        }
+
+        $dataRow = $this->dataRow($seatDataType, 'deleted_at');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'timestamp',
+                'display_name' => 'deleted_at',
+                'required'     => 0,
+                'browse'       => 0,
+                'read'         => 1,
+                'edit'         => 0,
+                'add'          => 0,
+                'delete'       => 0,
+                'order'        => $postion++,
+                'details'      => [
+                    'display' => [
+                        'width' => '4'
+                    ]
+                ]
+            ])->save();
+        }
+
+        /**
+         * ------------------------------------------------
+         *               Formulario Dosificaciones
+         * -----------------------------------------------
+         */
+        $postion = 1;
+        $dataRow = $this->dataRow($dosificacionDataType, 'id');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'number',
+                'display_name' => __('voyager::seeders.data_rows.id'),
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 0,
+                'add'          => 0,
+                'delete'       => 0,
+                'details'      => [
+                    'display' => [
+                        'width' => '4'
+                    ]
+                ],
+                'order'        => $postion++,
+            ])->save();
+        }
+
+        $dataRow = $this->dataRow($dosificacionDataType, 'dosificaacion_belongsto_sucursal_relationship');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'relationship',
+                'display_name' => 'Sucursal',
+                'required'     => 0,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'details'      => [
+                    'display' => [
+                        'width' => 4
+                    ],
+                    'model'       => 'Modules\\Bimgo\\Entities\\BgBranchOffice',
+                    'table'       => 'bg_branch_offices',
+                    'type'        => 'belongsTo',
+                    'column'      => 'office_id',
+                    'key'         => 'id',
+                    'label'       => 'name',
+                    'pivot_table' => 'office_id',
+                    'pivot'       => 0,
+                ],
+                'order'=> $postion++,
+
+            ])->save();
+        }
+
+        $dataRow = $this->dataRow($dosificacionDataType, 'autorizacion');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'text',
+                'display_name' => 'Autorizacion',
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'details'      => [
+                    'display' => [
+                        'width' => '4'
+                    ]
+                ],
+                'order'        => $postion++,
+            ])->save();
+        }
+
+        $dataRow = $this->dataRow($dosificacionDataType, 'fecha_emision');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'date',
+                'display_name' => 'Fecha Emision',
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'details'      => [
+                    'display' => [
+                        'width' => '4'
+                    ]
+                ],
+                'order'        => $postion++,
+            ])->save();
+        }
+
+        $dataRow = $this->dataRow($dosificacionDataType, 'llave_dosificacion');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'text',
+                'display_name' => 'Llave Dosificacion',
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'details'      => [
+                    'display' => [
+                        'width' => '4'
+                    ]
+                ],
+                'order'        => $postion++,
+            ])->save();
+        }
+
+        $dataRow = $this->dataRow($dosificacionDataType, 'leyenda_lectura');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'text',
+                'display_name' => 'Leyenda',
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'details'      => [
+                    'display' => [
+                        'width' => '4'
+                    ]
+                ],
+                'order'        => $postion++,
+            ])->save();
+        }
+
+        $dataRow = $this->dataRow($dosificacionDataType, 'actividad_economica');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'text',
+                'display_name' => 'Actividad Economica',
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'details'      => [
+                    'display' => [
+                        'width' => '4'
+                    ]
+                ],
+                'order'        => $postion++,
+            ])->save();
+        }
+
+        $dataRow = $this->dataRow($dosificacionDataType, 'nit');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'number',
+                'display_name' => 'Nit',
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'details'      => [
+                    'display' => [
+                        'width' => '4'
+                    ]
+                ],
+                'order'        => $postion++,
+            ])->save();
+        }        
+
+
+        $dataRow = $this->dataRow($dosificacionDataType, 'user_id');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'Traking',
+                'display_name' => 'Traking',
+                'required'     => 0,
+                'browse'       => 0,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'order'        => $postion++,
+                'details'      => [
+                    'display'   => [
+                        'width'  => '4',
+                    ],
+                ]
+            ])->save();
+        }
+
+        $dataRow = $this->dataRow($dosificacionDataType, 'created_at');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'timestamp',
+                'display_name' => __('voyager::seeders.data_rows.created_at'),
+                'required'     => 0,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 0,
+                'add'          => 0,
+                'delete'       => 0,
+                'order'        => $postion++,
+                'details'      => [
+                    'display' => [
+                        'width' => '4'
+                    ]
+                ]
+            ])->save();
+        }
+
+        $dataRow = $this->dataRow($dosificacionDataType, 'updated_at');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'timestamp',
+                'display_name' => __('voyager::seeders.data_rows.updated_at'),
+                'required'     => 0,
+                'browse'       => 0,
+                'read'         => 1,
+                'edit'         => 0,
+                'add'          => 0,
+                'delete'       => 0,
+                'order'        => $postion++,
+                'details'      => [
+                    'display' => [
+                        'width' => '4'
+                    ]
+                ]
+            ])->save();
+        }
+
+        $dataRow = $this->dataRow($dosificacionDataType, 'deleted_at');
         if (!$dataRow->exists) {
             $dataRow->fill([
                 'type'         => 'timestamp',
