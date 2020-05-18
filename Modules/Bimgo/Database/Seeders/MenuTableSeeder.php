@@ -96,7 +96,6 @@ class MenuTableSeeder extends Seeder
                 'order'      => 3,
             ])->save();
         }
-
         $menuItem = MenuItem::firstOrNew([
             'menu_id' => $menu->id,
             'title'   => 'Clientes',
@@ -111,6 +110,53 @@ class MenuTableSeeder extends Seeder
                 'parent_id'  => $VentasMenuItem->id,
                 // 'order'      => $postion++,
                 'order'      => 1,
+            ])->save();
+        }
+        $menuItem = MenuItem::firstOrNew([
+            'menu_id' => $menu->id,
+            'title'   => 'Ventas',
+            'url'     => '',
+            'route'   => 'voyager.bg_sales.index',
+        ]);
+        if (!$menuItem->exists) {
+            $menuItem->fill([
+                'target'     => '_self',
+                'icon_class' => 'voyager-double-right',
+                'color'      => null,
+                'parent_id'  => $VentasMenuItem->id,
+                'order'      => 2,
+            ])->save();
+        }
+
+        $menuItem = MenuItem::firstOrNew([
+            'menu_id' => $menu->id,
+            'title'   => 'Asientos',
+            'url'     => '',
+            'route'   => 'voyager.bg_seats.index',
+        ]);
+        if (!$menuItem->exists) {
+            $menuItem->fill([
+                'target'     => '_self',
+                'icon_class' => 'voyager-double-right',
+                'color'      => null,
+                'parent_id'  => $VentasMenuItem->id,
+                'order'      => 3,
+            ])->save();
+        }
+
+        $menuItem = MenuItem::firstOrNew([
+            'menu_id' => $menu->id,
+            'title'   => 'Dosificacion',
+            'url'     => '',
+            'route'   => 'voyager.bg_dosificacions.index',
+        ]);
+        if (!$menuItem->exists) {
+            $menuItem->fill([
+                'target'     => '_self',
+                'icon_class' => 'voyager-double-right',
+                'color'      => null,
+                'parent_id'  => $VentasMenuItem->id,
+                'order'      => 4,
             ])->save();
         }
 
@@ -145,6 +191,7 @@ class MenuTableSeeder extends Seeder
                 'order'      =>  1,
             ])->save();
         }
+        
 
             
         /**

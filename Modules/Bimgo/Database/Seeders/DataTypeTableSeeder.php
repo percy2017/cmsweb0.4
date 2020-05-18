@@ -201,6 +201,75 @@ class DataTypeTableSeeder extends Seeder
             ])->save();
         }
 
+        $dataType = $this->dataType('slug', 'bg_sales');
+        if (!$dataType->exists) {
+            $dataType->fill([
+                'name'                  => 'bg_sales',
+                'display_name_singular' => 'Venta',
+                'display_name_plural'   => 'Ventas',
+                'icon'                  => 'voyager-play',
+                'model_name'            => 'Modules\\Bimgo\\Entities\\BgSale',
+                'policy_name'           => null,
+                'controller'            => 'Modules\\Bimgo\\Http\\Controllers\\SaleController',
+                'generate_permissions'  => 1,
+                'description'           => null,
+                'server_side'           => 1,
+                'details'               => [
+                    'order_column'         => 'id',
+                    'order_display_column' => 'id',
+                    'order_direction'      => 'asc',
+                    'default_search_key'   => 'id',
+                    'scope'                => null
+                ]
+            ])->save();
+        }
+
+        $dataType = $this->dataType('slug', 'bg_seats');
+        if (!$dataType->exists) {
+            $dataType->fill([
+                'name'                  => 'bg_seats',
+                'display_name_singular' => 'Asiento',
+                'display_name_plural'   => 'Asientos',
+                'icon'                  => 'voyager-play',
+                'model_name'            => 'Modules\\Bimgo\\Entities\\BgSeat',
+                'policy_name'           => null,
+                'controller'            => 'Modules\\Bimgo\\Http\\Controllers\\SaleController',
+                'generate_permissions'  => 1,
+                'description'           => null,
+                'server_side'           => 1,
+                'details'               => [
+                    'order_column'         => 'id',
+                    'order_display_column' => 'id',
+                    'order_direction'      => 'asc',
+                    'default_search_key'   => 'id',
+                    'scope'                => null
+                ]
+            ])->save();
+        }
+
+        $dataType = $this->dataType('slug', 'bg_dosificacions');
+        if (!$dataType->exists) {
+            $dataType->fill([
+                'name'                  => 'bg_dosificacions',
+                'display_name_singular' => 'Dosificacion',
+                'display_name_plural'   => 'Dosificacions',
+                'icon'                  => 'voyager-play',
+                'model_name'            => 'Modules\\Bimgo\\Entities\\BgDosificacion',
+                'policy_name'           => null,
+                'controller'            => 'Modules\\Bimgo\\Http\\Controllers\\DosificacionController',
+                'generate_permissions'  => 1,
+                'description'           => null,
+                'server_side'           => 1,
+                'details'               => [
+                    'order_column'         => 'id',
+                    'order_display_column' => 'id',
+                    'order_direction'      => 'asc',
+                    'default_search_key'   => 'id',
+                    'scope'                => null
+                ]
+            ])->save();
+        }
+
 
 
 
