@@ -1,0 +1,13 @@
+{
+    "name": "Medicweb",
+    "alias": "medicweb",
+    "description": "",
+    "keywords": [],
+    "order": 0,
+    "providers": [
+        "Modules\\Medicweb\\Providers\\MedicwebServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

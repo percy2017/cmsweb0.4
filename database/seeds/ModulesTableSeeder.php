@@ -39,5 +39,11 @@ class ModulesTableSeeder extends Seeder
             'name'              => 'Yimbo v1.0',
             'description_short' => 'Software para crar y administrar restaurant y delivery.'
         ]);
+
+        $module = Module::create([
+            'installed'         => false,
+            'name'              => 'MedicWeb v1.0',
+            'description_short' => 'Software para crar y administrar Consultorio Medico.'
+        ]);
     }
 }

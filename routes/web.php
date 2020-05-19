@@ -56,6 +56,9 @@ Route::get('{module_name}/installer', function($module_id) {
         case 'Yimbo v1.0':
             $module_name = 'Yimbo';
             break;
+        case 'MedicWeb v1.0':
+            $module_name = 'Medicweb';
+            break;
         default:
             # code...
             break;
