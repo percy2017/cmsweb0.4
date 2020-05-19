@@ -12,9 +12,13 @@
       <ul class="navbar-nav ml-auto text-uppercase smooth-scroll">
         {{ menu('LandingPageBimgo', 'bimgo::menus.menu-navbar') }}
         <li class="nav-item">
-          <a class="nav-link pt-0-1" href="#4" data-offset="100">
-            <button type="button" class="btn btn-outline-purple-pastel btn-rounded btn-md z-depth-0 m-0 pt-2">Únete a nosotros<i class="fas fa-angle-double-right"></i></button>
+          <a  class="nav-link pt-0-1"  data-offset="100" data-toggle="modal" data-target="#modalLRForm">
+            <button type="button" class="btn btn-outline-purple-pastel btn-rounded btn-md z-depth-0 m-0 pt-2">Iniciar Sesion<i class="fas fa-angle-double-right"></i></button>
           </a>
+          {{-- <div class="text-center">
+            <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalLoginForm">Launch
+              Modal Login Form</a>
+          </div> --}}
         </li>
       </ul>
     </div>

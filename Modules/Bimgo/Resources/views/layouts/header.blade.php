@@ -17,7 +17,7 @@
                     </strong>
                 </h5>
                 <div class="mr-auto">
-                    <a href="{{ $collection['btn_action']['value'] }}" type="button" class="btn purple-gradient btn-rounded ml-0">{{ $collection['btn_name']['value'] }}</a>
+                    <a  target="_blank" href="{{ $collection['btn_action']['value'] }}" type="button" class="btn purple-gradient btn-rounded ml-0">{{ $collection['btn_name']['value'] }}</a>
                 </div>
 
             </div>

@@ -209,7 +209,6 @@ class MenuTableSeeder extends Seeder
         }   
 
         /** title 4 */
-        $ /** title 4 */
         $menuItem = MenuItem::firstOrNew([
             'menu_id' => $menu->id,
             'title'   => 'Contant Us',
