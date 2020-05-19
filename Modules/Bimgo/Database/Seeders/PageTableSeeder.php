@@ -94,15 +94,84 @@ class PageTableSeeder extends Seeder
                 'description' => 'Encabezado',
                 'page_id'     => $page->id,
                 'position'    => $count++,
-                'type'        => 'controller',
+                'type'        => 'dinamyc-data',
                 'details'     => json_encode([
+                    'tag' => [
+                        'type'   => 'text',
+                        'name'   => 'tag',
+                        'label'  => 'Tag de Cabezera',
+                        'value'  => 'bestseller',
+                        'width'  => 3
+                    ],
                     'title' => [
                         'type'   => 'text',
                         'name'   => 'title',
-                        'label'  => 'Encabezado',
-                        'value'  => 'Modules\\Bimgo\\Http\\Controllers\\Ecommerce1Controller@header',
-                        'width'  => 12
-                    ]
+                        'label'  => 'Titulo del Banner',
+                        'value'  => 'This is news title',
+                        'width'  => 3
+                    ],
+                    'button' => [
+                        'type'   => 'text',
+                        'name'   => 'button',
+                        'label'  => 'Texto',
+                        'value'  => 'READ MORE',
+                        'width'  => 3
+                    ],
+                    'link' => [
+                        'type'   => 'text',
+                        'name'   => 'link',
+                        'label'  => 'Link del Boton',
+                        'value'  => '#',
+                        'width'  => 3
+                    ],
+                    'space1' => [
+                        'type'  => 'space',
+                        'name'  => 'space1',
+                    ],
+                    'icon1' => [
+                        'type'   => 'select_dropdown',
+                        'name'   => 'icon1',
+                        'label'  => 'Icono 1',
+                        'value'  => [
+                            'fas fa-laptop dark-grey-text mr-2' => 'fas fa-laptop dark-grey-text mr-2',
+                            'fas fa-mobile-alt dark-grey-text mr-3' => 'fas fa-mobile-alt dark-grey-text mr-3',
+                            'fas fa-tablet-alt dark-grey-text mr-3' => 'fas fa-tablet-alt dark-grey-text mr-3',
+                            'fas fa-headphones-alt dark-grey-text mr-3' => 'fas fa-headphones-alt dark-grey-text mr-3',
+                            'fas fa-camera-retro dark-grey-text mr-3' => 'fas fa-camera-retro dark-grey-text mr-3',
+                            'fas fa-suitcase dark-grey-text mr-3' => 'fas fa-suitcase dark-grey-text mr-3',
+                            'fas fa-tv dark-grey-text mr-3' => 'fas fa-tv dark-grey-text mr-3'
+                        ],
+                        'width'  => 6
+                    ],
+                    'name1' => [
+                        'type'   => 'text',
+                        'name'   => 'name1',
+                        'label'  => 'Nombre 1',
+                        'value'  => 'Laptos',
+                        'width'  => 6
+                    ],
+                    'icon2' => [
+                        'type'   => 'select_dropdown',
+                        'name'   => 'icon2',
+                        'label'  => 'Icono 2',
+                        'value'  => [
+                            'fas fa-laptop dark-grey-text mr-2' => 'fas fa-laptop dark-grey-text mr-2',
+                            'fas fa-mobile-alt dark-grey-text mr-3' => 'fas fa-mobile-alt dark-grey-text mr-3',
+                            'fas fa-tablet-alt dark-grey-text mr-3' => 'fas fa-tablet-alt dark-grey-text mr-3',
+                            'fas fa-headphones-alt dark-grey-text mr-3' => 'fas fa-headphones-alt dark-grey-text mr-3',
+                            'fas fa-camera-retro dark-grey-text mr-3' => 'fas fa-camera-retro dark-grey-text mr-3',
+                            'fas fa-suitcase dark-grey-text mr-3' => 'fas fa-suitcase dark-grey-text mr-3',
+                            'fas fa-tv dark-grey-text mr-3' => 'fas fa-tv dark-grey-text mr-3'
+                        ],
+                        'width'  => 6
+                    ],
+                    'name2' => [
+                        'type'   => 'text',
+                        'name'   => 'name2',
+                        'label'  => 'Nombre 2',
+                        'value'  => 'Smatphone',
+                        'width'  => 6
+                    ],
                 ])    
             ]);
             Block::create([
