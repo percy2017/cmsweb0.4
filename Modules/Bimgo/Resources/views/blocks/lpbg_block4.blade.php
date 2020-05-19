@@ -2,11 +2,10 @@
 <section id="contact" class="mb-3">
 
     <!-- Section heading -->
-    <h2 class="h1-responsive font-weight-bold text-center">Get In Touch</h2>
+    <h2 class="h1-responsive font-weight-bold text-center">{{ $data->title->value }}</h2>
     <hr class="hr-pink my-3">
-    <p class="lead grey-text text-center w-responsive mx-auto mb-5 pb-3">Duis aute irure dolor in reprehenderit in
-        voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-        proident, sunt in culpa qui officia deserunt mollit.
+    <p class="lead grey-text text-center w-responsive mx-auto mb-5 pb-3">
+        {{  $data->parrafo->value  }}
     </p>
 
     <!-- Grid row -->
@@ -15,7 +14,7 @@
         <!-- Grid column -->
         <div class="col-lg-5 mb-lg-0 mb-4">
 
-            <p class="text-center purple-pastel ml-lg-5"><strong>Make an appointment to get the best offer</strong></p>
+            <p class="text-center purple-pastel ml-lg-5"><strong>{!! $data->descripcion->value !!}</strong></p>
 
             <!-- Form -->
             <form class="text-center ml-lg-5">
@@ -52,7 +51,7 @@
         <div class="col-lg-7" style="margin-top: -7rem;">
 
             <div class="view">
-                <img src="https://mdbootstrap.com/img/illustrations/graphics(1).png" class="img-fluid"
+                <img src="{{ voyager::Image($data->imagen->value) }}" class="img-fluid"
                     alt="smaple image">
             </div>
 
