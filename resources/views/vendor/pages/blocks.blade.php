@@ -168,20 +168,23 @@
                                         @break
                                     @case('controller')
                                         @if($block->details)
-                                            @foreach (json_decode($block->details, true) as $item => $value)
-                                                @switch($value['type'])
-                                                    @case('text')
-                                                        <div class="form-group col-md-{{ $value['width'] }}">
-                                                            <label>{{ $value['label'] }}</label>
-                                                            <input type="text" class="form-control" name="{{ $value['name'] }}" placeholder="" value="{{ $value['value'] }}">
-                                                        </div>
-                                                        @break
-                                                @endswitch
-                                                {{-- {{ dd($value['type']) }} --}}
-                                                @endforeach
-                                                <div class="text-center">
-                                                    <code>Blocks Type Controller</code>
+                                            {{--  @foreach (json_decode($block->details) as $item)
+                                                <div class="form-group col-md-{{ $value['width'] }}">
+                                                    <label>{{ $value['label'] }}</label>
+                                                    <input type="text" class="form-control" name="{{ $value['name'] }}" placeholder="" value="{{ $value['value'] }}">
                                                 </div>
+                                            @endforeach  --}}
+                                            {{--  <div class="text-center">
+                                                <code>Blocks Type Controller</code>
+                                            </div>  --}}
+                                            @php
+                                                $data = json_decode($block->details, true);
+                                            @endphp
+                                            {{--  {{ dd($data) }}  --}}
+                                            <div class="form-group col-md-12">
+                                                <label>{{ $data['label'] }}</label>
+                                                <input type="text" class="form-control" name="{{ $data['name'] }}" placeholder="" value="{{ $data['value'] }}">
+                                            </div>
                                         @else
                                             <div class="text-center">
                                                 <code>No hay Detalles</code>

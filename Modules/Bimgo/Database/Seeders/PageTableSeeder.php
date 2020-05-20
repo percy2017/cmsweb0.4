@@ -909,13 +909,9 @@ class PageTableSeeder extends Seeder
                 'position'    => $count++,
                 'type'        => 'controller',
                 'details'     => json_encode([
-                    'products' => [
-                        'type'   => 'text',
-                        'name'   => 'products',
-                        'label'  => 'Banner',
-                        'value'  => 'Modules\\Bimgo\\Http\\Controllers\\Ecommerce1Controller@products',
-                        'width'  => 12
-                    ]
+                    'name'   => 'products',
+                    'label'  => 'Productos de a 6',
+                    'value'  => 'Modules\\Bimgo\\Http\\Controllers\\Ecommerce1Controller::products()'
                 ])    
             ]);
             Block::create([
@@ -943,14 +939,10 @@ class PageTableSeeder extends Seeder
                 'position'    => $count++,
                 'type'        => 'controller',
                 'details'     => json_encode([
-                    'products2' => [
-                        'type'   => 'text',
-                        'name'   => 'products2',
-                        'label'  => 'Banner o Afiches',
-                        'value'  => 'Modules\\Bimgo\\Http\\Controllers\\Ecommerce1Controller@products2',
-                        'width'  => 12
-                    ]
-                ])    
+                    'name'   => 'products',
+                    'label'  => 'Productos por Categorias',
+                    'value'  => 'Modules\\Bimgo\\Http\\Controllers\\Ecommerce1Controller::products2()'
+                ]) 
             ]);
             Block::create([
                 'name'        => 'ecommerce1.list_products',
@@ -960,14 +952,10 @@ class PageTableSeeder extends Seeder
                 'position'    => $count++,
                 'type'        => 'controller',
                 'details'     => json_encode([
-                    'list_products' => [
-                        'type'   => 'text',
-                        'name'   => 'list_products',
-                        'label'  => 'Banner o Afiches',
-                        'value'  => 'Modules\\Bimgo\\Http\\Controllers\\Ecommerce1Controller@list_products',
-                        'width'  => 12
-                    ]
-                ])    
+                    'name'   => 'products',
+                    'label'  => 'Lista de Productos',
+                    'value'  => 'Modules\\Bimgo\\Http\\Controllers\\Ecommerce1Controller::list_products()'
+                ])   
             ]);
 
             $page = Page::create([

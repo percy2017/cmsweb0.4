@@ -16,9 +16,12 @@
           @break
       @case('controller')
         @php
-          $data = Modules\Bimgo\Http\Controllers\Ecommerce1Controller::products();
+          $aux = json_decode($item->details);
+          $data = $aux->value;
+          $data = str_replace('"','',$data); 
+          //$data = Modules\Bimgo\Http\Controllers\Ecommerce1Controller::products();
         @endphp
-          {{--  {{ $data }}  --}}
+        {{ dd($data) }}
         @include('bimgo::blocks.'.$item->name, ['data' => $data])
         @break
     @endswitch

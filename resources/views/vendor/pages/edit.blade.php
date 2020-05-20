@@ -11,6 +11,10 @@
             <span class="glyphicon glyphicon-list"></span>&nbsp;
             {{ __('voyager::generic.return_to_list') }}
         </a>
+        <a href="{{ route('block_index', $page->id) }}" class="btn btn-success">
+            <span class="glyphicon glyphicon-book"></span>&nbsp;
+            Blocks
+        </a>
         @if(setting('site.page')==$page->slug)
             <a href="#" class="btn btn-default" disabled="disabled">
         @else
