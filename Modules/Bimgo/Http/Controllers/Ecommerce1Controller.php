@@ -5,7 +5,7 @@ namespace Modules\Bimgo\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
-
+use  Modules\Bimgo\Entities\BgProduct;
 class Ecommerce1Controller extends Controller
 {
     /**
@@ -75,5 +75,11 @@ class Ecommerce1Controller extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    static function products()
+    {
+        $products = BgProduct::orderBy('id', 'desc')->paginate(6);
+        return $products;
     }
 }

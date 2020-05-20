@@ -20,7 +20,11 @@
 @stop
 
 @section('css')
-
+<style>
+	select{
+		font-family: fontAwesome
+	}
+</style>
 @endsection
 @section('content')
     <div class="page-content container-fluid" id="voyagerBreadEditAdd">
@@ -39,7 +43,7 @@
                         </div>
 
                         <div class="panel-body">
-                            <form action="{{ route('block_update', $block->id) }}" method="POST" enctype="multipart/form-data">
+                            <form class="miform" action="{{ route('block_update', $block->id) }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="panel panel-success text-center">
                                     <h3>{{ $block->description }}</h3>
@@ -86,8 +90,7 @@
                                                     @case('image')
                                                         <div class="form-group col-md-{{ $value['width'] }}">
                                                             <label>{{ $value['label'] }}</label>
-                                                            <a href="#" class="voyager-x remove-single-image" style="position:absolute;">Delete</a>
-                                                
+                                                            {{--  <a href="#" class="voyager-x remove-single-image" style="position:absolute;">Delete</a>  --}}
                                                             <img src="{{ Voyager::Image($value['value']) }}" style="max-width:200px; height:auto; clear:both; display:block; padding:2px; border:1px solid #ddd; margin-bottom:10px;">
                                                             <input type="file" value="{{ $value['value'] }}" name="{{ $value['name'] }}" accept="image/*">
                                                             {{--  <input type="hidden" name="{{ $value['name'] }}-aux" value="{{ $value['value'] }}" />  --}}
@@ -119,11 +122,19 @@
                                                                     'fab fa-youtube-square orange-text fa-2x',
                                                                     'fas fa-video orange-text fa-2x',
                                                                     'fas fa-photo-video orange-text fa-2x',
-                                                                    'fas fa-hand-holding-usd orange-text fa-2x'
+                                                                    'fas fa-hand-holding-usd orange-text fa-2x',
+                                                                    'fas fa-laptop dark-grey-text mr-2',
+                                                                    'fas fa-mobile-alt dark-grey-text mr-3',
+                                                                    'fas fa-tablet-alt dark-grey-text mr-3',
+                                                                    'fas fa-headphones-alt dark-grey-text mr-3',
+                                                                    'fas fa-camera-retro dark-grey-text mr-3',
+                                                                    'fas fa-suitcase dark-grey-text mr-3',
+                                                                    'fas fa-tv dark-grey-text mr-3'
                                                                 ];
                                                             @endphp
                                                             <label>{{ $value['label'] }}</label>
-                                                            <select class="form-control select2" name="{{ $value['name'] }}">
+                                                            <select class="form-control select2 miselect" name="{{ $value['name'] }}">
+                                                            <option disabled>-- Seleciona un icons --</option>
                                                                 @foreach ($miarray as $item)
                                                                     <option value="{{ $item }}" @if($value['value'] === $item)selected="selected"@endif>
                                                                         {{ $item }}
@@ -178,19 +189,15 @@
                                         @endif
                                         @break                                        
                                     @endswitch
-                                
-                                
                                 <div class="form-group col-md-12">
                                     <hr />
                                 </div>
-                                
                                 <div class="form-group text-center col-md-12">
                                     <button type="submit" class="btn btn-primary"><i class="voyager-edit"></i> Guardar este Blocke</button>
                                     <a href="{{ route('block_delete', $block->id) }}" class="btn btn-danger"><i class="voyager-trash"></i> Eliminar este Blocke</a>
                                 </div>
                             </form>
                         </div>
-
                     </div>
                 </div>
             @endforeach
@@ -202,4 +209,13 @@
 
 @section('javascript')
     <script src="//cdn.ckeditor.com/4.14.0/full/ckeditor.js"></script>
+    <script>
+    
+        $('.miselect').on('change', function () {
+            console.log('<i class="'+this.value+'"></i>');
+            $('#myicon').html('<i class="'+this.value+'"></i>');
+            //toastr.options.escapeHtml = true;
+            toastr.info('<i class="'+this.value+'"></i>', 'Icon');
+        });
+    </script>
 @endsection

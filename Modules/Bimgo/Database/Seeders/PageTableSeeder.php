@@ -783,19 +783,29 @@ class PageTableSeeder extends Seeder
                         'type'  => 'space',
                         'name'  => 'space1',
                     ],
+                    'image' => [
+                        'type'   => 'image',
+                        'name'   => 'image',
+                        'label'  => 'Imagen del Banner',
+                        'value'  => 'image1',
+                        'width'  => 4
+                    ],
+                    'parrafo' => [
+                        'type'   => 'rich_text_box',
+                        'name'   => 'parrafo',
+                        'label'  => 'Parrafo del Banner',
+                        'value'  => 'banner',
+                        'width'  => 8
+                    ],
+                    'space2' => [
+                        'type'  => 'space',
+                        'name'  => 'space2',
+                    ],
                     'icon1' => [
                         'type'   => 'select_dropdown',
                         'name'   => 'icon1',
                         'label'  => 'Icono 1',
-                        'value'  => [
-                            'fas fa-laptop dark-grey-text mr-2' => 'fas fa-laptop dark-grey-text mr-2',
-                            'fas fa-mobile-alt dark-grey-text mr-3' => 'fas fa-mobile-alt dark-grey-text mr-3',
-                            'fas fa-tablet-alt dark-grey-text mr-3' => 'fas fa-tablet-alt dark-grey-text mr-3',
-                            'fas fa-headphones-alt dark-grey-text mr-3' => 'fas fa-headphones-alt dark-grey-text mr-3',
-                            'fas fa-camera-retro dark-grey-text mr-3' => 'fas fa-camera-retro dark-grey-text mr-3',
-                            'fas fa-suitcase dark-grey-text mr-3' => 'fas fa-suitcase dark-grey-text mr-3',
-                            'fas fa-tv dark-grey-text mr-3' => 'fas fa-tv dark-grey-text mr-3'
-                        ],
+                        'value'  => 'fas fa-laptop dark-grey-text mr-2',
                         'width'  => 6
                     ],
                     'name1' => [
@@ -809,15 +819,7 @@ class PageTableSeeder extends Seeder
                         'type'   => 'select_dropdown',
                         'name'   => 'icon2',
                         'label'  => 'Icono 2',
-                        'value'  => [
-                            'fas fa-laptop dark-grey-text mr-2' => 'fas fa-laptop dark-grey-text mr-2',
-                            'fas fa-mobile-alt dark-grey-text mr-3' => 'fas fa-mobile-alt dark-grey-text mr-3',
-                            'fas fa-tablet-alt dark-grey-text mr-3' => 'fas fa-tablet-alt dark-grey-text mr-3',
-                            'fas fa-headphones-alt dark-grey-text mr-3' => 'fas fa-headphones-alt dark-grey-text mr-3',
-                            'fas fa-camera-retro dark-grey-text mr-3' => 'fas fa-camera-retro dark-grey-text mr-3',
-                            'fas fa-suitcase dark-grey-text mr-3' => 'fas fa-suitcase dark-grey-text mr-3',
-                            'fas fa-tv dark-grey-text mr-3' => 'fas fa-tv dark-grey-text mr-3'
-                        ],
+                        'value'  => 'fas fa-mobile-alt dark-grey-text mr-3',
                         'width'  => 6
                     ],
                     'name2' => [
@@ -825,6 +827,76 @@ class PageTableSeeder extends Seeder
                         'name'   => 'name2',
                         'label'  => 'Nombre 2',
                         'value'  => 'Smatphone',
+                        'width'  => 6
+                    ],
+                    'icon3' => [
+                        'type'   => 'select_dropdown',
+                        'name'   => 'icon3',
+                        'label'  => 'Icono 3',
+                        'value'  => 'fas fa-tablet-alt dark-grey-text mr-3',
+                        'width'  => 6
+                    ],
+                    'name3' => [
+                        'type'   => 'text',
+                        'name'   => 'name3',
+                        'label'  => 'Nombre 3',
+                        'value'  => 'Tablet',
+                        'width'  => 6
+                    ],
+                    'icon4' => [
+                        'type'   => 'select_dropdown',
+                        'name'   => 'icon4',
+                        'label'  => 'Icono 4',
+                        'value'  => 'fas fa-headphones-alt dark-grey-text mr-3',
+                        'width'  => 6
+                    ],
+                    'name4' => [
+                        'type'   => 'text',
+                        'name'   => 'name4',
+                        'label'  => 'Nombre 4',
+                        'value'  => 'Heahphones',
+                        'width'  => 6
+                    ],
+                    'icon5' => [
+                        'type'   => 'select_dropdown',
+                        'name'   => 'icon5',
+                        'label'  => 'Icono 5',
+                        'value'  => 'fas fa-camera-retro dark-grey-text mr-3',
+                        'width'  => 6
+                    ],
+                    'name5' => [
+                        'type'   => 'text',
+                        'name'   => 'name5',
+                        'label'  => 'Nombre 5',
+                        'value'  => 'Camara',
+                        'width'  => 6
+                    ],
+                    'icon6' => [
+                        'type'   => 'select_dropdown',
+                        'name'   => 'icon6',
+                        'label'  => 'Icono 6',
+                        'value'  => 'fas fa-suitcase dark-grey-text mr-3',
+                        'width'  => 6
+                    ],
+                    'name6' => [
+                        'type'   => 'text',
+                        'name'   => 'name6',
+                        'label'  => 'Nombre 6',
+                        'value'  => 'Accesories',
+                        'width'  => 6
+                    ],
+                    'icon7' => [
+                        'type'   => 'select_dropdown',
+                        'name'   => 'icon7',
+                        'label'  => 'Icono 7',
+                        'value'  => 'fas fa-tv dark-grey-text mr-3',
+                        'width'  => 6
+                    ],
+                    'name7' => [
+                        'type'   => 'text',
+                        'name'   => 'name7',
+                        'label'  => 'Nombre 7',
+                        'value'  => 'TV',
                         'width'  => 6
                     ],
                 ])    

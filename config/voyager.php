@@ -198,13 +198,12 @@ return [
     'additional_css' => [
         //'css/custom.css',
         'theme.css',
-        'https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'
+        'https://use.fontawesome.com/releases/v5.8.2/css/all.css'
     ],
 
     'additional_js' => [
         //'js/custom.js',
-
-        'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/fontawesome.min.js',
+        'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/js/fontawesome.min.js',
         'https://cdn.jsdelivr.net/npm/sweetalert2@9'
     ],
 
