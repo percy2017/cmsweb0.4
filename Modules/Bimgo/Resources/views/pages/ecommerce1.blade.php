@@ -18,11 +18,12 @@
         @php
           $aux = json_decode($item->details);
           $data = $aux->value;
-          $data = str_replace('"','',$data); 
-          //$data = Modules\Bimgo\Http\Controllers\Ecommerce1Controller::products();
+          $data = explode('::', $data);
+          $data = str_replace('()','',$data);
+          $name_espace = $data[0];
+          $function = $data[1];
         @endphp
-        {{ dd($data) }}
-        @include('bimgo::blocks.'.$item->name, ['data' => $data])
+        @include('bimgo::blocks.'.$item->name, ['data' => $name_espace::$function()])
         @break
     @endswitch
    
