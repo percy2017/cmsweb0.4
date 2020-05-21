@@ -9,6 +9,10 @@ use TCG\Voyager\Facades\Voyager;
 use Illuminate\Support\Facades\Storage;
 class BlockController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -82,30 +86,37 @@ class BlockController extends Controller
     {
         $block = Block::where('id', $block_id)->first();
         $mijson = $block->details;
-        foreach(json_decode($block->details, true) as $item => $value)
-        {
-            if($value['type'] == 'image'){
-                $mijson = str_replace($value['value'], $value['value'], $mijson);
-            }else{
-                if($value['type'] == 'space'){
-                }else{
-                    $mijson_aux = json_decode($mijson, true);
-                    $mijson_aux[$value['name']]['value'] = $request[$value['name']];
-                    $mijson = json_encode($mijson_aux);
-                    // $mijson = str_replace($value['value'], $request[$value['name']], $mijson);
+        switch ($block->type) {
+            case 'dinamyc-data':
+                foreach(json_decode($block->details, true) as $item => $value)
+                {
+                    if($value['type'] == 'image'){
+                        $mijson = str_replace($value['value'], $value['value'], $mijson);
+                    }else{
+                        if($value['type'] == 'space'){
+                        }else{
+                            $mijson_aux = json_decode($mijson, true);
+                            $mijson_aux[$value['name']]['value'] = $request[$value['name']];
+                            $mijson = json_encode($mijson_aux);
+                        }
+                    }
+                    if($request->hasFile($value['name'])){
+                        $dirimage = Storage::disk('public')->put('blocks/'.date('F').date('Y'), $request->file($value['name']));
+                        $mijson = str_replace($value['value'], $dirimage, $mijson);
+                    }
                 }
-            }
-
-            if($request->hasFile($value['name'])){
-                $dirimage = Storage::disk('public')->put('blocks/'.date('F').date('Y'), $request->file($value['name']));
-                $mijson = str_replace($value['value'], $dirimage, $mijson);
-            }
-            
+                $block->details = $mijson;
+                $block->save();
+                break;
+            case 'controller':
+               
+                $aux = json_decode($mijson, true);
+                $mijson = str_replace(json_encode($aux['value']), json_encode($request[$aux['name']]), $mijson);
+                // return $mijson;
+                $block->details = $mijson;
+                $block->save();
+                break;
         }
-        // return $mijson;
-        $block->details = $mijson;
-       // $block->position = $request->position;
-        $block->save();
         
         return back()->with([
             'message'    => 'Block '.$block->title.' actualizado.',
@@ -178,4 +189,14 @@ class BlockController extends Controller
 
         return back()->with($data);
     }
+
+    public function delete($id)
+    {
+        Block::where('id', $id)->delete();
+        return back()->with([
+            'message'    => 'Block Eliminado',
+            'alert-type' => 'success',
+        ]);
+    }
+
 }

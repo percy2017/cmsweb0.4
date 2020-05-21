@@ -82,4 +82,13 @@ class Ecommerce1Controller extends Controller
         $products = BgProduct::orderBy('id', 'desc')->paginate(6);
         return $products;
     }
+    static function products2()
+    {
+
+    }
+
+    static function list_products()
+    {
+        
+    }
 }
