@@ -56,10 +56,48 @@
                 }
             </style>
         @endif
+
+        {{-- Estilo del conómetro --}}
+        <style>
+            body{
+                background-color: black
+            }
+            #content-cronometro {
+                position: fixed;
+                background-color: rgba(0, 0, 0, 0.2);
+                color: white;
+                top: 3px;
+                left: 10px;
+                width: 210px;
+                height: 30px;
+                z-index: 1001;
+                border-radius: 3px;
+                padding: 4px 20px;
+                text-align: center
+            }
+        </style>
+        <script>
+            function dateDiff(start, finish){
+                let title = ''
+                if((start - finish) >= 0){
+                    diff = start - finish;
+                    title = 'Inicia en ';
+                }else{
+                    diff = finish - start;
+                }
+                days = parseInt(diff/(1000*60*60*24));
+                hours = parseInt(diff/(1000*60*60)%24).toString().padStart(2, 0);
+                minutes = parseInt(diff/(1000*60)%60).toString().padStart(2, 0);
+                seconds = parseInt(diff/(1000)%60).toString().padStart(2, 0);
+                miliseconds = parseInt((finish - start)/1000);
+                return {days, hours, minutes, seconds, miliseconds, title}
+            }
+        </script>
     </head>
     <body>
         @if (!$error)
             <div id="meet"></div>
+            <div id="content-cronometro"></div>
             <div id="countdown_message" style="display: none">
                 <div class="d-flex justify-content-center align-items-center" id="dark_mask">
                     <h1 class="mr-3 pr-3 align-top inline-block align-content-center" id="message_finish">k</h1>
@@ -76,23 +114,21 @@
                     let getFinishMeet = setInterval(() => {
                         var date = new Date();
                         var finish = new Date({{ date("Y, m, d, H, i, s", strtotime($meeting->day.' '.$meeting->finish)) }});
-                        // Quitar 1 mes de la fecha generada en javascript
+                        // Quitar 1 mes a la fecha generada con javascript
                         let aux = finish.getMonth()-1;
                         finish.setMonth(aux)
+                        time = dateDiff(date, finish);
 
-                        hour_finish = parseInt((finish-date)/(1000*60*60));
-                        min_finish = parseInt((finish-date)/(1000*60)%60);
-                        sec_finish = parseInt((finish-date)/1000);
-
-                        if(hour_finish == 0 && min_finish == 5 && enable_alert){
+                        if(time.hours == 0 && time.minutes == 5 && enable_alert){
                             alert_finish = true
                             enable_alert =  false;
                         }
-                        if(sec_finish <= 60){
+
+                        if(time.miliseconds <= 59){
                             $('#countdown_message').css('display', 'block')
-                            $('#message_finish').text(`Tu reunión finalizará en ${sec_finish >= 0 ? sec_finish : 0} segundos.`)
+                            $('#message_finish').text(`Tu reunión finalizará en ${time.seconds >= 0 ? time.seconds : 0} segundos.`)
                         }
-                        if(sec_finish<0){
+                        if(time.miliseconds < 0){
                             $('#countdown_message').css('display', 'none')
                             clearInterval(getFinishMeet);
                             window.location = '{{ url("conferencia/".$meeting->slug) }}/finish';
@@ -122,6 +158,36 @@
                         audioOutput: '<deviceLabel>',
                         videoInput: '<deviceLabel>'
                     },
+                    onload: () => {
+                        var time, date, start;
+                        setInterval(() => {
+                            date = new Date();
+                            start = new Date({{ date("Y, m, d, H, i, s", strtotime($meeting->day.' '.$meeting->start)) }});
+                            // Quitar 1 mes a la fecha generada con javascript
+                            let aux = start.getMonth()-1;
+                            start.setMonth(aux);
+
+                            time = dateDiff(start, date);
+                            $('#content-cronometro').text(`${time.title} ${(time.hours).toString().padStart(2, "0")} : ${(time.minutes).toString().padStart(2, "0")} : ${(time.seconds).toString().padStart(2, "0")}`);
+                            if(time.title){
+                                $('#content-cronometro').css('border', '1px solid #E86565');
+                            }else{
+                                $('#content-cronometro').css('border', '');
+                            }
+
+                        }, 300);
+                    },
+                    interfaceConfigOverwrite: {
+                        TOOLBAR_BUTTONS: [
+                            'microphone', 'camera', 'closedcaptions', 'desktop', 'fullscreen',
+                            'fodeviceselection', 'hangup', 'profile', 'chat', 'recording',
+                            'livestreaming', 'etherpad', 'sharedvideo', 'settings', 'raisehand',
+                            'videoquality', 'filmstrip', 'feedback', 'stats', 'shortcuts',
+                            'tileview', 'videobackgroundblur', 'download', 'help', 'mute-everyone',
+                            'e2ee', 'security'
+                        ],
+                        SHOW_JITSI_WATERMARK: false
+                    }
                 };
 
                 let newParticipant = true;
@@ -211,22 +277,19 @@
                         let getStarthMeet = setInterval(() => {
                             var date = new Date();
                             var start = new Date({{ date("Y, m, d, H, i, s", strtotime($meeting->day.' '.$meeting->start)) }});
-                            // Quitar 1 mes de la fecha generada en javascript
+                            // Quitar 1 mes a la fecha generada con javascript
                             let aux = start.getMonth()-1;
-                            start.setMonth(aux)
-                            diff = start-date;
-                            days = parseInt(diff/(1000*60*60*24));
-                            hours = parseInt(diff/(1000*60*60)%24).toString().padStart(2, 0);
-                            minutes = parseInt(diff/(1000*60)%60).toString().padStart(2, 0);
-                            seconds = parseInt(diff/(1000)%60).toString().padStart(2, 0);
+                            start.setMonth(aux);
+
+                            time = dateDiff(date, start);
                             
-                            if(diff<300){
+                            if((time.miliseconds)<300){
                                 clearInterval(getStarthMeet);
                                 window.location = '{{ url("conferencia/".$meeting->slug) }}'
                             }else{
                                 $('#counter').html(`
                                     <h5>Inicia en</h5>
-                                    <h3>${days ? (days == 1 ? days+'<small>día </small> ' : days+'<small>días </small> ') : ''} ${hours+'<small>h </small>'} : ${minutes+'<small>m </small>'} : ${(seconds > 0 ? seconds : '00')+'<small>s </small>'}</h3>
+                                    <h3>${time.days ? (time.days == 1 ? time.days+'<small>día </small> ' : time.days+'<small>días </small> ') : ''} ${time.hours+'<small>h </small>'} : ${time.minutes+'<small>m </small>'} : ${(time.seconds > 0 ? time.seconds : '00')+'<small>s </small>'}</h3>
                                 `);
                             }
                         }, 300);
@@ -246,9 +309,6 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title" id="exampleModalLabel">Suscríbete</h5>
-                            {{-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button> --}}
                         </div>
                         <div class="modal-body">
                             <input type="hidden" name="meeting_id" value="{{ $meeting->id }}">
@@ -272,7 +332,7 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" data-dismiss="modal" class="btn btn-secondary" onclick="notSuscribe()">Omitir</button>
+                            <button type="button" data-dismiss="modal" class="btn btn-secondary">Omitir esta vez</button>
                             <button type="submit" class="btn btn-primary" id="btn-suscribe">Suscribirme</button>
                         </div>
                     </div>
@@ -282,18 +342,33 @@
             <script>
                 $(document).ready(function(){
                     $('[data-toggle="tooltip"]').tooltip();
+                    const Toast = Swal.mixin({
+                                toast: true,
+                                position: 'bottom-end',
+                                showConfirmButton: false,
+                                timer: 3000,
+                                timerProgressBar: true,
+                                onOpen: (toast) => {
+                                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                                }
+                            });
+
+                    // Si es un invitado cargar el modal de suscripción
+                    
+                    @guest
+                    $('#modal_suscription').modal('toggle');
+                    @endguest
 
                     if("{{ session('suscription_histream') }}"){
                         let suscription = JSON.parse(@json(session('suscription_histream')));
                         if(api && suscription.id){
                             api.executeCommand('displayName', suscription.name);
                             api.executeCommand('email', suscription.email);
-                            $.get('{{ url("conferencia/suscribe/".$meeting->id) }}/'+suscription.id+'/join');
-                        }
-                    }else{
-                        if("{{ Auth::user() }}"){
-                            $('#modal_suscription').modal('toggle');
-                        }
+                            $('#form-suscribe input[name="name"]').val(suscription.name);
+                            $('#form-suscribe input[name="phone"]').val(suscription.phone);
+                            $('#form-suscribe input[name="email"]').val(suscription.email);
+                            $('#form-suscribe input[name="city"]').val(suscription.city);                        }
                     }
 
                     $('#form-suscribe').on('submit', function(e){
@@ -308,13 +383,13 @@
                                 api.executeCommand('displayName', res.name);
                                 api.executeCommand('email', res.email);
                             }
+                            Toast.fire({
+                                icon: 'success',
+                                title: 'Gracias por suscribirte'
+                            });
                         })
                     });
                 });
-
-                function notSuscribe(){
-                    {{ session(['suscription_histream' => '{}']) }}
-                }
             </script>
     </body>
 </html>

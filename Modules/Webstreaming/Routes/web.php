@@ -38,6 +38,9 @@ Route::get('admin/suscripciones/list/{search}', 'SuscriptionsController@list')->
 Route::post('admin/suscripciones/user/peticion', 'SuscriptionsController@petition')->middleware('auth')->name('user_petition');
 Route::post('admin/suscripciones/user/edit', 'SuscriptionsController@update_user')->middleware('auth')->name('user_edit');
 
+Route::get('admin/suscripciones/meetings/{user_id}', 'SuscriptionsController@meetings_user')->middleware('auth');
+Route::get('admin/suscripciones/meetings/{user_id}/list/{search}', 'SuscriptionsController@meetings_user_list')->middleware('auth');
+
 Route::get('register/{id}', function($id){
     session(['plan_id' => $id]);
     return redirect('/register');

@@ -9,6 +9,9 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
+// Controllers
+use Modules\Webstreaming\Http\Controllers\MeetingsController as Meet;
+
 // Models
 use App\User;
 use Modules\Webstreaming\Entities\Plan;
@@ -34,12 +37,34 @@ class SuscriptionsController extends Controller
         $registers = DB::table('hs_plan_user as pu')
                                 ->join('users as u', 'u.id', 'pu.user_id')
                                 ->join('hs_plans as pt', 'pt.id', 'pu.hs_plan_id')
-                                ->select('pu.*', 'u.name as client', 'pt.name as plan')
+                                ->select(   'pu.*', 'u.name as client', 'pt.name as plan',
+                                            DB::raw('(select count(m.id) total from hs_meetings as m where m.user_id = u.id) as total'),
+                                            DB::raw('(select count(m.id) total from hs_meetings as m where m.user_id = u.id and m.day="'.date('Y-m-d').'" and m.start <="'.date('H:i:s').'" and m.finish >="'.date('H:i:s').'") as total_activas')
+                                        )
                                 ->where('pu.deleted_at', null)
                                 ->orderBy('id', 'DESC')
                                 ->paginate(10);
         
         return view('webstreaming::suscriptions.partials.list', compact('registers'));
+    }
+
+    public function meetings_user($id){
+        $user = User::find($id);
+        return view('webstreaming::suscriptions.meetings_user', compact('user'));
+    }
+
+    public function meetings_user_list($id){
+        $meetings = Meet::lista_reuniones($id);
+        $cont = 0;
+        foreach ($meetings as $item) {
+            $aux = DB::table('hs_meeting_participant')
+                        ->select('*')
+                        ->where('hs_meeting_id', $item->id)
+                        ->count();
+            $meetings[$cont]->suscriptions = $aux;
+            $cont++;
+        }
+        return view('webstreaming::suscriptions.partials.meetings_list', compact('meetings'));
     }
 
     public function petition(Request $request){
