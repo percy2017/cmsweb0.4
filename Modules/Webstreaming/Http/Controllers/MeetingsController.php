@@ -20,6 +20,7 @@ use Modules\Webstreaming\Entities\Participant;
 
 // Events
 use Modules\Webstreaming\Events\JoinMeetUser;
+use Modules\Webstreaming\Events\ActivityUser;
 
 class MeetingsController extends Controller
 {
@@ -46,13 +47,7 @@ class MeetingsController extends Controller
     }
 
     public function list(){
-        // $meetings = Meeting::where('deleted_at', null)->where('user_id', Auth::user()->id)->orderBy('id', 'Desc')->paginate(10);
-        $meetings = DB::table('hs_meetings as m')
-                        // ->join('hs_meeting_participant as mp', 'mp.hs_meeting_id', 'm.id')
-                        ->select('m.*', 'm.deleted_at as suscriptions')
-                        ->where('deleted_at', null)
-                        ->where('user_id', Auth::user()->id)
-                        ->orderBy('id', 'Desc')->paginate(10);
+        $meetings = $this::lista_reuniones(Auth::user()->id);
         $cont = 0;
         foreach ($meetings as $item) {
             $aux = DB::table('hs_meeting_participant')
@@ -85,6 +80,7 @@ class MeetingsController extends Controller
                     $error = null;
                 }    
             }
+            // return $meeting;
             return view('webstreaming::meetings.join', compact('meeting', 'plan_free', 'plan_user', 'error'));
         }else{
             $error = 'notfound';
@@ -110,6 +106,7 @@ class MeetingsController extends Controller
         }
         $meet->save();
         event(new JoinMeetUser($meet->user_id));
+        event(new ActivityUser());
     }
 
     public function suscribe(Request $request){
@@ -195,6 +192,8 @@ class MeetingsController extends Controller
             'descriptions' => $request->descriptions,
         ]);
 
+        event(new ActivityUser());
+
         if($request->ajax){
             return response()->json($meeting);
         }
@@ -244,6 +243,8 @@ class MeetingsController extends Controller
         $meeting->descriptions = $request->descriptions;
         $meeting->save();
 
+        event(new ActivityUser());
+
         if($request->ajax){
             return response()->json($meeting);
         }
@@ -259,5 +260,15 @@ class MeetingsController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    // ================================================
+
+    public static function lista_reuniones($user_id){
+        return DB::table('hs_meetings as m')
+                    ->select('m.*', 'm.deleted_at as suscriptions')
+                    ->where('deleted_at', null)
+                    ->where('user_id', $user_id)
+                    ->orderBy('id', 'Desc')->paginate(10);
     }
 }

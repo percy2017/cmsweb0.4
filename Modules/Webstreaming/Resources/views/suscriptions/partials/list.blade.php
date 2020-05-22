@@ -12,7 +12,11 @@
         <tbody>
             @forelse ($registers as $item)
                 <tr>
-                    <td>{{ $item->client }}</td>
+                    <td>
+                        {{ $item->client }} <br>
+                        <button class="btn btn-danger btn-sm btn-badge" data-toggle="tooltip" title="En curso"><i class="voyager-youtube-play"></i> {{ $item->total_activas }}</button>
+                        <button class="btn btn-default btn-sm btn-badge" data-toggle="tooltip" title="Total"><i class="voyager-list"></i> {{ $item->total }}</button>
+                    </td>
                     <td>{{ $item->plan }}</td>
                     @switch($item->status)
                         @case(1)
@@ -36,9 +40,6 @@
                     @endswitch
                     <td>{{ date('d-m-Y H:i', strtotime($item->created_at)) }} <br> <small>{{ \Carbon\Carbon::parse($item->created_at)->diffForHumans() }}</small> </td>
                     <td class="no-sort no-click bread-actions">
-                        {{-- <a href="#" title="Borrar" class="btn btn-sm btn-danger pull-right delete" onclick="drop({{ $item->id }})">
-                            <i class="voyager-trash"></i> <span class="hidden-xs hidden-sm">Borrar</span>
-                        </a> --}}
                         @if ($item->status)
                             @if ($item->status==1)
                                 <a href="#" title="Dar de baja" class="btn btn-sm btn-warning pull-right delete" onclick="down({{ $item->id }})">
@@ -53,6 +54,9 @@
                                 <i class="voyager-wand"></i> <span class="hidden-xs hidden-sm">Activar</span>
                             </a>
                         @endif
+                        <a href="{{ url('admin/suscripciones/meetings/'.$item->user_id) }}" title="Editar" class="btn btn-sm btn-danger pull-right edit">
+                            <i class="voyager-people"></i> <span class="hidden-xs hidden-sm">Reuniones</span>
+                        </a>
                     </td>
                 </tr>
             @empty
@@ -78,6 +82,7 @@
 
 <script>
     $(document).ready(function(){
+        $('[data-toggle="tooltip"]').tooltip();
 
         $('.page-link').click(function(e){
             e.preventDefault();
