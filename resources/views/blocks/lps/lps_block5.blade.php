@@ -39,7 +39,7 @@
                     <!--Content-->
                     <h4 class="font-weight-bold mt-4">{{ $data->title1->value }}</h4>
                     <h6 class="blue-text font-weight-bold my-3">{{ $data->tag1->value }}</h6>
-                    <p class="font-weight-normal"><i class="fas fa-quote-left pr-2"></i>{{ $data->description1->value }}</p>
+                    <p class="font-weight-normal"><i class="fas fa-quote-left pr-2"></i>{!! $data->description1->value !!}</p>
                     <!--Review-->
                     {{-- <div class="grey-text">
                       <i class="fas fa-star"> </i>
@@ -63,7 +63,7 @@
                     <!--Content-->
                     <h4 class="font-weight-bold mt-4">{{ $data->title2->value }}</h4>
                     <h6 class="blue-text font-weight-bold my-3">{{ $data->tag2->value }}</h6>
-                    <p class="font-weight-normal"><i class="fas fa-quote-left pr-2"></i>{{ $data->description2->value }}</p>
+                    <p class="font-weight-normal"><i class="fas fa-quote-left pr-2"></i>{!! $data->description2->value !!}</p>
                     <!--Review-->
                     {{-- <div class="grey-text">
                       <i class="fas fa-star"> </i>
@@ -87,7 +87,7 @@
                     <!--Content-->
                     <h4 class="font-weight-bold mt-4">{{ $data->title3->value }}</h4>
                     <h6 class="blue-text font-weight-bold my-3">{{ $data->tag3->value }}</h6>
-                    <p class="font-weight-normal"><i class="fas fa-quote-left pr-2"></i>{{ $data->description3->value }}</p>
+                    <p class="font-weight-normal"><i class="fas fa-quote-left pr-2"></i>{!! $data->description3->value !!}</p>
                     <!--Review-->
                     {{-- <div class="grey-text">
                       <i class="fas fa-star"> </i>
@@ -117,7 +117,7 @@
                     <!--Content-->
                     <h4 class="font-weight-bold mt-4">{{ $data->title4->value }}</h4>
                     <h6 class="blue-text font-weight-bold my-3">{{ $data->tag4->value }}</h6>
-                    <p class="font-weight-normal"><i class="fas fa-quote-left pr-2"></i>{{ $data->description4->value }}</p>
+                    <p class="font-weight-normal"><i class="fas fa-quote-left pr-2"></i>{!! $data->description4->value !!}</p>
                     <!--Review-->
                     {{-- <div class="grey-text">
                       <i class="fas fa-star"> </i>
@@ -141,7 +141,7 @@
                     <!--Content-->
                     <h4 class="font-weight-bold mt-4">{{ $data->title5->value }}</h4>
                     <h6 class="blue-text font-weight-bold my-3">{{ $data->tag5->value }}</h6>
-                    <p class="font-weight-normal"><i class="fas fa-quote-left pr-2"></i>{{ $data->description5->value }}</p>
+                    <p class="font-weight-normal"><i class="fas fa-quote-left pr-2"></i>{!! $data->description5->value !!}</p>
                     <!--Review-->
                     {{-- <div class="grey-text">
                       <i class="fas fa-star"> </i>
@@ -165,7 +165,7 @@
                     <!--Content-->
                     <h4 class="font-weight-bold mt-4">{{ $data->title6->value }}</h4>
                     <h6 class="blue-text font-weight-bold my-3">{{ $data->tag6->value }}</h6>
-                    <p class="font-weight-normal"><i class="fas fa-quote-left pr-2"></i>{{ $data->description6->value }}</p>
+                    <p class="font-weight-normal"><i class="fas fa-quote-left pr-2"></i>{!! $data->description6->value !!}</p>
                     <!--Review-->
                     {{-- <div class="grey-text">
                       <i class="fas fa-star"> </i>

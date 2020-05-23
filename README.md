@@ -13,7 +13,7 @@ La herramienta incluye herramienta y paquete de terceros:
 
 # Requerimientos en el Servidor de producción
 ### Step #1
-- LEMP (Ubuntu 20.04)
+- LEMP (Ubuntu 18.04)
 - Let’s Encrypt 
 - Php Extenciones
 - NodeJs & Npm
@@ -22,11 +22,11 @@ La herramienta incluye herramienta y paquete de terceros:
 
 > php7.2-bcmath
 
-> php7.4-gd
+> php7.2-gd
 
-> php7.4-dom
+> php7.2-dom
 
-> php7.4-curl
+> php7.2-curl
 
 > php7.2-zip
 
@@ -46,7 +46,7 @@ Configura el erchivo .env (Variales de Entorno) y permisos
 
 ### Step #3
 Realizar la instalcion mediante el comando:
-- php artisan voyager:install
+- php artisan cmsweb:install
 - php artisan key:generate
 
 ### Step #4
@@ -73,6 +73,7 @@ El cmsweb incluye 5 paquetes listos para ser utilizados
 - Inti - Software para centros educativos
 - BolDig - Paquete para crear y administrar periodicos digitales
 - hiStream - Paquete para la gestion de video conferencias
+- MedicWeb - Paquete para la gestion y administracion de Consultorios medicos virtuales
 
 # CmsWeb Sponsors
 
@@ -83,7 +84,7 @@ La empresa detras del Diseño y Creacion del CmsWeb v2020 es:
 ### Contributing
 
 Los desarrolladores del CmsWeb son los Ingenieros:
-- [Ing. Percy Alvarez](#)
+- [Ing. Percy Alvarez - 71130523](#)
 - [Ing. Raul Montero](#)
 - [Ing. Agustin Mejia](#)
 

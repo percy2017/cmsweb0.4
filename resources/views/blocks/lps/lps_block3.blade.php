@@ -25,7 +25,7 @@
                 </div>
                 <div class="col-9">
                 <h5 class="font-weight-bold white-text">{{ $data->title1->value }}</h5>
-                <p class="white-text">{{ $data->description1->value }}</p>
+                <p class="white-text">{!! $data->description1->value !!}</p>
                 </div>
             </div>
             <!--Grid row-->
@@ -38,7 +38,7 @@
                 </div>
                 <div class="col-9">
                 <h5 class="font-weight-bold white-text">{{ $data->title2->value }}</h5>
-                <p class="white-text">{{ $data->description2->value }}</p>
+                <p class="white-text">{!! $data->description2->value !!}</p>
                 </div>
             </div>
             <!--Grid row-->
@@ -51,7 +51,7 @@
                 </div>
                 <div class="col-9">
                 <h5 class="font-weight-bold white-text">{{ $data->title3->value }}</h5>
-                <p class="white-text">{{ $data->description3->value }}</p>
+                <p class="white-text">{!! $data->description3->value !!}</p>
                 </div>
             </div>
             <!--Grid row-->
@@ -77,7 +77,7 @@
                 </div>
                 <div class="col-9">
                 <h5 class="font-weight-bold white-text">{{ $data->title4->value }}</h5>
-                <p class="white-text">{{ $data->description4->value }}</p>
+                <p class="white-text">{!! $data->description4->value !!}</p>
                 </div>
             </div>
             <!--Grid row-->
@@ -90,7 +90,7 @@
                 </div>
                 <div class="col-9">
                 <h5 class="font-weight-bold white-text">{{ $data->title5->value }}</h5>
-                <p class="white-text">{{ $data->description5->value }}</p>
+                <p class="white-text">{!! $data->description5->value !!}</p>
                 </div>
             </div>
             <!--Grid row-->
@@ -103,7 +103,7 @@
                 </div>
                 <div class="col-9">
                 <h5 class="font-weight-bold white-text">{{ $data->title6->value }}</h5>
-                <p class="white-text">{{ $data->description6->value }}</p>
+                <p class="white-text">{!! $data->description6->value !!}</p>
                 </div>
             </div>
             <!--Grid row-->

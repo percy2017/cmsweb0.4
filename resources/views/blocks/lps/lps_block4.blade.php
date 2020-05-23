@@ -7,7 +7,7 @@
         class="font-weight-bold">{{ $data->title_strong->value }}</strong> {{ $data->title_default->value }}</h1>
 
     <!--Section description-->
-    <p class="text-center w-responsive mx-auto my-5 grey-text">{{ $data->description->value }}</p>
+    <p class="text-center w-responsive mx-auto my-5 grey-text">{!! $data->description->value !!}</p>
 
     <!--First row-->
     <div class="row">
@@ -29,7 +29,7 @@
 
                 <!--Price-->
                 <h2 class="font-weight-bold dark-grey-text mt-3"><strong>{{ $data->price1->value }}</strong></h2>
-                <p class="grey-text">{{ $data->description1->value }}</p>
+                <p class="grey-text">{!! $data->description1->value !!}</p>
                 <a class="btn btn-blue font-weight-bold btn-rounded">Comprar Ahora</a>
             </div>
             </div>
@@ -56,7 +56,7 @@
 
                 <!--Price-->
                 <h2 class="font-weight-bold white-text mt-3"><strong>{{ $data->price2->value }}</strong></h2>
-                <p>{{ $data->description2->value }}</p>
+                <p>{!! $data->description2->value !!}</p>
                 <a class="btn btn-white font-weight-bold btn-rounded">Conprar Ahora</a>
             </div>
             </div>
@@ -83,7 +83,7 @@
 
                 <!--Price-->
                 <h2 class="font-weight-bold dark-grey-text mt-3"><strong>{{ $data->price3->value }}</strong></h2>
-                <p class="grey-text">{{ $data->description3->value }}</p>
+                <p class="grey-text">{!! $data->description3->value !!}</p>
                 <a class="btn btn-blue font-weight-bold btn-rounded">Comprar Ahora</a>
             </div>
             </div>

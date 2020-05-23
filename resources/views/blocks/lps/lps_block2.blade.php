@@ -23,7 +23,7 @@
             <h2 class="mb-3 my-5 dark-grey-text wow fadeIn" data-wow-delay="0.2s"><strong
                 class="font-weight-bold">{{ $data->title_strong->value }} </strong>{{ $data->title_default->value }}</h2>
 
-            <p class="grey-text mb-4">{{$data->desription->value}}</p>
+            <p class="grey-text mb-4">{!! $data->description->value !!}</p>
 
             <a class="btn btn-white btn-rounded blue-text font-weight-bold ml-0 wow fadeIn" data-wow-delay="0.2s"><i
             class="fab fa-android pr-2" aria-hidden="true"></i> {{ $data->button1->value }}</a>
