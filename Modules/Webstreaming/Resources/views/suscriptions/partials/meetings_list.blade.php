@@ -2,7 +2,6 @@
     <table id="dataTable" class="table table-bordered table-hover">
         <thead>
             <tr>
-                <th>Banner</th>
                 <th>Nombre</th>
                 <th>Inicio</th>
                 <th>Creado</th>
@@ -11,12 +10,7 @@
         </thead>
         <tbody id="body-list">
             @forelse ($meetings as $item)
-            @php
-                $image = $item->banner ? 'storage/'.$item->banner : '/images/upload.png';
-                $image_small = $item->banner ? str_replace('.' ,'_small.', 'storage/'.$item->banner) : '/images/upload.png';
-            @endphp
             <tr>
-                <td class="text-center"><a href="{{ url($image) }}" data-fancybox="galeria1" data-caption="{{ $item->name }}"><img src="{{ url($image_small) }}" height="50px" alt="{{ $item->name }}"></a></td>
                 <td style="max-width: 400px">
                     <b>{{ $item->name }}</b> <button type="button" class="btn btn-link btn-copy" onclick="copy('{{ $item->slug }}')">Copiar <i class="fa fa-copy"></i></button>
                     <br>
@@ -30,18 +24,12 @@
                 <td>{{ date('d-m-Y H:i', strtotime($item->day.' '.$item->start)) }} <br> <small>{{ \Carbon\Carbon::parse($item->day.' '.$item->start)->diffForHumans() }}</small> </td>
                 <td><small>{{ \Carbon\Carbon::parse($item->created_at)->diffForHumans() }}</small> </td>
                 <td class="no-sort no-click bread-actions">
-                    {{-- <a href="#" title="Borrar" class="btn btn-sm btn-danger pull-right delete" data-id="1" id="delete-1">
-                        <i class="voyager-trash"></i> <span class="hidden-xs hidden-sm">Borrar</span>
-                    </a> --}}
-                    <a href="#" title="Editar" class="btn btn-sm btn-primary pull-right edit" data-toggle="modal" data-target="#edit_modal" onclick="edit('{{ json_encode($item) }}')">
-                        <i class="voyager-edit"></i> <span class="hidden-xs hidden-sm">Editar</span>
-                    </a>
                     <a href="#" title="Suscritos" class="btn btn-sm btn-success pull-right edit" data-toggle="modal" data-target="#modal_participants" onclick="suscribs_list({{ $item->id }})">
                         <i class="voyager-people"></i> <span class="hidden-xs hidden-sm">Suscritos ({{ $item->suscriptions }})</span>
                     </a>
-                    <a href="{{ url('conferencia/'.$item->slug) }}" title="Ir" target="_blank" class="btn btn-sm btn-warning pull-right view">
+                    {{-- <a href="{{ url('conferencia/'.$item->slug) }}" title="Ir" target="_blank" class="btn btn-sm btn-warning pull-right view">
                         <i class="voyager-eye"></i> <span class="hidden-xs hidden-sm">Ir</span>
-                    </a>
+                    </a> --}}
                 </td>
             </tr>
             @empty

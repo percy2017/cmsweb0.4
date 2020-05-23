@@ -125,7 +125,7 @@
                     Toast.fire({
                         icon: 'success',
                         title: 'Suscripción actualizada'
-                    })
+                    });
                 });
             });
 
@@ -160,6 +160,12 @@
                         });
                     }
                 }
+            });
+
+            // Escuchando actividad de los suscritos
+            Echo.channel('ActivityUserChannel')
+            .listen('.Modules\\Webstreaming\\Events\\ActivityUser', (e) => {
+                list(search, page_actual);
             });
             
         });
