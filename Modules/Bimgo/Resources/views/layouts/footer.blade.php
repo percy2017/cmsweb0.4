@@ -7,7 +7,7 @@
         <div class="row">
 
             <!-- Grid column -->
-            <div class="col-md-2 mt-md-0 mt-3">
+            <div class="col-md-3 mt-md-1 mt-3">
 
                 <h3 class="mb-3">
                     <a class="brand purple-pastel" href="">
@@ -19,7 +19,7 @@
 
                 <p class="mb-1">
                     <strong>
-                        Trinidad<br>Beni.
+                        Trinidad - Beni.
                     </strong>
                 </p>
 
@@ -29,7 +29,7 @@
             <hr class="clearfix w-100 d-md-none pb-3">
 
             <!-- Grid column -->
-            <div class="col-md-2 col-lg-1 mb-md-0 mb-3">
+            <div class="col-md-3 col-lg-2 mb-md-0 mb-3">
 
                 <!-- Links -->
                 <ul class="list-unstyled">
@@ -40,68 +40,12 @@
             <!-- Grid column -->
 
             <!-- Grid column -->
-            <div class="col-md-1 mb-md-0 mb-3">
+            <div class="col-md-3 mb-md-0 mb-3">
 
                 <!-- Links -->
                 <ul class="list-unstyled">
-                    <li>
-                        <a class="dark-grey-text" href="#!">Rules</a>
-                    </li>
-                </ul>
-
-            </div>
-            <!-- Grid column -->
-
-            <!-- Grid column -->
-            <div class="col-md-1 mb-md-0 mb-3">
-
-                <!-- Links -->
-                <ul class="list-unstyled">
-                    <li>
-                        <a class="dark-grey-text" href="#!">Policy</a>
-                    </li>
-                    <li>
-                        <a class="dark-grey-text" href="#!">Privacy</a>
-                    </li>
-                </ul>
-
-            </div>
-            <!-- Grid column -->
-
-            <!-- Grid column -->
-            <div class="col-md-2 col-lg-1 mb-md-0 mb-3">
-
-                <!-- Links -->
-                <ul class="list-unstyled">
-                    <li>
-                        <a class="dark-grey-text" href="#!">Facebook</a>
-                    </li>
-                </ul>
-
-            </div>
-            <!-- Grid column -->
-
-            <!-- Grid column -->
-            <div class="col-md-2 col-lg-1 mb-md-0 mb-3">
-
-                <!-- Links -->
-                <ul class="list-unstyled">
-                    <li>
-                        <a class="dark-grey-text" href="#!">Instagram</a>
-                    </li>
-                </ul>
-
-            </div>
-            <!-- Grid column -->
-
-            <!-- Grid column -->
-            <div class="col-md-2 col-lg-1 mb-md-0 mb-3">
-
-                <!-- Links -->
-                <ul class="list-unstyled">
-                    <li>
-                        <a class="dark-grey-text" href="#!">Linkedin</a>
-                    </li>
+                    {{ menu('LandingPage', 'bimgo::menus.menu-legal') }}
+                    
                 </ul>
 
             </div>
@@ -120,6 +64,7 @@
                         <span class="input-group-text" id="basic-addon2">Enviar</span>
                     </div>
                 </div>
+                <br>
 
             </div>
             <!-- Grid column -->

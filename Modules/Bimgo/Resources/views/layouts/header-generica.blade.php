@@ -1,0 +1,1 @@
+@include('bimgo::layouts.navbar')

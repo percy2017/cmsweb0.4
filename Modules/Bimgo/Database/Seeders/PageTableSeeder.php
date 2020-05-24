@@ -1528,5 +1528,80 @@ class PageTableSeeder extends Seeder
             'direction'   =>  'bimgo::pages.ecommerce4',
             'description' =>  'Pagina predeterminada para comercio electronico v4'
         ]);
+
+        //-------------------------------------------------------------------------
+        $page = Page::create([
+            'name'        =>  'politica privacidad',
+            'slug'        =>  'politica-privacidad',
+            'user_id'     =>  1,
+            'direction'   =>  'bimgo::pages.generica-lp',
+            'description' =>  'Pagina de politicas y privacidad de HiStream.',
+            'details'     =>   json_encode([
+                'contenido1' => [
+                    'type'   => 'rich_text_box',
+                    'name'   => 'contenido1',
+                    'label'  => 'Parrafo',
+                    'value'  => 'Soy un text',
+                    'width'  => 12
+                ],
+            ])
+        ]);
+        $count=1;
+        Block::create([
+            'name'        => 'body',
+            'title'       => 'Blocke Editor HTML',
+            'description' => 'Blocke Generico para Editar el HTML',
+            'page_id'     => $page->id,
+            'position'    => $count++,
+            'type'        => 'dinamyc-data',
+            'details'     => json_encode([
+                'body' => [
+                    'type'   => 'rich_text_box',
+                    'name'   => 'body',
+                    'label'  => 'Editor HTML',
+                    'value'  => null,
+                    'width'  => 12
+                ]
+            ])    
+        ]);
+
+
+        //-------------------------------------------------------------
+        $page = Page::create([
+            'name'        =>  'terminos condiones',
+            'slug'        =>  'terminos-condiones',
+            'user_id'     =>  1,
+            'direction'   =>  'bimgo::pages.generica-lp',
+            'description' =>  'Pagina de terminos y condiones de HiStream.',
+            'details'     =>   json_encode([
+                'contenido' => [
+                    'type'   => 'rich_text_box',
+                    'name'   => 'contenido',
+                    'label'  => 'Parrafo',
+                    'value'  => 'Soy un text',
+                    'width'  => 12
+                ],
+            ])
+        ]);  
+        $count=1;
+        Block::create([
+            'name'        => 'body',
+            'title'       => 'Blocke Editor HTML',
+            'description' => 'Blocke Generico para Editar el HTML',
+            'page_id'     => $page->id,
+            'position'    => $count++,
+            'type'        => 'dinamyc-data',
+            'details'     => json_encode([
+                'body' => [
+                    'type'   => 'rich_text_box',
+                    'name'   => 'body',
+                    'label'  => 'Editor HTML',
+                    'value'  => null,
+                    'width'  => 12
+                ]
+            ])    
+        ]);
     }
 }
+
+
