@@ -5,13 +5,15 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>{{ setting('site.title') }}</title>
+    <title>{{ $page->name }}</title>
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
     <!-- Bootstrap core CSS -->
     <link href="{{ asset('vendor/histream/css/bootstrap.min.css') }}" rel="stylesheet">
     <!-- Material Design Bootstrap -->
     <link href="{{ asset('vendor/histream/css/mdb.min.css') }}" rel="stylesheet">
+    @yield('css')
+    <link rel="stylesheet" href="{{ asset('vendor/whatsapp/floating-wpp.css') }}">
     <style>
       .md-outline.select-wrapper+label {
         top: .6em !important;
@@ -64,37 +66,50 @@
 
                   <!--Body-->
                   <div class="modal-body mb-1">
-                    <div class="row my-3 d-flex justify-content-center">
-                      <!--Facebook-->
-                        <button type="button" class="btn btn-fb"><i class="fab fa-facebook-f pr-1"></i> Facebook</button>
-                        <!--Twitter-->
-                        <button type="button" class="btn btn-gplus"><i class="fab fa-google-plus-g pr-1"></i> Google +</button>
-                    </div>    
+                    <div class="md-form form-sm mt-0">
+                      <a type="button"  href="{{ route('socialLogin', 'facebook') }}" class="btn btn-block btn-fb"><i class="fab fa-facebook-f pr-1"></i> Facebook</a>
+                      <a type="button"  href="{{ route('socialLogin', 'google') }}"class="btn btn-block btn-gplus"><i class="fab fa-google-plus-g pr-1"></i> Google </a>
+                    </div>   
                     <p class="font-small dark-grey-text text-right d-flex justify-content-center mb-3 pt-2"> 
-                      o Inicie sesión con:
+                      o Inicie sesión con :
                     </p>
-                  
-                    <div class="md-form form-sm mb-5">
-                      <i class="fas fa-envelope prefix"></i>
-                      <input type="email" id="modalLRInput10" class="form-control form-control-sm validate">
-                      <label data-error="wrong" data-success="right" for="modalLRInput10">Tu email</label>
-                    </div>
+                    <form method="POST" action="{{ route('login') }}">
+                      @csrf
+                      <div class="md-form form-sm mb-5">
+                        <i class="fas fa-envelope prefix"></i>
+                       {{--  <input type="email" id="modalLRInput10" class="form-control form-control-sm validate"> --}}
+                        <input type="email" id="email" class="form-control form-control-sm validate @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="" autofocus>
+                        <label data-error="wrong" data-success="right" for="modalLRInput10">Tu email</label>
+                        @error('email')
+                          <span class="invalid-feedback" role="alert">
+                              <strong>{{ $message }}</strong>
+                          </span>
+                        @enderror
+                      </div>
 
-                    <div class="md-form form-sm mb-4">
-                      <i class="fas fa-lock prefix"></i>
-                      <input type="password" id="modalLRInput11" class="form-control form-control-sm validate">
-                      <label data-error="wrong" data-success="right" for="modalLRInput11">Tu Contraseña</label>
-                    </div>
-                    <div class="text-center mt-2">
-                      <button class="btn btn-purple">iniciar sesión<i class="fas fa-sign-in ml-1"></i></button>
-                    </div>
-                  
+                      <div class="md-form form-sm mb-4">
+                        <i class="fas fa-lock prefix"></i>
+                        {{-- <input type="password" id="modalLRInput11" class="form-control form-control-sm validate"> --}}
+                        <input type="password" id="password" class="form-control form-control-sm validate  @error('password') is-invalid @enderror" name="password" value="{{ old('password') }}" required autocomplete="password" placeholder="">
+                        <label data-error="wrong" data-success="right" for="modalLRInput11">Tu Contraseña</label>
+                        @error('password')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                      </div>
+
+                      <div class="text-center mt-2">
+                        <button type="submit" class="btn btn-purple">iniciar sesión<i class="fas fa-sign-in ml-1"></i></button>
+                      </div>
+
+                    </form>
                   </div>
                   <!--Footer-->
                   <div class="modal-footer">
                     <div class="options text-center text-md-right mt-1">
                      {{--  <p>¿No es un miembro? <a href="#" class="purple-text">Regístrate</a></p> --}}
-                      <p>¿Se te olvidó tu <a href="#" class="purple-text">contraseña</a></p>
+                      <p>¿Se te olvidó tu <a href="{{ route('password.request') }}"  target="_blank" class="purple-text">contraseña</a></p>
                     </div>
                     <button type="button" class="btn btn-sm btn-outline-purple waves-effect ml-auto" data-dismiss="modal">Cerrar</button>
                   </div>
@@ -106,35 +121,69 @@
                 <div class="tab-pane fade" id="panel8" role="tabpanel">
 
                   <!--Body-->
-                  <div class="modal-body">
-                    <div class="md-form form-sm mb-5">
-                      <i class="fas fa-envelope prefix"></i>
-                      <input type="email" id="modalLRInput12" class="form-control form-control-sm validate">
-                      <label data-error="wrong" data-success="right" for="modalLRInput12">Your email</label>
-                    </div>
+                  <form method="POST" action="{{ route('register') }}">
+                    @csrf
+                    <div class="modal-body">
+                  
+                      <div class="md-form form-sm mb-5">
+                        <i class="fas fa-user  prefix"></i>
+                        <input type="text" id="name" class="form-control form-control-sm validate  @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required>
+                        {{-- <input type="text" id="modalLRInput12" class="form-control form-control-sm validate"> --}}
+                        <label data-error="incorrecto" data-success="correcto" for="modalLRInput12">Nombre Completo</label>
+                        @error('name')
+                          <span class="invalid-feedback" role="alert">
+                              <strong>{{ $message }}</strong>
+                          </span>
+                        @enderror
+                      </div>
 
-                    <div class="md-form form-sm mb-5">
-                      <i class="fas fa-lock prefix"></i>
-                      <input type="password" id="modalLRInput13" class="form-control form-control-sm validate">
-                      <label data-error="wrong" data-success="right" for="modalLRInput13">Your password</label>
-                    </div>
+                      <div class="md-form form-sm mb-5">
+                        <i class="fas fa-envelope prefix"></i>
+                        <input type="email" id="email" class="form-control form-control-sm validate @error('name') is-invalid @enderror" name="email" value="{{ old('email') }}" required>
+                        {{-- <input type="email" id="modalLRInput13" class="form-control form-control-sm validate"> --}}
+                        <label data-error="incorrecto" data-success="correcto" for="modalLRInput13">Email</label>
+                        @error('email')
+                                <div class="text-center">
+                                    <b  style="color: #dc3545; font-size:12px">El email ingresado es inválido o ya existe</b>
+                                </div>
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                        @enderror
+                      </div>
 
-                    <div class="md-form form-sm mb-4">
-                      <i class="fas fa-lock prefix"></i>
-                      <input type="password" id="modalLRInput14" class="form-control form-control-sm validate">
-                      <label data-error="wrong" data-success="right" for="modalLRInput14">Repeat password</label>
-                    </div>
+                      <div class="md-form form-sm mb-4">
+                        <i class="fas fa-lock prefix"></i>
+                        <input type="password" id="password" class="form-control form-control-sm validate @error('password') is-invalid @enderror" name="password" required>
+                        {{-- <input type="password" id="modalLRInput14" class="form-control form-control-sm validate"> --}}
+                        <label data-error="incorrecto" data-success="correcto" for="modalLRInput14">Contraseña</label>
+                        @error('password')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                        @enderror
+                      </div>
 
-                    <div class="text-center form-sm mt-2">
-                      <button class="btn btn-purple">Registrarse<i class="fas fa-sign-in ml-1"></i></button>
-                    </div>
+                      <div class="md-form">
+                        @captcha
+                        <input type="text" class="form-control @error('captcha') is-invalid @enderror" id="captcha" name="captcha" autocomplete="off" placeholder="Ingresa el codigo de la imagen">
+                        @error('captcha')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                       </div>
 
+                      <div class="text-center form-sm mt-2">
+                        <button type="submit" class="btn btn-purple">Registrarse<i class="fas fa-sign-in ml-1"></i></button>
+                      </div>
+                    </form>  
                   </div>
                   <!--Footer-->
                   <div class="modal-footer">
-                    <div class="options text-right">
-                      <p class="pt-1">Ya tienes cuenta? <a href="#" class="purple-text">Iniciar Sesion</a></p>
-                    </div>
+                    {{-- <div class="options text-center text-md-right mt-1">
+                      <p>Ya tienes cuenta?<a data-toggle="tab" href="#panel7" role="tab" class="purple-text">Iniciar Sesion</a></p>
+                    </div> --}}
                     <button type="button" class="btn btn-sm btn-outline-purple waves-effect ml-auto" data-dismiss="modal">Cerrar</button>
                   </div>
                 </div>
@@ -149,6 +198,7 @@
      <!--Modal: Login / Register Form--
     <!-- Footer -->
     @include('bimgo::layouts.footer')
+    <div id="myWP"></div>
     <!-- Footer -->
 
     <!-- SCRIPTS -->
@@ -160,6 +210,7 @@
     <script type="text/javascript" src="{{ asset('vendor/histream/js/bootstrap.min.js') }}"></script>
     <!--  MDB core JavaScript  -->
     <script type="text/javascript" src="{{ asset('vendor/histream/js/mdb.min.js') }}"></script>
+    <script src="{{ asset('vendor/whatsapp/floating-wpp.js') }}"></script>
 
     
 
@@ -173,6 +224,23 @@
         $(this).closest('.select-outline').find('.caret').toggleClass('active');
       });
     });
+
+    $('#myWP').floatingWhatsApp({
+            phone: '{{ setting('whatsapp.phone') }}',
+            popupMessage: '{{ setting('whatsapp.popupMessage') }}',
+            message: '{{ setting('whatsapp.message') }}',
+            showPopup: true,
+            showOnIE: true,
+            headerTitle: '{{ setting('whatsapp.headerTitle') }}',
+            headerColor: '{{ setting('whatsapp.color') }}',
+            backgroundColor: '{{ setting('whatsapp.color') }}',
+            buttonImage: '<img src="{{ Voyager::Image(setting('whatsapp.buttonImage' )) }}" />',
+            position: '{{ setting('whatsapp.position') }}',
+            autoOpenTimeout: {{ setting('whatsapp.autoOpenTimeout') }},
+            size: '{{ setting('whatsapp.size') }}'
+            });
+
     </script>
+   @yield('javascript')
   </body>
 </html>

@@ -273,8 +273,5 @@ class MenuTableSeeder extends Seeder
             ])->save();
         }   
 
-      
-
-
     }
 }
