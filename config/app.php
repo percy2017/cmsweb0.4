@@ -226,6 +226,7 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+        'LoginWeb' => App\Http\Controllers\LoginwebController::class,
 
     ],
 

@@ -20,6 +20,32 @@
             <div class="col-md-12">
                 <div class="panel panel-bordered">
                     <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="dropdown">
+                                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                                        <span class="voyager-list"></span> <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="#" class="btn-order" data-type="">Por defecto</a></li>
+                                        <li><a href="#" class="btn-order" data-type="meeting_count">Más reuniones</a></li>
+                                        <li><a href="#" class="btn-order" data-type="meeting_count_active">Más reuniones activas</a></li>
+                                    </ul>
+                                  </div>
+                            </div>
+                            <div class="col-md-4">
+                                <form id="form-search">
+                                    <div class="input-group">
+                                      <input type="text" id="input-search" class="form-control" placeholder="Buscar...">
+                                      <div class="input-group-btn">
+                                        <button class="btn btn-default btn-lg" style="margin-top: 0px" type="submit">
+                                          <i class="fa fa-search"></i>
+                                        </button>
+                                      </div>
+                                    </div>
+                                  </form>
+                            </div>
+                        </div>
                         <div id="data-list"></div>
                     </div>
                 </div>
@@ -114,6 +140,20 @@
                                 }
                             });
 
+            // Send form search
+            $('#form-search').on('submit', function(e){
+                e.preventDefault();
+                search = $('#input-search').val();
+                list(search, page_actual);
+            });
+
+            // Order
+            $('.btn-order').click(function(e){
+                e.preventDefault();
+                let type = $(this).data('type');
+                list(search, page_actual, type);
+            });
+
             // Send form edit
             $('#form_edit').on('submit', function(e){
                 e.preventDefault();
@@ -171,10 +211,10 @@
         });
 
         // Obtenes lista de registros
-        function list(search, page){
+        function list(search, page, order = ''){
             let url = '{{ url("admin/suscripciones/list") }}';
             let q = search ? search : 'all';
-            $.get(`${url}/${q}?page=${page_actual}`, function(data){
+            $.get(`${url}/${q}/${order}?page=${page_actual}`, function(data){
                 $('#data-list').html(data);
             });
         }

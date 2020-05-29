@@ -1,15 +1,22 @@
 @extends('voyager::master')
 
-@section('page_title', 'Viendo conferencias')
+@section('page_title', 'Viendo reuniones')
 
 @section('page_header')
     <div class="container-fluid">
         <h1 class="page-title">
-            <i class="voyager-group"></i> Conferencias
+            <i class="voyager-group"></i> Reuniones
         </h1>
-        <a href="#" data-toggle="modal" data-target="#create_modal" class="btn btn-success btn-sm btn-add-new">
-            <i class="voyager-plus"></i> <span>Crear</span>
-        </a>
+        <div class="dropdown btn-group">
+            <button class="btn btn-success btn-sm btn-add-new dropdown-toggle" type="button" data-toggle="dropdown">
+                <i class="voyager-plus"></i> <span>Crear nueva</span> <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+                <li><a href="#" class="btn-create-now">Crear ahora</a></li>
+                <li><a href="#" data-toggle="modal" data-target="#create_modal">Programar nueva</a></li>
+            </ul>
+        </div>
+          
         @if ($suscription->hs_plan_id != 1)
         <a href="#" data-toggle="modal" data-target="#modal_upgrade" style="border: 0px; margin-top: 3px" class="btn btn-dark btn-sm">
             <i class="voyager-certificate"></i> <span>Cambiar de plan</span>
@@ -58,38 +65,6 @@
         </div>
     </div>
 
-    {{-- Modals --}}
-    {{-- <form id="form_petition" action="{{ route('user_petition') }}" method="POST">
-        <div class="modal modal-info fade" tabindex="-1" id="modal_upgrade" role="dialog">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title"><i class="voyager-certificate"></i> Solicitar cambio de plan</h4>
-                    </div>
-                    <div class="modal-body">
-                        <div class="form-group">
-                            {{ csrf_field() }}
-                            <input type="hidden" name="id" value="{{ $suscription->id }}">
-                            <input type="hidden" name="type" value="upgrade">
-                            <input type="hidden" name="ajax" value="1">
-                            <label for="">Plan</label>
-                            <select name="plan_id" class="form-control" required>
-                                <option value="" disabled>Elige tu plan</option>
-                                @foreach (Modules\Webstreaming\Entities\Plan::all() as $item)
-                                    <option @if($suscription->hs_plan_id==$item->id) selected @endif value="{{ $item->id }}">{{ $item->name }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-info pull-right" id="btn-petition">Solicitar</button>
-                        <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Cancelar</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </form> --}}
     @include('webstreaming::meetings.partials.modal_upgrade', ['suscription_id' => $suscription->id])
 
     <form id="form_request">
@@ -106,7 +81,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title"><i class="voyager-plus"></i> Crear conferencia</h4>
+                        <h4 class="modal-title"><i class="voyager-plus"></i> Crear reunión</h4>
                     </div>
                     <div class="modal-body">
                         {{ csrf_field() }}
@@ -140,7 +115,7 @@
                         @endif
                         <div class="form-group">
                             <label>Descripción</label>
-                            <textarea name="descriptions" class="form-control" placeholder="Descripción breve de la conferencia" required></textarea>
+                            <textarea name="descriptions" class="form-control" placeholder="Descripción breve de la reunión" required></textarea>
                         </div>
                         <div class="form-group">
                             <label class="control-label" for="">Banner</label>
@@ -160,13 +135,23 @@
         </div>
     </form>
 
+    {{-- Crear una reunión rápida --}}
+    <form action="{{ route("conferencias.store") }}" id="form_create_now" method="POST">
+        <div class="modal-body">
+            {{ csrf_field() }}
+            <input type="hidden" name="ajax" value="1">
+            <input type="hidden" name="create_now" value="1">
+        </div>
+        {{-- <button type="submit">ok</button> --}}
+    </form>
+
     <form action="#" id="form_edit" method="POST">
         <div class="modal modal-info fade" tabindex="-1" id="edit_modal" role="dialog">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title"><i class="voyager-plus"></i> Editar conferencia</h4>
+                        <h4 class="modal-title"><i class="voyager-plus"></i> Editar reunión</h4>
                     </div>
                     <div class="modal-body">
                         {{ csrf_field() }}
@@ -202,7 +187,7 @@
                         @endif
                         <div class="form-group">
                             <label>Descripción</label>
-                            <textarea name="descriptions" class="form-control" placeholder="Descripción breve de la conferencia" required></textarea>
+                            <textarea name="descriptions" class="form-control" placeholder="Descripción breve de la reunión" required></textarea>
                         </div>
                         <div class="form-group">
                             <label class="control-label" for="">Banner</label>
@@ -304,6 +289,31 @@
                 }
             });
 
+            $('.btn-create-now').click(function(){
+                Swal.fire({
+                    title: 'Deseas crear una reunión?',
+                    text: "Se creará una reunión con una duración de {{ date('H:i', strtotime($plan_free->max_time)) }} hora(s) a partir de ahora.",
+                    icon: 'question',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Si, crear!',
+                    cancelmButtonText: 'Cancelar'
+                }).then((result) => {
+                    if (result.value) {
+                        $.post($('#form_create_now').attr('action'), $('#form_create_now').serialize(), function(res){
+                            Swal.fire(
+                                'Reunión creada!',
+                                'Tu reunión rápida fué creada exitosamenete.',
+                                'success'
+                            );
+                            list(search, page_actual);
+                        })
+                    }
+                })
+
+            });
+
             // Crear nueva conferencia
             $('#form_create').on('submit', function(e){
                 e.preventDefault();
@@ -317,7 +327,7 @@
                     success: function(res){
                         Toast.fire({
                             icon: 'success',
-                            title: 'Conferencia ingresada'
+                            title: 'Reunión ingresada'
                         });
                         list(search, page_actual);
                         $('#create_modal').modal('toggle');
@@ -329,7 +339,7 @@
                     error: function() {
                         Toast.fire({
                             icon: 'error',
-                            title: 'Ocurrió un error al crear la conferencia'
+                            title: 'Ocurrió un error al crear la reunión'
                         });
                     }
                 });
@@ -353,13 +363,13 @@
                         list(search, page_actual);
                         Toast.fire({
                             icon: 'success',
-                            title: 'Conferencia actualizada'
+                            title: 'Reunión actualizada'
                         });
                     },
                     error: function() {
                         Toast.fire({
                             icon: 'error',
-                            title: 'Ocurrió un error al editar la conferencia'
+                            title: 'Ocurrió un error al editar la reunión'
                         });
                     }
                 });
@@ -454,10 +464,10 @@
             }
 
             let hora_actual = `${date.getHours().toString().padStart(2, 0)}:${date.getMinutes().toString().padStart(2, 0)}:00`
-            $('#edit_modal input[name="start"]').removeAttr('readonly')
+            // $('#edit_modal input[name="start"]').removeAttr('readonly')
             $('#edit_modal input[name="finish"]').removeAttr('readonly')
             if(hora_actual >= data.start && hora_actual <= data.finish){
-                $('#edit_modal input[name="start"]').attr('readonly', 'readonly');
+                // $('#edit_modal input[name="start"]').attr('readonly', 'readonly');
                 $('#edit_modal input[name="finish"]').attr('readonly', 'readonly')
             }
         }

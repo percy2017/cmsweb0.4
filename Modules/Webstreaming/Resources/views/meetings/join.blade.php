@@ -13,6 +13,9 @@
         <script type="text/javascript" src="{{ asset('vendor/histream/js/popper.min.js') }}"></script>
         <script type="text/javascript" src="{{ asset('vendor/histream/js/bootstrap.min.js') }}"></script>
 
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
+
         @if($error != 'notfound')
             <title>{{ $meeting->name }}</title>
             <meta property="og:url"           content="{{ url('conferencia/'.$meeting->slug) }}" />
@@ -21,7 +24,7 @@
             <meta property="og:description"   content="{{ $meeting->descriptions }}" />
             <meta property="og:image"         content="{{ url('storage/'.str_replace('.', '_facebook.', $meeting->banner)) }}" />
         @else
-            <title>HiStream | Error</title>
+            <title>HiStream | No encontrada</title>
         @endif
 
         @if (!$error)
@@ -59,9 +62,9 @@
 
         {{-- Estilo del conómetro --}}
         <style>
-            body{
+            /* body{
                 background-color: black
-            }
+            } */
             #content-cronometro {
                 position: fixed;
                 background-color: rgba(0, 0, 0, 0.2);
@@ -95,7 +98,21 @@
         </script>
     </head>
     <body>
-        @if (!$error)
+        @if(LoginWeb::userAgent() == 'movil')
+            <div class="col-md-12 pt-5 pb-5 bg-dark">
+                <div class="card">
+                    <img src="{{ url('images/background-movil.jpg') }}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h4 class="card-title text-dark">HiStream App</h4>
+                        <p class="card-text text-dark">Para disfrutar de una mejor experiencia en video conferencias desde tu smartphone te sugerimos instalar nuestra app desde Google Play.</p>
+                        <a href="{{ setting('histream.app_android') }}" class="btn btn-primary">Ir a la Google Play <i class="fab fa-google-play"></i></a>
+                    </div>
+                    <div class="card-footer text-right text-dark">
+                        Powered by <a href="https:loginweb.dev">Loginweb</a>
+                    </div>
+                </div>
+            </div>
+        @elseif (!$error)
             <div id="meet"></div>
             <div id="content-cronometro"></div>
             <div id="countdown_message" style="display: none">
@@ -104,7 +121,6 @@
                 </div>
             </div>
             <script src="{{ setting('histream.server').'/external_api.js' }}"></script>
-            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
             <script>
                 $(document).ready(function(){
                     $.get('{{ url("conferencia/join/increment/".$meeting->id) }}');
@@ -208,7 +224,7 @@
                 @if(Auth::user())
                     setInterval(() => {
                         $.get('{{ url("conferencia/join/update_active/".$meeting->id) }}/'+api.getNumberOfParticipants());
-                    }, 30000);
+                    }, 20000);
                 @endif
 
                 // Deshabilitar que se es nuevo participante en caso de ser el moderador
@@ -357,7 +373,9 @@
                     // Si es un invitado cargar el modal de suscripción
                     
                     @guest
+                    @if(LoginWeb::userAgent() == 'pc')
                     $('#modal_suscription').modal('toggle');
+                    @endif
                     @endguest
 
                     if("{{ session('suscription_histream') }}"){

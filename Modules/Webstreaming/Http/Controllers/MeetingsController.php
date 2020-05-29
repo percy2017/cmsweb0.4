@@ -180,17 +180,33 @@ class MeetingsController extends Controller
      */
     public function store(Request $request)
     {
-        $imagen = (new Loginweb)->save_image('meetings', $request->file('banner'));
-        $meeting = Meeting::create([
-            'name' => $request->name,
-            // 'slug' => Str::slug($request->name),
-            'day' => $request->day,
-            'start' => $request->start,
-            'finish' => $request->finish,
-            'user_id' => Auth::user()->id,
-            'banner' => $imagen,
-            'descriptions' => $request->descriptions,
-        ]);
+        if(!$request->create_now){
+            $imagen = (new Loginweb)->save_image('meetings', $request->file('banner'));
+            $meeting = Meeting::create([
+                'name' => $request->name,
+                // 'slug' => Str::slug($request->name),
+                'day' => $request->day,
+                'start' => $request->start,
+                'finish' => $request->finish,
+                'user_id' => Auth::user()->id,
+                'banner' => $imagen,
+                'descriptions' => $request->descriptions,
+            ]);
+        }else{
+            $plan_free = Plan::find(1);
+            $hour_add = intval(date('h', strtotime(date('Y-m-d '.$plan_free->max_time))));
+            $date = date('Y-m-d H:i', strtotime('+'.$hour_add.' hour'));
+
+            $meeting = Meeting::create([
+                'name' => 'Reunión - '.date('ymd'),
+                // 'slug' => Str::slug($request->name),
+                'day' => date('Y-m-d'),
+                'start' => date('H:i'),
+                'finish' => date('H:i', strtotime($date)) > '23:59' ? '23:59' : date('H:i:s', strtotime($date)),
+                'user_id' => Auth::user()->id,
+                'descriptions' => 'Reunión rápida',
+            ]);
+        }
 
         event(new ActivityUser());
 
