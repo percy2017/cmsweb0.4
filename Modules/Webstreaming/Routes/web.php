@@ -34,7 +34,7 @@ Route::get('conferencia/suscribe/{meet_id}/{suscribe_id}/{type}', 'MeetingsContr
 
 // suscripciones
 Route::resource('admin/suscripciones', 'SuscriptionsController')->middleware('auth');
-Route::get('admin/suscripciones/list/{search}', 'SuscriptionsController@list')->middleware('auth');
+Route::get('admin/suscripciones/list/{search}/{order?}', 'SuscriptionsController@list')->middleware('auth');
 Route::post('admin/suscripciones/user/peticion', 'SuscriptionsController@petition')->middleware('auth')->name('user_petition');
 Route::post('admin/suscripciones/user/edit', 'SuscriptionsController@update_user')->middleware('auth')->name('user_edit');
 
