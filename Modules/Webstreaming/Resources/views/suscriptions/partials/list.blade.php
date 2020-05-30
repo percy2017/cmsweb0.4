@@ -42,7 +42,7 @@
                     <td class="no-sort no-click bread-actions">
                         @if ($item->status)
                             @if ($item->status==1)
-                                <a href="#" title="Dar de baja" class="btn btn-sm btn-warning pull-right delete" onclick="down({{ $item->id }})">
+                                <a href="#" title="Desactivar" class="btn btn-sm btn-warning pull-right delete" onclick="down({{ $item->id }})">
                                     <i class="voyager-power"></i> <span class="hidden-xs hidden-sm">Desactivar</span>
                                 </a>
                             @endif
@@ -50,11 +50,11 @@
                                 <i class="voyager-edit"></i> <span class="hidden-xs hidden-sm">Editar</span>
                             </a>
                         @else
-                            <a href="#" title="Borrar" class="btn btn-sm btn-success pull-right edit" onclick="up({{ $item->id }})">
+                            <a href="#" title="Activar" class="btn btn-sm btn-success pull-right edit" onclick="up({{ $item->id }})">
                                 <i class="voyager-wand"></i> <span class="hidden-xs hidden-sm">Activar</span>
                             </a>
                         @endif
-                        <a href="{{ url('admin/suscripciones/meetings/'.$item->user_id) }}" title="Editar" class="btn btn-sm btn-danger pull-right edit">
+                        <a href="{{ url('admin/suscripciones/meetings/'.$item->user_id) }}" title="Reuniones" class="btn btn-sm btn-danger pull-right edit">
                             <i class="voyager-people"></i> <span class="hidden-xs hidden-sm">Reuniones</span>
                         </a>
                     </td>

@@ -33,7 +33,20 @@ class SuscriptionsController extends Controller
         return view('webstreaming::suscriptions.index', compact('plans'));
     }
 
-    public function list(){
+    public function list($seacrh, $order = null){
+        $clausula_search = $seacrh == 'all' ? 1 : 'u.name like "%'.$seacrh.'%"';
+        switch ($order) {
+            case 'meeting_count':
+                $order = 'total';
+                break;
+            case 'meeting_count_active':
+                $order = 'total_activas';
+                break;
+            
+            default:
+                $order = 'id';
+                break;
+        }
         $registers = DB::table('hs_plan_user as pu')
                                 ->join('users as u', 'u.id', 'pu.user_id')
                                 ->join('hs_plans as pt', 'pt.id', 'pu.hs_plan_id')
@@ -42,7 +55,8 @@ class SuscriptionsController extends Controller
                                             DB::raw('(select count(m.id) total from hs_meetings as m where m.user_id = u.id and m.day="'.date('Y-m-d').'" and m.start <="'.date('H:i:s').'" and m.finish >="'.date('H:i:s').'") as total_activas')
                                         )
                                 ->where('pu.deleted_at', null)
-                                ->orderBy('id', 'DESC')
+                                ->whereRaw($clausula_search)
+                                ->orderBy($order, 'DESC')
                                 ->paginate(10);
         
         return view('webstreaming::suscriptions.partials.list', compact('registers'));

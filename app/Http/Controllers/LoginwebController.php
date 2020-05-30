@@ -53,4 +53,22 @@ class LoginwebController extends Controller
             return null;
         }
     }
+
+    public static function userAgent(){
+        $miuseragent=$_SERVER['HTTP_USER_AGENT'];
+        $moviles=array("Mobile","iPhone","iPod","BlackBerry","Opera Mini","Sony","MOT","Nokia","samsung");
+        $detector=0;
+        $numMoviles=count($moviles);
+        for ($i=0;$i<$numMoviles;$i++) {
+            $comprobar=strpos($miuseragent,$moviles[$i]);
+            if ($comprobar!="") {
+                $detector=1;
+            }
+        }
+        if ($detector==1) {
+            return 'movil';
+        }else{
+            return 'pc';
+        }
+    }
 }
