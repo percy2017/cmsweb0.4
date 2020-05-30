@@ -86,12 +86,13 @@ class BlockController extends Controller
     {
         $block = Block::where('id', $block_id)->first();
         $mijson = $block->details;
+
         switch ($block->type) {
             case 'dinamyc-data':
                 foreach(json_decode($block->details, true) as $item => $value)
                 {
                     if($value['type'] == 'image'){
-                        $mijson = str_replace($value['value'], $value['value'], $mijson);
+                        // $mijson = str_replace($value['value'], $value['value'], $mijson);
                     }else{
                         if($value['type'] == 'space'){
                         }else{
@@ -102,7 +103,10 @@ class BlockController extends Controller
                     }
                     if($request->hasFile($value['name'])){
                         $dirimage = Storage::disk('public')->put('blocks/'.date('F').date('Y'), $request->file($value['name']));
-                        $mijson = str_replace($value['value'], $dirimage, $mijson);
+                        $mijson_aux = json_decode($mijson, true);
+                        $mijson_aux[$value['name']]['value'] = $dirimage;
+                        $mijson = json_encode($mijson_aux);  
+                        // $mijson = str_replace($value['value'], $dirimage, $mijson);
                     }
                 }
                 $block->details = $mijson;
@@ -135,59 +139,8 @@ class BlockController extends Controller
         //
     }
 
-    public function move_up($id)
-    {
-        $block = Block::where('id', $id)->first();
-        $swapOrder = $block->position;
-
-        $previousSetting = Block::where('position', '<', $swapOrder)->orderBy('position', 'DESC')->first();
-        $data = [
-        'message'    => __('voyager::settings.already_at_top'),
-        'alert-type' => 'error',
-        ];
-        // return $previousSetting;
-        if (isset($previousSetting->position)) {
-            $block->position = $previousSetting->position;
-            $block->save();
-            $previousSetting->position = $swapOrder;
-            $previousSetting->save();
-
-            $data = [
-                'message'    => __('voyager::settings.moved_order_up', ['name' => $block->title]),
-                'alert-type' => 'success',
-            ];
-        }
-
-        return back()->with($data);
-    }
-
-
-    public function move_down($id)
-    {
-     
-        $block = Block::where('id', $id)->first();
-
-        $swapOrder = $block->position;
-
-        $previousSetting = Block::where('position', '>', $swapOrder)->orderBy('position', 'ASC')->first();
-        $data = [
-            'message'    => __('voyager::settings.already_at_bottom'),
-            'alert-type' => 'error',
-        ];
-
-        if (isset($previousSetting->position)) {
-            $block->position = $previousSetting->position;
-            $block->save();
-            $previousSetting->position = $swapOrder;
-            $previousSetting->save();
-
-            $data = [
-                'message'    => __('voyager::settings.moved_order_down', ['name' => $block->title]),
-                'alert-type' => 'success',
-            ];
-        }
-
-        return back()->with($data);
+    public function block_ordering($block_id, $order){
+        return Block::where('id', $block_id)->update(['position' => $order]);
     }
 
     public function delete($id)
@@ -198,5 +151,4 @@ class BlockController extends Controller
             'alert-type' => 'success',
         ]);
     }
-
 }
