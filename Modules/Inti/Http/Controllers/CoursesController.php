@@ -83,7 +83,7 @@ class CoursesController extends Controller
                     if($request->hasFile($aux)){
                         foreach($request->file($aux) as $image)
                         {
-                            $array = Storage::disk('public')->put('products/'.date('F').date('Y'), $image);
+                            $array = Storage::disk('public')->put('cursos/'.date('F').date('Y'), $image);
                             array_push($image_array, $array);
                         }
                         // return $image_array;
@@ -206,7 +206,7 @@ class CoursesController extends Controller
                     $data->$aux = Str::slug($request->$myslug);
                     break; 
                 case 'select_multiple':
-                    return $aux;
+                    // return $aux;
                     if($request->input($aux)){
                         $data->$aux = json_encode($aux);
                     }

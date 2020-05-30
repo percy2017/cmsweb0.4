@@ -5,6 +5,15 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta property="og:site_name" content="{{ setting('site.title') }}" />
+    <meta property="og:title" content="{{ $page->name }}" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="{{ route('pages', $page->slug) }}" />
+    <meta property="og:image" content="{{ Voyager::Image($page->image) }}" />
+    <meta property="og:description" content="{{ $page->description }}" />
+
+
     <title>{{ $page->name }}</title>
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">

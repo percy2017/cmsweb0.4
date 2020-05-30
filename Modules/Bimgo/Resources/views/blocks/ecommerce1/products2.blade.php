@@ -8,7 +8,7 @@
 
                     <hr>
 
-                    <h5 class="text-center font-weight-bold dark-grey-text"><strong>New Products</strong></h5>
+                    <h5 class="text-center font-weight-bold dark-grey-text"><strong>New Products </strong></h5>
 
                     <hr>
 
