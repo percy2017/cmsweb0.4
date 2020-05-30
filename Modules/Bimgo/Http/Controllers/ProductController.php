@@ -209,7 +209,7 @@ class ProductController extends Controller
                     $data->$aux = Str::slug($request->$myslug);
                     break; 
                 case 'select_multiple':
-                    // $data->$aux = json_encode($request->$aux);
+                    $data->$aux = json_encode($request->$aux);
                 break; 
                 default:
                     $data->$aux = $request->$aux;

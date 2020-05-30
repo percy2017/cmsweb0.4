@@ -22,6 +22,7 @@ class CreateBgProductsTable extends Migration
             $table->integer('stock')->nullable();
             $table->double('price')->nullable();
             $table->string('tags')->nullable();
+            $table->string('stars')->nullable();
             $table->string('description_long')->nullable();
 
             $table->unsignedBigInteger('user_id');

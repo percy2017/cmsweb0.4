@@ -510,6 +510,32 @@ class DataRowsTableSeeder extends Seeder
                 'order'  => $postion++,
             ])->save();
         }
+        $dataRow = $this->dataRow($ProductDataType, 'stars');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'select_dropdown',
+                'display_name' => 'Estrellas',
+                'required'     => 0,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'details'      => [
+                    'display' => [
+                        'width' => '6'
+                    ],
+                    'options' => [
+                        '1' => '1',
+                        '2' => '2',
+                        '3' => '3',
+                        '4' => '4',
+                        '5' => '5'
+                    ]
+                ],
+                'order'  => $postion++,
+            ])->save();
+        }
         $dataRow = $this->dataRow($ProductDataType, 'tags');
         if (!$dataRow->exists) {
             $dataRow->fill([

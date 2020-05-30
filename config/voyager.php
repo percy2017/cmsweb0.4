@@ -141,6 +141,18 @@ return [
                 'route'      => 'voyager.settings.index',
                 'icon_class' => 'voyager-settings',
             ],
+            'Bread' => [
+                'route'      => 'voyager.bread.index',
+                'icon_class' => 'voyager-bread',
+            ],
+            'Compass' => [
+                'route'      => 'voyager.compass.index',
+                'icon_class' => 'voyager-compass',
+            ],
+            'Base de Datos' => [
+                'route'      => 'voyager.datbase.index',
+                'icon_class' => 'voyager-data',
+            ],
             'Paquetes' => [
                 'route'      => 'voyager.modules.index',
                 'icon_class' => 'voyager-github-icon',
