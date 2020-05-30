@@ -1,7 +1,7 @@
-@extends('layouts.lps.master')
+@extends('layouts.lps.master_page')
 
-@section('header')
-  @include('layouts.lps.header')
+@section('menu')
+  @include('layouts.lps.menu')
 @endsection
 
 @section('content')

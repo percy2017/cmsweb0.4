@@ -5,7 +5,7 @@
             class="font-weight-bold">{{ $data->title_strong->value }} </strong>{{ $data->title_default->value }}</h1>
 
         <p class="text-center grey-text w-responsive mx-auto mb-5 wow fadeIn" data-wow-delay="0.2s">
-            {{ $data->description->value }}
+            {!! $data->description->value !!}
         </p>
 
                 <!--First row-->
@@ -19,7 +19,7 @@
               <br>
               <h5 class="dark-grey-text font-weight-bold mt-2">{{ $data->title1->value }}</h5>
               <div class="mt-1">
-                <p class="mx-3 grey-text">{{ $data->description1->value }}</p>
+                <p class="mx-3 grey-text">{!! $data->description1->value !!}</p>
               </div>
             </div>
           </div>
@@ -32,7 +32,7 @@
               <br>
               <h5 class="dark-grey-text font-weight-bold mt-2">{{ $data->title2->value }}</h5>
               <div class="mt-1">
-                <p class="mx-3 grey-text">{{ $data->descripcion2->value }}</p>
+                <p class="mx-3 grey-text">{!! $data->descripcion2->value !!}</p>
               </div>
             </div>
           </div>
@@ -45,14 +45,12 @@
               <br>
               <h5 class="dark-grey-text font-weight-bold mt-2">{{ $data->title3->value }}</h5>
               <div class="mt-1">
-                <p class="mx-3 grey-text">{{ $data->descripcion3->value }}</p>
+                <p class="mx-3 grey-text">{!! $data->descripcion3->value !!}</p>
               </div>
             </div>
           </div>
 
         </div>
         <!--/First row-->
-        
-
     </section>
 </div>

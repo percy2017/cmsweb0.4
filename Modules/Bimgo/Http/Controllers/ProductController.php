@@ -107,6 +107,9 @@ class ProductController extends Controller
                     $myslug = $key->details->slugify->{'origin'};
                     $data->$aux = Str::slug($request->$myslug);
                     break; 
+                case 'select_multiple':
+                        $data->$aux = json_encode($request->$aux);
+                    break; 
                 default:
                     $data->$aux = $request->$aux;
                     break;
@@ -205,6 +208,9 @@ class ProductController extends Controller
                     $myslug = $key->details->slugify->{'origin'};
                     $data->$aux = Str::slug($request->$myslug);
                     break; 
+                case 'select_multiple':
+                    // $data->$aux = json_encode($request->$aux);
+                break; 
                 default:
                     $data->$aux = $request->$aux;
                     break;

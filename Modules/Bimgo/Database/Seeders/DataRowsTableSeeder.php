@@ -510,6 +510,31 @@ class DataRowsTableSeeder extends Seeder
                 'order'  => $postion++,
             ])->save();
         }
+        $dataRow = $this->dataRow($ProductDataType, 'tags');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'select_multiple',
+                'display_name' => 'Tags',
+                'required'     => 0,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'details'      => [
+                    'display' => [
+                        'width' => '6'
+                    ],
+                    'options' => [
+                        'bestseller' => 'bestseller',
+                        'SALE' => 'SALE',
+                        'new'=> 'new',
+                        'best rated' => 'best rated'
+                    ]
+                ],
+                'order'  => $postion++,
+            ])->save();
+        }
         $dataRow = $this->dataRow($ProductDataType, 'description_long');
         if (!$dataRow->exists) {
             $dataRow->fill([
