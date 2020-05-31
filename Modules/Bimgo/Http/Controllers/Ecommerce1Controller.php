@@ -82,11 +82,19 @@ class Ecommerce1Controller extends Controller
         $products = BgProduct::orderBy('id', 'desc')->paginate(6);
         return $products;
     }
-    static function products2()
-    {
-        $products = BgProduct::orderBy('id', 'desc')->paginate(9);
+    static function products2(){
         
-        return $products;
+        $products = [];
+        $new_products = BgProduct::orderBy('id', 'desc')->limit(3)->get();
+        array_push($products, ['name' => 'Novedades', 'products' => $new_products]);
+
+        $top_sellers = BgProduct::orderBy('id', 'desc')->limit(3)->get();
+        array_push($products, ['name' => 'Más vendídos', 'products' => $top_sellers]);
+        
+        $randoms_products = BgProduct::orderBy('id', 'desc')->limit(3)->get();
+        array_push($products, ['name' => 'Populares', 'products' => $randoms_products]);
+        
+        return json_decode(json_encode($products));
     }
 
     static function list_products()

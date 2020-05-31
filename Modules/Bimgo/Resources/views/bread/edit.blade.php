@@ -201,11 +201,23 @@
                                         $images_field = $data->{$row->field};
                                     @endphp
                                     @if(isset($images_field))
-                                        <div class="row">
+                                    <div class="row">
+                                        @php
+                                            $style = 'border: 5px solid #61CB47;';
+                                        @endphp
                                         @foreach (json_decode($images_field) as $item)
-                                            <div class="form-group col-md-{{ 12/count(json_decode($images_field)) }}">
+                                            <div 
+                                                class="form-group col-md-{{ 12/count(json_decode($images_field)) }} div-img"
+                                                style="{{ $style }} cursor:pointer"
+                                                data-toggle="tooltip" title="Click para hacer imagen principal"
+                                                data-id="{{ $data->id }}"
+                                                data-image="{{ $item }}"
+                                            >
                                                 <img class="img-responsive" src="{{ Voyager::image($item) }}">
                                             </div>
+                                            @php
+                                                $style = '';
+                                            @endphp
                                         @endforeach
                                     </div>
                                     @endif
@@ -247,14 +259,22 @@
                                         data-placement="{{ $row->details->tooltip->{'ubication'} }}"
                                         title="{{ $row->details->tooltip->{'message'} }}"></span>
                                     @endif
-                                    {{ $data->$myfield }}
                                     <select 
                                         class="form-control select2" 
                                         name="{{ $row->field }}[]" 
                                         id="{{ $row->field }}" multiple>
                                         <option disabled>-- Seleciona un dato --</option>
                                         @foreach ($row->details->options  as $item)
-                                            <option value="{{ $item }}">{{ $item }}</option>
+                                            <option
+                                                value="{{ $item }}"
+                                                @foreach (json_decode($data->$myfield) as $option)
+                                                    @if ($item == $option)
+                                                    selected
+                                                    @endif
+                                                @endforeach
+                                            >
+                                                {{ $item }}
+                                            </option>
                                         @endforeach
                                     </select>
                                     @break
@@ -275,6 +295,13 @@
 
 
                 </form>
+
+                {{-- Formulario para editar imagen principal --}}
+                <form id="form-update-img" action="{{ route('update_image') }}" method="post">
+                    @csrf
+                    <input type="hidden" name="id">
+                    <input type="hidden" name="image">
+                </form>
             </div>
         </div>
     </div>
@@ -293,6 +320,8 @@
     </div>
 </div>
 </div>
+
+
 @endcan
 
 
@@ -368,7 +397,26 @@
 
 
     //Mapa-------------------------------------
-    $('document').ready(function () {
+    $(document).ready(function () {
+        $('[data-toggle="tooltip"]').tooltip();
+
+        // Editar imagen principal
+        $('.div-img').click(function(){
+            let id = $(this).data('id');
+            let image = $(this).data('image');
+            $('.div-img').css('border', '')
+            $(this).css('border', '5px solid #61CB47');
+            $('#form-update-img input[name="id"]').val(id);
+            $('#form-update-img input[name="image"]').val(image);
+            $.post($('#form-update-img').attr('action'), $('#form-update-img').serialize(), function(res){
+                if(res){
+                    toastr.info('Imagen principal actualizada', 'Bien hecho!');
+                }else{
+                    toastr.error('Ocurrió un error inesperado', 'Error!');
+                }
+            })
+        });
+
         var map;
         var marcador;
         map = L.map('map').fitWorld();
@@ -380,8 +428,7 @@
                 id: 'mapbox.streets'
             }).addTo(map);
 
-        function onLocationFound(e) 
-        {
+        function onLocationFound(e) {
             $('#latitud').val('{{ $data->latitud }}');
             $('#longitud').val('{{ $data->longitud }}');
             marcador =  L.marker(L.latLng('{{ $data->latitud }}', '{{ $data->longitud }}'), {

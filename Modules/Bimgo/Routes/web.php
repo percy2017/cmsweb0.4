@@ -16,5 +16,8 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('bimgo/view/{table}/{id}', 'BimgoController@view')->name('bg_view');
     Route::get('bimgo/deletes/recovery/{table}/{id}', 'BimgoController@recovery')->name('bg_recovery');
     Route::get('bimgo/deletes/{table}', 'BimgoController@deletes')->name('bg_deletes');
+
+    Route::post('bimgo/update_image', 'ProductController@main_image')->name('update_image');
+
 });
 
