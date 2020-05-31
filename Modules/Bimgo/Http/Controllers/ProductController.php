@@ -13,6 +13,9 @@ use Illuminate\Support\Str;
 use Carbon\Carbon;
 use Validator;
 
+// Models
+use Modules\Bimgo\Entities\BgProduct;
+
 class ProductController extends Controller
 {
     public $table = 'bg_products';
@@ -234,6 +237,23 @@ class ProductController extends Controller
             }
          }
         return $this->show();
+    }
+
+    public function main_image(Request $request){
+        $product = BgProduct::find($request->id);
+        $new_order = [];
+        array_push($new_order, $request->image);
+        foreach (json_decode($product->images) as $image) {
+            if($image != $request->image){
+                array_push($new_order, $image);
+            }
+        }
+        $product->images = json_encode($new_order);
+        $product->save();
+        if($product){
+            return 1;
+        }
+        return 0;
     }
 
     public function destroy($id)
