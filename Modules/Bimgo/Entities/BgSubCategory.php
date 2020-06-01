@@ -9,4 +9,8 @@ class BgSubCategory extends Model
     use SoftDeletes;
     protected $table = 'bg_sub_categories';
     protected $fillable = ['title', 'description', 'category_id'];
+
+    public function products(){
+        return $this->hasMany('Modules\Bimgo\Entities\BgProduct', 'sub_category_id');
+    }
 }
