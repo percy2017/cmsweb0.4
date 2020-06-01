@@ -7,7 +7,7 @@
             <div class="col-lg-4 col-md-12 col-12 pt-4">
                 <hr><h5 class="text-center font-weight-bold dark-grey-text"><strong>{{ $category->title }}</strong></h5><hr>
                 {{-- Recorre los productos --}}
-                @foreach ($category->products as $product)
+                @foreach ($category->products->take(3) as $product)
                     <div class="row mt-5 py-2 mb-4 hoverable align-items-center">
                         <div class="col-6">
                             @php
