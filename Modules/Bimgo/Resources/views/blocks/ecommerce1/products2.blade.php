@@ -2,11 +2,12 @@
     <section class="mb-5">
         <div class="row">
             {{-- Recorre los tipos de lista --}}
-            @foreach ($data as $type_list)
+
+            @foreach ($data as $category)
             <div class="col-lg-4 col-md-12 col-12 pt-4">
-                <hr><h5 class="text-center font-weight-bold dark-grey-text"><strong>{{ $type_list->name }}</strong></h5><hr>
+                <hr><h5 class="text-center font-weight-bold dark-grey-text"><strong>{{ $category->title }}</strong></h5><hr>
                 {{-- Recorre los productos --}}
-                @foreach ($type_list->products as $product)
+                @foreach ($category->products as $product)
                     <div class="row mt-5 py-2 mb-4 hoverable align-items-center">
                         <div class="col-6">
                             @php
