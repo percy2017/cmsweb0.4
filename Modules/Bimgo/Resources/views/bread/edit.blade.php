@@ -259,6 +259,7 @@
                                         data-placement="{{ $row->details->tooltip->{'ubication'} }}"
                                         title="{{ $row->details->tooltip->{'message'} }}"></span>
                                     @endif
+                                    
                                     <select 
                                         class="form-control select2" 
                                         name="{{ $row->field }}[]" 
@@ -267,11 +268,14 @@
                                         @foreach ($row->details->options  as $item)
                                             <option
                                                 value="{{ $item }}"
-                                                @foreach (json_decode($data->$myfield) as $option)
-                                                    @if ($item == $option)
-                                                    selected
-                                                    @endif
-                                                @endforeach
+                                                @if($data->$myfield != 'null')
+                                                    @foreach (json_decode($data->$myfield) as $option)
+                                                        @if ($item == $option)
+                                                        selected
+                                                        @endif
+                                                    @endforeach
+                                                @endif
+                                                
                                             >
                                                 {{ $item }}
                                             </option>

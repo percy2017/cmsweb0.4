@@ -11,14 +11,17 @@
                 <div class="row">
                     @foreach ($data as $item)
                         <!-- Grid column -->
+                        @php
+                            $images = $item->images ? json_decode($item->images)[0] : '../images/icons-bimgo/icon-512x512.png';
+                        @endphp
                         <div class="col-lg-4 col-md-12 mb-4">
                             <!-- Card -->
                             <div class="card card-ecommerce">
                                 <!-- Card image -->
                                 <div class="view overlay">
-                                    <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/13.jpg"
+                                    <img src="{{ Voyager::image($images) }}"
                                         class="img-fluid" alt="">
-                                    <a href="{{ url('product') }}">
+                                    <a href="{{ url($item->slug) }}">
                                         <div class="mask rgba-white-slight"></div>
                                     </a>
                                 </div>

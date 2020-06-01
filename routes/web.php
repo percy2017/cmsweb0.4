@@ -34,6 +34,9 @@ Route::group(['prefix' => 'admin'], function () {
     Route::post('/block/update/{block_id}', 'BlockController@update')->name('block_update');
     Route::get('/block/delete/{block_id}', 'BlockController@delete')->name('block_delete');
     Route::get('/block/order/{block_id}/{order}', 'BlockController@block_ordering');
+
+    Route::get('/block/move_up/{block_id}', 'BlockController@move_up')->name('block_move_up'); 
+    Route::get('/block/move_down/{block_id}', 'BlockController@move_down')->name('block_move_down');
 });
 Route::get('{module_name}/installer', function($module_id) {
     $module=App\Module::where('id', $module_id)->first();

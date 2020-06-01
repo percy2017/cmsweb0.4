@@ -85,7 +85,7 @@ class Ecommerce1Controller extends Controller
     static function products2(){
         
         $products = [];
-        $new_products = BgProduct::orderBy('id', 'desc')->limit(3)->get();
+        $new_products = BgProduct::where('')->orderBy('id', 'desc')->limit(3)->get();
         array_push($products, ['name' => 'Novedades', 'products' => $new_products]);
 
         $top_sellers = BgProduct::orderBy('id', 'desc')->limit(3)->get();
