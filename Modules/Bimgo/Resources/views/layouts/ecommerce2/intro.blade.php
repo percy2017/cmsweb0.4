@@ -24,7 +24,7 @@
 
           <div class="view h-100">
 
-            <img class="d-block h-100 w-lg-100" src="https://mdbootstrap.com/img/Photos/Others/ecommerce4.jpg"
+            <img class="d-block h-100 w-lg-100" src="{{ voyager::Image($collection['carusel1-img']['value']) }}"
               alt="First slide">
 
             <div class="mask">
@@ -38,7 +38,7 @@
 
                     <p class="h1 red-text mb-4 mt-5">
 
-                      <strong>Sale off 30% on every saturday!</strong>
+                      <strong>{{  $collection['carusel1-title']['value'] }}</strong>
 
                     </p>
 
@@ -46,16 +46,14 @@
 
                   <li>
 
-                    <h5 class="h5-responsive dark-grey-text font-weight-bold mb-5">Tempora incidunt ut labore et dolore
-
-                      veritatis et quasi architecto beatae</h5>
+                    <h5 class="h5-responsive dark-grey-text font-weight-bold mb-5">{{  $collection['carusel1-descripcion']['value'] }}</h5>
 
                   </li>
 
                   <li>
 
-                    <a target="_blank" href="https://mdbootstrap.com/docs/jquery/getting-started/download/"
-                      class="btn btn-danger btn-rounded" rel="nofollow">See more!</a>
+                    <a target="_blank" href="{{ $collection['carusel1-btn-action']['value'] }}"
+                      class="btn btn-danger btn-rounded" rel="nofollow">{{ $collection['carusel1-btn-name']['value'] }}</a>
 
                   </li>
 
@@ -76,7 +74,7 @@
 
           <div class="view h-100">
 
-            <img class="d-block h-100 w-lg-100" src="https://mdbootstrap.com/img/Photos/Others/ecommerce2.jpg"
+            <img class="d-block h-100 w-lg-100" src="{{ voyager::Image($collection['carusel2-img']['value']) }}"
               alt="Second slide">
 
             <div class="mask">
@@ -90,7 +88,7 @@
 
                     <p class="h1 dark-grey-text mb-4">
 
-                      <strong>Nemo enim ipsam voluptatem quia voluptas</strong>
+                      <strong>{{ $collection['carusel2-title']['value'] }}</strong>
 
                     </p>
 
@@ -98,16 +96,14 @@
 
                   <li>
 
-                    <h5 class="h5-responsive dark-grey-text font-weight-bold mb-5">Tempora incidunt ut labore et dolore
-
-                      veritatis et quasi architecto beatae</h5>
+                    <h5 class="h5-responsive dark-grey-text font-weight-bold mb-5">{{ $collection['carusel2-descripcion']['value'] }}</h5>
 
                   </li>
 
                   <li>
 
-                    <a target="_blank" href="https://mdbootstrap.com/education/bootstrap/"
-                      class="btn btn-primary btn-rounded" rel="nofollow">Read more</a>
+                    <a target="_blank" href="{{ $collection['carusel2-btn-action']['value'] }}"
+                      class="btn btn-primary btn-rounded" rel="nofollow">{{ $collection['carusel2-btn-name']['value'] }}</a>
 
                   </li>
 
@@ -128,7 +124,7 @@
 
           <div class="view h-100">
 
-            <img class="d-block h-100 w-lg-100" src="https://mdbootstrap.com/img/Photos/Others/ecommerce3.jpg"
+            <img class="d-block h-100 w-lg-100" src="{{ voyager::Image($collection['carusel3-img']['value']) }}"
               alt="Third slide">
 
             <div class="mask">
@@ -142,7 +138,7 @@
 
                     <p class="h1 blue-text mb-4 mt-5 pr-lg-5">
 
-                      <strong>Sale off 20% on every headphones!</strong>
+                      <strong>{{ $collection['carusel3-title']['value'] }}</strong>
 
                     </p>
 
@@ -150,9 +146,7 @@
 
                   <li>
 
-                    <h5 class="h5-responsive dark-grey-text font-weight-bold mb-5 pr-lg-5">Tempora incidunt ut labore et
-
-                      dolore veritatis et quasi</h5>
+                    <h5 class="h5-responsive dark-grey-text font-weight-bold mb-5 pr-lg-5">{{ $collection['carusel3-descripcion']['value'] }}</h5>
 
                   </li>
 

@@ -99,41 +99,42 @@
 
         <!-- Image -->
         <div class="view zoom z-depth-1">
-
+    
           <img src="https://mdbootstrap.com/img/Photos/Others/product1.jpg" class="img-fluid" alt="sample image">
-
+    
           <div class="mask rgba-white-light">
-
+    
             <div class="dark-grey-text  pt-4 ml-3 pl-3">
-
+    
               <div>
-
+    
                 <a>
-
+    
                   <span class="badge badge-danger">bestseller</span>
-
+    
                 </a>
-
+    
                 <h2 class="card-title font-weight-bold pt-2">
-
+    
                   <strong>This is news title</strong>
-
+    
                 </h2>
-
+    
                 <p class="">Lorem ipsum dolor sit amet, consectetur adipisicing elit. </p>
-
-                <a class="btn btn-danger btn-sm btn-rounded clearfix d-none d-md-inline-block">Read more</a>
-
+    
+                <a href="" class="btn btn-danger btn-sm btn-rounded clearfix d-none d-md-inline-block">Read more</a>
+    
               </div>
-
+    
             </div>
-
+    
           </div>
-
+    
         </div>
         <!-- Image -->
-
-      </div>
+    
+    </div>
+    
       <!-- Grid column -->
 
     </div>

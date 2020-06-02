@@ -11,7 +11,7 @@
           <!-- Grid column -->
           <div class="col-md-6 col-lg-5 text-center text-md-left mb-4 mb-md-0">
 
-            <h6 class="mb-0 white-text">Get connected with us on social networks!</h6>
+            <h6 class="mb-0 white-text">¡Conéctate con nosotras en las redes sociales!</h6>
 
           </div>
           <!-- Grid column -->
@@ -205,7 +205,7 @@
 
       <div class="container-fluid">
 
-        © 2019 Copyright: <a href="https://mdbootstrap.com/education/bootstrap/" target="_blank"> MDBootstrap.com </a>
+        © 2019 Copyright: <a href="https://mdbootstrap.com/education/bootstrap/" target="_blank"> loginweb.dev </a>
 
       </div>
 
