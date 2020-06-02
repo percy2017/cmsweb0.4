@@ -271,7 +271,50 @@ class MenuTableSeeder extends Seeder
                 'parent_id'  => null,
                 'order'      => 4,
             ])->save();
-        }   
+        }  
+        /**
+         ********************************************
+         *      menu Navbar - ecommerce 2
+         ********************************************
+        */ 
+        Menu::firstOrCreate([
+            'name' => 'ecommerce2',
+        ]);
+        $menu = Menu::where('name', 'ecommerce2')->firstOrFail();
+        
+         /** title 1 */
+         $menuItem = MenuItem::firstOrNew([
+            'menu_id' => $menu->id,
+            'title'   => 'Contact',
+            'url'     => '#1',
+            'route'   => null,
+        ]);
+        if (!$menuItem->exists) {
+            $menuItem->fill([
+                'target'     => '_self',
+                'icon_class' => 'fas fa-envelope blue-text',
+                'color'      => null,
+                'parent_id'  => null,
+                'order'      => 1,
+            ])->save();
+        }  
+
+         /** title 2 */
+         $menuItem = MenuItem::firstOrNew([
+            'menu_id' => $menu->id,
+            'title'   => 'Settings',
+            'url'     => '#2',
+            'route'   => null,
+        ]);
+        if (!$menuItem->exists) {
+            $menuItem->fill([
+                'target'     => '_self',
+                'icon_class' => 'fas fa-cog blue-text',
+                'color'      => null,
+                'parent_id'  => null,
+                'order'      => 1,
+            ])->save();
+        }  
 
     }
 }

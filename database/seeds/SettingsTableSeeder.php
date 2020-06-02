@@ -263,6 +263,20 @@ class SettingsTableSeeder extends Seeder
             ])->save();
         }
         // Whatsapp ------------------------------------
+
+
+        // ecommerce ------------------------------------
+        $setting = $this->findSetting('ecommerce.title');
+        if (!$setting->exists) {
+            $setting->fill([
+                'display_name' => 'Nombre de la Tienda',
+                'value'        => 'Tienda',
+                'details'      => '',
+                'type'         => 'text',
+                'order'        => 1,
+                'group'        => 'Ecommerce',
+            ])->save();
+        }
     }
 
     /**

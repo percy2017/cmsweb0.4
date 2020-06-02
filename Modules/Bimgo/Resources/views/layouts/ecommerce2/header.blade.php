@@ -271,9 +271,9 @@
 
         </div>
 
-        <a class="navbar-brand font-weight-bold" href="#">
+        <a class="navbar-brand font-weight-bold" href="/">
 
-          <strong>SHOP</strong>
+          <strong>{{ setting('ecommerce.title') }}</strong>
 
         </a>
 
@@ -287,8 +287,8 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent-4">
 
           <ul class="navbar-nav ml-auto">
-
-            <li class="nav-item">
+            {{ menu('ecommerce2', 'bimgo::menus.menu-ecommerce2') }}
+            {{-- <li class="nav-item">
 
               <a class="nav-link waves-effect waves-light dark-grey-text font-weight-bold" href="#">
 
@@ -306,14 +306,14 @@
 
                 <i class="fas fa-cog blue-text"></i> Settings</a>
 
-            </li>
+            </li> --}}
 
             <li class="nav-item dropdown ml-3">
 
               <a class="nav-link dropdown-toggle waves-effect waves-light dark-grey-text font-weight-bold"
                 id="navbarDropdownMenuLink-4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 
-                <i class="fas fa-user blue-text"></i> Profile </a>
+                <i class="fas fa-user blue-text"></i> Login </a>
 
               <div class="dropdown-menu dropdown-menu-right dropdown-cyan" aria-labelledby="navbarDropdownMenuLink-4">
 

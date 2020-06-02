@@ -17,7 +17,7 @@ class SeetingTableSeeder extends Seeder
         DB::table('settings')
         ->where('key', 'site.title')
         ->update(['value' => 'BimGo v1.0']);
-
+        
         DB::table('settings')
             ->where('key', 'admin.title')
             ->update(['value' => 'BimGo v1.0']);
