@@ -1,356 +1,84 @@
-<!-- Section: Last items -->
-            <section>
-
-                <h4 class="font-weight-bold mt-4 dark-grey-text"><strong>LAST ITEMS</strong></h4>
-
-                <hr class="mb-5">
-
-                <!-- Grid row -->
-                <div class="row">
-
-                    <!-- Grid column -->
-                    <div class="col-lg-3 col-md-6 mb-4">
-
-                    <!-- Card -->
-                    <div class="card card-ecommerce">
-
-                        <!-- Card image -->
-                        <div class="view overlay">
-
-                        <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/12.jpg" class="img-fluid"
-                            alt="">
-
+<section>
+    <h4 class="font-weight-bold mt-4 dark-grey-text"><strong>Ultimos Productos</strong></h4>
+    <hr class="mb-5">
+    <div class="row">
+        @foreach ($data as $item)
+            @php
+                $images = $item->images ? json_decode($item->images)[0] : '../images/icons-bimgo/icon-512x512.png';
+            @endphp
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="card card-ecommerce">
+                    <div class="view overlay">
+                        <img src="{{ Voyager::image($images) }}" class="img-fluid" alt="{{ $item->name }}">
                         <a>
-
                             <div class="mask rgba-white-slight"></div>
-
                         </a>
-
-                        </div>
-                        <!-- Card image -->
-
-                        <!-- Card content -->
-                        <div class="card-body">
-
-                        <!-- Category & Title -->
-                        <h5 class="card-title mb-1"><strong><a href="" class="dark-grey-text">Headphones</a></strong></h5>
-                        <span class="badge badge-danger mb-2">bestseller</span>
-
-                        <!-- Rating -->
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title mb-1"><strong><a href="" class="dark-grey-text">{{ $item->name }}</a></strong></h5>
+                        <span class="badge badge-danger mb-2">{{ json_decode($item->tags)[0] }}</span>
                         <ul class="rating">
-
-                            <li><i class="fas fa-star blue-text"></i></li>
-
-                            <li><i class="fas fa-star blue-text"></i></li>
-
-                            <li><i class="fas fa-star blue-text"></i></li>
-
-                            <li><i class="fas fa-star blue-text"></i></li>
-
-                            <li><i class="fas fa-star blue-text"></i></li>
-
+                            @switch($item->stars)
+                                @case(1)
+                                    <li><i class="fas fa-star blue-text"></i></li>
+                                    <li><i class="fas fa-star grey-text"></i></li>
+                                    <li><i class="fas fa-star grey-text"></i></li>
+                                    <li><i class="fas fa-star grey-text"></i></li>
+                                    <li><i class="fas fa-star grey-text"></i></li>
+                                    @break
+                                @case(2)
+                                    <li><i class="fas fa-star blue-text"></i></li>
+                                    <li><i class="fas fa-star blue-text"></i></li>
+                                    <li><i class="fas fa-star grey-text"></i></li>
+                                    <li><i class="fas fa-star grey-text"></i></li>
+                                    <li><i class="fas fa-star grey-text"></i></li>
+                                    @break
+                                @case(3)
+                                    <li><i class="fas fa-star blue-text"></i></li>
+                                    <li><i class="fas fa-star blue-text"></i></li>
+                                    <li><i class="fas fa-star blue-text"></i></li>
+                                    <li><i class="fas fa-star grey-text"></i></li>
+                                    <li><i class="fas fa-star grey-text"></i></li>
+                                    @break
+                                @case(4)
+                                    <li><i class="fas fa-star blue-text"></i></li>
+                                    <li><i class="fas fa-star blue-text"></i></li>
+                                    <li><i class="fas fa-star blue-text"></i></li>
+                                    <li><i class="fas fa-star blue-text"></i></li>
+                                    <li><i class="fas fa-star grey-text"></i></li>
+                                    @break
+                                @case(5)
+                                    <li><i class="fas fa-star blue-text"></i></li>
+                                    <li><i class="fas fa-star blue-text"></i></li>
+                                    <li><i class="fas fa-star blue-text"></i></li>
+                                    <li><i class="fas fa-star blue-text"></i></li>
+                                    <li><i class="fas fa-star blue-text"></i></li>
+                                    @break
+                                @default
+                            @endswitch
                         </ul>
-
-                        <!-- Card footer -->
                         <div class="card-footer pb-0">
-
                             <div class="row mb-0">
-
-                            <span class="float-left"><strong>1439$</strong></span>
-
-                            <span class="float-right">
-
-                                <a class="" data-toggle="tooltip" data-placement="top" title="Add to Cart"><i
-                                    class="fas fa-shopping-cart ml-3"></i></a>
-
-                            </span>
-
+                                @if($item->price_last > 0)
+                                    <h5 class="mb-0 pb-0 mt-1 font-weight-bold"><span
+                                        class="red-text"><strong>{{ $item->price }} Bs.</strong></span>
+                                        <span class="grey-text"><small><s>{{ $item->price_last }} Bs.</s></small></span>
+                                    </h5>
+                                @else 
+                                    <span class="float-left"><strong>{{ $item->price }} Bs.</strong></span>
+                                @endif
+                                <span class="float-right">
+                                    <a class="" data-toggle="tooltip" data-placement="top" title="Agregar al Carrito"><i
+                                        class="fas fa-shopping-cart ml-3"></i></a>
+                                </span>
                             </div>
-
                         </div>
-
-                        </div>
-                        <!-- Card content -->
-
                     </div>
-                    <!-- Card -->
-
-                    </div>
-                    <!-- Grid column -->
-
-                    <!-- Grid column -->
-                    <div class="col-lg-3 col-md-6 mb-4">
-
-                    <!-- Card -->
-                    <div class="card card-ecommerce">
-
-                        <!-- Card image -->
-                        <div class="view overlay">
-
-                        <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/16.jpg" class="img-fluid"
-                            alt="">
-
-                        <a>
-
-                            <div class="mask rgba-white-slight"></div>
-
-                        </a>
-
-                        </div>
-                        <!-- Card image -->
-
-                        <!-- Card content -->
-                        <div class="card-body">
-
-                        <!-- Category & Title -->
-                        <h5 class="card-title mb-1"><strong><a href="" class="dark-grey-text">Headphones</a></strong></h5>
-                        <span class="badge badge-danger mb-2">bestseller</span>
-
-                        <!-- Rating -->
-                        <ul class="rating">
-
-                            <li><i class="fas fa-star blue-text"></i></li>
-
-                            <li><i class="fas fa-star blue-text"></i></li>
-
-                            <li><i class="fas fa-star blue-text"></i></li>
-
-                            <li><i class="fas fa-star blue-text"></i></li>
-
-                            <li><i class="fas fa-star blue-text"></i></li>
-
-                        </ul>
-
-                        <!-- Card footer -->
-                        <div class="card-footer pb-0">
-
-                            <div class="row mb-0">
-
-                            <span class="float-left"><strong>1439$</strong></span>
-
-                            <span class="float-right">
-
-                                <a class="" data-toggle="tooltip" data-placement="top" title="Add to Cart"><i
-                                    class="fas fa-shopping-cart ml-3"></i></a>
-
-                            </span>
-
-                            </div>
-
-                        </div>
-
-                        </div>
-                        <!-- Card content -->
-
-                    </div>
-                    <!-- Card -->
-
-                    </div>
-                    <!-- Grid column -->
-
-                    <!-- Grid column -->
-                    <div class="col-lg-3 col-md-6 mb-4">
-
-                    <!-- Card -->
-                    <div class="card card-ecommerce">
-
-                        <!-- Card image -->
-                        <div class="view overlay">
-
-                        <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/11.jpg" class="img-fluid"
-                            alt="">
-
-                        <a>
-
-                            <div class="mask rgba-white-slight"></div>
-
-                        </a>
-
-                        </div>
-                        <!-- Card image -->
-
-                        <!-- Card content -->
-                        <div class="card-body">
-
-                        <!-- Category & Title -->
-                        <h5 class="card-title mb-1"><strong><a href="" class="dark-grey-text">iPhone</a></strong></h5><span
-                            class="badge badge-info mb-2">new</span>
-
-                        <!-- Rating -->
-                        <ul class="rating">
-
-                            <li><i class="fas fa-star blue-text"></i></li>
-
-                            <li><i class="fas fa-star blue-text"></i></li>
-
-                            <li><i class="fas fa-star blue-text"></i></li>
-
-                            <li><i class="fas fa-star blue-text"></i></li>
-
-                            <li><i class="fas fa-star blue-text"></i></li>
-
-                        </ul>
-
-                        <!-- Card footer -->
-                        <div class="card-footer pb-0">
-
-                            <div class="row mb-0">
-
-                            <span class="float-left"><strong>1439$</strong></span>
-
-                            <span class="float-right">
-
-                                <a class="" data-toggle="tooltip" data-placement="top" title="Add to Cart"><i
-                                    class="fas fa-shopping-cart ml-3"></i></a>
-
-                            </span>
-
-                            </div>
-
-                        </div>
-
-                        </div>
-                        <!-- Card content -->
-
-                    </div>
-                    <!-- Card -->
-
-                    </div>
-                    <!-- Grid column -->
-
-                    <!-- Grid column -->
-                    <div class="col-lg-3 col-md-6 mb-4">
-
-                    <!-- Card -->
-                    <div class="card card-ecommerce">
-
-                        <!-- Card image -->
-                        <div class="view overlay">
-
-                        <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/3.jpg" class="img-fluid"
-                            alt="">
-
-                        <a>
-
-                            <div class="mask rgba-white-slight"></div>
-
-                        </a>
-
-                        </div>
-                        <!-- Card image -->
-
-                        <!-- Card content -->
-                        <div class="card-body">
-
-                        <!-- Category & Title -->
-                        <h5 class="card-title mb-1"><strong><a href="" class="dark-grey-text">iMac</a></strong></h5><span
-                            class="badge badge-danger mb-2">bestseller</span>
-
-                        <!-- Rating -->
-                        <ul class="rating">
-
-                            <li><i class="fas fa-star blue-text"></i></li>
-
-                            <li><i class="fas fa-star blue-text"></i></li>
-
-                            <li><i class="fas fa-star blue-text"></i></li>
-
-                            <li><i class="fas fa-star blue-text"></i></li>
-
-                            <li><i class="fas fa-star grey-text"></i></li>
-
-                        </ul>
-
-                        <!-- Card footer -->
-                        <div class="card-footer pb-0">
-
-                            <div class="row mb-0">
-
-                            <span class="float-left"><strong>1439$</strong></span>
-
-                            <span class="float-right">
-
-                                <a class="" data-toggle="tooltip" data-placement="top" title="Add to Cart"><i
-                                    class="fas fa-shopping-cart ml-3"></i></a>
-
-                            </span>
-
-                            </div>
-
-                        </div>
-
-                        </div>
-                        <!-- Card content -->
-
-                    </div>
-                    <!-- Card -->
-
-                    </div>
-                    <!-- Grid column -->
-
                 </div>
-                <!-- Grid row -->
-
-                <!-- Grid row -->
-                <div class="row justify-content-center mb-4">
-
-                    <!-- Pagination -->
-                    <nav class="mb-4">
-
-                    <ul class="pagination pagination-circle pg-blue mb-0">
-
-                        <!-- First -->
-                        <li class="page-item disabled clearfix d-none d-md-block"><a
-                            class="page-link waves-effect waves-effect">First</a></li>
-
-                        <!-- Arrow left -->
-                        <li class="page-item disabled">
-
-                        <a class="page-link waves-effect waves-effect" aria-label="Previous">
-
-                            <span aria-hidden="true">«</span>
-
-                            <span class="sr-only">Previous</span>
-
-                        </a>
-
-                        </li>
-
-                        <!-- Numbers -->
-                        <li class="page-item active"><a class="page-link waves-effect waves-effect">1</a></li>
-
-                        <li class="page-item"><a class="page-link waves-effect waves-effect">2</a></li>
-
-                        <li class="page-item"><a class="page-link waves-effect waves-effect">3</a></li>
-
-                        <li class="page-item"><a class="page-link waves-effect waves-effect">4</a></li>
-
-                        <li class="page-item"><a class="page-link waves-effect waves-effect">5</a></li>
-
-                        <!-- Arrow right -->
-                        <li class="page-item">
-
-                        <a class="page-link waves-effect waves-effect" aria-label="Next">
-
-                            <span aria-hidden="true">»</span>
-
-                            <span class="sr-only">Next</span>
-
-                        </a>
-
-                        </li>
-
-                        <!-- First -->
-                        <li class="page-item clearfix d-none d-md-block"><a class="page-link waves-effect waves-effect">Last</a>
-                        </li>
-
-                    </ul>
-
-                    </nav>
-                    <!-- Pagination -->
-
-                </div>
-                <!-- Grid row -->
-
-            </section>
-            <!-- Section: Last items -->
+            </div>
+        @endforeach
+    </div>
+    <div class="row justify-content-center mb-4">
+        {{ $data->links() }}
+    </div>
+</section>

@@ -150,7 +150,7 @@ return [
                 'icon_class' => 'voyager-compass',
             ],
             'Base de Datos' => [
-                'route'      => 'voyager.datbase.index',
+                'route'      => 'voyager.database.index',
                 'icon_class' => 'voyager-data',
             ],
             'Paquetes' => [

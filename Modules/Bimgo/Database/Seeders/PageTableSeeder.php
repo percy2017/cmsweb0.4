@@ -931,7 +931,7 @@ class PageTableSeeder extends Seeder
                 ],
                 'title' => [
                     'type'   => 'text',
-                    'name'   => 'tile',
+                    'name'   => 'title',
                     'label'  => 'Titulo Principal',
                     'value'  => 'Sale 20% off on every smartphone!',
                     'width'  => 4
@@ -961,7 +961,7 @@ class PageTableSeeder extends Seeder
                     'type'   => 'image',
                     'name'   => 'banner',
                     'label'  => 'Imagen del Banner',
-                    'value'  => null,
+                    'value'  => 'banner.png',
                     'width'  => 6
                 ],
                 'space1' => [
@@ -977,7 +977,7 @@ class PageTableSeeder extends Seeder
                 ],
                 'title2' => [
                     'type'   => 'text',
-                    'name'   => 'tile2',
+                    'name'   => 'title2',
                     'label'  => 'Titulo Principal',
                     'value'  => 'This is news title',
                     'width'  => 4
@@ -1007,7 +1007,7 @@ class PageTableSeeder extends Seeder
                     'type'   => 'image',
                     'name'   => 'banner2',
                     'label'  => 'Imagen del Banner',
-                    'value'  => null,
+                    'value'  => 'banner2.png',
                     'width'  => 6
                 ],
                 'space2' => [
@@ -1023,7 +1023,7 @@ class PageTableSeeder extends Seeder
                 ],
                 'title3' => [
                     'type'   => 'text',
-                    'name'   => 'tile3',
+                    'name'   => 'title3',
                     'label'  => 'Titulo Principal',
                     'value'  => 'This is news title',
                     'width'  => 4
@@ -1053,9 +1053,9 @@ class PageTableSeeder extends Seeder
                     'type'   => 'image',
                     'name'   => 'banner3',
                     'label'  => 'Imagen del Banner',
-                    'value'  => null,
+                    'value'  => 'banner3.png',
                     'width'  => 6
-                ],
+                ]
             ])
         ]);
         Block::create([

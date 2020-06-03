@@ -1,18 +1,10 @@
   <!-- Mega menu -->
   <div class="container mt-5 pt-3">
-
-    <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark primary-color mt-5">
-
-      <!-- Navbar brand -->
-      <a class="font-weight-bold white-text mr-4" href="{{ url('category') }}">Categories</a>
-
-      <!-- Collapse button -->
+      <a class="font-weight-bold white-text mr-4" href="{{ url('category') }}">Mega Menu</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent1"
         aria-controls="navbarSupportedContent1" aria-expanded="false" aria-label="Toggle navigation"><span
           class="navbar-toggler-icon"></span></button>
-
-      <!-- Collapsible content -->
       <div class="collapse navbar-collapse" id="navbarSupportedContent1">
 
         <!-- Links -->
@@ -307,7 +299,7 @@
 
           <div class="form-group md-form my-0 waves-light">
 
-            <input type="text" class="form-control" placeholder="Search">
+            <input type="text" class="form-control" placeholder="Buscar">
 
           </div>
 

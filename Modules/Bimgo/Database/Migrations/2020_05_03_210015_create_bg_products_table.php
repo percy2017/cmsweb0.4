@@ -20,7 +20,8 @@ class CreateBgProductsTable extends Migration
             $table->string('description')->nullable();
             $table->string('images')->nullable();
             $table->integer('stock')->nullable();
-            $table->double('price')->nullable();
+            $table->double('price')->default(0);
+            $table->double('price_last')->default(0);
             $table->string('tags')->nullable();
             $table->string('stars')->nullable();
             $table->string('description_long')->nullable();

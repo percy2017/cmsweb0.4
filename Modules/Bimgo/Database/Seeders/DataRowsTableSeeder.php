@@ -472,6 +472,25 @@ class DataRowsTableSeeder extends Seeder
                 ]
             ])->save();
         } 
+        $dataRow = $this->dataRow($ProductDataType, 'price_last');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'number',
+                'display_name' => 'Precio Anterior',
+                'required'     => 0,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'order'        => $postion++,
+                'details'      => [
+                    'display'   => [
+                        'width'  => '6',
+                    ],
+                ]
+            ])->save();
+        } 
         $dataRow = $this->dataRow($ProductDataType, 'images');
         if (!$dataRow->exists) {
             $dataRow->fill([

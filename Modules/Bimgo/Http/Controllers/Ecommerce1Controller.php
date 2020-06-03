@@ -83,7 +83,7 @@ class Ecommerce1Controller extends Controller
 
     static function products()
     {
-        $products = BgProduct::orderBy('id', 'desc')->paginate(6);
+        $products = BgProduct::orderBy('id', 'desc')->limit(6)->get();
         return $products;
     }
     static function products2(){        
@@ -92,6 +92,7 @@ class Ecommerce1Controller extends Controller
 
     static function list_products()
     {
-        
+        $products = BgProduct::orderBy('id', 'desc')->paginate(4);
+        return $products;
     }
 }
