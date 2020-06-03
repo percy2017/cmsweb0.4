@@ -10,8 +10,8 @@
         <!-- Image -->
         <div class="view  z-depth-1">
 
-          <img src="https://mdbootstrap.com/img/Photos/Others/ecommerce5.jpg" class="img-fluid"
-            alt="sample image">
+          <img src="{{ voyager::Image($data->banner_image->value) }}" class="img-fluid"
+            alt="Banner 1800x479px">
 
           <div class="mask rgba-stylish-slight">
 
@@ -21,23 +21,21 @@
 
                 <a>
 
-                  <span class="badge badge-primary">SALE</span>
+                  <span class="badge badge-primary">{{ $data->badge_info->value }}</span>
 
                 </a>
 
                 <h2 class="card-title font-weight-bold pt-md-3 pt-1">
 
-                  <strong>Sale from 20% to 50% on every tablet!
+                  <strong>{{ $data->title->value }}
 
                   </strong>
 
                 </h2>
 
-                <p class="pb-lg-3 pb-md-1 clearfix d-none d-md-block">Lorem ipsum dolor sit amet, consectetur
+                <p class="pb-lg-3 pb-md-1 clearfix d-none d-md-block">{{ $data->description->value }} </p>
 
-                  adipisicing elit. </p>
-
-                <a class="btn mr-0 btn-primary btn-rounded clearfix d-none d-md-inline-block">Read more</a>
+                <a href="{{ $data->btn_action->value }}" class="btn mr-0 btn-primary btn-rounded clearfix d-none d-md-inline-block">{{ $data->btn_name->value }}</a>
 
               </div>
 
