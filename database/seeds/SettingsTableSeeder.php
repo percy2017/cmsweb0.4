@@ -277,6 +277,73 @@ class SettingsTableSeeder extends Seeder
                 'group'        => 'Ecommerce',
             ])->save();
         }
+        $setting = $this->findSetting('ecommerce.image');
+        if (!$setting->exists) {
+            $setting->fill([
+                'display_name' => 'Logo Tienda',
+                'value'        => '',
+                'details'      => '',
+                'type'         => 'image',
+                'order'        => 2,
+                'group'        => 'Ecommerce',
+            ])->save();
+        }
+        $setting = $this->findSetting('ecommerce.description');
+        if (!$setting->exists) {
+            $setting->fill([
+                'display_name' => 'Descripcion de la tienda',
+                'value'        => 'Here you can use rows and columns here to organize your footer content. Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+                'details'      => '',
+                'type'         => 'text_area',
+                'order'        => 3,
+                'group'        => 'Ecommerce',
+            ])->save();
+        }
+        // Contacto ------------------------------------
+        $setting = $this->findSetting('contacto.direction');
+        if (!$setting->exists) {
+            $setting->fill([
+                'display_name' => 'Direccion de la tienda',
+                'value'        => 'Trinidad, N° 112, BO',
+                'details'      => '',
+                'type'         => 'text',
+                'order'        => 1,
+                'group'        => 'Contactos',
+            ])->save();
+        }
+        $setting = $this->findSetting('contacto.email');
+        if (!$setting->exists) {
+            $setting->fill([
+                'display_name' => 'Correo electronico',
+                'value'        => 'info@example.com',
+                'details'      => '',
+                'type'         => 'text',
+                'order'        => 2,
+                'group'        => 'Contactos',
+            ])->save();
+        }
+        $setting = $this->findSetting('contacto.phone');
+        if (!$setting->exists) {
+            $setting->fill([
+                'display_name' => 'Telefono',
+                'value'        => '46 234 567 88',
+                'details'      => '',
+                'type'         => 'text',
+                'order'        => 3,
+                'group'        => 'Contactos',
+            ])->save();
+        }
+        $setting = $this->findSetting('contacto.whatsapp');
+        if (!$setting->exists) {
+            $setting->fill([
+                'display_name' => 'Whatsapp',
+                'value'        => '+ 591 234 567 89',
+                'details'      => '',
+                'type'         => 'text',
+                'order'        => 4,
+                'group'        => 'Contactos',
+            ])->save();
+        }
     }
 
     /**

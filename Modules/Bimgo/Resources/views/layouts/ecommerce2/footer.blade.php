@@ -11,7 +11,7 @@
           <!-- Grid column -->
           <div class="col-md-6 col-lg-5 text-center text-md-left mb-4 mb-md-0">
 
-            <h6 class="mb-0 white-text">¡Conéctate con nosotras en las redes sociales!</h6>
+            <h6 class="mb-0 white-text">¡Conéctate con nosotros en las redes sociales!</h6>
 
           </div>
           <!-- Grid column -->
@@ -74,17 +74,13 @@
 
           <h6 class="text-uppercase font-weight-bold">
 
-            <strong>Company name</strong>
+            <strong>{{ setting('ecommerce.title') }}</strong>
 
           </h6>
 
           <hr class="blue mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
 
-          <p>Here you can use rows and columns here to organize your footer content. Lorem ipsum dolor sit amet,
-
-            consectetur
-
-            adipisicing elit.</p>
+          <p>{{ setting('ecommerce.description') }}</p>
 
         </div>
         <!-- First column -->
@@ -132,35 +128,13 @@
 
           <h6 class="text-uppercase font-weight-bold">
 
-            <strong>Useful links</strong>
+            <strong>Enlaces útiles</strong>
 
           </h6>
 
           <hr class="blue mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
 
-          <p>
-
-            <a href="#!">Your Account</a>
-
-          </p>
-
-          <p>
-
-            <a href="#!">Become an Affiliate</a>
-
-          </p>
-
-          <p>
-
-            <a href="#!">Shipping Rates</a>
-
-          </p>
-
-          <p>
-
-            <a href="#!">Help</a>
-
-          </p>
+          {{ menu('LandingPage', 'bimgo::menus.menu-link') }}
 
         </div>
         <!-- Third column -->
@@ -170,7 +144,7 @@
 
           <h6 class="text-uppercase font-weight-bold">
 
-            <strong>Contact</strong>
+            <strong>Contactos</strong>
 
           </h6>
 
@@ -178,19 +152,19 @@
 
           <p>
 
-            <i class="fas fa-home mr-3"></i> New York, NY 10012, US</p>
+            <i class="fas fa-home mr-3"></i>{{ setting('contacto.direction') }}</p>
 
           <p>
 
-            <i class="fas fa-envelope mr-3"></i> info@example.com</p>
+            <i class="fas fa-envelope mr-3"></i>{{ setting('contacto.email') }}</p>
 
           <p>
 
-            <i class="fas fa-phone mr-3"></i> + 01 234 567 88</p>
+            <i class="fas fa-phone mr-3"></i>{{ setting('contacto.phone') }}</p>
 
           <p>
 
-            <i class="fas fa-print mr-3"></i> + 01 234 567 89</p>
+            <i class="fab fa-whatsapp mr-3"></i>{{ setting('contacto.whatsapp') }}</p>
 
         </div>
         <!-- Fourth column -->
@@ -205,7 +179,7 @@
 
       <div class="container-fluid">
 
-        © 2019 Copyright: <a href="https://mdbootstrap.com/education/bootstrap/" target="_blank"> loginweb.dev </a>
+        © 2019 Copyright: <a href="https://loginweb.dev" target="_blank"> loginweb.dev </a>
 
       </div>
 

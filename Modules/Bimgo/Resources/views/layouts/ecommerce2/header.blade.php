@@ -9,9 +9,9 @@
 
         <div class="logo-wrapper waves-light">
 
-          <a href="#">
+          <a href="https://mdbootstrap.com/img/logo/mdb-transparent.png">
 
-            <img src="https://mdbootstrap.com/img/logo/mdb-transparent.png" class="img-fluid flex-center">
+            <img src="{{ Voyager::Image(setting('ecommerce.image')) }}" class="img-fluid flex-center" alt="logo ecommerce 251x92px">
 
           </a>
 
@@ -77,7 +77,7 @@
 
           <div class="form-group md-form mt-0 pt-1 waves-light">
 
-            <input type="text" class="form-control" placeholder="Search">
+            <input type="text" class="form-control" placeholder="Buscar">
 
           </div>
 
@@ -308,7 +308,7 @@
 
             </li> --}}
 
-            <li class="nav-item dropdown ml-3">
+           {{--  <li class="nav-item dropdown ml-3">
 
               <a class="nav-link dropdown-toggle waves-effect waves-light dark-grey-text font-weight-bold"
                 id="navbarDropdownMenuLink-4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -323,7 +323,46 @@
 
               </div>
 
+            </li> --}}
+
+            @guest
+            <li class="nav-item ml-3">
+                <a class="nav-link waves-effect waves-light dark-grey-text font-weight-bold"  href="{{ route('login') }}">
+                  <i class="fas fa-lock blue-text"></i>Ingresar
+                </a>
             </li>
+            @if (Route::has('register'))
+            <li class="nav-item ml-3">
+                    <a class="nav-link waves-effect waves-light dark-grey-text font-weight-bold"  href="{{ route('register') }}">
+                      <i class="fas fa-user-plus blue-text"></i> Registrarme
+                    </a>
+                </li>
+            @endif
+        @else
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle waves-effect waves-light dark-grey-text font-weight-bold"
+              id="navbarDropdownMenuLink-4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <i class="fas fa-user blue-text"></i>  {{ Auth::user()->name }}
+                </a>
+
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+
+                  <a class="dropdown-item" href="/home">
+                        Perfil
+                  </a>
+
+                  <a class="dropdown-item" href="{{ route('logout') }}"
+                      onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();">
+                      Salir
+                  </a>
+
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
+                </div>
+            </li>
+        @endguest
 
           </ul>
 

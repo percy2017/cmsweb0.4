@@ -25,7 +25,7 @@ class PageTableSeeder extends Seeder
         Page::where('user_id', 1)->delete();
         Block::where('deleted_at', null)->delete();
 
-        //-----------------------------------------------------------------
+        //--------------------------------------------------------------------------------------------------landing page bimgo
         $page = Page::create([
             'name'        =>  'Landing Page BimGo',
             'slug'        =>  'landing-page-bimgo',
@@ -733,8 +733,8 @@ class PageTableSeeder extends Seeder
             ])
         ]);
 
-        //---------------------------------------------------------------------------
-        //--------------------------Ecommerce 1 -------------------------------------
+
+        //---------------------------------------------------------------------------------------------------page Ecommerce1
         $page = Page::create([
             'name'        =>  'Ecommerce-1',
             'slug'        =>  'ecommerce-1',
@@ -1085,6 +1085,8 @@ class PageTableSeeder extends Seeder
             ])
         ]);
 
+
+        //--------------------------------------------------------------------------------------------page category-Ecommerce1 
         $page = Page::create([
             'name'        =>  'category',
             'slug'        =>  'category',
@@ -1101,16 +1103,14 @@ class PageTableSeeder extends Seeder
             'position'    => $count++,
             'type'        => 'controller',
             'details'     => json_encode([
-                'title' => [
-                    'type'   => 'text',
-                    'name'   => 'title',
-                    'label'  => 'Encabezado',
-                    'value'  => 'Modules\\Bimgo\\Http\\Controllers\\Ecommerce1Controller@category',
-                    'width'  => 12
-                ]
+                'name'   => 'title',
+                'label'  => 'Encabezado',
+                'value'  => 'Modules\\Bimgo\\Http\\Controllers\\Ecommerce1Controller@category',
             ])
         ]);
 
+
+        //-------------------------------------------------------------------------------------------page product- Ecommerce1            
         $page = Page::create([
             'name'        =>  'product',
             'slug'        =>  'product',
@@ -1127,16 +1127,14 @@ class PageTableSeeder extends Seeder
             'position'    => $count++,
             'type'        => 'controller',
             'details'     => json_encode([
-                'title' => [
-                    'type'   => 'text',
-                    'name'   => 'title',
-                    'label'  => 'Encabezado',
-                    'value'  => 'Modules\\Bimgo\\Http\\Controllers\\Ecommerce1Controller@product',
-                    'width'  => 12
-                ]
+                'name'   => 'title',
+                'label'  => 'Encabezado',
+                'value'  => 'Modules\\Bimgo\\Http\\Controllers\\Ecommerce1Controller@product',
             ])
         ]);
 
+
+        //----------------------------------------------------------------------------------------------page cart- Ecommerce1
         $page = Page::create([
             'name'        =>  'cart',
             'slug'        =>  'cart',
@@ -1153,16 +1151,14 @@ class PageTableSeeder extends Seeder
             'position'    => $count++,
             'type'        => 'controller',
             'details'     => json_encode([
-                'title' => [
-                    'type'   => 'text',
-                    'name'   => 'title',
-                    'label'  => 'Encabezado',
-                    'value'  => 'Modules\\Bimgo\\Http\\Controllers\\Ecommerce1Controller@cart',
-                    'width'  => 12
-                ]
+                'name'   => 'title',
+                'label'  => 'Encabezado',
+                'value'  => 'Modules\\Bimgo\\Http\\Controllers\\Ecommerce1Controller@cart',
             ])
         ]);
 
+
+        //-------------------------------------------------------------------------------------------page tele-venta Ecommerce1           
         $page = Page::create([
             'name'        =>  'Tele Venta',
             'slug'        =>  'tele-venta',
@@ -1179,15 +1175,14 @@ class PageTableSeeder extends Seeder
             'position'    => $count++,
             'type'        => 'controller',
             'details'     => json_encode([
-                'title' => [
-                    'type'   => 'text',
-                    'name'   => 'title',
-                    'label'  => 'Encabezado',
-                    'value'  => 'Modules\\Bimgo\\Http\\Controllers\\Ecommerce1Controller@tele-venta',
-                    'width'  => 12
-                ]
+                'name'   => 'title',
+                'label'  => 'Encabezado',
+                'value'  => 'Modules\\Bimgo\\Http\\Controllers\\Ecommerce1Controller@tele-venta',
             ])
         ]);
+
+
+        //-----------------------------------------------------------------------------------------------page pagos-Ecommerce1
         $page = Page::create([
             'name'        =>  'Pagos',
             'slug'        =>  'pagos',
@@ -1204,16 +1199,14 @@ class PageTableSeeder extends Seeder
             'position'    => $count++,
             'type'        => 'controller',
             'details'     => json_encode([
-                'title' => [
-                    'type'   => 'text',
-                    'name'   => 'title',
-                    'label'  => 'Encabezado',
-                    'value'  => 'Modules\\Bimgo\\Http\\Controllers\\Ecommerce1Controller@pagos',
-                    'width'  => 12
-                ]
+                'name'   => 'title',
+                'label'  => 'Encabezado',
+                'value'  => 'Modules\\Bimgo\\Http\\Controllers\\Ecommerce1Controller@pagos',
             ])
         ]);
 
+
+        //--------------------------------------------------------------------------------------------page gracias-Ecommerce1            
         $page = Page::create([
             'name'        =>  'Gracias',
             'slug'        =>  'gracias',
@@ -1230,16 +1223,14 @@ class PageTableSeeder extends Seeder
             'position'    => $count++,
             'type'        => 'controller',
             'details'     => json_encode([
-                'title' => [
-                    'type'   => 'text',
-                    'name'   => 'title',
-                    'label'  => 'Encabezado',
-                    'value'  => 'Modules\\Bimgo\\Http\\Controllers\\Ecommerce1Controller@gracias',
-                    'width'  => 12
-                ]
+                'name'   => 'title',
+                'label'  => 'Encabezado',
+                'value'  => 'Modules\\Bimgo\\Http\\Controllers\\Ecommerce1Controller@gracias',
             ])
         ]);
 
+
+        //--------------------------------------------------------------------------------------------page profile-Ecommerce1         
         $page = Page::create([
             'name'        =>  'Profile',
             'slug'        =>  'profile',
@@ -1256,16 +1247,14 @@ class PageTableSeeder extends Seeder
             'position'    => $count++,
             'type'        => 'controller',
             'details'     => json_encode([
-                'title' => [
-                    'type'   => 'text',
-                    'name'   => 'title',
-                    'label'  => 'Encabezado',
-                    'value'  => 'Modules\\Bimgo\\Http\\Controllers\\Ecommerce1Controller@profile',
-                    'width'  => 12
-                ]
+                'name'   => 'title',
+                'label'  => 'Encabezado',
+                'value'  => 'Modules\\Bimgo\\Http\\Controllers\\Ecommerce1Controller@profile',
             ])
         ]);
-        //--------------------------------------------------------------------------
+
+
+        //---------------------------------------------------------------------------------------------------page Ecommerce2
         $page = Page::create([
             'name'        =>  'Ecommerce-2',
             'slug'        =>  'ecommerce-2',
@@ -1283,8 +1272,8 @@ class PageTableSeeder extends Seeder
                 'carusel1-title' => [
                     'type' => 'text',
                     'name' => 'carusel1-title',
-                    'label' => ' Carusel1 - titulo - maximo caracteres : 40 ',
-                    'value'  => 'Sale off 30% on every saturday!',
+                    'label' => 'Carusel1 - titulo - maximo caracteres : 40',
+                    'value'  => '¡Oferta del 30% todos los sábados!',
                     'width'  => 6
                 ],
                 'carusel1-descripcion' => [
@@ -1298,14 +1287,14 @@ class PageTableSeeder extends Seeder
                     'type' => 'text',
                     'name' => 'carusel1-btn-name',
                     'label' => ' Carusel1 - nombre btn ',
-                    'value'  => 'See more',
+                    'value'  => 'Ver Oferta',
                     'width'  => 6
                 ],
                 'carusel1-btn-action' => [
                     'type' => 'text',
                     'name' => 'carusel1-btn-action',
                     'label' => ' Carusel1 - accion btn ',
-                    'value'  => 'null',
+                    'value'  => '',
                     'width'  => 6
                 ],
 
@@ -1366,7 +1355,7 @@ class PageTableSeeder extends Seeder
                     'type' => 'text',
                     'name' => 'carusel3-title',
                     'label' => ' Carusel3 - titulo - maximo caracteres : 40',
-                    'value'  => 'Sale off 20% on every headphones!',
+                    'value'  => '¡Oferta del 20% en todos los auriculares!',
                     'width'  => 6
                 ],
                 'carusel3-descripcion' => [
@@ -1380,72 +1369,57 @@ class PageTableSeeder extends Seeder
             ]),
         ]);
         $count = 1;
-       /*  Block::create([
-            'name'        => 'ecommerce2.header',
-            'title'       => 'Encabezado',
-            'description' => 'Header Dinamyc',
-            'page_id'     => $page->id,
-            'position'    => $count++,
-            'type'        => 'controller',
-            'details'     => json_encode([
-                'title' => [
-                    'type'   => 'text',
-                    'name'   => 'title',
-                    'label'  => 'Encabezado',
-                    'value'  => 'Modules\\Bimgo\\Http\\Controllers\\Ecommerce2@header',
-                    'width'  => 12
-                ],
-               
-            ])
-         ]);
-      */
-
         Block::create([
             'name'        => 'ecommerce2.header',
-            'title'       => 'Banner',
-            'description' => 'banner',
+            'title'       => 'Header',
+            'description' => 'header',
             'page_id'     => $page->id,
             'position'    => $count++,
             'type'        => 'dinamyc-data',
             'details'     => json_encode([
-                'banner-image'=>[
+                'banner_image'=>[
                     'type'   => 'image',
-                    'name'   => 'banner-image',
-                    'label'  => 'Image  dimensiones: 1600x721px',
+                    'name'   => 'banner_image',
+                    'label'  => 'Image 1600*721 px',
                     'value'  => 'banner.png',
                     'width'  => 6
                 ],
-                'banner-badge'=>[
+                'banner_badge'=>[
                     'type'   => 'text',
-                    'name'   => 'banner-badge',
+                    'name'   => 'banner_badge',
                     'label'  => 'Etiqueta',
-                    'value'  => 'bestseller',
+                    'value'  => 'Mejor vendido',
                     'width'  => 6
                 ],
-                'banner-title'=>[
+                'space1'=>[
+                    'type'=>'space',
+                    'name'=>'space1'
+                ],
+
+                'banner_title'=>[
                     'type'   => 'text',
-                    'name'   => 'banner-title',
+                    'name'   => 'banner_title',
                     'label'  => 'Titulo del Banner',
-                    'value'  => 'This is news title',
+                    'value'  => 'Este es el titulo de la noticia.',
                     'width'  => 6
                 ],
-                'banner-description'=>[
+                'banner_description'=>[
                     'type'   => 'text_area',
-                    'name'   => 'banner-description',
+                    'name'   => 'banner_description',
                     'label'  => 'Descripcion del Banner',
                     'value'  => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
                     'width'  => 6
                 ],
-                'banner-btn-name'=>[
+                'banner_btn_name'=>[
                     'type'   => 'text',
-                    'name'   => 'banner-btn-name',
+                    'name'   => 'banner_btn_name',
                     'label'  => 'Nombre del Boton',
-                    'value'  => 'Read more',
+                    'value'  => 'Ver Producto',
                     'width'  => 6
                 ],
-                'banner-btn-action'=>[
+                'banner_btn_action'=>[
                     'type'   => 'text',
-                    'name'   => 'banner-btn-action',
+                    'name'   => 'banner_btn_action',
                     'label'  => 'Accion del Boton',
                     'value'  => 'https://mdbootstrap.com/img/Photos/Others/product1.jpg',
                     'width'  => 6
@@ -1461,37 +1435,36 @@ class PageTableSeeder extends Seeder
             'position'    => $count++,
             'type'        => 'controller',
             'details'     => json_encode([
-                'title' => [
-                    'type'   => 'text',
-                    'name'   => 'title',
-                    'label'  => 'Products',
-                    'value'  => 'Modules\\Bimgo\\Http\\Controllers\\Ecommerce2@Products',
-                    'width'  => 12
-                ]
+                'name'   => 'title',
+                'label'  => 'Products',
+                'value'  => 'Modules\\Bimgo\\Http\\Controllers\\Ecommerce2@Products',
             ])
         ]);
         Block::create([
             'name'        => 'ecommerce2.banner',
-            'title'       => 'banner',
-            'description' => 'Banner',
+            'title'       => 'Banner-ecommerce',
+            'description' => 'banner ecommerce',
             'page_id'     => $page->id,
             'position'    => $count++,
-            'type'        => 'dinmayc-data',
+            'type'        => 'dinamyc-data',
             'details'     => json_encode([
-                
-                'banner' => [
+                'banner_image' => [
                     'type'   => 'image',
-                    'name'   => 'banner',
-                    'label'  => 'Imagen 1800x479px',
-                    'value'  => 'banner.jpg',
+                    'name'   => 'banner_image',
+                    'label'  => 'Imagen 1800*479 px',
+                    'value'  => 'baner.jpg',
                     'width'  => 6
                 ],
                 'title' => [
                     'type'   => 'text',
                     'name'   => 'title',
                     'label'  => 'Titulo del Banner',
-                    'value'  => 'Sale from 20% to 50% on every tablet!',
+                    'value'  => '¡Venta del 20% al 50% en cada tableta!',
                     'width'  => 6
+                ],
+                'space1'=>[
+                    'type'=>'space',
+                    'name'=>'space1'
                 ],
                 'description' => [
                     'type'   => 'text',
@@ -1500,23 +1473,23 @@ class PageTableSeeder extends Seeder
                     'value'  => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
                     'width'  => 6
                 ],
-                'badge-info' => [
+                'badge_info' => [
                     'type'   => 'text',
-                    'name'   => 'badge-info',
+                    'name'   => 'badge_info',
                     'label'  => 'Etiqueta',
-                    'value'  => 'Sale',
+                    'value'  => 'En rebaja',
                     'width'  => 6
                 ],
-                'btn-name' => [
+                'btn_name' => [
                     'type'   => 'text',
-                    'name'   => 'btn-name',
+                    'name'   => 'btn_name',
                     'label'  => 'Nombre del boton',
-                    'value'  => 'read more',
+                    'value'  => 'Ver Rebaja',
                     'width'  => 6
                 ],
-                'btn-action' => [
+                'btn_action' => [
                     'type'   => 'text',
-                    'name'   => 'btn-action',
+                    'name'   => 'btn_action',
                     'label'  => 'Action del boton',
                     'value'  => 'https://mdbootstrap.com/img/Photos/Others/ecommerce5.jpg',
                     'width'  => 6
@@ -1531,34 +1504,27 @@ class PageTableSeeder extends Seeder
             'position'    => $count++,
             'type'        => 'controller',
             'details'     => json_encode([
-                'title' => [
-                    'type'   => 'text',
-                    'name'   => 'title',
-                    'label'  => 'Products Select',
-                    'value'  => 'Modules\\Bimgo\\Http\\Controllers\\Ecommerce2@products_select',
-                    'width'  => 12
-                ]
+                'name'   => 'title',
+                'label'  => 'Products Select',
+                'value'  => 'Modules\\Bimgo\\Http\\Controllers\\Ecommerce2@products_select',
             ])
         ]);
         Block::create([
             'name'        => 'ecommerce2.products_list',
-            'title'       => 'products_listt',
+            'title'       => 'products_list',
             'description' => 'Products List',
             'page_id'     => $page->id,
             'position'    => $count++,
             'type'        => 'controller',
             'details'     => json_encode([
-                'title' => [
-                    'type'   => 'text',
-                    'name'   => 'title',
-                    'label'  => 'Products List',
-                    'value'  => 'Modules\\Bimgo\\Http\\Controllers\\Ecommerce2@products_list',
-                    'width'  => 12
-                ]
+                'name'   => 'title',
+                'label'  => 'Products List',
+                'value'  => 'Modules\\Bimgo\\Http\\Controllers\\Ecommerce2@products_list',
             ])
         ]);
 
-        //------------------------------------------------------------------------
+
+        //-----------------------------------------------------------------------------------------------------page Ecommerce3
         $page = Page::create([
             'name'        =>  'Ecommerce-3',
             'slug'        =>  'ecommerce-3',
@@ -1768,13 +1734,9 @@ class PageTableSeeder extends Seeder
             'position'    => $count++,
             'type'        => 'controller',
             'details'     => json_encode([
-                'title' => [
-                    'type'   => 'text',
-                    'name'   => 'title',
-                    'label'  => 'Especial',
-                    'value'  => 'Modules\\Bimgo\\Http\\Controllers\\Ecommerce2@special',
-                    'width'  => 12
-                ]
+                'name'   => 'title',
+                'label'  => 'Especial',
+                'value'  => 'Modules\\Bimgo\\Http\\Controllers\\Ecommerce2@special',
             ])
         ]);
         Block::create([
@@ -1785,13 +1747,9 @@ class PageTableSeeder extends Seeder
             'position'    => $count++,
             'type'        => 'controller',
             'details'     => json_encode([
-                'title' => [
-                    'type'   => 'text',
-                    'name'   => 'title',
-                    'label'  => 'Products',
-                    'value'  => 'Modules\\Bimgo\\Http\\Controllers\\Ecommerce2@products',
-                    'width'  => 12
-                ]
+                'name'   => 'title',
+                'label'  => 'Products',
+                'value'  => 'Modules\\Bimgo\\Http\\Controllers\\Ecommerce2@products',
             ])
         ]);
         Block::create([
@@ -1802,13 +1760,9 @@ class PageTableSeeder extends Seeder
             'position'    => $count++,
             'type'        => 'controller',
             'details'     => json_encode([
-                'title' => [
-                    'type'   => 'text',
-                    'name'   => 'title',
-                    'label'  => 'App Download',
-                    'value'  => 'Modules\\Bimgo\\Http\\Controllers\\Ecommerce2@app',
-                    'width'  => 12
-                ]
+                'name'   => 'title',
+                'label'  => 'App Download',
+                'value'  => 'Modules\\Bimgo\\Http\\Controllers\\Ecommerce2@app',
             ])
         ]);
         Block::create([
@@ -1819,13 +1773,9 @@ class PageTableSeeder extends Seeder
             'position'    => $count++,
             'type'        => 'controller',
             'details'     => json_encode([
-                'title' => [
-                    'type'   => 'text',
-                    'name'   => 'title',
-                    'label'  => 'Slider',
-                    'value'  => 'Modules\\Bimgo\\Http\\Controllers\\Ecommerce2@slider',
-                    'width'  => 12
-                ]
+                'name'   => 'title',
+                'label'  => 'Slider',
+                'value'  => 'Modules\\Bimgo\\Http\\Controllers\\Ecommerce2@slider', 
             ])
         ]);
         Block::create([
@@ -1836,16 +1786,14 @@ class PageTableSeeder extends Seeder
             'position'    => $count++,
             'type'        => 'controller',
             'details'     => json_encode([
-                'title' => [
-                    'type'   => 'text',
-                    'name'   => 'title',
-                    'label'  => 'Brands',
-                    'value'  => 'Modules\\Bimgo\\Http\\Controllers\\Ecommerce2@slider',
-                    'width'  => 12
-                ]
+                'name'   => 'title',
+                'label'  => 'Brands',
+                'value'  => 'Modules\\Bimgo\\Http\\Controllers\\Ecommerce2@slider',
             ])
         ]);
-        //------------------------------------------------------------------------
+
+
+        //---------------------------------------------------------------------------------------------------page Ecommerce4
         $page = Page::create([
             'name'        =>  'Ecommerce-4',
             'slug'        =>  'ecommerce-4',
@@ -1854,7 +1802,8 @@ class PageTableSeeder extends Seeder
             'description' =>  'Pagina predeterminada para comercio electronico v4'
         ]);
 
-        //-------------------------------------------------------------------------
+
+        //------------------------------------------------------------------------------------------page politica privacidad
         $page = Page::create([
             'name'        =>  'politica privacidad',
             'slug'        =>  'politica-privacidad',
@@ -1891,7 +1840,7 @@ class PageTableSeeder extends Seeder
         ]);
 
 
-        //-------------------------------------------------------------
+        //-------------------------------------------------------------------------------------------page terminos condiones
         $page = Page::create([
             'name'        =>  'terminos condiones',
             'slug'        =>  'terminos-condiones',

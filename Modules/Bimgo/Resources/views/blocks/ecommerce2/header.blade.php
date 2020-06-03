@@ -100,7 +100,7 @@
         <!-- Image -->
         <div class="view zoom z-depth-1">
     
-          <img src="https://mdbootstrap.com/img/Photos/Others/product1.jpg" class="img-fluid" alt="sample image">
+          <img src="{{ voyager::image($data->banner_image->value) }}" class="img-fluid" alt="Image 1600x721px">
     
           <div class="mask rgba-white-light">
     
@@ -110,19 +110,19 @@
     
                 <a>
     
-                  <span class="badge badge-danger">bestseller</span>
+                  <span class="badge badge-danger">{{ $data->banner_badge->value }}</span>
     
                 </a>
     
                 <h2 class="card-title font-weight-bold pt-2">
     
-                  <strong>This is news title</strong>
+                  <strong>{{ $data->banner_title->value }}</strong>
     
                 </h2>
     
-                <p class="">Lorem ipsum dolor sit amet, consectetur adipisicing elit. </p>
+                <p class="">{{ $data->banner_description->value }}</p>
     
-                <a href="" class="btn btn-danger btn-sm btn-rounded clearfix d-none d-md-inline-block">Read more</a>
+                <a href="{{ $data->banner_btn_action->value }}" target="_blak" class="btn btn-danger btn-sm btn-rounded clearfix d-none d-md-inline-block">{{ $data->banner_btn_name->value }}</a>
     
               </div>
     

@@ -25,7 +25,7 @@
           <div class="view h-100">
 
             <img class="d-block h-100 w-lg-100" src="{{ voyager::Image($collection['carusel1-img']['value']) }}"
-              alt="First slide">
+              alt="First slide image: 2051x516px">
 
             <div class="mask">
 
@@ -75,7 +75,7 @@
           <div class="view h-100">
 
             <img class="d-block h-100 w-lg-100" src="{{ voyager::Image($collection['carusel2-img']['value']) }}"
-              alt="Second slide">
+              alt="Second slide image: 2051x516px">
 
             <div class="mask">
 
@@ -125,7 +125,7 @@
           <div class="view h-100">
 
             <img class="d-block h-100 w-lg-100" src="{{ voyager::Image($collection['carusel3-img']['value']) }}"
-              alt="Third slide">
+              alt="Third slide image: 2051x516px">
 
             <div class="mask">
 
@@ -674,7 +674,7 @@
 
               <div class="form-group md-form my-0 waves-light">
 
-                <input type="text" class="form-control" placeholder="Search">
+                <input type="text" class="form-control" placeholder="Buscar productos">
 
               </div>
 
