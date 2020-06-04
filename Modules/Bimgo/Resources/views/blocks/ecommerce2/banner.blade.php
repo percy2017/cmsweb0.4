@@ -10,7 +10,7 @@
         <!-- Image -->
         <div class="view  z-depth-1">
 
-          <img src="{{ voyager::Image($data->banner_image->value) }}" class="img-fluid"
+          <img src="{{ Voyager::image($data->banner_image->value) }}" class="img-fluid"
             alt="Banner 1800x479px">
 
           <div class="mask rgba-stylish-slight">

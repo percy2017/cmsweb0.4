@@ -90,7 +90,7 @@
 
           <h6 class="text-uppercase font-weight-bold">
 
-            <strong>Products</strong>
+            <strong>Productos</strong>
 
           </h6>
 
@@ -179,7 +179,7 @@
 
       <div class="container-fluid">
 
-        © 2019 Copyright: <a href="https://loginweb.dev" target="_blank"> loginweb.dev </a>
+        © 2020 Copyright: <a href="https://loginweb.dev" target="_blank"> loginweb.dev </a>
 
       </div>
 

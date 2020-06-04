@@ -9,86 +9,44 @@
 
         <!-- Section: Categories -->
         <section class="section">
-
           <ul class="list-group z-depth-1">
-
-            <li class="list-group-item d-flex justify-content-between align-items-center">
-
-              <a class="dark-grey-text font-small">
-
-                <i class="fas fa-laptop dark-grey-text mr-2" aria-hidden="true"></i> Laptops</a>
-
-              <a href=""></a>
-
-              <span class="badge badge-danger badge-pill">43</span>
-
-              </a>
-
-            </li>
-
-            <li class="list-group-item d-flex justify-content-between align-items-center">
-
-              <a class="dark-grey-text font-small">
-
-                <i class="fas fa-mobile-alt dark-grey-text mr-3" aria-hidden="true"></i> Smartphone</a>
-
-              <span class="badge badge-danger badge-pill">32</span>
-
-            </li>
-
-            <li class="list-group-item d-flex justify-content-between align-items-center">
-
-              <a class="dark-grey-text font-small">
-
-                <i class="fas fa-tablet-alt dark-grey-text mr-3" aria-hidden="true"></i> Tablet</a>
-
-              <span class="badge badge-danger badge-pill">18</span>
-
-            </li>
-
-            <li class="list-group-item d-flex justify-content-between align-items-center">
-
-              <a class="dark-grey-text font-small">
-
-                <i class="fas fa-headphones-alt dark-grey-text mr-3" aria-hidden="true"></i>Heahphones</a>
-
-              <span class="badge badge-danger badge-pill">37</span>
-
-            </li>
-
-            <li class="list-group-item d-flex justify-content-between align-items-center">
-
-              <a class="dark-grey-text font-small">
-
-                <i class="fas fa-camera-retro dark-grey-text mr-3" aria-hidden="true"></i>Camera</a>
-
-              <span class="badge badge-danger badge-pill">15</span>
-
-            </li>
-
-            <li class="list-group-item d-flex justify-content-between align-items-center">
-
-              <a class="dark-grey-text font-small">
-
-                <i class="fas fa-suitcase dark-grey-text mr-3" aria-hidden="true"></i>Accesories</a>
-
-              <span class="badge badge-danger badge-pill">64</span>
-
-            </li>
-
-            <li class="list-group-item d-flex justify-content-between align-items-center">
-
-              <a class="dark-grey-text font-small">
-
-                <i class="fas fa-tv dark-grey-text mr-3" aria-hidden="true"></i>TV</a>
-
-              <span class="badge badge-danger badge-pill">2</span>
-
-            </li>
-
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+              <a class="dark-grey-text font-small"><i class="{{ $data->icon1->value }}"
+                  aria-hidden="true"></i> {{ $data->name1->value }}</a>
+              {{--  <a href="#"></a><span class="badge badge-danger badge-pill">43</span></a>  --}}
+          </li>
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+              <a class="dark-grey-text font-small"><i class="{{ $data->icon2->value }}"
+                  aria-hidden="true"></i> {{ $data->name2->value }}</a>
+              {{--  <span class="badge badge-danger badge-pill">32</span>  --}}
+          </li>
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+              <a class="dark-grey-text font-small"><i class="{{ $data->icon3->value }}"
+                  aria-hidden="true"></i> {{ $data->name3->value }}</a>
+              {{--  <span class="badge badge-danger badge-pill">18</span>  --}}
+          </li>
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+              <a class="dark-grey-text font-small"><i class="{{ $data->icon4->value }}"
+                  aria-hidden="true"></i>{{ $data->name4->value }}</a>
+              {{--  <span class="badge badge-danger badge-pill">37</span>  --}}
+          </li>
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+              <a class="dark-grey-text font-small"><i class="{{ $data->icon5->value }}"
+                  aria-hidden="true"></i> {{ $data->name5->value }}</a>
+              {{--  <span class="badge badge-danger badge-pill">15</span>  --}}
+          </li>
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+              <a class="dark-grey-text font-small"><i class="{{ $data->icon6->value }}"
+                  aria-hidden="true"></i> {{ $data->name6->value }}</a>
+              {{--  <span class="badge badge-danger badge-pill">64</span>  --}}
+          </li>
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+              <a class="dark-grey-text font-small"><i class="{{ $data->icon7->value }}"
+                  aria-hidden="true"></i> {{ $data->name7->value }}</a>
+              {{--  <span class="badge badge-danger badge-pill">2</span>  --}}
+          </li>
           </ul>
-
-        </section>
+      </section>
         <!-- Section: Categories -->
 
       </div>
@@ -100,7 +58,7 @@
         <!-- Image -->
         <div class="view zoom z-depth-1">
     
-          <img src="{{ voyager::image($data->banner_image->value) }}" class="img-fluid" alt="Image 1600x721px">
+          <img src="{{ Voyager::image($data->banner_image->value) }}" class="img-fluid" alt="Image 1600x721px">
     
           <div class="mask rgba-white-light">
     

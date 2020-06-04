@@ -8,7 +8,9 @@ use Illuminate\Routing\Controller;
 
 // Models
 use Modules\Bimgo\Entities\BgProduct;
+use Modules\Bimgo\Entities\BgCategory;
 use Modules\Bimgo\Entities\BgSubCategory;
+
 
 class Ecommerce2Controller extends Controller
 {
@@ -81,16 +83,19 @@ class Ecommerce2Controller extends Controller
         //
     }
 
-    static function products()
+    static function tabProducts()
     {
         return BgSubCategory::with(['products'])->limit(3)->get();
     }
 
     static function products_select(){
-
+        
+        return BgSubCategory::with(['products'])->limit(3)->get();
     }
 
     static function products_list(){
-        
+        $products = BgProduct::orderBy('id', 'desc')->paginate(4);
+        return $products;
     }
+    
 }
