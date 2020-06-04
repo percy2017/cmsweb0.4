@@ -1424,6 +1424,104 @@ class PageTableSeeder extends Seeder
                     'value'  => 'https://mdbootstrap.com/img/Photos/Others/product1.jpg',
                     'width'  => 6
                 ],
+                'icon1' => [
+                    'type'   => 'select_dropdown',
+                    'name'   => 'icon1',
+                    'label'  => 'Icono 1',
+                    'value'  => 'fas fa-laptop dark-grey-text mr-2',
+                    'width'  => 6
+                ],
+                'name1' => [
+                    'type'   => 'text',
+                    'name'   => 'name1',
+                    'label'  => 'Nombre 1',
+                    'value'  => 'Laptos',
+                    'width'  => 6
+                ],
+                'icon2' => [
+                    'type'   => 'select_dropdown',
+                    'name'   => 'icon2',
+                    'label'  => 'Icono 2',
+                    'value'  => 'fas fa-mobile-alt dark-grey-text mr-3',
+                    'width'  => 6
+                ],
+                'name2' => [
+                    'type'   => 'text',
+                    'name'   => 'name2',
+                    'label'  => 'Nombre 2',
+                    'value'  => 'Smatphone',
+                    'width'  => 6
+                ],
+                'icon3' => [
+                    'type'   => 'select_dropdown',
+                    'name'   => 'icon3',
+                    'label'  => 'Icono 3',
+                    'value'  => 'fas fa-tablet-alt dark-grey-text mr-3',
+                    'width'  => 6
+                ],
+                'name3' => [
+                    'type'   => 'text',
+                    'name'   => 'name3',
+                    'label'  => 'Nombre 3',
+                    'value'  => 'Tablet',
+                    'width'  => 6
+                ],
+                'icon4' => [
+                    'type'   => 'select_dropdown',
+                    'name'   => 'icon4',
+                    'label'  => 'Icono 4',
+                    'value'  => 'fas fa-headphones-alt dark-grey-text mr-3',
+                    'width'  => 6
+                ],
+                'name4' => [
+                    'type'   => 'text',
+                    'name'   => 'name4',
+                    'label'  => 'Nombre 4',
+                    'value'  => 'Heahphones',
+                    'width'  => 6
+                ],
+                'icon5' => [
+                    'type'   => 'select_dropdown',
+                    'name'   => 'icon5',
+                    'label'  => 'Icono 5',
+                    'value'  => 'fas fa-camera-retro dark-grey-text mr-3',
+                    'width'  => 6
+                ],
+                'name5' => [
+                    'type'   => 'text',
+                    'name'   => 'name5',
+                    'label'  => 'Nombre 5',
+                    'value'  => 'Camara',
+                    'width'  => 6
+                ],
+                'icon6' => [
+                    'type'   => 'select_dropdown',
+                    'name'   => 'icon6',
+                    'label'  => 'Icono 6',
+                    'value'  => 'fas fa-suitcase dark-grey-text mr-3',
+                    'width'  => 6
+                ],
+                'name6' => [
+                    'type'   => 'text',
+                    'name'   => 'name6',
+                    'label'  => 'Nombre 6',
+                    'value'  => 'Accesories',
+                    'width'  => 6
+                ],
+                'icon7' => [
+                    'type'   => 'select_dropdown',
+                    'name'   => 'icon7',
+                    'label'  => 'Icono 7',
+                    'value'  => 'fas fa-tv dark-grey-text mr-3',
+                    'width'  => 6
+                ],
+                'name7' => [
+                    'type'   => 'text',
+                    'name'   => 'name7',
+                    'label'  => 'Nombre 7',
+                    'value'  => 'TV',
+                    'width'  => 6
+                ],
 
             ]),
         ]);
@@ -1437,7 +1535,7 @@ class PageTableSeeder extends Seeder
             'details'     => json_encode([
                 'name'   => 'title',
                 'label'  => 'Products',
-                'value'  => 'Modules\\Bimgo\\Http\\Controllers\\Ecommerce2@Products',
+                'value'  => 'Modules\\Bimgo\\Http\\Controllers\\Ecommerce2Controller::tabProducts()',
             ])
         ]);
         Block::create([
@@ -1506,7 +1604,7 @@ class PageTableSeeder extends Seeder
             'details'     => json_encode([
                 'name'   => 'title',
                 'label'  => 'Products Select',
-                'value'  => 'Modules\\Bimgo\\Http\\Controllers\\Ecommerce2@products_select',
+                'value'  => 'Modules\\Bimgo\\Http\\Controllers\\Ecommerce2Controller::products_select()',
             ])
         ]);
         Block::create([
@@ -1519,7 +1617,7 @@ class PageTableSeeder extends Seeder
             'details'     => json_encode([
                 'name'   => 'title',
                 'label'  => 'Products List',
-                'value'  => 'Modules\\Bimgo\\Http\\Controllers\\Ecommerce2@products_list',
+                'value'  => 'Modules\\Bimgo\\Http\\Controllers\\Ecommerce2Controller::products_list()',
             ])
         ]);
 
