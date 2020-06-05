@@ -13,4 +13,8 @@ class BgSubCategory extends Model
     public function products(){
         return $this->hasMany('Modules\Bimgo\Entities\BgProduct', 'sub_category_id');
     }
+
+    public function category(){
+        return $this->belongsTo('Module\Bimgo\Entities\BgCategory', 'category_id');
+    }
 }
