@@ -201,25 +201,25 @@
                                         $images_field = $data->{$row->field};
                                     @endphp
                                     @if(isset($images_field))
-                                    <div class="row">
-                                        @php
-                                            $style = 'border: 5px solid #61CB47;';
-                                        @endphp
-                                        @foreach (json_decode($images_field) as $item)
-                                            <div 
-                                                class="form-group col-md-{{ 12/count(json_decode($images_field)) }} div-img"
-                                                style="{{ $style }} cursor:pointer"
-                                                data-toggle="tooltip" title="Click para hacer imagen principal"
-                                                data-id="{{ $data->id }}"
-                                                data-image="{{ $item }}"
-                                            >
-                                                <img class="img-responsive" src="{{ Voyager::image($item) }}">
-                                            </div>
+                                        <div class="row">
                                             @php
-                                                $style = '';
+                                                $style = 'border: 5px solid #61CB47;';
                                             @endphp
-                                        @endforeach
-                                    </div>
+                                            @foreach (json_decode($images_field) as $item)
+                                                <div 
+                                                    class="form-group col-md-{{ 12/count(json_decode($images_field)) }} div-img"
+                                                    style="{{ $style }} cursor:pointer"
+                                                    data-toggle="tooltip" title="Click para hacer imagen principal"
+                                                    data-id="{{ $data->id }}"
+                                                    data-image="{{ $item }}"
+                                                >
+                                                    <img class="img-responsive" src="{{ Voyager::image($item) }}">
+                                                </div>
+                                                @php
+                                                    $style = '';
+                                                @endphp
+                                            @endforeach
+                                        </div>
                                     @endif
                                     <input type="file" name="{{ $row->field }}[]" id="{{ $row->field }}" multiple="multiple"
                                         accept="image/*">
@@ -259,7 +259,6 @@
                                         data-placement="{{ $row->details->tooltip->{'ubication'} }}"
                                         title="{{ $row->details->tooltip->{'message'} }}"></span>
                                     @endif
-                                    
                                     <select 
                                         class="form-control select2" 
                                         name="{{ $row->field }}[]" 
@@ -281,6 +280,18 @@
                                             </option>
                                         @endforeach
                                     </select>
+                                    @break
+                                @case('code_editor')
+                                    <label class="control-label" for="{{ $row->field }}">{{ $row->display_name }}</label>
+                                    @if(isset($row->details->tooltip))
+                                        <span class="voyager-question"
+                                        aria-hidden="true"
+                                        data-toggle="tooltip"
+                                        data-placement="{{ $row->details->tooltip->{'ubication'} }}"
+                                        title="{{ $row->details->tooltip->{'message'} }}"></span>
+                                    @endif
+                                    <div id="{{ $row->field }}" class="ace_editor min_height_200" name="{{ $row->field }}"></div>
+                                    <textarea name="{{ $row->field }}" id="{{ $row->field }}" class="hidden">{{ $data->$myfield }}</textarea>
                                     @break
                             @endswitch
                         </div>
@@ -455,5 +466,14 @@
 
         map.locate();
         map.setZoom(13);
+    });
+
+
+    var editor = ace.edit("characteristics");
+    var textarea = $('textarea[name="characteristics"]').hide();
+    editor.getSession().setValue(textarea.val());
+    editor.session.setMode("ace/mode/json");
+    editor.getSession().on('change', function(){
+        textarea.val(editor.getSession().getValue());
     });
 </script>

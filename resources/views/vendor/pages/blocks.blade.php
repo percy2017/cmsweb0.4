@@ -62,7 +62,7 @@
                                         @case('dinamyc-data')
                                             @if($block->details)
                                                 @foreach (json_decode($block->details, true) as $item => $value)
-                                                    {{ $loop->index }}
+                                                    
                                                     @switch($value['type'])
                                                     
                                                         @case('text')

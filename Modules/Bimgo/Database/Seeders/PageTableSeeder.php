@@ -742,348 +742,348 @@ class PageTableSeeder extends Seeder
             'direction'   =>  'bimgo::pages.ecommerce1',
             'description' =>  'Pagina predeterminada para comercio electronico v1'
         ]);
-        $count = 1;
-        Block::create([
-            'name'        => 'ecommerce1.header',
-            'title'       => 'Encabezado',
-            'description' => 'Encabezado',
-            'page_id'     => $page->id,
-            'position'    => $count++,
-            'type'        => 'dinamyc-data',
-            'details'     => json_encode([
-                'tag' => [
-                    'type'   => 'text',
-                    'name'   => 'tag',
-                    'label'  => 'Tag de Cabezera',
-                    'value'  => 'bestseller',
-                    'width'  => 3
-                ],
-                'title' => [
-                    'type'   => 'text',
-                    'name'   => 'title',
-                    'label'  => 'Titulo del Banner',
-                    'value'  => 'This is news title',
-                    'width'  => 3
-                ],
-                'button' => [
-                    'type'   => 'text',
-                    'name'   => 'button',
-                    'label'  => 'Texto',
-                    'value'  => 'READ MORE',
-                    'width'  => 3
-                ],
-                'link' => [
-                    'type'   => 'text',
-                    'name'   => 'link',
-                    'label'  => 'Link del Boton',
-                    'value'  => '#',
-                    'width'  => 3
-                ],
-                'space1' => [
-                    'type'  => 'space',
-                    'name'  => 'space1',
-                ],
-                'image' => [
-                    'type'   => 'image',
-                    'name'   => 'image',
-                    'label'  => 'Imagen del Banner',
-                    'value'  => 'image1',
-                    'width'  => 4
-                ],
-                'parrafo' => [
-                    'type'   => 'rich_text_box',
-                    'name'   => 'parrafo',
-                    'label'  => 'Parrafo del Banner',
-                    'value'  => 'banner',
-                    'width'  => 8
-                ],
-                'space2' => [
-                    'type'  => 'space',
-                    'name'  => 'space2',
-                ],
-                'icon1' => [
-                    'type'   => 'select_dropdown',
-                    'name'   => 'icon1',
-                    'label'  => 'Icono 1',
-                    'value'  => 'fas fa-laptop dark-grey-text mr-2',
-                    'width'  => 6
-                ],
-                'name1' => [
-                    'type'   => 'text',
-                    'name'   => 'name1',
-                    'label'  => 'Nombre 1',
-                    'value'  => 'Laptos',
-                    'width'  => 6
-                ],
-                'icon2' => [
-                    'type'   => 'select_dropdown',
-                    'name'   => 'icon2',
-                    'label'  => 'Icono 2',
-                    'value'  => 'fas fa-mobile-alt dark-grey-text mr-3',
-                    'width'  => 6
-                ],
-                'name2' => [
-                    'type'   => 'text',
-                    'name'   => 'name2',
-                    'label'  => 'Nombre 2',
-                    'value'  => 'Smatphone',
-                    'width'  => 6
-                ],
-                'icon3' => [
-                    'type'   => 'select_dropdown',
-                    'name'   => 'icon3',
-                    'label'  => 'Icono 3',
-                    'value'  => 'fas fa-tablet-alt dark-grey-text mr-3',
-                    'width'  => 6
-                ],
-                'name3' => [
-                    'type'   => 'text',
-                    'name'   => 'name3',
-                    'label'  => 'Nombre 3',
-                    'value'  => 'Tablet',
-                    'width'  => 6
-                ],
-                'icon4' => [
-                    'type'   => 'select_dropdown',
-                    'name'   => 'icon4',
-                    'label'  => 'Icono 4',
-                    'value'  => 'fas fa-headphones-alt dark-grey-text mr-3',
-                    'width'  => 6
-                ],
-                'name4' => [
-                    'type'   => 'text',
-                    'name'   => 'name4',
-                    'label'  => 'Nombre 4',
-                    'value'  => 'Heahphones',
-                    'width'  => 6
-                ],
-                'icon5' => [
-                    'type'   => 'select_dropdown',
-                    'name'   => 'icon5',
-                    'label'  => 'Icono 5',
-                    'value'  => 'fas fa-camera-retro dark-grey-text mr-3',
-                    'width'  => 6
-                ],
-                'name5' => [
-                    'type'   => 'text',
-                    'name'   => 'name5',
-                    'label'  => 'Nombre 5',
-                    'value'  => 'Camara',
-                    'width'  => 6
-                ],
-                'icon6' => [
-                    'type'   => 'select_dropdown',
-                    'name'   => 'icon6',
-                    'label'  => 'Icono 6',
-                    'value'  => 'fas fa-suitcase dark-grey-text mr-3',
-                    'width'  => 6
-                ],
-                'name6' => [
-                    'type'   => 'text',
-                    'name'   => 'name6',
-                    'label'  => 'Nombre 6',
-                    'value'  => 'Accesories',
-                    'width'  => 6
-                ],
-                'icon7' => [
-                    'type'   => 'select_dropdown',
-                    'name'   => 'icon7',
-                    'label'  => 'Icono 7',
-                    'value'  => 'fas fa-tv dark-grey-text mr-3',
-                    'width'  => 6
-                ],
-                'name7' => [
-                    'type'   => 'text',
-                    'name'   => 'name7',
-                    'label'  => 'Nombre 7',
-                    'value'  => 'TV',
-                    'width'  => 6
-                ],
-            ])
-        ]);
-        Block::create([
-            'name'        => 'ecommerce1.products',
-            'title'       => 'Productos 1',
-            'description' => 'Products',
-            'page_id'     => $page->id,
-            'position'    => $count++,
-            'type'        => 'controller',
-            'details'     => json_encode([
-                'name'   => 'products',
-                'label'  => 'Productos de a 6',
-                'value'  => 'Modules\\Bimgo\\Http\\Controllers\\Ecommerce1Controller::products()'
-            ])
-        ]);
-        Block::create([
-            'name'        => 'ecommerce1.banner',
-            'title'       => 'Banner',
-            'description' => 'Banner Dinamico',
-            'page_id'     => $page->id,
-            'position'    => $count++,
-            'type'        => 'dinamyc-data',
-            'details'     => json_encode([
-                'tag' => [
-                    'type'   => 'text',
-                    'name'   => 'tag',
-                    'label'  => 'Tag Superior Derecho',
-                    'value'  => 'SALE',
-                    'width'  => 4
-                ],
-                'title' => [
-                    'type'   => 'text',
-                    'name'   => 'title',
-                    'label'  => 'Titulo Principal',
-                    'value'  => 'Sale 20% off on every smartphone!',
-                    'width'  => 4
-                ],
-                'description' => [
-                    'type'   => 'text_area',
-                    'name'   => 'description',
-                    'label'  => 'Titulo Principal',
-                    'value'  => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
-                    'width'  => 4
-                ],
-                'button_text' => [
-                    'type'   => 'text',
-                    'name'   => 'button_text',
-                    'label'  => 'Texto del Boton',
-                    'value'  => 'READ MORE',
-                    'width'  => 3
-                ],
-                'button_link' => [
-                    'type'   => 'text',
-                    'name'   => 'button_link',
-                    'label'  => 'link del Boton',
-                    'value'  => '#',
-                    'width'  => 3
-                ],
-                'banner' => [
-                    'type'   => 'image',
-                    'name'   => 'banner',
-                    'label'  => 'Imagen del Banner',
-                    'value'  => 'banner.png',
-                    'width'  => 6
-                ],
-                'space1' => [
-                    'type'  => 'space',
-                    'name'  => 'space1',
-                ],
-                'tag2' => [
-                    'type'   => 'text',
-                    'name'   => 'tag2',
-                    'label'  => 'Tag Superior Izquierdo',
-                    'value'  => 'bestseller',
-                    'width'  => 4
-                ],
-                'title2' => [
-                    'type'   => 'text',
-                    'name'   => 'title2',
-                    'label'  => 'Titulo Principal',
-                    'value'  => 'This is news title',
-                    'width'  => 4
-                ],
-                'description2' => [
-                    'type'   => 'text_area',
-                    'name'   => 'description2',
-                    'label'  => 'Titulo Principal',
-                    'value'  => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
-                    'width'  => 4
-                ],
-                'button_text2' => [
-                    'type'   => 'text',
-                    'name'   => 'button_text2',
-                    'label'  => 'Texto del Boton',
-                    'value'  => 'READ MORE',
-                    'width'  => 3
-                ],
-                'button_link2' => [
-                    'type'   => 'text',
-                    'name'   => 'button_link2',
-                    'label'  => 'link del Boton',
-                    'value'  => '#',
-                    'width'  => 3
-                ],
-                'banner2' => [
-                    'type'   => 'image',
-                    'name'   => 'banner2',
-                    'label'  => 'Imagen del Banner',
-                    'value'  => 'banner2.png',
-                    'width'  => 6
-                ],
-                'space2' => [
-                    'type'  => 'space',
-                    'name'  => 'space2',
-                ],
-                'tag3' => [
-                    'type'   => 'text',
-                    'name'   => 'tag3',
-                    'label'  => 'Tag Superior Centro',
-                    'value'  => 'NEW',
-                    'width'  => 4
-                ],
-                'title3' => [
-                    'type'   => 'text',
-                    'name'   => 'title3',
-                    'label'  => 'Titulo Principal',
-                    'value'  => 'This is news title',
-                    'width'  => 4
-                ],
-                'description3' => [
-                    'type'   => 'text_area',
-                    'name'   => 'description3',
-                    'label'  => 'Titulo Principal',
-                    'value'  => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
-                    'width'  => 4
-                ],
-                'button_text3' => [
-                    'type'   => 'text',
-                    'name'   => 'button_text3',
-                    'label'  => 'Texto del Boton',
-                    'value'  => 'READ MORE',
-                    'width'  => 3
-                ],
-                'button_link3' => [
-                    'type'   => 'text',
-                    'name'   => 'button_link3',
-                    'label'  => 'link del Boton',
-                    'value'  => '#',
-                    'width'  => 3
-                ],
-                'banner3' => [
-                    'type'   => 'image',
-                    'name'   => 'banner3',
-                    'label'  => 'Imagen del Banner',
-                    'value'  => 'banner3.png',
-                    'width'  => 6
-                ]
-            ])
-        ]);
-        Block::create([
-            'name'        => 'ecommerce1.products2',
-            'title'       => 'Productos Tipo 2',
-            'description' => 'Header Dinamyc',
-            'page_id'     => $page->id,
-            'position'    => $count++,
-            'type'        => 'controller',
-            'details'     => json_encode([
-                'name'   => 'products',
-                'label'  => 'Productos por Categorias',
-                'value'  => 'Modules\\Bimgo\\Http\\Controllers\\Ecommerce1Controller::products2()'
-            ])
-        ]);
-        Block::create([
-            'name'        => 'ecommerce1.list_products',
-            'title'       => 'Lista Productos',
-            'description' => 'Header Dinamyc',
-            'page_id'     => $page->id,
-            'position'    => $count++,
-            'type'        => 'controller',
-            'details'     => json_encode([
-                'name'   => 'products',
-                'label'  => 'Lista de Productos',
-                'value'  => 'Modules\\Bimgo\\Http\\Controllers\\Ecommerce1Controller::list_products()'
-            ])
-        ]);
+            $count = 1;
+            Block::create([
+                'name'        => 'ecommerce1.header',
+                'title'       => 'Encabezado',
+                'description' => 'Encabezado',
+                'page_id'     => $page->id,
+                'position'    => $count++,
+                'type'        => 'dinamyc-data',
+                'details'     => json_encode([
+                    'tag' => [
+                        'type'   => 'text',
+                        'name'   => 'tag',
+                        'label'  => 'Tag de Cabezera',
+                        'value'  => 'bestseller',
+                        'width'  => 3
+                    ],
+                    'title' => [
+                        'type'   => 'text',
+                        'name'   => 'title',
+                        'label'  => 'Titulo del Banner',
+                        'value'  => 'This is news title',
+                        'width'  => 3
+                    ],
+                    'button' => [
+                        'type'   => 'text',
+                        'name'   => 'button',
+                        'label'  => 'Texto',
+                        'value'  => 'READ MORE',
+                        'width'  => 3
+                    ],
+                    'link' => [
+                        'type'   => 'text',
+                        'name'   => 'link',
+                        'label'  => 'Link del Boton',
+                        'value'  => '#',
+                        'width'  => 3
+                    ],
+                    'space1' => [
+                        'type'  => 'space',
+                        'name'  => 'space1',
+                    ],
+                    'image' => [
+                        'type'   => 'image',
+                        'name'   => 'image',
+                        'label'  => 'Imagen del Banner',
+                        'value'  => 'image1',
+                        'width'  => 4
+                    ],
+                    'parrafo' => [
+                        'type'   => 'rich_text_box',
+                        'name'   => 'parrafo',
+                        'label'  => 'Parrafo del Banner',
+                        'value'  => 'banner',
+                        'width'  => 8
+                    ],
+                    'space2' => [
+                        'type'  => 'space',
+                        'name'  => 'space2',
+                    ],
+                    'icon1' => [
+                        'type'   => 'select_dropdown',
+                        'name'   => 'icon1',
+                        'label'  => 'Icono 1',
+                        'value'  => 'fas fa-laptop dark-grey-text mr-2',
+                        'width'  => 6
+                    ],
+                    'name1' => [
+                        'type'   => 'text',
+                        'name'   => 'name1',
+                        'label'  => 'Nombre 1',
+                        'value'  => 'Laptos',
+                        'width'  => 6
+                    ],
+                    'icon2' => [
+                        'type'   => 'select_dropdown',
+                        'name'   => 'icon2',
+                        'label'  => 'Icono 2',
+                        'value'  => 'fas fa-mobile-alt dark-grey-text mr-3',
+                        'width'  => 6
+                    ],
+                    'name2' => [
+                        'type'   => 'text',
+                        'name'   => 'name2',
+                        'label'  => 'Nombre 2',
+                        'value'  => 'Smatphone',
+                        'width'  => 6
+                    ],
+                    'icon3' => [
+                        'type'   => 'select_dropdown',
+                        'name'   => 'icon3',
+                        'label'  => 'Icono 3',
+                        'value'  => 'fas fa-tablet-alt dark-grey-text mr-3',
+                        'width'  => 6
+                    ],
+                    'name3' => [
+                        'type'   => 'text',
+                        'name'   => 'name3',
+                        'label'  => 'Nombre 3',
+                        'value'  => 'Tablet',
+                        'width'  => 6
+                    ],
+                    'icon4' => [
+                        'type'   => 'select_dropdown',
+                        'name'   => 'icon4',
+                        'label'  => 'Icono 4',
+                        'value'  => 'fas fa-headphones-alt dark-grey-text mr-3',
+                        'width'  => 6
+                    ],
+                    'name4' => [
+                        'type'   => 'text',
+                        'name'   => 'name4',
+                        'label'  => 'Nombre 4',
+                        'value'  => 'Heahphones',
+                        'width'  => 6
+                    ],
+                    'icon5' => [
+                        'type'   => 'select_dropdown',
+                        'name'   => 'icon5',
+                        'label'  => 'Icono 5',
+                        'value'  => 'fas fa-camera-retro dark-grey-text mr-3',
+                        'width'  => 6
+                    ],
+                    'name5' => [
+                        'type'   => 'text',
+                        'name'   => 'name5',
+                        'label'  => 'Nombre 5',
+                        'value'  => 'Camara',
+                        'width'  => 6
+                    ],
+                    'icon6' => [
+                        'type'   => 'select_dropdown',
+                        'name'   => 'icon6',
+                        'label'  => 'Icono 6',
+                        'value'  => 'fas fa-suitcase dark-grey-text mr-3',
+                        'width'  => 6
+                    ],
+                    'name6' => [
+                        'type'   => 'text',
+                        'name'   => 'name6',
+                        'label'  => 'Nombre 6',
+                        'value'  => 'Accesories',
+                        'width'  => 6
+                    ],
+                    'icon7' => [
+                        'type'   => 'select_dropdown',
+                        'name'   => 'icon7',
+                        'label'  => 'Icono 7',
+                        'value'  => 'fas fa-tv dark-grey-text mr-3',
+                        'width'  => 6
+                    ],
+                    'name7' => [
+                        'type'   => 'text',
+                        'name'   => 'name7',
+                        'label'  => 'Nombre 7',
+                        'value'  => 'TV',
+                        'width'  => 6
+                    ],
+                ])
+            ]);
+            Block::create([
+                'name'        => 'ecommerce1.products',
+                'title'       => 'Productos 1',
+                'description' => 'Products',
+                'page_id'     => $page->id,
+                'position'    => $count++,
+                'type'        => 'controller',
+                'details'     => json_encode([
+                    'name'   => 'products',
+                    'label'  => 'Productos de a 6',
+                    'value'  => 'Modules\\Bimgo\\Http\\Controllers\\Ecommerce1Controller::products()'
+                ])
+            ]);
+            Block::create([
+                'name'        => 'ecommerce1.banner',
+                'title'       => 'Banner',
+                'description' => 'Banner Dinamico',
+                'page_id'     => $page->id,
+                'position'    => $count++,
+                'type'        => 'dinamyc-data',
+                'details'     => json_encode([
+                    'tag' => [
+                        'type'   => 'text',
+                        'name'   => 'tag',
+                        'label'  => 'Tag Superior Derecho',
+                        'value'  => 'SALE',
+                        'width'  => 4
+                    ],
+                    'title' => [
+                        'type'   => 'text',
+                        'name'   => 'title',
+                        'label'  => 'Titulo Principal',
+                        'value'  => 'Sale 20% off on every smartphone!',
+                        'width'  => 4
+                    ],
+                    'description' => [
+                        'type'   => 'text_area',
+                        'name'   => 'description',
+                        'label'  => 'Titulo Principal',
+                        'value'  => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+                        'width'  => 4
+                    ],
+                    'button_text' => [
+                        'type'   => 'text',
+                        'name'   => 'button_text',
+                        'label'  => 'Texto del Boton',
+                        'value'  => 'READ MORE',
+                        'width'  => 3
+                    ],
+                    'button_link' => [
+                        'type'   => 'text',
+                        'name'   => 'button_link',
+                        'label'  => 'link del Boton',
+                        'value'  => '#',
+                        'width'  => 3
+                    ],
+                    'banner' => [
+                        'type'   => 'image',
+                        'name'   => 'banner',
+                        'label'  => 'Imagen del Banner',
+                        'value'  => 'banner.png',
+                        'width'  => 6
+                    ],
+                    'space1' => [
+                        'type'  => 'space',
+                        'name'  => 'space1',
+                    ],
+                    'tag2' => [
+                        'type'   => 'text',
+                        'name'   => 'tag2',
+                        'label'  => 'Tag Superior Izquierdo',
+                        'value'  => 'bestseller',
+                        'width'  => 4
+                    ],
+                    'title2' => [
+                        'type'   => 'text',
+                        'name'   => 'title2',
+                        'label'  => 'Titulo Principal',
+                        'value'  => 'This is news title',
+                        'width'  => 4
+                    ],
+                    'description2' => [
+                        'type'   => 'text_area',
+                        'name'   => 'description2',
+                        'label'  => 'Titulo Principal',
+                        'value'  => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+                        'width'  => 4
+                    ],
+                    'button_text2' => [
+                        'type'   => 'text',
+                        'name'   => 'button_text2',
+                        'label'  => 'Texto del Boton',
+                        'value'  => 'READ MORE',
+                        'width'  => 3
+                    ],
+                    'button_link2' => [
+                        'type'   => 'text',
+                        'name'   => 'button_link2',
+                        'label'  => 'link del Boton',
+                        'value'  => '#',
+                        'width'  => 3
+                    ],
+                    'banner2' => [
+                        'type'   => 'image',
+                        'name'   => 'banner2',
+                        'label'  => 'Imagen del Banner',
+                        'value'  => 'banner2.png',
+                        'width'  => 6
+                    ],
+                    'space2' => [
+                        'type'  => 'space',
+                        'name'  => 'space2',
+                    ],
+                    'tag3' => [
+                        'type'   => 'text',
+                        'name'   => 'tag3',
+                        'label'  => 'Tag Superior Centro',
+                        'value'  => 'NEW',
+                        'width'  => 4
+                    ],
+                    'title3' => [
+                        'type'   => 'text',
+                        'name'   => 'title3',
+                        'label'  => 'Titulo Principal',
+                        'value'  => 'This is news title',
+                        'width'  => 4
+                    ],
+                    'description3' => [
+                        'type'   => 'text_area',
+                        'name'   => 'description3',
+                        'label'  => 'Titulo Principal',
+                        'value'  => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+                        'width'  => 4
+                    ],
+                    'button_text3' => [
+                        'type'   => 'text',
+                        'name'   => 'button_text3',
+                        'label'  => 'Texto del Boton',
+                        'value'  => 'READ MORE',
+                        'width'  => 3
+                    ],
+                    'button_link3' => [
+                        'type'   => 'text',
+                        'name'   => 'button_link3',
+                        'label'  => 'link del Boton',
+                        'value'  => '#',
+                        'width'  => 3
+                    ],
+                    'banner3' => [
+                        'type'   => 'image',
+                        'name'   => 'banner3',
+                        'label'  => 'Imagen del Banner',
+                        'value'  => 'banner3.png',
+                        'width'  => 6
+                    ]
+                ])
+            ]);
+            Block::create([
+                'name'        => 'ecommerce1.products2',
+                'title'       => 'Productos Tipo 2',
+                'description' => 'Header Dinamyc',
+                'page_id'     => $page->id,
+                'position'    => $count++,
+                'type'        => 'controller',
+                'details'     => json_encode([
+                    'name'   => 'products',
+                    'label'  => 'Productos por Categorias',
+                    'value'  => 'Modules\\Bimgo\\Http\\Controllers\\Ecommerce1Controller::products2()'
+                ])
+            ]);
+            Block::create([
+                'name'        => 'ecommerce1.list_products',
+                'title'       => 'Lista Productos',
+                'description' => 'Header Dinamyc',
+                'page_id'     => $page->id,
+                'position'    => $count++,
+                'type'        => 'controller',
+                'details'     => json_encode([
+                    'name'   => 'products',
+                    'label'  => 'Lista de Productos',
+                    'value'  => 'Modules\\Bimgo\\Http\\Controllers\\Ecommerce1Controller::list_products()'
+                ])
+            ]);
 
 
         //--------------------------------------------------------------------------------------------page category-Ecommerce1 
@@ -1094,44 +1094,44 @@ class PageTableSeeder extends Seeder
             'direction'   =>  'bimgo::pages.generica1',
             'description' =>  'Pagina Category predeterminada para comercio electronico v1'
         ]);
-        $count = 1;
-        Block::create([
-            'name'        => 'ecommerce1.category',
-            'title'       => 'Categoria',
-            'description' => 'Categoria',
-            'page_id'     => $page->id,
-            'position'    => $count++,
-            'type'        => 'controller',
-            'details'     => json_encode([
-                'name'   => 'title',
-                'label'  => 'Encabezado',
-                'value'  => 'Modules\\Bimgo\\Http\\Controllers\\Ecommerce1Controller@category',
-            ])
-        ]);
+            $count = 1;
+            Block::create([
+                'name'        => 'ecommerce1.category',
+                'title'       => 'Categoria',
+                'description' => 'Categoria',
+                'page_id'     => $page->id,
+                'position'    => $count++,
+                'type'        => 'controller',
+                'details'     => json_encode([
+                    'name'   => 'title',
+                    'label'  => 'Encabezado',
+                    'value'  => 'Modules\\Bimgo\\Http\\Controllers\\Ecommerce1Controller@category',
+                ])
+            ]);
 
 
         //-------------------------------------------------------------------------------------------page product- Ecommerce1            
-        $page = Page::create([
-            'name'        =>  'product',
-            'slug'        =>  'product',
-            'user_id'     =>  1,
-            'direction'   =>  'bimgo::pages.generica1',
-            'description' =>  'Pagina Product predeterminada para comercio electronico v1'
-        ]);
-        $count = 1;
-        Block::create([
-            'name'        => 'ecommerce1.product',
-            'title'       => 'Product',
-            'description' => 'Product',
-            'page_id'     => $page->id,
-            'position'    => $count++,
-            'type'        => 'controller',
-            'details'     => json_encode([
-                'name'   => 'title',
-                'label'  => 'Encabezado',
-                'value'  => 'Modules\\Bimgo\\Http\\Controllers\\Ecommerce1Controller@product',
-            ])
-        ]);
+        // $page = Page::create([
+        //     'name'        =>  'product',
+        //     'slug'        =>  'product',
+        //     'user_id'     =>  1,
+        //     'direction'   =>  'bimgo::pages.generica1',
+        //     'description' =>  'Pagina Product predeterminada para comercio electronico v1'
+        // ]);
+        // $count = 1;
+        // Block::create([
+        //     'name'        => 'ecommerce1.product',
+        //     'title'       => 'Product',
+        //     'description' => 'Product',
+        //     'page_id'     => $page->id,
+        //     'position'    => $count++,
+        //     'type'        => 'controller',
+        //     'details'     => json_encode([
+        //         'name'   => 'title',
+        //         'label'  => 'Encabezado',
+        //         'value'  => 'Modules\\Bimgo\\Http\\Controllers\\Ecommerce1Controller@product',
+        //     ])
+        // ]);
 
 
         //----------------------------------------------------------------------------------------------page cart- Ecommerce1

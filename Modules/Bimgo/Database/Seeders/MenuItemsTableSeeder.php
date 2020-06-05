@@ -119,7 +119,10 @@ class MenuItemsTableSeeder extends Seeder
         }
 
         //-------------------------------------------------
-
+        Menu::firstOrCreate([
+            'name' => 'bg_product_details',
+        ]);
+        //-------------------------------------------------
         Menu::firstOrCreate([
             'name' => 'bg_branch_offices',
         ]);

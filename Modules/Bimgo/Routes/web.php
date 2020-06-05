@@ -10,6 +10,8 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('product/{slug}', 'Ecommerce1Controller@product_details')->name('bg_view');
+
 Route::group(['prefix' => 'admin'], function () {
     Route::post('bimgo/search', 'BimgoController@search')->name('bg_search');
     Route::get('bimgo/relationship/{id}/{table}/{key}/{type}', 'BimgoController@relationship')->name('bg_relationship');
@@ -19,5 +21,6 @@ Route::group(['prefix' => 'admin'], function () {
 
     Route::post('bimgo/update_image', 'ProductController@main_image')->name('update_image');
 
+    
 });
 

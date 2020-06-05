@@ -17,14 +17,12 @@ class CreateBgProductsTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('slug');
-            $table->string('description')->nullable();
+            $table->text('description')->nullable();
             $table->string('images')->nullable();
-            $table->integer('stock')->nullable();
-            $table->double('price')->default(0);
-            $table->double('price_last')->default(0);
             $table->string('tags')->nullable();
             $table->string('stars')->nullable();
-            $table->string('description_long')->nullable();
+            $table->text('characteristics')->nullable();
+            $table->text('description_long')->nullable();
 
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');

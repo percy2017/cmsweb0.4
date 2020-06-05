@@ -2,6 +2,7 @@
     <div class="row">
         <div class="col-12">
             <div class="row">
+            {{--  {{ dd($data) }}  --}}
                 @foreach ($data as $item)
                     @php
                         $images = $item->images ? json_decode($item->images)[0] : '../images/icons-bimgo/icon-512x512.png';
@@ -11,7 +12,7 @@
                             <div class="view overlay">
                                 <img src="{{ Voyager::image($images) }}"
                                     class="img-fluid" alt="">
-                                <a href="{{ url($item->slug) }}">
+                                <a href="{{ url('product/'.$item->slug) }}">
                                     <div class="mask rgba-white-slight"></div>
                                 </a>
                             </div>
@@ -71,6 +72,7 @@
                                         @else 
                                             <span class="float-left"><strong>{{ $item->price }} Bs.</strong></span>
                                         @endif
+                                        {{ $item->product_details[0]->price }}
                                         <span class="float-right">
                                             <a class="" data-toggle="tooltip" data-placement="top" title="Agregar al Carrito"><i
                                                 class="fas fa-shopping-cart ml-3"></i></a>

@@ -83,7 +83,7 @@ class Ecommerce1Controller extends Controller
 
     static function products()
     {
-        $products = BgProduct::orderBy('id', 'desc')->limit(6)->get();
+        $products = BgProduct::with(['product_details'])->orderBy('id', 'desc')->limit(6)->get();
         return $products;
     }
     static function products2(){        
@@ -94,5 +94,15 @@ class Ecommerce1Controller extends Controller
     {
         $products = BgProduct::orderBy('id', 'desc')->paginate(4);
         return $products;
+    }
+
+    function product_details($slug)
+    {
+        // $page = setting('site.page');
+        $product = BgProduct::where('slug', $slug)->first();
+        return view('bimgo::pages.product_details1', [
+            'product'  => $product,
+            'page' => $product
+        ]);
     }
 }

@@ -8,6 +8,7 @@ use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use TCG\Voyager\Facades\Voyager;
 use Validator;
 class BimgoController extends Controller
 {
@@ -97,13 +98,15 @@ class BimgoController extends Controller
 
     public function relationship($id, $table, $key, $type)
     {
+        
         $dataType = Voyager::model('DataType')->where('slug', '=', $table)->first();
 
         switch ($type) {
             case 'list':
-                 
+                // return $dataType->model_name;
                 $dataTypeContent = $dataType->model_name::where($key, $id)->orderBy('id', 'asc')->paginate(setting('admin.pagination')); 
-                return view('webstreaming::bread.show', [
+                
+                return view('bimgo::bread.show', [
                     'dataType' =>  $dataType,
                     'dataTypeContent' => $dataTypeContent
                 ]);
@@ -112,7 +115,7 @@ class BimgoController extends Controller
                 $dataType = Voyager::model('DataType')->where('slug', '=', $table)->first();
                 $dataRowsAdd = Voyager::model('DataRow')->where([['data_type_id', '=', $dataType->id], ['add', "=", 1]])->orderBy('order', 'asc')->get();
         
-                return view('webstreaming::bread.create', [
+                return view('bimgo::bread.create', [
                     'dataType' => $dataType,
                     'dataRows'=>$dataRowsAdd,
                     'key' => $key,

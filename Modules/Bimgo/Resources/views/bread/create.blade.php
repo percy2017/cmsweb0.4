@@ -292,6 +292,18 @@
                                                 @endforeach
                                             </select>
                                             @break
+                                        @case('code_editor')
+                                            <label class="control-label" for="{{ $row->field }}">{{ $row->display_name }}</label>
+                                            @if(isset($row->details->tooltip))
+                                                <span class="voyager-question"
+                                                aria-hidden="true"
+                                                data-toggle="tooltip"
+                                                data-placement="{{ $row->details->tooltip->{'ubication'} }}"
+                                                title="{{ $row->details->tooltip->{'message'} }}"></span>
+                                            @endif
+                                            <div id="{{ $row->field }}" class="ace_editor min_height_200" name="{{ $row->field }}"></div>
+                                            <textarea name="{{ $row->field }}" id="{{ $row->field }}" class="hidden"></textarea>
+                                            @break
                                     @endswitch        
                                 </div>
                             @endforeach
@@ -369,7 +381,7 @@
                     contentType : false,
                     processData : false,
                     success: function (data) {
-                        
+                        console.log(data);
                         if(data.error)
                         {
                             let message='';
@@ -440,4 +452,11 @@
         map.setZoom(13);
     });
 
+    var editor = ace.edit("characteristics");
+    var textarea = $('textarea[name="characteristics"]').hide();
+    editor.getSession().setValue(textarea.val());
+    editor.session.setMode("ace/mode/json");
+    editor.getSession().on('change', function(){
+        textarea.val(editor.getSession().getValue());
+    });
 </script>

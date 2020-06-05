@@ -9,5 +9,9 @@ class BgProduct extends Model
 {
     use SoftDeletes;
     protected $table = 'bg_products';
-    protected $fillable = ['name', 'slug', 'description', 'sub_category_id', 'images', 'price', 'stock', 'tags', 'user_id', 'description_long'];
+    protected $fillable = ['code', 'name', 'slug', 'description', 'sub_category_id', 'images', 'tags', 'user_id', 'description_long', 'characteristics'];
+
+    public function product_details(){
+        return $this->hasMany('Modules\Bimgo\Entities\BgProductDetail', 'product_id');
+    }
 }

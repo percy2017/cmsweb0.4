@@ -84,6 +84,28 @@ class DataTypeTableSeeder extends Seeder
             ])->save();
         }
 
+        $dataType = $this->dataType('slug', 'bg_product_details');
+        if (!$dataType->exists) {
+            $dataType->fill([
+                'name'                  => 'bg_product_details',
+                'display_name_singular' => 'Detalle de Producto',
+                'display_name_plural'   => 'Detalles de Productos',
+                'icon'                  => 'voyager-play',
+                'model_name'            => 'Modules\\Bimgo\\Entities\\BgProductDetail',
+                'policy_name'           => null,
+                'controller'            => 'Modules\\Bimgo\\Http\\Controllers\\ProductDetailsController',
+                'generate_permissions'  => 1,
+                'description'           => null,
+                'server_side'           => 1,
+                'details'               => [
+                    'order_column'         => 'id',
+                    'order_display_column' => 'id',
+                    'order_direction'      => 'asc',
+                    'default_search_key'   => 'id',
+                    'scope'                => null
+                ]
+            ])->save();
+        }
 
         $dataType = $this->dataType('slug', 'bg_branch_offices');
         if (!$dataType->exists) {

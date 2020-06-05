@@ -131,6 +131,7 @@ return [
                 'route'      => '/home',
                 'classes'    => 'class-full-of-rum',
                 'icon_class' => 'voyager-person',
+                'target_blank' => true,
             ],
             'voyager::generic.home' => [
                 'route'        => '/',
@@ -140,22 +141,27 @@ return [
             'Parametros' => [
                 'route'      => 'voyager.settings.index',
                 'icon_class' => 'voyager-settings',
+                'target_blank' => true,
             ],
             'Bread' => [
                 'route'      => 'voyager.bread.index',
                 'icon_class' => 'voyager-bread',
+                'target_blank' => true,
             ],
             'Compass' => [
                 'route'      => 'voyager.compass.index',
                 'icon_class' => 'voyager-compass',
+                'target_blank' => true,
             ],
             'Base de Datos' => [
                 'route'      => 'voyager.database.index',
                 'icon_class' => 'voyager-data',
+                'target_blank' => true,
             ],
             'Paquetes' => [
                 'route'      => 'voyager.modules.index',
                 'icon_class' => 'voyager-github-icon',
+                'target_blank' => true,
             ],
             'voyager::generic.logout' => [
                 'route'      => 'voyager.logout',

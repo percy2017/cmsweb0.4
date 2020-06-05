@@ -14,12 +14,9 @@ use Intervention\Image\Facades\Image;
 use Carbon\Carbon;
 use Validator;
 
-// Models
-use Modules\Bimgo\Entities\BgProduct;
-
-class ProductController extends Controller
+class ProductDetailsController extends Controller
 {
-    public $table = 'bg_products';
+    public $table = 'bg_product_details';
     public $dataType;
     public $dataRowsAdd;
     public $dataRowsEdit;
