@@ -25,7 +25,7 @@ class PageTableSeeder extends Seeder
         Page::where('user_id', 1)->delete();
         Block::where('deleted_at', null)->delete();
 
-        //--------------------------------------------------------------------------------------------------landing page bimgo
+        //--------------------------------------------------------------------------------------landing page bimgo
         $page = Page::create([
             'name'        =>  'Landing Page BimGo',
             'slug'        =>  'landing-page-bimgo',
