@@ -88,18 +88,20 @@
             {{--  </h2>  --}}
             {{--  <span class="badge badge-success product mb-4 ml-2">SALE</span>  --}}
             <h3 class="h3-responsive text-center text-md-left mb-5 ml-xl-0 ml-4">
-              @if($product->price_last > 0)
+            
+              @if($product->product_details[0]->price_last > 0)
                 <span class="red-text font-weight-bold">
-                  <strong>{{ $product->price }} Bs.</strong>
+                
+                  <strong>{{ $product->product_details[0]->price }} Bs.</strong>
                 </span>
                 <span class="grey-text">
                   <small>
-                    <s>{{ $product->price_last }} Bs.</s>
+                    <s>{{ $product->product_details[0]->price_last }} Bs.</s>
                   </small>
                 </span>
               @else 
                 <span class="dark-grey-text font-weight-bold">
-                  <strong>{{ $product->price }} Bs.</strong>
+                  <strong>{{ $product->product_details[0]->price }} Bs.</strong>
                 </span>
               @endif
             </h3>

@@ -99,7 +99,7 @@ class Ecommerce1Controller extends Controller
     function product_details($slug)
     {
         // $page = setting('site.page');
-        $product = BgProduct::where('slug', $slug)->first();
+        $product = BgProduct::with(['product_details'])->where('slug', $slug)->first();
         return view('bimgo::pages.product_details1', [
             'product'  => $product,
             'page' => $product

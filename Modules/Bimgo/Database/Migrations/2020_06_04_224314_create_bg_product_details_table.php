@@ -17,6 +17,7 @@ class CreateBgProductDetailsTable extends Migration
             $table->bigIncrements('id');
             $table->string('type');
             $table->string('code')->nullable();
+            $table->string('title');
             $table->integer('stock')->nullable();
             $table->double('price')->default(0);
             $table->double('price_last')->default(0);

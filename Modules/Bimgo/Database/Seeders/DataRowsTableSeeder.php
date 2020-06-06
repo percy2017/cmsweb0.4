@@ -238,7 +238,7 @@ class DataRowsTableSeeder extends Seeder
                     'type'        => 'belongsTo',
                     'column'      => 'category_id',
                     'key'         => 'id',
-                    'label'       => 'id',
+                    'label'       => 'title',
                     'pivot_table' => 'category_id',
                     'pivot'       => 0,
                 ],
@@ -753,6 +753,10 @@ class DataRowsTableSeeder extends Seeder
                 'add'          => 1,
                 'delete'       => 0,
                 'details'      => [
+                    'tooltip' => [
+                        'ubication' => 'top',
+                        'message' => 'Producto Asociado'
+                    ],
                     'display' => [
                         'width' => 6
                     ],
@@ -781,6 +785,10 @@ class DataRowsTableSeeder extends Seeder
                 'add'          => 1,
                 'delete'       => 0,
                 'details'      => [
+                    'tooltip' => [
+                        'ubication' => 'top',
+                        'message' => 'Codigo de la tienda'
+                    ],
                     'display' => [
                         'width' => '6'
                     ]
@@ -800,6 +808,10 @@ class DataRowsTableSeeder extends Seeder
                 'add'          => 1,
                 'delete'       => 0,
                 'details'      => [
+                    'tooltip' => [
+                        'ubication' => 'top',
+                        'message' => 'Filtro del Producto'
+                    ],
                     'display' => [
                         'width' => '6'
                     ],
@@ -809,6 +821,25 @@ class DataRowsTableSeeder extends Seeder
                         'Talla' => 'Talla',
                         'Capacidad' => 'Capacidad',
                         'Modelo' => 'Modelo'
+                    ]
+                ],
+                'order'  => $postion++,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($ProductDetailsDataType, 'title');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'text',
+                'display_name' => 'Titulo',
+                'required'     => 0,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'details'      => [
+                    'display' => [
+                        'width' => '6'
                     ]
                 ],
                 'order'  => $postion++,
@@ -827,6 +858,10 @@ class DataRowsTableSeeder extends Seeder
                 'delete'       => 0,
                 'order'        => $postion++,
                 'details'      => [
+                    'tooltip' => [
+                        'ubication' => 'top',
+                        'message' => 'Cantidad en el Inventario'
+                    ],
                     'display'   => [
                         'width'  => '6',
                     ],
@@ -846,6 +881,34 @@ class DataRowsTableSeeder extends Seeder
                 'delete'       => 0,
                 'order'        => $postion++,
                 'details'      => [
+                    'tooltip' => [
+                        'ubication' => 'top',
+                        'message' => 'Precio Sin Original'
+                    ],
+                    'display'   => [
+                        'width'  => '6',
+                    ],
+                ]
+            ])->save();
+        } 
+        
+        $dataRow = $this->dataRow($ProductDetailsDataType, 'price_last');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'number',
+                'display_name' => 'Precio Anterior',
+                'required'     => 0,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'order'        => $postion++,
+                'details'      => [
+                    'tooltip' => [
+                        'ubication' => 'top',
+                        'message' => 'Precio con Descuento'
+                    ],
                     'display'   => [
                         'width'  => '6',
                     ],
@@ -865,6 +928,10 @@ class DataRowsTableSeeder extends Seeder
                 'delete'       => 0,
                 'order'        => $postion++,
                 'details'      => [
+                    'tooltip' => [
+                        'ubication' => 'top',
+                        'message' => 'Data Principal'
+                    ],
                     'on'  => 'Dato Default',
                     'off' => 'No Default',
                     'checked' => true,
@@ -874,25 +941,6 @@ class DataRowsTableSeeder extends Seeder
                 ]
             ])->save();
         }
-        $dataRow = $this->dataRow($ProductDetailsDataType, 'price_last');
-        if (!$dataRow->exists) {
-            $dataRow->fill([
-                'type'         => 'number',
-                'display_name' => 'Precio Anterior',
-                'required'     => 0,
-                'browse'       => 1,
-                'read'         => 1,
-                'edit'         => 1,
-                'add'          => 1,
-                'delete'       => 0,
-                'order'        => $postion++,
-                'details'      => [
-                    'display'   => [
-                        'width'  => '6',
-                    ],
-                ]
-            ])->save();
-        } 
         $dataRow = $this->dataRow($ProductDetailsDataType, 'created_at');
         if (!$dataRow->exists) {
             $dataRow->fill([
