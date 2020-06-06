@@ -11,6 +11,7 @@
 |
 */
 Route::get('product/{slug}', 'Ecommerce1Controller@product_details')->name('bg_view');
+Route::get('my/cart', 'Ecommerce1Controller@cart')->name('bg_cart');
 
 Route::group(['prefix' => 'admin'], function () {
     Route::post('bimgo/search', 'BimgoController@search')->name('bg_search');

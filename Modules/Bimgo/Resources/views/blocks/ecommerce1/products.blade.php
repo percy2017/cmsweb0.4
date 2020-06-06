@@ -10,8 +10,7 @@
                     <div class="col-lg-4 col-md-12 mb-4">
                         <div class="card card-ecommerce">
                             <div class="view overlay">
-                                <img src="{{ Voyager::image($images) }}"
-                                    class="img-fluid" alt="">
+                                <img src="{{ Voyager::image($images) }}" class="img-fluid" alt="{{ $item->name }}">
                                 <a href="{{ url('product/'.$item->slug) }}">
                                     <div class="mask rgba-white-slight"></div>
                                 </a>

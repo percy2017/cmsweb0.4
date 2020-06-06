@@ -127,7 +127,7 @@
                 <div class="row mt-3 mb-4">
                   <div class="col-md-12 text-center text-md-left text-md-right">
                     <a class="btn btn-primary btn-rounded" href="{{ url('cart') }}">
-                      <i class="fas fa-cart-plus mr-2" aria-hidden="true"></i> Add to cart</a>
+                      <i class="fas fa-cart-plus mr-2" aria-hidden="true"></i> Agreagar al Carrito</a>
                   </div>
                 </div>
               </div>
@@ -142,7 +142,7 @@
     <div class="card mb-5">
       <div class="card-body">
         <h4 class="h4-responsive dark-grey-text font-weight-bold my-5 text-center">
-          <strong>Description Products</strong>
+          <strong>Descripción del Producto</strong>
         </h4>
         <hr class="mb-5">
         {!! $product->description_long !!}

@@ -9,5 +9,5 @@ class BgProductDetail extends Model
 {
     use SoftDeletes;
     protected $table = 'bg_product_details';
-    protected $fillable = ['type', 'code', 'title', 'price', 'price_last', 'stock'];
+    protected $fillable = ['type', 'code', 'title', 'price', 'price_last', 'stock', 'product_id'];
 }

@@ -105,4 +105,11 @@ class Ecommerce1Controller extends Controller
             'page' => $product
         ]);
     }
+    function cart()
+    {
+        $page = \App\Page::where('slug', 'landing-page-bimgo')->first();
+        return view('bimgo::pages.cart1', [
+            'page' => $page
+        ]);
+    }
 }
