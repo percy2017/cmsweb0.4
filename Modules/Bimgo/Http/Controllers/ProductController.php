@@ -139,6 +139,11 @@ class ProductController extends Controller
          }
         // --------------------------REGISTRO ---------------------------------------------------
 
+        //---------------Extra----------------------------
+        \Modules\Bimgo\Entities\BgProductDetail::create([
+            'type' => 'Color',
+            'title' => 'Negro'
+        ]);
         return $this->show();
     }
 

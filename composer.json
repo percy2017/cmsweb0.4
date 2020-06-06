@@ -13,6 +13,7 @@
         "binarytorch/larecipe": "^2.3",
         "bonecms/laravel-captcha": "^2.2",
         "cviebrock/eloquent-sluggable": "^7.0",
+        "darryldecode/cart": "^4.1",
         "fideloper/proxy": "^4.2",
         "fruitcake/laravel-cors": "^1.0",
         "guzzlehttp/guzzle": "^6.3",

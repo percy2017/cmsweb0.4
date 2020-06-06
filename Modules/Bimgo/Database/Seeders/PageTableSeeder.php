@@ -734,6 +734,61 @@ class PageTableSeeder extends Seeder
         ]);
 
 
+        //-------------------------------------------------------------------------------------------page product- Ecommerce1            
+        $page = Page::create([
+            'name'        =>  'Politicas & Privacidad',
+            'slug'        =>  'politicas-privacidad',
+            'user_id'     =>  1,
+            'direction'   =>  'bimgo::pages.generica1',
+            'description' =>  'Pagina para las politicas & seguridad'
+        ]);
+        $count = 1;
+        Block::create([
+            'name'        => 'body',
+            'title'       => 'Blocke Generico',
+            'description' => 'Blocke Generico para Paginas',
+            'page_id'     => $page->id,
+            'position'    => $count++,
+            'type'        => 'dinamyc-data',
+            'details'     => json_encode([
+                'body' => [
+                    'type'   => 'rich_text_box',
+                    'name'   => 'body',
+                    'label'  => 'Editor HTML',
+                    'value'  => null,
+                    'width'  => 12
+                ]
+            ])
+        ]);
+        
+
+        //-------------------------------------------------------------------------------------------page product- Ecommerce1            
+        $page = Page::create([
+            'name'        =>  'Terminos & Condiones',
+            'slug'        =>  'terminos-condiciones',
+            'user_id'     =>  1,
+            'direction'   =>  'bimgo::pages.generica1',
+            'description' =>  'Pagina para los terminos y condiciones'
+        ]);
+        $count = 1;
+        Block::create([
+            'name'        => 'body',
+            'title'       => 'Blocke Generico',
+            'description' => 'Blocke Generico para Paginas',
+            'page_id'     => $page->id,
+            'position'    => $count++,
+            'type'        => 'dinamyc-data',
+            'details'     => json_encode([
+                'body' => [
+                    'type'   => 'rich_text_box',
+                    'name'   => 'body',
+                    'label'  => 'Editor HTML',
+                    'value'  => null,
+                    'width'  => 12
+                ]
+            ])
+        ]);
+
         //---------------------------------------------------------------------------------------------------page Ecommerce1
         $page = Page::create([
             'name'        =>  'Ecommerce-1',
@@ -1086,28 +1141,30 @@ class PageTableSeeder extends Seeder
             ]);
 
 
+        
+
         //--------------------------------------------------------------------------------------------page category-Ecommerce1 
-        $page = Page::create([
-            'name'        =>  'category',
-            'slug'        =>  'category',
-            'user_id'     =>  1,
-            'direction'   =>  'bimgo::pages.generica1',
-            'description' =>  'Pagina Category predeterminada para comercio electronico v1'
-        ]);
-            $count = 1;
-            Block::create([
-                'name'        => 'ecommerce1.category',
-                'title'       => 'Categoria',
-                'description' => 'Categoria',
-                'page_id'     => $page->id,
-                'position'    => $count++,
-                'type'        => 'controller',
-                'details'     => json_encode([
-                    'name'   => 'title',
-                    'label'  => 'Encabezado',
-                    'value'  => 'Modules\\Bimgo\\Http\\Controllers\\Ecommerce1Controller@category',
-                ])
-            ]);
+        // $page = Page::create([
+        //     'name'        =>  'category',
+        //     'slug'        =>  'category',
+        //     'user_id'     =>  1,
+        //     'direction'   =>  'bimgo::pages.generica1',
+        //     'description' =>  'Pagina Category predeterminada para comercio electronico v1'
+        // ]);
+        //     $count = 1;
+        //     Block::create([
+        //         'name'        => 'ecommerce1.category',
+        //         'title'       => 'Categoria',
+        //         'description' => 'Categoria',
+        //         'page_id'     => $page->id,
+        //         'position'    => $count++,
+        //         'type'        => 'controller',
+        //         'details'     => json_encode([
+        //             'name'   => 'title',
+        //             'label'  => 'Encabezado',
+        //             'value'  => 'Modules\\Bimgo\\Http\\Controllers\\Ecommerce1Controller@category',
+        //         ])
+        //     ]);
 
 
         //-------------------------------------------------------------------------------------------page product- Ecommerce1            
@@ -1135,123 +1192,123 @@ class PageTableSeeder extends Seeder
 
 
         //----------------------------------------------------------------------------------------------page cart- Ecommerce1
-        $page = Page::create([
-            'name'        =>  'cart',
-            'slug'        =>  'cart',
-            'user_id'     =>  1,
-            'direction'   =>  'bimgo::pages.generica1',
-            'description' =>  'Pagina Cart predeterminada para comercio electronico v1'
-        ]);
-        $count = 1;
-        Block::create([
-            'name'        => 'ecommerce1.cart',
-            'title'       => 'Cart',
-            'description' => 'Cart',
-            'page_id'     => $page->id,
-            'position'    => $count++,
-            'type'        => 'controller',
-            'details'     => json_encode([
-                'name'   => 'title',
-                'label'  => 'Encabezado',
-                'value'  => 'Modules\\Bimgo\\Http\\Controllers\\Ecommerce1Controller@cart',
-            ])
-        ]);
+        // $page = Page::create([
+        //     'name'        =>  'cart',
+        //     'slug'        =>  'cart',
+        //     'user_id'     =>  1,
+        //     'direction'   =>  'bimgo::pages.generica1',
+        //     'description' =>  'Pagina Cart predeterminada para comercio electronico v1'
+        // ]);
+        // $count = 1;
+        // Block::create([
+        //     'name'        => 'ecommerce1.cart',
+        //     'title'       => 'Cart',
+        //     'description' => 'Cart',
+        //     'page_id'     => $page->id,
+        //     'position'    => $count++,
+        //     'type'        => 'controller',
+        //     'details'     => json_encode([
+        //         'name'   => 'title',
+        //         'label'  => 'Encabezado',
+        //         'value'  => 'Modules\\Bimgo\\Http\\Controllers\\Ecommerce1Controller@cart',
+        //     ])
+        // ]);
 
 
         //-------------------------------------------------------------------------------------------page tele-venta Ecommerce1           
-        $page = Page::create([
-            'name'        =>  'Tele Venta',
-            'slug'        =>  'tele-venta',
-            'user_id'     =>  1,
-            'direction'   =>  'bimgo::pages.generica1',
-            'description' =>  'Pagina Tele Venta predeterminada para comercio electronico v1'
-        ]);
-        $count = 1;
-        Block::create([
-            'name'        => 'ecommerce1.tele_venta',
-            'title'       => 'Cart',
-            'description' => 'Cart',
-            'page_id'     => $page->id,
-            'position'    => $count++,
-            'type'        => 'controller',
-            'details'     => json_encode([
-                'name'   => 'title',
-                'label'  => 'Encabezado',
-                'value'  => 'Modules\\Bimgo\\Http\\Controllers\\Ecommerce1Controller@tele-venta',
-            ])
-        ]);
+        // $page = Page::create([
+        //     'name'        =>  'Tele Venta',
+        //     'slug'        =>  'tele-venta',
+        //     'user_id'     =>  1,
+        //     'direction'   =>  'bimgo::pages.generica1',
+        //     'description' =>  'Pagina Tele Venta predeterminada para comercio electronico v1'
+        // ]);
+        // $count = 1;
+        // Block::create([
+        //     'name'        => 'ecommerce1.tele_venta',
+        //     'title'       => 'Cart',
+        //     'description' => 'Cart',
+        //     'page_id'     => $page->id,
+        //     'position'    => $count++,
+        //     'type'        => 'controller',
+        //     'details'     => json_encode([
+        //         'name'   => 'title',
+        //         'label'  => 'Encabezado',
+        //         'value'  => 'Modules\\Bimgo\\Http\\Controllers\\Ecommerce1Controller@tele-venta',
+        //     ])
+        // ]);
 
 
         //-----------------------------------------------------------------------------------------------page pagos-Ecommerce1
-        $page = Page::create([
-            'name'        =>  'Pagos',
-            'slug'        =>  'pagos',
-            'user_id'     =>  1,
-            'direction'   =>  'bimgo::pages.generica1',
-            'description' =>  'Pagina Pagos predeterminada para comercio electronico v1'
-        ]);
-        $count = 1;
-        Block::create([
-            'name'        => 'ecommerce1.pagos',
-            'title'       => 'Pagos',
-            'description' => 'Pagos',
-            'page_id'     => $page->id,
-            'position'    => $count++,
-            'type'        => 'controller',
-            'details'     => json_encode([
-                'name'   => 'title',
-                'label'  => 'Encabezado',
-                'value'  => 'Modules\\Bimgo\\Http\\Controllers\\Ecommerce1Controller@pagos',
-            ])
-        ]);
+        // $page = Page::create([
+        //     'name'        =>  'Pagos',
+        //     'slug'        =>  'pagos',
+        //     'user_id'     =>  1,
+        //     'direction'   =>  'bimgo::pages.generica1',
+        //     'description' =>  'Pagina Pagos predeterminada para comercio electronico v1'
+        // ]);
+        // $count = 1;
+        // Block::create([
+        //     'name'        => 'ecommerce1.pagos',
+        //     'title'       => 'Pagos',
+        //     'description' => 'Pagos',
+        //     'page_id'     => $page->id,
+        //     'position'    => $count++,
+        //     'type'        => 'controller',
+        //     'details'     => json_encode([
+        //         'name'   => 'title',
+        //         'label'  => 'Encabezado',
+        //         'value'  => 'Modules\\Bimgo\\Http\\Controllers\\Ecommerce1Controller@pagos',
+        //     ])
+        // ]);
 
 
         //--------------------------------------------------------------------------------------------page gracias-Ecommerce1            
-        $page = Page::create([
-            'name'        =>  'Gracias',
-            'slug'        =>  'gracias',
-            'user_id'     =>  1,
-            'direction'   =>  'bimgo::pages.generica1',
-            'description' =>  'Pagina Gracias predeterminada para comercio electronico v1'
-        ]);
-        $count = 1;
-        Block::create([
-            'name'        => 'ecommerce1.gracias',
-            'title'       => 'Gracias',
-            'description' => 'Gracias',
-            'page_id'     => $page->id,
-            'position'    => $count++,
-            'type'        => 'controller',
-            'details'     => json_encode([
-                'name'   => 'title',
-                'label'  => 'Encabezado',
-                'value'  => 'Modules\\Bimgo\\Http\\Controllers\\Ecommerce1Controller@gracias',
-            ])
-        ]);
+        // $page = Page::create([
+        //     'name'        =>  'Gracias',
+        //     'slug'        =>  'gracias',
+        //     'user_id'     =>  1,
+        //     'direction'   =>  'bimgo::pages.generica1',
+        //     'description' =>  'Pagina Gracias predeterminada para comercio electronico v1'
+        // ]);
+        // $count = 1;
+        // Block::create([
+        //     'name'        => 'ecommerce1.gracias',
+        //     'title'       => 'Gracias',
+        //     'description' => 'Gracias',
+        //     'page_id'     => $page->id,
+        //     'position'    => $count++,
+        //     'type'        => 'controller',
+        //     'details'     => json_encode([
+        //         'name'   => 'title',
+        //         'label'  => 'Encabezado',
+        //         'value'  => 'Modules\\Bimgo\\Http\\Controllers\\Ecommerce1Controller@gracias',
+        //     ])
+        // ]);
 
 
         //--------------------------------------------------------------------------------------------page profile-Ecommerce1         
-        $page = Page::create([
-            'name'        =>  'Profile',
-            'slug'        =>  'profile',
-            'user_id'     =>  1,
-            'direction'   =>  'bimgo::pages.generica1',
-            'description' =>  'Pagina Profile predeterminada para comercio electronico v1'
-        ]);
-        $count = 1;
-        Block::create([
-            'name'        => 'ecommerce1.profile',
-            'title'       => 'Profiles',
-            'description' => 'Profiles',
-            'page_id'     => $page->id,
-            'position'    => $count++,
-            'type'        => 'controller',
-            'details'     => json_encode([
-                'name'   => 'title',
-                'label'  => 'Encabezado',
-                'value'  => 'Modules\\Bimgo\\Http\\Controllers\\Ecommerce1Controller@profile',
-            ])
-        ]);
+        // $page = Page::create([
+        //     'name'        =>  'Profile',
+        //     'slug'        =>  'profile',
+        //     'user_id'     =>  1,
+        //     'direction'   =>  'bimgo::pages.generica1',
+        //     'description' =>  'Pagina Profile predeterminada para comercio electronico v1'
+        // ]);
+        // $count = 1;
+        // Block::create([
+        //     'name'        => 'ecommerce1.profile',
+        //     'title'       => 'Profiles',
+        //     'description' => 'Profiles',
+        //     'page_id'     => $page->id,
+        //     'position'    => $count++,
+        //     'type'        => 'controller',
+        //     'details'     => json_encode([
+        //         'name'   => 'title',
+        //         'label'  => 'Encabezado',
+        //         'value'  => 'Modules\\Bimgo\\Http\\Controllers\\Ecommerce1Controller@profile',
+        //     ])
+        // ]);
 
 
         //---------------------------------------------------------------------------------------------------page Ecommerce2
@@ -1900,78 +1957,5 @@ class PageTableSeeder extends Seeder
             'description' =>  'Pagina predeterminada para comercio electronico v4'
         ]);
 
-
-        //------------------------------------------------------------------------------------------page politica privacidad
-        $page = Page::create([
-            'name'        =>  'politica privacidad',
-            'slug'        =>  'politica-privacidad',
-            'user_id'     =>  1,
-            'direction'   =>  'bimgo::pages.generica-lp',
-            'description' =>  'Pagina de politicas y privacidad de HiStream.',
-            'details'     =>   json_encode([
-                'contenido1' => [
-                    'type'   => 'rich_text_box',
-                    'name'   => 'contenido1',
-                    'label'  => 'Parrafo',
-                    'value'  => 'Soy un text',
-                    'width'  => 12
-                ],
-            ])
-        ]);
-        $count = 1;
-        Block::create([
-            'name'        => 'body',
-            'title'       => 'Blocke Editor HTML',
-            'description' => 'Blocke Generico para Editar el HTML',
-            'page_id'     => $page->id,
-            'position'    => $count++,
-            'type'        => 'dinamyc-data',
-            'details'     => json_encode([
-                'body' => [
-                    'type'   => 'rich_text_box',
-                    'name'   => 'body',
-                    'label'  => 'Editor HTML',
-                    'value'  => null,
-                    'width'  => 12
-                ]
-            ])
-        ]);
-
-
-        //-------------------------------------------------------------------------------------------page terminos condiones
-        $page = Page::create([
-            'name'        =>  'terminos condiones',
-            'slug'        =>  'terminos-condiones',
-            'user_id'     =>  1,
-            'direction'   =>  'bimgo::pages.generica-lp',
-            'description' =>  'Pagina de terminos y condiones de HiStream.',
-            'details'     =>   json_encode([
-                'contenido' => [
-                    'type'   => 'rich_text_box',
-                    'name'   => 'contenido',
-                    'label'  => 'Parrafo',
-                    'value'  => 'Soy un text',
-                    'width'  => 12
-                ],
-            ])
-        ]);
-        $count = 1;
-        Block::create([
-            'name'        => 'body',
-            'title'       => 'Blocke Editor HTML',
-            'description' => 'Blocke Generico para Editar el HTML',
-            'page_id'     => $page->id,
-            'position'    => $count++,
-            'type'        => 'dinamyc-data',
-            'details'     => json_encode([
-                'body' => [
-                    'type'   => 'rich_text_box',
-                    'name'   => 'body',
-                    'label'  => 'Editor HTML',
-                    'value'  => null,
-                    'width'  => 12
-                ]
-            ])
-        ]);
     }
 }

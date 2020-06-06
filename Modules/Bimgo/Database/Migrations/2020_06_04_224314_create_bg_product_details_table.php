@@ -18,10 +18,10 @@ class CreateBgProductDetailsTable extends Migration
             $table->string('type');
             $table->string('code')->nullable();
             $table->string('title');
-            $table->integer('stock')->nullable();
+            $table->integer('stock')->default(0);
             $table->double('price')->default(0);
             $table->double('price_last')->default(0);
-            $table->boolean('default');
+            $table->boolean('default')->default(false);
 
             $table->unsignedBigInteger('product_id');
             $table->foreign('product_id')->references('id')->on('bg_products');

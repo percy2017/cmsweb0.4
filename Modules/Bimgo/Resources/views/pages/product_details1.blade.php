@@ -113,24 +113,16 @@
               <div class="mt-5">
                 <p class="grey-text">Elije una Opcion</p>
                 <div class="row text-center text-md-left">
-                  <div class="col-md-4 col-12 ">
-                    <div class="form-group">
-                      <input class="form-check-input" name="group100" type="radio" id="radio100" checked="checked">
-                      <label for="radio100" class="form-check-label dark-grey-text">White</label>
-                    </div>
-                  </div>
-                  <div class="col-md-4">
-                    <div class="form-group">
-                      <input class="form-check-input" name="group100" type="radio" id="radio101">
-                      <label for="radio101" class="form-check-label dark-grey-text">Silver</label>
-                    </div>
-                  </div>
-                  <div class="col-md-4">
-                    <div class="form-group">
-                      <input class="form-check-input" name="group100" type="radio" id="radio102">
-                      <label for="radio102" class="form-check-label dark-grey-text">Gold</label>
-                    </div>
-                  </div>
+                  @foreach ($product->product_details as $item => $value)
+                      <div class="col-md-4 @if($loop->index == 0) col-12 @endif">
+                        <div class="form-group">
+                          <input class="form-check-input" name="group100" type="radio" id="radio{{ $value->id }}" @if($loop->index == 0) checked="checked" @endif>
+                          <label for="radio{{ $value->id }}" class="form-check-label dark-grey-text">{{ $value->title }}</label>
+                        </div>
+                      </div>
+                  @endforeach
+                  
+
                 </div>
                 <div class="row mt-3 mb-4">
                   <div class="col-md-12 text-center text-md-left text-md-right">
@@ -164,7 +156,7 @@
         <strong>Productos Relacionados</strong>
       </h4>
       <hr class="mb-5">
-      {{--  <p class="text-center w-responsive mx-auto mb-5 dark-grey-text"></p>  --}}
+      <p class="text-center w-responsive mx-auto mb-5 dark-grey-text">Tambien te pueden interesar los siguientes productos</p>
 
       <!-- Carousel Wrapper -->
       <div id="multi-item-example" class="carousel slide carousel-multi-item" data-ride="carousel">

@@ -180,30 +180,30 @@
                                                 @endphp
                                                 <span>{{ $query->$label }}</span>
                                             @elseif($row->details->{'type'} == 'belongsToMany')
-                                                @php
-                                                $model = app($row->details->model);
-                                                $query = $model::all();
+                                                {{--  @php
+                                                    $model = app($row->details->model);
+                                                    $query = $model::all();
 
-                                                $mymodel = app($row->details->attributes->model);
-                                                $mycolumn = $row->details->attributes->{'column'};
-                                                $mykey = $row->details->attributes->{'key'};
-                                                $myquery = $mymodel::where($mycolumn, $data->id)->get();
+                                                    $mymodel = app($row->details->attributes->model);
+                                                    $mycolumn = $row->details->attributes->{'column'};
+                                                    $mykey = $row->details->attributes->{'key'};
+                                                    $myquery = $mymodel::where($mycolumn, $data->id)->get();
 
-                                                $myrelationships = false;
+                                                    $myrelationships = false;
                                                 @endphp
                                             @foreach($query as $relationshipData)
                                                 @foreach ($myquery as $item)
                                                     @if ($item->$mykey == $relationshipData->{$row->details->key})
-                                                    @php $myrelationships = true; @endphp
-                                                    @break
+                                                        @php $myrelationships = true; @endphp
+                                                        @break
                                                     @endif
                                                 @endforeach
-                                            @if($myrelationships)
-                                            <span>{{ $relationshipData->{$row->details->label} }}</span>
-                                            @endif
+                                                @if($myrelationships)
+                                                    <span>{{ $relationshipData->{$row->details->label} }}</span>
+                                                @endif
 
-                                            @php $myrelationships = false; @endphp
-                                            @endforeach
+                                                @php $myrelationships = false; @endphp
+                                            @endforeach  --}}
                                             @endif
                                             @break
                                         @case('Traking')
@@ -223,7 +223,7 @@
                                                 @else
                                                     <h4>
                                                         <a data-toggle="tooltip" aria-hidden="true" href="#"
-                                                            onclick="ajax('{{ route('inti_relationship', [$data->id, $row->details->actions->{'table'}, $row->details->actions->{'key'}, $row->details->actions->{'type'}]) }}', 'get')"
+                                                            onclick="ajax('{{ route('bg_relationship', [$data->id, $row->details->actions->{'table'}, $row->details->actions->{'key'}, $row->details->actions->{'type'}]) }}', 'get')"
                                                             title="{{ $row->details->actions->{'message'} }}">{{ $data->{$row->field} }}</a>
                                                     </h4>
                                                 @endif
