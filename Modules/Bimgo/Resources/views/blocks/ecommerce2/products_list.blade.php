@@ -1,4 +1,4 @@
-  <!-- Section: Last items -->
+  <!-- Section: slide Products -->
   <section>
     <h4 class="font-weight-bold mt-4 dark-grey-text"><strong>Ultimos Productos</strong></h4>
     <hr class="mb-5">
@@ -60,13 +60,13 @@
                         </ul>
                         <div class="card-footer pb-0">
                             <div class="row mb-0">
-                                @if($item->price_last > 0)
+                                @if($item->product_details[0]->price_last > 0)
                                     <h5 class="mb-0 pb-0 mt-1 font-weight-bold"><span
-                                        class="red-text"><strong>{{ $item->price }} Bs.</strong></span>
-                                        <span class="grey-text"><small><s>{{ $item->price_last }} Bs.</s></small></span>
+                                        class="red-text"><strong>{{ $item->product_details[0]->price }} Bs.</strong></span>
+                                        <span class="grey-text"><small><s>{{ $item->product_details[0]->price_last }} Bs.</s></small></span>
                                     </h5>
                                 @else 
-                                    <span class="float-left"><strong>{{ $item->price }} Bs.</strong></span>
+                                    <span class="float-left"><strong>{{ $item->product_details[0]->price }} Bs.</strong></span>
                                 @endif
                                 <span class="float-right">
                                     <a class="" data-toggle="tooltip" data-placement="top" title="Agregar al Carrito"><i

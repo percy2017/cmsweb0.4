@@ -1,4 +1,4 @@
-    <!-- Section: product list -->
+    <!-- Section: product with Category -->
     <section class="mb-5">
       <div class="row">
           @foreach ($data as $category)
@@ -56,13 +56,13 @@
                                   @default
                               @endswitch
                           </ul>
-                          @if($product->price_last > 0)
+                          @if($product->product_details[0]->price_last > 0)
                               <h6 class="h6-responsive font-weight-bold dark-grey-text">
-                                  <strong>{{ $product->price }} Bs</strong> 
-                                  <span class="grey-text"><small><s>{{ $product->price_last }} Bs</s></small></span>
+                                  <strong>{{ $product->product_details[0]->price }} Bs</strong> 
+                                  <span class="grey-text"><small><s>{{ $product->product_details[0]->price_last }} Bs</s></small></span>
                               </h6>
                           @else
-                              <h6 class="h6-responsive font-weight-bold dark-grey-text"><strong>{{ $product->price }} Bs.</strong></h6>
+                              <h6 class="h6-responsive font-weight-bold dark-grey-text"><strong>{{ $product->product_details[0]->price }} Bs.</strong></h6>
                           @endif
                       </div>
                   </div>
