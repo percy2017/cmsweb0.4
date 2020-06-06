@@ -5,6 +5,7 @@ namespace Modules\Bimgo\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\DB;
 
 // Models
 use Modules\Bimgo\Entities\BgProduct;
@@ -100,8 +101,35 @@ class Ecommerce1Controller extends Controller
     {
         // $page = setting('site.page');
         $product = BgProduct::with(['product_details'])->where('slug', $slug)->first();
+        
+        // Sugerencias de productos
+        $tags = json_decode($product->tags);
+        $sugerencias = [];
+        foreach ($tags as $tag) {
+            $product_aux = BgProduct::with(['product_details'])->where('tags', 'like', "%$tag%")->where('id', '<>', $product->id)->get();
+            foreach ($product_aux as $item) {
+                $existe = false;
+                $indice = 0;
+                for($i=0; $i<count($sugerencias); $i++){
+                    if($sugerencias[$i]['id']==$item->id){
+                        $existe = true;
+                        $indice = $i;
+                    }
+                }
+                if($existe){
+                    $sugerencias[$indice]['coincidencias']++;
+                }else{
+                    array_push($sugerencias, ['id'=>$item->id, 'name'=>$item->name, 'images'=>$item->images, 'product_details' => $item->product_details, 'start' => $item->start, 'tags' => $item->tags, 'slug'=>$item->slug, 'coincidencias'=>1]);
+                }
+            }
+        }
+        // Ordernar de mayor a menor coincidencia y convertir a colección
+        $sugerencias = json_decode(json_encode(collect($sugerencias)->sortBy('coincidencias')->reverse()->take(4)));
+        // ========================
+
         return view('bimgo::pages.product_details1', [
             'product'  => $product,
+            'sugerencias'  => $sugerencias,
             'page' => $product
         ]);
     }
