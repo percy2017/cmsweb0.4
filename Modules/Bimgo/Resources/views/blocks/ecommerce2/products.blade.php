@@ -12,7 +12,7 @@
         @php
         $active = 'active';
         @endphp
-        @foreach ($data as $category)
+        @foreach ($data->subcategories as $category)
         <li class="nav-item">
 
           <a class="nav-link {{ $active }} dark-grey-text font-weight-bold" data-toggle="tab"
@@ -33,7 +33,7 @@
         @php
         $active = 'show active';
         @endphp
-        @foreach ($data as $category)
+        @foreach ($data->subcategories as $category)
        
         <div class="tab-pane fade in {{ $active }} " id="panel{{ $category->id }}" role="tabpanel">
 
@@ -150,12 +150,12 @@
                   $images = $products->images ? json_decode($products->images)[0] : '../images/icons-bimgo/icon-512x512.png';
                   @endphp
                     <img src="{{ Voyager::image($images) }}" class="img-fluid" alt="">
-                    <a href="{{ url('product/'.$item->slug) }}>
+                    <a href="{{ route('product_view', $products->slug) }}">
                         <div class="mask rgba-white-slight"></div>
                     </a>
                 </div>
                 <div class="card-body">
-                    <h5 class="card-title mb-1"><strong><a href="{{ url('product-details') }}" class="dark-grey-text">{{ $products->name }}</a></strong>
+                    <h5 class="card-title mb-1"><strong><a href="{{ route('product_view', $products->slug) }}" class="dark-grey-text">{{ $products->name }}</a></strong>
                     </h5>
                     <span class="badge badge-danger mb-2">{{ json_decode($products->tags)[0] }}</span>
                     <ul class="rating">

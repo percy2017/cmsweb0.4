@@ -1,7 +1,8 @@
     <!-- Section: product with Category -->
     <section class="mb-5">
       <div class="row">
-          @foreach ($data as $category)
+        
+          @foreach ($data->subcategories as $category)
           <div class="col-lg-4 col-md-12 col-12 pt-4">
               <hr>
               <h5 class="text-center font-weight-bold dark-grey-text"><strong>{{ $category->title }}</strong></h5>
@@ -12,10 +13,10 @@
                           @php
                               $images = $product->images ? json_decode($product->images)[0] : '../images/icons-bimgo/icon-512x512.png';
                           @endphp
-                          <a><img src="{{ Voyager::image($images) }}" class="img-fluid"></a>
+                          <a href="{{ route('product_view', $product->slug) }}" ><img src="{{ Voyager::image($images) }}" class="img-fluid"></a>
                       </div>
                       <div class="col-6">
-                          <a class="pt-5"><strong>{{ $product->name }}</strong></a>
+                          <a href="{{ route('product_view', $product->slug) }}" class="pt-5"><strong>{{ $product->name }}</strong></a>
                           <ul class="rating inline-ul">
                               @switch($product->stars)
                                   @case(1)
