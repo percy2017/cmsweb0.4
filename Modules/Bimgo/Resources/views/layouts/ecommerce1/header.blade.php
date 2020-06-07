@@ -172,7 +172,7 @@
         </div>
 
         <a class="navbar-brand font-weight-bold" href="{{ url('/') }}"><strong>{{ setting('site.title') }}</strong></a>
-        <a class="navbar-brand font-weight-bold" href="{{ url('/tele-venta') }}"><i class="fas fa-tv blue-text" aria-hidden="true"></i><strong> Tele Venta</strong></a>
+        <a class="navbar-brand font-weight-bold" href="{{ url('/my/televenta') }}"><i class="fas fa-tv blue-text" aria-hidden="true"></i><strong> Tele Venta</strong></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-4"
           aria-controls="navbarSupportedContent-4" aria-expanded="false" aria-label="Toggle navigation">
 

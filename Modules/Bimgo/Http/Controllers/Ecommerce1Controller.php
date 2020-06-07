@@ -112,4 +112,18 @@ class Ecommerce1Controller extends Controller
             'page' => $page
         ]);
     }
+    function payment()
+    {
+        $page = \App\Page::where('slug', 'landing-page-bimgo')->first();
+        return view('bimgo::pages.payment1', [
+            'page' => $page
+        ]);
+    }
+    function televenta()
+    {
+        $page = \App\Page::where('slug', 'landing-page-bimgo')->first();
+        return view('bimgo::pages.televenta1', [
+            'page' => $page
+        ]);
+    }
 }

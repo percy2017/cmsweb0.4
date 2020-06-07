@@ -55,24 +55,25 @@
     <!-- MDB core JavaScript -->
     <script type="text/javascript" src="{{ asset('vendor/bimgo/mdb/js/mdb.min.js') }}"></script>
     <script type="text/javascript">
-    /* WOW.js init */
-    new WOW().init();
-    // Tooltips Initialization
-    $(function () {
-      $('[data-toggle="tooltip"]').tooltip()
-    })
+      /* WOW.js init */
+      new WOW().init();
+      // Tooltips Initialization
+      $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+      })
 
-    // Material Select Initialization
-    $(document).ready(function () {
+      // Material Select Initialization
+      $(document).ready(function () {
 
-      $('.mdb-select').material_select();
-    });
+        $('.mdb-select').material_select();
+      });
 
-    // SideNav Initialization
-    $(".button-collapse").sideNav();
+      // SideNav Initialization
+      $(".button-collapse").sideNav();
 
-  </script>
+    </script>
 
+    @yield('js')
 </body>
 
 </html>
