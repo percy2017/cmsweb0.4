@@ -300,7 +300,7 @@ class SettingsTableSeeder extends Seeder
             ])->save();
         }
         // Contacto ------------------------------------
-        $setting = $this->findSetting('contacto.direction');
+        $setting = $this->findSetting('contactos.direction');
         if (!$setting->exists) {
             $setting->fill([
                 'display_name' => 'Direccion de la tienda',
@@ -311,7 +311,7 @@ class SettingsTableSeeder extends Seeder
                 'group'        => 'Contactos',
             ])->save();
         }
-        $setting = $this->findSetting('contacto.email');
+        $setting = $this->findSetting('contactos.email');
         if (!$setting->exists) {
             $setting->fill([
                 'display_name' => 'Correo electronico',
@@ -322,7 +322,7 @@ class SettingsTableSeeder extends Seeder
                 'group'        => 'Contactos',
             ])->save();
         }
-        $setting = $this->findSetting('contacto.phone');
+        $setting = $this->findSetting('contactos.phone');
         if (!$setting->exists) {
             $setting->fill([
                 'display_name' => 'Telefono',
@@ -333,7 +333,7 @@ class SettingsTableSeeder extends Seeder
                 'group'        => 'Contactos',
             ])->save();
         }
-        $setting = $this->findSetting('contacto.whatsapp');
+        $setting = $this->findSetting('contactos.whatsapp');
         if (!$setting->exists) {
             $setting->fill([
                 'display_name' => 'Whatsapp',
