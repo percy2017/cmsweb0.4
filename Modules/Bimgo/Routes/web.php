@@ -10,9 +10,13 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/jaiko', function(){
+    return view('bimgo::home');
+});
+
 Route::get('product/{slug}', 'Ecommerce1Controller@product_details')->name('bg_view');
 
-Route::get('product/{slug}', 'Ecommerce2Controller@product_details')->name('bg_view2');
+Route::get('product2/{slug}', 'Ecommerce2Controller@product_details')->name('product_view');
 
 Route::get('my/cart', 'Ecommerce1Controller@cart')->name('bg_cart');
 Route::get('my/payment', 'Ecommerce1Controller@payment')->name('bg_payment');
