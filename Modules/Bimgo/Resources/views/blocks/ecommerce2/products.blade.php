@@ -150,7 +150,7 @@
                   $images = $products->images ? json_decode($products->images)[0] : '../images/icons-bimgo/icon-512x512.png';
                   @endphp
                     <img src="{{ Voyager::image($images) }}" class="img-fluid" alt="">
-                    <a href="{{ url($products->slug) }}">
+                    <a href="{{ url('product/'.$item->slug) }}>
                         <div class="mask rgba-white-slight"></div>
                     </a>
                 </div>

@@ -142,7 +142,8 @@ class ProductController extends Controller
         //---------------Extra----------------------------
         \Modules\Bimgo\Entities\BgProductDetail::create([
             'type' => 'Color',
-            'title' => 'Negro'
+            'title' => 'Negro',
+            'product_id' => $data->id
         ]);
         return $this->show();
     }
