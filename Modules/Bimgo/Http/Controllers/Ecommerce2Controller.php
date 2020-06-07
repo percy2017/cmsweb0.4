@@ -2,6 +2,7 @@
 
 namespace Modules\Bimgo\Http\Controllers;
 
+use App\FormFields\Slug;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
@@ -96,6 +97,14 @@ class Ecommerce2Controller extends Controller
     static function products_list(){
         $products = BgProduct::orderBy('id', 'desc')->paginate(4);
         return $products;
+    }
+    static function product_details($slug){
+        
+        $product = BgProduct::with(['product_details'])->where('slug', $slug)->first();
+        return view('bimgo::pages.product_details2', [
+            'product'  => $product,
+            'page' => $product
+        ]);
     }
     
 }

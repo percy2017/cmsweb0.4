@@ -11,9 +11,13 @@
 |
 */
 Route::get('product/{slug}', 'Ecommerce1Controller@product_details')->name('bg_view');
+
+Route::get('product/{slug}', 'Ecommerce2Controller@product_details')->name('bg_view2');
+
 Route::get('my/cart', 'Ecommerce1Controller@cart')->name('bg_cart');
 Route::get('my/payment', 'Ecommerce1Controller@payment')->name('bg_payment');
 Route::get('my/televenta', 'Ecommerce1Controller@televenta')->name('bg_tv');
+
 
 Route::group(['prefix' => 'admin'], function () {
     Route::post('bimgo/search', 'BimgoController@search')->name('bg_search');
