@@ -11,7 +11,7 @@
                         @php
                             $images = $product->images ? json_decode($product->images)[0] : '../images/icons-bimgo/icon-512x512.png';
                         @endphp
-                        <a><img src="{{ Voyager::image($images) }}" class="img-fluid"></a>
+                        <a href="{{ url('product/'.$product->slug) }}"><img src="{{ Voyager::image($images) }}" class="img-fluid"></a>
                     </div>
                     <div class="col-6">
                         <a class="pt-5"><strong>{{ $product->name }}</strong></a>

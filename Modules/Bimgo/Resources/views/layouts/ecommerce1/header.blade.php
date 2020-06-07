@@ -1,16 +1,11 @@
  <!-- Navigation -->
   <header>
-
     <!-- Sidebar navigation -->
     <ul id="slide-out" class="side-nav custom-scrollbar">
-
       <!-- Logo -->
       <li>
-
         <div class="logo-wrapper waves-light">
-
           <a href="{{ url('/') }}"><img src="https://mdbootstrap.com/img/logo/mdb-transparent.png" class="img-fluid flex-center"></a>
-
         </div>
 
       </li>
@@ -194,9 +189,9 @@
 {{--  
               <a class="nav-link dark-grey-text font-weight-bold" href="{{ url('cart') }}" data-toggle="modal"
                 data-target="#cart-modal-ex">  --}}
-              <a class="nav-link dark-grey-text font-weight-bold" href="{{ url('cart') }}">
+              <a class="nav-link dark-grey-text font-weight-bold" href="{{ url('my/cart') }}">
 
-                <span class="badge danger-color">4</span>
+                <span class="badge danger-color">0</span>
 
                 <i class="fas fa-shopping-cart blue-text" aria-hidden="true"></i>
 
@@ -212,7 +207,7 @@
               <a class="nav-link dark-grey-text font-weight-bold" href="#" data-toggle="modal"
                 data-target="#cart-modal-ex">
 
-                <span class="badge success-color">1</span>
+                <span class="badge success-color">0</span>
 
                 <i class="fas fa-bell blue-text" aria-hidden="true"></i>
 
