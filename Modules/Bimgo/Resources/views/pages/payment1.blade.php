@@ -148,7 +148,7 @@
 
                   <hr>
 
-                  <button class="btn btn-primary btn-lg btn-block" type="submit">Realizar Pedido</button>
+                  <a href="{{ url('/') }}" class="btn btn-primary btn-lg btn-block" type="submit">Realizar Pedido</a>
 
                 </form>
 
@@ -295,7 +295,7 @@
                 </div>
                 <hr class="mb-4">
 
-                <button class="btn btn-primary btn-lg btn-block" type="submit">Realizar pedido</button>
+                <a href="{{ url('/') }}" class="btn btn-primary btn-lg btn-block" type="submit">Realizar pedido</a>
 
               </div>
               <!--/.Panel 3-->
@@ -309,7 +309,7 @@
 
           <!--Grid column-->
           <div class="col-lg-4 mb-4">
-            <button class="btn btn-primary btn-lg btn-block" type="submit">Realizar pedido</button>
+            <a  href="{{ url('/') }}" class="btn btn-primary btn-lg btn-block" type="submit">Realizar pedido</a>
             <!--Card-->
             <div class="card z-depth-0 border border-light rounded-0">
               <!--Card content-->

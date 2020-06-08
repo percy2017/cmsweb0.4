@@ -22,6 +22,7 @@ class CreateBgProductsTable extends Migration
             $table->string('tags')->nullable();
             $table->string('stars')->nullable();
             $table->text('characteristics')->nullable();
+            $table->boolean('published')->default(false);
             $table->text('description_long')->nullable();
 
             $table->unsignedBigInteger('user_id');

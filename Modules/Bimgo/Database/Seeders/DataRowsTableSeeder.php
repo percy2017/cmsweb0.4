@@ -599,6 +599,32 @@ class DataRowsTableSeeder extends Seeder
                 'order'  => $postion++,
             ])->save();
         }
+        $dataRow = $this->dataRow($ProductDataType, 'published');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'checkbox',
+                'display_name' => 'Producto Publicado',
+                'required'     => 0,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'order'        => $postion++,
+                'details'      => [
+                    'tooltip' => [
+                        'ubication' => 'top',
+                        'message' => 'Establece si el producto esta listo para su venta'
+                    ],
+                    'on'  => 'Publicado',
+                    'off' => 'No Publicado',
+                    'checked' => false,
+                    'display'   => [
+                        'width'  => '6',
+                    ],
+                ]
+            ])->save();
+        }
         $dataRow = $this->dataRow($ProductDataType, 'description_long');
         if (!$dataRow->exists) {
             $dataRow->fill([

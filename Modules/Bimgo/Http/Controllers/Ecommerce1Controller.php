@@ -6,9 +6,11 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\DB;
-
+use Darryldecode\Cart\CartCondition;
+// use Darryldecode\Cart;
 // Models
 use Modules\Bimgo\Entities\BgProduct;
+use Modules\Bimgo\Entities\BgProductDetail;
 use Modules\Bimgo\Entities\BgSubCategory;
 
 class Ecommerce1Controller extends Controller
@@ -84,16 +86,17 @@ class Ecommerce1Controller extends Controller
 
     static function products()
     {
-        $products = BgProduct::with(['product_details'])->orderBy('id', 'desc')->limit(6)->get();
+        $products = BgProduct::where('published', true)->with(['product_details'])->orderBy('id', 'desc')->limit(6)->get();
         return $products;
     }
-    static function products2(){        
+    static function products2(){
+              
         return BgSubCategory::with(['products'])->limit(3)->get();
     }
 
     static function list_products()
     {
-        $products = BgProduct::orderBy('id', 'desc')->paginate(4);
+        $products = BgProduct::where('published', true)->orderBy('id', 'desc')->paginate(4);
         return $products;
     }
 
@@ -119,7 +122,7 @@ class Ecommerce1Controller extends Controller
                 if($existe){
                     $sugerencias[$indice]['coincidencias']++;
                 }else{
-                    array_push($sugerencias, ['id'=>$item->id, 'name'=>$item->name, 'images'=>$item->images, 'product_details' => $item->product_details, 'start' => $item->start, 'tags' => $item->tags, 'slug'=>$item->slug, 'coincidencias'=>1]);
+                    array_push($sugerencias, ['id'=>$item->id, 'name'=>$item->name, 'images'=>$item->images, 'product_details' => $item->product_details, 'stars' => $item->stars, 'tags' => $item->tags, 'slug'=>$item->slug, 'coincidencias'=>1]);
                 }
             }
         }
@@ -153,5 +156,42 @@ class Ecommerce1Controller extends Controller
         return view('bimgo::pages.televenta1', [
             'page' => $page
         ]);
+    }
+
+    //------------ AJAX-----------------
+    function addcart($slug)
+    {
+        $product = BgProduct::with(['product_details'])->where('slug', $slug)->first();
+        \Cart::add(
+            $product->product_details[0]->id, 
+            $product->name, 
+            $product->product_details[0]->price, 
+            1, 
+            array(
+                'slug' => $product->slug, 
+                'description' => $product->description, 
+                'type' => $product->product_details[0]->type, 
+                'title' => $product->product_details[0]->title, 
+                'code' => $product->product_details[0]->code, 
+                'price_last' => $product->product_details[0]->price_last, 
+                'stock' => $product->product_details[0]->stock),
+            array()
+        );
+        return $product;
+
+    }
+    function removecart($slug)
+    {
+        $product = BgProduct::with(['product_details'])->where('slug', $slug)->first();
+        \Cart::remove($product->product_details[0]->id);
+        return $product;
+
+    }
+
+    function productdetails($id)
+    {
+        $product_details = BgProductDetail::find($id);
+        return $product_details;
+
     }
 }

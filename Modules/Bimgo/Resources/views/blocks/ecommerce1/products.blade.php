@@ -11,12 +11,12 @@
                         <div class="card card-ecommerce">
                             <div class="view overlay">
                                 <img src="{{ Voyager::image($images) }}" class="img-fluid" alt="{{ $item->name }}">
-                                <a href="{{ url('product/'.$item->slug) }}">
+                                <a href="{{ route('bg_product', $item->slug) }}">
                                     <div class="mask rgba-white-slight"></div>
                                 </a>
                             </div>
                             <div class="card-body">
-                                <h5 class="card-title mb-1"><strong><a href="{{ url('product-details') }}" class="dark-grey-text">{{ $item->name }}</a></strong>
+                                <h5 class="card-title mb-1"><strong><a href="{{ route('bg_product', $item->slug) }}" class="dark-grey-text">{{ $item->name }}</a></strong>
                                 </h5>
                                 <span class="badge badge-danger mb-2">{{ json_decode($item->tags)[0] }}</span>
                                 <ul class="rating">
@@ -73,7 +73,7 @@
                                         @endif
                                         
                                         <span class="float-right">
-                                            <a class="" data-toggle="tooltip" data-placement="top" title="Agregar al Carrito"><i
+                                            <a onclick="addcart('{{ route('bg_ajax_addcart', $item->slug) }}')" class="#" data-toggle="tooltip" data-placement="top" title="Agregar al Carrito"><i
                                                 class="fas fa-shopping-cart ml-3"></i></a>
                                         </span>
                                     </div>

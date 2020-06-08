@@ -221,7 +221,7 @@
 
 @section('javascript')
     <script src="//cdn.ckeditor.com/4.14.0/full/ckeditor.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
     <script>
     
         $('.miselect').on('change', function () {
