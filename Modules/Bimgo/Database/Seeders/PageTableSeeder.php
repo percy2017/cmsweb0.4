@@ -732,6 +732,204 @@ class PageTableSeeder extends Seeder
                 ],
             ])
         ]);
+        /** block 6 */
+        Block::create([
+            'name'        => 'lpbg_block6',
+            'title'       => 'Blocke 5 (Precios 6)',
+            'description' => 'Seccion Precios 6 para la plantilla LPBG',
+            'page_id'     => $page->id,
+            'position'    => $count++,
+            'type'        => 'dinamyc-data',
+            'details'     => json_encode([
+                'title_strong' => [
+                    'type'   => 'text',
+                    'name'   => 'title_strong',
+                    'label'  => 'Titulo en Negrita',
+                    'value'  => 'Choose License Type',
+                    'width'  => 6
+                ],
+                'description' => [
+                    'type'   => 'text_area',
+                    'name'   => 'description',
+                    'label'  => 'Descripcion',
+                    'value'  => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit, error amet numquam iure provident voluptate esse quasi, veritatis totam voluptas nostrum quisquam eum porro a pariatur veniam.',
+                    'width'  => 6
+                ],
+
+                'space1' => [
+                    'type'   => 'space',
+                    'name'   => 'space1',
+                ],
+
+                'card1_title' => [
+                    'type'   => 'text',
+                    'name'   => 'card1_title',
+                    'label'  => 'Card 1 titulo',
+                    'value'  => 'Personal',
+                    'width'  => 6
+                ],
+                'card1_price' => [
+                    'type'   => 'text',
+                    'name'   => 'card1_price',
+                    'label'  => 'Card 1  Precio',
+                    'value'  => 'Bs 9',
+                    'width'  => 6
+                ],
+                'card1_btn_title' => [
+                    'type'   => 'text',
+                    'name'   => 'card1_btn_title',
+                    'label'  => 'Card 1: Titulo del Boton',
+                    'value'  => 'Get Started',
+                    'width'  => 6
+                ],
+                'card1_btn_ction' => [
+                    'type'   => 'text',
+                    'name'   => 'card1_btn_ction',
+                    'label'  => 'Card 1: link del Boton',
+                    'value'  => '#',
+                    'width'  => 6 
+                ],
+                'card1_list' => [
+                    'type'   => 'rich_text_box',
+                    'name'   => 'card1_list',
+                    'label'  => 'Card 1  Lista de Caracteristicas',
+                    'value'  => '
+                        <ul class="mb-0">
+                            <li>
+                                <p><strong>1</strong> project</p>
+                                </li>
+                                <li>
+                                <p><strong>100</strong> components</p>
+                                </li>
+                                <li>
+                                <p><strong>150</strong> features</p>
+                                </li>
+                                <li>
+                                <p><strong>200</strong> members</p>
+                            </li>
+                        </ul>
+      
+                    ',
+                    'width'  => 12
+                ],
+                
+                'space2' => [
+                    'type'   => 'space',
+                    'name'   => 'space2',
+                ],
+
+                'card2_title' => [
+                    'type'   => 'text',
+                    'name'   => 'card2_title',
+                    'label'  => 'Card 2: Titulo',
+                    'value'  => 'Team',
+                    'width'  => 6
+                ],
+                'card2_price' => [
+                    'type'   => 'text',
+                    'name'   => 'card2_price',
+                    'label'  => 'Card 2: Precio',
+                    'value'  => '30 bs',
+                    'width'  => 6
+                ],
+                'card2_btn_title' => [
+                    'type'   => 'text',
+                    'name'   => 'card2_btn_title',
+                    'label'  => 'Card 2: Titulo del Boton',
+                    'value'  => 'Get Started',
+                    'width'  => 6
+                ],
+                'card2_btn_ction' => [
+                    'type'   => 'text',
+                    'name'   => 'card2_btn_ction',
+                    'label'  => 'Card 2: link del Boton',
+                    'value'  => '#',
+                    'width'  => 6 
+                ],
+                'card2_list' => [
+                    'type'   => 'rich_text_box',
+                    'name'   => 'card2_list',
+                    'label'  => 'Card 2: Lista de Caracteristicas',
+                    'value'  => '
+                        <ul class="mb-0">
+                            <li>
+                                <p><strong>1</strong> project</p>
+                                </li>
+                                <li>
+                                <p><strong>100</strong> components</p>
+                                </li>
+                                <li>
+                                <p><strong>150</strong> features</p>
+                                </li>
+                                <li>
+                                <p><strong>200</strong> members</p>
+                            </li>
+                        </ul>
+      
+                    ',
+                    'width'  => 12
+                ],
+
+                'space3' => [
+                    'type'   => 'space',
+                    'name'   => 'space3',
+                ],
+
+                'card3_title' => [
+                    'type'   => 'text',
+                    'name'   => 'card3_title',
+                    'label'  => 'Card 3: Titulo',
+                    'value'  => 'Bussines',
+                    'width'  => 6
+                ],
+                'card3_price' => [
+                    'type'   => 'text',
+                    'name'   => 'card3_price',
+                    'label'  => 'Card 3: Precio',
+                    'value'  => '59 Bs',
+                    'width'  => 6
+                ],
+                'card3_btn_title' => [
+                    'type'   => 'text',
+                    'name'   => 'card3_btn_title',
+                    'label'  => 'Card 3: Titulo del Boton',
+                    'value'  => 'Get Started',
+                    'width'  => 6
+                ],
+                'card3_btn_ction' => [
+                    'type'   => 'text',
+                    'name'   => 'card3_btn_ction',
+                    'label'  => 'Card 3: link del Boton',
+                    'value'  => '#',
+                    'width'  => 6 
+                ],
+                'card3_list' => [
+                    'type'   => 'rich_text_box',
+                    'name'   => 'card3_list',
+                    'label'  => 'Card 3: Lista de Caracteristicas',
+                    'value'  => '
+                        <ul class="mb-0">
+                            <li>
+                                <p><strong>1</strong> project</p>
+                                </li>
+                                <li>
+                                <p><strong>100</strong> components</p>
+                                </li>
+                                <li>
+                                <p><strong>150</strong> features</p>
+                                </li>
+                                <li>
+                                <p><strong>200</strong> members</p>
+                            </li>
+                        </ul>
+      
+                    ',
+                    'width'  => 12
+                ],
+
+            ])
+        ]);
+
 
 
         //-------------------------------------------------------------------------------------------page product- Ecommerce1            

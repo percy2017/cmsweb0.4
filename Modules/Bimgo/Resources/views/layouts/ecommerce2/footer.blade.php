@@ -152,19 +152,19 @@
 
           <p>
 
-            <i class="fas fa-home mr-3"></i>{{ setting('contacto.direction') }}</p>
+            <i class="fas fa-home mr-3"></i>{{ setting('contactos.direction') }}</p>
 
           <p>
 
-            <i class="fas fa-envelope mr-3"></i>{{ setting('contacto.email') }}</p>
+            <i class="fas fa-envelope mr-3"></i>{{ setting('contactos.email') }}</p>
 
           <p>
 
-            <i class="fas fa-phone mr-3"></i>{{ setting('contacto.phone') }}</p>
+            <i class="fas fa-phone mr-3"></i>{{ setting('contactos.phone') }}</p>
 
           <p>
 
-            <i class="fab fa-whatsapp mr-3"></i>{{ setting('contacto.whatsapp') }}</p>
+            <i class="fab fa-whatsapp mr-3"></i>{{ setting('contactos.whatsapp') }}</p>
 
         </div>
         <!-- Fourth column -->
