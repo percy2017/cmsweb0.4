@@ -1883,7 +1883,10 @@ class PageTableSeeder extends Seeder
             'slug'        =>  'ecommerce-3',
             'user_id'     =>  1,
             'direction'   =>  'bimgo::pages.ecommerce3',
-            'description' =>  'Pagina predeterminada para comercio electronico v3'
+            'description' =>  'Pagina predeterminada para comercio electronico v3',
+            'details'     =>   json_encode([
+
+            ])
         ]);
         $count = 1;
         Block::create([
@@ -2082,14 +2085,82 @@ class PageTableSeeder extends Seeder
         Block::create([
             'name'        => 'ecommerce3.special',
             'title'       => 'Especial',
-            'description' => 'Controlador',
+            'description' => null,
             'page_id'     => $page->id,
             'position'    => $count++,
-            'type'        => 'controller',
+            'type'        => 'dinamyc-data',
             'details'     => json_encode([
-                'name'   => 'title',
-                'label'  => 'Especial',
-                'value'  => 'Modules\\Bimgo\\Http\\Controllers\\Ecommerce2@special',
+                'icons1' => [
+                    'type'   => 'select_dropdown',
+                    'name'   => 'icons1',
+                    'label'  => 'Icons 1',
+                    'value'  => 'fa fa-money-bill-alt white',
+                    'width'  => 4
+                ],
+                'text1' => [
+                    'type'   => 'text',
+                    'name'   => 'text1',
+                    'label'  => 'Title 1',
+                    'value'  => null,
+                    'width'  => 4
+                ],
+                'parrafo1' => [
+                    'type'   => 'text_area',
+                    'name'   => 'parrafo1',
+                    'label'  => 'Categoria 1',
+                    'value'  => null,
+                    'width'  => 4
+                ],
+                'space1' => [
+                    'type'  => 'space',
+                    'name'  => 'space1',
+                ],
+                'icons2' => [
+                    'type'   => 'select_dropdown',
+                    'name'   => 'icons2',
+                    'label'  => 'Icons 2',
+                    'value'  => 'fa fa-comment-dots white',
+                    'width'  => 4
+                ],
+                'text2' => [
+                    'type'   => 'text',
+                    'name'   => 'text2',
+                    'label'  => 'Title 2',
+                    'value'  => null,
+                    'width'  => 4
+                ],
+                'parrafo2' => [
+                    'type'   => 'text_area',
+                    'name'   => 'parrafo2',
+                    'label'  => 'Categoria 2',
+                    'value'  => null,
+                    'width'  => 4
+                ],
+                'space2' => [
+                    'type'  => 'space',
+                    'name'  => 'space2',
+                ],
+                'icons3' => [
+                    'type'   => 'select_dropdown',
+                    'name'   => 'icons3',
+                    'label'  => 'Icons 3',
+                    'value'  => 'fa fa-truck white',
+                    'width'  => 4
+                ],
+                'text3' => [
+                    'type'   => 'text',
+                    'name'   => 'text3',
+                    'label'  => 'Title 3',
+                    'value'  => null,
+                    'width'  => 4
+                ],
+                'parrafo3' => [
+                    'type'   => 'text_area',
+                    'name'   => 'parrafo3',
+                    'label'  => 'Categoria 3',
+                    'value'  => null,
+                    'width'  => 4
+                ]
             ])
         ]);
         Block::create([
@@ -2102,46 +2173,93 @@ class PageTableSeeder extends Seeder
             'details'     => json_encode([
                 'name'   => 'title',
                 'label'  => 'Products',
-                'value'  => 'Modules\\Bimgo\\Http\\Controllers\\Ecommerce2@products',
+                'value'  => 'Modules\\Bimgo\\Http\\Controllers\\Ecommerce3Controller::products()',
             ])
         ]);
         Block::create([
             'name'        => 'ecommerce3.app',
             'title'       => 'App Download',
-            'description' => 'Controlador',
+            'description' => null,
             'page_id'     => $page->id,
             'position'    => $count++,
-            'type'        => 'controller',
+            'type'        => 'dinamyc-data',
             'details'     => json_encode([
-                'name'   => 'title',
-                'label'  => 'App Download',
-                'value'  => 'Modules\\Bimgo\\Http\\Controllers\\Ecommerce2@app',
+                'title' => [
+                    'type'   => 'text',
+                    'name'   => 'title',
+                    'label'  => 'Title',
+                    'value'  => null,
+                    'width'  => 3
+                ],
+                'parrafo' => [
+                    'type'   => 'rich_text_box',
+                    'name'   => 'parrafo',
+                    'label'  => 'Editor Html',
+                    'value'  => null,
+                    'width'  => 9
+                ],
+                'space1' => [
+                    'type'  => 'space',
+                    'name'  => 'space1',
+                ],
+                'android' => [
+                    'type'   => 'image',
+                    'name'   => 'android',
+                    'label'  => 'Image de Android',
+                    'value'  => null,
+                    'width'  => 6
+                ],
+                'link1' => [
+                    'type'   => 'text',
+                    'name'   => 'link1',
+                    'label'  => 'Link de Android',
+                    'value'  => null,
+                    'width'  => 6
+                ],
+                'space2' => [
+                    'type'  => 'space',
+                    'name'  => 'space2',
+                ],
+                'apple' => [
+                    'type'   => 'image',
+                    'name'   => 'apple',
+                    'label'  => 'Image de Apple',
+                    'value'  => null,
+                    'width'  => 6
+                ],
+                'link2' => [
+                    'type'   => 'text',
+                    'name'   => 'link2',
+                    'label'  => 'Link de Apple',
+                    'value'  => null,
+                    'width'  => 6
+                ]
             ])
         ]);
         Block::create([
             'name'        => 'ecommerce3.slider',
             'title'       => 'Slider de Products',
-            'description' => 'Controlador',
+            'description' => null,
             'page_id'     => $page->id,
             'position'    => $count++,
             'type'        => 'controller',
             'details'     => json_encode([
                 'name'   => 'title',
                 'label'  => 'Slider',
-                'value'  => 'Modules\\Bimgo\\Http\\Controllers\\Ecommerce2@slider', 
+                'value'  => 'Modules\\Bimgo\\Http\\Controllers\\Ecommerce3Controller::slider()', 
             ])
         ]);
         Block::create([
             'name'        => 'ecommerce3.brands',
             'title'       => 'Brands',
-            'description' => 'Controlador',
+            'description' => null,
             'page_id'     => $page->id,
             'position'    => $count++,
             'type'        => 'controller',
             'details'     => json_encode([
                 'name'   => 'title',
                 'label'  => 'Brands',
-                'value'  => 'Modules\\Bimgo\\Http\\Controllers\\Ecommerce2@slider',
+                'value'  => 'Modules\\Bimgo\\Http\\Controllers\\Ecommerce3Controller::brands()',
             ])
         ]);
 

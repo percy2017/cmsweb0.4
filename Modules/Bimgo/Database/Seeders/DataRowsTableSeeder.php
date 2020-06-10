@@ -18,6 +18,7 @@ class DataRowsTableSeeder extends Seeder
     {
         $CategoryDataType = DataType::where('slug', 'bg_categories')->firstOrFail();
         $SubCategoryDataType = DataType::where('slug', 'bg_sub_categories')->firstOrFail();
+        $BrandsDataType = DataType::where('slug', 'bg_brands')->firstOrFail();
         $ProductDataType = DataType::where('slug', 'bg_products')->firstOrFail();
         $ProductDetailsDataType = DataType::where('slug', 'bg_product_details')->firstOrFail();
         $SucursalDataType = DataType::where('slug', 'bg_branch_offices')->firstOrFail();
@@ -378,6 +379,173 @@ class DataRowsTableSeeder extends Seeder
         }
 
 
+              /**
+         * ------------------------------------------------
+         *               Formulario Marcas
+         * -----------------------------------------------
+         */
+        $postion = 1;
+        $dataRow = $this->dataRow($BrandsDataType, 'id');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'number',
+                'display_name' => __('voyager::seeders.data_rows.id'),
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 0,
+                'add'          => 0,
+                'delete'       => 0,
+                'details'      => [
+                    'display' => [
+                        'width' => '6'
+                    ]
+                ],
+                'order'        => $postion++,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($BrandsDataType, 'name');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'text',
+                'display_name' => 'Titulo',
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'details'      => [
+                    'tooltip' => [
+                        'ubication' => 'top',
+                        'message' => 'Titulo de la Sub Categoria'
+                    ],
+                    'display' => [
+                        'width' => '6'
+                    ]
+                ],
+                'order'        => $postion++,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($BrandsDataType, 'image');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'image',
+                'display_name' => 'Image Principal',
+                'required'     => 0,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'order'        => $postion++,
+                'details'      => [
+                    'display'   => [
+                        'width'  => '6',
+                    ],
+                ]
+            ])->save();
+        }
+        $dataRow = $this->dataRow($BrandsDataType, 'description');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'rich_text_box',
+                'display_name' => 'Editor HTML',
+                'required'     => 0,
+                'browse'       => 0,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'details'      => [
+                    'display' => [
+                        'width' => '12'
+                    ]
+                ],
+                'order'  => $postion++,
+            ])->save();
+        }
+       
+        $dataRow = $this->dataRow($BrandsDataType, 'created_at');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'timestamp',
+                'display_name' => __('voyager::seeders.data_rows.created_at'),
+                'required'     => 0,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 0,
+                'add'          => 0,
+                'delete'       => 0,
+                'order'        => $postion++,
+                'details'      => [
+                    'display' => [
+                        'width' => '3'
+                    ]
+                ]
+            ])->save();
+        }
+        $dataRow = $this->dataRow($BrandsDataType, 'updated_at');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'timestamp',
+                'display_name' => __('voyager::seeders.data_rows.updated_at'),
+                'required'     => 0,
+                'browse'       => 0,
+                'read'         => 1,
+                'edit'         => 0,
+                'add'          => 0,
+                'delete'       => 0,
+                'order'        => $postion++,
+                'details'      => [
+                    'display' => [
+                        'width' => '3'
+                    ]
+                ]
+            ])->save();
+        }
+        $dataRow = $this->dataRow($BrandsDataType, 'deleted_at');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'timestamp',
+                'display_name' => 'deleted_at',
+                'required'     => 0,
+                'browse'       => 0,
+                'read'         => 1,
+                'edit'         => 0,
+                'add'          => 0,
+                'delete'       => 0,
+                'order'        => $postion++,
+                'details'      => [
+                    'display' => [
+                        'width' => '3'
+                    ]
+                ]
+            ])->save();
+        }
+        $dataRow = $this->dataRow($BrandsDataType, 'slug');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'Slug',
+                'display_name' => 'Slug',
+                'required'     => 1,
+                'browse'       => 0,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'order'        => $postion++,
+                'details'      => [
+                    'slugify' => [
+                        'origin' => 'name',
+                        'forceUpdate' => true
+                    ],
+                    'display'   => [
+                        'width'  => '6',
+                    ],
+                ]
+            ])->save();
+        }
 
         /**
          * ------------------------------------------------
@@ -469,6 +637,38 @@ class DataRowsTableSeeder extends Seeder
                     ]
                 ],
                 'order'        => $postion++,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($ProductDataType, 'product_belongsto_brands_relationship');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'relationship',
+                'display_name' => 'Marcas',
+                'required'     => 0,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'details'      => [
+                    'tooltip' => [
+                        'ubication' => 'top',
+                        'message' => 'Marcas de Productos'
+                    ],
+                    'display' => [
+                        'width' => 6
+                    ],
+                    'model'       => 'Modules\\Bimgo\\Entities\\BgBrand',
+                    'table'       => 'bg_brands',
+                    'type'        => 'belongsTo',
+                    'column'      => 'brand_id',
+                    'key'         => 'id',
+                    'label'       => 'name',
+                    'pivot_table' => 'bg_brands',
+                    'pivot'       => 0,
+                ],
+                'order'=> $postion++,
+
             ])->save();
         }
         $dataRow = $this->dataRow($ProductDataType, 'images');
@@ -748,6 +948,25 @@ class DataRowsTableSeeder extends Seeder
             $dataRow->fill([
                 'type'         => 'hidden',
                 'display_name' => 'Sub Categoria',
+                'required'     => 0,
+                'browse'       => 0,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'order'        => $postion++,
+                'details'      => [
+                    'display'   => [
+                        'width'  => '6',
+                    ],
+                ]
+            ])->save();
+        }
+        $dataRow = $this->dataRow($ProductDataType, 'brand_id');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'hidden',
+                'display_name' => 'Marca',
                 'required'     => 0,
                 'browse'       => 0,
                 'read'         => 1,

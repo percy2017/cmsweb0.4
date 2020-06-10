@@ -61,6 +61,29 @@ class DataTypeTableSeeder extends Seeder
             ])->save();
         }
 
+        $dataType = $this->dataType('slug', 'bg_brands');
+        if (!$dataType->exists) {
+            $dataType->fill([
+                'name'                  => 'bg_brands',
+                'display_name_singular' => 'Marca',
+                'display_name_plural'   => 'Marcas',
+                'icon'                  => 'voyager-play',
+                'model_name'            => 'Modules\\Bimgo\\Entities\\BgBrand',
+                'policy_name'           => null,
+                'controller'            => 'Modules\\Bimgo\\Http\\Controllers\\BrandController',
+                'generate_permissions'  => 1,
+                'description'           => null,
+                'server_side'           => 1,
+                'details'               => [
+                    'order_column'         => 'id',
+                    'order_display_column' => 'id',
+                    'order_direction'      => 'asc',
+                    'default_search_key'   => 'id',
+                    'scope'                => null
+                ]
+            ])->save();
+        }
+
         $dataType = $this->dataType('slug', 'bg_products');
         if (!$dataType->exists) {
             $dataType->fill([
@@ -175,7 +198,6 @@ class DataTypeTableSeeder extends Seeder
                 ]
             ])->save();
         }
-
 
         $dataType = $this->dataType('slug', 'bg_customers');
         if (!$dataType->exists) {

@@ -9,7 +9,6 @@
 @endsection
 
 @section('content')
-{{--  {{ $cart = \Cart::getContent() }}  --}}
 @php
     $cart = \Cart::getContent();
 @endphp
@@ -51,7 +50,7 @@
               <!-- First row -->
               @foreach ($cart as $item)
                 @php
-                  $images = $item->images ? json_decode($item->images)[0] : '../images/icons-bimgo/icon-512x512.png';
+                  $images = $item->attributes->images ? json_decode($item->attributes->images)[0] : '../images/icons-bimgo/icon-512x512.png';
                 @endphp
                 <tr>
                   <th scope="row">
@@ -67,8 +66,8 @@
                   <td>{{ $item->attributes->title }}</td>
                   <td></td>
                   <td>{{ $item->price }} Bs.</td>
-                  <td class="text-center text-md-left">
-                    <span class="qty">1 </span>
+                  <td class="text-center myradiobutton text-md-left">
+                    <span class="qty">{{ $item->quantity }}</span>
                     <div class="btn-group radio-group ml-2" data-toggle="buttons">
                       <label class="btn btn-sm btn-primary btn-rounded">
                         <input type="radio" name="options" id="option1">&mdash;
@@ -79,7 +78,7 @@
                     </div>
                   </td>
                   <td class="font-weight-bold">
-                    <strong>{{ $item->price }} Bs.</strong>
+                    <strong>{{ $item->getPriceSum() }} Bs.</strong>
                   </td>
                   <td>
                     <a onclick="removecart('{{ route('bg_ajax_removecart', $item->attributes->slug) }}')" href="#" class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="top"
@@ -100,7 +99,7 @@
                 </td>
                 <td class="text-right">
                   <h4 class="mt-2">
-                    <strong>$2600</strong>
+                    <strong>{{ \Cart::getTotal() }} Bs.</strong>
                   </h4>
                 </td>
                 <td colspan="3" class="text-right">
@@ -169,5 +168,16 @@
         }
       })
     }
+
+
+    $('.myradiobutton input[type=radio]').each(function (idx, elt) {
+      let id = '#'+elt.id; 
+      var urli = '{{ route('bg_ajax_product_details', ':id') }}';
+      urli = urli.replace(':id', elt.id);
+      $(id).click(function() {
+        console.log(urli);
+      });
+    });  
+
   </script>
 @endsection

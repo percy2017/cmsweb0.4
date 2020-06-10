@@ -1,4 +1,21 @@
+@extends('bimgo::layouts.ecommerce1.master')
 
+@section('header')
+  @include('bimgo::layouts.ecommerce1.header')
+@endsection
+
+@section('menu')
+  @include('bimgo::layouts.ecommerce1.menu')
+@endsection
+
+@section('content')
+    @php
+        $cart = \Cart::getContent();
+    @endphp
+      <!-- Main Container-->
+  {{-- <div class="container mt-5 pt-3"> --}}
+
+ 
 
     <!-- Navbar-->
     <div class="row pt-4">
@@ -64,7 +81,7 @@
                   <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/13.jpg" class="img-fluid"
                     alt="">
 
-                  <a href="{{ url('product') }}">
+                  <a>
 
                     <div class="mask rgba-white-slight"></div>
 
@@ -77,7 +94,7 @@
                 <div class="card-body">
 
                   <!-- Category & Title-->
-                  <h5 class="card-title mb-1"><strong><a href="{{ url('product') }}" class="dark-grey-text">iPhone</a></strong></h5><span
+                  <h5 class="card-title mb-1"><strong><a href="" class="dark-grey-text">iPhone</a></strong></h5><span
                     class="badge badge-danger mb-2">bestseller</span>
 
                   <!-- Rating-->
@@ -989,3 +1006,69 @@
 
     </div>
 
+  {{-- </div> --}}
+  <!-- Main Container-->
+@endsection
+
+@section('footer')
+  @include('bimgo::layouts.ecommerce1.footer')
+@endsection
+
+@section('js')
+  <script>
+    function removecart(urli){
+      const swalWithBootstrapButtons = Swal.mixin({
+        customClass: {
+          confirmButton: 'btn btn-success',
+          cancelButton: 'btn btn-danger'
+        },
+        buttonsStyling: false
+      })
+
+      swalWithBootstrapButtons.fire({
+        title: 'Estas Segur@ ?',
+        text: "Estas apunto de eliminar un producto de tu carrito!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Si, Eliminar!',
+        cancelButtonText: 'No, cancelar!',
+        reverseButtons: true
+      }).then((result) => {
+        if (result.value) {
+          $.ajax({
+            type: "get",
+            url: urli,
+            success: function (response) {
+              swalWithBootstrapButtons.fire(
+                'Item Eliminado!',
+                'Puedes volver a Agregar el item! '+response.name,
+                'success'
+              )
+              location.reload();
+            }
+          });
+        } else if (
+          /* Read more about handling dismissals below */
+          result.dismiss === Swal.DismissReason.cancel
+        ) {
+          swalWithBootstrapButtons.fire(
+            'Accion Cancelada',
+            'Puedes volver intentarlo :)',
+            'error'
+          )
+        }
+      })
+    }
+
+
+    $('.myradiobutton input[type=radio]').each(function (idx, elt) {
+      let id = '#'+elt.id; 
+      var urli = '{{ route('bg_ajax_product_details', ':id') }}';
+      urli = urli.replace(':id', elt.id);
+      $(id).click(function() {
+        console.log(urli);
+      });
+    });  
+
+  </script>
+@endsection

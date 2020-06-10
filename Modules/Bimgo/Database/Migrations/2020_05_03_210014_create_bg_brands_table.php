@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBgCategoriesTable extends Migration
+class CreateBgBrandsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,13 @@ class CreateBgCategoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('bg_categories', function (Blueprint $table) {
+        Schema::create('bg_brands', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('title');
+            $table->string('name');
             $table->string('slug')->unique();
             $table->string('image')->nullable();
-            $table->string('description')->nullable();
+            $table->text('description')->nullable();
+
             $table->timestamps();
             $table->softDeletes();
         });
@@ -31,6 +32,6 @@ class CreateBgCategoriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('bg_categories');
+        Schema::dropIfExists('bg_brands');
     }
 }

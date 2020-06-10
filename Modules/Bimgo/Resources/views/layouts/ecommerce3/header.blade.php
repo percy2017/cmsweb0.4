@@ -3,14 +3,14 @@
 		<div class="container">
 	<div class="row align-items-center">
 		<div class="col-lg-2 col-4">
-			<a href="http://bootstrap-ecommerce.com" class="brand-wrap">
+			<a href="{{ url('/') }}" class="brand-wrap">
 				<img class="logo" src="{{ asset('vendor/bimgo/bootstrap/images/logo.png') }}">
 			</a> <!-- brand-wrap.// -->
 		</div>
 		<div class="col-lg-6 col-sm-12">
 			<form action="#" class="search">
 				<div class="input-group w-100">
-					<input type="text" class="form-control" placeholder="Search">
+					<input type="text" class="form-control" placeholder="Buscar">
 					<div class="input-group-append">
 					<button class="btn btn-primary" type="submit">
 						<i class="fa fa-search"></i>
@@ -28,11 +28,22 @@
 				<div class="widget-header icontext">
 					<a href="#" class="icon icon-sm rounded-circle border"><i class="fa fa-user"></i></a>
 					<div class="text">
-						<span class="text-muted">Welcome!</span>
-						<div> 
-							<a href="#">Sign in</a> |  
-							<a href="#"> Register</a>
-						</div>
+						@guest
+							<span class="text-muted">Bienvenido!</span>
+							<div> 
+								<a href="{{ url('login') }}">Ingresar</a> |  
+								<a href="{{ url('register') }}"> registrar</a>
+							</div>
+						@else
+							<span class="text-muted">Bienvenido!</span>
+							<div> 
+								<a href="{{ url('home') }}">{{ Auth::user()->name }}</a> | 
+								<a href="{{ route('logout') }}">Salir</a>
+							</div>
+							<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+								@csrf
+							</form>
+						@endguest
 					</div>
 				</div>
 

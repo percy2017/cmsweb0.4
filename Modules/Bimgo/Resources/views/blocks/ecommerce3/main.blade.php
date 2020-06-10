@@ -6,18 +6,18 @@
 		<aside class="col-md-3">
 			<nav class="card">
 				<ul class="menu-category">
-					<li><a href="#">Best clothes</a></li>
-					<li><a href="#">Automobiles</a></li>
-					<li><a href="#">Home interior</a></li>
-					<li><a href="#">Electronics</a></li>
-					<li><a href="#">Technologies</a></li>
-					<li><a href="#">Digital goods</a></li>
-					<li class="has-submenu"><a href="#">More items</a>
+					<li><a href="{{ $data->link1->value }}">{{ $data->text1->value }}</a></li>
+					<li><a href="{{ $data->link2->value }}">{{ $data->text2->value }}</a></li>
+					<li><a href="{{ $data->link3->value }}">{{ $data->text3->value }}</a></li>
+					<li><a href="{{ $data->link4->value }}">{{ $data->text4->value }}</a></li>
+					<li><a href="{{ $data->link5->value }}">{{ $data->text5->value }}</a></li>
+					<li><a href="{{ $data->link6->value }}">{{ $data->text6->value }}</a></li>
+					<li class="has-submenu"><a href="#">{{ $data->text7->value }}</a>
 						<ul class="submenu">
-							<li><a href="#">Submenu name</a></li>
-							<li><a href="#">Great submenu</a></li>
-							<li><a href="#">Another menu</a></li>
-							<li><a href="#">Some others</a></li>
+							<li><a href="{{ $data->link71->value }}">{{ $data->text71->value }}</a></li>
+							<li><a href="{{ $data->link72->value }}">{{ $data->text72->value }}</a></li>
+							<li><a href="{{ $data->link73->value }}">{{ $data->text73->value }}</a></li>
+							<li><a href="{{ $data->link74->value }}">{{ $data->text74->value }}</a></li>
 						</ul>
 					</li>
 				</ul>
@@ -25,7 +25,7 @@
 		</aside> <!-- col.// -->
 		<div class="col-md-9">
 			<article class="banner-wrap">
-				<img src="{{ asset('vendor/bimgo/bootstrap/images/banners/2.jpg') }}" class="w-100 rounded">
+				<img src="{{ Voyager::Image($data->image->value) }}" class="w-100 rounded">
 			</article>
 		</div> <!-- col.// -->
 	</div> <!-- row.// -->

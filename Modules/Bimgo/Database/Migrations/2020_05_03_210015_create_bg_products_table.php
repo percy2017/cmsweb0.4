@@ -16,9 +16,9 @@ class CreateBgProductsTable extends Migration
         Schema::create('bg_products', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->string('slug');
+            $table->string('slug')->unique();
             $table->text('description')->nullable();
-            $table->string('images')->nullable();
+            $table->text('images')->nullable();
             $table->string('tags')->nullable();
             $table->string('stars')->nullable();
             $table->text('characteristics')->nullable();
@@ -30,6 +30,9 @@ class CreateBgProductsTable extends Migration
 
             $table->unsignedBigInteger('sub_category_id');
             $table->foreign('sub_category_id')->references('id')->on('bg_sub_categories');
+
+            $table->unsignedBigInteger('brand_id');
+            $table->foreign('brand_id')->references('id')->on('bg_brands');
 
             $table->timestamps();
             $table->softDeletes();

@@ -5,7 +5,7 @@
 		<section class="footer-top padding-y">
 			<div class="row">
 				<aside class="col-md col-6">
-					<h6 class="title">Brands</h6>
+					<h6 class="title">Marcas</h6>
 					<ul class="list-unstyled">
 						<li> <a href="#">Adidas</a></li>
 						<li> <a href="#">Puma</a></li>
@@ -14,7 +14,7 @@
 					</ul>
 				</aside>
 				<aside class="col-md col-6">
-					<h6 class="title">Company</h6>
+					<h6 class="title">Empresa</h6>
 					<ul class="list-unstyled">
 						<li> <a href="#">About us</a></li>
 						<li> <a href="#">Career</a></li>
@@ -24,7 +24,7 @@
 					</ul>
 				</aside>
 				<aside class="col-md col-6">
-					<h6 class="title">Help</h6>
+					<h6 class="title">Ayuda</h6>
 					<ul class="list-unstyled">
 						<li> <a href="#">Contact us</a></li>
 						<li> <a href="#">Money refund</a></li>
@@ -34,7 +34,7 @@
 					</ul>
 				</aside>
 				<aside class="col-md col-6">
-					<h6 class="title">Account</h6>
+					<h6 class="title">Cuentas</h6>
 					<ul class="list-unstyled">
 						<li> <a href="#"> User Login </a></li>
 						<li> <a href="#"> User register </a></li>
@@ -43,7 +43,7 @@
 					</ul>
 				</aside>
 				<aside class="col-md">
-					<h6 class="title">Social</h6>
+					<h6 class="title">Redes Sociales</h6>
 					<ul class="list-unstyled">
 						<li><a href="#"> <i class="fab fa-facebook"></i> Facebook </a></li>
 						<li><a href="#"> <i class="fab fa-twitter"></i> Twitter </a></li>
@@ -56,12 +56,12 @@
 
 		<section class="footer-bottom border-top row">
 			<div class="col-md-2">
-				<p class="text-muted"> &copy 2019 Company name </p>
+				<p class="text-muted"> &copy 2020 LoginWeb </p>
 			</div>
 			<div class="col-md-8 text-md-center">
-				<span  class="px-2">info@pixsellz.io</span>
-				<span  class="px-2">+879-332-9375</span>
-				<span  class="px-2">Street name 123, Avanue abc</span>
+				<span  class="px-2">empresa.loginweb@gmail.com</span>
+				<span  class="px-2">+591 71130523</span>
+				<span  class="px-2">Trinidad Beni Bolivia</span>
 			</div>
 			<div class="col-md-2 text-md-right text-muted">
 				<i class="fab fa-lg fa-cc-visa"></i>

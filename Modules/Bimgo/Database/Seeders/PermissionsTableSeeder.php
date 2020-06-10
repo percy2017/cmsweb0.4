@@ -18,6 +18,7 @@ class PermissionsTableSeeder extends Seeder
     {
         Permission::generateFor('bg_categories');
         Permission::generateFor('bg_sub_categories');
+        Permission::generateFor('bg_brands');
         Permission::generateFor('bg_products');
         Permission::generateFor('bg_product_details');
         Permission::generateFor('bg_branch_offices');
@@ -43,6 +44,17 @@ class PermissionsTableSeeder extends Seeder
         }
         //-----------------------------------------------------------------------------------
         $permissions = Permission::where('table_name', 'bg_sub_categories')->get();
+        foreach ($permissions as $key) {
+            $rp = DB::table('permission_role')->where('permission_id', $key->id)->first();
+            if (!$rp) {
+                DB::table('permission_role')->insert([
+                    'permission_id' => $key->id, 
+                    'role_id' => $role->id
+                ]);
+            }
+        }
+        //-----------------------------------------------------------------------------------
+        $permissions = Permission::where('table_name', 'bg_brands')->get();
         foreach ($permissions as $key) {
             $rp = DB::table('permission_role')->where('permission_id', $key->id)->first();
             if (!$rp) {

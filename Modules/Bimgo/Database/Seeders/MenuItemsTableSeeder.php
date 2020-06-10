@@ -24,27 +24,17 @@ class MenuItemsTableSeeder extends Seeder
         ]);
         //-------------------------------------------------
         Menu::firstOrCreate([
+            'name' => 'bg_brands',
+        ]);
+        //-------------------------------------------------
+        Menu::firstOrCreate([
             'name' => 'bg_products',
         ]);
         $menu = Menu::where('name', 'bg_products')->firstOrFail();
+        $count=1;
         $menuItem = MenuItem::firstOrNew([
             'menu_id' => $menu->id,
-            'title'   => 'Nuevo',
-            'url'     => 'admin/bg_products/create',
-            'route'   => null
-        ]);
-        if (!$menuItem->exists) {
-            $menuItem->fill([
-                'target'     => '_self',
-                'icon_class' => null,
-                'color'      => null,
-                'parent_id'  => null,
-                'order'      => 1,
-            ])->save();
-        }
-        $menuItem = MenuItem::firstOrNew([
-            'menu_id' => $menu->id,
-            'title'   => 'Listar',
+            'title'   => 'Listar los Productos',
             'url'     => 'admin/bg_products/1',
             'route'   => null
         ]);
@@ -54,12 +44,28 @@ class MenuItemsTableSeeder extends Seeder
                 'icon_class' => null,
                 'color'      => null,
                 'parent_id'  => null,
-                'order'      => 2,
+                'order'      => $count++,
             ])->save();
         }
         $menuItem = MenuItem::firstOrNew([
             'menu_id' => $menu->id,
-            'title'   => 'Categoria',
+            'title'   => 'Nuevo Producto',
+            'url'     => 'admin/bg_products/create',
+            'route'   => null
+        ]);
+        if (!$menuItem->exists) {
+            $menuItem->fill([
+                'target'     => '_self',
+                'icon_class' => null,
+                'color'      => null,
+                'parent_id'  => null,
+                'order'      => $count++,
+            ])->save();
+        }
+        
+        $menuItem = MenuItem::firstOrNew([
+            'menu_id' => $menu->id,
+            'title'   => 'Nueva Categoria',
             'url'     => 'admin/bg_categories/create',
             'route'   => null
         ]);
@@ -69,12 +75,12 @@ class MenuItemsTableSeeder extends Seeder
                 'icon_class' => null,
                 'color'      => null,
                 'parent_id'  => null,
-                'order'      => 3,
+                'order'      => $count++,
             ])->save();
         }
         $menuItem = MenuItem::firstOrNew([
             'menu_id' => $menu->id,
-            'title'   => 'Sub Categoria',
+            'title'   => 'Nueva Sub Categoria',
             'url'     => 'admin/bg_sub_categories/create',
             'route'   => null
         ]);
@@ -84,7 +90,22 @@ class MenuItemsTableSeeder extends Seeder
                 'icon_class' => null,
                 'color'      => null,
                 'parent_id'  => null,
-                'order'      => 4,
+                'order'      => $count++,
+            ])->save();
+        }
+        $menuItem = MenuItem::firstOrNew([
+            'menu_id' => $menu->id,
+            'title'   => 'Nueva Marca',
+            'url'     => 'admin/bg_brands/create',
+            'route'   => null
+        ]);
+        if (!$menuItem->exists) {
+            $menuItem->fill([
+                'target'     => '_self',
+                'icon_class' => null,
+                'color'      => null,
+                'parent_id'  => null,
+                'order'      => $count++,
             ])->save();
         }
         $menuItem = MenuItem::firstOrNew([
@@ -99,7 +120,7 @@ class MenuItemsTableSeeder extends Seeder
                 'icon_class' => null,
                 'color'      => null,
                 'parent_id'  => null,
-                'order'      => 5,
+                'order'      => $count++,
             ])->save();
         }
         $menuItem = MenuItem::firstOrNew([
@@ -114,7 +135,7 @@ class MenuItemsTableSeeder extends Seeder
                 'icon_class' => null,
                 'color'      => null,
                 'parent_id'  => null,
-                'order'      => 6,
+                'order'      => $count++,
             ])->save();
         }
 

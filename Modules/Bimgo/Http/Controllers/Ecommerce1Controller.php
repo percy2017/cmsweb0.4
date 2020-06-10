@@ -84,6 +84,16 @@ class Ecommerce1Controller extends Controller
         //
     }
 
+    function category()
+    {
+        $products = BgProduct::where('published', true)->with(['product_details'])->orderBy('id', 'desc')->get();
+        $page = \App\Page::where('slug', 'landing-page-bimgo')->first();
+        return view('bimgo::pages.category1', [
+            'product'  => $products,
+            'page' => $page
+        ]);
+    }
+
     static function products()
     {
         $products = BgProduct::where('published', true)->with(['product_details'])->orderBy('id', 'desc')->limit(6)->get();
@@ -169,6 +179,7 @@ class Ecommerce1Controller extends Controller
             1, 
             array(
                 'slug' => $product->slug, 
+                'images' => $product->images,
                 'description' => $product->description, 
                 'type' => $product->product_details[0]->type, 
                 'title' => $product->product_details[0]->title, 

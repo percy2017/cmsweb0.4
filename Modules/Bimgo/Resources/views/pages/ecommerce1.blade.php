@@ -26,7 +26,6 @@
         @include('bimgo::blocks.'.$item->name, ['data' => $name_espace::$function()])
         @break
     @endswitch
-   
   @endforeach
 @endsection
 
@@ -48,9 +47,10 @@
             title: response.name+', Agregado a tu Carrito',
             showConfirmButton: true,
             timer: 3000
-          })
+          });
+          $('#cartTotalQuantity').html('{{ \Cart::getTotalQuantity() }}');
         }
       });
-    }     
+    }
   </script>
 @endsection

@@ -5,44 +5,40 @@
 	<meta http-equiv="pragma" content="no-cache" />
 	<meta http-equiv="cache-control" content="max-age=604800" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta property="og:site_name" content="{{ setting('site.title') }}" />
+    <meta property="og:title" content="{{ $page->name }}" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="{{ route('pages', $page->slug) }}" />
+    <meta property="og:image" content="{{ Voyager::Image($page->image) }}" />
+    <meta property="og:description" content="{{ $page->description }}" />
 
-	<title>{{ setting('site.title')}}</title>
+	<title>{{ $page->name }}</title>
 
 	<link href="{{ asset('vendor/bimgo/bootstrap/images/favicon.ico') }}" rel="shortcut icon" type="image/x-icon">
-
 	<!-- jQuery -->
 	<script src="{{ asset('vendor/bimgo/bootstrap/js/jquery-2.0.0.min.js') }}" type="text/javascript"></script>
-
 	<!-- Bootstrap4 files-->
 	<script src="{{ asset('vendor/bimgo/bootstrap/js/bootstrap.bundle.min.js') }}" type="text/javascript"></script>
 	<link href="{{ asset('vendor/bimgo/bootstrap/css/bootstrap.css') }}" rel="stylesheet" type="text/css"/>
-
 	<!-- Font awesome 5 -->
 	<link href="{{ asset('vendor/bimgo/bootstrap/fonts/fontawesome/css/all.min.css') }}" type="text/css" rel="stylesheet">
-
 	<!-- custom style -->
 	<link href="{{ asset('vendor/bimgo/bootstrap/css/ui.css') }}" rel="stylesheet" type="text/css"/>
 	<link href="{{ asset('vendor/bimgo/bootstrap/css/responsive.css') }}" rel="stylesheet" media="only screen and (max-width: 1200px)" />
-
 	<link href="{{ asset('vendor/bimgo/bootstrap/plugins/slickslider/slick.css') }}" rel="stylesheet" type="text/css" />
 	<link href="{{ asset('vendor/bimgo/bootstrap/plugins/slickslider/slick-theme.css') }}" rel="stylesheet" type="text/css" />
 	<script src="{{ asset('vendor/bimgo/bootstrap/plugins/slickslider/slick.min.js') }}"></script>
-
 	<!-- plugin: owl carousel  -->
 	<link href="{{ asset('vendor/bimgo/bootstrap/plugins/owlcarousel/assets/owl.carousel.css') }}" rel="stylesheet">
 	<link href="{{ asset('vendor/bimgo/bootstrap/plugins/owlcarousel/assets/owl.theme.default.css') }}" rel="stylesheet">
 	<script src="{{ asset('vendor/bimgo/bootstrap/plugins/owlcarousel/owl.carousel.min.js') }}"></script>
-
 	<!-- custom javascript -->
 	<script src="{{ asset('vendor/bimgo/bootstrap/js/script.js') }}" type="text/javascript"></script>
-
-
 	<script type="text/javascript">
 	/// some script
 	// jquery ready start
 	$(document).ready(function() {
 		// jQuery code
-
 		/////////////////  items slider. /plugins/slickslider/
 		if ($('.slider-banner-slick').length > 0) { // check if element exists
 			$('.slider-banner-slick').slick({

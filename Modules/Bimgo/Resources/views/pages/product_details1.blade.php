@@ -244,25 +244,26 @@
       });
     } 
 
-    $('.color input[type=radio]').each(function (idx, elt) {
-        let id = '#'+elt.id; 
-        var urli = '{{ route('bg_ajax_product_details', ':id') }}';
-        urli = urli.replace(':id', elt.id);
-        //console.log(urli);
-        $(id).click(function() {
-          $.ajax({
-                type: "get",
-                url: urli,
-                success: function (response) {
-                  if(response.price_last > 0)
-                  {
-                    $('#price').html('<span class="red-text font-weight-bold">'+response.price+' Bs.</strong></span> <span class="grey-text"><small><s>'+response.price_last+' Bs.</s></small></span>');
-                  }else{
-                    $('#price').html('<span class="dark-grey-text font-weight-bold">'+response.price+' Bs.</strong></span>');
-                  }
-                }
-            });
+  $('.color input[type=radio]').each(function (idx, elt) {
+    let id = '#'+elt.id; 
+    var urli = '{{ route('bg_ajax_product_details', ':id') }}';
+    urli = urli.replace(':id', elt.id);
+    //console.log(urli);
+    $(id).click(function() {
+      $.ajax({
+            type: "get",
+            url: urli,
+            success: function (response) {
+              if(response.price_last > 0)
+              {
+                $('#price').html('<span class="red-text font-weight-bold">'+response.price+' Bs.</strong></span> <span class="grey-text"><small><s>'+response.price_last+' Bs.</s></small></span>');
+              }else{
+                $('#price').html('<span class="dark-grey-text font-weight-bold">'+response.price+' Bs.</strong></span>');
+              }
+            }
         });
+      });
     });  
+    
   </script>
 @show

@@ -190,13 +190,9 @@
               <a class="nav-link dark-grey-text font-weight-bold" href="{{ url('cart') }}" data-toggle="modal"
                 data-target="#cart-modal-ex">  --}}
               <a class="nav-link dark-grey-text font-weight-bold" href="{{ url('my/cart') }}">
-
-                <span class="badge danger-color">0</span>
-
+                <span class="badge danger-color"><div id="cartTotalQuantity"></div></span>
                 <i class="fas fa-shopping-cart blue-text" aria-hidden="true"></i>
-
                 <span class="clearfix d-none d-sm-inline-block">Cart</span>
-
               </a>
 
             </li>

@@ -14,8 +14,8 @@ Route::get('ajax/cart/{slug}', 'Ecommerce1Controller@addcart')->name('bg_ajax_ad
 Route::get('ajax/remove/{slug}', 'Ecommerce1Controller@removecart')->name('bg_ajax_removecart');
 Route::get('ajax/product_details/{id}', 'Ecommerce1Controller@productdetails')->name('bg_ajax_product_details');
 
-Route::get('product1/{slug}', 'Ecommerce1Controller@product_details')->name('bg_product');
-Route::get('product/{slug}', 'Ecommerce2Controller@product_details')->name('bg_view2');
+Route::get('product/{slug}', 'Ecommerce1Controller@product_details')->name('bg_product');
+Route::get('my/category', 'Ecommerce1Controller@category')->name('bg_category');
 Route::get('my/cart', 'Ecommerce1Controller@cart')->name('bg_cart');
 Route::get('my/payment', 'Ecommerce1Controller@payment')->name('bg_payment');
 Route::get('my/televenta', 'Ecommerce1Controller@televenta')->name('bg_tv');
