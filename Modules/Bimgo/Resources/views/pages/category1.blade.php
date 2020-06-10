@@ -14,771 +14,140 @@
     @endphp
       <!-- Main Container-->
   {{-- <div class="container mt-5 pt-3"> --}}
-
- 
-
     <!-- Navbar-->
     <div class="row pt-4">
-
       <!-- Content-->
       <div class="col-lg-9">
-
         <!-- Filter Area-->
         <div class="row">
-
           <div class="col-md-4 mt-3">
-
             <!-- Sort by-->
             <select class="mdb-select grey-text md-form" multiple>
-
-              <option value="" disabled selected>Choose your option</option>
-
-              <option value="1">Option 1</option>
-
-              <option value="2">Option 2</option>
-
-              <option value="3">Option 3</option>
-
+              <option value="" disabled selected>Elije una Sub Categoria</option>
+              @foreach ($SubCategorias as $item)
+                <option value="{{ $item->id }}">{{ $item->title }}</option>
+              @endforeach
             </select>
-
-            <label class="mdb-main-label">Example label</label>
-
+            <label class="mdb-main-label">Sub Categorias</label>
             <button class="btn-save btn btn-primary btn-sm">Save</button>
-
             <!-- Sort by-->
           </div>
-
           <div class="col-8 col-md-8 text-right">
-
             <!-- View Switcher-->
             <a class="btn blue darken-3 btn-sm"><i class="fas fa-th mr-2" aria-hidden="true"></i><strong>
                 Grid</strong></a>
-
             <a class="btn blue darken-3 btn-sm"><i class="fas fa-th-list mr-2" aria-hidden="true"></i><strong>
-
                 List</strong></a>
             <!-- View Switcher-->
           </div>
-
         </div>
         <!-- Filter Area-->
-
         <!-- Products Grid-->
         <section class="section pt-4">
 
           <!-- Grid row-->
-          <div class="row">
-
-            <!-- Grid column-->
-            <div class="col-lg-4 col-md-12 mb-4">
-
-              <!-- Card-->
-              <div class="card card-ecommerce">
-
-                <!-- Card image-->
-                <div class="view overlay">
-
-                  <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/13.jpg" class="img-fluid"
-                    alt="">
-
-                  <a>
-
-                    <div class="mask rgba-white-slight"></div>
-
-                  </a>
-
-                </div>
-                <!-- Card image-->
-
-                <!-- Card content-->
-                <div class="card-body">
-
-                  <!-- Category & Title-->
-                  <h5 class="card-title mb-1"><strong><a href="" class="dark-grey-text">iPhone</a></strong></h5><span
-                    class="badge badge-danger mb-2">bestseller</span>
-
-                  <!-- Rating-->
-                  <ul class="rating">
-
-                    <li><i class="fas fa-star blue-text"></i></li>
-
-                    <li><i class="fas fa-star blue-text"></i></li>
-
-                    <li><i class="fas fa-star blue-text"></i></li>
-
-                    <li><i class="fas fa-star blue-text"></i></li>
-
-                    <li><i class="fas fa-star blue-text"></i></li>
-
-                  </ul>
-
-                  <!-- Card footer-->
-                  <div class="card-footer pb-0">
-
-                    <div class="row mb-0">
-
-                      <span class="float-left"><strong>1439$</strong></span>
-
-                      <span class="float-right">
-
-                        <a class="" data-toggle="tooltip" data-placement="top" title="Add to Cart"><i
-                            class="fas fa-shopping-cart ml-3"></i></a>
-
-                      </span>
-
-                    </div>
-
-                  </div>
-
-                </div>
-                <!-- Card content-->
-
-              </div>
-              <!-- Card-->
-
-            </div>
-            <!-- Grid column-->
-
-            <!-- Grid column-->
-            <div class="col-lg-4 col-md-6 mb-4">
-
-              <!-- Card-->
-              <div class="card card-ecommerce">
-
-                <!-- Card image-->
-                <div class="view overlay">
-
-                  <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/10.jpg" class="img-fluid"
-                    alt="">
-
-                  <a>
-
-                    <div class="mask rgba-white-slight"></div>
-
-                  </a>
-
-                </div>
-                <!-- Card image-->
-
-                <!-- Card content-->
-                <div class="card-body">
-
-                  <!-- Category & Title-->
-                  <h5 class="card-title mb-1"><strong><a href="" class="dark-grey-text">Headphones</a></strong></h5>
-
-                  <span class="badge badge-info mb-2">new</span>
-
-                  <!-- Rating-->
-                  <ul class="rating">
-
-                    <li><i class="fas fa-star blue-text"></i></li>
-
-                    <li><i class="fas fa-star blue-text"></i></li>
-
-                    <li><i class="fas fa-star blue-text"></i></li>
-
-                    <li><i class="fas fa-star blue-text"></i></li>
-
-                    <li><i class="fas fa-star blue-text"></i></li>
-
-                  </ul>
-
-                  <!-- Card footer-->
-                  <div class="card-footer pb-0">
-
-                    <div class="row mb-0">
-
-                      <span class="float-left"><strong>1439$</strong></span>
-
-                      <span class="float-right">
-
-                        <a class="" data-toggle="tooltip" data-placement="top" title="Add to Cart"><i
-                            class="fas fa-shopping-cart ml-3"></i></a>
-
-                      </span>
-
-                    </div>
-
-                  </div>
-
-                </div>
-                <!-- Card content-->
-
-              </div>
-              <!-- Card-->
-
-            </div>
-            <!-- Grid column-->
-
-            <!-- Grid column-->
-            <div class="col-lg-4 col-md-6 mb-4">
-
-              <!-- Card-->
-              <div class="card card-ecommerce">
-
-                <!-- Card image-->
-                <div class="view overlay">
-
-                  <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/14.jpg" class="img-fluid"
-                    alt="">
-
-                  <a>
-
-                    <div class="mask rgba-white-slight"></div>
-
-                  </a>
-
-                </div>
-                <!-- Card image-->
-
-                <!-- Card content-->
-                <div class="card-body">
-
-                  <!-- Category & Title-->
-                  <h5 class="card-title mb-1"><strong><a href="" class="dark-grey-text">Sony TV-675i</a></strong></h5>
-
-                  <span class="badge badge-danger mb-2">bestseller</span>
-
-                  <!-- Rating-->
-                  <ul class="rating">
-
-                    <li><i class="fas fa-star blue-text"></i></li>
-
-                    <li><i class="fas fa-star blue-text"></i></li>
-
-                    <li><i class="fas fa-star blue-text"></i></li>
-
-                    <li><i class="fas fa-star blue-text"></i></li>
-
-                    <li><i class="fas fa-star grey-text"></i></li>
-
-                  </ul>
-
-                  <!-- Card footer-->
-                  <div class="card-footer pb-0">
-
-                    <div class="row mb-0">
-
-                      <span class="float-left"><strong>1439$</strong></span>
-
-                      <span class="float-right">
-
-                        <a class="" data-toggle="tooltip" data-placement="top" title="Add to Cart"><i
-                            class="fas fa-shopping-cart ml-3"></i></a>
-
-                      </span>
-
-                    </div>
-
-                  </div>
-
-                </div>
-                <!-- Card content-->
-
-              </div>
-              <!-- Card-->
-
-            </div>
-            <!-- Grid column-->
-
-          </div>
-          <!-- Grid row-->
-
-          <!-- Grid row-->
-          <div class="row">
-
-            <!-- Grid column-->
-            <div class="col-lg-4 col-md-12 mb-4">
-
-              <!-- Card-->
-              <div class="card card-ecommerce">
-
-                <!-- Card image-->
-                <div class="view overlay">
-
-                  <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/12.jpg" class="img-fluid"
-                    alt="">
-
-                  <a>
-
-                    <div class="mask rgba-white-slight"></div>
-
-                  </a>
-
-                </div>
-                <!-- Card image-->
-
-                <!-- Card content-->
-                <div class="card-body">
-
-                  <!-- Category & Title-->
-                  <h5 class="card-title mb-1"><strong><a href="" class="dark-grey-text">Asus CT-567</a></strong></h5>
-
-                  <span class="badge grey mb-2">best rated</span>
-
-                  <!-- Rating-->
-                  <ul class="rating">
-
-                    <li><i class="fas fa-star blue-text"></i></li>
-
-                    <li><i class="fas fa-star blue-text"></i></li>
-
-                    <li><i class="fas fa-star blue-text"></i></li>
-
-                    <li><i class="fas fa-star blue-text"></i></li>
-
-                    <li><i class="fas fa-star blue-text"></i></li>
-
-                  </ul>
-
-                  <!-- Card footer-->
-                  <div class="card-footer pb-0">
-
-                    <div class="row mb-0">
-
-                      <span class="float-left"><strong>1439$</strong></span>
-
-                      <span class="float-right">
-
-                        <a class="" data-toggle="tooltip" data-placement="top" title="Add to Cart"><i
-                            class="fas fa-shopping-cart ml-3"></i></a>
-
-                      </span>
-
-                    </div>
-
-                  </div>
-
-                </div>
-                <!-- Card content-->
-
-              </div>
-              <!-- Card-->
-
-            </div>
-            <!-- Grid column-->
-
-            <!-- Grid column-->
-            <div class="col-lg-4 col-md-6 mb-4">
-
-              <!-- Card-->
-              <div class="card card-ecommerce">
-
-                <!-- Card image-->
-                <div class="view overlay">
-
-                  <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/1.jpg" class="img-fluid"
-                    alt="">
-
-                  <a>
-
-                    <div class="mask rgba-white-slight"></div>
-
-                  </a>
-
-                </div>
-                <!-- Card image-->
-
-                <!-- Card content-->
-                <div class="card-body">
-
-                  <!-- Category & Title-->
-                  <h5 class="card-title mb-1"><strong><a href="" class="dark-grey-text">iPad PRO</a></strong></h5><span
-                    class="badge badge-danger mb-2">bestseller</span>
-
-                  <!-- Rating-->
-                  <ul class="rating">
-
-                    <li><i class="fas fa-star blue-text"></i></li>
-
-                    <li><i class="fas fa-star blue-text"></i></li>
-
-                    <li><i class="fas fa-star blue-text"></i></li>
-
-                    <li><i class="fas fa-star blue-text"></i></li>
-
-                    <li><i class="fas fa-star grey-text"></i></li>
-
-                  </ul>
-
-                  <!-- Card footer-->
-                  <div class="card-footer pb-0">
-
-                    <div class="row mb-0">
-
-                      <span class="float-left"><strong>1439$</strong></span>
-
-                      <span class="float-right">
-
-                        <a class="" data-toggle="tooltip" data-placement="top" title="Add to Cart"><i
-                            class="fas fa-shopping-cart ml-3"></i></a>
-
-                      </span>
-
-                    </div>
-
-                  </div>
-
-                </div>
-                <!-- Card content-->
-
-              </div>
-              <!-- Card-->
-
-            </div>
-            <!-- Grid column-->
-
-            <!-- Grid column-->
-            <div class="col-lg-4 col-md-6 mb-4">
-
-              <!-- Card-->
-              <div class="card card-ecommerce">
-
-                <!-- Card image-->
-                <div class="view overlay">
-
-                  <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/5.jpg" class="img-fluid"
-                    alt="">
-
-                  <a>
-
-                    <div class="mask rgba-white-slight"></div>
-
-                  </a>
-
-                </div>
-                <!-- Card image-->
-
-                <!-- Card content-->
-                <div class="card-body">
-
-                  <!-- Category & Title-->
-                  <h5 class="card-title mb-1"><strong><a href="" class="dark-grey-text">Dell V-964i</a></strong></h5>
-
-                  <span class="badge badge-info mb-2">new</span>
-
-                  <!-- Rating-->
-                  <ul class="rating">
-
-                    <li><i class="fas fa-star blue-text"></i></li>
-
-                    <li><i class="fas fa-star blue-text"></i></li>
-
-                    <li><i class="fas fa-star blue-text"></i></li>
-
-                    <li><i class="fas fa-star blue-text"></i></li>
-
-                    <li><i class="fas fa-star blue-text"></i></li>
-
-                  </ul>
-
-                  <!-- Card footer-->
-                  <div class="card-footer pb-0">
-
-                    <div class="row mb-0">
-
-                      <span class="float-left"><strong>1439$</strong></span>
-
-                      <span class="float-right">
-
-                        <a class="" data-toggle="tooltip" data-placement="top" title="Add to Cart"><i
-                            class="fas fa-shopping-cart ml-3"></i></a>
-
-                      </span>
-
-                    </div>
-
-                  </div>
-
-                </div>
-                <!-- Card content-->
-
-              </div>
-              <!-- Card-->
-
-            </div>
-            <!-- Grid column-->
-
-          </div>
-          <!-- Grid row-->
-
-          <!-- Grid row-->
           <div class="row mb-3">
+            @foreach ($products as $item)
+              @php
+                $images = $item->images ? json_decode($item->images)[0] : '../images/icons-bimgo/icon-512x512.png';
+              @endphp
+              <!-- Grid column-->
+              <div class="col-lg-4 col-md-12 mb-4">
+                <!-- Card-->
+                <div class="card card-ecommerce">
+                  <!-- Card image-->
+                  <div class="view overlay">
+                    <img src="{{ Voyager::image($images) }}" class="img-fluid" alt="{{ $item->name }}">
+                    <a href="{{ route('bg_product', $item->slug) }}">
+                      <div class="mask rgba-white-slight"></div>
+                    </a>
+                  </div>
+                  <!-- Card image-->
 
-            <!-- Grid column-->
-            <div class="col-lg-4 col-md-12 mb-4">
+                  <!-- Card content-->
+                  <div class="card-body">
+                    <!-- Category & Title-->
+                    <h5 class="card-title mb-1"><strong><a href="" class="dark-grey-text">{{ $item->name }}</a></strong></h5>
+                    <span class="badge grey mb-2">{{ json_decode($item->tags)[0] }}</span>
+                    <!-- Rating-->
+                    <ul class="rating">
+                      @switch($item->stars)
+                          @case(1)
+                              <li><i class="fas fa-star blue-text"></i></li>
+                              <li><i class="fas fa-star grey-text"></i></li>
+                              <li><i class="fas fa-star grey-text"></i></li>
+                              <li><i class="fas fa-star grey-text"></i></li>
+                              <li><i class="fas fa-star grey-text"></i></li>
+                              @break
+                          @case(2)
+                              <li><i class="fas fa-star blue-text"></i></li>
+                              <li><i class="fas fa-star blue-text"></i></li>
+                              <li><i class="fas fa-star grey-text"></i></li>
+                              <li><i class="fas fa-star grey-text"></i></li>
+                              <li><i class="fas fa-star grey-text"></i></li>
+                              @break
+                          @case(3)
+                              <li><i class="fas fa-star blue-text"></i></li>
+                              <li><i class="fas fa-star blue-text"></i></li>
+                              <li><i class="fas fa-star blue-text"></i></li>
+                              <li><i class="fas fa-star grey-text"></i></li>
+                              <li><i class="fas fa-star grey-text"></i></li>
+                              @break
+                          @case(4)
+                              <li><i class="fas fa-star blue-text"></i></li>
+                              <li><i class="fas fa-star blue-text"></i></li>
+                              <li><i class="fas fa-star blue-text"></i></li>
+                              <li><i class="fas fa-star blue-text"></i></li>
+                              <li><i class="fas fa-star grey-text"></i></li>
+                              @break
+                          @case(5)
+                              <li><i class="fas fa-star blue-text"></i></li>
+                              <li><i class="fas fa-star blue-text"></i></li>
+                              <li><i class="fas fa-star blue-text"></i></li>
+                              <li><i class="fas fa-star blue-text"></i></li>
+                              <li><i class="fas fa-star blue-text"></i></li>
+                              @break
+                          @default
+                      @endswitch
+                    </ul>
+                    <!-- Card footer-->
+                    <div class="card-footer pb-0">
 
-              <!-- Card-->
-              <div class="card card-ecommerce">
+                      <div class="row mb-0">
+                        @if($item->product_details[0]->price_last > 0)
+                          <h5 class="mb-0 pb-0 mt-1 font-weight-bold"><span
+                              class="red-text"><strong>{{ $item->product_details[0]->price }} Bs.</strong></span>
+                              <span class="grey-text"><small><s>{{ $item->product_details[0]->price_last }} Bs.</s></small></span>
+                          </h5>
+                        @else 
+                          <span class="float-left"><strong>{{ $item->product_details[0]->price }} Bs.</strong></span>
+                        @endif
+                        {{--  <span class="float-left"><strong>1439$</strong></span>  --}}
+                        <span class="float-right">
+                          <a onclick="addcart('{{ route('bg_ajax_addcart', $item->slug) }}')" class="" data-toggle="tooltip" data-placement="top" title="Agregar al Carrito"><i
+                              class="fas fa-shopping-cart ml-3"></i></a>
+                        </span>
 
-                <!-- Card image-->
-                <div class="view overlay">
-
-                  <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/8.jpg" class="img-fluid"
-                    alt="">
-
-                  <a>
-
-                    <div class="mask rgba-white-slight"></div>
-
-                  </a>
-
-                </div>
-                <!-- Card image-->
-
-                <!-- Card content-->
-                <div class="card-body">
-
-                  <!-- Category & Title-->
-                  <h5 class="card-title mb-1"><strong><a href="" class="dark-grey-text">Samsung V54</a></strong></h5>
-
-                  <span class="badge grey mb-2">best rated</span>
-
-                  <!-- Rating-->
-                  <ul class="rating">
-
-                    <li><i class="fas fa-star blue-text"></i></li>
-
-                    <li><i class="fas fa-star blue-text"></i></li>
-
-                    <li><i class="fas fa-star blue-text"></i></li>
-
-                    <li><i class="fas fa-star blue-text"></i></li>
-
-                    <li><i class="fas fa-star blue-text"></i></li>
-
-                  </ul>
-
-                  <!-- Card footer-->
-                  <div class="card-footer pb-0">
-
-                    <div class="row mb-0">
-
-                      <span class="float-left"><strong>1439$</strong></span>
-
-                      <span class="float-right">
-
-                        <a class="" data-toggle="tooltip" data-placement="top" title="Add to Cart"><i
-                            class="fas fa-shopping-cart ml-3"></i></a>
-
-                      </span>
+                      </div>
 
                     </div>
 
                   </div>
+                  <!-- Card content-->
 
                 </div>
-                <!-- Card content-->
+                <!-- Card-->
 
               </div>
-              <!-- Card-->
+              <!-- Grid column-->
+            @endforeach
 
-            </div>
-            <!-- Grid column-->
-
-            <!-- Grid column-->
-            <div class="col-lg-4 col-md-6 mb-4">
-
-              <!-- Card-->
-              <div class="card card-ecommerce">
-
-                <!-- Card image-->
-                <div class="view overlay">
-
-                  <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/7.jpg" class="img-fluid"
-                    alt="">
-
-                  <a>
-
-                    <div class="mask rgba-white-slight"></div>
-
-                  </a>
-
-                </div>
-                <!-- Card image-->
-
-                <!-- Card content-->
-                <div class="card-body">
-
-                  <!-- Category & Title-->
-                  <h5 class="card-title mb-1"><strong><a href="" class="dark-grey-text">Dell 786i</a></strong></h5><span
-                    class="badge badge-info mb-2">new</span>
-
-                  <!-- Rating-->
-                  <ul class="rating">
-
-                    <li><i class="fas fa-star blue-text"></i></li>
-
-                    <li><i class="fas fa-star blue-text"></i></li>
-
-                    <li><i class="fas fa-star blue-text"></i></li>
-
-                    <li><i class="fas fa-star blue-text"></i></li>
-
-                    <li><i class="fas fa-star grey-text"></i></li>
-
-                  </ul>
-
-                  <!-- Card footer-->
-                  <div class="card-footer pb-0">
-
-                    <div class="row mb-0">
-
-                      <span class="float-left"><strong>1439$</strong></span>
-
-                      <span class="float-right">
-
-                        <a class="" data-toggle="tooltip" data-placement="top" title="Add to Cart"><i
-                            class="fas fa-shopping-cart ml-3"></i></a>
-
-                      </span>
-
-                    </div>
-
-                  </div>
-
-                </div>
-                <!-- Card content-->
-
-              </div>
-              <!-- Card-->
-
-            </div>
-            <!-- Grid column-->
-
-            <!-- Grid column-->
-            <div class="col-lg-4 col-md-6 mb-4">
-
-              <!-- Card-->
-              <div class="card card-ecommerce">
-
-                <!-- Card image-->
-                <div class="view overlay">
-
-                  <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/9.jpg" class="img-fluid"
-                    alt="">
-
-                  <a>
-
-                    <div class="mask rgba-white-slight"></div>
-
-                  </a>
-
-                </div>
-                <!-- Card image-->
-
-                <!-- Card content-->
-                <div class="card-body">
-
-                  <!-- Category & Title-->
-                  <h5 class="card-title mb-1"><strong><a href="" class="dark-grey-text">Canon 675-D</a></strong></h5>
-
-                  <span class="badge badge-info mb-2">new</span>
-
-                  <!-- Rating-->
-                  <ul class="rating">
-
-                    <li><i class="fas fa-star blue-text"></i></li>
-
-                    <li><i class="fas fa-star blue-text"></i></li>
-
-                    <li><i class="fas fa-star blue-text"></i></li>
-
-                    <li><i class="fas fa-star blue-text"></i></li>
-
-                    <li><i class="fas fa-star blue-text"></i></li>
-
-                  </ul>
-
-                  <!-- Card footer-->
-                  <div class="card-footer pb-0">
-
-                    <div class="row mb-0">
-
-                      <span class="float-left"><strong>1439$</strong></span>
-
-                      <span class="float-right">
-
-                        <a class="" data-toggle="tooltip" data-placement="top" title="Add to Cart"><i
-                            class="fas fa-shopping-cart ml-3"></i></a>
-
-                      </span>
-
-                    </div>
-
-                  </div>
-
-                </div>
-
-                <!-- Card content-->
-              </div>
-
-              <!-- Card-->
-            </div>
-
-            <!-- Grid column-->
           </div>
           <!-- Grid row-->
 
           <!-- Grid row-->
           <div class="row justify-content-center mb-4">
-
-            <!-- Pagination-->
-            <nav class="mb-4">
-
-              <ul class="pagination pagination-circle pg-blue mb-0">
-
-                <!-- First-->
-                <li class="page-item disabled clearfix d-none d-md-block"><a
-                    class="page-link waves-effect waves-effect">First</a></li>
-
-                <!-- Arrow left-->
-                <li class="page-item disabled">
-
-                  <a class="page-link waves-effect waves-effect" aria-label="Previous">
-
-                    <span aria-hidden="true">«</span>
-
-                    <span class="sr-only">Previous</span>
-
-                  </a>
-
-                </li>
-
-                <!-- Numbers-->
-                <li class="page-item active"><a class="page-link waves-effect waves-effect">1</a></li>
-
-                <li class="page-item"><a class="page-link waves-effect waves-effect">2</a></li>
-
-                <li class="page-item"><a class="page-link waves-effect waves-effect">3</a></li>
-
-                <li class="page-item"><a class="page-link waves-effect waves-effect">4</a></li>
-
-                <li class="page-item"><a class="page-link waves-effect waves-effect">5</a></li>
-
-                <!-- Arrow right-->
-                <li class="page-item">
-
-                  <a class="page-link waves-effect waves-effect" aria-label="Next">
-
-                    <span aria-hidden="true">»</span>
-
-                    <span class="sr-only">Next</span>
-
-                  </a>
-
-                </li>
-
-                <!-- First-->
-                <li class="page-item clearfix d-none d-md-block"><a class="page-link waves-effect waves-effect">Last</a>
-
-                </li>
-
-              </ul>
-
-            </nav>
-            <!-- Pagination-->
-
+            {{ $products->links() }}
           </div>
           <!-- Grid row-->
 
@@ -796,77 +165,38 @@
           <!-- Grid row-->
           <div class="row">
 
-            <div class="col-md-6 col-lg-12 mb-5">
-
-              <!-- Panel-->
-              <h5 class="font-weight-bold dark-grey-text"><strong>Order By</strong></h3>
-
-                <div class="divider"></div>
-
-                <p class="blue-text"><a>Default</a></p>
-
-                <p class="dark-grey-text"><a>Popularity</a></p>
-
-                <p class="dark-grey-text"><a>Average rating</a></p>
-
-                <p class="dark-grey-text"><a>Price: low to high</a></p>
-
-                <p class="dark-grey-text"><a>Price: high to low</a></p>
-
-            </div>
-
             <!-- Filter by category-->
             <div class="col-md-6 col-lg-12 mb-5">
 
-              <h5 class="font-weight-bold dark-grey-text"><strong>Category</strong></h3>
+              <h5 class="font-weight-bold dark-grey-text"><strong>Categorias</strong></h3>
 
                 <div class="divider"></div>
 
                 <!-- Radio group-->
                 <div class="form-group ">
-
-                  <input class="form-check-input" name="group100" type="radio" id="radio100">
-
-                  <label for="radio100" class="form-check-label dark-grey-text">All</label>
-
+                  <input class="form-check-input" name="group100" type="radio" id="001" checked>
+                  <label for="001" class="form-check-label dark-grey-text">Todos</label>
                 </div>
-
-                <div class="form-group">
-
-                  <input class="form-check-input" name="group100" type="radio" id="radio101" checked>
-
-                  <label for="radio101" class="form-check-label dark-grey-text">Laptop</label>
-
-                </div>
-
-                <div class="form-group">
-
-                  <input class="form-check-input" name="group100" type="radio" id="radio102">
-
-                  <label for="radio102" class="form-check-label dark-grey-text">Smartphone</label>
-
-                </div>
-
-                <div class="form-group">
-
-                  <input class="form-check-input" name="group100" type="radio" id="radio103">
-
-                  <label for="radio103" class="form-check-label dark-grey-text">Tablet</label>
-
-                </div>
-
-                <div class="form-group">
-
-                  <input class="form-check-input" name="group100" type="radio" id="radio104">
-
-                  <label for="radio104" class="form-check-label dark-grey-text">Headphones</label>
-
-                </div>
-                <!-- Radio group-->
-
+                @foreach ($categorias as $item)
+                    <div class="form-group ">
+                      <input class="form-check-input" name="group100" type="radio" id="{{ $item->id }}">
+                      <label for="{{ $item->id }}" class="form-check-label dark-grey-text">{{ $item->title }}</label>
+                    </div>
+                @endforeach
             </div>
             <!-- Filter by category-->
 
+            <div class="col-md-6 col-lg-12 mb-5">
+
+              <!-- Panel-->
+              <h5 class="font-weight-bold dark-grey-text"><strong>Ordenar Por</strong></h3>
+                <div class="divider"></div>
+                <p class="blue-text"><a>Default</a></p>
+                <p class="dark-grey-text"><a>Popularity</a></p>
+                <p class="dark-grey-text"><a>Average rating</a></p>
+                <p class="dark-grey-text"><a>Price: low to high</a></p>
+                <p class="dark-grey-text"><a>Price: high to low</a></p>
+            </div>
           </div>
           <!-- Grid row-->
 
@@ -875,39 +205,25 @@
 
             <!-- Filter by price-->
             <div class="col-md-6 col-lg-12 mb-5">
-
-              <h5 class="font-weight-bold dark-grey-text"><strong>Price</strong></h3>
-
+              <h5 class="font-weight-bold dark-grey-text"><strong>Precios</strong></h3>
                 <div class="divider"></div>
-
                 <form class="range-field mt-3">
-
                   <input id="calculatorSlider" class="no-border" type="range" value="0" min="0" max="30" />
-
                 </form>
-
                 <!-- Grid row-->
                 <div class="row justify-content-center">
-
                   <!-- Grid column-->
                   <div class="col-md-6 text-left">
-
-                    <p class="dark-grey-text"><strong id="resellerEarnings">0$</strong></p>
-
+                    <p class="dark-grey-text"><strong id="resellerEarnings">0 Bs.</strong></p>
                   </div>
                   <!-- Grid column-->
-
                   <!-- Grid column-->
                   <div class="col-md-6 text-right">
-
-                    <p class="dark-grey-text"><strong id="clientPrice">319$</strong></p>
-
+                    <p class="dark-grey-text"><strong id="clientPrice">9999 Bs.</strong></p>
                   </div>
                   <!-- Grid column-->
-
                 </div>
                 <!-- Grid row-->
-
             </div>
             <!-- Filter by price-->
 
@@ -995,15 +311,11 @@
 
             </div>
             <!-- Filter by rating-->
-
           </div>
           <!-- Grid row-->
-
         </div>
-
       </div>
       <!-- Sidebar-->
-
     </div>
 
   {{-- </div> --}}
@@ -1016,59 +328,21 @@
 
 @section('js')
   <script>
-    function removecart(urli){
-      const swalWithBootstrapButtons = Swal.mixin({
-        customClass: {
-          confirmButton: 'btn btn-success',
-          cancelButton: 'btn btn-danger'
-        },
-        buttonsStyling: false
-      })
-
-      swalWithBootstrapButtons.fire({
-        title: 'Estas Segur@ ?',
-        text: "Estas apunto de eliminar un producto de tu carrito!",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonText: 'Si, Eliminar!',
-        cancelButtonText: 'No, cancelar!',
-        reverseButtons: true
-      }).then((result) => {
-        if (result.value) {
-          $.ajax({
-            type: "get",
-            url: urli,
-            success: function (response) {
-              swalWithBootstrapButtons.fire(
-                'Item Eliminado!',
-                'Puedes volver a Agregar el item! '+response.name,
-                'success'
-              )
-              location.reload();
-            }
+    function addcart(urli){
+      $.ajax({
+        type: "get",
+        url: urli,
+        success: function (response) {
+          Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: response.name+', Agregado a tu Carrito',
+            showConfirmButton: true,
+            timer: 3000
           });
-        } else if (
-          /* Read more about handling dismissals below */
-          result.dismiss === Swal.DismissReason.cancel
-        ) {
-          swalWithBootstrapButtons.fire(
-            'Accion Cancelada',
-            'Puedes volver intentarlo :)',
-            'error'
-          )
+          $('#cartTotalQuantity').html('{{ \Cart::getTotalQuantity() }}');
         }
-      })
-    }
-
-
-    $('.myradiobutton input[type=radio]').each(function (idx, elt) {
-      let id = '#'+elt.id; 
-      var urli = '{{ route('bg_ajax_product_details', ':id') }}';
-      urli = urli.replace(':id', elt.id);
-      $(id).click(function() {
-        console.log(urli);
       });
-    });  
-
+    }
   </script>
 @endsection

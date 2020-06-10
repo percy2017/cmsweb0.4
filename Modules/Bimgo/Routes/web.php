@@ -10,16 +10,24 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('ajax/cart/{slug}', 'Ecommerce1Controller@addcart')->name('bg_ajax_addcart');
-Route::get('ajax/remove/{slug}', 'Ecommerce1Controller@removecart')->name('bg_ajax_removecart');
-Route::get('ajax/product_details/{id}', 'Ecommerce1Controller@productdetails')->name('bg_ajax_product_details');
+// Routes  Caert -----------------------------------------------------------------------
+Route::get('ajax/cart/{slug}', 'BimgoController@addcart')->name('bg_ajax_addcart');
+Route::get('ajax/remove/{slug}', 'BimgoController@removecart')->name('bg_ajax_removecart');
+Route::get('ajax/product_details/{id}', 'BimgoController@productdetails')->name('bg_ajax_product_details');
 
+// Routes  Ecommerce1 -----------------------------------------------------------------------
 Route::get('product/{slug}', 'Ecommerce1Controller@product_details')->name('bg_product');
 Route::get('my/category', 'Ecommerce1Controller@category')->name('bg_category');
 Route::get('my/cart', 'Ecommerce1Controller@cart')->name('bg_cart');
 Route::get('my/payment', 'Ecommerce1Controller@payment')->name('bg_payment');
 Route::get('my/televenta', 'Ecommerce1Controller@televenta')->name('bg_tv');
 
+// Routes  Ecommerce3 -----------------------------------------------------------------------
+Route::get('product3/{slug}', 'Ecommerce3Controller@product_details')->name('bg_product3');
+Route::get('my/category3', 'Ecommerce3Controller@category')->name('bg_category3');
+Route::get('my/cart3', 'Ecommerce3Controller@cart')->name('bg_cart3');
+Route::get('my/payment3', 'Ecommerce3Controller@payment')->name('bg_payment3');
+Route::get('my/televenta3', 'Ecommerce3Controller@televenta')->name('bg_tv3');
 
 Route::group(['prefix' => 'admin'], function () {
     Route::post('bimgo/search', 'BimgoController@search')->name('bg_search');
@@ -28,8 +36,6 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('bimgo/deletes/recovery/{table}/{id}', 'BimgoController@recovery')->name('bg_recovery');
     Route::get('bimgo/deletes/{table}', 'BimgoController@deletes')->name('bg_deletes');
 
-    Route::post('bimgo/update_image', 'ProductController@main_image')->name('update_image');
-
-    
+    Route::post('bimgo/update_image', 'ProductController@main_image')->name('update_image');    
 });
 

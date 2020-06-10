@@ -11,6 +11,7 @@ use Darryldecode\Cart\CartCondition;
 // Models
 use Modules\Bimgo\Entities\BgProduct;
 use Modules\Bimgo\Entities\BgProductDetail;
+use Modules\Bimgo\Entities\BgCategory;
 use Modules\Bimgo\Entities\BgSubCategory;
 
 class Ecommerce1Controller extends Controller
@@ -83,17 +84,7 @@ class Ecommerce1Controller extends Controller
     {
         //
     }
-
-    function category()
-    {
-        $products = BgProduct::where('published', true)->with(['product_details'])->orderBy('id', 'desc')->get();
-        $page = \App\Page::where('slug', 'landing-page-bimgo')->first();
-        return view('bimgo::pages.category1', [
-            'product'  => $products,
-            'page' => $page
-        ]);
-    }
-
+    //  ----------- Function Static------------------------------
     static function products()
     {
         $products = BgProduct::where('published', true)->with(['product_details'])->orderBy('id', 'desc')->limit(6)->get();
@@ -110,11 +101,10 @@ class Ecommerce1Controller extends Controller
         return $products;
     }
 
+    //  ----------- Function Routes------------------------------
     function product_details($slug)
     {
-        // $page = setting('site.page');
         $product = BgProduct::with(['product_details'])->where('slug', $slug)->first();
-        
         // Sugerencias de productos
         $tags = json_decode($product->tags);
         $sugerencias = [];
@@ -138,14 +128,27 @@ class Ecommerce1Controller extends Controller
         }
         // Ordernar de mayor a menor coincidencia y convertir a colección
         $sugerencias = json_decode(json_encode(collect($sugerencias)->sortBy('coincidencias')->reverse()->take(4)));
-        // ========================
-
         return view('bimgo::pages.product_details1', [
             'product'  => $product,
             'sugerencias'  => $sugerencias,
             'page' => $product
         ]);
     }
+
+    function category()
+    {
+        $products = BgProduct::where('published', true)->with(['product_details'])->orderBy('id', 'desc')->paginate(9);
+        $Categorias = BgCategory::orderBy('id', 'desc')->get();
+        $SubCategorias = BgSubCategory::orderBy('id', 'desc')->get();
+        $page = \App\Page::where('slug', 'landing-page-bimgo')->first();
+        return view('bimgo::pages.category1', [
+            'products'  => $products,
+            'page' => $page,
+            'categorias' => $Categorias,
+            'SubCategorias' => $SubCategorias
+        ]);
+    }
+
     function cart()
     {
         $page = \App\Page::where('slug', 'landing-page-bimgo')->first();
@@ -153,6 +156,7 @@ class Ecommerce1Controller extends Controller
             'page' => $page
         ]);
     }
+
     function payment()
     {
         $page = \App\Page::where('slug', 'landing-page-bimgo')->first();
@@ -160,49 +164,12 @@ class Ecommerce1Controller extends Controller
             'page' => $page
         ]);
     }
+    
     function televenta()
     {
         $page = \App\Page::where('slug', 'landing-page-bimgo')->first();
         return view('bimgo::pages.televenta1', [
             'page' => $page
         ]);
-    }
-
-    //------------ AJAX-----------------
-    function addcart($slug)
-    {
-        $product = BgProduct::with(['product_details'])->where('slug', $slug)->first();
-        \Cart::add(
-            $product->product_details[0]->id, 
-            $product->name, 
-            $product->product_details[0]->price, 
-            1, 
-            array(
-                'slug' => $product->slug, 
-                'images' => $product->images,
-                'description' => $product->description, 
-                'type' => $product->product_details[0]->type, 
-                'title' => $product->product_details[0]->title, 
-                'code' => $product->product_details[0]->code, 
-                'price_last' => $product->product_details[0]->price_last, 
-                'stock' => $product->product_details[0]->stock),
-            array()
-        );
-        return $product;
-
-    }
-    function removecart($slug)
-    {
-        $product = BgProduct::with(['product_details'])->where('slug', $slug)->first();
-        \Cart::remove($product->product_details[0]->id);
-        return $product;
-
-    }
-
-    function productdetails($id)
-    {
-        $product_details = BgProductDetail::find($id);
-        return $product_details;
-
     }
 }

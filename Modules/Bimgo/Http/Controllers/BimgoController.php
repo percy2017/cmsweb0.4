@@ -172,4 +172,45 @@ class BimgoController extends Controller
             'dataTypeContent' => $dataTypeContent
         ]);
     }
+
+
+
+      //------------Carrito AJAX----------------------------------------------------
+      //-------------------------------------------------------------
+      function addcart($slug)
+      {
+          $product = BgProduct::with(['product_details'])->where('slug', $slug)->first();
+          \Cart::add(
+              $product->product_details[0]->id, 
+              $product->name, 
+              $product->product_details[0]->price, 
+              1, 
+              array(
+                  'slug' => $product->slug, 
+                  'images' => $product->images,
+                  'description' => $product->description, 
+                  'type' => $product->product_details[0]->type, 
+                  'title' => $product->product_details[0]->title, 
+                  'code' => $product->product_details[0]->code, 
+                  'price_last' => $product->product_details[0]->price_last, 
+                  'stock' => $product->product_details[0]->stock),
+              array()
+          );
+          return $product;
+  
+      }
+      function removecart($slug)
+      {
+          $product = BgProduct::with(['product_details'])->where('slug', $slug)->first();
+          \Cart::remove($product->product_details[0]->id);
+          return $product;
+  
+      }
+  
+      function productdetails($id)
+      {
+          $product_details = BgProductDetail::find($id);
+          return $product_details;
+  
+      }
 }

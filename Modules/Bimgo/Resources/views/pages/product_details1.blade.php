@@ -74,7 +74,7 @@
               <div id="price"></div>
             </h3>
             <p class="ml-xl-0 ml-4">{{ $product->description }}</p>
-            @foreach($product->images != null ? json_decode($product->characteristics) : [] as $item => $value)
+            @foreach($product->characteristics != null ? json_decode($product->characteristics) : [] as $item => $value)
                 <p class="ml-xl-0 ml-4"><strong>{{ $item }}: </strong>{{ $value }}</p>
             @endforeach
             <section class="color">
@@ -89,8 +89,6 @@
                         </div>
                       </div>
                   @endforeach
-                  
-
                 </div>
                 <div class="row mt-3 mb-4">
                   <div class="col-md-12 text-center text-md-left text-md-right">

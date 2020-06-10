@@ -1032,7 +1032,7 @@ class DataRowsTableSeeder extends Seeder
                     'type'        => 'belongsTo',
                     'column'      => 'product_id',
                     'key'         => 'id',
-                    'label'       => 'id',
+                    'label'       => 'name',
                     'pivot_table' => 'product_id',
                     'pivot'       => 0,
                 ],

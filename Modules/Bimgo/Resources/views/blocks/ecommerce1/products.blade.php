@@ -59,7 +59,6 @@
                                         @default
                                             
                                     @endswitch
-                                    
                                 </ul>
                                 <div class="card-footer pb-0">
                                     <div class="row mb-0">
@@ -71,7 +70,6 @@
                                         @else 
                                             <span class="float-left"><strong>{{ $item->product_details[0]->price }} Bs.</strong></span>
                                         @endif
-                                        
                                         <span class="float-right">
                                             <a onclick="addcart('{{ route('bg_ajax_addcart', $item->slug) }}')" class="#" data-toggle="tooltip" data-placement="top" title="Agregar al Carrito"><i
                                                 class="fas fa-shopping-cart ml-3"></i></a>
