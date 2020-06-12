@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Modules\Bimgo\Entities\BgCategory;
 use Modules\Bimgo\Entities\BgSubCategory;
 use Modules\Bimgo\Entities\BgBrand;
+use Modules\Bimgo\Entities\BgRegion;
 class DataDefaultTableSeeder extends Seeder
 {
     /**
@@ -65,6 +66,26 @@ class DataDefaultTableSeeder extends Seeder
         BgBrand::create([
             'name' => 'Marca 3',
             'slug' => 'marca-3'
+        ]);
+
+        // ---------- Regiones ---------------
+        $data = BgRegion::create([
+            'name' => 'Region 1'
+        ]);
+        $data = BgRegion::create([
+            'name' => 'Region 2'
+        ]);
+        $data = BgRegion::create([
+            'name' => 'Region 3'
+        ]);
+        $data = BgRegion::create([
+            'name' => 'Region 4'
+        ]);
+        $data = BgRegion::create([
+            'name' => 'Region 5'
+        ]);
+        $data = BgRegion::create([
+            'name' => 'Region 6'
         ]);
     }
 }

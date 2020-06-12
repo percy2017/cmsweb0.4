@@ -5,98 +5,193 @@
 @endsection
 
 @section('content')
-<!-- ============================ COMPONENT 1 ================================= -->
-<div class="card">
-	<div class="row no-gutters">
-		<aside class="col-md-6">
-            <article class="gallery-wrap"> 
-                <div class="img-big-wrap">
-                <a href="#"><img src="../images/items/12.jpg"></a>
-                </div> <!-- img-big-wrap.// -->
-                <div class="thumbs-wrap">
-                <a href="#" class="item-thumb"> <img src="../images/items/12-1.jpg"></a>
-                <a href="#" class="item-thumb"> <img src="../images/items/12-2.jpg"></a>
-                <a href="#" class="item-thumb"> <img src="../images/items/12.jpg"></a>
-                <a href="#" class="item-thumb"> <img src="../images/items/4.jpg"></a>
-                </div> <!-- thumbs-wrap.// -->
-            </article> <!-- gallery-wrap .end// -->
-		</aside>
-		<main class="col-md-6 border-left">
-            <article class="content-body">
-                <h2 class="title">Off-White Odsy-1000 Low-Top Sneakers</h2>
-                <div class="rating-wrap my-3">
-                    <ul class="rating-stars">
-                        <li style="width:80%" class="stars-active"> 
-                            <i class="fa fa-star"></i> <i class="fa fa-star"></i> 
-                            <i class="fa fa-star"></i> <i class="fa fa-star"></i> 
-                            <i class="fa fa-star"></i> 
-                        </li>
-                        <li>
-                            <i class="fa fa-star"></i> <i class="fa fa-star"></i> 
-                            <i class="fa fa-star"></i> <i class="fa fa-star"></i> 
-                            <i class="fa fa-star"></i> 
-                        </li>
-                    </ul>
-                    <small class="label-rating text-muted">132 reviews</small>
-                    <small class="label-rating text-success"> <i class="fa fa-clipboard-check"></i> 154 orders </small>
-                </div> <!-- rating-wrap.// -->
-                <div class="mb-3"> 
-                    <var class="price h4">$815.00</var> 
-                    <span class="text-muted">/per kg</span> 
-                </div> 
-                <p>Virgil Abloh’s Off-White is a streetwear-inspired collection that continues to break away from the conventions of mainstream fashion. Made in Italy, these black and brown Odsy-1000 low-top sneakers.</p>
-                <dl class="row">
-                    <dt class="col-sm-3">Model#</dt>
-                    <dd class="col-sm-9">Odsy-1000</dd>
-                    <dt class="col-sm-3">Color</dt>
-                    <dd class="col-sm-9">Brown</dd>
-                    <dt class="col-sm-3">Delivery</dt>
-                    <dd class="col-sm-9">Russia, USA, and Europe </dd>
-                </dl>
-                <hr>
-                <div class="form-row">
-                    <div class="form-group col-md flex-grow-0">
-                        <label>Quantity</label>
-                        <div class="input-group mb-3 input-spinner">
-                        <div class="input-group-prepend">
-                            <button class="btn btn-light" type="button" id="button-plus"> + </button>
-                        </div>
-                        <input type="text" class="form-control" value="1">
-                        <div class="input-group-append">
-                            <button class="btn btn-light" type="button" id="button-minus"> &minus; </button>
-                        </div>
-                        </div>
-                    </div> <!-- col.// -->
-                    <div class="form-group col-md">
-                            <label>Select size</label>
-                            <div class="mt-1">
-                                <label class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" name="select_size" checked="" class="custom-control-input">
-                                <div class="custom-control-label">Small</div>
-                                </label>
-
-                                <label class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" name="select_size" class="custom-control-input">
-                                <div class="custom-control-label">Medium</div>
-                                </label>
-
-                                <label class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" name="select_size" class="custom-control-input">
-                                <div class="custom-control-label">Large</div>
-                                </label>
-
-                            </div>
-                    </div> <!-- col.// -->
+    <section class="section-content padding-y bg">
+        <div class="container">
+            <!-- ============================ COMPONENT 1 ================================= -->
+            <div class="card">
+                <div class="row no-gutters">
+                    <aside class="col-md-6">
+                        <article class="gallery-wrap"> 
+                            <div class="img-big-wrap">
+                            <a href="#"><img src="{{ Voyager::image(json_decode($product->images)[0]) }}"></a>
+                            </div> <!-- img-big-wrap.// -->
+                            <div class="thumbs-wrap">
+                                @foreach ($product->images != null ? json_decode($product->images) : [] as $item)
+                                    <a href="#" class="item-thumb"> <img src="{{ Voyager::image($item) }}"></a>
+                                @endforeach
+                            </div> <!-- thumbs-wrap.// -->
+                        </article> <!-- gallery-wrap .end// -->
+                    </aside>
+                    <main class="col-md-6 border-left">
+                        <article class="content-body">
+                            <h2 class="title">{{ $product->name }}</h2>
+                            <div class="rating-wrap my-3">
+                                <ul class="rating-stars">
+                                    @switch($product->stars)
+                                        @case(1)
+                                            <li style="width:80%" class="stars-active"> 
+                                                <i class="fa fa-star"></i>
+                                            </li>
+                                            <li>
+                                                <i class="fa fa-star"></i> 
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i> 
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                            </li>
+                                            @break
+                                        @case(2)
+                                            <li style="width:80%" class="stars-active"> 
+                                                <i class="fa fa-star"></i> 
+                                                <i class="fa fa-star"></i>
+                                            </li>
+                                            <li>
+                                                <i class="fa fa-star"></i> 
+                                                <i class="fa fa-star"></i> 
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                            </li>
+                                            @break
+                                        @case(3)
+                                            <li style="width:80%" class="stars-active"> 
+                                                <i class="fa fa-star"></i> 
+                                                <i class="fa fa-star"></i> 
+                                                <i class="fa fa-star"></i> 
+                                                
+                                            </li>
+                                            <li>
+                                                <i class="fa fa-star"></i> 
+                                                <i class="fa fa-star"></i> 
+                                                <i class="fa fa-star"></i> 
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                            </li>
+                                            @break
+                                        @case(4)
+                                            <li style="width:80%" class="stars-active"> 
+                                                <i class="fa fa-star"></i> 
+                                                <i class="fa fa-star"></i> 
+                                                <i class="fa fa-star"></i> 
+                                                <i class="fa fa-star"></i>
+                                            </li>
+                                            <li>
+                                                <i class="fa fa-star"></i> 
+                                                <i class="fa fa-star"></i> 
+                                                <i class="fa fa-star"></i> 
+                                                <i class="fa fa-star"></i> 
+                                                <i class="fa fa-star"></i>
+                                            </li>
+                                            @break
+                                        @case(5)
+                                            <li style="width:80%" class="stars-active"> 
+                                                <i class="fa fa-star"></i> 
+                                                <i class="fa fa-star"></i> 
+                                                <i class="fa fa-star"></i> 
+                                                <i class="fa fa-star"></i> 
+                                                <i class="fa fa-star"></i>
+                                            </li>
+                                            <li>
+                                                <i class="fa fa-star"></i> 
+                                                <i class="fa fa-star"></i> 
+                                                <i class="fa fa-star"></i> 
+                                                <i class="fa fa-star"></i> 
+                                                <i class="fa fa-star"></i> 
+                                                <i class="fa fa-star"></i> 
+                                            </li>
+                                            @break
+                                    @endswitch
+                                </ul>
+                                <small class="label-rating text-success"><i class="fa fa-eye"></i> {{ $product->views }} Vistas</small>
+                                {{--  <small class="label-rating text-success"> <i class="fa fa-clipboard-check"></i> 154 orders </small>  --}}
+                            </div> <!-- rating-wrap.// -->
+                            <div class="mb-3">
+                                <div id="price"></div>
+                            </div> 
+                            <p>{{ $product->description }}</p>
+                            <dl class="row">
+                                @foreach($product->characteristics != null ? json_decode($product->characteristics) : [] as $item => $value)
+                                    <dt class="col-sm-3">{{ $item }}: </dt>
+                                    <dd class="col-sm-9">{{ $value }}</dd>
+                                @endforeach
+                            </dl>
+                            <hr>
+                            <div class="form-row">
+                                <div class="form-group col-md flex-grow-0">
+                                    <label>Cantidad</label>
+                                    <div class="input-group mb-3 input-spinner">
+                                        <div class="input-group-prepend">
+                                            <button class="btn btn-light" type="button" id="button-plus"> + </button>
+                                        </div>
+                                        <input type="text" class="form-control" value="1">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-light" type="button" id="button-minus"> &minus; </button>
+                                        </div>
+                                    </div>
+                                </div> <!-- col.// -->
+                                <div class="form-group col-md">
+                                    <label>Elije una Opcion</label>
+                                    <div class="mt-1">
+                                        @foreach ($product->product_details as $item => $value)
+                                            <label class="custom-control custom-radio custom-control-inline color">
+                                                <input type="radio" id="{{ $value->id }}" name="select_size" class="custom-control-input">
+                                                <div class="custom-control-label">{{ $value->title }}</div>
+                                            </label>
+                                        @endforeach
+                                    </div>
+                                </div> <!-- col.// -->
+                            </div> <!-- row.// -->
+                            <a href="#" class="btn  btn-primary"> Comprar Ahora </a>
+                            <a href="#" onclick="addcart('{{ route('bg_ajax_addcart', $product->slug) }}')" class="btn  btn-outline-primary"> <span class="text">Agregar Carrito</span> <i class="fas fa-shopping-cart"></i>  </a>
+                        </article> <!-- product-info-aside .// -->
+                    </main> <!-- col.// -->
                 </div> <!-- row.// -->
-                <a href="#" class="btn  btn-primary"> Buy now </a>
-                <a href="#" class="btn  btn-outline-primary"> <span class="text">Add to cart</span> <i class="fas fa-shopping-cart"></i>  </a>
-            </article> <!-- product-info-aside .// -->
-		</main> <!-- col.// -->
-	</div> <!-- row.// -->
-</div> <!-- card.// -->
-<!-- ============================ COMPONENT 1 END .// ================================= -->
+            </div> <!-- card.// -->
+            <!-- ============================ COMPONENT 1 END .// ================================= -->
+        </div>
+    </section>
 @endsection
 
 @section('footer')
   @include('bimgo::layouts.ecommerce3.footer')
 @endsection 
+
+@section('js')
+    <script>
+        function addcart(urli){
+            $.ajax({
+                type: "get",
+                url: urli,
+                success: function (response) {
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: response.name+', Agregado a tu Carrito',
+                        showConfirmButton: true,
+                        timer: 3000
+                    })
+                }
+            });
+        } 
+        $('.color input[type=radio]').each(function (idx, elt) {
+            let id = '#'+elt.id; 
+            var urli = '{{ route('bg_ajax_product_details', ':id') }}';
+            urli = urli.replace(':id', elt.id);
+            console.log(urli);
+            $(id).click(function() {
+            $.ajax({
+                    type: "get",
+                    url: urli,
+                    success: function (response) {
+                        if(response.price_last > 0)
+                        {
+                            $('#price').html('<var class="price h4">'+response.price+' Bs.</var><span class="text-muted"><s> '+response.price_last+' Bs.</s></span>');
+                        }else{
+                            $('#price').html('<var class="price h4">'+response.price+' Bs.</var>');
+                        }
+                    }
+                });
+            });
+        });  
+    </script>
+@show

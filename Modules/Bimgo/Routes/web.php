@@ -10,7 +10,10 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-// Routes  Caert -----------------------------------------------------------------------
+// Routes  Profile y Login -----------------------------------------------------------------------
+Route::get('my/profile', 'BimgoController@profile')->name('bg_profile');
+
+// Routes  Cart -----------------------------------------------------------------------
 Route::get('ajax/cart/{slug}', 'BimgoController@addcart')->name('bg_ajax_addcart');
 Route::get('ajax/remove/{slug}', 'BimgoController@removecart')->name('bg_ajax_removecart');
 Route::get('ajax/product_details/{id}', 'BimgoController@productdetails')->name('bg_ajax_product_details');
@@ -28,6 +31,13 @@ Route::get('my/category3', 'Ecommerce3Controller@category')->name('bg_category3'
 Route::get('my/cart3', 'Ecommerce3Controller@cart')->name('bg_cart3');
 Route::get('my/payment3', 'Ecommerce3Controller@payment')->name('bg_payment3');
 Route::get('my/televenta3', 'Ecommerce3Controller@televenta')->name('bg_tv3');
+
+// Routes  Ecommerce4 -----------------------------------------------------------------------
+Route::get('product4/{slug}', 'Ecommerce4Controller@product_details')->name('bg_product4');
+Route::get('my/category4', 'Ecommerce4Controller@category')->name('bg_category4');
+Route::get('my/cart4', 'Ecommerce4Controller@cart')->name('bg_cart4');
+Route::get('my/payment4', 'Ecommerce4Controller@payment')->name('bg_payment4');
+Route::get('my/televenta4', 'Ecommerce4Controller@televenta')->name('bg_tv4');
 
 Route::group(['prefix' => 'admin'], function () {
     Route::post('bimgo/search', 'BimgoController@search')->name('bg_search');

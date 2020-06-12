@@ -8,8 +8,15 @@ use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\ViewErrorBag;
 use TCG\Voyager\Facades\Voyager;
 use Validator;
+
+// Models
+use Modules\Bimgo\Entities\BgProduct;
+use Modules\Bimgo\Entities\BgProductDetail;
+use Modules\Bimgo\Entities\BgCategory;
+use Modules\Bimgo\Entities\BgSubCategory;
 class BimgoController extends Controller
 {
     /**
@@ -81,7 +88,13 @@ class BimgoController extends Controller
         //
     }
 
-
+    function profile()
+    {
+        $page = \App\Page::where('slug', 'landing-page-bimgo')->first();
+        return view('bimgo::profile3', [
+            'page' => $page
+        ]);
+    }
 
     public function search(Request $request)
     {

@@ -29,7 +29,7 @@ class DataRowsTableSeeder extends Seeder
         $saleDataType = DataType::where('slug', 'bg_sales')->firstOrFail();
         $seatDataType = DataType::where('slug', 'bg_seats')->firstOrFail();
         $dosificacionDataType = DataType::where('slug', 'bg_dosificacions')->firstOrFail();
-
+        $RegionDataType = DataType::where('slug', 'bg_regions')->firstOrFail();
 
          /**
          * ------------------------------------------------
@@ -408,7 +408,7 @@ class DataRowsTableSeeder extends Seeder
         if (!$dataRow->exists) {
             $dataRow->fill([
                 'type'         => 'text',
-                'display_name' => 'Titulo',
+                'display_name' => 'Nombre',
                 'required'     => 1,
                 'browse'       => 1,
                 'read'         => 1,
@@ -418,7 +418,7 @@ class DataRowsTableSeeder extends Seeder
                 'details'      => [
                     'tooltip' => [
                         'ubication' => 'top',
-                        'message' => 'Titulo de la Sub Categoria'
+                        'message' => 'Nombre de la Marca'
                     ],
                     'display' => [
                         'width' => '6'
@@ -465,7 +465,6 @@ class DataRowsTableSeeder extends Seeder
                 'order'  => $postion++,
             ])->save();
         }
-       
         $dataRow = $this->dataRow($BrandsDataType, 'created_at');
         if (!$dataRow->exists) {
             $dataRow->fill([
@@ -823,6 +822,55 @@ class DataRowsTableSeeder extends Seeder
                         'width'  => '6',
                     ],
                 ]
+            ])->save();
+        }
+        $dataRow = $this->dataRow($ProductDataType, 'offer');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'checkbox',
+                'display_name' => 'Producto en Oferta',
+                'required'     => 0,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'order'        => $postion++,
+                'details'      => [
+                    'tooltip' => [
+                        'ubication' => 'top',
+                        'message' => 'Establece si el producto esta en oferta'
+                    ],
+                    'on'  => 'En Oferta',
+                    'off' => 'No en Oferta',
+                    'checked' => false,
+                    'display'   => [
+                        'width'  => '6',
+                    ],
+                ]
+            ])->save();
+        }
+        $dataRow = $this->dataRow($ProductDataType, 'views');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'number',
+                'display_name' => 'Vistas',
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'details'      => [
+                    'tooltip' => [
+                        'ubication' => 'top',
+                        'message' => 'Vistas del Producto'
+                    ],
+                    'display' => [
+                        'width' => '6'
+                    ]
+                ],
+                'order'        => $postion++,
             ])->save();
         }
         $dataRow = $this->dataRow($ProductDataType, 'description_long');
@@ -3334,6 +3382,152 @@ class DataRowsTableSeeder extends Seeder
                 'details'      => [
                     'display' => [
                         'width' => '4'
+                    ]
+                ]
+            ])->save();
+        }
+
+
+
+        /**
+         * ------------------------------------------------
+         *               Formulario Regions
+         * -----------------------------------------------
+         */
+        $postion = 1;
+        $dataRow = $this->dataRow($RegionDataType, 'id');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'number',
+                'display_name' => __('voyager::seeders.data_rows.id'),
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 0,
+                'add'          => 0,
+                'delete'       => 0,
+                'details'      => [
+                    'display' => [
+                        'width' => '6'
+                    ]
+                ],
+                'order'        => $postion++,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($RegionDataType, 'name');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'text',
+                'display_name' => 'Nombre',
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'details'      => [
+                    'tooltip' => [
+                        'ubication' => 'top',
+                        'message' => 'Nombre de la Region'
+                    ],
+                    'display' => [
+                        'width' => '6'
+                    ]
+                ],
+                'order'        => $postion++,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($RegionDataType, 'image');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'image',
+                'display_name' => 'Image Principal',
+                'required'     => 0,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'order'        => $postion++,
+                'details'      => [
+                    'display'   => [
+                        'width'  => '6',
+                    ],
+                ]
+            ])->save();
+        }
+        $dataRow = $this->dataRow($RegionDataType, 'description');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'rich_text_box',
+                'display_name' => 'Editor HTML',
+                'required'     => 0,
+                'browse'       => 0,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'details'      => [
+                    'display' => [
+                        'width' => '12'
+                    ]
+                ],
+                'order'  => $postion++,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($RegionDataType, 'created_at');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'timestamp',
+                'display_name' => __('voyager::seeders.data_rows.created_at'),
+                'required'     => 0,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 0,
+                'add'          => 0,
+                'delete'       => 0,
+                'order'        => $postion++,
+                'details'      => [
+                    'display' => [
+                        'width' => '3'
+                    ]
+                ]
+            ])->save();
+        }
+        $dataRow = $this->dataRow($RegionDataType, 'updated_at');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'timestamp',
+                'display_name' => __('voyager::seeders.data_rows.updated_at'),
+                'required'     => 0,
+                'browse'       => 0,
+                'read'         => 1,
+                'edit'         => 0,
+                'add'          => 0,
+                'delete'       => 0,
+                'order'        => $postion++,
+                'details'      => [
+                    'display' => [
+                        'width' => '3'
+                    ]
+                ]
+            ])->save();
+        }
+        $dataRow = $this->dataRow($RegionDataType, 'deleted_at');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'timestamp',
+                'display_name' => 'deleted_at',
+                'required'     => 0,
+                'browse'       => 0,
+                'read'         => 1,
+                'edit'         => 0,
+                'add'          => 0,
+                'delete'       => 0,
+                'order'        => $postion++,
+                'details'      => [
+                    'display' => [
+                        'width' => '3'
                     ]
                 ]
             ])->save();

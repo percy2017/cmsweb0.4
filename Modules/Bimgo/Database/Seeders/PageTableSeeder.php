@@ -1623,258 +1623,258 @@ class PageTableSeeder extends Seeder
 
             ]),
         ]);
-        $count = 1;
-        Block::create([
-            'name'        => 'ecommerce2.header',
-            'title'       => 'Header',
-            'description' => 'header',
-            'page_id'     => $page->id,
-            'position'    => $count++,
-            'type'        => 'dinamyc-data',
-            'details'     => json_encode([
-                'banner_image'=>[
-                    'type'   => 'image',
-                    'name'   => 'banner_image',
-                    'label'  => 'Image 1600*721 px',
-                    'value'  => 'banner.png',
-                    'width'  => 6
-                ],
-                'banner_badge'=>[
-                    'type'   => 'text',
-                    'name'   => 'banner_badge',
-                    'label'  => 'Etiqueta',
-                    'value'  => 'Mejor vendido',
-                    'width'  => 6
-                ],
-                'space1'=>[
-                    'type'=>'space',
-                    'name'=>'space1'
-                ],
+            $count = 1;
+            Block::create([
+                'name'        => 'ecommerce2.header',
+                'title'       => 'Header',
+                'description' => 'header',
+                'page_id'     => $page->id,
+                'position'    => $count++,
+                'type'        => 'dinamyc-data',
+                'details'     => json_encode([
+                    'banner_image'=>[
+                        'type'   => 'image',
+                        'name'   => 'banner_image',
+                        'label'  => 'Image 1600*721 px',
+                        'value'  => 'banner.png',
+                        'width'  => 6
+                    ],
+                    'banner_badge'=>[
+                        'type'   => 'text',
+                        'name'   => 'banner_badge',
+                        'label'  => 'Etiqueta',
+                        'value'  => 'Mejor vendido',
+                        'width'  => 6
+                    ],
+                    'space1'=>[
+                        'type'=>'space',
+                        'name'=>'space1'
+                    ],
 
-                'banner_title'=>[
-                    'type'   => 'text',
-                    'name'   => 'banner_title',
-                    'label'  => 'Titulo del Banner',
-                    'value'  => 'Este es el titulo de la noticia.',
-                    'width'  => 6
-                ],
-                'banner_description'=>[
-                    'type'   => 'text_area',
-                    'name'   => 'banner_description',
-                    'label'  => 'Descripcion del Banner',
-                    'value'  => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
-                    'width'  => 6
-                ],
-                'banner_btn_name'=>[
-                    'type'   => 'text',
-                    'name'   => 'banner_btn_name',
-                    'label'  => 'Nombre del Boton',
-                    'value'  => 'Ver Producto',
-                    'width'  => 6
-                ],
-                'banner_btn_action'=>[
-                    'type'   => 'text',
-                    'name'   => 'banner_btn_action',
-                    'label'  => 'Accion del Boton',
-                    'value'  => 'https://mdbootstrap.com/img/Photos/Others/product1.jpg',
-                    'width'  => 6
-                ],
-                'icon1' => [
-                    'type'   => 'select_dropdown',
-                    'name'   => 'icon1',
-                    'label'  => 'Icono 1',
-                    'value'  => 'fas fa-laptop dark-grey-text mr-2',
-                    'width'  => 6
-                ],
-                'name1' => [
-                    'type'   => 'text',
-                    'name'   => 'name1',
-                    'label'  => 'Nombre 1',
-                    'value'  => 'Laptos',
-                    'width'  => 6
-                ],
-                'icon2' => [
-                    'type'   => 'select_dropdown',
-                    'name'   => 'icon2',
-                    'label'  => 'Icono 2',
-                    'value'  => 'fas fa-mobile-alt dark-grey-text mr-3',
-                    'width'  => 6
-                ],
-                'name2' => [
-                    'type'   => 'text',
-                    'name'   => 'name2',
-                    'label'  => 'Nombre 2',
-                    'value'  => 'Smatphone',
-                    'width'  => 6
-                ],
-                'icon3' => [
-                    'type'   => 'select_dropdown',
-                    'name'   => 'icon3',
-                    'label'  => 'Icono 3',
-                    'value'  => 'fas fa-tablet-alt dark-grey-text mr-3',
-                    'width'  => 6
-                ],
-                'name3' => [
-                    'type'   => 'text',
-                    'name'   => 'name3',
-                    'label'  => 'Nombre 3',
-                    'value'  => 'Tablet',
-                    'width'  => 6
-                ],
-                'icon4' => [
-                    'type'   => 'select_dropdown',
-                    'name'   => 'icon4',
-                    'label'  => 'Icono 4',
-                    'value'  => 'fas fa-headphones-alt dark-grey-text mr-3',
-                    'width'  => 6
-                ],
-                'name4' => [
-                    'type'   => 'text',
-                    'name'   => 'name4',
-                    'label'  => 'Nombre 4',
-                    'value'  => 'Heahphones',
-                    'width'  => 6
-                ],
-                'icon5' => [
-                    'type'   => 'select_dropdown',
-                    'name'   => 'icon5',
-                    'label'  => 'Icono 5',
-                    'value'  => 'fas fa-camera-retro dark-grey-text mr-3',
-                    'width'  => 6
-                ],
-                'name5' => [
-                    'type'   => 'text',
-                    'name'   => 'name5',
-                    'label'  => 'Nombre 5',
-                    'value'  => 'Camara',
-                    'width'  => 6
-                ],
-                'icon6' => [
-                    'type'   => 'select_dropdown',
-                    'name'   => 'icon6',
-                    'label'  => 'Icono 6',
-                    'value'  => 'fas fa-suitcase dark-grey-text mr-3',
-                    'width'  => 6
-                ],
-                'name6' => [
-                    'type'   => 'text',
-                    'name'   => 'name6',
-                    'label'  => 'Nombre 6',
-                    'value'  => 'Accesories',
-                    'width'  => 6
-                ],
-                'icon7' => [
-                    'type'   => 'select_dropdown',
-                    'name'   => 'icon7',
-                    'label'  => 'Icono 7',
-                    'value'  => 'fas fa-tv dark-grey-text mr-3',
-                    'width'  => 6
-                ],
-                'name7' => [
-                    'type'   => 'text',
-                    'name'   => 'name7',
-                    'label'  => 'Nombre 7',
-                    'value'  => 'TV',
-                    'width'  => 6
-                ],
+                    'banner_title'=>[
+                        'type'   => 'text',
+                        'name'   => 'banner_title',
+                        'label'  => 'Titulo del Banner',
+                        'value'  => 'Este es el titulo de la noticia.',
+                        'width'  => 6
+                    ],
+                    'banner_description'=>[
+                        'type'   => 'text_area',
+                        'name'   => 'banner_description',
+                        'label'  => 'Descripcion del Banner',
+                        'value'  => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+                        'width'  => 6
+                    ],
+                    'banner_btn_name'=>[
+                        'type'   => 'text',
+                        'name'   => 'banner_btn_name',
+                        'label'  => 'Nombre del Boton',
+                        'value'  => 'Ver Producto',
+                        'width'  => 6
+                    ],
+                    'banner_btn_action'=>[
+                        'type'   => 'text',
+                        'name'   => 'banner_btn_action',
+                        'label'  => 'Accion del Boton',
+                        'value'  => 'https://mdbootstrap.com/img/Photos/Others/product1.jpg',
+                        'width'  => 6
+                    ],
+                    'icon1' => [
+                        'type'   => 'select_dropdown',
+                        'name'   => 'icon1',
+                        'label'  => 'Icono 1',
+                        'value'  => 'fas fa-laptop dark-grey-text mr-2',
+                        'width'  => 6
+                    ],
+                    'name1' => [
+                        'type'   => 'text',
+                        'name'   => 'name1',
+                        'label'  => 'Nombre 1',
+                        'value'  => 'Laptos',
+                        'width'  => 6
+                    ],
+                    'icon2' => [
+                        'type'   => 'select_dropdown',
+                        'name'   => 'icon2',
+                        'label'  => 'Icono 2',
+                        'value'  => 'fas fa-mobile-alt dark-grey-text mr-3',
+                        'width'  => 6
+                    ],
+                    'name2' => [
+                        'type'   => 'text',
+                        'name'   => 'name2',
+                        'label'  => 'Nombre 2',
+                        'value'  => 'Smatphone',
+                        'width'  => 6
+                    ],
+                    'icon3' => [
+                        'type'   => 'select_dropdown',
+                        'name'   => 'icon3',
+                        'label'  => 'Icono 3',
+                        'value'  => 'fas fa-tablet-alt dark-grey-text mr-3',
+                        'width'  => 6
+                    ],
+                    'name3' => [
+                        'type'   => 'text',
+                        'name'   => 'name3',
+                        'label'  => 'Nombre 3',
+                        'value'  => 'Tablet',
+                        'width'  => 6
+                    ],
+                    'icon4' => [
+                        'type'   => 'select_dropdown',
+                        'name'   => 'icon4',
+                        'label'  => 'Icono 4',
+                        'value'  => 'fas fa-headphones-alt dark-grey-text mr-3',
+                        'width'  => 6
+                    ],
+                    'name4' => [
+                        'type'   => 'text',
+                        'name'   => 'name4',
+                        'label'  => 'Nombre 4',
+                        'value'  => 'Heahphones',
+                        'width'  => 6
+                    ],
+                    'icon5' => [
+                        'type'   => 'select_dropdown',
+                        'name'   => 'icon5',
+                        'label'  => 'Icono 5',
+                        'value'  => 'fas fa-camera-retro dark-grey-text mr-3',
+                        'width'  => 6
+                    ],
+                    'name5' => [
+                        'type'   => 'text',
+                        'name'   => 'name5',
+                        'label'  => 'Nombre 5',
+                        'value'  => 'Camara',
+                        'width'  => 6
+                    ],
+                    'icon6' => [
+                        'type'   => 'select_dropdown',
+                        'name'   => 'icon6',
+                        'label'  => 'Icono 6',
+                        'value'  => 'fas fa-suitcase dark-grey-text mr-3',
+                        'width'  => 6
+                    ],
+                    'name6' => [
+                        'type'   => 'text',
+                        'name'   => 'name6',
+                        'label'  => 'Nombre 6',
+                        'value'  => 'Accesories',
+                        'width'  => 6
+                    ],
+                    'icon7' => [
+                        'type'   => 'select_dropdown',
+                        'name'   => 'icon7',
+                        'label'  => 'Icono 7',
+                        'value'  => 'fas fa-tv dark-grey-text mr-3',
+                        'width'  => 6
+                    ],
+                    'name7' => [
+                        'type'   => 'text',
+                        'name'   => 'name7',
+                        'label'  => 'Nombre 7',
+                        'value'  => 'TV',
+                        'width'  => 6
+                    ],
 
-            ]),
-        ]);
-        Block::create([
-            'name'        => 'ecommerce2.products',
-            'title'       => 'Products',
-            'description' => 'Products',
-            'page_id'     => $page->id,
-            'position'    => $count++,
-            'type'        => 'controller',
-            'details'     => json_encode([
-                'name'   => 'title',
-                'label'  => 'Products',
-                'value'  => 'Modules\\Bimgo\\Http\\Controllers\\Ecommerce2Controller::tabProducts()',
-            ])
-        ]);
-        Block::create([
-            'name'        => 'ecommerce2.banner',
-            'title'       => 'Banner-ecommerce',
-            'description' => 'banner ecommerce',
-            'page_id'     => $page->id,
-            'position'    => $count++,
-            'type'        => 'dinamyc-data',
-            'details'     => json_encode([
-                'banner_image' => [
-                    'type'   => 'image',
-                    'name'   => 'banner_image',
-                    'label'  => 'Imagen 1800*479 px',
-                    'value'  => 'baner.jpg',
-                    'width'  => 6
-                ],
-                'title' => [
-                    'type'   => 'text',
+                ]),
+            ]);
+            Block::create([
+                'name'        => 'ecommerce2.products',
+                'title'       => 'Products',
+                'description' => 'Products',
+                'page_id'     => $page->id,
+                'position'    => $count++,
+                'type'        => 'controller',
+                'details'     => json_encode([
                     'name'   => 'title',
-                    'label'  => 'Titulo del Banner',
-                    'value'  => '¡Venta del 20% al 50% en cada tableta!',
-                    'width'  => 6
-                ],
-                'space1'=>[
-                    'type'=>'space',
-                    'name'=>'space1'
-                ],
-                'description' => [
-                    'type'   => 'text',
-                    'name'   => 'description',
-                    'label'  => 'Descripcion',
-                    'value'  => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
-                    'width'  => 6
-                ],
-                'badge_info' => [
-                    'type'   => 'text',
-                    'name'   => 'badge_info',
-                    'label'  => 'Etiqueta',
-                    'value'  => 'En rebaja',
-                    'width'  => 6
-                ],
-                'btn_name' => [
-                    'type'   => 'text',
-                    'name'   => 'btn_name',
-                    'label'  => 'Nombre del boton',
-                    'value'  => 'Ver Rebaja',
-                    'width'  => 6
-                ],
-                'btn_action' => [
-                    'type'   => 'text',
-                    'name'   => 'btn_action',
-                    'label'  => 'Action del boton',
-                    'value'  => 'https://mdbootstrap.com/img/Photos/Others/ecommerce5.jpg',
-                    'width'  => 6
-                ]
-            ])
-        ]);
-        Block::create([
-            'name'        => 'ecommerce2.products_select',
-            'title'       => 'products_select',
-            'description' => 'Products Select',
-            'page_id'     => $page->id,
-            'position'    => $count++,
-            'type'        => 'controller',
-            'details'     => json_encode([
-                'name'   => 'title',
-                'label'  => 'Products Select',
-                'value'  => 'Modules\\Bimgo\\Http\\Controllers\\Ecommerce2Controller::products_select()',
-            ])
-        ]);
-        Block::create([
-            'name'        => 'ecommerce2.products_list',
-            'title'       => 'products_list',
-            'description' => 'Products List',
-            'page_id'     => $page->id,
-            'position'    => $count++,
-            'type'        => 'controller',
-            'details'     => json_encode([
-                'name'   => 'title',
-                'label'  => 'Products List',
-                'value'  => 'Modules\\Bimgo\\Http\\Controllers\\Ecommerce2Controller::products_list()',
-            ])
-        ]);
+                    'label'  => 'Products',
+                    'value'  => 'Modules\\Bimgo\\Http\\Controllers\\Ecommerce2Controller::tabProducts()',
+                ])
+            ]);
+            Block::create([
+                'name'        => 'ecommerce2.banner',
+                'title'       => 'Banner-ecommerce',
+                'description' => 'banner ecommerce',
+                'page_id'     => $page->id,
+                'position'    => $count++,
+                'type'        => 'dinamyc-data',
+                'details'     => json_encode([
+                    'banner_image' => [
+                        'type'   => 'image',
+                        'name'   => 'banner_image',
+                        'label'  => 'Imagen 1800*479 px',
+                        'value'  => 'baner.jpg',
+                        'width'  => 6
+                    ],
+                    'title' => [
+                        'type'   => 'text',
+                        'name'   => 'title',
+                        'label'  => 'Titulo del Banner',
+                        'value'  => '¡Venta del 20% al 50% en cada tableta!',
+                        'width'  => 6
+                    ],
+                    'space1'=>[
+                        'type'=>'space',
+                        'name'=>'space1'
+                    ],
+                    'description' => [
+                        'type'   => 'text',
+                        'name'   => 'description',
+                        'label'  => 'Descripcion',
+                        'value'  => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+                        'width'  => 6
+                    ],
+                    'badge_info' => [
+                        'type'   => 'text',
+                        'name'   => 'badge_info',
+                        'label'  => 'Etiqueta',
+                        'value'  => 'En rebaja',
+                        'width'  => 6
+                    ],
+                    'btn_name' => [
+                        'type'   => 'text',
+                        'name'   => 'btn_name',
+                        'label'  => 'Nombre del boton',
+                        'value'  => 'Ver Rebaja',
+                        'width'  => 6
+                    ],
+                    'btn_action' => [
+                        'type'   => 'text',
+                        'name'   => 'btn_action',
+                        'label'  => 'Action del boton',
+                        'value'  => 'https://mdbootstrap.com/img/Photos/Others/ecommerce5.jpg',
+                        'width'  => 6
+                    ]
+                ])
+            ]);
+            Block::create([
+                'name'        => 'ecommerce2.products_select',
+                'title'       => 'products_select',
+                'description' => 'Products Select',
+                'page_id'     => $page->id,
+                'position'    => $count++,
+                'type'        => 'controller',
+                'details'     => json_encode([
+                    'name'   => 'title',
+                    'label'  => 'Products Select',
+                    'value'  => 'Modules\\Bimgo\\Http\\Controllers\\Ecommerce2Controller::products_select()',
+                ])
+            ]);
+            Block::create([
+                'name'        => 'ecommerce2.products_list',
+                'title'       => 'products_list',
+                'description' => 'Products List',
+                'page_id'     => $page->id,
+                'position'    => $count++,
+                'type'        => 'controller',
+                'details'     => json_encode([
+                    'name'   => 'title',
+                    'label'  => 'Products List',
+                    'value'  => 'Modules\\Bimgo\\Http\\Controllers\\Ecommerce2Controller::products_list()',
+                ])
+            ]);
 
 
         //-----------------------------------------------------------------------------------------------------page Ecommerce3
@@ -1888,380 +1888,380 @@ class PageTableSeeder extends Seeder
 
             ])
         ]);
-        $count = 1;
-        Block::create([
-            'name'        => 'ecommerce3.main',
-            'title'       => 'Encabezado',
-            'description' => null,
-            'page_id'     => $page->id,
-            'position'    => $count++,
-            'type'        => 'dinamyc-data',
-            'details'     => json_encode([
-                'image' => [
-                    'type'   => 'image',
-                    'name'   => 'image',
-                    'label'  => 'Banner',
-                    'value'  => null,
-                    'width'  => 12
-                ],
-                'space1' => [
-                    'type'  => 'space',
-                    'name'  => 'space1',
-                ],
-                'text1' => [
-                    'type'   => 'text',
-                    'name'   => 'text1',
-                    'label'  => 'Categoria 1',
-                    'value'  => null,
-                    'width'  => 6
-                ],
-                'link1' => [
-                    'type'   => 'text',
-                    'name'   => 'link1',
-                    'label'  => 'Link 1',
-                    'value'  => null,
-                    'width'  => 6
-                ],
-                'space1' => [
-                    'type'  => 'space',
-                    'name'  => 'space1',
-                ],
-                'text2' => [
-                    'type'   => 'text',
-                    'name'   => 'text2',
-                    'label'  => 'Categoria 2',
-                    'value'  => null,
-                    'width'  => 6
-                ],
-                'link2' => [
-                    'type'   => 'text',
-                    'name'   => 'link2',
-                    'label'  => 'Link 2',
-                    'value'  => null,
-                    'width'  => 6
-                ],
-                'space2' => [
-                    'type'  => 'space',
-                    'name'  => 'space2',
-                ],
-                'text3' => [
-                    'type'   => 'text',
-                    'name'   => 'text3',
-                    'label'  => 'Categoria 3',
-                    'value'  => null,
-                    'width'  => 6
-                ],
-                'link3' => [
-                    'type'   => 'text',
-                    'name'   => 'link3',
-                    'label'  => 'Link 3',
-                    'value'  => null,
-                    'width'  => 6
-                ],
-                'space3' => [
-                    'type'  => 'space',
-                    'name'  => 'space3',
-                ],
-                'text4' => [
-                    'type'   => 'text',
-                    'name'   => 'text4',
-                    'label'  => 'Categoria 4',
-                    'value'  => null,
-                    'width'  => 6
-                ],
-                'link4' => [
-                    'type'   => 'text',
-                    'name'   => 'link4',
-                    'label'  => 'Link 4',
-                    'value'  => null,
-                    'width'  => 6
-                ],
-                'space4' => [
-                    'type'  => 'space',
-                    'name'  => 'space4',
-                ],
-                'text5' => [
-                    'type'   => 'text',
-                    'name'   => 'text5',
-                    'label'  => 'Categoria 5',
-                    'value'  => null,
-                    'width'  => 6
-                ],
-                'link5' => [
-                    'type'   => 'text',
-                    'name'   => 'link5',
-                    'label'  => 'Link 5',
-                    'value'  => null,
-                    'width'  => 6
-                ],
-                'space5' => [
-                    'type'  => 'space',
-                    'name'  => 'space5',
-                ],
-                'text6' => [
-                    'type'   => 'text',
-                    'name'   => 'text6',
-                    'label'  => 'Categoria 6',
-                    'value'  => null,
-                    'width'  => 6
-                ],
-                'link6' => [
-                    'type'   => 'text',
-                    'name'   => 'link6',
-                    'label'  => 'Link 6',
-                    'value'  => null,
-                    'width'  => 6
-                ],
-                'space6' => [
-                    'type'  => 'space',
-                    'name'  => 'space6',
-                ],
-                'text7' => [
-                    'type'   => 'text',
-                    'name'   => 'text7',
-                    'label'  => 'Categoria 7',
-                    'value'  => null,
-                    'width'  => 12
-                ],
-                'text71' => [
-                    'type'   => 'text',
-                    'name'   => 'text71',
-                    'label'  => 'Categoria 71',
-                    'value'  => null,
-                    'width'  => 3
-                ],
-                'link71' => [
-                    'type'   => 'text',
-                    'name'   => 'link71',
-                    'label'  => 'Link 71',
-                    'value'  => null,
-                    'width'  => 3
-                ],
-                'text72' => [
-                    'type'   => 'text',
-                    'name'   => 'text72',
-                    'label'  => 'Categoria 72',
-                    'value'  => null,
-                    'width'  => 3
-                ],
-                'link72' => [
-                    'type'   => 'text',
-                    'name'   => 'link72',
-                    'label'  => 'Link 72',
-                    'value'  => null,
-                    'width'  => 3
-                ],
-                'text73' => [
-                    'type'   => 'text',
-                    'name'   => 'text73',
-                    'label'  => 'Categoria 73',
-                    'value'  => null,
-                    'width'  => 3
-                ],
-                'link73' => [
-                    'type'   => 'text',
-                    'name'   => 'link73',
-                    'label'  => 'Link 73',
-                    'value'  => null,
-                    'width'  => 3
-                ],
-                'text74' => [
-                    'type'   => 'text',
-                    'name'   => 'text74',
-                    'label'  => 'Categoria 74',
-                    'value'  => null,
-                    'width'  => 3
-                ],
-                'link74' => [
-                    'type'   => 'text',
-                    'name'   => 'link74',
-                    'label'  => 'Link 74',
-                    'value'  => null,
-                    'width'  => 3
-                ],
+            $count = 1;
+            Block::create([
+                'name'        => 'ecommerce3.main',
+                'title'       => 'Encabezado',
+                'description' => null,
+                'page_id'     => $page->id,
+                'position'    => $count++,
+                'type'        => 'dinamyc-data',
+                'details'     => json_encode([
+                    'image' => [
+                        'type'   => 'image',
+                        'name'   => 'image',
+                        'label'  => 'Banner',
+                        'value'  => null,
+                        'width'  => 12
+                    ],
+                    'space1' => [
+                        'type'  => 'space',
+                        'name'  => 'space1',
+                    ],
+                    'text1' => [
+                        'type'   => 'text',
+                        'name'   => 'text1',
+                        'label'  => 'Categoria 1',
+                        'value'  => null,
+                        'width'  => 6
+                    ],
+                    'link1' => [
+                        'type'   => 'text',
+                        'name'   => 'link1',
+                        'label'  => 'Link 1',
+                        'value'  => null,
+                        'width'  => 6
+                    ],
+                    'space1' => [
+                        'type'  => 'space',
+                        'name'  => 'space1',
+                    ],
+                    'text2' => [
+                        'type'   => 'text',
+                        'name'   => 'text2',
+                        'label'  => 'Categoria 2',
+                        'value'  => null,
+                        'width'  => 6
+                    ],
+                    'link2' => [
+                        'type'   => 'text',
+                        'name'   => 'link2',
+                        'label'  => 'Link 2',
+                        'value'  => null,
+                        'width'  => 6
+                    ],
+                    'space2' => [
+                        'type'  => 'space',
+                        'name'  => 'space2',
+                    ],
+                    'text3' => [
+                        'type'   => 'text',
+                        'name'   => 'text3',
+                        'label'  => 'Categoria 3',
+                        'value'  => null,
+                        'width'  => 6
+                    ],
+                    'link3' => [
+                        'type'   => 'text',
+                        'name'   => 'link3',
+                        'label'  => 'Link 3',
+                        'value'  => null,
+                        'width'  => 6
+                    ],
+                    'space3' => [
+                        'type'  => 'space',
+                        'name'  => 'space3',
+                    ],
+                    'text4' => [
+                        'type'   => 'text',
+                        'name'   => 'text4',
+                        'label'  => 'Categoria 4',
+                        'value'  => null,
+                        'width'  => 6
+                    ],
+                    'link4' => [
+                        'type'   => 'text',
+                        'name'   => 'link4',
+                        'label'  => 'Link 4',
+                        'value'  => null,
+                        'width'  => 6
+                    ],
+                    'space4' => [
+                        'type'  => 'space',
+                        'name'  => 'space4',
+                    ],
+                    'text5' => [
+                        'type'   => 'text',
+                        'name'   => 'text5',
+                        'label'  => 'Categoria 5',
+                        'value'  => null,
+                        'width'  => 6
+                    ],
+                    'link5' => [
+                        'type'   => 'text',
+                        'name'   => 'link5',
+                        'label'  => 'Link 5',
+                        'value'  => null,
+                        'width'  => 6
+                    ],
+                    'space5' => [
+                        'type'  => 'space',
+                        'name'  => 'space5',
+                    ],
+                    'text6' => [
+                        'type'   => 'text',
+                        'name'   => 'text6',
+                        'label'  => 'Categoria 6',
+                        'value'  => null,
+                        'width'  => 6
+                    ],
+                    'link6' => [
+                        'type'   => 'text',
+                        'name'   => 'link6',
+                        'label'  => 'Link 6',
+                        'value'  => null,
+                        'width'  => 6
+                    ],
+                    'space6' => [
+                        'type'  => 'space',
+                        'name'  => 'space6',
+                    ],
+                    'text7' => [
+                        'type'   => 'text',
+                        'name'   => 'text7',
+                        'label'  => 'Categoria 7',
+                        'value'  => null,
+                        'width'  => 12
+                    ],
+                    'text71' => [
+                        'type'   => 'text',
+                        'name'   => 'text71',
+                        'label'  => 'Categoria 71',
+                        'value'  => null,
+                        'width'  => 3
+                    ],
+                    'link71' => [
+                        'type'   => 'text',
+                        'name'   => 'link71',
+                        'label'  => 'Link 71',
+                        'value'  => null,
+                        'width'  => 3
+                    ],
+                    'text72' => [
+                        'type'   => 'text',
+                        'name'   => 'text72',
+                        'label'  => 'Categoria 72',
+                        'value'  => null,
+                        'width'  => 3
+                    ],
+                    'link72' => [
+                        'type'   => 'text',
+                        'name'   => 'link72',
+                        'label'  => 'Link 72',
+                        'value'  => null,
+                        'width'  => 3
+                    ],
+                    'text73' => [
+                        'type'   => 'text',
+                        'name'   => 'text73',
+                        'label'  => 'Categoria 73',
+                        'value'  => null,
+                        'width'  => 3
+                    ],
+                    'link73' => [
+                        'type'   => 'text',
+                        'name'   => 'link73',
+                        'label'  => 'Link 73',
+                        'value'  => null,
+                        'width'  => 3
+                    ],
+                    'text74' => [
+                        'type'   => 'text',
+                        'name'   => 'text74',
+                        'label'  => 'Categoria 74',
+                        'value'  => null,
+                        'width'  => 3
+                    ],
+                    'link74' => [
+                        'type'   => 'text',
+                        'name'   => 'link74',
+                        'label'  => 'Link 74',
+                        'value'  => null,
+                        'width'  => 3
+                    ],
 
-            ])
-        ]);
-        Block::create([
-            'name'        => 'ecommerce3.special',
-            'title'       => 'Especial',
-            'description' => null,
-            'page_id'     => $page->id,
-            'position'    => $count++,
-            'type'        => 'dinamyc-data',
-            'details'     => json_encode([
-                'icons1' => [
-                    'type'   => 'select_dropdown',
-                    'name'   => 'icons1',
-                    'label'  => 'Icons 1',
-                    'value'  => 'fa fa-money-bill-alt white',
-                    'width'  => 4
-                ],
-                'text1' => [
-                    'type'   => 'text',
-                    'name'   => 'text1',
-                    'label'  => 'Title 1',
-                    'value'  => null,
-                    'width'  => 4
-                ],
-                'parrafo1' => [
-                    'type'   => 'text_area',
-                    'name'   => 'parrafo1',
-                    'label'  => 'Categoria 1',
-                    'value'  => null,
-                    'width'  => 4
-                ],
-                'space1' => [
-                    'type'  => 'space',
-                    'name'  => 'space1',
-                ],
-                'icons2' => [
-                    'type'   => 'select_dropdown',
-                    'name'   => 'icons2',
-                    'label'  => 'Icons 2',
-                    'value'  => 'fa fa-comment-dots white',
-                    'width'  => 4
-                ],
-                'text2' => [
-                    'type'   => 'text',
-                    'name'   => 'text2',
-                    'label'  => 'Title 2',
-                    'value'  => null,
-                    'width'  => 4
-                ],
-                'parrafo2' => [
-                    'type'   => 'text_area',
-                    'name'   => 'parrafo2',
-                    'label'  => 'Categoria 2',
-                    'value'  => null,
-                    'width'  => 4
-                ],
-                'space2' => [
-                    'type'  => 'space',
-                    'name'  => 'space2',
-                ],
-                'icons3' => [
-                    'type'   => 'select_dropdown',
-                    'name'   => 'icons3',
-                    'label'  => 'Icons 3',
-                    'value'  => 'fa fa-truck white',
-                    'width'  => 4
-                ],
-                'text3' => [
-                    'type'   => 'text',
-                    'name'   => 'text3',
-                    'label'  => 'Title 3',
-                    'value'  => null,
-                    'width'  => 4
-                ],
-                'parrafo3' => [
-                    'type'   => 'text_area',
-                    'name'   => 'parrafo3',
-                    'label'  => 'Categoria 3',
-                    'value'  => null,
-                    'width'  => 4
-                ]
-            ])
-        ]);
-        Block::create([
-            'name'        => 'ecommerce3.products',
-            'title'       => 'Productos',
-            'description' => 'Controlador',
-            'page_id'     => $page->id,
-            'position'    => $count++,
-            'type'        => 'controller',
-            'details'     => json_encode([
-                'name'   => 'title',
-                'label'  => 'Products',
-                'value'  => 'Modules\\Bimgo\\Http\\Controllers\\Ecommerce3Controller::products()',
-            ])
-        ]);
-        Block::create([
-            'name'        => 'ecommerce3.app',
-            'title'       => 'App Download',
-            'description' => null,
-            'page_id'     => $page->id,
-            'position'    => $count++,
-            'type'        => 'dinamyc-data',
-            'details'     => json_encode([
-                'title' => [
-                    'type'   => 'text',
+                ])
+            ]);
+            Block::create([
+                'name'        => 'ecommerce3.special',
+                'title'       => 'Especial',
+                'description' => null,
+                'page_id'     => $page->id,
+                'position'    => $count++,
+                'type'        => 'dinamyc-data',
+                'details'     => json_encode([
+                    'icons1' => [
+                        'type'   => 'select_dropdown',
+                        'name'   => 'icons1',
+                        'label'  => 'Icons 1',
+                        'value'  => 'fa fa-money-bill-alt white',
+                        'width'  => 4
+                    ],
+                    'text1' => [
+                        'type'   => 'text',
+                        'name'   => 'text1',
+                        'label'  => 'Title 1',
+                        'value'  => null,
+                        'width'  => 4
+                    ],
+                    'parrafo1' => [
+                        'type'   => 'text_area',
+                        'name'   => 'parrafo1',
+                        'label'  => 'Categoria 1',
+                        'value'  => null,
+                        'width'  => 4
+                    ],
+                    'space1' => [
+                        'type'  => 'space',
+                        'name'  => 'space1',
+                    ],
+                    'icons2' => [
+                        'type'   => 'select_dropdown',
+                        'name'   => 'icons2',
+                        'label'  => 'Icons 2',
+                        'value'  => 'fa fa-comment-dots white',
+                        'width'  => 4
+                    ],
+                    'text2' => [
+                        'type'   => 'text',
+                        'name'   => 'text2',
+                        'label'  => 'Title 2',
+                        'value'  => null,
+                        'width'  => 4
+                    ],
+                    'parrafo2' => [
+                        'type'   => 'text_area',
+                        'name'   => 'parrafo2',
+                        'label'  => 'Categoria 2',
+                        'value'  => null,
+                        'width'  => 4
+                    ],
+                    'space2' => [
+                        'type'  => 'space',
+                        'name'  => 'space2',
+                    ],
+                    'icons3' => [
+                        'type'   => 'select_dropdown',
+                        'name'   => 'icons3',
+                        'label'  => 'Icons 3',
+                        'value'  => 'fa fa-truck white',
+                        'width'  => 4
+                    ],
+                    'text3' => [
+                        'type'   => 'text',
+                        'name'   => 'text3',
+                        'label'  => 'Title 3',
+                        'value'  => null,
+                        'width'  => 4
+                    ],
+                    'parrafo3' => [
+                        'type'   => 'text_area',
+                        'name'   => 'parrafo3',
+                        'label'  => 'Categoria 3',
+                        'value'  => null,
+                        'width'  => 4
+                    ]
+                ])
+            ]);
+            Block::create([
+                'name'        => 'ecommerce3.products',
+                'title'       => 'Productos',
+                'description' => 'Controlador',
+                'page_id'     => $page->id,
+                'position'    => $count++,
+                'type'        => 'controller',
+                'details'     => json_encode([
                     'name'   => 'title',
-                    'label'  => 'Title',
-                    'value'  => null,
-                    'width'  => 3
-                ],
-                'parrafo' => [
-                    'type'   => 'rich_text_box',
-                    'name'   => 'parrafo',
-                    'label'  => 'Editor Html',
-                    'value'  => null,
-                    'width'  => 9
-                ],
-                'space1' => [
-                    'type'  => 'space',
-                    'name'  => 'space1',
-                ],
-                'android' => [
-                    'type'   => 'image',
-                    'name'   => 'android',
-                    'label'  => 'Image de Android',
-                    'value'  => null,
-                    'width'  => 6
-                ],
-                'link1' => [
-                    'type'   => 'text',
-                    'name'   => 'link1',
-                    'label'  => 'Link de Android',
-                    'value'  => null,
-                    'width'  => 6
-                ],
-                'space2' => [
-                    'type'  => 'space',
-                    'name'  => 'space2',
-                ],
-                'apple' => [
-                    'type'   => 'image',
-                    'name'   => 'apple',
-                    'label'  => 'Image de Apple',
-                    'value'  => null,
-                    'width'  => 6
-                ],
-                'link2' => [
-                    'type'   => 'text',
-                    'name'   => 'link2',
-                    'label'  => 'Link de Apple',
-                    'value'  => null,
-                    'width'  => 6
-                ]
-            ])
-        ]);
-        Block::create([
-            'name'        => 'ecommerce3.slider',
-            'title'       => 'Slider de Products',
-            'description' => null,
-            'page_id'     => $page->id,
-            'position'    => $count++,
-            'type'        => 'controller',
-            'details'     => json_encode([
-                'name'   => 'title',
-                'label'  => 'Slider',
-                'value'  => 'Modules\\Bimgo\\Http\\Controllers\\Ecommerce3Controller::slider()', 
-            ])
-        ]);
-        Block::create([
-            'name'        => 'ecommerce3.brands',
-            'title'       => 'Brands',
-            'description' => null,
-            'page_id'     => $page->id,
-            'position'    => $count++,
-            'type'        => 'controller',
-            'details'     => json_encode([
-                'name'   => 'title',
-                'label'  => 'Brands',
-                'value'  => 'Modules\\Bimgo\\Http\\Controllers\\Ecommerce3Controller::brands()',
-            ])
-        ]);
+                    'label'  => 'Products',
+                    'value'  => 'Modules\\Bimgo\\Http\\Controllers\\Ecommerce3Controller::products()',
+                ])
+            ]);
+            Block::create([
+                'name'        => 'ecommerce3.app',
+                'title'       => 'App Download',
+                'description' => null,
+                'page_id'     => $page->id,
+                'position'    => $count++,
+                'type'        => 'dinamyc-data',
+                'details'     => json_encode([
+                    'title' => [
+                        'type'   => 'text',
+                        'name'   => 'title',
+                        'label'  => 'Title',
+                        'value'  => null,
+                        'width'  => 3
+                    ],
+                    'parrafo' => [
+                        'type'   => 'rich_text_box',
+                        'name'   => 'parrafo',
+                        'label'  => 'Editor Html',
+                        'value'  => null,
+                        'width'  => 9
+                    ],
+                    'space1' => [
+                        'type'  => 'space',
+                        'name'  => 'space1',
+                    ],
+                    'android' => [
+                        'type'   => 'image',
+                        'name'   => 'android',
+                        'label'  => 'Image de Android',
+                        'value'  => null,
+                        'width'  => 6
+                    ],
+                    'link1' => [
+                        'type'   => 'text',
+                        'name'   => 'link1',
+                        'label'  => 'Link de Android',
+                        'value'  => null,
+                        'width'  => 6
+                    ],
+                    'space2' => [
+                        'type'  => 'space',
+                        'name'  => 'space2',
+                    ],
+                    'apple' => [
+                        'type'   => 'image',
+                        'name'   => 'apple',
+                        'label'  => 'Image de Apple',
+                        'value'  => null,
+                        'width'  => 6
+                    ],
+                    'link2' => [
+                        'type'   => 'text',
+                        'name'   => 'link2',
+                        'label'  => 'Link de Apple',
+                        'value'  => null,
+                        'width'  => 6
+                    ]
+                ])
+            ]);
+            Block::create([
+                'name'        => 'ecommerce3.slider',
+                'title'       => 'Slider de Products',
+                'description' => null,
+                'page_id'     => $page->id,
+                'position'    => $count++,
+                'type'        => 'controller',
+                'details'     => json_encode([
+                    'name'   => 'title',
+                    'label'  => 'Slider',
+                    'value'  => 'Modules\\Bimgo\\Http\\Controllers\\Ecommerce3Controller::slider()', 
+                ])
+            ]);
+            Block::create([
+                'name'        => 'ecommerce3.brands',
+                'title'       => 'Brands',
+                'description' => null,
+                'page_id'     => $page->id,
+                'position'    => $count++,
+                'type'        => 'controller',
+                'details'     => json_encode([
+                    'name'   => 'title',
+                    'label'  => 'Brands',
+                    'value'  => 'Modules\\Bimgo\\Http\\Controllers\\Ecommerce3Controller::brands()',
+                ])
+            ]);
 
 
         //---------------------------------------------------------------------------------------------------page Ecommerce4
@@ -2272,6 +2272,402 @@ class PageTableSeeder extends Seeder
             'direction'   =>  'bimgo::pages.ecommerce4',
             'description' =>  'Pagina predeterminada para comercio electronico v4'
         ]);
-
+            $count = 1;
+            Block::create([
+                'name'        => 'ecommerce4.main',
+                'title'       => 'Panel Principal',
+                'description' => 'Panel o Banner',
+                'page_id'     => $page->id,
+                'position'    => $count++,
+                'type'        => 'dinamyc-data',
+                'details'     => json_encode([
+                    'text1' => [
+                        'type'   => 'text',
+                        'name'   => 'text1',
+                        'label'  => 'Texto #1',
+                        'value'  => null,
+                        'width'  => 6
+                    ],
+                    'link1' => [
+                        'type'   => 'text',
+                        'name'   => 'link1',
+                        'label'  => 'Link #1',
+                        'value'  => null,
+                        'width'  => 6
+                    ],
+                    'text2' => [
+                        'type'   => 'text',
+                        'name'   => 'text2',
+                        'label'  => 'Texto #2',
+                        'value'  => null,
+                        'width'  => 6
+                    ],
+                    'link2' => [
+                        'type'   => 'text',
+                        'name'   => 'link2',
+                        'label'  => 'Link #2',
+                        'value'  => null,
+                        'width'  => 6
+                    ],
+                    'text3' => [
+                        'type'   => 'text',
+                        'name'   => 'text3',
+                        'label'  => 'Texto #3',
+                        'value'  => null,
+                        'width'  => 6
+                    ],
+                    'link3' => [
+                        'type'   => 'text',
+                        'name'   => 'link3',
+                        'label'  => 'Link #2',
+                        'value'  => null,
+                        'width'  => 6
+                    ],
+                    'text4' => [
+                        'type'   => 'text',
+                        'name'   => 'text4',
+                        'label'  => 'Texto #4',
+                        'value'  => null,
+                        'width'  => 6
+                    ],
+                    'link4' => [
+                        'type'   => 'text',
+                        'name'   => 'link4',
+                        'label'  => 'Link #4',
+                        'value'  => null,
+                        'width'  => 6
+                    ],
+                    'text5' => [
+                        'type'   => 'text',
+                        'name'   => 'text5',
+                        'label'  => 'Texto #5',
+                        'value'  => null,
+                        'width'  => 6
+                    ],
+                    'link5' => [
+                        'type'   => 'text',
+                        'name'   => 'link5',
+                        'label'  => 'Link #5',
+                        'value'  => null,
+                        'width'  => 6
+                    ],
+                    'text6' => [
+                        'type'   => 'text',
+                        'name'   => 'text6',
+                        'label'  => 'Texto #6',
+                        'value'  => null,
+                        'width'  => 6
+                    ],
+                    'link6' => [
+                        'type'   => 'text',
+                        'name'   => 'link6',
+                        'label'  => 'Link #6',
+                        'value'  => null,
+                        'width'  => 6
+                    ],
+                    'text7' => [
+                        'type'   => 'text',
+                        'name'   => 'text7',
+                        'label'  => 'Texto #7',
+                        'value'  => null,
+                        'width'  => 6
+                    ],
+                    'link7' => [
+                        'type'   => 'text',
+                        'name'   => 'link7',
+                        'label'  => 'Link #7',
+                        'value'  => null,
+                        'width'  => 6
+                    ],
+                    'text8' => [
+                        'type'   => 'text',
+                        'name'   => 'text8',
+                        'label'  => 'Texto Master',
+                        'value'  => null,
+                        'width'  => 12
+                    ],
+                    'text81' => [
+                        'type'   => 'text',
+                        'name'   => 'text81',
+                        'label'  => 'Texto Sub #1',
+                        'value'  => null,
+                        'width'  => 6
+                    ],
+                    'link81' => [
+                        'type'   => 'text',
+                        'name'   => 'Link81',
+                        'label'  => 'link Sub #1',
+                        'value'  => null,
+                        'width'  => 6
+                    ],
+                    'text82' => [
+                        'type'   => 'text',
+                        'name'   => 'text82',
+                        'label'  => 'Texto Sub #2',
+                        'value'  => null,
+                        'width'  => 6
+                    ],
+                    'link82' => [
+                        'type'   => 'text',
+                        'name'   => 'Link82',
+                        'label'  => 'link Sub #2',
+                        'value'  => null,
+                        'width'  => 6
+                    ],
+                    'text83' => [
+                        'type'   => 'text',
+                        'name'   => 'text83',
+                        'label'  => 'Texto Sub #3',
+                        'value'  => null,
+                        'width'  => 6
+                    ],
+                    'link83' => [
+                        'type'   => 'text',
+                        'name'   => 'Link83',
+                        'label'  => 'link Sub #3',
+                        'value'  => null,
+                        'width'  => 6
+                    ],
+                    'text84' => [
+                        'type'   => 'text',
+                        'name'   => 'text84',
+                        'label'  => 'Texto Sub #4',
+                        'value'  => null,
+                        'width'  => 6
+                    ],
+                    'link84' => [
+                        'type'   => 'text',
+                        'name'   => 'Link84',
+                        'label'  => 'link Sub #4',
+                        'value'  => null,
+                        'width'  => 6
+                    ],
+                    'space8' => [
+                        'type'  => 'space',
+                        'name'  => 'space7',
+                    ],
+                    'image1' => [
+                        'type'   => 'image',
+                        'name'   => 'image1',
+                        'label'  => 'Image del Banner #1 - 820 x 390',
+                        'value'  => null,
+                        'width'  => 4
+                    ],
+                    'image2' => [
+                        'type'   => 'image',
+                        'name'   => 'image2',
+                        'label'  => 'Image del Banner #2 - 820 x 390',
+                        'value'  => null,
+                        'width'  => 4
+                    ],
+                    'image3' => [
+                        'type'   => 'image',
+                        'name'   => 'image3',
+                        'label'  => 'Image del Banner #3 - 820 x 390',
+                        'value'  => null,
+                        'width'  => 4
+                    ],
+                    'space9' => [
+                        'type'  => 'space',
+                        'name'  => 'space9',
+                    ],
+                    'title10' => [
+                        'type'   => 'text',
+                        'name'   => 'title10',
+                        'label'  => 'Title #10',
+                        'value'  => null,
+                        'width'  => 4
+                    ],
+                    'link10' => [
+                        'type'   => 'text',
+                        'name'   => 'link10',
+                        'label'  => 'Link #10',
+                        'value'  => null,
+                        'width'  => 4
+                    ],
+                    'image10' => [
+                        'type'   => 'image',
+                        'name'   => 'image10',
+                        'label'  => 'Image del Category #10 - 480 x 480',
+                        'value'  => null,
+                        'width'  => 4
+                    ],
+                    'title11' => [
+                        'type'   => 'text',
+                        'name'   => 'title11',
+                        'label'  => 'Title #11',
+                        'value'  => null,
+                        'width'  => 4
+                    ],
+                    'link11' => [
+                        'type'   => 'text',
+                        'name'   => 'link11',
+                        'label'  => 'Link #11',
+                        'value'  => null,
+                        'width'  => 4
+                    ],
+                    'image11' => [
+                        'type'   => 'image',
+                        'name'   => 'image11',
+                        'label'  => 'Image del Category #11 - 480 x 480',
+                        'value'  => null,
+                        'width'  => 4
+                    ],
+                    'title12' => [
+                        'type'   => 'text',
+                        'name'   => 'title12',
+                        'label'  => 'Title #12',
+                        'value'  => null,
+                        'width'  => 4
+                    ],
+                    'link12' => [
+                        'type'   => 'text',
+                        'name'   => 'link12',
+                        'label'  => 'Link #12',
+                        'value'  => null,
+                        'width'  => 4
+                    ],
+                    'image12' => [
+                        'type'   => 'image',
+                        'name'   => 'image12',
+                        'label'  => 'Image del Category #12 - 480 x 480',
+                        'value'  => null,
+                        'width'  => 4
+                    ]
+                ])
+            ]);
+            Block::create([
+                'name'        => 'ecommerce4.ofertas',
+                'title'       => 'Productos en Ofertas',
+                'description' => null,
+                'page_id'     => $page->id,
+                'position'    => $count++,
+                'type'        => 'controller',
+                'details'     => json_encode([
+                    'name'   => 'title',
+                    'label'  => 'Productos de a 5',
+                    'value'  => 'Modules\\Bimgo\\Http\\Controllers\\Ecommerce4Controller::ofertas()',
+                ])
+            ]);
+            Block::create([
+                'name'        => 'ecommerce4.products1',
+                'title'       => 'Productos en Tendencias',
+                'description' => null,
+                'page_id'     => $page->id,
+                'position'    => $count++,
+                'type'        => 'controller',
+                'details'     => json_encode([
+                    'name'   => 'title',
+                    'label'  => 'Productos de a 8',
+                    'value'  => 'Modules\\Bimgo\\Http\\Controllers\\Ecommerce4Controller::products1()',
+                ])
+            ]);
+            Block::create([
+                'name'        => 'ecommerce4.products2',
+                'title'       => 'Productos en Tendencias',
+                'description' => null,
+                'page_id'     => $page->id,
+                'position'    => $count++,
+                'type'        => 'controller',
+                'details'     => json_encode([
+                    'name'   => 'title',
+                    'label'  => 'Productos de a 8',
+                    'value'  => 'Modules\\Bimgo\\Http\\Controllers\\Ecommerce4Controller::products2()',
+                ])
+            ]);
+            Block::create([
+                'name'        => 'ecommerce4.request',
+                'title'       => 'Formulario para realizar solicitudes',
+                'description' => null,
+                'page_id'     => $page->id,
+                'position'    => $count++,
+                'type'        => 'dinamyc-data',
+                'details'     => json_encode([
+                    'image' => [
+                        'type'   => 'image',
+                        'name'   => 'image',
+                        'label'  => 'Banner',
+                        'value'  => null,
+                        'width'  => 3
+                    ],
+                    'title' => [
+                        'type'   => 'text',
+                        'name'   => 'title',
+                        'label'  => 'Titulo del Banner',
+                        'value'  => null,
+                        'width'  => 3
+                    ],
+                    'parrafo' => [
+                        'type'   => 'text_box',
+                        'name'   => 'parrafo',
+                        'label'  => 'Descripcion del Banner',
+                        'value'  => null,
+                        'width'  => 3
+                    ],
+                    'link' => [
+                        'type'   => 'text',
+                        'name'   => 'link',
+                        'label'  => 'Link del Boton',
+                        'value'  => null,
+                        'width'  => 3
+                    ]
+                ])
+            ]);
+            Block::create([
+                'name'        => 'ecommerce4.recommendad',
+                'title'       => 'Productos Recomendados',
+                'description' => null,
+                'page_id'     => $page->id,
+                'position'    => $count++,
+                'type'        => 'controller',
+                'details'     => json_encode([
+                    'name'   => 'title',
+                    'label'  => 'Productos de a 12',
+                    'value'  => 'Modules\\Bimgo\\Http\\Controllers\\Ecommerce4Controller::recommendad()',
+                ])
+            ]);
+            Block::create([
+                'name'        => 'ecommerce4.brands',
+                'title'       => 'Marcas',
+                'description' => null,  
+                'page_id'     => $page->id,
+                'position'    => $count++,
+                'type'        => 'controller',
+                'details'     => json_encode([
+                    'name'   => 'title',
+                    'label'  => 'Marcas de a 4',
+                    'value'  => 'Modules\\Bimgo\\Http\\Controllers\\Ecommerce4Controller::brands()',
+                ])
+            ]);
+            Block::create([
+                'name'        => 'ecommerce4.regions',
+                'title'       => 'Regiones para Envios',
+                'description' => null,  
+                'page_id'     => $page->id,
+                'position'    => $count++,
+                'type'        => 'controller',
+                'details'     => json_encode([
+                    'name'   => 'title',
+                    'label'  => 'Regiones para Envions de a 8',
+                    'value'  => 'Modules\\Bimgo\\Http\\Controllers\\Ecommerce4Controller::regions()',
+                ])
+            ]);
+            Block::create([
+                'name'        => 'ecommerce4.publicidad',
+                'title'       => 'Banner de Publicidad',
+                'description' => null,
+                'page_id'     => $page->id,
+                'position'    => $count++,
+                'type'        => 'dinamyc-data',
+                'details'     => json_encode([
+                    'image' => [
+                        'type'   => 'image',
+                        'name'   => 'image',
+                        'label'  => 'Banner 1920 x 210',
+                        'value'  => null,
+                        'width'  => 12
+                    ]
+                ])
+            ]);               
     }
 }

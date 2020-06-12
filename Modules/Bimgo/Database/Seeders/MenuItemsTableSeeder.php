@@ -630,5 +630,10 @@ class MenuItemsTableSeeder extends Seeder
             ])->save();
         }
 
+        // -------- Regions -------
+        Menu::firstOrCreate([
+            'name' => 'bg_regions',
+        ]);
+
     }
 }

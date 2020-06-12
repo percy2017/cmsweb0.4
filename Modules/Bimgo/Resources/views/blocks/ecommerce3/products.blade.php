@@ -3,7 +3,7 @@
 	<div class="container">
 
 	<header class="section-heading">
-		<a href="#" class="btn btn-outline-primary float-right">Ver Todos</a>
+		<a href="{{ route('bg_category3') }}" class="btn btn-outline-primary float-right">Ver Todos</a>
 		<h3 class="section-title">Productos Populares</h3>
 	</header><!-- sect-heading -->
 
@@ -15,9 +15,9 @@
 			@endphp
 			<div class="col-md-3">
 				<div href="#" class="card card-product-grid">
-					<a href="#" class="img-wrap"> <img src="{{ Voyager::image($images) }}"> </a>
+					<a href="{{ route('bg_product3', $item->slug) }}" class="img-wrap"> <img src="{{ Voyager::image($images) }}"> </a>
 					<figcaption class="info-wrap">
-						<a href="#" class="title">{{ $item->name }}</a>
+						<a href="{{ route('bg_product3', $item->slug) }}" class="title">{{ $item->name }}</a>
 						<div class="price mt-1">{{ $item->product_details[0]->price }} Bs.</div> <!-- price-wrap.// -->
 					</figcaption>
 				</div>

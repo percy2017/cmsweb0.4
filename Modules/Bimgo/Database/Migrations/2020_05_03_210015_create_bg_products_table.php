@@ -23,6 +23,8 @@ class CreateBgProductsTable extends Migration
             $table->string('stars')->nullable();
             $table->text('characteristics')->nullable();
             $table->boolean('published')->default(false);
+            $table->boolean('offer')->default(false);
+            $table->integer('views')->default(0);
             $table->text('description_long')->nullable();
 
             $table->unsignedBigInteger('user_id');

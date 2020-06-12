@@ -226,21 +226,21 @@
 
 @section('js')
   <script>
-  function addcart(urli){
-      $.ajax({
-        type: "get",
-        url: urli,
-        success: function (response) {
-          Swal.fire({
-            position: 'top-end',
-            icon: 'success',
-            title: response.name+', Agregado a tu Carrito',
-            showConfirmButton: true,
-            timer: 3000
-          })
-        }
-      });
-    } 
+    function addcart(urli){
+        $.ajax({
+          type: "get",
+          url: urli,
+          success: function (response) {
+            Swal.fire({
+              position: 'top-end',
+              icon: 'success',
+              title: response.name+', Agregado a tu Carrito',
+              showConfirmButton: true,
+              timer: 3000
+            })
+          }
+        });
+      } 
 
   $('.color input[type=radio]').each(function (idx, elt) {
     let id = '#'+elt.id; 

@@ -314,6 +314,29 @@ class DataTypeTableSeeder extends Seeder
             ])->save();
         }
 
+        $dataType = $this->dataType('slug', 'bg_regions');
+        if (!$dataType->exists) {
+            $dataType->fill([
+                'name'                  => 'bg_regions',
+                'display_name_singular' => 'Region',
+                'display_name_plural'   => 'Regiones',
+                'icon'                  => 'voyager-play',
+                'model_name'            => 'Modules\\Bimgo\\Entities\\BgRegion',
+                'policy_name'           => null,
+                'controller'            => 'Modules\\Bimgo\\Http\\Controllers\\RegionController',
+                'generate_permissions'  => 1,
+                'description'           => null,
+                'server_side'           => 1,
+                'details'               => [
+                    'order_column'         => 'id',
+                    'order_display_column' => 'id',
+                    'order_direction'      => 'asc',
+                    'default_search_key'   => 'id',
+                    'scope'                => null
+                ]
+            ])->save();
+        }
+
 
 
 

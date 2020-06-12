@@ -9,7 +9,9 @@ use Illuminate\Support\Facades\DB;
 use Darryldecode\Cart\CartCondition;
 use Modules\Bimgo\Entities\BgProduct;
 use Modules\Bimgo\Entities\BgProductDetail;
+use Modules\Bimgo\Entities\BgCategory;
 use Modules\Bimgo\Entities\BgSubCategory;
+use Modules\Bimgo\Entities\BgBrand;
 class Ecommerce3Controller extends Controller
 {
     /**
@@ -125,10 +127,34 @@ class Ecommerce3Controller extends Controller
         }
         // Ordernar de mayor a menor coincidencia y convertir a colección
         $sugerencias = json_decode(json_encode(collect($sugerencias)->sortBy('coincidencias')->reverse()->take(4)));
-        return view('bimgo::pages.product_details1', [
+        return view('bimgo::pages.product_details3', [
             'product'  => $product,
             'sugerencias'  => $sugerencias,
             'page' => $product
+        ]);
+    }
+
+    function cart()
+    {
+        $page = \App\Page::where('slug', 'landing-page-bimgo')->first();
+        return view('bimgo::pages.cart3', [
+            'page' => $page
+        ]);
+    }
+
+    function category()
+    {
+        $products = BgProduct::where('published', true)->with(['product_details'])->orderBy('id', 'desc')->paginate(9);
+        $Categorias = BgCategory::orderBy('id', 'desc')->get();
+        $SubCategorias = BgSubCategory::orderBy('id', 'desc')->get();
+        $brands = BgBrand::orderBy('id', 'desc')->get();
+        $page = \App\Page::where('slug', 'landing-page-bimgo')->first();
+        return view('bimgo::pages.category3', [
+            'products'  => $products,
+            'page' => $page,
+            'categorias' => $Categorias,
+            'SubCategorias' => $SubCategorias,
+            'brands' => $brands
         ]);
     }
 }

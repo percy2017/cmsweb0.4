@@ -22,7 +22,7 @@
 		<div class="col-lg-4 col-sm-6 col-12">
 			<div class="widgets-wrap float-md-right">
 				<div class="widget-header  mr-3">
-					<a href="#" class="icon icon-sm rounded-circle border"><i class="fa fa-shopping-cart"></i></a>
+					<a href="{{ route('bg_cart3') }}" class="icon icon-sm rounded-circle border"><i class="fa fa-shopping-cart"></i></a>
 					<span class="badge badge-pill badge-danger notify">0</span>
 				</div>
 				<div class="widget-header icontext">
@@ -37,7 +37,7 @@
 						@else
 							<span class="text-muted">Bienvenido!</span>
 							<div> 
-								<a href="{{ url('home') }}">{{ Auth::user()->name }}</a> | 
+								<a href="{{ route('bg_profile') }}">{{ Auth::user()->name }}</a> | 
 								<a href="{{ route('logout') }}">Salir</a>
 							</div>
 							<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

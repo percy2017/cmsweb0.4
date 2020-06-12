@@ -18,17 +18,17 @@ La herramienta incluye herramienta y paquete de terceros:
 - Php Extenciones
 - NodeJs & Npm
 
-> php7.2-mbstring
+> php7.3-mbstring
 
-> php7.2-bcmath
+> php7.3-bcmath
 
-> php7.2-gd
+> php7.3-gd
 
-> php7.2-dom
+> php7.3-dom
 
-> php7.2-curl
+> php7.3-curl
 
-> php7.2-zip
+> php7.3-zip
 
 # Instalador 
 ### Step #1
@@ -68,8 +68,8 @@ El cmsweb incluye una variedad de plantillas lista para poner en produccion entr
 # Paquetes Disponibles
 
 El cmsweb incluye 5 paquetes listos para ser utilizados
-- BimGo - Software para comercio electronico
-- Yimbo - Paquete para venta de comida y delivery
+- BimGo - Software para comercio electronico (4 plantillas)
+- YimBo - Paquete para venta de comida y delivery
 - Inti - Software para centros educativos
 - BolDig - Paquete para crear y administrar periodicos digitales
 - hiStream - Paquete para la gestion de video conferencias
