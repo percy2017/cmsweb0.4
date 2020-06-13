@@ -1,7 +1,7 @@
 <!-- =============== SECTION SERVICES =============== -->
 <section  class="padding-bottom">
     <header class="section-heading heading-line">
-        <h4 class="title-section text-uppercase">Trade services</h4>
+        <h4 class="title-section text-uppercase">Principales Marcas</h4>
     </header>
 
     <div class="row">

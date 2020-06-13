@@ -14,12 +14,12 @@
                             <li><a href="{{ $data->link5->value }}">{{ $data->text5->value }}</a></li>
                             <li><a href="{{ $data->link6->value }}">{{ $data->text6->value }}</a></li>
                             <li><a href="{{ $data->link7->value }}">{{ $data->text7->value }}</a></li>
-                            <li class="has-submenu"><a href="#">{{ $data->text8->value }}</a>
+                            <li class="has-submenu"><a href="#">{{ $data->textmaster->value }}</a>
                                 <ul class="submenu">
-                                    <li><a href="{{ $data->link81->value }}">{{ $data->text81->value }}</a></li>
-                                    <li><a href="{{ $data->link82->value }}">{{ $data->text82->value }}</a></li>
-                                    <li><a href="{{ $data->link83->value }}">{{ $data->text83->value }}</a></li>
-                                    <li><a href="{{ $data->link84->value }}">{{ $data->text84->value }}</a></li>
+                                    <li><a href="{{ $data->linkmaster1->value }}">{{ $data->textmaster1->value }}</a></li>
+                                    <li><a href="{{ $data->linkmaster2->value }}">{{ $data->textmaster2->value }}</a></li>
+                                    <li><a href="{{ $data->linkmaster3->value }}">{{ $data->textmaster3->value }}</a></li>
+                                    <li><a href="{{ $data->linkmaster4->value }}">{{ $data->textmaster4->value }}</a></li>
                                 </ul>
                             </li>
                         </ul>

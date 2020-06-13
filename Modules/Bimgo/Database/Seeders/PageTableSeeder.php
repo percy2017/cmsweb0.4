@@ -2379,72 +2379,72 @@ class PageTableSeeder extends Seeder
                         'value'  => null,
                         'width'  => 6
                     ],
-                    'text8' => [
+                    'textmaster' => [
                         'type'   => 'text',
-                        'name'   => 'text8',
+                        'name'   => 'textmaster',
                         'label'  => 'Texto Master',
                         'value'  => null,
                         'width'  => 12
                     ],
-                    'text81' => [
+                    'textmaster1' => [
                         'type'   => 'text',
-                        'name'   => 'text81',
+                        'name'   => 'textmaster1',
                         'label'  => 'Texto Sub #1',
                         'value'  => null,
                         'width'  => 6
                     ],
-                    'link81' => [
+                    'linkmaster1' => [
                         'type'   => 'text',
-                        'name'   => 'Link81',
+                        'name'   => 'linkmaster1',
                         'label'  => 'link Sub #1',
                         'value'  => null,
                         'width'  => 6
                     ],
-                    'text82' => [
+                    'textmaster2' => [
                         'type'   => 'text',
-                        'name'   => 'text82',
+                        'name'   => 'textmaster2',
                         'label'  => 'Texto Sub #2',
                         'value'  => null,
                         'width'  => 6
                     ],
-                    'link82' => [
+                    'linkmaster2' => [
                         'type'   => 'text',
-                        'name'   => 'Link82',
+                        'name'   => 'linkmaster2',
                         'label'  => 'link Sub #2',
                         'value'  => null,
                         'width'  => 6
                     ],
-                    'text83' => [
+                    'textmaster3' => [
                         'type'   => 'text',
-                        'name'   => 'text83',
+                        'name'   => 'textmaster3',
                         'label'  => 'Texto Sub #3',
                         'value'  => null,
                         'width'  => 6
                     ],
-                    'link83' => [
+                    'linkmaster3' => [
                         'type'   => 'text',
-                        'name'   => 'Link83',
+                        'name'   => 'linkmaster3',
                         'label'  => 'link Sub #3',
                         'value'  => null,
                         'width'  => 6
                     ],
-                    'text84' => [
+                    'textmaster4' => [
                         'type'   => 'text',
-                        'name'   => 'text84',
+                        'name'   => 'textmaster4',
                         'label'  => 'Texto Sub #4',
                         'value'  => null,
                         'width'  => 6
                     ],
-                    'link84' => [
+                    'linkmaster4' => [
                         'type'   => 'text',
-                        'name'   => 'Link84',
+                        'name'   => 'linkmaster4',
                         'label'  => 'link Sub #4',
                         'value'  => null,
                         'width'  => 6
                     ],
                     'space8' => [
                         'type'  => 'space',
-                        'name'  => 'space7',
+                        'name'  => 'space8'
                     ],
                     'image1' => [
                         'type'   => 'image',

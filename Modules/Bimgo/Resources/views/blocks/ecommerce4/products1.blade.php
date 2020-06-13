@@ -1,7 +1,7 @@
 <!-- =============== SECTION 1 =============== -->
 <section class="padding-bottom">
     <header class="section-heading heading-line">
-        <h4 class="title-section text-uppercase">Tendencias</h4>
+        <h4 class="title-section text-uppercase">Productos en Tendencias</h4>
     </header>
 
     <div class="card card-home-category">
@@ -25,9 +25,9 @@
                         <li class="col-6 col-lg-3 col-md-4">
                             <a href="{{ route('bg_product4', $item->slug) }}" class="item"> 
                                 <div class="card-body">
-                                    <h6 class="title">{{ $item->name }}  </h6>
+                                    <h6 class="title">{{ $item->name }} </h6>
                                     <img class="img-sm float-right" src="{{ Voyager::image($images) }}"> 
-                                    <p class="text-muted"><i class="fa fa-map-marker-alt"></i> Guanjou, China</p>
+                                    <p class="text-muted"><i class="fa fa-money-bill-alt"></i> {{ $item->product_details[0]->price }} Bs.</p>
                                 </div>
                             </a>
                         </li>

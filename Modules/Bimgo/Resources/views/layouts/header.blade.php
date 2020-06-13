@@ -1,9 +1,7 @@
 @include('bimgo::layouts.navbar')
 <!-- Intro -->
 <section class="view intro">
-
     <div class="container-fluid">
-
         <div class="row d-flex justify-content-center align-items-center h-100 mx-md-5">
 
             <div class="col-lg-4 col-xl-5 col-flex mt-lg-0 pt-lg-4 mt-5 pt-5">

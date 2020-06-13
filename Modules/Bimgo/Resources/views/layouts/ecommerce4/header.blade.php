@@ -73,7 +73,7 @@
                             </a>
                         </div>  --}}
                         <div class="widget-header">
-                            <a href="#" class="widget-view">
+                            <a href="{{ route('bg_cart4') }}" class="widget-view">
                                 <div class="icon-area">
                                     <i class="fa fa-shopping-cart"></i>
                                     <span class="notify">3</span>

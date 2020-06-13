@@ -18,17 +18,17 @@ La herramienta incluye herramienta y paquete de terceros:
 - Php Extenciones
 - NodeJs & Npm
 
-> php7.3-mbstring
+> php7.4-mbstring
 
-> php7.3-bcmath
+> php7.4-bcmath
 
-> php7.3-gd
+> php7.4-gd
 
-> php7.3-dom
+> php7.4-dom
 
-> php7.3-curl
+> php7.4-curl
 
-> php7.3-zip
+> php7.4-zip
 
 # Instalador 
 ### Step #1
