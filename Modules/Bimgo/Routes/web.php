@@ -25,6 +25,13 @@ Route::get('my/cart', 'Ecommerce1Controller@cart')->name('bg_cart');
 Route::get('my/payment', 'Ecommerce1Controller@payment')->name('bg_payment');
 Route::get('my/televenta', 'Ecommerce1Controller@televenta')->name('bg_tv');
 
+// Routes  Ecommerce2 -----------------------------------------------------------------------
+Route::get('product2/{slug}', 'Ecommerce2Controller@product_details')->name('bg_product2');
+Route::get('my/category2', 'Ecommerce2Controller@category')->name('bg_category2');
+Route::get('my/cart2', 'Ecommerce2Controller@cart')->name('bg_cart2');
+Route::get('my/payment2', 'Ecommerce2Controller@payment')->name('bg_payment2');
+Route::get('my/televenta2', 'Ecommerce2Controller@televenta')->name('bg_tv2');
+
 // Routes  Ecommerce3 -----------------------------------------------------------------------
 Route::get('product3/{slug}', 'Ecommerce3Controller@product_details')->name('bg_product3');
 Route::get('my/category3', 'Ecommerce3Controller@category')->name('bg_category3');

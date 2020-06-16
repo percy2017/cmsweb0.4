@@ -96,14 +96,14 @@ class Ecommerce2Controller extends Controller
     }
 
     static function products_list(){
-        $products = BgProduct::orderBy('id', 'desc')->paginate(4);
+        $products = BgProduct::where('published', true)->orderBy('id', 'desc')->paginate(4);
         return $products;
     }
+
+       //  ----------- Function Routes------------------------------
     function product_details($slug)
     {
-        // $page = setting('site.page');
         $product = BgProduct::with(['product_details'])->where('slug', $slug)->first();
-        
         // Sugerencias de productos
         $tags = json_decode($product->tags);
         $sugerencias = [];
@@ -121,18 +121,54 @@ class Ecommerce2Controller extends Controller
                 if($existe){
                     $sugerencias[$indice]['coincidencias']++;
                 }else{
-                    array_push($sugerencias, ['id'=>$item->id, 'name'=>$item->name, 'images'=>$item->images, 'product_details' => $item->product_details, 'start' => $item->start, 'tags' => $item->tags, 'slug'=>$item->slug, 'coincidencias'=>1]);
+                    array_push($sugerencias, ['id'=>$item->id, 'name'=>$item->name, 'images'=>$item->images, 'product_details' => $item->product_details, 'stars' => $item->stars, 'tags' => $item->tags, 'slug'=>$item->slug, 'coincidencias'=>1]);
                 }
             }
         }
         // Ordernar de mayor a menor coincidencia y convertir a colección
         $sugerencias = json_decode(json_encode(collect($sugerencias)->sortBy('coincidencias')->reverse()->take(4)));
-        // ========================
-
         return view('bimgo::pages.product_details2', [
             'product'  => $product,
             'sugerencias'  => $sugerencias,
             'page' => $product
+        ]);
+    }
+
+    function category()
+    {
+        $products = BgProduct::where('published', true)->with(['product_details'])->orderBy('id', 'desc')->paginate(9);
+        $Categorias = BgCategory::orderBy('id', 'desc')->get();
+        $SubCategorias = BgSubCategory::orderBy('id', 'desc')->get();
+        $page = \App\Page::where('slug', 'landing-page-bimgo')->first();
+        return view('bimgo::pages.category1', [
+            'products'  => $products,
+            'page' => $page,
+            'categorias' => $Categorias,
+            'SubCategorias' => $SubCategorias
+        ]);
+    }
+
+    function cart()
+    {
+        $page = \App\Page::where('slug', 'landing-page-bimgo')->first();
+        return view('bimgo::pages.cart2', [
+            'page' => $page
+        ]);
+    }
+
+    function payment()
+    {
+        $page = \App\Page::where('slug', 'landing-page-bimgo')->first();
+        return view('bimgo::pages.payment1', [
+            'page' => $page
+        ]);
+    }
+    
+    function televenta()
+    {
+        $page = \App\Page::where('slug', 'landing-page-bimgo')->first();
+        return view('bimgo::pages.televenta1', [
+            'page' => $page
         ]);
     }
     

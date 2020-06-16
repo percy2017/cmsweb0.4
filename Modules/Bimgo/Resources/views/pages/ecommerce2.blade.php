@@ -1,5 +1,9 @@
 @extends('bimgo::layouts.ecommerce2.master')
 
+@section('css')
+    
+@endsection
+
 @section('header')
   @include('bimgo::layouts.ecommerce2.header')
 @endsection
@@ -33,4 +37,25 @@
 
 @section('footer')
   @include('bimgo::layouts.ecommerce2.footer')
+@endsection
+
+@section('js')
+  <script>
+    function addcart(urli){
+      $.ajax({
+        type: "get",
+        url: urli,
+        success: function (response) {
+          Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: response.name+', Agregado a tu Carrito',
+            showConfirmButton: true,
+            timer: 3000
+          });
+          $('#cartTotalQuantity').html('{{ \Cart::getTotalQuantity() }}');
+        }
+      });
+    }
+  </script>
 @endsection

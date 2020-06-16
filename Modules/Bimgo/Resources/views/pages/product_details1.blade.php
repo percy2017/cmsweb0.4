@@ -82,12 +82,12 @@
                 <p class="grey-text">Elije una Opcion</p>
                 <div class="row text-center text-md-left">
                   @foreach ($product->product_details as $item => $value)
-                      <div class="col-md-4 @if($loop->index == 0) col-12 @endif">
-                        <div class="form-group">
-                          <input class="form-check-input" name="group100" type="radio" id="{{ $value->id }}">
-                          <label for="{{ $value->id }}" class="form-check-label dark-grey-text">{{ $value->title }}</label>
-                        </div>
+                    <div class="col-md-4 @if($loop->index == 0) col-12 @endif">
+                      <div class="form-group">
+                        <input class="form-check-input" name="group100" type="radio" id="{{ $value->id }}">
+                        <label for="{{ $value->id }}" class="form-check-label dark-grey-text">{{ $value->title }}</label>
                       </div>
+                    </div>
                   @endforeach
                 </div>
                 <div class="row mt-3 mb-4">
@@ -115,6 +115,8 @@
         
       </div>
     </div>
+    
+    @comments(['model' => $product]).
 
     <section id="products" class="pb-5 mt-4">
       <hr>
@@ -147,7 +149,6 @@
                   <strong><a href="" class="dark-grey-text">{{ $item->name }}</a></strong>
                 </h5>
                 <span class="badge badge-danger mb-2">{{ json_decode($item->tags)[0] }}</span>
-
                 <!-- Rating -->
                 <ul class="rating">
                   @switch($item->stars)
@@ -193,16 +194,16 @@
                 <!-- Card footer -->
                 <div class="card-footer pb-0">
                   <div class="row mb-0">
-                  @if($item->product_details[0]->price_last > 0)
-                    <h5 class="mb-0 pb-0 mt-1 font-weight-bold"><span
-                        class="red-text"><strong>{{ $item->product_details[0]->price }} Bs.</strong></span>
-                        <span class="grey-text"><small><s>{{ $item->product_details[0]->price_last }} Bs.</s></small></span>
-                    </h5>
-                  @else 
-                    <span class="float-left">
-                      <strong>{{ $item->product_details[0]->price }} Bs.</strong>
-                    </span>
-                  @endif
+                    @if($item->product_details[0]->price_last > 0)
+                      <h5 class="mb-0 pb-0 mt-1 font-weight-bold"><span
+                          class="red-text"><strong>{{ $item->product_details[0]->price }} Bs.</strong></span>
+                          <span class="grey-text"><small><s>{{ $item->product_details[0]->price_last }} Bs.</s></small></span>
+                      </h5>
+                    @else 
+                      <span class="float-left">
+                        <strong>{{ $item->product_details[0]->price }} Bs.</strong>
+                      </span>
+                    @endif
                     <span class="float-right">
                       <a class="" data-toggle="tooltip" data-placement="top" title="Add to Cart">
                         <i class="fas fa-shopping-cart ml-3"></i>
@@ -242,7 +243,7 @@
         });
       } 
 
-  $('.color input[type=radio]').each(function (idx, elt) {
+    $('.color input[type=radio]').each(function (idx, elt) {
     let id = '#'+elt.id; 
     var urli = '{{ route('bg_ajax_product_details', ':id') }}';
     urli = urli.replace(':id', elt.id);

@@ -103,7 +103,7 @@
                   </h4>
                 </td>
                 <td colspan="3" class="text-right">
-                  <a href="{{ url('my/payment') }}" class="btn btn-primary btn-rounded">Realizar Pago
+                  <a href="{{ route('bg_payment1') }}" class="btn btn-primary btn-rounded">Realizar Pago
                     <i class="fas fa-angle-right right"></i>
                   </a>
                 </td>
