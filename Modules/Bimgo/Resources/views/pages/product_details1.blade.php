@@ -20,7 +20,7 @@
               <div id="carousel-thumb" class="carousel slide carousel-fade carousel-thumbnails mb-5 pb-4" data-ride="carousel">
                 <div class="carousel-inner text-center text-md-left" role="listbox">
                   @foreach ($product->images != null ? json_decode($product->images) : [] as $item)
-                    @if ($loop->index == 1)
+                    @if ($loop->index == 0)
                       <div class="carousel-item active">
                         <img src="{{ Voyager::image($item) }}" alt="Second slide" class="img-fluid">
                       </div>
@@ -79,7 +79,7 @@
             @endforeach
             <section class="color">
               <div class="mt-5">
-                <p class="grey-text">Elije una Opcion</p>
+                <p class="grey-text">Elije tu {{ $product->product_details[0]->{'type'} }}</p>
                 <div class="row text-center text-md-left">
                   @foreach ($product->product_details as $item => $value)
                     <div class="col-md-4 @if($loop->index == 0) col-12 @endif">
@@ -111,7 +111,7 @@
           <strong>Descripción del Producto</strong>
         </h4>
         <hr class="mb-5">
-        {!! $product->description_long !!}
+        {!! htmlspecialchars_decode($product->description_long) !!}
         
       </div>
     </div>
@@ -264,5 +264,6 @@
       });
     });  
     
+    $( "blockquote" ).addClass( "blockquote" );
   </script>
 @show

@@ -50,20 +50,6 @@
               <span class="badge badge-{{ $array[$loop->index] }} product mb-4 ml-xl-0 ml-4">{{ $item }}</span>
             @endforeach
             <h3 class="h3-responsive text-center text-md-left mb-5 ml-xl-0 ml-4">
-              {{--  @if($product->product_details[0]->price_last > 0)
-                <span class="red-text font-weight-bold">
-                  <strong>{{ $product->product_details[0]->price }} Bs.</strong>
-                </span>
-                <span class="grey-text">
-                  <small>
-                    <s>{{ $product->product_details[0]->price_last }} Bs.</s>
-                  </small>
-                </span>
-              @else 
-                <span class="dark-grey-text font-weight-bold">
-                  <strong>{{ $product->product_details[0]->price }} Bs.</strong>
-                </span>
-              @endif  --}}
               <div id="price"></div>
             </h3>
 
@@ -142,29 +128,22 @@
                   data-parent="#accordionEx">
 
                   <div class="card-body">
-
                     Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3
                     wolf moon officia aute,
-
                     non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf
                     moon
-
                     tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.
-
                   </div>
-
                 </div>
-
               </div>
               <!-- Accordion card -->
-
             </div>
             <!-- Accordion wrapper -->
             
             <!-- Add to Cart -->
             <section class="color">
               <div class="mt-5">
-                <p class="grey-text">Elije una Opcion</p>
+                <p class="grey-text">Elije tu {{ $product->product_details[0]->{'type'} }}</p>
                 <div class="row text-center text-md-left">
                   @foreach ($product->product_details as $item => $value)
                     <div class="col-md-4 @if($loop->index == 0) col-12 @endif">
@@ -199,7 +178,7 @@
           <strong>Descripción del Producto</strong>
         </h4>
         <hr class="mb-5">
-        {!! $product->description_long !!}
+        {!! htmlspecialchars_decode($product->description_long) !!}
       </div>
     </div>
     
@@ -208,13 +187,7 @@
     <div class="divider-new">
       <h3 class="h3-responsive font-weight-bold blue-text mx-3">Productos Relacionados</h3>
     </div>
-    <!-- Section: Products v.5 -->
     <section id="products" class="pb-5 mt-4">
-    {{--   <hr>
-      <h4 class="h4-responsive dark-grey-text font-weight-bold my-5 text-center">
-        <strong>Productos Relacionados</strong>
-      </h4>
-      <hr class="mb-5"> --}}
       <p class="text-center w-responsive mx-auto mb-5 dark-grey-text">Tambien te pueden interesar los siguientes productos</p>
       <div class="row">
         @foreach ($sugerencias as $item)
@@ -356,5 +329,6 @@
       });
     });  
     
+    $( "blockquote" ).addClass( "blockquote" );
   </script>
 @show

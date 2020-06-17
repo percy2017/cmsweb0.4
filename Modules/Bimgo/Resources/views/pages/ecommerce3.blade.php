@@ -4,10 +4,6 @@
   @include('bimgo::layouts.ecommerce3.header')
 @endsection
 
-{{-- @section('intro')
-  @include('bimgo::layouts.ecommerce3.intro')
-@endsection --}}
-
 @section('content')
   @foreach ($blocks as $item)
     @switch($item->type)

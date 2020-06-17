@@ -130,7 +130,7 @@
                                     </div>
                                 </div> <!-- col.// -->
                                 <div class="form-group col-md">
-                                    <label>Elije una Opcion</label>
+                                    <label>Elije tu {{ $product->product_details[0]->{'type'} }}</label>
                                     <div class="mt-1">
                                         @foreach ($product->product_details as $item => $value)
                                             <label class="custom-control custom-radio custom-control-inline color">
@@ -148,6 +148,40 @@
                 </div> <!-- row.// -->
             </div> <!-- card.// -->
             <!-- ============================ COMPONENT 1 END .// ================================= -->
+            <br>
+            <!-- ============================ COMPONENT 4  ================================= -->
+            <article class="card">
+                <div class="card-body">
+                  {!! htmlspecialchars_decode($product->description_long) !!}
+                </div> <!-- card-body.// -->
+            </article> <!-- card.// -->
+            <!-- ============================ COMPONENT 4  .//END ================================= -->
+            <br>
+            @comments(['model' => $product])
+
+            <br>
+
+            <h4>Productos Relacionados</h4>
+            <!-- ============== COMPONENT SLIDER ITEMS OWL  ============= -->
+            <div class="slider-items-owl owl-carousel owl-theme">
+                @foreach ($sugerencias as $item)
+                    @php
+                        $images = $item->images ? json_decode($item->images)[0] : '../images/icons-bimgo/icon-512x512.png';
+                    @endphp
+                    <div class="item-slide">
+                        <figure class="card card-product-grid">
+                            <div class="img-wrap"> 
+                                <span class="badge badge-danger"> {{ json_decode($item->tags)[0] }} </span>
+                                <img src="{{ Voyager::image($images) }}"> 
+                            </div>
+                            <figcaption class="info-wrap text-center">
+                                <h6 class="title text-truncate"><a href="{{ route('bg_product3', $item->slug) }}">{{ $item->name }}</a></h6>
+                            </figcaption>
+                        </figure> <!-- card // -->
+                    </div>
+                @endforeach
+            </div>
+            <!-- ============== COMPONENT SLIDER ITEMS OWL .end // ============= -->
         </div>
     </section>
 @endsection
@@ -193,5 +227,6 @@
                 });
             });
         });  
+        $( "blockquote" ).addClass( "blockquote" );
     </script>
 @show
