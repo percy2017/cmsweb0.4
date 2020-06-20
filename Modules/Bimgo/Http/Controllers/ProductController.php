@@ -113,10 +113,7 @@ class ProductController extends Controller
                     break; 
                 case 'select_multiple':
                         $data->$aux = json_encode($request->$aux);
-                    break; 
-                // case 'code_editor':
-                //     $data->$aux = json_decode($request->$aux);
-                // break; 
+                    break;
                 default:
                     $data->$aux = $request->$aux;
                     break;
@@ -143,7 +140,9 @@ class ProductController extends Controller
         \Modules\Bimgo\Entities\BgProductDetail::create([
             'type' => 'Color',
             'title' => 'Negro',
-            'product_id' => $data->id
+            'stock' => 1,
+            'product_id' => $data->id,
+            'default' => true
         ]);
         return $this->show();
     }
@@ -198,7 +197,7 @@ class ProductController extends Controller
                     if($request->hasFile($aux)){
                         foreach($request->file($aux) as $image)
                         {
-                            $array = Storage::disk('public')->put('products/'.date('F').date('Y'), $image);
+                            $array = Storage::disk('public')->put($this->dataType->name.'/'.date('F').date('Y'), $image);
                             array_push($image_array, $array);
                         }
                         $data->$aux = json_encode($image_array);

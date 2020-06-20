@@ -47,6 +47,7 @@
             <!-- Table head -->
             <!-- Table body -->
             <tbody>
+            
               <!-- First row -->
               @foreach ($cart as $item)
                 @php
@@ -59,21 +60,21 @@
                   </th>
                   <td>
                     <h5 class="mt-3">
-                      <strong>{{ $item->name }}</strong>
+                      <strong><a href="{{ route('bg_product', $item->attributes->slug) }}" target="_blank">{{ $item->name }}</a></strong>
                     </h5>
                     <p class="text-muted">{{ $item->attributes->description }}</p>
                   </td>
                   <td>{{ $item->attributes->title }}</td>
                   <td></td>
                   <td>{{ $item->price }} Bs.</td>
-                  <td class="text-center myradiobutton text-md-left">
+                  <td class="text-center text-md-left">
                     <span class="qty">{{ $item->quantity }}</span>
                     <div class="btn-group radio-group ml-2" data-toggle="buttons">
                       <label class="btn btn-sm btn-primary btn-rounded">
-                        <input type="radio" name="options" id="option1">&mdash;
+                        <a name="options" id="option1" onclick="subtractcart('{{ route('bg_ajax_subtractcart', [$item->attributes->slug, $item->id]) }}')">--</a>
                       </label>
                       <label class="btn btn-sm btn-primary btn-rounded">
-                        <input type="radio" name="options" id="option2">+
+                        <a name="options" id="option2" onclick="addcart('{{ route('bg_ajax_addcart', [$item->attributes->slug, $item->id]) }}')">+</a>
                       </label>
                     </div>
                   </td>
@@ -81,8 +82,8 @@
                     <strong>{{ $item->getPriceSum() }} Bs.</strong>
                   </td>
                   <td>
-                    <a onclick="removecart('{{ route('bg_ajax_removecart', $item->attributes->slug) }}')" href="#" class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="top"
-                      title="Remove item">X
+                    <a onclick="removecart('{{ route('bg_ajax_removecart', [$item->attributes->slug, $item->id]) }}')" href="#" class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="top"
+                      title="Eliminar item">X
                     </a>
                   </td>
                 </tr>
@@ -103,7 +104,7 @@
                   </h4>
                 </td>
                 <td colspan="3" class="text-right">
-                  <a href="{{ route('bg_payment1') }}" class="btn btn-primary btn-rounded">Realizar Pago
+                  <a href="{{ route('bg_payment') }}" class="btn btn-primary btn-rounded">Realizar Pago
                     <i class="fas fa-angle-right right"></i>
                   </a>
                 </td>
@@ -125,6 +126,7 @@
 
 @section('js')
   <script>
+    
     function removecart(urli){
       const swalWithBootstrapButtons = Swal.mixin({
         customClass: {
@@ -169,15 +171,39 @@
       })
     }
 
-
-    $('.myradiobutton input[type=radio]').each(function (idx, elt) {
-      let id = '#'+elt.id; 
-      var urli = '{{ route('bg_ajax_product_details', ':id') }}';
-      urli = urli.replace(':id', elt.id);
-      $(id).click(function() {
-        console.log(urli);
+    function addcart(urli){
+      $.ajax({
+        type: "get",
+        url: urli,
+        success: function (response) {
+          Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: response.name+', Item agregado tu carrito',
+            showConfirmButton: true,
+            timer: 3000
+          });
+          $('#cartTotalQuantity').html('{{ \Cart::getTotalQuantity() }}');
+          location.reload();
+        }
       });
-    });  
-
+    }
+    function subtractcart(urli){
+      $.ajax({
+        type: "get",
+        url: urli,
+        success: function (response) {
+          Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: response.name+', Restar item a tu carrito',
+            showConfirmButton: true,
+            timer: 3000
+          });
+          $('#cartTotalQuantity').html('{{ \Cart::getTotalQuantity() }}');
+          location.reload();
+        }
+      });
+    }
   </script>
 @endsection

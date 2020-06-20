@@ -16,6 +16,7 @@ class PermissionsTableSeeder extends Seeder
      */
     public function run()
     {
+        // --------------MODULO INVENTARIO -----------------------------------
         Permission::generateFor('bg_categories');
         Permission::generateFor('bg_sub_categories');
         Permission::generateFor('bg_brands');
@@ -24,11 +25,17 @@ class PermissionsTableSeeder extends Seeder
         Permission::generateFor('bg_branch_offices');
         Permission::generateFor('bg_product_offices');
         Permission::generateFor('bg_transfers');
+
+        //---------------------MODULO VENTAS-----------------
         Permission::generateFor('bg_customers');
         Permission::generateFor('bg_cashes');
         Permission::generateFor('bg_sales');
         Permission::generateFor('bg_dosificacions');
         Permission::generateFor('bg_regions');
+        Permission::generateFor('bg_payments');
+        Permission::generateFor('bg_locations');
+        Permission::generateFor('bg_loyalties');
+        Permission::generateFor('bg_sale_details');
 
 
         $role = Role::where('name', 'admin')->firstOrFail();
@@ -198,5 +205,53 @@ class PermissionsTableSeeder extends Seeder
                 ]);
             }
         }
+
+
+        //-----------------------------------------------------------------------------------
+        $permissions = Permission::where('table_name', 'bg_payments')->get();
+        foreach ($permissions as $key) {
+            $rp = DB::table('permission_role')->where('permission_id', $key->id)->first();
+            if (!$rp) {
+                DB::table('permission_role')->insert([
+                    'permission_id' => $key->id, 
+                    'role_id' => $role->id
+                ]);
+            }
+        }
+        //-----------------------------------------------------------------------------------
+        $permissions = Permission::where('table_name', 'bg_locations')->get();
+        foreach ($permissions as $key) {
+            $rp = DB::table('permission_role')->where('permission_id', $key->id)->first();
+            if (!$rp) {
+                DB::table('permission_role')->insert([
+                    'permission_id' => $key->id, 
+                    'role_id' => $role->id
+                ]);
+            }
+        }
+        //-----------------------------------------------------------------------------------
+        $permissions = Permission::where('table_name', 'bg_loyalties')->get();
+        foreach ($permissions as $key) {
+            $rp = DB::table('permission_role')->where('permission_id', $key->id)->first();
+            if (!$rp) {
+                DB::table('permission_role')->insert([
+                    'permission_id' => $key->id, 
+                    'role_id' => $role->id
+                ]);
+            }
+        }
+        //-----------------------------------------------------------------------------------
+        $permissions = Permission::where('table_name', 'bg_sale_details')->get();
+        foreach ($permissions as $key) {
+            $rp = DB::table('permission_role')->where('permission_id', $key->id)->first();
+            if (!$rp) {
+                DB::table('permission_role')->insert([
+                    'permission_id' => $key->id, 
+                    'role_id' => $role->id
+                ]);
+            }
+        }
+
+
     }
 }

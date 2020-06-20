@@ -15,6 +15,8 @@ class DataTypeTableSeeder extends Seeder
      */
     public function run()
     {
+        // --------------MODULO INVENTARIO--------------------
+        // --------------------------------------------------
         $dataType = $this->dataType('slug', 'bg_categories');
         if (!$dataType->exists) {
             $dataType->fill([
@@ -199,6 +201,8 @@ class DataTypeTableSeeder extends Seeder
             ])->save();
         }
 
+        // --------------MODULO INVENTARIO--------------------
+        // --------------------------------------------------
         $dataType = $this->dataType('slug', 'bg_customers');
         if (!$dataType->exists) {
             $dataType->fill([
@@ -337,9 +341,97 @@ class DataTypeTableSeeder extends Seeder
             ])->save();
         }
 
+        $dataType = $this->dataType('slug', 'bg_payments');
+        if (!$dataType->exists) {
+            $dataType->fill([
+                'name'                  => 'bg_payments',
+                'display_name_singular' => 'Pago',
+                'display_name_plural'   => 'Pagos',
+                'icon'                  => 'voyager-play',
+                'model_name'            => 'Modules\\Bimgo\\Entities\\BgPayment',
+                'policy_name'           => null,
+                'controller'            => 'Modules\\Bimgo\\Http\\Controllers\\PaymentController',
+                'generate_permissions'  => 1,
+                'description'           => null,
+                'server_side'           => 1,
+                'details'               => [
+                    'order_column'         => 'id',
+                    'order_display_column' => 'id',
+                    'order_direction'      => 'asc',
+                    'default_search_key'   => 'id',
+                    'scope'                => null
+                ]
+            ])->save();
+        }
 
+        $dataType = $this->dataType('slug', 'bg_locations');
+        if (!$dataType->exists) {
+            $dataType->fill([
+                'name'                  => 'bg_locations',
+                'display_name_singular' => 'Ubicacion',
+                'display_name_plural'   => 'Ubicaciones',
+                'icon'                  => 'voyager-play',
+                'model_name'            => 'Modules\\Bimgo\\Entities\\BgLocation',
+                'policy_name'           => null,
+                'controller'            => 'Modules\\Bimgo\\Http\\Controllers\\LocationController',
+                'generate_permissions'  => 1,
+                'description'           => null,
+                'server_side'           => 1,
+                'details'               => [
+                    'order_column'         => 'id',
+                    'order_display_column' => 'id',
+                    'order_direction'      => 'asc',
+                    'default_search_key'   => 'id',
+                    'scope'                => null
+                ]
+            ])->save();
+        }
 
+        $dataType = $this->dataType('slug', 'bg_loyalties');
+        if (!$dataType->exists) {
+            $dataType->fill([
+                'name'                  => 'bg_loyalties',
+                'display_name_singular' => 'Fidelizacion',
+                'display_name_plural'   => 'Fidelizaciones',
+                'icon'                  => 'voyager-play',
+                'model_name'            => 'Modules\\Bimgo\\Entities\\BgLoyalty',
+                'policy_name'           => null,
+                'controller'            => 'Modules\\Bimgo\\Http\\Controllers\\LoyaltyController',
+                'generate_permissions'  => 1,
+                'description'           => null,
+                'server_side'           => 1,
+                'details'               => [
+                    'order_column'         => 'id',
+                    'order_display_column' => 'id',
+                    'order_direction'      => 'asc',
+                    'default_search_key'   => 'id',
+                    'scope'                => null
+                ]
+            ])->save();
+        }
 
+        $dataType = $this->dataType('slug', 'bg_sale_details');
+        if (!$dataType->exists) {
+            $dataType->fill([
+                'name'                  => 'bg_sale_details',
+                'display_name_singular' => 'Detalle de Venta',
+                'display_name_plural'   => 'Detalle de Ventas',
+                'icon'                  => 'voyager-play',
+                'model_name'            => 'Modules\\Bimgo\\Entities\\BgSaleDetail',
+                'policy_name'           => null,
+                'controller'            => 'Modules\\Bimgo\\Http\\Controllers\\SaleDetailController',
+                'generate_permissions'  => 1,
+                'description'           => null,
+                'server_side'           => 1,
+                'details'               => [
+                    'order_column'         => 'id',
+                    'order_display_column' => 'id',
+                    'order_direction'      => 'asc',
+                    'default_search_key'   => 'id',
+                    'scope'                => null
+                ]
+            ])->save();
+        }
     }
 
     protected function dataType($field, $for)

@@ -16,6 +16,7 @@ class DataRowsTableSeeder extends Seeder
      */
     public function run()
     {
+        //--------------MODULE INVENTARIO -----------------------------------
         $CategoryDataType = DataType::where('slug', 'bg_categories')->firstOrFail();
         $SubCategoryDataType = DataType::where('slug', 'bg_sub_categories')->firstOrFail();
         $BrandsDataType = DataType::where('slug', 'bg_brands')->firstOrFail();
@@ -24,13 +25,19 @@ class DataRowsTableSeeder extends Seeder
         $SucursalDataType = DataType::where('slug', 'bg_branch_offices')->firstOrFail();
         $InventarioDataType = DataType::where('slug', 'bg_product_offices')->firstOrFail();
         $tansferDataType = DataType::where('slug', 'bg_transfers')->firstOrFail();
+
+        //---------------- MODULE VENTAS --------------------------------------------
         $customerDataType = DataType::where('slug', 'bg_customers')->firstOrFail();
         $cashDataType = DataType::where('slug', 'bg_cashes')->firstOrFail();
         $saleDataType = DataType::where('slug', 'bg_sales')->firstOrFail();
         $seatDataType = DataType::where('slug', 'bg_seats')->firstOrFail();
         $dosificacionDataType = DataType::where('slug', 'bg_dosificacions')->firstOrFail();
         $RegionDataType = DataType::where('slug', 'bg_regions')->firstOrFail();
-
+        $PaymentDataType = DataType::where('slug', 'bg_payments')->firstOrFail();
+        $LocationDataType = DataType::where('slug', 'bg_locations')->firstOrFail();
+        $LoyaltyDataType = DataType::where('slug', 'bg_loyalties')->firstOrFail();
+        $SaleDetailDataType = DataType::where('slug', 'bg_sale_details')->firstOrFail();
+        
          /**
          * ------------------------------------------------
          *               Formulario Category
@@ -1752,7 +1759,7 @@ class DataRowsTableSeeder extends Seeder
 
 
 
-               /**
+        /**
          * ------------------------------------------------
          *               Formulario Traspaso
          * -----------------------------------------------
@@ -1898,8 +1905,30 @@ class DataRowsTableSeeder extends Seeder
                 'order'        => $postion++,
             ])->save();
         }
-
-        $dataRow = $this->dataRow($customerDataType, 'name');
+        $dataRow = $this->dataRow($customerDataType, 'type');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'select_dropdown',
+                'display_name' => 'Tipo',
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'details'      => [
+                    'options'  =>[
+                        'Natural' => 'Natural',
+                        'Juridica' => 'Juridica'
+                    ],
+                    'display'  => [
+                        'width' => '6'
+                    ]
+                ],
+                'order'        => $postion++,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($customerDataType, 'name_bussiness');
         if (!$dataRow->exists) {
             $dataRow->fill([
                 'type'         => 'text',
@@ -1918,37 +1947,39 @@ class DataRowsTableSeeder extends Seeder
                 'order'        => $postion++,
             ])->save();
         }
-
-        $dataRow = $this->dataRow($customerDataType, 'type_person');
+        $dataRow = $this->dataRow($customerDataType, 'client_belongsto_user_relationship');
         if (!$dataRow->exists) {
             $dataRow->fill([
-                'type'         => 'select_dropdown',
-                'display_name' => 'Tipo de Persona',
-                'required'     => 1,
+                'type'         => 'relationship',
+                'display_name' => 'Usuario',
+                'required'     => 0,
                 'browse'       => 1,
                 'read'         => 1,
                 'edit'         => 1,
                 'add'          => 1,
                 'delete'       => 0,
                 'details'      => [
-                    'options'  =>[
-                        '' => '',
-                        'Natural' => 'Natural',
-                        'Juridica' => 'Juridica'
+                    'display' => [
+                        'width' => 6
                     ],
-                    'display'  => [
-                        'width' => '6'
-                    ]
+                    'model'       => 'App\\User',
+                    'table'       => 'users',
+                    'type'        => 'belongsTo',
+                    'column'      => 'user_id',
+                    'key'         => 'id',
+                    'label'       => 'name',
+                    'pivot_table' => 'users',
+                    'pivot'       => 0,
                 ],
-                'order'        => $postion++,
+                'order'=> $postion++,
+
             ])->save();
         }
-
-        $dataRow = $this->dataRow($customerDataType, 'nit');
+        $dataRow = $this->dataRow($customerDataType, 'nit_ci');
         if (!$dataRow->exists) {
             $dataRow->fill([
-                'type'         => 'number',
-                'display_name' => 'NIT',
+                'type'         => 'text',
+                'display_name' => 'NIT o Carnet',
                 'required'     => 1,
                 'browse'       => 1,
                 'read'         => 1,
@@ -1963,11 +1994,29 @@ class DataRowsTableSeeder extends Seeder
                 'order'        => $postion++,
             ])->save();
         }
-
+        $dataRow = $this->dataRow($customerDataType, 'banner');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'image',
+                'display_name' => 'Banner',
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'details'      => [
+                    'display'  => [
+                        'width' => '6'
+                    ]
+                ],
+                'order'        => $postion++,
+            ])->save();
+        }
         $dataRow = $this->dataRow($customerDataType, 'phone');
         if (!$dataRow->exists) {
             $dataRow->fill([
-                'type'         => 'number',
+                'type'         => 'text',
                 'display_name' => 'Celular',
                 'required'     => 1,
                 'browse'       => 1,
@@ -1983,28 +2032,7 @@ class DataRowsTableSeeder extends Seeder
                 'order'        => $postion++,
             ])->save();
         }
-
-        $dataRow = $this->dataRow($customerDataType, 'phone_number');
-        if (!$dataRow->exists) {
-            $dataRow->fill([
-                'type'         => 'number',
-                'display_name' => 'Numero Telefonico',
-                'required'     => 1,
-                'browse'       => 1,
-                'read'         => 1,
-                'edit'         => 1,
-                'add'          => 1,
-                'delete'       => 0,
-                'details'      => [
-                    'display' => [
-                        'width' => '6'
-                    ]
-                ],
-                'order'        => $postion++,
-            ])->save();
-        }
-
-        $dataRow = $this->dataRow($customerDataType, 'adress');
+        $dataRow = $this->dataRow($customerDataType, 'address');
         if (!$dataRow->exists) {
             $dataRow->fill([
                 'type'         => 'text_area',
@@ -2017,53 +2045,13 @@ class DataRowsTableSeeder extends Seeder
                 'delete'       => 0,
                 'details'      => [
                     'display' => [
-                        'width' => '6'
+                        'width' => 12
                     ]
                 ],
                 'order'        => $postion++,
             ])->save();
         }
-
-        // $dataRow = $this->dataRow($customerDataType, 'correo');
-        // if (!$dataRow->exists) {
-        //     $dataRow->fill([
-        //         'type'         => 'text',
-        //         'display_name' => 'Correo',
-        //         // 'required'     => 1,
-        //         'browse'       => 1,
-        //         'read'         => 1,
-        //         'edit'         => 1,
-        //         'add'          => 1,
-        //         'delete'       => 0,
-        //         'details'      => [
-        //             'display' => [
-        //                 'width' => '6'
-        //             ]
-        //         ],
-        //         'order'        => $postion++,
-        //     ])->save();
-        // }
-
-        $dataRow = $this->dataRow($customerDataType, 'user_id');
-        if (!$dataRow->exists) {
-            $dataRow->fill([
-                'type'         => 'Traking',
-                'display_name' => 'Traking',
-                'required'     => 0,
-                'browse'       => 0,
-                'read'         => 1,
-                'edit'         => 1,
-                'add'          => 1,
-                'delete'       => 0,
-                'order'        => $postion++,
-                'details'      => [
-                    'display'   => [
-                        'width'  => '3',
-                    ],
-                ]
-            ])->save();
-        }
-
+        
         $dataRow = $this->dataRow($customerDataType, 'created_at');
         if (!$dataRow->exists) {
             $dataRow->fill([
@@ -2083,7 +2071,6 @@ class DataRowsTableSeeder extends Seeder
                 ]
             ])->save();
         }
-
         $dataRow = $this->dataRow($customerDataType, 'updated_at');
         if (!$dataRow->exists) {
             $dataRow->fill([
@@ -2103,7 +2090,6 @@ class DataRowsTableSeeder extends Seeder
                 ]
             ])->save();
         }
-
         $dataRow = $this->dataRow($customerDataType, 'deleted_at');
         if (!$dataRow->exists) {
             $dataRow->fill([
@@ -2123,7 +2109,25 @@ class DataRowsTableSeeder extends Seeder
                 ]
             ])->save();
         }
-
+        $dataRow = $this->dataRow($customerDataType, 'user_id');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'hidden',
+                'display_name' => 'user_id',
+                'required'     => 0,
+                'browse'       => 0,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'order'        => $postion++,
+                'details'      => [
+                    'display'   => [
+                        'width'  => '3',
+                    ],
+                ]
+            ])->save();
+        }
 
         /**
          * ------------------------------------------------
@@ -2371,26 +2375,6 @@ class DataRowsTableSeeder extends Seeder
             ])->save();
         }
 
-        // $dataRow = $this->dataRow($cashDataType, 'estado');
-        // if (!$dataRow->exists) {
-        //     $dataRow->fill([
-        //         'type'         => 'text',
-        //         'display_name' => 'Estado',
-        //         'required'     => 1,
-        //         'browse'       => 1,
-        //         'read'         => 1,
-        //         'edit'         => 1,
-        //         'add'          => 1,
-        //         'delete'       => 0,
-        //         'details'      => [
-        //             'display' => [
-        //                 'width' => '4'
-        //             ]
-        //         ],
-        //         'order'        => $postion++,
-        //     ])->save();
-        // }
-
         $dataRow = $this->dataRow($cashDataType, 'cash_belongsto_branchoffice_relationship');
         if (!$dataRow->exists) {
             $dataRow->fill([
@@ -2526,11 +2510,176 @@ class DataRowsTableSeeder extends Seeder
             ])->save();
         }
 
-        $dataRow = $this->dataRow($saleDataType, 'amount');
+        $dataRow = $this->dataRow($saleDataType, 'type');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'select_dropdown',
+                'display_name' => 'Tipo',
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'details'      => [
+                    'options' => [
+                        'Al Contado' => 'Al Contado',
+                        'Al Credito' => 'Al Credito'
+                    ],
+                    'display' => [
+                        'width' => '6'
+                    ]
+                ],
+                'order'        => $postion++,
+            ])->save();
+        }
+
+        $dataRow = $this->dataRow($saleDataType, 'state');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'select_dropdown',
+                'display_name' => 'Estados',
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'details'      => [
+                    'options' => [
+                        'Pedido realizado' => 'Pedido realizado',
+                        'En es espera de pago' => 'En es espera de pago',
+                        'Pedido enviado' => 'Pedido enviado',
+                        'Pedido Entreago' => 'Pedido Entreago' 
+                    ],
+                    'display' => [
+                        'width' => '6'
+                    ]
+                ],
+                'order'        => $postion++,
+            ])->save();
+        }
+
+        $dataRow = $this->dataRow($saleDataType, 'sale_belongsto_customer_relationship');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'relationship',
+                'display_name' => 'Cliente',
+                'required'     => 0,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'details'      => [
+                    'display' => [
+                        'width' => 6
+                    ],
+                    'model'       => 'Modules\\Bimgo\\Entities\\BgCustomer',
+                    'table'       => 'bg_customers',
+                    'type'        => 'belongsTo',
+                    'column'      => 'customer_id',
+                    'key'         => 'id',
+                    'label'       => 'id',
+                    'pivot_table' => 'customer_id',
+                    'pivot'       => 0,
+                ],
+                'order'=> $postion++,
+
+            ])->save();
+        }
+
+        $dataRow = $this->dataRow($saleDataType, 'sale_belongsto_location_relationship');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'relationship',
+                'display_name' => 'Ubicacion',
+                'required'     => 0,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'details'      => [
+                    'display' => [
+                        'width' => 6
+                    ],
+                    'model'       => 'Modules\\Bimgo\\Entities\\BgLocation',
+                    'table'       => 'bg_locations',
+                    'type'        => 'belongsTo',
+                    'column'      => 'location_id',
+                    'key'         => 'id',
+                    'label'       => 'id',
+                    'pivot_table' => 'bg_locations',
+                    'pivot'       => 0,
+                ],
+                'order'=> $postion++,
+
+            ])->save();
+        }
+
+        $dataRow = $this->dataRow($saleDataType, 'sale_belongsto_payment_relationship');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'relationship',
+                'display_name' => 'Pago',
+                'required'     => 0,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'details'      => [
+                    'display' => [
+                        'width' => 6
+                    ],
+                    'model'       => 'Modules\\Bimgo\\Entities\\BgPayment',
+                    'table'       => 'bg_payments',
+                    'type'        => 'belongsTo',
+                    'column'      => 'payment_id',
+                    'key'         => 'id',
+                    'label'       => 'id',
+                    'pivot_table' => 'bg_payments',
+                    'pivot'       => 0,
+                ],
+                'order'=> $postion++,
+
+            ])->save();
+        }
+
+        $dataRow = $this->dataRow($saleDataType, 'sale_belongsto_loyalty_relationship');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'relationship',
+                'display_name' => 'Fidelizacion',
+                'required'     => 0,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'details'      => [
+                    'display' => [
+                        'width' => 6
+                    ],
+                    'model'       => 'Modules\\Bimgo\\Entities\\BgLoyalty',
+                    'table'       => 'bg_loyalties',
+                    'type'        => 'belongsTo',
+                    'column'      => 'loyalty_id',
+                    'key'         => 'id',
+                    'label'       => 'id',
+                    'pivot_table' => 'bg_loyalties',
+                    'pivot'       => 0,
+                ],
+                'order'=> $postion++,
+            ])->save();
+        }
+
+        $dataRow = $this->dataRow($saleDataType, 'discounts');
         if (!$dataRow->exists) {
             $dataRow->fill([
                 'type'         => 'number',
-                'display_name' => 'Cantidad',
+                'display_name' => 'Descuento',
                 'required'     => 1,
                 'browse'       => 1,
                 'read'         => 1,
@@ -2539,127 +2688,7 @@ class DataRowsTableSeeder extends Seeder
                 'delete'       => 0,
                 'details'      => [
                     'display' => [
-                        'width' => '4'
-                    ]
-                ],
-                'order'        => $postion++,
-            ])->save();
-        }
-
-        $dataRow = $this->dataRow($saleDataType, 'tipo_venta');
-        if (!$dataRow->exists) {
-            $dataRow->fill([
-                'type'         => 'text',
-                'display_name' => 'Tipo de Venta',
-                'required'     => 1,
-                'browse'       => 1,
-                'read'         => 1,
-                'edit'         => 1,
-                'add'          => 1,
-                'delete'       => 0,
-                'details'      => [
-                    'display' => [
-                        'width' => '4'
-                    ]
-                ],
-                'order'        => $postion++,
-            ])->save();
-        }
-
-        $dataRow = $this->dataRow($saleDataType, 'pagada');
-        if (!$dataRow->exists) {
-            $dataRow->fill([
-                'type'         => 'text',
-                'display_name' => 'pagada',
-                'required'     => 1,
-                'browse'       => 1,
-                'read'         => 1,
-                'edit'         => 1,
-                'add'          => 1,
-                'delete'       => 0,
-                'details'      => [
-                    'display' => [
-                        'width' => '4'
-                    ]
-                ],
-                'order'        => $postion++,
-            ])->save();
-        }
-
-        $dataRow = $this->dataRow($saleDataType, 'importe');
-        if (!$dataRow->exists) {
-            $dataRow->fill([
-                'type'         => 'number',
-                'display_name' => 'Importe',
-                'required'     => 1,
-                'browse'       => 1,
-                'read'         => 1,
-                'edit'         => 1,
-                'add'          => 1,
-                'delete'       => 0,
-                'details'      => [
-                    'display' => [
-                        'width' => '4'
-                    ]
-                ],
-                'order'        => $postion++,
-            ])->save();
-        }
-
-        $dataRow = $this->dataRow($saleDataType, 'importe_ice');
-        if (!$dataRow->exists) {
-            $dataRow->fill([
-                'type'         => 'number',
-                'display_name' => 'Importe Ice',
-                'required'     => 1,
-                'browse'       => 1,
-                'read'         => 1,
-                'edit'         => 1,
-                'add'          => 1,
-                'delete'       => 0,
-                'details'      => [
-                    'display' => [
-                        'width' => '4'
-                    ]
-                ],
-                'order'        => $postion++,
-            ])->save();
-        }
-
-        $dataRow = $this->dataRow($saleDataType, 'importe_exento');
-        if (!$dataRow->exists) {
-            $dataRow->fill([
-                'type'         => 'number',
-                'display_name' => 'Importe Exento',
-                'required'     => 1,
-                'browse'       => 1,
-                'read'         => 1,
-                'edit'         => 1,
-                'add'          => 1,
-                'delete'       => 0,
-                'details'      => [
-                    'display' => [
-                        'width' => '4'
-                    ]
-                ],
-                'order'        => $postion++,
-            ])->save();
-        }
-
-        $dataRow = $this->dataRow($saleDataType, 'tasa_cero');
-        if (!$dataRow->exists) {
-            $dataRow->fill([
-                'type'         => 'number',
-                'display_name' => 'tasa cero',
-                'required'     => 1,
-                'browse'       => 1,
-                'read'         => 1,
-                'edit'         => 1,
-                'add'          => 1,
-                'delete'       => 0,
-                'details'      => [
-                    'display' => [
-                        'width' => '4'
+                        'width' => '6'
                     ]
                 ],
                 'order'        => $postion++,
@@ -2679,18 +2708,18 @@ class DataRowsTableSeeder extends Seeder
                 'delete'       => 0,
                 'details'      => [
                     'display' => [
-                        'width' => '4'
+                        'width' => '6'
                     ]
                 ],
                 'order'        => $postion++,
             ])->save();
         }
-
-        $dataRow = $this->dataRow($saleDataType, 'descuentos');
+        
+        $dataRow = $this->dataRow($saleDataType, 'total');
         if (!$dataRow->exists) {
             $dataRow->fill([
                 'type'         => 'number',
-                'display_name' => 'Descuentos',
+                'display_name' => 'Total',
                 'required'     => 1,
                 'browse'       => 1,
                 'read'         => 1,
@@ -2699,168 +2728,10 @@ class DataRowsTableSeeder extends Seeder
                 'delete'       => 0,
                 'details'      => [
                     'display' => [
-                        'width' => '4'
+                        'width' => '6'
                     ]
                 ],
                 'order'        => $postion++,
-            ])->save();
-        }
-
-        $dataRow = $this->dataRow($saleDataType, 'importe_base');
-        if (!$dataRow->exists) {
-            $dataRow->fill([
-                'type'         => 'number',
-                'display_name' => 'Importe Base',
-                'required'     => 1,
-                'browse'       => 1,
-                'read'         => 1,
-                'edit'         => 1,
-                'add'          => 1,
-                'delete'       => 0,
-                'details'      => [
-                    'display' => [
-                        'width' => '4'
-                    ]
-                ],
-                'order'        => $postion++,
-            ])->save();
-        }
-
-        $dataRow = $this->dataRow($saleDataType, 'debito_fiscal');
-        if (!$dataRow->exists) {
-            $dataRow->fill([
-                'type'         => 'number',
-                'display_name' => 'Debito Fiscal',
-                'required'     => 1,
-                'browse'       => 1,
-                'read'         => 1,
-                'edit'         => 1,
-                'add'          => 1,
-                'delete'       => 0,
-                'details'      => [
-                    'display' => [
-                        'width' => '4'
-                    ]
-                ],
-                'order'        => $postion++,
-            ])->save();
-        }
-
-        $dataRow = $this->dataRow($saleDataType, 'cobro_adicional');
-        if (!$dataRow->exists) {
-            $dataRow->fill([
-                'type'         => 'number',
-                'display_name' => 'Cobro Adicional',
-                'required'     => 1,
-                'browse'       => 1,
-                'read'         => 1,
-                'edit'         => 1,
-                'add'          => 1,
-                'delete'       => 0,
-                'details'      => [
-                    'display' => [
-                        'width' => '4'
-                    ]
-                ],
-                'order'        => $postion++,
-            ])->save();
-        }
-
-        $dataRow = $this->dataRow($saleDataType, 'monto_recibido');
-        if (!$dataRow->exists) {
-            $dataRow->fill([
-                'type'         => 'number',
-                'display_name' => 'Monto Recibido',
-                'required'     => 1,
-                'browse'       => 1,
-                'read'         => 1,
-                'edit'         => 1,
-                'add'          => 1,
-                'delete'       => 0,
-                'details'      => [
-                    'display' => [
-                        'width' => '4'
-                    ]
-                ],
-                'order'        => $postion++,
-            ])->save();
-        }
-
-        $dataRow = $this->dataRow($saleDataType, 'venta_tipo');
-        if (!$dataRow->exists) {
-            $dataRow->fill([
-                'type'         => 'number',
-                'display_name' => 'venta tipo',
-                'required'     => 1,
-                'browse'       => 1,
-                'read'         => 1,
-                'edit'         => 1,
-                'add'          => 1,
-                'delete'       => 0,
-                'details'      => [
-                    'display' => [
-                        'width' => '4'
-                    ]
-                ],
-                'order'        => $postion++,
-            ])->save();
-        }
-
-        $dataRow = $this->dataRow($saleDataType, 'sale_belongsto_cash_relationship');
-        if (!$dataRow->exists) {
-            $dataRow->fill([
-                'type'         => 'relationship',
-                'display_name' => 'Caja',
-                'required'     => 0,
-                'browse'       => 1,
-                'read'         => 1,
-                'edit'         => 1,
-                'add'          => 1,
-                'delete'       => 0,
-                'details'      => [
-                    'display' => [
-                        'width' => 4
-                    ],
-                    'model'       => 'Modules\\Bimgo\\Entities\\BgCash',
-                    'table'       => 'bg_cashes',
-                    'type'        => 'belongsTo',
-                    'column'      => 'caja_id',
-                    'key'         => 'id',
-                    'label'       => 'name',
-                    'pivot_table' => 'caja_id',
-                    'pivot'       => 0,
-                ],
-                'order'=> $postion++,
-
-            ])->save();
-        }
-
-        $dataRow = $this->dataRow($saleDataType, 'sale_belongsto_customer_relationship');
-        if (!$dataRow->exists) {
-            $dataRow->fill([
-                'type'         => 'relationship',
-                'display_name' => 'Cliente',
-                'required'     => 0,
-                'browse'       => 1,
-                'read'         => 1,
-                'edit'         => 1,
-                'add'          => 1,
-                'delete'       => 0,
-                'details'      => [
-                    'display' => [
-                        'width' => 4
-                    ],
-                    'model'       => 'Modules\\Bimgo\\Entities\\BgCustomer',
-                    'table'       => 'bg_customers',
-                    'type'        => 'belongsTo',
-                    'column'      => 'customer_id',
-                    'key'         => 'id',
-                    'label'       => 'name',
-                    'pivot_table' => 'customer_id',
-                    'pivot'       => 0,
-                ],
-                'order'=> $postion++,
-
             ])->save();
         }
 
@@ -2870,7 +2741,7 @@ class DataRowsTableSeeder extends Seeder
                 'type'         => 'Traking',
                 'display_name' => 'Traking',
                 'required'     => 0,
-                'browse'       => 0,
+                'browse'       => 1,
                 'read'         => 1,
                 'edit'         => 1,
                 'add'          => 1,
@@ -2878,7 +2749,7 @@ class DataRowsTableSeeder extends Seeder
                 'order'        => $postion++,
                 'details'      => [
                     'display'   => [
-                        'width'  => '4',
+                        'width'  => '3',
                     ],
                 ]
             ])->save();
@@ -2898,7 +2769,7 @@ class DataRowsTableSeeder extends Seeder
                 'order'        => $postion++,
                 'details'      => [
                     'display' => [
-                        'width' => '4'
+                        'width' => '3'
                     ]
                 ]
             ])->save();
@@ -2918,7 +2789,7 @@ class DataRowsTableSeeder extends Seeder
                 'order'        => $postion++,
                 'details'      => [
                     'display' => [
-                        'width' => '4'
+                        'width' => '3'
                     ]
                 ]
             ])->save();
@@ -2938,11 +2809,92 @@ class DataRowsTableSeeder extends Seeder
                 'order'        => $postion++,
                 'details'      => [
                     'display' => [
-                        'width' => '4'
+                        'width' => '3'
                     ]
                 ]
             ])->save();
         }
+
+        $dataRow = $this->dataRow($saleDataType, 'customer_id');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'hidden',
+                'display_name' => 'customer_id',
+                'required'     => 1,
+                'browse'       => 0,
+                'read'         => 0,
+                'edit'         => 0,
+                'add'          => 0,
+                'delete'       => 0,
+                'order'        => $postion++,
+                'details'      => [
+                    'display' => [
+                        'width' => '3'
+                    ]
+                ]
+            ])->save();
+        }
+
+        $dataRow = $this->dataRow($saleDataType, 'location_id');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'hidden',
+                'display_name' => 'location_id',
+                'required'     => 1,
+                'browse'       => 0,
+                'read'         => 0,
+                'edit'         => 0,
+                'add'          => 0,
+                'delete'       => 0,
+                'order'        => $postion++,
+                'details'      => [
+                    'display' => [
+                        'width' => '3'
+                    ]
+                ]
+            ])->save();
+        }
+
+        $dataRow = $this->dataRow($saleDataType, 'payment_id');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'hidden',
+                'display_name' => 'payment_id',
+                'required'     => 1,
+                'browse'       => 0,
+                'read'         => 0,
+                'edit'         => 0,
+                'add'          => 0,
+                'delete'       => 0,
+                'order'        => $postion++,
+                'details'      => [
+                    'display' => [
+                        'width' => '3'
+                    ]
+                ]
+            ])->save();
+        }
+
+        $dataRow = $this->dataRow($saleDataType, 'loyalty_id');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'hidden',
+                'display_name' => 'loyalty_id',
+                'required'     => 1,
+                'browse'       => 0,
+                'read'         => 0,
+                'edit'         => 0,
+                'add'          => 0,
+                'delete'       => 0,
+                'order'        => $postion++,
+                'details'      => [
+                    'display' => [
+                        'width' => '3'
+                    ]
+                ]
+            ])->save();
+        }
+
 
         /**
          * ------------------------------------------------
@@ -3456,6 +3408,44 @@ class DataRowsTableSeeder extends Seeder
                 ]
             ])->save();
         }
+        $dataRow = $this->dataRow($RegionDataType, 'price_shipping');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'number',
+                'display_name' => 'Precio de Envio',
+                'required'     => 0,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'order'        => $postion++,
+                'details'      => [
+                    'display'   => [
+                        'width'  => '6',
+                    ],
+                ]
+            ])->save();
+        }
+        $dataRow = $this->dataRow($RegionDataType, 'time_delivery');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'timestamp',
+                'display_name' => 'Tiempo de Envio',
+                'required'     => 0,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'order'        => $postion++,
+                'details'      => [
+                    'display'   => [
+                        'width'  => '6',
+                    ],
+                ]
+            ])->save();
+        }
         $dataRow = $this->dataRow($RegionDataType, 'description');
         if (!$dataRow->exists) {
             $dataRow->fill([
@@ -3489,7 +3479,7 @@ class DataRowsTableSeeder extends Seeder
                 'order'        => $postion++,
                 'details'      => [
                     'display' => [
-                        'width' => '3'
+                        'width' => '4'
                     ]
                 ]
             ])->save();
@@ -3508,7 +3498,7 @@ class DataRowsTableSeeder extends Seeder
                 'order'        => $postion++,
                 'details'      => [
                     'display' => [
-                        'width' => '3'
+                        'width' => '4'
                     ]
                 ]
             ])->save();
@@ -3527,11 +3517,889 @@ class DataRowsTableSeeder extends Seeder
                 'order'        => $postion++,
                 'details'      => [
                     'display' => [
-                        'width' => '3'
+                        'width' => '4'
                     ]
                 ]
             ])->save();
         }
+
+
+
+        /**
+         * ------------------------------------------------
+         *               Formulario PaymentDataType
+         * -----------------------------------------------
+         */
+        $postion = 1;
+        $dataRow = $this->dataRow($PaymentDataType, 'id');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'number',
+                'display_name' => __('voyager::seeders.data_rows.id'),
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 0,
+                'add'          => 0,
+                'delete'       => 0,
+                'details'      => [
+                    'display' => [
+                        'width' => '6'
+                    ]
+                ],
+                'order'        => $postion++,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($PaymentDataType, 'name');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'text',
+                'display_name' => 'Nombre',
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'details'      => [
+                    'tooltip' => [
+                        'ubication' => 'top',
+                        'message' => 'Nombre del Pago'
+                    ],
+                    'display' => [
+                        'width' => '6'
+                    ]
+                ],
+                'order'        => $postion++,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($PaymentDataType, 'image');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'image',
+                'display_name' => 'Image Principal',
+                'required'     => 0,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'order'        => $postion++,
+                'details'      => [
+                    'display'   => [
+                        'width'  => '6',
+                    ],
+                ]
+            ])->save();
+        }
+        $dataRow = $this->dataRow($PaymentDataType, 'details');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'code_editor',
+                'display_name' => 'Editor Json',
+                'required'     => 0,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'details'      => [
+                    'display' => [
+                        'width' => '6'
+                    ]
+                ],
+                'order'  => $postion++,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($PaymentDataType, 'description');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'text_text',
+                'display_name' => 'Descripcion',
+                'required'     => 0,
+                'browse'       => 0,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'details'      => [
+                    'display' => [
+                        'width' => 6
+                    ]
+                ],
+                'order'  => $postion++,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($PaymentDataType, 'created_at');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'timestamp',
+                'display_name' => __('voyager::seeders.data_rows.created_at'),
+                'required'     => 0,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 0,
+                'add'          => 0,
+                'delete'       => 0,
+                'order'        => $postion++,
+                'details'      => [
+                    'display' => [
+                        'width' => '4'
+                    ]
+                ]
+            ])->save();
+        }
+        $dataRow = $this->dataRow($PaymentDataType, 'updated_at');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'timestamp',
+                'display_name' => __('voyager::seeders.data_rows.updated_at'),
+                'required'     => 0,
+                'browse'       => 0,
+                'read'         => 1,
+                'edit'         => 0,
+                'add'          => 0,
+                'delete'       => 0,
+                'order'        => $postion++,
+                'details'      => [
+                    'display' => [
+                        'width' => '4'
+                    ]
+                ]
+            ])->save();
+        }
+        $dataRow = $this->dataRow($PaymentDataType, 'deleted_at');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'timestamp',
+                'display_name' => 'deleted_at',
+                'required'     => 0,
+                'browse'       => 0,
+                'read'         => 1,
+                'edit'         => 0,
+                'add'          => 0,
+                'delete'       => 0,
+                'order'        => $postion++,
+                'details'      => [
+                    'display' => [
+                        'width' => '4'
+                    ]
+                ]
+            ])->save();
+        }
+
+          /**
+         * ------------------------------------------------
+         *               Formulario LocationDataType
+         * -----------------------------------------------
+         */
+        $postion = 1;
+        $dataRow = $this->dataRow($LocationDataType, 'id');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'number',
+                'display_name' => __('voyager::seeders.data_rows.id'),
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 0,
+                'add'          => 0,
+                'delete'       => 0,
+                'details'      => [
+                    'display' => [
+                        'width' => '6'
+                    ]
+                ],
+                'order'        => $postion++,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($LocationDataType, 'map');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'Map',
+                'display_name' => 'Mapa',
+                'required'     => 0,
+                'browse'       => 0,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'order'        => $postion++,
+                'details'      => [
+                    'display' => [
+                        'width' => '6'
+                    ]
+                ]
+            ])->save();
+        }
+        $dataRow = $this->dataRow($LocationDataType, 'location_belongsto_region_relationship');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'relationship',
+                'display_name' => 'Cuidad o Localidad',
+                'required'     => 0,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'details'      => [
+                    'display' => [
+                        'width' => 6
+                    ],
+                    'model'       => 'Modules\\Bimgo\\Entities\\BgRegion',
+                    'table'       => 'bg_regions',
+                    'type'        => 'belongsTo',
+                    'column'      => 'region_id',
+                    'key'         => 'id',
+                    'label'       => 'name',
+                    'pivot_table' => 'bg_regions',
+                    'pivot'       => 0,
+                ],
+                'order'=> $postion++,
+
+            ])->save();
+        }
+        $dataRow = $this->dataRow($LocationDataType, 'location_belongsto_customer_relationship');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'relationship',
+                'display_name' => 'Cliente',
+                'required'     => 0,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'details'      => [
+                    'display' => [
+                        'width' => 6
+                    ],
+                    'model'       => 'Modules\\Bimgo\\Entities\\BgCustomer',
+                    'table'       => 'bg_customers',
+                    'type'        => 'belongsTo',
+                    'column'      => 'customer_id',
+                    'key'         => 'id',
+                    'label'       => 'id',
+                    'pivot_table' => 'bg_customers',
+                    'pivot'       => 0,
+                ],
+                'order'=> $postion++,
+
+            ])->save();
+        }
+        $dataRow = $this->dataRow($LocationDataType, 'type');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'select_dropdown',
+                'display_name' => 'Referencia',
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'details'      => [
+                    'options' => [
+                        'Casa' => 'Casa',
+                        'Trabajo' => 'Trabajo',
+                        'Lugar Temporal' => 'Luagar Temporal'
+                    ],
+                    'tooltip' => [
+                        'ubication' => 'top',
+                        'message' => 'Referencias de la Ubicacion'
+                    ],
+                    'display' => [
+                        'width' => '6'
+                    ]
+                ],
+                'order'        => $postion++,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($LocationDataType, 'default');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'checkbox',
+                'display_name' => 'Predeterminado',
+                'required'     => 0,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'order'        => $postion++,
+                'details'      => [
+                    'on'  => 'default',
+                    'off' => 'No default',
+                    'checked' => false,
+                    'display'   => [
+                        'width'  => '6',
+                    ],
+                    'display'   => [
+                        'width'  => '6',
+                    ],
+                ]
+            ])->save();
+        }
+        $dataRow = $this->dataRow($LocationDataType, 'address');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'text_area',
+                'display_name' => 'Direccion',
+                'required'     => 0,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'details'      => [
+                    'display' => [
+                        'width' => 12
+                    ]
+                ],
+                'order'  => $postion++,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($LocationDataType, 'latitud');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'hidden',
+                'display_name' => 'Latitud',
+                'required'     => 0,
+                'browse'       => 0,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'details'      => [
+                    'display' => [
+                        'width' => '6'
+                    ]
+                ],
+                'order'  => $postion++,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($LocationDataType, 'longitud');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'hidden',
+                'display_name' => 'Longitud',
+                'required'     => 0,
+                'browse'       => 0,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'details'      => [
+                    'display' => [
+                        'width' => '6'
+                    ]
+                ],
+                'order'  => $postion++,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($LocationDataType, 'created_at');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'timestamp',
+                'display_name' => __('voyager::seeders.data_rows.created_at'),
+                'required'     => 0,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 0,
+                'add'          => 0,
+                'delete'       => 0,
+                'order'        => $postion++,
+                'details'      => [
+                    'display' => [
+                        'width' => '4'
+                    ]
+                ]
+            ])->save();
+        }
+        $dataRow = $this->dataRow($LocationDataType, 'updated_at');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'timestamp',
+                'display_name' => __('voyager::seeders.data_rows.updated_at'),
+                'required'     => 0,
+                'browse'       => 0,
+                'read'         => 1,
+                'edit'         => 0,
+                'add'          => 0,
+                'delete'       => 0,
+                'order'        => $postion++,
+                'details'      => [
+                    'display' => [
+                        'width' => '4'
+                    ]
+                ]
+            ])->save();
+        }
+        $dataRow = $this->dataRow($LocationDataType, 'deleted_at');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'timestamp',
+                'display_name' => 'deleted_at',
+                'required'     => 0,
+                'browse'       => 0,
+                'read'         => 1,
+                'edit'         => 0,
+                'add'          => 0,
+                'delete'       => 0,
+                'order'        => $postion++,
+                'details'      => [
+                    'display' => [
+                        'width' => '4'
+                    ]
+                ]
+            ])->save();
+        }
+        $dataRow = $this->dataRow($LocationDataType, 'region_id');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'hidden',
+                'display_name' => 'region_id',
+                'required'     => 1,
+                'browse'       => 0,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'order'        => $postion++,
+                'details'      => [
+                    'display' => [
+                        'width' => '4'
+                    ]
+                ]
+            ])->save();
+        }
+        $dataRow = $this->dataRow($LocationDataType, 'customer_id');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'hidden',
+                'display_name' => 'customer_id',
+                'required'     => 1,
+                'browse'       => 0,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'order'        => $postion++,
+                'details'      => [
+                    'display' => [
+                        'width' => '4'
+                    ]
+                ]
+            ])->save();
+        }
+
+
+
+          /**
+         * ------------------------------------------------
+         *               Formulario LoyaltyDataType
+         * -----------------------------------------------
+         */
+        $postion = 1;
+        $dataRow = $this->dataRow($LoyaltyDataType, 'id');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'number',
+                'display_name' => __('voyager::seeders.data_rows.id'),
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 0,
+                'add'          => 0,
+                'delete'       => 0,
+                'details'      => [
+                    'display' => [
+                        'width' => '6'
+                    ]
+                ],
+                'order'        => $postion++,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($LoyaltyDataType, 'type');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'select_dropdown',
+                'display_name' => 'Tipo',
+                'required'     => 0,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'order'        => $postion++,
+                'details'      => [
+                    'options' => [
+                        'tax' => 'tax',
+                        'shipping' => 'shipping'
+                    ],
+                    'display'   => [
+                        'width'  => '6',
+                    ],
+                ]
+            ])->save();
+        }
+        $dataRow = $this->dataRow($LoyaltyDataType, 'name');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'text',
+                'display_name' => 'Nombre',
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'details'      => [
+                    'tooltip' => [
+                        'ubication' => 'top',
+                        'message' => 'Nombre de la Fidelizacion'
+                    ],
+                    'display' => [
+                        'width' => '6'
+                    ]
+                ],
+                'order'        => $postion++,
+            ])->save();
+        }
+        
+        $dataRow = $this->dataRow($LoyaltyDataType, 'target');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'select_dropdown',
+                'display_name' => 'Target',
+                'required'     => 0,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'order'        => $postion++,
+                'details'      => [
+                    'options' => [
+                        'subtotal' => 'subtotal',
+                        'total' => 'total'
+                    ],
+                    'display'   => [
+                        'width'  => '6',
+                    ],
+                ]
+            ])->save();
+        }
+        $dataRow = $this->dataRow($LoyaltyDataType, 'value1');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'text',
+                'display_name' => 'Valor o Monto',
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'details'      => [
+                    'tooltip' => [
+                        'ubication' => 'top',
+                        'message' => 'Valor o Monto'
+                    ],
+                    'display' => [
+                        'width' => '6'
+                    ]
+                ],
+                'order'        => $postion++,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($LoyaltyDataType, 'attributes');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'code_editor',
+                'display_name' => 'Editor Json',
+                'required'     => 0,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'details'      => [
+                    'display' => [
+                        'width' => '6'
+                    ]
+                ],
+                'order'  => $postion++,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($LoyaltyDataType, 'order1');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'number',
+                'display_name' => 'Orden',
+                'required'     => 0,
+                'browse'       => 0,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'details'      => [
+                    'display' => [
+                        'width' => '6'
+                    ]
+                ],
+                'order'  => $postion++,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($LoyaltyDataType, 'created_at');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'timestamp',
+                'display_name' => __('voyager::seeders.data_rows.created_at'),
+                'required'     => 0,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 0,
+                'add'          => 0,
+                'delete'       => 0,
+                'order'        => $postion++,
+                'details'      => [
+                    'display' => [
+                        'width' => '4'
+                    ]
+                ]
+            ])->save();
+        }
+        $dataRow = $this->dataRow($LoyaltyDataType, 'updated_at');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'timestamp',
+                'display_name' => __('voyager::seeders.data_rows.updated_at'),
+                'required'     => 0,
+                'browse'       => 0,
+                'read'         => 1,
+                'edit'         => 0,
+                'add'          => 0,
+                'delete'       => 0,
+                'order'        => $postion++,
+                'details'      => [
+                    'display' => [
+                        'width' => '4'
+                    ]
+                ]
+            ])->save();
+        }
+        $dataRow = $this->dataRow($LoyaltyDataType, 'deleted_at');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'timestamp',
+                'display_name' => 'deleted_at',
+                'required'     => 0,
+                'browse'       => 0,
+                'read'         => 1,
+                'edit'         => 0,
+                'add'          => 0,
+                'delete'       => 0,
+                'order'        => $postion++,
+                'details'      => [
+                    'display' => [
+                        'width' => '4'
+                    ]
+                ]
+            ])->save();
+        }
+
+        
+        
+        
+        /**
+         * ------------------------------------------------
+         *               Formulario SaleDetailDataType
+         * -----------------------------------------------
+         */
+        $postion = 1;
+        $dataRow = $this->dataRow($SaleDetailDataType, 'id');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'number',
+                'display_name' => __('voyager::seeders.data_rows.id'),
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 0,
+                'add'          => 0,
+                'delete'       => 0,
+                'details'      => [
+                    'display' => [
+                        'width' => '6'
+                    ]
+                ],
+                'order'        => $postion++,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($SaleDetailDataType, 'detail_belongsto_sale_relationship');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'relationship',
+                'display_name' => 'Venta',
+                'required'     => 0,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'details'      => [
+                    'tooltip' => [
+                        'ubication' => 'top',
+                        'message' => 'Venta'
+                    ],
+                    'display' => [
+                        'width' => 6
+                    ],
+                    'model'       => 'Modules\\Bimgo\\Entities\\BgSale',
+                    'table'       => 'bg_sales',
+                    'type'        => 'belongsTo',
+                    'column'      => 'sale_id',
+                    'key'         => 'id',
+                    'label'       => 'id',
+                    'pivot_table' => 'bg_sales',
+                    'pivot'       => 0,
+                ],
+                'order'=> $postion++,
+
+            ])->save();
+        }
+        $dataRow = $this->dataRow($SaleDetailDataType, 'detail_belongsto_product_relationship');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'relationship',
+                'display_name' => 'Producto',
+                'required'     => 0,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'details'      => [
+                    'tooltip' => [
+                        'ubication' => 'top',
+                        'message' => 'Producto'
+                    ],
+                    'display' => [
+                        'width' => 6
+                    ],
+                    'model'       => 'Modules\\Bimgo\\Entities\\BgProduct',
+                    'table'       => 'bg_products',
+                    'type'        => 'belongsTo',
+                    'column'      => 'product_id',
+                    'key'         => 'id',
+                    'label'       => 'name_bussiness',
+                    'pivot_table' => 'bg_products',
+                    'pivot'       => 0,
+                ],
+                'order'=> $postion++,
+
+            ])->save();
+        }
+        $dataRow = $this->dataRow($SaleDetailDataType, 'created_at');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'timestamp',
+                'display_name' => __('voyager::seeders.data_rows.created_at'),
+                'required'     => 0,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 0,
+                'add'          => 0,
+                'delete'       => 0,
+                'order'        => $postion++,
+                'details'      => [
+                    'display' => [
+                        'width' => '4'
+                    ]
+                ]
+            ])->save();
+        }
+        $dataRow = $this->dataRow($SaleDetailDataType, 'updated_at');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'timestamp',
+                'display_name' => __('voyager::seeders.data_rows.updated_at'),
+                'required'     => 0,
+                'browse'       => 0,
+                'read'         => 1,
+                'edit'         => 0,
+                'add'          => 0,
+                'delete'       => 0,
+                'order'        => $postion++,
+                'details'      => [
+                    'display' => [
+                        'width' => '4'
+                    ]
+                ]
+            ])->save();
+        }
+        $dataRow = $this->dataRow($SaleDetailDataType, 'deleted_at');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'timestamp',
+                'display_name' => 'deleted_at',
+                'required'     => 0,
+                'browse'       => 0,
+                'read'         => 1,
+                'edit'         => 0,
+                'add'          => 0,
+                'delete'       => 0,
+                'order'        => $postion++,
+                'details'      => [
+                    'display' => [
+                        'width' => '4'
+                    ]
+                ]
+            ])->save();
+        }
+        $dataRow = $this->dataRow($SaleDetailDataType, 'product_id');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'hidden',
+                'display_name' => 'product_id',
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 0,
+                'add'          => 0,
+                'delete'       => 0,
+                'details'      => [
+                    'display' => [
+                        'width' => '6'
+                    ]
+                ],
+                'order'        => $postion++,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($SaleDetailDataType, 'sale_id');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'hidden',
+                'display_name' => 'sale_id',
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 0,
+                'add'          => 0,
+                'delete'       => 0,
+                'details'      => [
+                    'display' => [
+                        'width' => '6'
+                    ]
+                ],
+                'order'        => $postion++,
+            ])->save();
+        }
+
+
+
     }
 
     protected function dataRow($type, $field)

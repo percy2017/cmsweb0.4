@@ -257,9 +257,6 @@
                 </ul>
                 <div class="card-footer pb-0">
                   <div class="row mb-0">
-                    {{--  <span class="float-left">
-                      <strong>1439$</strong>
-                    </span>  --}}
                     @if($item->product_details[0]->price_last > 0)
                     <h5 class="mb-0 pb-0 mt-1 font-weight-bold"><span
                         class="red-text"><strong>{{ $item->product_details[0]->price }} Bs.</strong></span>

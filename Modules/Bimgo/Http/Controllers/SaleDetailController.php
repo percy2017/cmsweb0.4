@@ -13,9 +13,9 @@ use Illuminate\Support\Str;
 use Carbon\Carbon;
 use Validator;
 
-class BrandController extends Controller
+class SaleDetailController extends Controller
 {
-    public $table = 'bg_brands';
+    public $table = 'bg_sale_details';
     public $dataType;
     public $dataRowsAdd;
     public $dataRowsEdit;

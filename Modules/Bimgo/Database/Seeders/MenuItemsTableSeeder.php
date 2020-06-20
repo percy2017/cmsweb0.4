@@ -15,6 +15,8 @@ class MenuItemsTableSeeder extends Seeder
      */
     public function run()
     {
+        //--------------------------- MODULO INVENTARIO --------------------------
+        //-----------------------------------------------------------------------
         Menu::firstOrCreate([
             'name' => 'bg_categories',
         ]);
@@ -30,610 +32,380 @@ class MenuItemsTableSeeder extends Seeder
         Menu::firstOrCreate([
             'name' => 'bg_products',
         ]);
-        $menu = Menu::where('name', 'bg_products')->firstOrFail();
-        $count=1;
-        $menuItem = MenuItem::firstOrNew([
-            'menu_id' => $menu->id,
-            'title'   => 'Listar los Productos',
-            'url'     => 'admin/bg_products/1',
-            'route'   => null
-        ]);
-        if (!$menuItem->exists) {
-            $menuItem->fill([
-                'target'     => '_self',
-                'icon_class' => null,
-                'color'      => null,
-                'parent_id'  => null,
-                'order'      => $count++,
-            ])->save();
-        }
-        $menuItem = MenuItem::firstOrNew([
-            'menu_id' => $menu->id,
-            'title'   => 'Nuevo Producto',
-            'url'     => 'admin/bg_products/create',
-            'route'   => null
-        ]);
-        if (!$menuItem->exists) {
-            $menuItem->fill([
-                'target'     => '_self',
-                'icon_class' => null,
-                'color'      => null,
-                'parent_id'  => null,
-                'order'      => $count++,
-            ])->save();
-        }
-        
-        $menuItem = MenuItem::firstOrNew([
-            'menu_id' => $menu->id,
-            'title'   => 'Nueva Categoria',
-            'url'     => 'admin/bg_categories/create',
-            'route'   => null
-        ]);
-        if (!$menuItem->exists) {
-            $menuItem->fill([
-                'target'     => '_self',
-                'icon_class' => null,
-                'color'      => null,
-                'parent_id'  => null,
-                'order'      => $count++,
-            ])->save();
-        }
-        $menuItem = MenuItem::firstOrNew([
-            'menu_id' => $menu->id,
-            'title'   => 'Nueva Sub Categoria',
-            'url'     => 'admin/bg_sub_categories/create',
-            'route'   => null
-        ]);
-        if (!$menuItem->exists) {
-            $menuItem->fill([
-                'target'     => '_self',
-                'icon_class' => null,
-                'color'      => null,
-                'parent_id'  => null,
-                'order'      => $count++,
-            ])->save();
-        }
-        $menuItem = MenuItem::firstOrNew([
-            'menu_id' => $menu->id,
-            'title'   => 'Nueva Marca',
-            'url'     => 'admin/bg_brands/create',
-            'route'   => null
-        ]);
-        if (!$menuItem->exists) {
-            $menuItem->fill([
-                'target'     => '_self',
-                'icon_class' => null,
-                'color'      => null,
-                'parent_id'  => null,
-                'order'      => $count++,
-            ])->save();
-        }
-        $menuItem = MenuItem::firstOrNew([
-            'menu_id' => $menu->id,
-            'title'   => 'divider',
-            'url'     => null,
-            'route'   => null
-        ]);
-        if (!$menuItem->exists) {
-            $menuItem->fill([
-                'target'     => '_self',
-                'icon_class' => null,
-                'color'      => null,
-                'parent_id'  => null,
-                'order'      => $count++,
-            ])->save();
-        }
-        $menuItem = MenuItem::firstOrNew([
-            'menu_id' => $menu->id,
-            'title'   => 'setting',
-            'url'     => null,
-            'route'   => null
-        ]);
-        if (!$menuItem->exists) {
-            $menuItem->fill([
-                'target'     => '_blank',
-                'icon_class' => null,
-                'color'      => null,
-                'parent_id'  => null,
-                'order'      => $count++,
-            ])->save();
-        }
+            $menu = Menu::where('name', 'bg_products')->firstOrFail();
+            $count=1;
+            $menuItem = MenuItem::firstOrNew([
+                'menu_id' => $menu->id,
+                'title'   => 'Listar los Productos',
+                'url'     => 'admin/bg_products/1',
+                'route'   => null
+            ]);
+            if (!$menuItem->exists) {
+                $menuItem->fill([
+                    'target'     => '_self',
+                    'icon_class' => null,
+                    'color'      => null,
+                    'parent_id'  => null,
+                    'order'      => $count++,
+                ])->save();
+            }
+            $menuItem = MenuItem::firstOrNew([
+                'menu_id' => $menu->id,
+                'title'   => 'Nuevo Producto',
+                'url'     => 'admin/bg_products/create',
+                'route'   => null
+            ]);
+            if (!$menuItem->exists) {
+                $menuItem->fill([
+                    'target'     => '_self',
+                    'icon_class' => null,
+                    'color'      => null,
+                    'parent_id'  => null,
+                    'order'      => $count++,
+                ])->save();
+            }
+            $menuItem = MenuItem::firstOrNew([
+                'menu_id' => $menu->id,
+                'title'   => 'Nueva Categoria',
+                'url'     => 'admin/bg_categories/create',
+                'route'   => null
+            ]);
+            if (!$menuItem->exists) {
+                $menuItem->fill([
+                    'target'     => '_self',
+                    'icon_class' => null,
+                    'color'      => null,
+                    'parent_id'  => null,
+                    'order'      => $count++,
+                ])->save();
+            }
+            $menuItem = MenuItem::firstOrNew([
+                'menu_id' => $menu->id,
+                'title'   => 'Nueva Sub Categoria',
+                'url'     => 'admin/bg_sub_categories/create',
+                'route'   => null
+            ]);
+            if (!$menuItem->exists) {
+                $menuItem->fill([
+                    'target'     => '_self',
+                    'icon_class' => null,
+                    'color'      => null,
+                    'parent_id'  => null,
+                    'order'      => $count++,
+                ])->save();
+            }
+            $menuItem = MenuItem::firstOrNew([
+                'menu_id' => $menu->id,
+                'title'   => 'Nueva Marca',
+                'url'     => 'admin/bg_brands/create',
+                'route'   => null
+            ]);
+            if (!$menuItem->exists) {
+                $menuItem->fill([
+                    'target'     => '_self',
+                    'icon_class' => null,
+                    'color'      => null,
+                    'parent_id'  => null,
+                    'order'      => $count++,
+                ])->save();
+            }
+            $menuItem = MenuItem::firstOrNew([
+                'menu_id' => $menu->id,
+                'title'   => 'divider',
+                'url'     => null,
+                'route'   => null
+            ]);
+            if (!$menuItem->exists) {
+                $menuItem->fill([
+                    'target'     => '_self',
+                    'icon_class' => null,
+                    'color'      => null,
+                    'parent_id'  => null,
+                    'order'      => $count++,
+                ])->save();
+            }
+            $menuItem = MenuItem::firstOrNew([
+                'menu_id' => $menu->id,
+                'title'   => 'setting',
+                'url'     => null,
+                'route'   => null
+            ]);
+            if (!$menuItem->exists) {
+                $menuItem->fill([
+                    'target'     => '_blank',
+                    'icon_class' => null,
+                    'color'      => null,
+                    'parent_id'  => null,
+                    'order'      => $count++,
+                ])->save();
+            }
 
         //-------------------------------------------------
         Menu::firstOrCreate([
-            'name' => 'bg_product_details',
+            'name' => 'bg_product_details', // Detalles del Producto
         ]);
-        //-------------------------------------------------
+        //-----------------FIN MODULO INVENTARI-----------    
+
+
+
+
+        //--------------- MODULO VENTAS --------------------------------------
+        //---------------------------------------------------------------------
+        
         Menu::firstOrCreate([
-            'name' => 'bg_branch_offices',
+            'name' => 'bg_branch_offices', //Sucursales
         ]);
-        $menu = Menu::where('name', 'bg_branch_offices')->firstOrFail();
-        $menuItem = MenuItem::firstOrNew([
-            'menu_id' => $menu->id,
-            'title'   => 'Nuevo',
-            'url'     => 'admin/bg_branch_offices/create',
-            'route'   => null
-        ]);
-        if (!$menuItem->exists) {
-            $menuItem->fill([
-                'target'     => '_self',
-                'icon_class' => null,
-                'color'      => null,
-                'parent_id'  => null,
-                'order'      => 1,
-            ])->save();
-        }
-        $menuItem = MenuItem::firstOrNew([
-            'menu_id' => $menu->id,
-            'title'   => 'Listar',
-            'url'     => 'admin/bg_branch_offices/1',
-            'route'   => null
-        ]);
-        if (!$menuItem->exists) {
-            $menuItem->fill([
-                'target'     => '_self',
-                'icon_class' => null,
-                'color'      => null,
-                'parent_id'  => null,
-                'order'      => 2,
-            ])->save();
-        }
-        $menuItem = MenuItem::firstOrNew([
-            'menu_id' => $menu->id,
-            'title'   => 'divider',
-            'url'     => null,
-            'route'   => null
-        ]);
-        if (!$menuItem->exists) {
-            $menuItem->fill([
-                'target'     => '_self',
-                'icon_class' => null,
-                'color'      => null,
-                'parent_id'  => null,
-                'order'      => 5,
-            ])->save();
-        }
-        $menuItem = MenuItem::firstOrNew([
-            'menu_id' => $menu->id,
-            'title'   => 'setting',
-            'url'     => null,
-            'route'   => null
-        ]);
-        if (!$menuItem->exists) {
-            $menuItem->fill([
-                'target'     => '_blank',
-                'icon_class' => null,
-                'color'      => null,
-                'parent_id'  => null,
-                'order'      => 6,
-            ])->save();
-        }
          //-------------------------------------------------
          Menu::firstOrCreate([
-            'name' => 'bg_product_offices',
+            'name' => 'bg_product_offices', // Relacion Producto Sucursales
         ]);
-
-        //------------------------------------------------
+        //----------------------------------------------------
         Menu::firstOrCreate([
-            'name' => 'bg_transfers',
+            'name' => 'bg_transfers', //Tranfers
         ]);
-        $menu = Menu::where('name', 'bg_transfers')->firstOrFail();
-        $menuItem = MenuItem::firstOrNew([
-            'menu_id' => $menu->id,
-            'title'   => 'Nuevo',
-            'url'     => 'admin/bg_transfers/create',
-            'route'   => null
-        ]);
-        if (!$menuItem->exists) {
-            $menuItem->fill([
-                'target'     => '_self',
-                'icon_class' => null,
-                'color'      => null,
-                'parent_id'  => null,
-                'order'      => 1,
-            ])->save();
-        }
-        $menuItem = MenuItem::firstOrNew([
-            'menu_id' => $menu->id,
-            'title'   => 'Listar',
-            'url'     => 'admin/bg_transfers/1',
-            'route'   => null
-        ]);
-        if (!$menuItem->exists) {
-            $menuItem->fill([
-                'target'     => '_self',
-                'icon_class' => null,
-                'color'      => null,
-                'parent_id'  => null,
-                'order'      => 2,
-            ])->save();
-        }
-        $menuItem = MenuItem::firstOrNew([
-            'menu_id' => $menu->id,
-            'title'   => 'divider',
-            'url'     => null,
-            'route'   => null
-        ]);
-        if (!$menuItem->exists) {
-            $menuItem->fill([
-                'target'     => '_self',
-                'icon_class' => null,
-                'color'      => null,
-                'parent_id'  => null,
-                'order'      => 5,
-            ])->save();
-        }
-        $menuItem = MenuItem::firstOrNew([
-            'menu_id' => $menu->id,
-            'title'   => 'setting',
-            'url'     => null,
-            'route'   => null
-        ]);
-        if (!$menuItem->exists) {
-            $menuItem->fill([
-                'target'     => '_blank',
-                'icon_class' => null,
-                'color'      => null,
-                'parent_id'  => null,
-                'order'      => 6,
-            ])->save();
-        }
-
-
-        //------------------------------------------------
+        //---------------------------------------------------------------------------
         Menu::firstOrCreate([
-            'name' => 'bg_customers',
+            'name' => 'bg_customers', //CLIENTES
         ]);
-        $menu = Menu::where('name', 'bg_customers')->firstOrFail();
-        $menuItem = MenuItem::firstOrNew([
-            'menu_id' => $menu->id,
-            'title'   => 'Nuevo',
-            'url'     => 'admin/bg_customers/create',
-            'route'   => null
-        ]);
-        if (!$menuItem->exists) {
-            $menuItem->fill([
-                'target'     => '_self',
-                'icon_class' => null,
-                'color'      => null,
-                'parent_id'  => null,
-                'order'      => 1,
-            ])->save();
-        }
-        $menuItem = MenuItem::firstOrNew([
-            'menu_id' => $menu->id,
-            'title'   => 'Listar',
-            'url'     => 'admin/bg_customers/1',
-            'route'   => null
-        ]);
-        if (!$menuItem->exists) {
-            $menuItem->fill([
-                'target'     => '_self',
-                'icon_class' => null,
-                'color'      => null,
-                'parent_id'  => null,
-                'order'      => 2,
-            ])->save();
-        }
-        $menuItem = MenuItem::firstOrNew([
-            'menu_id' => $menu->id,
-            'title'   => 'divider',
-            'url'     => null,
-            'route'   => null
-        ]);
-        if (!$menuItem->exists) {
-            $menuItem->fill([
-                'target'     => '_self',
-                'icon_class' => null,
-                'color'      => null,
-                'parent_id'  => null,
-                'order'      => 5,
-            ])->save();
-        }
-        $menuItem = MenuItem::firstOrNew([
-            'menu_id' => $menu->id,
-            'title'   => 'setting',
-            'url'     => null,
-            'route'   => null
-        ]);
-        if (!$menuItem->exists) {
-            $menuItem->fill([
-                'target'     => '_blank',
-                'icon_class' => null,
-                'color'      => null,
-                'parent_id'  => null,
-                'order'      => 6,
-            ])->save();
-        }
-
-
-        //-------------------------------------  CAJAS
+            $menu = Menu::where('name', 'bg_customers')->firstOrFail();
+            $count=1;
+            $menuItem = MenuItem::firstOrNew([
+                'menu_id' => $menu->id,
+                'title'   => 'Listar Clientes',
+                'url'     => 'admin/bg_customers/1',
+                'route'   => null
+            ]);
+            if (!$menuItem->exists) {
+                $menuItem->fill([
+                    'target'     => '_self',
+                    'icon_class' => null,
+                    'color'      => null,
+                    'parent_id'  => null,
+                    'order'      => $count++,
+                ])->save();
+            }
+            $menuItem = MenuItem::firstOrNew([
+                'menu_id' => $menu->id,
+                'title'   => 'Nuevo Cliente',
+                'url'     => 'admin/bg_customers/create',
+                'route'   => null
+            ]);
+            if (!$menuItem->exists) {
+                $menuItem->fill([
+                    'target'     => '_self',
+                    'icon_class' => null,
+                    'color'      => null,
+                    'parent_id'  => null,
+                    'order'      => $count++,
+                ])->save();
+            }
+            $menuItem = MenuItem::firstOrNew([
+                'menu_id' => $menu->id,
+                'title'   => 'Nueva Locacion',
+                'url'     => 'admin/bg_locations/create',
+                'route'   => null
+            ]);
+            if (!$menuItem->exists) {
+                $menuItem->fill([
+                    'target'     => '_self',
+                    'icon_class' => null,
+                    'color'      => null,
+                    'parent_id'  => null,
+                    'order'      => $count++,
+                ])->save();
+            }
+            $menuItem = MenuItem::firstOrNew([
+                'menu_id' => $menu->id,
+                'title'   => 'Nueva Region',
+                'url'     => 'admin/bg_regions/create',
+                'route'   => null
+            ]);
+            if (!$menuItem->exists) {
+                $menuItem->fill([
+                    'target'     => '_self',
+                    'icon_class' => null,
+                    'color'      => null,
+                    'parent_id'  => null,
+                    'order'      => $count++,
+                ])->save();
+            }
+            $menuItem = MenuItem::firstOrNew([
+                'menu_id' => $menu->id,
+                'title'   => 'divider',
+                'url'     => null,
+                'route'   => null
+            ]);
+            if (!$menuItem->exists) {
+                $menuItem->fill([
+                    'target'     => '_self',
+                    'icon_class' => null,
+                    'color'      => null,
+                    'parent_id'  => null,
+                    'order'      => $count++,
+                ])->save();
+            }
+            $menuItem = MenuItem::firstOrNew([
+                'menu_id' => $menu->id,
+                'title'   => 'setting',
+                'url'     => null,
+                'route'   => null
+            ]);
+            if (!$menuItem->exists) {
+                $menuItem->fill([
+                    'target'     => '_blank',
+                    'icon_class' => null,
+                    'color'      => null,
+                    'parent_id'  => null,
+                    'order'      => $count++,
+                ])->save();
+            }
+        //--------------------------------------------------------------
         Menu::firstOrCreate([
-            'name' => 'bg_cashes',
+            'name' => 'bg_cashes', //CAJAS
         ]);
-        $menu = Menu::where('name', 'bg_cashes')->firstOrFail();
-        $menuItem = MenuItem::firstOrNew([
-            'menu_id' => $menu->id,
-            'title'   => 'Nuevo',
-            'url'     => 'admin/bg_cashes/create',
-            'route'   => null
-        ]);
-        if (!$menuItem->exists) {
-            $menuItem->fill([
-                'target'     => '_self',
-                'icon_class' => null,
-                'color'      => null,
-                'parent_id'  => null,
-                'order'      => 1,
-            ])->save();
-        }
-        $menuItem = MenuItem::firstOrNew([
-            'menu_id' => $menu->id,
-            'title'   => 'Listar',
-            'url'     => 'admin/bg_cashes/1',
-            'route'   => null
-        ]);
-        if (!$menuItem->exists) {
-            $menuItem->fill([
-                'target'     => '_self',
-                'icon_class' => null,
-                'color'      => null,
-                'parent_id'  => null,
-                'order'      => 2,
-            ])->save();
-        }
-        $menuItem = MenuItem::firstOrNew([
-            'menu_id' => $menu->id,
-            'title'   => 'divider',
-            'url'     => null,
-            'route'   => null
-        ]);
-        if (!$menuItem->exists) {
-            $menuItem->fill([
-                'target'     => '_self',
-                'icon_class' => null,
-                'color'      => null,
-                'parent_id'  => null,
-                'order'      => 5,
-            ])->save();
-        }
-        $menuItem = MenuItem::firstOrNew([
-            'menu_id' => $menu->id,
-            'title'   => 'setting',
-            'url'     => null,
-            'route'   => null
-        ]);
-        if (!$menuItem->exists) {
-            $menuItem->fill([
-                'target'     => '_blank',
-                'icon_class' => null,
-                'color'      => null,
-                'parent_id'  => null,
-                'order'      => 6,
-            ])->save();
-        }
-
-
-        //-------------------------------------  VENTAS
+        //-----------------------------------------------------------------------
         Menu::firstOrCreate([
-            'name' => 'bg_sales',
+            'name' => 'bg_sales', //Ventas
         ]);
-        $menu = Menu::where('name', 'bg_sales')->firstOrFail();
-        $menuItem = MenuItem::firstOrNew([
-            'menu_id' => $menu->id,
-            'title'   => 'Nuevo',
-            'url'     => 'admin/bg_sales/create',
-            'route'   => null
-        ]);
-        if (!$menuItem->exists) {
-            $menuItem->fill([
-                'target'     => '_self',
-                'icon_class' => null,
-                'color'      => null,
-                'parent_id'  => null,
-                'order'      => 1,
-            ])->save();
-        }
-        $menuItem = MenuItem::firstOrNew([
-            'menu_id' => $menu->id,
-            'title'   => 'Listar',
-            'url'     => 'admin/bg_sales/1',
-            'route'   => null
-        ]);
-        if (!$menuItem->exists) {
-            $menuItem->fill([
-                'target'     => '_self',
-                'icon_class' => null,
-                'color'      => null,
-                'parent_id'  => null,
-                'order'      => 2,
-            ])->save();
-        }
-        $menuItem = MenuItem::firstOrNew([
-            'menu_id' => $menu->id,
-            'title'   => 'divider',
-            'url'     => null,
-            'route'   => null
-        ]);
-        if (!$menuItem->exists) {
-            $menuItem->fill([
-                'target'     => '_self',
-                'icon_class' => null,
-                'color'      => null,
-                'parent_id'  => null,
-                'order'      => 5,
-            ])->save();
-        }
-        $menuItem = MenuItem::firstOrNew([
-            'menu_id' => $menu->id,
-            'title'   => 'setting',
-            'url'     => null,
-            'route'   => null
-        ]);
-        if (!$menuItem->exists) {
-            $menuItem->fill([
-                'target'     => '_blank',
-                'icon_class' => null,
-                'color'      => null,
-                'parent_id'  => null,
-                'order'      => 6,
-            ])->save();
-        }
-
-
-        //-------------------------------------  ASIENTOS
+            $menu = Menu::where('name', 'bg_sales')->firstOrFail();
+            $count=1;
+            $menuItem = MenuItem::firstOrNew([
+                'menu_id' => $menu->id,
+                'title'   => 'Listar las Ventas',
+                'url'     => 'admin/bg_sales/1',
+                'route'   => null
+            ]);
+            if (!$menuItem->exists) {
+                $menuItem->fill([
+                    'target'     => '_self',
+                    'icon_class' => null,
+                    'color'      => null,
+                    'parent_id'  => null,
+                    'order'      => $count++,
+                ])->save();
+            }
+            $menuItem = MenuItem::firstOrNew([
+                'menu_id' => $menu->id,
+                'title'   => 'Nueva Venta',
+                'url'     => 'admin/bg_sales/create',
+                'route'   => null
+            ]);
+            if (!$menuItem->exists) {
+                $menuItem->fill([
+                    'target'     => '_self',
+                    'icon_class' => null,
+                    'color'      => null,
+                    'parent_id'  => null,
+                    'order'      => $count++,
+                ])->save();
+            }
+            $menuItem = MenuItem::firstOrNew([
+                'menu_id' => $menu->id,
+                'title'   => 'Nuevo Pago',
+                'url'     => 'admin/bg_payments/create',
+                'route'   => null
+            ]);
+            if (!$menuItem->exists) {
+                $menuItem->fill([
+                    'target'     => '_self',
+                    'icon_class' => null,
+                    'color'      => null,
+                    'parent_id'  => null,
+                    'order'      => $count++,
+                ])->save();
+            }
+            $menuItem = MenuItem::firstOrNew([
+                'menu_id' => $menu->id,
+                'title'   => 'Nueva Region',
+                'url'     => 'admin/bg_regions/create',
+                'route'   => null
+            ]);
+            if (!$menuItem->exists) {
+                $menuItem->fill([
+                    'target'     => '_self',
+                    'icon_class' => null,
+                    'color'      => null,
+                    'parent_id'  => null,
+                    'order'      => $count++,
+                ])->save();
+            }
+            $menuItem = MenuItem::firstOrNew([
+                'menu_id' => $menu->id,
+                'title'   => 'Nueva Fidelizacion',
+                'url'     => 'admin/bg_loyalties/create',
+                'route'   => null
+            ]);
+            if (!$menuItem->exists) {
+                $menuItem->fill([
+                    'target'     => '_self',
+                    'icon_class' => null,
+                    'color'      => null,
+                    'parent_id'  => null,
+                    'order'      => $count++,
+                ])->save();
+            }
+            $menuItem = MenuItem::firstOrNew([
+                'menu_id' => $menu->id,
+                'title'   => 'divider',
+                'url'     => null,
+                'route'   => null
+            ]);
+            if (!$menuItem->exists) {
+                $menuItem->fill([
+                    'target'     => '_self',
+                    'icon_class' => null,
+                    'color'      => null,
+                    'parent_id'  => null,
+                    'order'      => $count++,
+                ])->save();
+            }
+            $menuItem = MenuItem::firstOrNew([
+                'menu_id' => $menu->id,
+                'title'   => 'setting',
+                'url'     => null,
+                'route'   => null
+            ]);
+            if (!$menuItem->exists) {
+                $menuItem->fill([
+                    'target'     => '_blank',
+                    'icon_class' => null,
+                    'color'      => null,
+                    'parent_id'  => null,
+                    'order'      => $count++,
+                ])->save();
+            }
+        //-------------------------------------------------
         Menu::firstOrCreate([
-            'name' => 'bg_seats',
+            'name' => 'bg_seats', //ASIENTOS
         ]);
-        $menu = Menu::where('name', 'bg_seats')->firstOrFail();
-        $menuItem = MenuItem::firstOrNew([
-            'menu_id' => $menu->id,
-            'title'   => 'Nuevo',
-            'url'     => 'admin/bg_seats/create',
-            'route'   => null
-        ]);
-        if (!$menuItem->exists) {
-            $menuItem->fill([
-                'target'     => '_self',
-                'icon_class' => null,
-                'color'      => null,
-                'parent_id'  => null,
-                'order'      => 1,
-            ])->save();
-        }
-        $menuItem = MenuItem::firstOrNew([
-            'menu_id' => $menu->id,
-            'title'   => 'Listar',
-            'url'     => 'admin/bg_seats/1',
-            'route'   => null
-        ]);
-        if (!$menuItem->exists) {
-            $menuItem->fill([
-                'target'     => '_self',
-                'icon_class' => null,
-                'color'      => null,
-                'parent_id'  => null,
-                'order'      => 2,
-            ])->save();
-        }
-        $menuItem = MenuItem::firstOrNew([
-            'menu_id' => $menu->id,
-            'title'   => 'divider',
-            'url'     => null,
-            'route'   => null
-        ]);
-        if (!$menuItem->exists) {
-            $menuItem->fill([
-                'target'     => '_self',
-                'icon_class' => null,
-                'color'      => null,
-                'parent_id'  => null,
-                'order'      => 5,
-            ])->save();
-        }
-        $menuItem = MenuItem::firstOrNew([
-            'menu_id' => $menu->id,
-            'title'   => 'setting',
-            'url'     => null,
-            'route'   => null
-        ]);
-        if (!$menuItem->exists) {
-            $menuItem->fill([
-                'target'     => '_blank',
-                'icon_class' => null,
-                'color'      => null,
-                'parent_id'  => null,
-                'order'      => 6,
-            ])->save();
-        }
-
-        //-------------------------------------  DOSIFICACION
+        //---------------------------------------------------
         Menu::firstOrCreate([
-            'name' => 'bg_dosificacions',
+            'name' => 'bg_dosificacions', //DOSIFICACION
         ]);
-        $menu = Menu::where('name', 'bg_dosificacions')->firstOrFail();
-        $menuItem = MenuItem::firstOrNew([
-            'menu_id' => $menu->id,
-            'title'   => 'Nuevo',
-            'url'     => 'admin/bg_dosificacions/create',
-            'route'   => null
-        ]);
-        if (!$menuItem->exists) {
-            $menuItem->fill([
-                'target'     => '_self',
-                'icon_class' => null,
-                'color'      => null,
-                'parent_id'  => null,
-                'order'      => 1,
-            ])->save();
-        }
-        $menuItem = MenuItem::firstOrNew([
-            'menu_id' => $menu->id,
-            'title'   => 'Listar',
-            'url'     => 'admin/bg_dosificacions/1',
-            'route'   => null
-        ]);
-        if (!$menuItem->exists) {
-            $menuItem->fill([
-                'target'     => '_self',
-                'icon_class' => null,
-                'color'      => null,
-                'parent_id'  => null,
-                'order'      => 2,
-            ])->save();
-        }
-
-        $menuItem = MenuItem::firstOrNew([
-            'menu_id' => $menu->id,
-            'title'   => 'Sucursal',
-            'url'     => 'admin/bg_branch_offices/create',
-            'route'   => null
-        ]);
-        if (!$menuItem->exists) {
-            $menuItem->fill([
-                'target'     => '_self',
-                'icon_class' => null,
-                'color'      => null,
-                'parent_id'  => null,
-                'order'      => 2,
-            ])->save();
-        }
-
-        $menuItem = MenuItem::firstOrNew([
-            'menu_id' => $menu->id,
-            'title'   => 'divider',
-            'url'     => null,
-            'route'   => null
-        ]);
-        if (!$menuItem->exists) {
-            $menuItem->fill([
-                'target'     => '_self',
-                'icon_class' => null,
-                'color'      => null,
-                'parent_id'  => null,
-                'order'      => 5,
-            ])->save();
-        }
-        $menuItem = MenuItem::firstOrNew([
-            'menu_id' => $menu->id,
-            'title'   => 'setting',
-            'url'     => null,
-            'route'   => null
-        ]);
-        if (!$menuItem->exists) {
-            $menuItem->fill([
-                'target'     => '_blank',
-                'icon_class' => null,
-                'color'      => null,
-                'parent_id'  => null,
-                'order'      => 6,
-            ])->save();
-        }
-
-        // -------- Regions -------
+        // ------------------------------------------------------
         Menu::firstOrCreate([
-            'name' => 'bg_regions',
+            'name' => 'bg_regions', //Regiones
         ]);
+         // ------------------------------------------------------
+         Menu::firstOrCreate([
+            'name' => 'bg_locations', //Ubucaciones
+        ]);
+         // ------------------------------------------------------
+         Menu::firstOrCreate([
+            'name' => 'bg_payments', //Pagos
+        ]);
+         // ------------------------------------------------------
+         Menu::firstOrCreate([
+            'name' => 'bg_loyalties', //Fidelizacion
+        ]);
+         // ------------------------------------------------------
+         Menu::firstOrCreate([
+            'name' => 'bg_sale_details', //Detalle Ventas
+        ]);
+        
+        //------------------ FIN MODULO VENTAS -----------------------
+
+
 
     }
 }

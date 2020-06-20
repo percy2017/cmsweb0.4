@@ -11,7 +11,7 @@
                         </h4>
                         <hr />
                     </div>
-                    <form method="post" id="search_form" class="form-search" action="{{ route('inti_search') }}">
+                    <form method="post" id="search_form" class="form-search" action="{{ route('bg_search') }}">
                         {{ csrf_field() }}
                         <div id="search-input">
                             <input type="hidden" name="table" value="{{ $dataType->name }}" />
@@ -114,9 +114,9 @@
                                         @case('checkbox')
                                             @if(isset($row->details->on) && isset($row->details->off))
                                                 @if($data->{$row->field})
-                                                    <span class="label label-info">{{ $row->details->on }}</span>
+                                                    <span class="label label-success">{{ $row->details->on }}</span>
                                                 @else
-                                                    <span class="label label-primary">{{ $row->details->off }}</span>
+                                                    <span class="label label-default">{{ $row->details->off }}</span>
                                                 @endif
                                             @else
                                                 <span class="label label-info">{{ $row->details->on }}</span>
@@ -293,53 +293,50 @@
 
 <script>
     $('#search_type').select2();
-  $('#search_type').change(function(){
-    message('success', 'Update - '+$(this).val());
-  });
-   $('[data-toggle="tooltip"]').tooltip();
+    $('#search_type').change(function(){
+        message('success', 'Update - '+$(this).val());
+    });
+    $('[data-toggle="tooltip"]').tooltip();
    
-  //$( "#search_text" ).focus();
+    //$( "#search_text" ).focus();
 
-  $('body').on('click', '.pagination a', function(e) {
-      e.preventDefault();
+    $('body').on('click', '.pagination a', function(e) {
+        e.preventDefault();
 
-      <?php $admin_loader_img = Voyager::setting('admin.loader', ''); ?>
-      $('#ajax_body').html('<div id="voyager-loader"><img src="@if($admin_loader_img == '') {{ voyager_asset('images/logo-icon.png') }} @else {{ Voyager::Image(setting('admin.loader')) }}@endif"></div>');   
-      var url = $(this).attr('href');  
-      $.ajax({
-        type: 'get',
-        url : url,
-        success: function (data) {
-          $('#ajax_body').html(data); 
-        }, 
-        error: function () {
-          $('#ajax_body').html('<div class="text-center"><h3><code>Ups, Ocurrio un error inesperado <br /><br /> 1.-Revise su configuracion <br /><br /> 2.-Vuela a intentarlo una vez mas <br /><br /> 3.-Consulte con el soporte tecnico</code></h3></div>');  
-          message('error', 'Error en la accion');
-        }
-      });
-      //window.history.pushState("", "", url);
-  });
-  
-  var frm = $('#search_form');
-  $("#search_form").submit(function() {
-    event.preventDefault();
-
-      <?php $admin_loader_img = Voyager::setting('admin.loader', ''); ?>
-      $('#ajax_body').html('<div id="voyager-loader"><img src="@if($admin_loader_img == '') {{ voyager_asset('images/logo-icon.png') }} @else {{ Voyager::Image(setting('admin.loader')) }}@endif"></div>');            
-      $.ajax({
-        type: frm.attr('method'),
-        url: frm.attr('action'),
-        data: frm.serialize(),
-        success: function (data) {
-         
-          $('#ajax_body').html(data);
-          //message('info', $('#dataTable >tbody >tr').length);
-        },
-        error: function (data) {  
-          $('#ajax_body').html('<div class="text-center"><h3><code>Ups, Ocurrio un error inesperado <br /><br /> 1.-Revise su configuracion <br /><br /> 2.-Vuela a intentarlo una vez mas <br /><br /> 3.-Consulte con el soporte tecnico</code></h3></div>'); 
-          message('error', 'Error en la accion')
-        }
+        <?php $admin_loader_img = Voyager::setting('admin.loader', ''); ?>
+        $('#ajax_body').html('<div id="voyager-loader"><img src="@if($admin_loader_img == '') {{ voyager_asset('images/logo-icon.png') }} @else {{ Voyager::Image(setting('admin.loader')) }}@endif"></div>');   
+        var url = $(this).attr('href');  
+        $.ajax({
+            type: 'get',
+            url : url,
+            success: function (data) {
+            $('#ajax_body').html(data); 
+            }, 
+            error: function () {
+            $('#ajax_body').html('<div class="text-center"><h3><code>Ups, Ocurrio un error inesperado <br /><br /> 1.-Revise su configuracion <br /><br /> 2.-Vuela a intentarlo una vez mas <br /><br /> 3.-Consulte con el soporte tecnico</code></h3></div>');  
+            message('error', 'Error en la accion');
+            }
+        });
+        //window.history.pushState("", "", url);
     });
   
-  });
+    var frm = $('#search_form');
+    $("#search_form").submit(function() {
+        event.preventDefault();
+        
+        <?php $admin_loader_img = Voyager::setting('admin.loader', ''); ?>
+        $('#ajax_body').html('<div id="voyager-loader"><img src="@if($admin_loader_img == '') {{ voyager_asset('images/logo-icon.png') }} @else {{ Voyager::Image(setting('admin.loader')) }}@endif"></div>');            
+        $.ajax({
+            type: frm.attr('method'),
+            url: frm.attr('action'),
+            data: frm.serialize(),
+            success: function (data) {
+            $('#ajax_body').html(data);
+            },
+            error: function (data) {  
+            $('#ajax_body').html('<div class="text-center"><h3><code>Ups, Ocurrio un error inesperado <br /><br /> 1.-Revise su configuracion <br /><br /> 2.-Vuela a intentarlo una vez mas <br /><br /> 3.-Consulte con el soporte tecnico</code></h3></div>'); 
+            message('error', 'Error en la accion')
+            }
+        });
+    });
 </script>

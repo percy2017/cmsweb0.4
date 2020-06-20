@@ -30,7 +30,6 @@
                       </div>
                     @endif
                   @endforeach
-
                 </div>
                 <a class="carousel-control-prev" href="#carousel-thumb" role="button" data-slide="prev">
                   <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -42,8 +41,7 @@
                 </a>
               </div>
             </div>
-
-
+            
             <div class="row mb-4">
               <div class="col-md-12">
                 <div id="mdb-lightbox-ui"></div>
@@ -84,7 +82,7 @@
                   @foreach ($product->product_details as $item => $value)
                     <div class="col-md-4 @if($loop->index == 0) col-12 @endif">
                       <div class="form-group">
-                        <input class="form-check-input" name="group100" type="radio" id="{{ $value->id }}">
+                        <input class="form-check-input" name="group100" type="radio" id="{{ $value->id }}" @if($value->default) checked @endif>
                         <label for="{{ $value->id }}" class="form-check-label dark-grey-text">{{ $value->title }}</label>
                       </div>
                     </div>
@@ -92,7 +90,7 @@
                 </div>
                 <div class="row mt-3 mb-4">
                   <div class="col-md-12 text-center text-md-left text-md-right">
-                    <a class="btn btn-primary btn-rounded" href="#" onclick="addcart('{{ route('bg_ajax_addcart', $product->slug) }}')">
+                    <a class="btn btn-primary btn-rounded" onclick="addcart('{{ route('bg_ajax_addcart', [$product->slug, ':detail']) }}')">
                       <i class="fas fa-cart-plus mr-2" aria-hidden="true"></i> Agreagar al Carrito</a>
                   </div>
                 </div>
@@ -194,21 +192,31 @@
                 <!-- Card footer -->
                 <div class="card-footer pb-0">
                   <div class="row mb-0">
-                    @if($item->product_details[0]->price_last > 0)
+                    @php
+                      $default = null;
+                    @endphp
+                    @foreach ($item->product_details as $value)
+                        @if ($value->default)
+                            @php
+                                $default = $value;
+                            @endphp
+                        @endif
+                    @endforeach
+                    @if($default->price_last > 0)
                       <h5 class="mb-0 pb-0 mt-1 font-weight-bold"><span
-                          class="red-text"><strong>{{ $item->product_details[0]->price }} Bs.</strong></span>
-                          <span class="grey-text"><small><s>{{ $item->product_details[0]->price_last }} Bs.</s></small></span>
+                          class="red-text"><strong>{{ $default->price }} Bs.</strong></span>
+                          <span class="grey-text"><small><s>{{ $default->price_last }} Bs.</s></small></span>
                       </h5>
                     @else 
                       <span class="float-left">
-                        <strong>{{ $item->product_details[0]->price }} Bs.</strong>
+                        <strong>{{ $default->price }} Bs.</strong>
                       </span>
                     @endif
-                    <span class="float-right">
+                    {{-- <span class="float-right">
                       <a class="" data-toggle="tooltip" data-placement="top" title="Add to Cart">
                         <i class="fas fa-shopping-cart ml-3"></i>
                       </a>
-                    </span>
+                    </span> --}}
                   </div>
                 </div>
               </div>
@@ -227,39 +235,66 @@
 
 @section('js')
   <script>
+    $(document).ready(function(){
+      $('.color input[type=radio]').each(function (idx, elt) {
+          if (elt.checked){
+            let id = '#'+elt.id; 
+            var urli = '{{ route('bg_ajax_product_details', ':id') }}';
+            urli = urli.replace(':id', elt.id);
+            $.ajax({
+              type: "get",
+              url: urli,
+              success: function (response) {
+                if(response.price_last > 0)
+                {
+                  $('#price').html('<span class="red-text font-weight-bold">'+response.price+' Bs.</strong></span> <span class="grey-text"><small><s>'+response.price_last+' Bs.</s></small></span>');
+                }else{
+                  $('#price').html('<span class="dark-grey-text font-weight-bold">'+response.price+' Bs.</strong></span>');
+                }
+              }
+            });
+          }
+      });
+    });
+
     function addcart(urli){
+      var urli;
+      $('.color input[type=radio]').each(function (idx, elt) {
+        if (elt.checked){
+          urli = urli.replace(':detail', elt.id);
+        }
+      });
+      $.ajax({
+        type: "get",
+        url: urli,
+        success: function (response) {
+          Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: response.name+', Agregado a tu Carrito',
+            showConfirmButton: true,
+            timer: 3000
+          })
+        }
+      });
+    } 
+
+    $('.color input[type=radio]').each(function (idx, elt) {
+      let id = '#'+elt.id; 
+      var urli = '{{ route('bg_ajax_product_details', ':id') }}';
+      urli = urli.replace(':id', elt.id);
+      $(id).click(function() {
         $.ajax({
           type: "get",
           url: urli,
           success: function (response) {
-            Swal.fire({
-              position: 'top-end',
-              icon: 'success',
-              title: response.name+', Agregado a tu Carrito',
-              showConfirmButton: true,
-              timer: 3000
-            })
-          }
-        });
-      } 
-
-    $('.color input[type=radio]').each(function (idx, elt) {
-    let id = '#'+elt.id; 
-    var urli = '{{ route('bg_ajax_product_details', ':id') }}';
-    urli = urli.replace(':id', elt.id);
-    //console.log(urli);
-    $(id).click(function() {
-      $.ajax({
-            type: "get",
-            url: urli,
-            success: function (response) {
-              if(response.price_last > 0)
-              {
-                $('#price').html('<span class="red-text font-weight-bold">'+response.price+' Bs.</strong></span> <span class="grey-text"><small><s>'+response.price_last+' Bs.</s></small></span>');
-              }else{
-                $('#price').html('<span class="dark-grey-text font-weight-bold">'+response.price+' Bs.</strong></span>');
-              }
+            if(response.price_last > 0)
+            {
+              $('#price').html('<span class="red-text font-weight-bold">'+response.price+' Bs.</strong></span> <span class="grey-text"><small><s>'+response.price_last+' Bs.</s></small></span>');
+            }else{
+              $('#price').html('<span class="dark-grey-text font-weight-bold">'+response.price+' Bs.</strong></span>');
             }
+          }
         });
       });
     });  

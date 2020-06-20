@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBgRegionsTable extends Migration
+class CreateBgPaymentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,13 @@ class CreateBgRegionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('bg_regions', function (Blueprint $table) {
+        Schema::create('bg_payments', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('image')->nullable();
-            $table->double('price_shipping')->nullable();
-            $table->dateTime('time_delivery')->nullable();
             $table->text('description')->nullable();
-
+            $table->text('details')->nullable();
+            
             $table->timestamps();
             $table->softDeletes();
         });
@@ -33,6 +32,6 @@ class CreateBgRegionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('bg_regions');
+        Schema::dropIfExists('bg_payments');
     }
 }

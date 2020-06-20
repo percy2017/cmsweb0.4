@@ -56,13 +56,23 @@
                                     @default
                                 @endswitch
                             </ul>
-                            @if($product->product_details[0]->price_last > 0)
+                            @php
+                                $default = null;
+                            @endphp
+                            @foreach ($product->product_details as $value)
+                                @if ($value->default)
+                                    @php
+                                        $default = $value;
+                                    @endphp
+                                @endif
+                            @endforeach
+                            @if($default->price_last > 0)
                                 <h6 class="h6-responsive font-weight-bold dark-grey-text">
-                                    <strong>{{ $product->product_details[0]->price }} Bs</strong> 
-                                    <span class="grey-text"><small><s>{{ $product->product_details[0]->price_last }} Bs</s></small></span>
+                                    <strong>{{ $default->price }} Bs</strong> 
+                                    <span class="grey-text"><small><s>{{ $default->price_last }} Bs</s></small></span>
                                 </h6>
                             @else
-                                <h6 class="h6-responsive font-weight-bold dark-grey-text"><strong>{{ $product->product_details[0]->price }} Bs.</strong></h6>
+                                <h6 class="h6-responsive font-weight-bold dark-grey-text"><strong>{{ $default->price }} Bs.</strong></h6>
                             @endif
                         </div>
                     </div>                    

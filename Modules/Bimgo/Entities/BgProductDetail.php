@@ -11,6 +11,6 @@ class BgProductDetail extends Model
     //use Commentable;
     protected $table = 'bg_product_details';
 
-    protected $fillable = ['type', 'code', 'title', 'price', 'price_last', 'stock', 'product_id', 'published'];
+    protected $fillable = ['type', 'code', 'title', 'price', 'price_last', 'stock', 'product_id', 'published', 'default'];
 
 }

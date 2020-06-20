@@ -10,9 +10,9 @@ class BgCustomer extends Model
 {
     use SoftDeletes;
     protected $table = 'bg_customers';
-    protected $fillable = ['name', 'nit', 'phone', 'phone_number','type_person','adress', 'user_id'];
+    protected $fillable = ['name_bussiness', 'nit_ci', 'phone', 'banner','type','adress', 'user_id'];
 
-    public function usuario(){
+    public function user(){
         // return $this->hasOne(User::class);
         return $this->belongsTo(User::class,'user_id');
     }

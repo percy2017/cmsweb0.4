@@ -14,13 +14,10 @@
     <meta property="og:image" content="{{ Voyager::Image($page->image) }}" />
     <meta property="og:description" content="{{ $page->description }}" />
     <title>{{ $page->name }}</title>
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
-    <!-- Bootstrap core CSS -->
-    <link href="{{ asset('vendor/bimgo/mdb/css/bootstrap.min.css') }}" rel="stylesheet">
-    <!-- Material Design Bootstrap -->
-    <link href="{{ asset('vendor/bimgo/mdb/css/mdb.min.css') }}" rel="stylesheet">
 
+    <link href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" rel="stylesheet">
+    <link href="{{ asset('vendor/bimgo/mdb/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('vendor/bimgo/mdb/css/mdb.min.css') }}" rel="stylesheet">
     <style>
 
     </style>

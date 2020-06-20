@@ -13,9 +13,9 @@ use Illuminate\Support\Str;
 use Carbon\Carbon;
 use Validator;
 
-class BrandController extends Controller
+class LoyaltyController extends Controller
 {
-    public $table = 'bg_brands';
+    public $table = 'bg_loyalties';
     public $dataType;
     public $dataRowsAdd;
     public $dataRowsEdit;
@@ -64,10 +64,11 @@ class BrandController extends Controller
            
         //------------------ REGISTRO-------------------------------------
         $data = new $this->dataType->model_name;
+        
         $myrelationships = array();
         foreach ($this->dataRowsAdd as $key) {
             $aux =  $key->field;
-         
+            
             switch ($key->type) {
                 case 'Traking':
                     $data->$aux = Auth::user()->id;
@@ -108,6 +109,7 @@ class BrandController extends Controller
                     break; 
                 default:
                     $data->$aux = $request->$aux;
+                    // return $request;
                     break;
             }
         }

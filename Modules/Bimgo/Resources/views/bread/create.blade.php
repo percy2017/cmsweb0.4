@@ -302,7 +302,7 @@
                                                 title="{{ $row->details->tooltip->{'message'} }}"></span>
                                             @endif
                                             <div id="{{ $row->field }}" class="ace_editor min_height_200" name="{{ $row->field }}"></div>
-                                            <textarea name="{{ $row->field }}" id="{{ $row->field }}" class="hidden"></textarea>
+                                            <textarea name="{{ $row->field }}" id="{{ $row->field }}" class="hidden code_editor"></textarea>
                                             @break
                                     @endswitch        
                                 </div>
@@ -452,11 +452,15 @@
         map.setZoom(13);
     });
 
-    var editor = ace.edit("characteristics");
-    var textarea = $('textarea[name="characteristics"]').hide();
-    editor.getSession().setValue(textarea.val());
-    editor.session.setMode("ace/mode/json");
-    editor.getSession().on('change', function(){
-        textarea.val(editor.getSession().getValue());
+    $('.form-group .code_editor').each(function (idx, elt) {
+        console.log(elt);
+        var editor = ace.edit(elt.id);
+        var textarea = $('textarea[name="'+elt.name+'"]').hide();
+        editor.getSession().setValue(textarea.val());
+        editor.session.setMode("ace/mode/json");
+        editor.getSession().on('change', function(){
+            textarea.val(editor.getSession().getValue());
+        });
     });
+    
 </script>

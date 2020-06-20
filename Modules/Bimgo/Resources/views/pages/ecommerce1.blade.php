@@ -48,7 +48,7 @@
             showConfirmButton: true,
             timer: 3000
           });
-          $('#cartTotalQuantity').html('{{ \Cart::getTotalQuantity() }}');
+          //$('#cartTotalQuantity').html('{{ \Cart::getTotalQuantity() }}');
         }
       });
     }

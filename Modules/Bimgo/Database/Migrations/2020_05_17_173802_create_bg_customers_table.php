@@ -15,12 +15,12 @@ class CreateBgCustomersTable extends Migration
     {
         Schema::create('bg_customers', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name');
-            $table->string('nit');
-            $table->string('type_person');
+            $table->string('type');
+            $table->string('name_bussiness');
+            $table->string('banner')->nullable();
+            $table->string('nit_ci')->nullable();
             $table->string('phone')->nullable();
-            $table->string('phone_number')->nullable();
-            $table->string('adress')->nullable();
+            $table->text('address')->nullable();
 
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');

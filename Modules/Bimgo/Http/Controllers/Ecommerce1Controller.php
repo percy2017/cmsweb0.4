@@ -13,7 +13,7 @@ use Modules\Bimgo\Entities\BgProduct;
 use Modules\Bimgo\Entities\BgProductDetail;
 use Modules\Bimgo\Entities\BgCategory;
 use Modules\Bimgo\Entities\BgSubCategory;
-
+use Illuminate\Support\Facades\Auth;
 class Ecommerce1Controller extends Controller
 {
     /**
@@ -160,8 +160,15 @@ class Ecommerce1Controller extends Controller
     function payment()
     {
         $page = \App\Page::where('slug', 'landing-page-bimgo')->first();
+        $customer = \Modules\Bimgo\Entities\BgCustomer::where('user_id', Auth::user()->id)->first();
+        $location = \Modules\Bimgo\Entities\BgLocation::with(['region'])->where([['customer_id', $customer->user_id], ['default', true]])->first();
+        $pagos=\Modules\Bimgo\Entities\BgPayment::all();
+        // return $pagos;
         return view('bimgo::pages.payment1', [
-            'page' => $page
+            'page' => $page,
+            'customer' => $customer,
+            'location' => $location,
+            'pagos' => $pagos
         ]);
     }
     

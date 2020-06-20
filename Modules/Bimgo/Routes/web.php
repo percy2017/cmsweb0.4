@@ -14,15 +14,16 @@
 Route::get('my/profile', 'BimgoController@profile')->name('bg_profile');
 
 // Routes  Cart -----------------------------------------------------------------------
-Route::get('ajax/cart/{slug}', 'BimgoController@addcart')->name('bg_ajax_addcart');
-Route::get('ajax/remove/{slug}', 'BimgoController@removecart')->name('bg_ajax_removecart');
+Route::get('ajax/cart/{slug}/{detail}', 'BimgoController@addcart')->name('bg_ajax_addcart');
+Route::get('ajax/subtract/{slug}/{detail}', 'BimgoController@subtractcart')->name('bg_ajax_subtractcart');
+Route::get('ajax/remove/{slug}/{detail}', 'BimgoController@removecart')->name('bg_ajax_removecart');
 Route::get('ajax/product_details/{id}', 'BimgoController@productdetails')->name('bg_ajax_product_details');
 
 // Routes  Ecommerce1 -----------------------------------------------------------------------
 Route::get('product/{slug}', 'Ecommerce1Controller@product_details')->name('bg_product');
 Route::get('my/category', 'Ecommerce1Controller@category')->name('bg_category');
 Route::get('my/cart', 'Ecommerce1Controller@cart')->name('bg_cart');
-Route::get('my/payment', 'Ecommerce1Controller@payment')->name('bg_payment');
+Route::get('my/payment', 'Ecommerce1Controller@payment')->name('bg_payment')->middleware('auth');
 Route::get('my/televenta', 'Ecommerce1Controller@televenta')->name('bg_tv');
 
 // Routes  Ecommerce2 -----------------------------------------------------------------------

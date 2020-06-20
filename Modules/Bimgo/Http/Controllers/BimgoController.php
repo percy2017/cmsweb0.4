@@ -190,34 +190,44 @@ class BimgoController extends Controller
 
       //------------Carrito AJAX----------------------------------------------------
       //-------------------------------------------------------------
-      function addcart($slug)
+      function addcart($slug, $detail)
       {
           $product = BgProduct::with(['product_details'])->where('slug', $slug)->first();
+          $datail = BgProductDetail::find($detail);
           \Cart::add(
-              $product->product_details[0]->id, 
+              $datail->id, 
               $product->name, 
-              $product->product_details[0]->price, 
+              $datail->price, 
               1, 
               array(
                   'slug' => $product->slug, 
                   'images' => $product->images,
                   'description' => $product->description, 
-                  'type' => $product->product_details[0]->type, 
-                  'title' => $product->product_details[0]->title, 
-                  'code' => $product->product_details[0]->code, 
-                  'price_last' => $product->product_details[0]->price_last, 
-                  'stock' => $product->product_details[0]->stock),
+                  'type' => $datail->type, 
+                  'title' => $datail->title, 
+                  'code' => $datail->code, 
+                  'price_last' => $datail->price_last, 
+                  'stock' => $datail->stock),
               array()
           );
           return $product;
   
       }
-      function removecart($slug)
+      function subtractcart($slug, $detail)
       {
+          
           $product = BgProduct::with(['product_details'])->where('slug', $slug)->first();
-          \Cart::remove($product->product_details[0]->id);
+          \Cart::update($detail, array(
+            'quantity' => -1, // so if the current product has a quantity of 4, it will subtract 1 and will result to 3
+          ));
           return $product;
   
+      }
+      function removecart($slug, $detail)
+      {
+          $product = BgProduct::with(['product_details'])->where('slug', $slug)->first();
+          \Cart::remove($detail);
+          return $product;
       }
   
       function productdetails($id)
