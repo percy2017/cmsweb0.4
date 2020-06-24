@@ -73,8 +73,9 @@
                                         @endforeach
                                         @if($default->price_last > 0)
                                             <h5 class="mb-0 pb-0 mt-1 font-weight-bold"><span
-                                                class="red-text"><strong>{{ $default->price }} Bs.</strong></span>
-                                                <span class="grey-text"><small><s>{{ $default->price_last }} Bs.</s></small></span>
+                                                class="red-text"><strong>{{ $default->price }}</strong></span>
+                                                <span class="grey-text"><small><s>{{ $default->price_last }}</s></small></span>
+                                                {{ setting('ecommerce.monedas') }}
                                             </h5>
                                         @else 
                                             <span class="float-left"><strong>{{ $default->price }} Bs.</strong></span>

@@ -10,6 +10,8 @@ class SettingsTableSeeder extends Seeder
      */
     public function run()
     {
+        // ----------------------- SITE ----------
+        //------------------------------------------------------------------
         $setting = $this->findSetting('site.title');
         if (!$setting->exists) {
             $setting->fill([
@@ -21,7 +23,6 @@ class SettingsTableSeeder extends Seeder
                 'group'        => 'Site',
             ])->save();
         }
-
         $setting = $this->findSetting('site.description');
         if (!$setting->exists) {
             $setting->fill([
@@ -33,7 +34,6 @@ class SettingsTableSeeder extends Seeder
                 'group'        => 'Site',
             ])->save();
         }
-
         $setting = $this->findSetting('site.logo');
         if (!$setting->exists) {
             $setting->fill([
@@ -45,7 +45,6 @@ class SettingsTableSeeder extends Seeder
                 'group'        => 'Site',
             ])->save();
         }
-
         $setting = $this->findSetting('site.google_analytics_tracking_id');
         if (!$setting->exists) {
             $setting->fill([
@@ -57,7 +56,6 @@ class SettingsTableSeeder extends Seeder
                 'group'        => 'Site',
             ])->save();
         }
-
         $setting = $this->findSetting('site.page');
         if (!$setting->exists) {
             $setting->fill([
@@ -70,12 +68,8 @@ class SettingsTableSeeder extends Seeder
             ])->save();
         }
 
-
-
-
-
-
-        // admin-------------------------------
+        //------------------------------- admin-------------------------------
+        //---------------------------------------------------------------------
         $setting = $this->findSetting('admin.bg_image');
         if (!$setting->exists) {
             $setting->fill([
@@ -87,7 +81,6 @@ class SettingsTableSeeder extends Seeder
                 'group'        => 'Admin',
             ])->save();
         }
-
         $setting = $this->findSetting('admin.title');
         if (!$setting->exists) {
             $setting->fill([
@@ -99,7 +92,6 @@ class SettingsTableSeeder extends Seeder
                 'group'        => 'Admin',
             ])->save();
         }
-
         $setting = $this->findSetting('admin.description');
         if (!$setting->exists) {
             $setting->fill([
@@ -111,7 +103,6 @@ class SettingsTableSeeder extends Seeder
                 'group'        => 'Admin',
             ])->save();
         }
-
         $setting = $this->findSetting('admin.loader');
         if (!$setting->exists) {
             $setting->fill([
@@ -123,7 +114,6 @@ class SettingsTableSeeder extends Seeder
                 'group'        => 'Admin',
             ])->save();
         }
-
         $setting = $this->findSetting('admin.icon_image');
         if (!$setting->exists) {
             $setting->fill([
@@ -135,7 +125,6 @@ class SettingsTableSeeder extends Seeder
                 'group'        => 'Admin',
             ])->save();
         }
-
         $setting = $this->findSetting('admin.google_analytics_client_id');
         if (!$setting->exists) {
             $setting->fill([
@@ -147,7 +136,6 @@ class SettingsTableSeeder extends Seeder
                 'group'        => 'Admin',
             ])->save();
         }
-
         $setting = $this->findSetting('admin.pagination');
         if (!$setting->exists) {
             $setting->fill([
@@ -161,8 +149,8 @@ class SettingsTableSeeder extends Seeder
         }
 
 
-        // Whatsapp ------------------------------------
-        // --------------------------------------------
+        // ---------------------Whatsapp ------------------------------------
+        // ------------------------------------------------------------
         $setting = $this->findSetting('whatsapp.phone');
         if (!$setting->exists) {
             $setting->fill([
@@ -262,88 +250,7 @@ class SettingsTableSeeder extends Seeder
                 'group'        => 'Whatsapp',
             ])->save();
         }
-        // Whatsapp ------------------------------------
-
-
-        // ecommerce ------------------------------------
-        $setting = $this->findSetting('ecommerce.title');
-        if (!$setting->exists) {
-            $setting->fill([
-                'display_name' => 'Nombre de la Tienda',
-                'value'        => 'Tienda',
-                'details'      => '',
-                'type'         => 'text',
-                'order'        => 1,
-                'group'        => 'Ecommerce',
-            ])->save();
-        }
-        $setting = $this->findSetting('ecommerce.image');
-        if (!$setting->exists) {
-            $setting->fill([
-                'display_name' => 'Logo Tienda',
-                'value'        => '',
-                'details'      => '',
-                'type'         => 'image',
-                'order'        => 2,
-                'group'        => 'Ecommerce',
-            ])->save();
-        }
-        $setting = $this->findSetting('ecommerce.description');
-        if (!$setting->exists) {
-            $setting->fill([
-                'display_name' => 'Descripcion de la tienda',
-                'value'        => 'Here you can use rows and columns here to organize your footer content. Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
-                'details'      => '',
-                'type'         => 'text_area',
-                'order'        => 3,
-                'group'        => 'Ecommerce',
-            ])->save();
-        }
-        // Contacto ------------------------------------
-        $setting = $this->findSetting('contactos.direction');
-        if (!$setting->exists) {
-            $setting->fill([
-                'display_name' => 'Direccion de la tienda',
-                'value'        => 'Trinidad, N° 112, BO',
-                'details'      => '',
-                'type'         => 'text',
-                'order'        => 1,
-                'group'        => 'Contactos',
-            ])->save();
-        }
-        $setting = $this->findSetting('contactos.email');
-        if (!$setting->exists) {
-            $setting->fill([
-                'display_name' => 'Correo electronico',
-                'value'        => 'info@example.com',
-                'details'      => '',
-                'type'         => 'text',
-                'order'        => 2,
-                'group'        => 'Contactos',
-            ])->save();
-        }
-        $setting = $this->findSetting('contactos.phone');
-        if (!$setting->exists) {
-            $setting->fill([
-                'display_name' => 'Telefono',
-                'value'        => '46 234 567 88',
-                'details'      => '',
-                'type'         => 'text',
-                'order'        => 3,
-                'group'        => 'Contactos',
-            ])->save();
-        }
-        $setting = $this->findSetting('contactos.whatsapp');
-        if (!$setting->exists) {
-            $setting->fill([
-                'display_name' => 'Whatsapp',
-                'value'        => '+ 591 234 567 89',
-                'details'      => '',
-                'type'         => 'text',
-                'order'        => 4,
-                'group'        => 'Contactos',
-            ])->save();
-        }
+        
     }
 
     /**

@@ -31,7 +31,7 @@
     <!-- Main Container -->
     <div class="container">
         <!-- Grid row -->
-        <div class="row pt-4">
+        <div class="row">
         <!-- Content -->
         <div class="col-lg-12">
             @yield('content')

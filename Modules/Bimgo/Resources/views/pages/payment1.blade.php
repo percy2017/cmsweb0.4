@@ -22,7 +22,7 @@
   </style>
 @endsection
 @section('content')
-  <section class="dark-grey-text">
+  <section class="dark-grey-text mt-3 mb-3">
   	<div class="card">
       <div class="card-body">
         <!--Grid row-->
@@ -47,7 +47,7 @@
               <!--Panel 1-->
               <div class="tab-pane fade in show active" id="tabCheckoutBilling123" role="tabpanel">
                 <!--Card content-->
-                <form>
+                {{-- <form> --}}
                   <!--Grid row-->
                   <div class="row">
                     <!--Grid column-->
@@ -83,82 +83,92 @@
                     <strong><u>Datos del Negocio o Empresa</u></strong>
                     <hr />
                   </div>
-                  <div class="row">
-                    
-                    <div class="col-md-6 mb-4">
-                      @php
-                          $images = $customer->banner ? Voyager::Image($customer->banner) : '../images/icons-bimgo/icon-512x512.png';
-                      @endphp
-                      <img src="{{ $images }}" alt="thumbnail" class="img-thumbnail z-depth-1" style="">
-                      <input class="form-control" type="file" name="banner" id="banner" disabled>
-                    </div>
-                    <div class="col-md-6 mb-4">
-                      <div class="row">
-                        <div class="col-md-12 mb-4">
-                          <label for="country">Nombre Comercial</label>
-                          <input type="text" id="name_bussiness" class="form-control" placeholder="Nombre Comercial" value="{{ $customer->name_bussiness }}" disabled>
-                        </div>
-                        <div class="col-md-12 mb-4">
-                          <label for="state">NIT o Carnet</label>
-                          <input type="text" id="nit_ci" class="form-control" placeholder="NIT o Carnet" value="{{ $customer->nit_ci }}" disabled>
-                        </div>
-                        <div class="col-md-12 mb-4">
-                          <label for="state">Direcion</label>
-                          <textarea class="form-control" disabled>{{ $customer->address }}</textarea>
-                        </div>
-                        <div class="col-md-12 mb-4">
-                          <a class="btn btn-sm btn-primary">Editar Datos</a>
+                  <form action="{{ route('bg_ajax_update_bussiness') }}" id="form_bussiness" method="POST" enctype="multipart/form-data">
+                  {{ csrf_field() }}
+                    <div class="row">
+                      
+                      <div class="col-md-6 mb-4">
+                        @php
+                            $images = $customer->banner ? Voyager::Image($customer->banner) : '../images/icons-bimgo/icon-512x512.png';
+                        @endphp
+                        <img src="{{ $images }}" alt="thumbnail" class="img-thumbnail z-depth-1">
+                        <input class="form-control" type="file" name="banner" id="banner">
+                      </div>
+                      <div class="col-md-6 mb-4">
+                        <div class="row">
+                          
+                          <div class="col-md-12 mb-4">
+                            <label for="country">Nombre Comercial</label>
+                            <input type="text" id="name_bussiness" name="name_bussiness" class="form-control" placeholder="Nombre Comercial" value="{{ $customer->name_bussiness }}">
+                          </div>
+                          <div class="col-md-12 mb-4">
+                            <label for="state">NIT o Carnet</label>
+                            <input type="text" id="nit_ci" name="nit_ci" class="form-control" placeholder="NIT o Carnet" value="{{ $customer->nit_ci }}">
+                          </div>
+                          <div class="col-md-12 mb-4">
+                            <label for="state">Direcion</label>
+                            <textarea class="form-control" name="address">{{ $customer->address }}</textarea>
+                          </div>
+                          <div class="col-md-12 mb-4">
+                            <button type="submit" id="button_submit" class="btn btn-sm btn-primary">Actualizar Datos</button>
+                          </div>
+                          
                         </div>
                       </div>
+                    
                     </div>
-                  </div>
-                </form>
+                  </form>
+                {{-- </form> --}}
               </div>
               <!--/.Panel 1-->
 
               <!--Panel 2-->
               <div class="tab-pane fade" id="tabCheckoutAddons123" role="tabpanel">
-
-                <div class="row">
-                  <div class="col-md-12 mb-4">
-                    <div id="map" class="z-depth-1-half map-container"></div>
-                    <input type="hidden" id="latitud" name="latitud" />
-                    <input type="hidden" id="longitud" name="longitud" />
+                @if($location)
+                  @php
+                    $lat =  $location->latitud;
+                    $lgt =  $location->longitud;
+                  @endphp
+                  <div class="row">
+                    <div class="col-md-12 mb-4">
+                      <div id="map" class="z-depth-1-half map-container"></div>
+                      <input type="hidden" id="latitud" name="latitud" />
+                      <input type="hidden" id="longitud" name="longitud" />
+                    </div>
                   </div>
-                </div>
-                
-                <div class="row">
-                  <div class="col-md-6 mb-4">
-                    <label for="address">Localidad o Cuidad</label>
-                    <input class="form-control" type="text" id="address" name="address" disabled value="{{ $location->region->name }}" />
-                    {{-- <select class="custom-select d-block w-100" id="location" required disabled>
-                      <option value="" disabled>Elije una Localidad o Cuidad...</option>
-                      <option>Trinidad Beni Bolivia</option>
-                    </select> --}}
+                  
+                  <div class="row">
+                    <div class="col-md-6 mb-4">
+                      <label for="address">Localidad o Cuidad</label>
+                      <input class="form-control" type="text" id="address" name="address" disabled value="{{ $location->region->name }}" />
+                    </div>
+                    <div class="col-md-6 mb-4">
+                      <label for="address">Tipo de Referencia</label>
+                      <input class="form-control" type="text" id="type" name="type" disabled value="{{ $location->type }}" />
+                    </div>
+                    <div class="col-md-12 mb-4">
+                      <label for="address">Direcion Literal</label>
+                      <textarea class="form-control" disabled>{{ $location->address }}</textarea>
+                    </div>
+                    <div class="col-md-6 mb-4">
+                        <input type="checkbox" class="form-check-input filled-in" id="chekboxRules2" @if($location->default) checked @endif disabled>
+                        <label class="form-check-label" for="chekboxRules2">Ubicación por Defecto ?</label>
+                    </div>
+                    <div class="col-md-6 mb-4">
+                      <a class="btn btn-sm btn-primary">Nueva Ubicacion</a>
+                    </div>
                   </div>
-                  <div class="col-md-6 mb-4">
-                    <label for="address">Tipo de Referencia</label>
-                    <input class="form-control" type="text" id="type" name="type" disabled value="{{ $location->type }}" />
-                    {{-- <select class="custom-select d-block w-100" id="type" required disabled>
-                      <option value="" disabled>Elije una Referencia...</option>
-                      <option>Casa</option>
-                    </select> --}}
-                  </div>
-                  <div class="col-md-12 mb-4">
-                    <label for="address">Direcion Literal</label>
-                    <textarea class="form-control" disabled>{{ $location->address }}</textarea>
-                  </div>
-                  <div class="col-md-6 mb-4">
-                    {{-- <div class="mb-1"> --}}
-                      <input type="checkbox" class="form-check-input filled-in" id="chekboxRules2" @if($location->default) checked @endif disabled>
-                      <label class="form-check-label" for="chekboxRules2">Ubicación por Defecto ?</label>
-                    {{-- </div> --}}
-                    
-                  </div>
-                  <div class="col-md-6 mb-4">
-                    <a class="btn btn-sm btn-primary">Nueva Ubicacion</a>
-                  </div>
-                </div>
+                @else
+                  @php
+                    $lat =  0;
+                    $lgt =  0;
+                  @endphp
+                    <h2 class="text-center">
+                      No tienes Ubicaciones
+                      <br>
+                      <a class="btn btn-sm btn-success">Crear Nueva</a>
+                    </h2>
+                @endif
               </div>
               <!--/.Panel 2-->
 
@@ -305,7 +315,53 @@
     </div>
 
   </section>
-<hr>
+{{-- <hr> --}}
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#centralModalSm" id="button_modal">
+  Launch demo modal
+</button>
+
+<!-- Central Modal Small -->
+<div class="modal fade" id="centralModalSm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title w-100" id="myModalLabel">Nueva Ubicacion</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+     
+          <div class="col-md-12">
+            <div id="map_modal" class="z-depth-1-half map-container"></div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Region</label>
+              <select class="form-control">
+
+              </select>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Referencia</label>
+              <select class="form-control">
+                
+              </select>
+            </div>
+          </div>
+      
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-primary btn-sm">Enviar</button>
+      </div>
+    </div>
+  </div>
+</div>
 @endsection
 
 @section('footer')
@@ -318,43 +374,108 @@
    crossorigin=""></script>
   <script>
       $(document).ready(function() {
-          $('.mdb-select').material_select();
-      
+        $('.mdb-select').material_select();
+        //----- MAPA ----------
+        var map;
+        var marcador;
+        map = L.map('map').fitWorld();
+        L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+                maxZoom: 20,
+                attribution: 'Power By; <a href="https://loginweb.dev/">Loginweb @2020</a>',
+                id: 'mapbox.streets'
+            }).addTo(map);
+        function onLocationFound(e) 
+        {
+            var lat = '{{ $lat }}';
+            var lgt = '{{ $lgt }}';
+            marcador =  L.marker(L.latLng(lat, lgt), {
+                        draggable: true
+                        }).addTo(map)
+                        .bindPopup("Localización actual").openPopup()
+                        .on('drag', function(e) {
+                            //$('#latitud').val(e.latlng.lat);
+                            //$('#longitud').val(e.latlng.lng);
+                        });
+            map.setView(L.latLng(lat, lgt));
+        }
 
-      //----- MAPA ----------
-      var map;
-      var marcador;
-      map = L.map('map').fitWorld();
-      L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
-              maxZoom: 20,
-              attribution: 'Power By; <a href="https://loginweb.dev/">Loginweb @2020</a>',
-              id: 'mapbox.streets'
-          }).addTo(map);
-      function onLocationFound(e) 
-      {
-          //$('#latitud').val(e.latlng.lat);
-          //$('#longitud').val(e.latlng.lng);
-          marcador =  L.marker(L.latLng('{{ $location->latitud }}', '{{ $location->longitud }}'), {
-                      draggable: true
-                      }).addTo(map)
-                      .bindPopup("Localización actual").openPopup()
-                      .on('drag', function(e) {
-                          //$('#latitud').val(e.latlng.lat);
-                          //$('#longitud').val(e.latlng.lng);
-                      });
-          map.setView(L.latLng('{{ $location->latitud }}', '{{ $location->longitud }}'));
-      }
+        function onLocationError(e) {
+            alert(e.message);
+        }
 
-      function onLocationError(e) {
-          alert(e.message);
-      }
+        map.on('locationfound', onLocationFound);
+        map.on('locationerror', onLocationError);
 
-      map.on('locationfound', onLocationFound);
-      map.on('locationerror', onLocationError);
-
-      map.locate();
-      map.setZoom(13);
+        map.locate();
+        map.setZoom(13);
  
+    });
+
+    $("#button_modal").click(function() {
+        //----- MAPA ----------
+        var map;
+        var marcador;
+        map = L.map('map_modal').fitWorld();
+        L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+                maxZoom: 20,
+                attribution: 'Power By; <a href="https://loginweb.dev/">Loginweb @2020</a>',
+                id: 'mapbox.streets'
+            }).addTo(map);
+        function onLocationFound(e) 
+        {
+            var lat = e.latlng.lat;
+            var lng = e.latlng.lng;
+            marcador =  L.marker(L.latLng(lat, lgt), {
+                        draggable: true
+                        }).addTo(map)
+                        .bindPopup("Localización actual").openPopup()
+                        .on('drag', function(e) {
+                            //$('#latitud').val(e.latlng.lat);
+                            //$('#longitud').val(e.latlng.lng);
+                        });
+            map.setView(L.latLng(lat, lng));
+        }
+
+        function onLocationError(e) {
+            alert(e.message);
+        }
+
+        map.on('locationfound', onLocationFound);
+        map.on('locationerror', onLocationError);
+
+        map.locate();
+        map.setZoom(13);
+    });
+    //var frm = new FormData($('#form_bussiness')[0])
+    $("#button_submit").click(function() {
+      event.preventDefault();
+      Swal.fire({
+      title: 'Actualizando',
+      text: "Estas segur@ de actualizar los datos?",
+      icon: 'question',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      }).then((result) => {
+          if (result.value) {
+            $.ajax({
+                type: 'post',
+                url: '{{ route('bg_ajax_update_bussiness') }}',
+                data: new FormData($('#form_bussiness')[0]),
+                contentType : false,
+                processData : false,
+                success: function (data) {
+                  console.log(data);
+                  location.reload();
+                },
+                error: function (data) {
+                    //console.log(data);
+                },
+            });
+          }else{
+            console.log('accion declinada');
+          }
+      })
     });
   </script>
 @endsection

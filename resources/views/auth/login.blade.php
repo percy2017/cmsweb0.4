@@ -16,7 +16,7 @@
 @endsection
 @section('content')
 <div class="container">
-    <div class="row justify-content-center py-4">
+    <div class="row justify-content-center">
 
         <section class="form-elegant">
             <!--Form without header-->
@@ -24,7 +24,7 @@
                 @csrf
                 <div class="card">
 
-                    <div class="card-body mx-4">
+                    <div class="card-body">
 
                         <!--Header-->
                         <div class="text-center">
@@ -42,10 +42,10 @@
                             @enderror
                         </div>
 
-                        <div class="md-form pb-3">
+                        <div class="md-form">
                             <input type="password" id="password" class="form-control @error('password') is-invalid @enderror" name="password" value="{{ old('password') }}" required autocomplete="password" placeholder="">
                             <label for="Form-pass1">Password</label>
-                            <p class="font-small blue-text d-flex justify-content-end">Olvidaste tu <a href="{{ route('password.request') }}" class="blue-text ml-1">Contraseña</a></p>
+                            <p class="font-small blue-text d-flex justify-content-end"><a href="{{ route('password.request') }}" class="blue-text ml-1">Olvidaste tu Contraseña</a></p>
                             @error('password')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -53,7 +53,7 @@
                             @enderror
                         </div>
 
-                        <div class="text-center mb-3">
+                        <div class="text-center">
                             <button type="submit" class="btn blue-gradient btn-block btn-rounded z-depth-1a">Ingresar</button>
 
                              <a href="/" class="btn btn-block btn-white btn-rounded z-depth-1a">Volver al Home</a> 
@@ -63,7 +63,7 @@
                     <p class="font-small dark-grey-text text-right d-flex justify-content-center mb-3 pt-2"> o ingresar con:
                     </p>
 
-                    <div class="row my-3 d-flex justify-content-center">
+                    <div class="row d-flex justify-content-center">
                         <!--Facebook-->
                        {{--<a href="{{ route('socialLogin', 'facebook') }}" type="button" class="btn btn-white btn-rounded mr-md-3 z-depth-1a"><i
                             class="fab fa-facebook-f blue-text text-center"></i>
@@ -77,9 +77,9 @@
                     </div>
 
                     <!--Footer-->
-                    <div class="modal-footer mx-5 pt-3 mb-1">
+                    <div class="modal-footer">
                     <p class="font-small grey-text d-flex justify-content-end">No tienes cuenta<a href="/register"
-                        class="blue-text ml-1"> Registrarme</a></p>
+                        class="blue-text"> Registrarme</a></p>
                     </div>
 
                 </div>

@@ -9,6 +9,7 @@
     "license": "MIT",
     "require": {
         "php": "^7.2.5",
+        "barryvdh/laravel-dompdf": "^0.8.6",
         "beyondcode/laravel-websockets": "^1.4",
         "binarytorch/larecipe": "^2.3",
         "bonecms/laravel-captcha": "^2.2",
@@ -24,6 +25,8 @@
         "laravel/ui": "^2.0",
         "laraveles/spanish": "^1.4",
         "laravelista/comments": "^3.6",
+        "livewire/livewire": "^1.2",
+        "maatwebsite/excel": "^3.1",
         "nwidart/laravel-modules": "^7.1",
         "pusher/pusher-php-server": "~4.0",
         "silviolleite/laravelpwa": "^1.0",

@@ -111,9 +111,7 @@ class BimgoController extends Controller
 
     public function relationship($id, $table, $key, $type)
     {
-        
         $dataType = Voyager::model('DataType')->where('slug', '=', $table)->first();
-
         switch ($type) {
             case 'list':
                 // return $dataType->model_name;
@@ -138,8 +136,7 @@ class BimgoController extends Controller
             default:
                 # code...
                 break;
-        }
-        
+        }   
     }
 
     public function view($table, $id)
@@ -236,4 +233,23 @@ class BimgoController extends Controller
           return $product_details;
   
       }
+
+      //----------------- USERS--------------
+      //-----------------------------------
+    function update_bussiness(Request $request)
+    {
+        
+        $custumer = \Modules\Bimgo\Entities\BgCustomer::where('user_id', Auth::user()->id)->first();
+        $custumer->name_bussiness = $request->name_bussiness;
+        $custumer->nit_ci = $request->nit_ci;
+        $custumer->address = $request->address;
+        if($request->file('banner')){
+            $image=Storage::disk('public')->put('bg_customer/'.date('F').date('Y'), $request->file('banner'));
+            $custumer->banner = $image;
+            //return $request->file($request->banner);
+        }
+        $custumer->save();
+        return $custumer;
+    }
+
 }

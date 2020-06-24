@@ -67,11 +67,12 @@
                   <td>{{ $item->attributes->title }}</td>
                   <td></td>
                   <td>{{ $item->price }} Bs.</td>
-                  <td class="text-center text-md-left">
+                  <td class="text-center">
                     <span class="qty">{{ $item->quantity }}</span>
+                    {{-- <br/> --}}
                     <div class="btn-group radio-group ml-2" data-toggle="buttons">
                       <label class="btn btn-sm btn-primary btn-rounded">
-                        <a name="options" id="option1" onclick="subtractcart('{{ route('bg_ajax_subtractcart', [$item->attributes->slug, $item->id]) }}')">--</a>
+                        <a name="options" id="option1" onclick="subtractcart('{{ route('bg_ajax_subtractcart', [$item->attributes->slug, $item->id]) }}')">-</a>
                       </label>
                       <label class="btn btn-sm btn-primary btn-rounded">
                         <a name="options" id="option2" onclick="addcart('{{ route('bg_ajax_addcart', [$item->attributes->slug, $item->id]) }}')">+</a>
@@ -92,13 +93,13 @@
               <!-- First row -->
               <!-- Fourth row -->
               <tr>
-                <td colspan="3"></td>
+                <td class="text-right" colspan="1"></td>
                 <td>
                   <h4 class="mt-2">
                     <strong>Total</strong>
                   </h4>
                 </td>
-                <td class="text-right">
+                <td class="text-center" colspan="3">
                   <h4 class="mt-2">
                     <strong>{{ \Cart::getTotal() }} Bs.</strong>
                   </h4>

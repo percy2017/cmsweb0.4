@@ -368,9 +368,7 @@
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
         }).then((result) => {
-        
             if (result.value) {
-                
                 $('.form-group .ckeditor').each(function (idx, elt) {
                     CKEDITOR.instances[elt.id].updateElement();
                 });

@@ -16,7 +16,7 @@
 @endsection
 @section('content')
 <div class="container">
-    <div class="row justify-content-center py-4">
+    <div class="row justify-content-center">
 
         <section class="form-elegant">
             <!--Form without header-->
@@ -24,7 +24,7 @@
                 @csrf
                 <div class="card">
 
-                    <div class="card-body mx-4">
+                    <div class="card-body">
 
                         <!--Header-->
                         <div class="text-center">
@@ -81,16 +81,16 @@
                             @enderror
                         </div>
 
-                        <div class="text-center mb-3">
+                        <div class="text-center">
                             <button type="submit" class="btn blue-gradient btn-block btn-rounded z-depth-1a">Enviar</button>
                             <a href="/" class="btn green-gradient btn-block btn-rounded z-depth-1a">Volver al Home</a>
                         </div>
                         
                     </div>
                     
-                    <div class="modal-footer mx-5 pt-3 mb-1">
+                    <div class="modal-footer">
                     <p class="font-small grey-text d-flex justify-content-end">Ya tienes cuenta ? <a href="/login"
-                        class="blue-text ml-1"> Ingresar</a></p>
+                        class="blue-text"> Ingresar</a></p>
                     </div>
                 </div>
             </form>

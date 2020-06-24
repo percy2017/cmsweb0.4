@@ -681,7 +681,7 @@ class DataRowsTableSeeder extends Seeder
         if (!$dataRow->exists) {
             $dataRow->fill([
                 'type'         => 'multiple_images',
-                'display_name' => 'Imagenes',
+                'display_name' => 'Imagenes 1080x1080',
                 'required'     => 0,
                 'browse'       => 1,
                 'read'         => 1,
@@ -692,7 +692,30 @@ class DataRowsTableSeeder extends Seeder
                 'details'      => [
                     'tooltip' => [
                         'ubication' => 'top',
-                        'message' => 'Imagenes del producto de 512x512 hasta 3'
+                        'message' => 'Imagenes del producto de 1080x1080'
+                    ],
+                    'display'   => [
+                        'width'  => '6',
+                    ],
+                ]
+            ])->save();
+        }
+        $dataRow = $this->dataRow($ProductDataType, 'images_large');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'multiple_images',
+                'display_name' => 'Imagenes 1080x1920',
+                'required'     => 0,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'order'        => $postion++,
+                'details'      => [
+                    'tooltip' => [
+                        'ubication' => 'top',
+                        'message' => 'Imagenes del producto de 1080x1920'
                     ],
                     'display'   => [
                         'width'  => '6',
@@ -869,6 +892,7 @@ class DataRowsTableSeeder extends Seeder
                 'add'          => 1,
                 'delete'       => 0,
                 'details'      => [
+                    'default' => 1,
                     'tooltip' => [
                         'ubication' => 'top',
                         'message' => 'Vistas del Producto'

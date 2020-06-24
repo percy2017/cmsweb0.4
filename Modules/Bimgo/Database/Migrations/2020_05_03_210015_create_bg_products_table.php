@@ -19,11 +19,13 @@ class CreateBgProductsTable extends Migration
             $table->string('slug')->unique();
             $table->text('description')->nullable();
             $table->text('images')->nullable();
+            $table->text('images_large')->nullable();
             $table->string('tags')->nullable();
             $table->string('stars')->nullable();
             $table->text('characteristics')->nullable();
             $table->boolean('published')->default(false);
             $table->boolean('offer')->default(false);
+            
             $table->integer('views')->default(0);
             $table->text('description_long')->nullable();
 

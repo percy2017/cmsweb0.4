@@ -10,14 +10,14 @@
 
 @section('content')
  <!-- Main Container -->
-  <div class="container pt-3">
-    <section id="productDetails" class="pb-5">
-      <div class="card mt-5 hoverable">
-        <div class="row mt-5">
+  {{-- <div class="container pt-3"> --}}
+    <section id="productDetails" class="mb-3">
+      <div class="card hoverable">
+        <div class="row mt-3">
           <div class="col-lg-6">
 
             <div class="row mx-2">
-              <div id="carousel-thumb" class="carousel slide carousel-fade carousel-thumbnails mb-5 pb-4" data-ride="carousel">
+              <div id="carousel-thumb" class="carousel slide carousel-fade carousel-thumbnails mb-1 pb-1" data-ride="carousel">
                 <div class="carousel-inner text-center text-md-left" role="listbox">
                   @foreach ($product->images != null ? json_decode($product->images) : [] as $item)
                     @if ($loop->index == 0)
@@ -105,10 +105,10 @@
 
     <div class="card mb-5">
       <div class="card-body">
-        <h4 class="h4-responsive dark-grey-text font-weight-bold my-5 text-center">
+        {{-- <h4 class="h4-responsive dark-grey-text font-weight-bold my-5 text-center">
           <strong>Descripción del Producto</strong>
         </h4>
-        <hr class="mb-5">
+        <hr class="mb-5"> --}}
         {!! htmlspecialchars_decode($product->description_long) !!}
         
       </div>
@@ -225,7 +225,7 @@
         @endforeach
       </div>
     </section>
-  </div>
+  {{-- </div> --}}
   <!-- Main Container -->
 @endsection
 
@@ -247,9 +247,9 @@
               success: function (response) {
                 if(response.price_last > 0)
                 {
-                  $('#price').html('<span class="red-text font-weight-bold">'+response.price+' Bs.</strong></span> <span class="grey-text"><small><s>'+response.price_last+' Bs.</s></small></span>');
+                  $('#price').html('<span class="red-text font-weight-bold">'+response.price+'</strong></span> <span class="grey-text"><small><s>'+response.price_last+'</s></small></span> '+' {{ setting('ecommerce.monedas') }}');
                 }else{
-                  $('#price').html('<span class="dark-grey-text font-weight-bold">'+response.price+' Bs.</strong></span>');
+                  $('#price').html('<span class="dark-grey-text font-weight-bold">'+response.price+'</strong></span> '+' {{ setting('ecommerce.monedas') }}');
                 }
               }
             });
@@ -290,9 +290,9 @@
           success: function (response) {
             if(response.price_last > 0)
             {
-              $('#price').html('<span class="red-text font-weight-bold">'+response.price+' Bs.</strong></span> <span class="grey-text"><small><s>'+response.price_last+' Bs.</s></small></span>');
+              $('#price').html('<span class="red-text font-weight-bold">'+response.price+'</strong></span> <span class="grey-text"><small><s>'+response.price_last+'</s></small></span> '+'{{ setting('ecommerce.monedas') }}');
             }else{
-              $('#price').html('<span class="dark-grey-text font-weight-bold">'+response.price+' Bs.</strong></span>');
+              $('#price').html('<span class="dark-grey-text font-weight-bold">'+response.price+'</strong></span>'+'{{ setting('ecommerce.monedas') }}');
             }
           }
         });

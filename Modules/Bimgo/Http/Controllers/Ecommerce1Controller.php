@@ -85,6 +85,7 @@ class Ecommerce1Controller extends Controller
         //
     }
     //  ----------- Function Static------------------------------
+    //-----------------------------------------------------------
     static function products()
     {
         $products = BgProduct::where('published', true)->with(['product_details'])->orderBy('id', 'desc')->limit(6)->get();
@@ -100,8 +101,14 @@ class Ecommerce1Controller extends Controller
         $products = BgProduct::where('published', true)->orderBy('id', 'desc')->paginate(4);
         return $products;
     }
+    static function moda()
+    {
+        $products =BgProduct::where('published', true)->with(['product_details'])->orderBy('id', 'desc')->limit(6)->get();
+        return $products;
+    }
 
     //  ----------- Function Routes------------------------------
+    //----------------------------------------------------------
     function product_details($slug)
     {
         $product = BgProduct::with(['product_details'])->where('slug', $slug)->first();
@@ -161,7 +168,24 @@ class Ecommerce1Controller extends Controller
     {
         $page = \App\Page::where('slug', 'landing-page-bimgo')->first();
         $customer = \Modules\Bimgo\Entities\BgCustomer::where('user_id', Auth::user()->id)->first();
+        if (!$customer) {
+            $customer=\Modules\Bimgo\Entities\BgCustomer::create([
+                'type' => 'Natural',
+                'user_id' => Auth::user()->id,
+                'name_bussiness' => 'Name Default'
+            ]);
+        }
         $location = \Modules\Bimgo\Entities\BgLocation::with(['region'])->where([['customer_id', $customer->user_id], ['default', true]])->first();
+        // return $location;
+        // if (!$location) {
+        //     \Modules\Bimgo\Entities\BgLocation::create([
+        //         'region_id' => 1,
+        //         'customer_id' => $customer->id,
+        //         'type' => 'Casa',
+        //         'default' => true,
+        //         'nit_ci' => 0
+        //     ]);
+        // }
         $pagos=\Modules\Bimgo\Entities\BgPayment::all();
         // return $pagos;
         return view('bimgo::pages.payment1', [
@@ -178,5 +202,32 @@ class Ecommerce1Controller extends Controller
         return view('bimgo::pages.televenta1', [
             'page' => $page
         ]);
+    }
+    function home()
+    {
+        $page = \App\Page::where('slug', 'landing-page-bimgo')->first();
+        return view('bimgo::pages.home1', [
+            'page' => $page
+        ]);
+    }
+
+    //----------------- ADMIN -------------------------------------------
+    function admin()
+    {
+        $page = \App\Page::where('slug', 'landing-page-bimgo')->first();
+        return view('bimgo::pages.admin1', [
+            'page' => $page
+        ]);
+    }
+
+    function welcome()
+    {
+        return view('bimgo::pages.admin1.welcome');
+
+    }
+    function register()
+    {
+        return view('bimgo::pages.admin1.register');
+
     }
 }

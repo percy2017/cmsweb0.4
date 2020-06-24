@@ -1,5 +1,5 @@
   <!-- Mega menu -->
-  <div class="container mt-5 pt-3">
+  <div class="container mt-3 pt-3">
     <nav class="navbar navbar-expand-lg navbar-dark primary-color mt-5">
       <a class="font-weight-bold white-text mr-4" href="{{ url('my/category') }}">Categorias</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent1"

@@ -67,7 +67,7 @@
                   <!-- Card content-->
                   <div class="card-body">
                     <!-- Category & Title-->
-                    <h5 class="card-title mb-1"><strong><a href="" class="dark-grey-text">{{ $item->name }}</a></strong></h5>
+                    <h5 class="card-title mb-1"><strong><a class="dark-grey-text">{{ $item->name }}</a></strong></h5>
                     <span class="badge grey mb-2">{{ json_decode($item->tags)[0] }}</span>
                     <!-- Rating-->
                     <ul class="rating">
@@ -114,17 +114,28 @@
                     <div class="card-footer pb-0">
 
                       <div class="row mb-0">
-                        @if($item->product_details[0]->price_last > 0)
+                        @php
+                            $default = null;
+                        @endphp
+                        @foreach ($item->product_details as $value)
+                            @if ($value->default)
+                                @php
+                                    $default = $value;
+                                @endphp
+                            @endif
+                        @endforeach
+                        @if($default->price_last > 0)
                           <h5 class="mb-0 pb-0 mt-1 font-weight-bold"><span
-                              class="red-text"><strong>{{ $item->product_details[0]->price }} Bs.</strong></span>
-                              <span class="grey-text"><small><s>{{ $item->product_details[0]->price_last }} Bs.</s></small></span>
+                              class="red-text"><strong> {{ $default->price }} </strong></span>
+                              <span class="grey-text"><small><s> {{ $default->price_last }} </s></small></span>
+                              {{ setting('ecommerce.monedas') }}
                           </h5>
                         @else 
-                          <span class="float-left"><strong>{{ $item->product_details[0]->price }} Bs.</strong></span>
+                          <span class="float-left"><strong>{{ $default->price }} {{ setting('ecommerce.monedas') }} </strong></span>
                         @endif
                         {{--  <span class="float-left"><strong>1439$</strong></span>  --}}
                         <span class="float-right">
-                          <a onclick="addcart('{{ route('bg_ajax_addcart', $item->slug) }}')" class="" data-toggle="tooltip" data-placement="top" title="Agregar al Carrito"><i
+                          <a onclick="addcart('{{ route('bg_ajax_addcart', [$item->slug, $default->id]) }}')"  data-toggle="tooltip" data-placement="top" title="Agregar al Carrito"><i
                               class="fas fa-shopping-cart ml-3"></i></a>
                         </span>
 

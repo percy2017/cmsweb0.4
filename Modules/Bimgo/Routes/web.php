@@ -18,13 +18,22 @@ Route::get('ajax/cart/{slug}/{detail}', 'BimgoController@addcart')->name('bg_aja
 Route::get('ajax/subtract/{slug}/{detail}', 'BimgoController@subtractcart')->name('bg_ajax_subtractcart');
 Route::get('ajax/remove/{slug}/{detail}', 'BimgoController@removecart')->name('bg_ajax_removecart');
 Route::get('ajax/product_details/{id}', 'BimgoController@productdetails')->name('bg_ajax_product_details');
+Route::post('ajax/update/bussiness', 'BimgoController@update_bussiness')->name('bg_ajax_update_bussiness');
+
+// Routes  admin -----------------------------------------------------------------------
+Route::get('ajax/admin/welcome', 'Ecommerce1Controller@welcome')->name('bg_ajax_admin_welcome');
+Route::get('ajax/admin/register', 'Ecommerce1Controller@register')->name('bg_ajax_admin_register');
+
 
 // Routes  Ecommerce1 -----------------------------------------------------------------------
 Route::get('product/{slug}', 'Ecommerce1Controller@product_details')->name('bg_product');
 Route::get('my/category', 'Ecommerce1Controller@category')->name('bg_category');
 Route::get('my/cart', 'Ecommerce1Controller@cart')->name('bg_cart');
 Route::get('my/payment', 'Ecommerce1Controller@payment')->name('bg_payment')->middleware('auth');
-Route::get('my/televenta', 'Ecommerce1Controller@televenta')->name('bg_tv');
+Route::get('my/televenta', 'Ecommerce1Controller@televenta')->name('bg_tv')->middleware('auth');
+Route::get('my/home', 'Ecommerce1Controller@home')->name('bg_home')->middleware('auth');
+Route::get('my/admin', 'Ecommerce1Controller@admin')->name('bg_admin')->middleware('auth');
+
 
 // Routes  Ecommerce2 -----------------------------------------------------------------------
 Route::get('product2/{slug}', 'Ecommerce2Controller@product_details')->name('bg_product2');

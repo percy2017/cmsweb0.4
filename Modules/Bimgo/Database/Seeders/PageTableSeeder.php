@@ -25,7 +25,8 @@ class PageTableSeeder extends Seeder
         Page::where('user_id', 1)->delete();
         Block::where('deleted_at', null)->delete();
 
-        //--------------------------------------------------------------------------------------landing page bimgo
+        //-----------------------------------------------------------------landing page bimgo---------------------
+        //------------------------------------------------------------------------------------------------------
         $page = Page::create([
             'name'        =>  'Landing Page BimGo',
             'slug'        =>  'landing-page-bimgo',
@@ -77,862 +78,859 @@ class PageTableSeeder extends Seeder
                 ],
             ])
         ]);
-        $count = 1;
-        /** block 1 */
-        Block::create([
-            'name'        => 'lpbg_block1',
-            'title'       => 'Blocke 1 (Sesion About Us  1)',
-            'description' => 'Seccion  About Us 1 para la plantilla LPBG',
-            'page_id'     => $page->id,
-            'position'    => $count++,
-            'type'        => 'dinamyc-data',
-            'details'     => json_encode([
-                'title' => [
-                    'type'   => 'text',
-                    'name'   => 'title',
-                    'label'  => 'Titulo',
-                    'value'  => 'Por qué elegirnos',
-                    'width'  => 6
-                ],
-                'parrafo' => [
-                    'type'   => 'text_area',
-                    'name'   => 'parrafo',
-                    'label'  => 'Parrafo',
-                    'value'  => 'Abrimos la primera ubicación del lugar en el centro de París, en el cruce de las calles Adelaide y Jefferson. Hemos diseñado una serie de funciones e instalaciones en ocho plantas.',
-                    'width'  => 6
-                ],
+            $count = 1;
+            /** block 1 */
+            Block::create([
+                'name'        => 'lpbg_block1',
+                'title'       => 'Blocke 1 (Sesion About Us  1)',
+                'description' => 'Seccion  About Us 1 para la plantilla LPBG',
+                'page_id'     => $page->id,
+                'position'    => $count++,
+                'type'        => 'dinamyc-data',
+                'details'     => json_encode([
+                    'title' => [
+                        'type'   => 'text',
+                        'name'   => 'title',
+                        'label'  => 'Titulo',
+                        'value'  => 'Por qué elegirnos',
+                        'width'  => 6
+                    ],
+                    'parrafo' => [
+                        'type'   => 'text_area',
+                        'name'   => 'parrafo',
+                        'label'  => 'Parrafo',
+                        'value'  => 'Abrimos la primera ubicación del lugar en el centro de París, en el cruce de las calles Adelaide y Jefferson. Hemos diseñado una serie de funciones e instalaciones en ocho plantas.',
+                        'width'  => 6
+                    ],
 
-                'space1' => [
-                    'type'  => 'space',
-                    'name'  => 'space1',
-                ],
+                    'space1' => [
+                        'type'  => 'space',
+                        'name'  => 'space1',
+                    ],
 
-                'icons1' => [
-                    'type'   => 'select_dropdown',
-                    'name'   => 'icons1',
-                    'label'  => 'Icons 1',
-                    'value'  => 'fas fa-wifi orange-pastel fa-2x',
-                    'width'  => 6
-                ],
-                'title_group1' => [
-                    'type'   => 'text',
-                    'name'   => 'title_group1',
-                    'label'  => 'Titulo grupo1',
-                    'value'  => 'Lugar de trabajo',
-                    'width'  => 6
-                ],
-                'btn_name_group1' => [
-                    'type'   => 'text',
-                    'name'   => 'btn_name_group1',
-                    'label'  => 'Nombre del Boton grupo1',
-                    'value'  => 'Aprende mas',
-                    'width'  => 6
-                ],
-                'btn_action_group1' => [
-                    'type'   => 'text',
-                    'name'   => 'btn_action_group1',
-                    'label'  => 'Accion del Boton grupo1',
-                    'value'  => '/miaccion',
-                    'width'  => 6
-                ],
-                'parrafo_group1' => [
-                    'type'   => 'rich_text_box',
-                    'name'   => 'parrafo_group1',
-                    'label'  => 'Parrafo del grupo1',
-                    'value'  => 'Pero debo explicarle cómo nació toda esta idea equivocada de denunciar el placer y alabar el dolor, una descripción completa del sistema, y ​​exponer las enseñanzas reales del gran explorador de la verdad y se desarrollará en el maestro constructor de la felicidad humana. Nada del placer porque es dolor o evita.',
-                    'width'  => 12
-                ],
+                    'icons1' => [
+                        'type'   => 'select_dropdown',
+                        'name'   => 'icons1',
+                        'label'  => 'Icons 1',
+                        'value'  => 'fas fa-wifi orange-pastel fa-2x',
+                        'width'  => 6
+                    ],
+                    'title_group1' => [
+                        'type'   => 'text',
+                        'name'   => 'title_group1',
+                        'label'  => 'Titulo grupo1',
+                        'value'  => 'Lugar de trabajo',
+                        'width'  => 6
+                    ],
+                    'btn_name_group1' => [
+                        'type'   => 'text',
+                        'name'   => 'btn_name_group1',
+                        'label'  => 'Nombre del Boton grupo1',
+                        'value'  => 'Aprende mas',
+                        'width'  => 6
+                    ],
+                    'btn_action_group1' => [
+                        'type'   => 'text',
+                        'name'   => 'btn_action_group1',
+                        'label'  => 'Accion del Boton grupo1',
+                        'value'  => '/miaccion',
+                        'width'  => 6
+                    ],
+                    'parrafo_group1' => [
+                        'type'   => 'rich_text_box',
+                        'name'   => 'parrafo_group1',
+                        'label'  => 'Parrafo del grupo1',
+                        'value'  => 'Pero debo explicarle cómo nació toda esta idea equivocada de denunciar el placer y alabar el dolor, una descripción completa del sistema, y ​​exponer las enseñanzas reales del gran explorador de la verdad y se desarrollará en el maestro constructor de la felicidad humana. Nada del placer porque es dolor o evita.',
+                        'width'  => 12
+                    ],
 
-                'space2' => [
-                    'type'  => 'space',
-                    'name'  => 'space2',
-                ],
+                    'space2' => [
+                        'type'  => 'space',
+                        'name'  => 'space2',
+                    ],
 
-                'icons2' => [
-                    'type'   => 'select_dropdown',
-                    'name'   => 'icons2',
-                    'label'  => 'Icons 2',
-                    'value'  => 'fas fa-coffee blue-pastel fa-2x',
-                    'width'  => 6
-                ],
-                'title_group2' => [
-                    'type'   => 'text',
-                    'name'   => 'title_group2',
-                    'label'  => 'Titulo grupo2',
-                    'value'  => 'Un lugar de encuentro',
-                    'width'  => 6
-                ],
-                'btn_name_group2' => [
-                    'type'   => 'text',
-                    'name'   => 'btn_name_group2',
-                    'label'  => 'Nombre del Boton grupo2',
-                    'value'  => 'Aprende mas',
-                    'width'  => 6
-                ],
-                'btn_action_group2' => [
-                    'type'   => 'text',
-                    'name'   => 'btn_action_group2',
-                    'label'  => 'Accion del Boton grupo2',
-                    'value'  => '/miaccion2',
-                    'width'  => 6
-                ],
-                'parrafo_group2' => [
-                    'type'   => 'rich_text_box',
-                    'name'   => 'parrafo_group2',
-                    'label'  => 'Parrafo del grupo2',
-                    'value'  => 'Pero debo explicarle cómo nació toda esta idea equivocada de denunciar el placer y alabar el dolor, una descripción completa del sistema, y ​​exponer las enseñanzas reales del gran explorador de la verdad y se desarrollará en el maestro constructor de la felicidad humana. Nada del placer porque es dolor o evita.',
-                    'width'  => 12
-                ],
+                    'icons2' => [
+                        'type'   => 'select_dropdown',
+                        'name'   => 'icons2',
+                        'label'  => 'Icons 2',
+                        'value'  => 'fas fa-coffee blue-pastel fa-2x',
+                        'width'  => 6
+                    ],
+                    'title_group2' => [
+                        'type'   => 'text',
+                        'name'   => 'title_group2',
+                        'label'  => 'Titulo grupo2',
+                        'value'  => 'Un lugar de encuentro',
+                        'width'  => 6
+                    ],
+                    'btn_name_group2' => [
+                        'type'   => 'text',
+                        'name'   => 'btn_name_group2',
+                        'label'  => 'Nombre del Boton grupo2',
+                        'value'  => 'Aprende mas',
+                        'width'  => 6
+                    ],
+                    'btn_action_group2' => [
+                        'type'   => 'text',
+                        'name'   => 'btn_action_group2',
+                        'label'  => 'Accion del Boton grupo2',
+                        'value'  => '/miaccion2',
+                        'width'  => 6
+                    ],
+                    'parrafo_group2' => [
+                        'type'   => 'rich_text_box',
+                        'name'   => 'parrafo_group2',
+                        'label'  => 'Parrafo del grupo2',
+                        'value'  => 'Pero debo explicarle cómo nació toda esta idea equivocada de denunciar el placer y alabar el dolor, una descripción completa del sistema, y ​​exponer las enseñanzas reales del gran explorador de la verdad y se desarrollará en el maestro constructor de la felicidad humana. Nada del placer porque es dolor o evita.',
+                        'width'  => 12
+                    ],
 
-                'space3' => [
-                    'type'  => 'space',
-                    'name'  => 'space3',
-                ],
+                    'space3' => [
+                        'type'  => 'space',
+                        'name'  => 'space3',
+                    ],
 
-                'icons3' => [
-                    'type'   => 'select_dropdown',
-                    'name'   => 'icons3',
-                    'label'  => 'Icons 3',
-                    'value'  => 'far fa-grin-beam green-pastel fa-2x',
-                    'width'  => 6
-                ],
-                'title_group3' => [
-                    'type'   => 'text',
-                    'name'   => 'title_group3',
-                    'label'  => 'Titulo grupo3',
-                    'value'  => 'Somos amigables para los niños',
-                    'width'  => 6
-                ],
-                'btn_name_group3' => [
-                    'type'   => 'text',
-                    'name'   => 'btn_name_group3',
-                    'label'  => 'Nombre del Boton grupo3',
-                    'value'  => 'Aprende mas',
-                    'width'  => 6
-                ],
-                'btn_action_group3' => [
-                    'type'   => 'text',
-                    'name'   => 'btn_action_group3',
-                    'label'  => 'Accion del Boton grupo3',
-                    'value'  => '/miaccion3',
-                    'width'  => 6
-                ],
-                'parrafo_group3' => [
-                    'type'   => 'rich_text_box',
-                    'name'   => 'parrafo_group3',
-                    'label'  => 'Parrafo del grupo3',
-                    'value'  => 'Los consideramos dignos, y están acusando a los que odian a los justos, pero, en verdad, y corrompidos por la adulación del presente y los placeres deleniti, están cegados por la codicia de estos dolores, y por los cuales no previó los problemas de los omnis, los deberes de aquellos que desertaron de la falta de espíritu del general, y en el mismo capítulo tienen la culpa, y eso es culpable, y en el mismo capítulo es culpa suya, eso es doloroso y culpable.',
-                    'width'  => 12
-                ],
+                    'icons3' => [
+                        'type'   => 'select_dropdown',
+                        'name'   => 'icons3',
+                        'label'  => 'Icons 3',
+                        'value'  => 'far fa-grin-beam green-pastel fa-2x',
+                        'width'  => 6
+                    ],
+                    'title_group3' => [
+                        'type'   => 'text',
+                        'name'   => 'title_group3',
+                        'label'  => 'Titulo grupo3',
+                        'value'  => 'Somos amigables para los niños',
+                        'width'  => 6
+                    ],
+                    'btn_name_group3' => [
+                        'type'   => 'text',
+                        'name'   => 'btn_name_group3',
+                        'label'  => 'Nombre del Boton grupo3',
+                        'value'  => 'Aprende mas',
+                        'width'  => 6
+                    ],
+                    'btn_action_group3' => [
+                        'type'   => 'text',
+                        'name'   => 'btn_action_group3',
+                        'label'  => 'Accion del Boton grupo3',
+                        'value'  => '/miaccion3',
+                        'width'  => 6
+                    ],
+                    'parrafo_group3' => [
+                        'type'   => 'rich_text_box',
+                        'name'   => 'parrafo_group3',
+                        'label'  => 'Parrafo del grupo3',
+                        'value'  => 'Los consideramos dignos, y están acusando a los que odian a los justos, pero, en verdad, y corrompidos por la adulación del presente y los placeres deleniti, están cegados por la codicia de estos dolores, y por los cuales no previó los problemas de los omnis, los deberes de aquellos que desertaron de la falta de espíritu del general, y en el mismo capítulo tienen la culpa, y eso es culpable, y en el mismo capítulo es culpa suya, eso es doloroso y culpable.',
+                        'width'  => 12
+                    ],
 
-            ])
-        ]);
-        /** block 2 */
-        Block::create([
-            'name'        => 'lpbg_block2',
-            'title'       => 'Blocke 2 (Sesion Offer  2)',
-            'description' => 'Seccion  Offer 2 para la plantilla LPBG',
-            'page_id'     => $page->id,
-            'position'    => $count++,
-            'type'        => 'dinamyc-data',
-            'details'     => json_encode([
+                ])
+            ]);
+            /** block 2 */
+            Block::create([
+                'name'        => 'lpbg_block2',
+                'title'       => 'Blocke 2 (Sesion Offer  2)',
+                'description' => 'Seccion  Offer 2 para la plantilla LPBG',
+                'page_id'     => $page->id,
+                'position'    => $count++,
+                'type'        => 'dinamyc-data',
+                'details'     => json_encode([
 
-                'imagen' => [
-                    'type'   => 'image',
-                    'name'   => 'imagen',
-                    'label'  => 'Imagen ',
-                    'value'  => 'graphics(3).png',
-                    'width'  => 6
-                ],
-                'title' => [
-                    'type'   => 'text',
-                    'name'   => 'title',
-                    'label'  => 'Titulo',
-                    'value'  => 'Lo que obtienes',
-                    'width'  => 6
-                ],
-                'parrafo' => [
-                    'type'   => 'text_area',
-                    'name'   => 'parrafo',
-                    'label'  => 'Parrafo',
-                    'value'  => 'Querer ser un dolor en el cupidotat cillum ha sido criticado en la huida Duis et dolore magna no produce el placer resultante. Los negros excepcionales de cupidatat no son los culpables, lo cual es tranquilizador abandonar sus responsabilidades.',
-                    'width'  => 12
-                ],
+                    'imagen' => [
+                        'type'   => 'image',
+                        'name'   => 'imagen',
+                        'label'  => 'Imagen ',
+                        'value'  => 'graphics(3).png',
+                        'width'  => 6
+                    ],
+                    'title' => [
+                        'type'   => 'text',
+                        'name'   => 'title',
+                        'label'  => 'Titulo',
+                        'value'  => 'Lo que obtienes',
+                        'width'  => 6
+                    ],
+                    'parrafo' => [
+                        'type'   => 'text_area',
+                        'name'   => 'parrafo',
+                        'label'  => 'Parrafo',
+                        'value'  => 'Querer ser un dolor en el cupidotat cillum ha sido criticado en la huida Duis et dolore magna no produce el placer resultante. Los negros excepcionales de cupidatat no son los culpables, lo cual es tranquilizador abandonar sus responsabilidades.',
+                        'width'  => 12
+                    ],
 
-                'space1' => [
-                    'type'  => 'space',
-                    'name'  => 'space1',
-                ],
+                    'space1' => [
+                        'type'  => 'space',
+                        'name'  => 'space1',
+                    ],
 
-                'icons4' => [
-                    'type'   => 'select_dropdown',
-                    'name'   => 'icons4',
-                    'label'  => 'Icons 4 ',
-                    'value'  => 'fas fa-book-open purple-pastel fa-2x',
-                    'width'  => 6
-                ],
-                'title_group4' => [
-                    'type'   => 'text',
-                    'name'   => 'title_group4',
-                    'label'  => 'Titulo grupo4',
-                    'value'  => 'Escritorios para cualquier período',
-                    'width'  => 6
-                ],
-                'parrafo_group4' => [
-                    'type'   => 'rich_text_box',
-                    'name'   => 'parrafo_group4',
-                    'label'  => 'Parrafo del grupo4',
-                    'value'  => 'Lorem ipsum dolor sentarse amet, consectetur adipiscing. No puedo manejarlo, para nuestros antepasados, abriré el más pequeño de los clientes a la vez, disfrute del juego.',
-                    'width'  => 12
-                ],
+                    'icons4' => [
+                        'type'   => 'select_dropdown',
+                        'name'   => 'icons4',
+                        'label'  => 'Icons 4 ',
+                        'value'  => 'fas fa-book-open purple-pastel fa-2x',
+                        'width'  => 6
+                    ],
+                    'title_group4' => [
+                        'type'   => 'text',
+                        'name'   => 'title_group4',
+                        'label'  => 'Titulo grupo4',
+                        'value'  => 'Escritorios para cualquier período',
+                        'width'  => 6
+                    ],
+                    'parrafo_group4' => [
+                        'type'   => 'rich_text_box',
+                        'name'   => 'parrafo_group4',
+                        'label'  => 'Parrafo del grupo4',
+                        'value'  => 'Lorem ipsum dolor sentarse amet, consectetur adipiscing. No puedo manejarlo, para nuestros antepasados, abriré el más pequeño de los clientes a la vez, disfrute del juego.',
+                        'width'  => 12
+                    ],
 
-                'space2' => [
-                    'type'  => 'space',
-                    'name'  => 'space2',
-                ],
+                    'space2' => [
+                        'type'  => 'space',
+                        'name'  => 'space2',
+                    ],
 
-                'icons5' => [
-                    'type'   => 'select_dropdown',
-                    'name'   => 'icons5',
-                    'label'  => 'Icons 5 ',
-                    'value'  => 'fas fa-wifi green-pastel fa-2x',
-                    'width'  => 6
-                ],
-                'title_group5' => [
-                    'type'   => 'text',
-                    'name'   => 'title_group5',
-                    'label'  => 'Titulo grupo5',
-                    'value'  => 'Internet rápido',
-                    'width'  => 6
-                ],
-                'parrafo_group5' => [
-                    'type'   => 'rich_text_box',
-                    'name'   => 'parrafo_group5',
-                    'label'  => 'Parrafo del grupo5',
-                    'value'  => 'Lorem ipsum dolor sentarse amet, consectetur adipiscing. No puedo manejarlo, para nuestros antepasados, abriré el más pequeño de los clientes a la vez, disfrute del juego.',
-                    'width'  => 12
-                ],
+                    'icons5' => [
+                        'type'   => 'select_dropdown',
+                        'name'   => 'icons5',
+                        'label'  => 'Icons 5 ',
+                        'value'  => 'fas fa-wifi green-pastel fa-2x',
+                        'width'  => 6
+                    ],
+                    'title_group5' => [
+                        'type'   => 'text',
+                        'name'   => 'title_group5',
+                        'label'  => 'Titulo grupo5',
+                        'value'  => 'Internet rápido',
+                        'width'  => 6
+                    ],
+                    'parrafo_group5' => [
+                        'type'   => 'rich_text_box',
+                        'name'   => 'parrafo_group5',
+                        'label'  => 'Parrafo del grupo5',
+                        'value'  => 'Lorem ipsum dolor sentarse amet, consectetur adipiscing. No puedo manejarlo, para nuestros antepasados, abriré el más pequeño de los clientes a la vez, disfrute del juego.',
+                        'width'  => 12
+                    ],
 
-                'space3' => [
-                    'type'  => 'space',
-                    'name'  => 'space3',
-                ],
+                    'space3' => [
+                        'type'  => 'space',
+                        'name'  => 'space3',
+                    ],
 
-                'icons6' => [
-                    'type'   => 'select_dropdown',
-                    'name'   => 'icons6',
-                    'label'  => 'Icons 6 ',
-                    'value'  => 'far fa-clock orange-pastel fa-2x',
-                    'width'  => 6
-                ],
-                'title_group6' => [
-                    'type'   => 'text',
-                    'name'   => 'title_group6',
-                    'label'  => 'Titulo grupo6',
-                    'value'  => 'Acceso 24/7',
-                    'width'  => 6
-                ],
-                'parrafo_group6' => [
-                    'type'   => 'rich_text_box',
-                    'name'   => 'parrafo_group6',
-                    'label'  => 'Parrafo del grupo6',
-                    'value'  => 'Lorem ipsum dolor sentarse amet, consectetur adipiscing. No puedo manejarlo, para nuestros antepasados, abriré el más pequeño de los clientes a la vez, disfrute del juego.',
-                    'width'  => 12
-                ],
+                    'icons6' => [
+                        'type'   => 'select_dropdown',
+                        'name'   => 'icons6',
+                        'label'  => 'Icons 6 ',
+                        'value'  => 'far fa-clock orange-pastel fa-2x',
+                        'width'  => 6
+                    ],
+                    'title_group6' => [
+                        'type'   => 'text',
+                        'name'   => 'title_group6',
+                        'label'  => 'Titulo grupo6',
+                        'value'  => 'Acceso 24/7',
+                        'width'  => 6
+                    ],
+                    'parrafo_group6' => [
+                        'type'   => 'rich_text_box',
+                        'name'   => 'parrafo_group6',
+                        'label'  => 'Parrafo del grupo6',
+                        'value'  => 'Lorem ipsum dolor sentarse amet, consectetur adipiscing. No puedo manejarlo, para nuestros antepasados, abriré el más pequeño de los clientes a la vez, disfrute del juego.',
+                        'width'  => 12
+                    ],
 
-                'imagen1' => [
-                    'type'   => 'image',
-                    'name'   => 'imagen1',
-                    'label'  => 'Imagen 1',
-                    'value'  => 'graphics(4).png',
-                    'width'  => 12
-                ],
+                    'imagen1' => [
+                        'type'   => 'image',
+                        'name'   => 'imagen1',
+                        'label'  => 'Imagen 1',
+                        'value'  => 'graphics(4).png',
+                        'width'  => 12
+                    ],
 
-                'icons7' => [
-                    'type'   => 'select_dropdown',
-                    'name'   => 'icons7',
-                    'label'  => 'Icons 7 ',
-                    'value'  => 'fas fa-users fa-2x blue-pastel',
-                    'width'  => 6
-                ],
-                'title_group7' => [
-                    'type'   => 'text',
-                    'name'   => 'title_group7',
-                    'label'  => 'Titulo grupo7',
-                    'value'  => 'Salas de reuniones',
-                    'width'  => 6
-                ],
-                'parrafo_group7' => [
-                    'type'   => 'rich_text_box',
-                    'name'   => 'parrafo_group7',
-                    'label'  => 'Parrafo del grupo7',
-                    'value'  => 'Lorem ipsum dolor sentarse amet, consectetur adipiscing. No puedo manejarlo, para nuestros antepasados, abriré el más pequeño de los clientes a la vez, disfrute del juego.',
-                    'width'  => 12
-                ],
+                    'icons7' => [
+                        'type'   => 'select_dropdown',
+                        'name'   => 'icons7',
+                        'label'  => 'Icons 7 ',
+                        'value'  => 'fas fa-users fa-2x blue-pastel',
+                        'width'  => 6
+                    ],
+                    'title_group7' => [
+                        'type'   => 'text',
+                        'name'   => 'title_group7',
+                        'label'  => 'Titulo grupo7',
+                        'value'  => 'Salas de reuniones',
+                        'width'  => 6
+                    ],
+                    'parrafo_group7' => [
+                        'type'   => 'rich_text_box',
+                        'name'   => 'parrafo_group7',
+                        'label'  => 'Parrafo del grupo7',
+                        'value'  => 'Lorem ipsum dolor sentarse amet, consectetur adipiscing. No puedo manejarlo, para nuestros antepasados, abriré el más pequeño de los clientes a la vez, disfrute del juego.',
+                        'width'  => 12
+                    ],
 
-                'space4' => [
-                    'type'  => 'space',
-                    'name'  => 'space4',
-                ],
+                    'space4' => [
+                        'type'  => 'space',
+                        'name'  => 'space4',
+                    ],
 
-                'icons8' => [
-                    'type'   => 'select_dropdown',
-                    'name'   => 'icons8',
-                    'label'  => 'Icons 8 ',
-                    'value'  => 'fas fa-gem fa-2x pink-pastel',
-                    'width'  => 6
-                ],
-                'title_group8' => [
-                    'type'   => 'text',
-                    'name'   => 'title_group8',
-                    'label'  => 'Titulo grupo8',
-                    'value'  => 'Membresías flexibles',
-                    'width'  => 6
-                ],
-                'parrafo_group8' => [
-                    'type'   => 'rich_text_box',
-                    'name'   => 'parrafo_group8',
-                    'label'  => 'Parrafo del grupo8',
-                    'value'  => 'Lorem ipsum dolor sentarse amet, consectetur adipiscing. No puedo manejarlo, para nuestros antepasados, abriré el más pequeño de los clientes a la vez, disfrute del juego.',
-                    'width'  => 12
-                ],
+                    'icons8' => [
+                        'type'   => 'select_dropdown',
+                        'name'   => 'icons8',
+                        'label'  => 'Icons 8 ',
+                        'value'  => 'fas fa-gem fa-2x pink-pastel',
+                        'width'  => 6
+                    ],
+                    'title_group8' => [
+                        'type'   => 'text',
+                        'name'   => 'title_group8',
+                        'label'  => 'Titulo grupo8',
+                        'value'  => 'Membresías flexibles',
+                        'width'  => 6
+                    ],
+                    'parrafo_group8' => [
+                        'type'   => 'rich_text_box',
+                        'name'   => 'parrafo_group8',
+                        'label'  => 'Parrafo del grupo8',
+                        'value'  => 'Lorem ipsum dolor sentarse amet, consectetur adipiscing. No puedo manejarlo, para nuestros antepasados, abriré el más pequeño de los clientes a la vez, disfrute del juego.',
+                        'width'  => 12
+                    ],
 
-                'space5' => [
-                    'type'  => 'space',
-                    'name'  => 'space5',
-                ],
+                    'space5' => [
+                        'type'  => 'space',
+                        'name'  => 'space5',
+                    ],
 
-                'icons9' => [
-                    'type'   => 'select_dropdown',
-                    'name'   => 'icons9',
-                    'label'  => 'Icons 9 ',
-                    'value'  => 'fas fa-utensils fa-2x navy-blue-color',
-                    'width'  => 6
-                ],
-                'title_group9' => [
-                    'type'   => 'text',
-                    'name'   => 'title_group9',
-                    'label'  => 'Titulo grupo9',
-                    'value'  => 'Cocinas',
-                    'width'  => 6
-                ],
-                'parrafo_group9' => [
-                    'type'   => 'rich_text_box',
-                    'name'   => 'parrafo_group9',
-                    'label'  => 'Parrafo del grupo9',
-                    'value'  => 'Lorem ipsum dolor sentarse amet, consectetur adipiscing. No puedo manejarlo, para nuestros antepasados, abriré el más pequeño de los clientes a la vez, disfrute del juego.',
-                    'width'  => 12
-                ],
+                    'icons9' => [
+                        'type'   => 'select_dropdown',
+                        'name'   => 'icons9',
+                        'label'  => 'Icons 9 ',
+                        'value'  => 'fas fa-utensils fa-2x navy-blue-color',
+                        'width'  => 6
+                    ],
+                    'title_group9' => [
+                        'type'   => 'text',
+                        'name'   => 'title_group9',
+                        'label'  => 'Titulo grupo9',
+                        'value'  => 'Cocinas',
+                        'width'  => 6
+                    ],
+                    'parrafo_group9' => [
+                        'type'   => 'rich_text_box',
+                        'name'   => 'parrafo_group9',
+                        'label'  => 'Parrafo del grupo9',
+                        'value'  => 'Lorem ipsum dolor sentarse amet, consectetur adipiscing. No puedo manejarlo, para nuestros antepasados, abriré el más pequeño de los clientes a la vez, disfrute del juego.',
+                        'width'  => 12
+                    ],
 
-            ])
+                ])
 
-        ]);
-        /** block 3 */
-        Block::create([
-            'name'        => 'lpbg_block3',
-            'title'       => 'Blocke 3 (Sesion Articles  3)',
-            'description' => 'Seccion  Articles 3 para la plantilla LPBG',
-            'page_id'     => $page->id,
-            'position'    => $count++,
-            'type'        => 'dinamyc-data',
-            'details'     => json_encode([
+            ]);
+            /** block 3 */
+            Block::create([
+                'name'        => 'lpbg_block3',
+                'title'       => 'Blocke 3 (Sesion Articles  3)',
+                'description' => 'Seccion  Articles 3 para la plantilla LPBG',
+                'page_id'     => $page->id,
+                'position'    => $count++,
+                'type'        => 'dinamyc-data',
+                'details'     => json_encode([
 
-                'title' => [
-                    'type'   => 'text',
-                    'name'   => 'title',
-                    'label'  => 'Titulo',
-                    'value'  => 'Las grandes noticias',
-                    'width'  => 6
-                ],
-                'parrafo' => [
-                    'type'   => 'text_area',
-                    'name'   => 'parrafo',
-                    'label'  => 'Parrafo',
-                    'value'  => 'Querer ser un dolor en el cupidotat cillum ha sido criticado en el Duis et dolore magna huir no produce el placer resultante. Los negros excepcionales de cupidatat no son los culpables, lo cual es tranquilizador abandonar sus responsabilidades.',
-                    'width'  => 6
-                ],
+                    'title' => [
+                        'type'   => 'text',
+                        'name'   => 'title',
+                        'label'  => 'Titulo',
+                        'value'  => 'Las grandes noticias',
+                        'width'  => 6
+                    ],
+                    'parrafo' => [
+                        'type'   => 'text_area',
+                        'name'   => 'parrafo',
+                        'label'  => 'Parrafo',
+                        'value'  => 'Querer ser un dolor en el cupidotat cillum ha sido criticado en el Duis et dolore magna huir no produce el placer resultante. Los negros excepcionales de cupidatat no son los culpables, lo cual es tranquilizador abandonar sus responsabilidades.',
+                        'width'  => 6
+                    ],
 
-                'space1' => [
-                    'type'  => 'space',
-                    'name'  => 'space1',
-                ],
+                    'space1' => [
+                        'type'  => 'space',
+                        'name'  => 'space1',
+                    ],
 
-                'imagen_group1' => [
-                    'type'   => 'image',
-                    'name'   => 'imagen_group1',
-                    'label'  => 'Imagen grupo 1',
-                    'value'  => '58.jpg',
-                    'width'  => 6
-                ],
-                'title_group1' => [
-                    'type'   => 'text',
-                    'name'   => 'title_group1',
-                    'label'  => 'Titulo del grupo 1',
-                    'value'  => 'El titulo de la noticia 1',
-                    'width'  => 6
-                ],
-                'parrafo_group1' => [
-                    'type'   => 'rich_text_box',
-                    'name'   => 'parrafo_group1',
-                    'label'  => 'Parrafo del grupo 1',
-                    'value'  => 'Querer ser un dolor en el cupidotat cillum ha sido criticado en el Duis et dolore magna huir no produce el placer resultante. Los negros excepcionales de cupidatat no son los culpables, lo cual es tranquilizador abandonar sus responsabilidades.',
-                    'width'  => 12
-                ],
+                    'imagen_group1' => [
+                        'type'   => 'image',
+                        'name'   => 'imagen_group1',
+                        'label'  => 'Imagen grupo 1',
+                        'value'  => '58.jpg',
+                        'width'  => 6
+                    ],
+                    'title_group1' => [
+                        'type'   => 'text',
+                        'name'   => 'title_group1',
+                        'label'  => 'Titulo del grupo 1',
+                        'value'  => 'El titulo de la noticia 1',
+                        'width'  => 6
+                    ],
+                    'parrafo_group1' => [
+                        'type'   => 'rich_text_box',
+                        'name'   => 'parrafo_group1',
+                        'label'  => 'Parrafo del grupo 1',
+                        'value'  => 'Querer ser un dolor en el cupidotat cillum ha sido criticado en el Duis et dolore magna huir no produce el placer resultante. Los negros excepcionales de cupidatat no son los culpables, lo cual es tranquilizador abandonar sus responsabilidades.',
+                        'width'  => 12
+                    ],
 
-                'space2' => [
-                    'type'  => 'space',
-                    'name'  => 'space2',
-                ],
+                    'space2' => [
+                        'type'  => 'space',
+                        'name'  => 'space2',
+                    ],
 
-                'imagen_group2' => [
-                    'type'   => 'image',
-                    'name'   => 'imagen_group2',
-                    'label'  => 'Imagen grupo 2',
-                    'value'  => '59.jpg',
-                    'width'  => 6
-                ],
-                'title_group2' => [
-                    'type'   => 'text',
-                    'name'   => 'title_group2',
-                    'label'  => 'Titulo del grupo 2',
-                    'value'  => 'El titulo de la noticia 2',
-                    'width'  => 6
-                ],
-                'parrafo_group2' => [
-                    'type'   => 'rich_text_box',
-                    'name'   => 'parrafo_group2',
-                    'label'  => 'Parrafo del grupo 2',
-                    'value'  => 'Querer ser un dolor en el cupidotat cillum ha sido criticado en el Duis et dolore magna huir no produce el placer resultante. Los negros excepcionales de cupidatat no son los culpables, lo cual es tranquilizador abandonar sus responsabilidades.',
-                    'width'  => 12
-                ],
+                    'imagen_group2' => [
+                        'type'   => 'image',
+                        'name'   => 'imagen_group2',
+                        'label'  => 'Imagen grupo 2',
+                        'value'  => '59.jpg',
+                        'width'  => 6
+                    ],
+                    'title_group2' => [
+                        'type'   => 'text',
+                        'name'   => 'title_group2',
+                        'label'  => 'Titulo del grupo 2',
+                        'value'  => 'El titulo de la noticia 2',
+                        'width'  => 6
+                    ],
+                    'parrafo_group2' => [
+                        'type'   => 'rich_text_box',
+                        'name'   => 'parrafo_group2',
+                        'label'  => 'Parrafo del grupo 2',
+                        'value'  => 'Querer ser un dolor en el cupidotat cillum ha sido criticado en el Duis et dolore magna huir no produce el placer resultante. Los negros excepcionales de cupidatat no son los culpables, lo cual es tranquilizador abandonar sus responsabilidades.',
+                        'width'  => 12
+                    ],
 
-                'space3' => [
-                    'type'  => 'space',
-                    'name'  => 'space3',
-                ],
+                    'space3' => [
+                        'type'  => 'space',
+                        'name'  => 'space3',
+                    ],
 
-                'imagen_group3' => [
-                    'type'   => 'image',
-                    'name'   => 'imagen_group3',
-                    'label'  => 'Imagen grupo 3',
-                    'value'  => '60.jpg',
-                    'width'  => 6
-                ],
-                'title_group3' => [
-                    'type'   => 'text',
-                    'name'   => 'title_group3',
-                    'label'  => 'Titulo del grupo 3',
-                    'value'  => 'El titulo de la noticia 3',
-                    'width'  => 6
-                ],
-                'parrafo_group3' => [
-                    'type'   => 'rich_text_box',
-                    'name'   => 'parrafo_group3',
-                    'label'  => 'Parrafo del grupo 3',
-                    'value'  => 'Querer ser un dolor en el cupidotat cillum ha sido criticado en el Duis et dolore 
-                        magna huir no produce el placer resultante. Los negros excepcionales de cupidatat no son los culpables,
-                         lo cual es tranquilizador abandonar sus responsabilidades.
-                         <ul class="list-unstyled mb-0">
-                        <!-- Facebook -->
-                        <a class="p-2 fa-lg fb-ic">
-                            <i class="fab fa-facebook-f blue-pastel"> </i>
-                        </a>
-                        <!-- Twitter -->
-                        <a class="p-2 fa-lg tw-ic">
-                            <i class="fab fa-twitter blue-pastel"> </i>
-                        </a>
-                        <!-- Instagram -->
-                        <a class="p-2 fa-lg ins-ic">
-                            <i class="fab fa-instagram blue-pastel"> </i>
-                        </a>
-                        </ul>',
-                    'width'  => 12
-                ],
+                    'imagen_group3' => [
+                        'type'   => 'image',
+                        'name'   => 'imagen_group3',
+                        'label'  => 'Imagen grupo 3',
+                        'value'  => '60.jpg',
+                        'width'  => 6
+                    ],
+                    'title_group3' => [
+                        'type'   => 'text',
+                        'name'   => 'title_group3',
+                        'label'  => 'Titulo del grupo 3',
+                        'value'  => 'El titulo de la noticia 3',
+                        'width'  => 6
+                    ],
+                    'parrafo_group3' => [
+                        'type'   => 'rich_text_box',
+                        'name'   => 'parrafo_group3',
+                        'label'  => 'Parrafo del grupo 3',
+                        'value'  => 'Querer ser un dolor en el cupidotat cillum ha sido criticado en el Duis et dolore 
+                            magna huir no produce el placer resultante. Los negros excepcionales de cupidatat no son los culpables,
+                            lo cual es tranquilizador abandonar sus responsabilidades.
+                            <ul class="list-unstyled mb-0">
+                            <!-- Facebook -->
+                            <a class="p-2 fa-lg fb-ic">
+                                <i class="fab fa-facebook-f blue-pastel"> </i>
+                            </a>
+                            <!-- Twitter -->
+                            <a class="p-2 fa-lg tw-ic">
+                                <i class="fab fa-twitter blue-pastel"> </i>
+                            </a>
+                            <!-- Instagram -->
+                            <a class="p-2 fa-lg ins-ic">
+                                <i class="fab fa-instagram blue-pastel"> </i>
+                            </a>
+                            </ul>',
+                        'width'  => 12
+                    ],
 
-            ])
-        ]);
-        /** block 4 */
-        Block::create([
-            'name'        => 'lpbg_block4',
-            'title'       => 'Blocke 4 (Sesion Contact Us  4)',
-            'description' => 'Seccion  Contact Us 4 para la plantilla LPBG',
-            'page_id'     => $page->id,
-            'position'    => $count++,
-            'type'        => 'dinamyc-data',
-            'details'     => json_encode([
+                ])
+            ]);
+            /** block 4 */
+            Block::create([
+                'name'        => 'lpbg_block4',
+                'title'       => 'Blocke 4 (Sesion Contact Us  4)',
+                'description' => 'Seccion  Contact Us 4 para la plantilla LPBG',
+                'page_id'     => $page->id,
+                'position'    => $count++,
+                'type'        => 'dinamyc-data',
+                'details'     => json_encode([
 
-                'title' => [
-                    'type'   => 'text',
-                    'name'   => 'title',
-                    'label'  => 'Titulo',
-                    'value'  => 'Ponerse en contacto a traves de TeleVenta',
-                    'width'  => 6
-                ],
-                'parrafo' => [
-                    'type'   => 'text_area',
-                    'name'   => 'parrafo',
-                    'label'  => 'Parrafo',
-                    'value'  => 'Duis aute irure dolor in reprehenderit in
-                        voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                        proident, sunt in culpa qui officia deserunt mollit.',
-                    'width'  => 6
-                ],
+                    'title' => [
+                        'type'   => 'text',
+                        'name'   => 'title',
+                        'label'  => 'Titulo',
+                        'value'  => 'Ponerse en contacto a traves de TeleVenta',
+                        'width'  => 6
+                    ],
+                    'parrafo' => [
+                        'type'   => 'text_area',
+                        'name'   => 'parrafo',
+                        'label'  => 'Parrafo',
+                        'value'  => 'Duis aute irure dolor in reprehenderit in
+                            voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                            proident, sunt in culpa qui officia deserunt mollit.',
+                        'width'  => 6
+                    ],
 
-                'space1' => [
-                    'type'  => 'space',
-                    'name'  => 'space1',
-                ],
+                    'space1' => [
+                        'type'  => 'space',
+                        'name'  => 'space1',
+                    ],
 
-                'imagen' => [
-                    'type'   => 'image',
-                    'name'   => 'imagen',
-                    'label'  => 'Imagen block 4 ',
-                    'value'  => '61.jpg',
-                    'width'  => 6
-                ],
-                'descripcion' => [
-                    'type'   => 'text_area',
-                    'name'   => 'descripcion',
-                    'label'  => 'Descripcion',
-                    'value'  => 'Make an appointment to get the best offer',
-                    'width'  => 6
-                ],
-            ])
-        ]);
-        /** block 5 */
-        Block::create([
-            'name'        => 'lpbg_block5',
-            'title'       => 'Blocke 5 (Pasarela de Pago 5)',
-            'description' => 'Seccion Pasarela de Pago 5 para la plantilla LPBG',
-            'page_id'     => $page->id,
-            'position'    => $count++,
-            'type'        => 'dinamyc-data',
-            'details'     => json_encode([
-                'title_strong' => [
-                    'type'   => 'text',
-                    'name'   => 'title_strong',
-                    'label'  => 'Titulo en Negrita',
-                    'value'  => 'Pasarela de Pago',
-                    'width'  => 6
-                ],
-                'description' => [
-                    'type'   => 'text_area',
-                    'name'   => 'description',
-                    'label'  => 'Descripcion',
-                    'value'  => 'Forma de pago',
-                    'width'  => 6
-                ],
+                    'imagen' => [
+                        'type'   => 'image',
+                        'name'   => 'imagen',
+                        'label'  => 'Imagen block 4 ',
+                        'value'  => '61.jpg',
+                        'width'  => 6
+                    ],
+                    'descripcion' => [
+                        'type'   => 'text_area',
+                        'name'   => 'descripcion',
+                        'label'  => 'Descripcion',
+                        'value'  => 'Make an appointment to get the best offer',
+                        'width'  => 6
+                    ],
+                ])
+            ]);
+            /** block 5 */
+            Block::create([
+                'name'        => 'lpbg_block5',
+                'title'       => 'Blocke 5 (Pasarela de Pago 5)',
+                'description' => 'Seccion Pasarela de Pago 5 para la plantilla LPBG',
+                'page_id'     => $page->id,
+                'position'    => $count++,
+                'type'        => 'dinamyc-data',
+                'details'     => json_encode([
+                    'title_strong' => [
+                        'type'   => 'text',
+                        'name'   => 'title_strong',
+                        'label'  => 'Titulo en Negrita',
+                        'value'  => 'Pasarela de Pago',
+                        'width'  => 6
+                    ],
+                    'description' => [
+                        'type'   => 'text_area',
+                        'name'   => 'description',
+                        'label'  => 'Descripcion',
+                        'value'  => 'Forma de pago',
+                        'width'  => 6
+                    ],
 
-                'space1' => [
-                    'type'   => 'space',
-                    'name'   => 'space1',
-                ],
+                    'space1' => [
+                        'type'   => 'space',
+                        'name'   => 'space1',
+                    ],
 
-                'image1' => [
-                    'type'   => 'image',
-                    'name'   => 'image1',
-                    'label'  => 'Imagen 1',
-                    'value'  => 'default1.png',
-                    'width'  => 4
-                ],
-                'image2' => [
-                    'type'   => 'image',
-                    'name'   => 'image2',
-                    'label'  => 'Imagen 2',
-                    'value'  => 'default2.png',
-                    'width'  => 4
-                ],
-                'image3' => [
-                    'type'   => 'image',
-                    'name'   => 'image3',
-                    'label'  => 'Imagen 3',
-                    'value'  => 'default3.png',
-                    'width'  => 4
-                ],
+                    'image1' => [
+                        'type'   => 'image',
+                        'name'   => 'image1',
+                        'label'  => 'Imagen 1',
+                        'value'  => 'default1.png',
+                        'width'  => 4
+                    ],
+                    'image2' => [
+                        'type'   => 'image',
+                        'name'   => 'image2',
+                        'label'  => 'Imagen 2',
+                        'value'  => 'default2.png',
+                        'width'  => 4
+                    ],
+                    'image3' => [
+                        'type'   => 'image',
+                        'name'   => 'image3',
+                        'label'  => 'Imagen 3',
+                        'value'  => 'default3.png',
+                        'width'  => 4
+                    ],
 
-                'space2' => [
-                    'type'   => 'space',
-                    'name'   => 'space2',
-                ],
+                    'space2' => [
+                        'type'   => 'space',
+                        'name'   => 'space2',
+                    ],
 
-                'title1' => [
-                    'type'   => 'text',
-                    'name'   => 'title1',
-                    'label'  => 'Titulo 1',
-                    'value'  => 'Tigo Money',
-                    'width'  => 4
-                ],
-                'title2' => [
-                    'type'   => 'text',
-                    'name'   => 'title2',
-                    'label'  => 'Titulo 2',
-                    'value'  => 'Banco BNB',
-                    'width'  => 4
-                ],
-                'title3' => [
-                    'type'   => 'text',
-                    'name'   => 'title3',
-                    'label'  => 'Titulo 3',
-                    'value'  => 'Banco Union',
-                    'width'  => 4
-                ],
+                    'title1' => [
+                        'type'   => 'text',
+                        'name'   => 'title1',
+                        'label'  => 'Titulo 1',
+                        'value'  => 'Tigo Money',
+                        'width'  => 4
+                    ],
+                    'title2' => [
+                        'type'   => 'text',
+                        'name'   => 'title2',
+                        'label'  => 'Titulo 2',
+                        'value'  => 'Banco BNB',
+                        'width'  => 4
+                    ],
+                    'title3' => [
+                        'type'   => 'text',
+                        'name'   => 'title3',
+                        'label'  => 'Titulo 3',
+                        'value'  => 'Banco Union',
+                        'width'  => 4
+                    ],
 
-                'space3' => [
-                    'type'   => 'space',
-                    'name'   => 'space3',
-                ],
+                    'space3' => [
+                        'type'   => 'space',
+                        'name'   => 'space3',
+                    ],
 
-                'account1' => [
-                    'type'   => 'text',
-                    'name'   => 'account1',
-                    'label'  => 'Cuenta 1',
-                    'value'  => 'Nro de Telefono: 78746621',
-                    'width'  => 4
-                ],
-                'account2' => [
-                    'type'   => 'text',
-                    'name'   => 'account2',
-                    'label'  => 'Cuenta 2',
-                    'value'  => 'Nro de Cuenta: 8500183080',
-                    'width'  => 4
-                ],
-                'account3' => [
-                    'type'   => 'text',
-                    'name'   => 'account3',
-                    'label'  => 'Cuenta 3',
-                    'value'  => 'Nro de Cuenta: 10000013879305',
-                    'width'  => 4
-                ],
+                    'account1' => [
+                        'type'   => 'text',
+                        'name'   => 'account1',
+                        'label'  => 'Cuenta 1',
+                        'value'  => 'Nro de Telefono: 78746621',
+                        'width'  => 4
+                    ],
+                    'account2' => [
+                        'type'   => 'text',
+                        'name'   => 'account2',
+                        'label'  => 'Cuenta 2',
+                        'value'  => 'Nro de Cuenta: 8500183080',
+                        'width'  => 4
+                    ],
+                    'account3' => [
+                        'type'   => 'text',
+                        'name'   => 'account3',
+                        'label'  => 'Cuenta 3',
+                        'value'  => 'Nro de Cuenta: 10000013879305',
+                        'width'  => 4
+                    ],
 
-                'space4' => [
-                    'type'   => 'space',
-                    'name'   => 'space4',
-                ],
+                    'space4' => [
+                        'type'   => 'space',
+                        'name'   => 'space4',
+                    ],
 
-                'urlvideo_1' => [
-                    'type'   => 'text',
-                    'name'   => 'urlvideo_1',
-                    'label'  => 'ingrese el link 1',
-                    'value'  => 'https://www.youtube.com/embed/A3PDXmYoF5U',
-                    'width'  => 4
-                ],
-                'urlvideo_2' => [
-                    'type'   => 'text',
-                    'name'   => 'urlvideo_2',
-                    'label'  => 'ingrese el link 2',
-                    'value'  => 'https://www.youtube.com/embed/wTcNtgA6gHs',
-                    'width'  => 4
-                ],
-                'urlvideo_3' => [
-                    'type'   => 'text',
-                    'name'   => 'urlvideo_3',
-                    'label'  => 'ingrese el link 3',
-                    'value'  => 'https://www.youtube.com/embed/vlDzYIIOYmM',
-                    'width'  => 4
-                ],
-            ])
-        ]);
-        /** block 6 */
-        Block::create([
-            'name'        => 'lpbg_block6',
-            'title'       => 'Blocke 5 (Precios 6)',
-            'description' => 'Seccion Precios 6 para la plantilla LPBG',
-            'page_id'     => $page->id,
-            'position'    => $count++,
-            'type'        => 'dinamyc-data',
-            'details'     => json_encode([
-                'title_strong' => [
-                    'type'   => 'text',
-                    'name'   => 'title_strong',
-                    'label'  => 'Titulo en Negrita',
-                    'value'  => 'Choose License Type',
-                    'width'  => 6
-                ],
-                'description' => [
-                    'type'   => 'text_area',
-                    'name'   => 'description',
-                    'label'  => 'Descripcion',
-                    'value'  => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit, error amet numquam iure provident voluptate esse quasi, veritatis totam voluptas nostrum quisquam eum porro a pariatur veniam.',
-                    'width'  => 6
-                ],
+                    'urlvideo_1' => [
+                        'type'   => 'text',
+                        'name'   => 'urlvideo_1',
+                        'label'  => 'ingrese el link 1',
+                        'value'  => 'https://www.youtube.com/embed/A3PDXmYoF5U',
+                        'width'  => 4
+                    ],
+                    'urlvideo_2' => [
+                        'type'   => 'text',
+                        'name'   => 'urlvideo_2',
+                        'label'  => 'ingrese el link 2',
+                        'value'  => 'https://www.youtube.com/embed/wTcNtgA6gHs',
+                        'width'  => 4
+                    ],
+                    'urlvideo_3' => [
+                        'type'   => 'text',
+                        'name'   => 'urlvideo_3',
+                        'label'  => 'ingrese el link 3',
+                        'value'  => 'https://www.youtube.com/embed/vlDzYIIOYmM',
+                        'width'  => 4
+                    ],
+                ])
+            ]);
+            /** block 6 */
+            Block::create([
+                'name'        => 'lpbg_block6',
+                'title'       => 'Blocke 5 (Precios 6)',
+                'description' => 'Seccion Precios 6 para la plantilla LPBG',
+                'page_id'     => $page->id,
+                'position'    => $count++,
+                'type'        => 'dinamyc-data',
+                'details'     => json_encode([
+                    'title_strong' => [
+                        'type'   => 'text',
+                        'name'   => 'title_strong',
+                        'label'  => 'Titulo en Negrita',
+                        'value'  => 'Choose License Type',
+                        'width'  => 6
+                    ],
+                    'description' => [
+                        'type'   => 'text_area',
+                        'name'   => 'description',
+                        'label'  => 'Descripcion',
+                        'value'  => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit, error amet numquam iure provident voluptate esse quasi, veritatis totam voluptas nostrum quisquam eum porro a pariatur veniam.',
+                        'width'  => 6
+                    ],
 
-                'space1' => [
-                    'type'   => 'space',
-                    'name'   => 'space1',
-                ],
+                    'space1' => [
+                        'type'   => 'space',
+                        'name'   => 'space1',
+                    ],
 
-                'card1_title' => [
-                    'type'   => 'text',
-                    'name'   => 'card1_title',
-                    'label'  => 'Card 1 titulo',
-                    'value'  => 'Personal',
-                    'width'  => 6
-                ],
-                'card1_price' => [
-                    'type'   => 'text',
-                    'name'   => 'card1_price',
-                    'label'  => 'Card 1  Precio',
-                    'value'  => 'Bs 9',
-                    'width'  => 6
-                ],
-                'card1_btn_title' => [
-                    'type'   => 'text',
-                    'name'   => 'card1_btn_title',
-                    'label'  => 'Card 1: Titulo del Boton',
-                    'value'  => 'Get Started',
-                    'width'  => 6
-                ],
-                'card1_btn_ction' => [
-                    'type'   => 'text',
-                    'name'   => 'card1_btn_ction',
-                    'label'  => 'Card 1: link del Boton',
-                    'value'  => '#',
-                    'width'  => 6 
-                ],
-                'card1_list' => [
-                    'type'   => 'rich_text_box',
-                    'name'   => 'card1_list',
-                    'label'  => 'Card 1  Lista de Caracteristicas',
-                    'value'  => '
-                        <ul class="mb-0">
-                            <li>
-                                <p><strong>1</strong> project</p>
-                                </li>
+                    'card1_title' => [
+                        'type'   => 'text',
+                        'name'   => 'card1_title',
+                        'label'  => 'Card 1 titulo',
+                        'value'  => 'Personal',
+                        'width'  => 6
+                    ],
+                    'card1_price' => [
+                        'type'   => 'text',
+                        'name'   => 'card1_price',
+                        'label'  => 'Card 1  Precio',
+                        'value'  => 'Bs 9',
+                        'width'  => 6
+                    ],
+                    'card1_btn_title' => [
+                        'type'   => 'text',
+                        'name'   => 'card1_btn_title',
+                        'label'  => 'Card 1: Titulo del Boton',
+                        'value'  => 'Get Started',
+                        'width'  => 6
+                    ],
+                    'card1_btn_ction' => [
+                        'type'   => 'text',
+                        'name'   => 'card1_btn_ction',
+                        'label'  => 'Card 1: link del Boton',
+                        'value'  => '#',
+                        'width'  => 6 
+                    ],
+                    'card1_list' => [
+                        'type'   => 'rich_text_box',
+                        'name'   => 'card1_list',
+                        'label'  => 'Card 1  Lista de Caracteristicas',
+                        'value'  => '
+                            <ul class="mb-0">
                                 <li>
-                                <p><strong>100</strong> components</p>
+                                    <p><strong>1</strong> project</p>
+                                    </li>
+                                    <li>
+                                    <p><strong>100</strong> components</p>
+                                    </li>
+                                    <li>
+                                    <p><strong>150</strong> features</p>
+                                    </li>
+                                    <li>
+                                    <p><strong>200</strong> members</p>
                                 </li>
-                                <li>
-                                <p><strong>150</strong> features</p>
-                                </li>
-                                <li>
-                                <p><strong>200</strong> members</p>
-                            </li>
-                        </ul>
-      
-                    ',
-                    'width'  => 12
-                ],
-                
-                'space2' => [
-                    'type'   => 'space',
-                    'name'   => 'space2',
-                ],
+                            </ul>
+        
+                        ',
+                        'width'  => 12
+                    ],
+                    
+                    'space2' => [
+                        'type'   => 'space',
+                        'name'   => 'space2',
+                    ],
 
-                'card2_title' => [
-                    'type'   => 'text',
-                    'name'   => 'card2_title',
-                    'label'  => 'Card 2: Titulo',
-                    'value'  => 'Team',
-                    'width'  => 6
-                ],
-                'card2_price' => [
-                    'type'   => 'text',
-                    'name'   => 'card2_price',
-                    'label'  => 'Card 2: Precio',
-                    'value'  => '30 bs',
-                    'width'  => 6
-                ],
-                'card2_btn_title' => [
-                    'type'   => 'text',
-                    'name'   => 'card2_btn_title',
-                    'label'  => 'Card 2: Titulo del Boton',
-                    'value'  => 'Get Started',
-                    'width'  => 6
-                ],
-                'card2_btn_ction' => [
-                    'type'   => 'text',
-                    'name'   => 'card2_btn_ction',
-                    'label'  => 'Card 2: link del Boton',
-                    'value'  => '#',
-                    'width'  => 6 
-                ],
-                'card2_list' => [
-                    'type'   => 'rich_text_box',
-                    'name'   => 'card2_list',
-                    'label'  => 'Card 2: Lista de Caracteristicas',
-                    'value'  => '
-                        <ul class="mb-0">
-                            <li>
-                                <p><strong>1</strong> project</p>
-                                </li>
+                    'card2_title' => [
+                        'type'   => 'text',
+                        'name'   => 'card2_title',
+                        'label'  => 'Card 2: Titulo',
+                        'value'  => 'Team',
+                        'width'  => 6
+                    ],
+                    'card2_price' => [
+                        'type'   => 'text',
+                        'name'   => 'card2_price',
+                        'label'  => 'Card 2: Precio',
+                        'value'  => '30 bs',
+                        'width'  => 6
+                    ],
+                    'card2_btn_title' => [
+                        'type'   => 'text',
+                        'name'   => 'card2_btn_title',
+                        'label'  => 'Card 2: Titulo del Boton',
+                        'value'  => 'Get Started',
+                        'width'  => 6
+                    ],
+                    'card2_btn_ction' => [
+                        'type'   => 'text',
+                        'name'   => 'card2_btn_ction',
+                        'label'  => 'Card 2: link del Boton',
+                        'value'  => '#',
+                        'width'  => 6 
+                    ],
+                    'card2_list' => [
+                        'type'   => 'rich_text_box',
+                        'name'   => 'card2_list',
+                        'label'  => 'Card 2: Lista de Caracteristicas',
+                        'value'  => '
+                            <ul class="mb-0">
                                 <li>
-                                <p><strong>100</strong> components</p>
+                                    <p><strong>1</strong> project</p>
+                                    </li>
+                                    <li>
+                                    <p><strong>100</strong> components</p>
+                                    </li>
+                                    <li>
+                                    <p><strong>150</strong> features</p>
+                                    </li>
+                                    <li>
+                                    <p><strong>200</strong> members</p>
                                 </li>
+                            </ul>
+        
+                        ',
+                        'width'  => 12
+                    ],
+
+                    'space3' => [
+                        'type'   => 'space',
+                        'name'   => 'space3',
+                    ],
+
+                    'card3_title' => [
+                        'type'   => 'text',
+                        'name'   => 'card3_title',
+                        'label'  => 'Card 3: Titulo',
+                        'value'  => 'Bussines',
+                        'width'  => 6
+                    ],
+                    'card3_price' => [
+                        'type'   => 'text',
+                        'name'   => 'card3_price',
+                        'label'  => 'Card 3: Precio',
+                        'value'  => '59 Bs',
+                        'width'  => 6
+                    ],
+                    'card3_btn_title' => [
+                        'type'   => 'text',
+                        'name'   => 'card3_btn_title',
+                        'label'  => 'Card 3: Titulo del Boton',
+                        'value'  => 'Get Started',
+                        'width'  => 6
+                    ],
+                    'card3_btn_ction' => [
+                        'type'   => 'text',
+                        'name'   => 'card3_btn_ction',
+                        'label'  => 'Card 3: link del Boton',
+                        'value'  => '#',
+                        'width'  => 6 
+                    ],
+                    'card3_list' => [
+                        'type'   => 'rich_text_box',
+                        'name'   => 'card3_list',
+                        'label'  => 'Card 3: Lista de Caracteristicas',
+                        'value'  => '
+                            <ul class="mb-0">
                                 <li>
-                                <p><strong>150</strong> features</p>
+                                    <p><strong>1</strong> project</p>
+                                    </li>
+                                    <li>
+                                    <p><strong>100</strong> components</p>
+                                    </li>
+                                    <li>
+                                    <p><strong>150</strong> features</p>
+                                    </li>
+                                    <li>
+                                    <p><strong>200</strong> members</p>
                                 </li>
-                                <li>
-                                <p><strong>200</strong> members</p>
-                            </li>
-                        </ul>
-      
-                    ',
-                    'width'  => 12
-                ],
+                            </ul>
+        
+                        ',
+                        'width'  => 12
+                    ],
 
-                'space3' => [
-                    'type'   => 'space',
-                    'name'   => 'space3',
-                ],
+                ])
+            ]);
 
-                'card3_title' => [
-                    'type'   => 'text',
-                    'name'   => 'card3_title',
-                    'label'  => 'Card 3: Titulo',
-                    'value'  => 'Bussines',
-                    'width'  => 6
-                ],
-                'card3_price' => [
-                    'type'   => 'text',
-                    'name'   => 'card3_price',
-                    'label'  => 'Card 3: Precio',
-                    'value'  => '59 Bs',
-                    'width'  => 6
-                ],
-                'card3_btn_title' => [
-                    'type'   => 'text',
-                    'name'   => 'card3_btn_title',
-                    'label'  => 'Card 3: Titulo del Boton',
-                    'value'  => 'Get Started',
-                    'width'  => 6
-                ],
-                'card3_btn_ction' => [
-                    'type'   => 'text',
-                    'name'   => 'card3_btn_ction',
-                    'label'  => 'Card 3: link del Boton',
-                    'value'  => '#',
-                    'width'  => 6 
-                ],
-                'card3_list' => [
-                    'type'   => 'rich_text_box',
-                    'name'   => 'card3_list',
-                    'label'  => 'Card 3: Lista de Caracteristicas',
-                    'value'  => '
-                        <ul class="mb-0">
-                            <li>
-                                <p><strong>1</strong> project</p>
-                                </li>
-                                <li>
-                                <p><strong>100</strong> components</p>
-                                </li>
-                                <li>
-                                <p><strong>150</strong> features</p>
-                                </li>
-                                <li>
-                                <p><strong>200</strong> members</p>
-                            </li>
-                        </ul>
-      
-                    ',
-                    'width'  => 12
-                ],
-
-            ])
-        ]);
-
-
-
-        //-------------------------------------------------------------------------------------------page product- Ecommerce1            
         $page = Page::create([
             'name'        =>  'Politicas & Privacidad',
             'slug'        =>  'politicas-privacidad',
@@ -940,27 +938,26 @@ class PageTableSeeder extends Seeder
             'direction'   =>  'bimgo::pages.generica1',
             'description' =>  'Pagina para las politicas & seguridad'
         ]);
-        $count = 1;
-        Block::create([
-            'name'        => 'body',
-            'title'       => 'Blocke Generico',
-            'description' => 'Blocke Generico para Paginas',
-            'page_id'     => $page->id,
-            'position'    => $count++,
-            'type'        => 'dinamyc-data',
-            'details'     => json_encode([
-                'body' => [
-                    'type'   => 'rich_text_box',
-                    'name'   => 'body',
-                    'label'  => 'Editor HTML',
-                    'value'  => null,
-                    'width'  => 12
-                ]
-            ])
-        ]);
+            $count = 1;
+            Block::create([
+                'name'        => 'body',
+                'title'       => 'Blocke Generico',
+                'description' => 'Blocke Generico para Paginas',
+                'page_id'     => $page->id,
+                'position'    => $count++,
+                'type'        => 'dinamyc-data',
+                'details'     => json_encode([
+                    'body' => [
+                        'type'   => 'rich_text_box',
+                        'name'   => 'body',
+                        'label'  => 'Editor HTML',
+                        'value'  => null,
+                        'width'  => 12
+                    ]
+                ])
+            ]);
         
-
-        //-------------------------------------------------------------------------------------------page product- Ecommerce1            
+    
         $page = Page::create([
             'name'        =>  'Terminos & Condiones',
             'slug'        =>  'terminos-condiciones',
@@ -968,26 +965,27 @@ class PageTableSeeder extends Seeder
             'direction'   =>  'bimgo::pages.generica1',
             'description' =>  'Pagina para los terminos y condiciones'
         ]);
-        $count = 1;
-        Block::create([
-            'name'        => 'body',
-            'title'       => 'Blocke Generico',
-            'description' => 'Blocke Generico para Paginas',
-            'page_id'     => $page->id,
-            'position'    => $count++,
-            'type'        => 'dinamyc-data',
-            'details'     => json_encode([
-                'body' => [
-                    'type'   => 'rich_text_box',
-                    'name'   => 'body',
-                    'label'  => 'Editor HTML',
-                    'value'  => null,
-                    'width'  => 12
-                ]
-            ])
-        ]);
+            $count = 1;
+            Block::create([
+                'name'        => 'body',
+                'title'       => 'Blocke Generico',
+                'description' => 'Blocke Generico para Paginas',
+                'page_id'     => $page->id,
+                'position'    => $count++,
+                'type'        => 'dinamyc-data',
+                'details'     => json_encode([
+                    'body' => [
+                        'type'   => 'rich_text_box',
+                        'name'   => 'body',
+                        'label'  => 'Editor HTML',
+                        'value'  => null,
+                        'width'  => 12
+                    ]
+                ])
+            ]);
 
-        //---------------------------------------------------------------------------------------------------page Ecommerce1
+        //---------------------------------------------------- Ecommerce1 -------------------------------
+        //----------------------------------------------------------------------------------------------
         $page = Page::create([
             'name'        =>  'Ecommerce-1',
             'slug'        =>  'ecommerce-1',
@@ -1325,6 +1323,19 @@ class PageTableSeeder extends Seeder
                 ])
             ]);
             Block::create([
+                'name'        => 'ecommerce1.moda',
+                'title'       => 'Productos de Moda',
+                'description' => 'Header Dinamyc',
+                'page_id'     => $page->id,
+                'position'    => $count++,
+                'type'        => 'controller',
+                'details'     => json_encode([
+                    'name'   => 'products',
+                    'label'  => 'Lista de Productos',
+                    'value'  => 'Modules\\Bimgo\\Http\\Controllers\\Ecommerce1Controller::moda()'
+                ])
+            ]);
+            Block::create([
                 'name'        => 'ecommerce1.list_products',
                 'title'       => 'Lista Productos',
                 'description' => 'Header Dinamyc',
@@ -1337,179 +1348,11 @@ class PageTableSeeder extends Seeder
                     'value'  => 'Modules\\Bimgo\\Http\\Controllers\\Ecommerce1Controller::list_products()'
                 ])
             ]);
-
+            
 
         
-
-        //--------------------------------------------------------------------------------------------page category-Ecommerce1 
-        // $page = Page::create([
-        //     'name'        =>  'category',
-        //     'slug'        =>  'category',
-        //     'user_id'     =>  1,
-        //     'direction'   =>  'bimgo::pages.generica1',
-        //     'description' =>  'Pagina Category predeterminada para comercio electronico v1'
-        // ]);
-        //     $count = 1;
-        //     Block::create([
-        //         'name'        => 'ecommerce1.category',
-        //         'title'       => 'Categoria',
-        //         'description' => 'Categoria',
-        //         'page_id'     => $page->id,
-        //         'position'    => $count++,
-        //         'type'        => 'controller',
-        //         'details'     => json_encode([
-        //             'name'   => 'title',
-        //             'label'  => 'Encabezado',
-        //             'value'  => 'Modules\\Bimgo\\Http\\Controllers\\Ecommerce1Controller@category',
-        //         ])
-        //     ]);
-
-
-        //-------------------------------------------------------------------------------------------page product- Ecommerce1            
-        // $page = Page::create([
-        //     'name'        =>  'product',
-        //     'slug'        =>  'product',
-        //     'user_id'     =>  1,
-        //     'direction'   =>  'bimgo::pages.generica1',
-        //     'description' =>  'Pagina Product predeterminada para comercio electronico v1'
-        // ]);
-        // $count = 1;
-        // Block::create([
-        //     'name'        => 'ecommerce1.product',
-        //     'title'       => 'Product',
-        //     'description' => 'Product',
-        //     'page_id'     => $page->id,
-        //     'position'    => $count++,
-        //     'type'        => 'controller',
-        //     'details'     => json_encode([
-        //         'name'   => 'title',
-        //         'label'  => 'Encabezado',
-        //         'value'  => 'Modules\\Bimgo\\Http\\Controllers\\Ecommerce1Controller@product',
-        //     ])
-        // ]);
-
-
-        //----------------------------------------------------------------------------------------------page cart- Ecommerce1
-        // $page = Page::create([
-        //     'name'        =>  'cart',
-        //     'slug'        =>  'cart',
-        //     'user_id'     =>  1,
-        //     'direction'   =>  'bimgo::pages.generica1',
-        //     'description' =>  'Pagina Cart predeterminada para comercio electronico v1'
-        // ]);
-        // $count = 1;
-        // Block::create([
-        //     'name'        => 'ecommerce1.cart',
-        //     'title'       => 'Cart',
-        //     'description' => 'Cart',
-        //     'page_id'     => $page->id,
-        //     'position'    => $count++,
-        //     'type'        => 'controller',
-        //     'details'     => json_encode([
-        //         'name'   => 'title',
-        //         'label'  => 'Encabezado',
-        //         'value'  => 'Modules\\Bimgo\\Http\\Controllers\\Ecommerce1Controller@cart',
-        //     ])
-        // ]);
-
-
-        //-------------------------------------------------------------------------------------------page tele-venta Ecommerce1           
-        // $page = Page::create([
-        //     'name'        =>  'Tele Venta',
-        //     'slug'        =>  'tele-venta',
-        //     'user_id'     =>  1,
-        //     'direction'   =>  'bimgo::pages.generica1',
-        //     'description' =>  'Pagina Tele Venta predeterminada para comercio electronico v1'
-        // ]);
-        // $count = 1;
-        // Block::create([
-        //     'name'        => 'ecommerce1.tele_venta',
-        //     'title'       => 'Cart',
-        //     'description' => 'Cart',
-        //     'page_id'     => $page->id,
-        //     'position'    => $count++,
-        //     'type'        => 'controller',
-        //     'details'     => json_encode([
-        //         'name'   => 'title',
-        //         'label'  => 'Encabezado',
-        //         'value'  => 'Modules\\Bimgo\\Http\\Controllers\\Ecommerce1Controller@tele-venta',
-        //     ])
-        // ]);
-
-
-        //-----------------------------------------------------------------------------------------------page pagos-Ecommerce1
-        // $page = Page::create([
-        //     'name'        =>  'Pagos',
-        //     'slug'        =>  'pagos',
-        //     'user_id'     =>  1,
-        //     'direction'   =>  'bimgo::pages.generica1',
-        //     'description' =>  'Pagina Pagos predeterminada para comercio electronico v1'
-        // ]);
-        // $count = 1;
-        // Block::create([
-        //     'name'        => 'ecommerce1.pagos',
-        //     'title'       => 'Pagos',
-        //     'description' => 'Pagos',
-        //     'page_id'     => $page->id,
-        //     'position'    => $count++,
-        //     'type'        => 'controller',
-        //     'details'     => json_encode([
-        //         'name'   => 'title',
-        //         'label'  => 'Encabezado',
-        //         'value'  => 'Modules\\Bimgo\\Http\\Controllers\\Ecommerce1Controller@pagos',
-        //     ])
-        // ]);
-
-
-        //--------------------------------------------------------------------------------------------page gracias-Ecommerce1            
-        // $page = Page::create([
-        //     'name'        =>  'Gracias',
-        //     'slug'        =>  'gracias',
-        //     'user_id'     =>  1,
-        //     'direction'   =>  'bimgo::pages.generica1',
-        //     'description' =>  'Pagina Gracias predeterminada para comercio electronico v1'
-        // ]);
-        // $count = 1;
-        // Block::create([
-        //     'name'        => 'ecommerce1.gracias',
-        //     'title'       => 'Gracias',
-        //     'description' => 'Gracias',
-        //     'page_id'     => $page->id,
-        //     'position'    => $count++,
-        //     'type'        => 'controller',
-        //     'details'     => json_encode([
-        //         'name'   => 'title',
-        //         'label'  => 'Encabezado',
-        //         'value'  => 'Modules\\Bimgo\\Http\\Controllers\\Ecommerce1Controller@gracias',
-        //     ])
-        // ]);
-
-
-        //--------------------------------------------------------------------------------------------page profile-Ecommerce1         
-        // $page = Page::create([
-        //     'name'        =>  'Profile',
-        //     'slug'        =>  'profile',
-        //     'user_id'     =>  1,
-        //     'direction'   =>  'bimgo::pages.generica1',
-        //     'description' =>  'Pagina Profile predeterminada para comercio electronico v1'
-        // ]);
-        // $count = 1;
-        // Block::create([
-        //     'name'        => 'ecommerce1.profile',
-        //     'title'       => 'Profiles',
-        //     'description' => 'Profiles',
-        //     'page_id'     => $page->id,
-        //     'position'    => $count++,
-        //     'type'        => 'controller',
-        //     'details'     => json_encode([
-        //         'name'   => 'title',
-        //         'label'  => 'Encabezado',
-        //         'value'  => 'Modules\\Bimgo\\Http\\Controllers\\Ecommerce1Controller@profile',
-        //     ])
-        // ]);
-
-
-        //---------------------------------------------------------------------------------------------------page Ecommerce2
+        //---------------------------------------------------------- Ecommerce 2 --------------------------------------
+        //--------------------------------------------------------------------------------------------------------------
         $page = Page::create([
             'name'        =>  'Ecommerce-2',
             'slug'        =>  'ecommerce-2',
@@ -1877,7 +1720,8 @@ class PageTableSeeder extends Seeder
             ]);
 
 
-        //-----------------------------------------------------------------------------------------------------page Ecommerce3
+        //-------------------------------------------------- Ecommerce 3 -----------------------------------------
+        //----------------------------------------------------------------------------------------------------
         $page = Page::create([
             'name'        =>  'Ecommerce-3',
             'slug'        =>  'ecommerce-3',
@@ -2264,7 +2108,8 @@ class PageTableSeeder extends Seeder
             ]);
 
 
-        //---------------------------------------------------------------------------------------------------page Ecommerce4
+        //-------------------------------------------------- Ecommerce 4 ---------------------------------------
+        //------------------------------------------------------------------------------------------------------
         $page = Page::create([
             'name'        =>  'Ecommerce-4',
             'slug'        =>  'ecommerce-4',

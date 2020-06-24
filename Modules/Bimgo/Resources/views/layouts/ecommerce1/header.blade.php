@@ -1,17 +1,15 @@
  <!-- Navigation -->
   <header>
     <!-- Sidebar navigation -->
-    <ul id="slide-out" class="side-nav custom-scrollbar">
-      <!-- Logo -->
+    {{-- <ul id="slide-out" class="side-nav custom-scrollbar">
+   
       <li>
         <div class="logo-wrapper waves-light">
           <a href="{{ url('/') }}"><img src="https://mdbootstrap.com/img/logo/mdb-transparent.png" class="img-fluid flex-center"></a>
         </div>
 
       </li>
-      <!-- Logo -->
 
-      <!-- Social -->
       <li>
 
         <ul class="social">
@@ -27,9 +25,7 @@
         </ul>
 
       </li>
-      <!-- Social -->
 
-      <!-- Search Form -->
       <li>
 
         <form class="search-form" role="search">
@@ -43,9 +39,7 @@
         </form>
 
       </li>
-      <!-- Search Form -->
-
-      <!-- Side navigation links -->
+  
       <li>
 
         <ul class="collapsible collapsible-accordion">
@@ -153,10 +147,9 @@
 
       </li>
 
-      <!-- Side navigation links -->
       <div class="sidenav-bg mask-strong"></div>
 
-    </ul>
+    </ul> --}}
     <!-- Sidebar navigation -->
 
     <!-- Navbar -->
@@ -165,11 +158,11 @@
       <div class="container">
 
         <!-- SideNav slide-out button -->
-        <div class="float-left mr-2">
+        {{-- <div class="float-left mr-2">
 
           <a href="#" data-activates="slide-out" class="button-collapse"><i class="fas fa-bars"></i></a>
 
-        </div>
+        </div> --}}
 
         <a class="navbar-brand font-weight-bold" href="{{ url('/') }}"><strong>{{ setting('site.title') }}</strong></a>
         <a class="navbar-brand font-weight-bold" href="{{ url('/my/televenta') }}"><i class="fas fa-tv blue-text" aria-hidden="true"></i><strong> Tele Venta</strong></a>
@@ -183,12 +176,21 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent-4">
 
           <ul class="navbar-nav ml-auto">
+            <li class="nav-item dropdown ml-3">
+                <a class="nav-link dropdown-toggle dark-grey-text font-weight-bold" id="navbarDropdownMenuLink-4"
+                  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-coins blue-text"></i>
+                  {{ setting('ecommerce.monedas') }}</a>
+                <div class="dropdown-menu dropdown-menu-right dropdown-cyan" aria-labelledby="navbarDropdownMenuLink-4">
+                
+                  <a class="dropdown-item waves-effect waves-light">
+                    @if(setting('ecommerce.monedas') == 'BOB')<i class="fas fa-check"></i>@endif BOB - Bolivia (Bs)
+                  </a>
+                  <a class="dropdown-item waves-effect waves-light">
+                    @if(setting('ecommerce.monedas') == 'USD')<i class="fas fa-check"></i>@endif USD - Dólar EEUU ($)</a>
+                </div>
+              </li>
 
-          
             <li class="nav-item ">
-{{--  
-              <a class="nav-link dark-grey-text font-weight-bold" href="{{ url('cart') }}" data-toggle="modal"
-                data-target="#cart-modal-ex">  --}}
               <a class="nav-link dark-grey-text font-weight-bold" href="{{ route('bg_cart') }}">
                 <span class="badge danger-color"><div id="cartTotalQuantity"></div></span>
                 <i class="fas fa-shopping-cart blue-text" aria-hidden="true"></i>
@@ -203,7 +205,6 @@
                 data-target="#cart-modal-ex">
                 <span class="badge success-color">0</span>
                 <i class="fas fa-bell blue-text" aria-hidden="true"></i>
-                {{--  <span class="clearfix d-none d-sm-inline-block">Cart</span>  --}}
               </a>
             </li>
 
@@ -213,6 +214,7 @@
                 <small>0</small></a>
 
             </li>  --}}
+            
             @guest
               <li class="nav-item dropdown ml-3">
                 <a class="nav-link dropdown-toggle dark-grey-text font-weight-bold" id="navbarDropdownMenuLink-4"
@@ -229,7 +231,7 @@
                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user blue-text"></i>
                   Profile </a>
                 <div class="dropdown-menu dropdown-menu-right dropdown-cyan" aria-labelledby="navbarDropdownMenuLink-4">
-                  <a class="dropdown-item waves-effect waves-light" href="/home">Perfil</a>
+                  <a class="dropdown-item waves-effect waves-light" href="{{ route('bg_home') }}">Perfil</a>
                   <a class="dropdown-item waves-effect waves-light" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Salir</a>
                 </div>
               </li>
