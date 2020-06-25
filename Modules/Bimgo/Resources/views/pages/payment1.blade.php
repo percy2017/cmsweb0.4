@@ -131,9 +131,31 @@
                   @endphp
                   <div class="row">
                     <div class="col-md-12 mb-4">
+                    <!-- Default inline 1-->
+                      @foreach ($location2 as $item)
+                          <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" class="custom-control-input" id="{{ $item->id }}" name="inlineDefaultRadiosExample">
+                            <label class="custom-control-label" for="{{ $item->id }}">{{ $item->type }} - {{ $item->address }}</label>
+                          </div>
+
+                      @endforeach
+                      
+                      <!-- Default inline 2-->
+                      {{-- <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" class="custom-control-input" id="defaultInline2" name="inlineDefaultRadiosExample">
+                        <label class="custom-control-label" for="defaultInline2">2</label>
+                      </div> --}}
+
+                      <!-- Default inline 3-->
+                      {{-- <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" class="custom-control-input" id="defaultInline3" name="inlineDefaultRadiosExample">
+                        <label class="custom-control-label" for="defaultInline3">3</label>
+                      </div> --}}
+                    </div>
+                    <div class="col-md-12 mb-4">
                       <div id="map" class="z-depth-1-half map-container"></div>
-                      <input type="hidden" id="latitud" name="latitud" />
-                      <input type="hidden" id="longitud" name="longitud" />
+                      <input type="text" id="latitud" name="latitud" />
+                      <input type="text" id="longitud" name="longitud" />
                     </div>
                   </div>
                   
@@ -155,7 +177,7 @@
                         <label class="form-check-label" for="chekboxRules2">Ubicación por Defecto ?</label>
                     </div>
                     <div class="col-md-6 mb-4">
-                      <a class="btn btn-sm btn-primary">Nueva Ubicacion</a>
+                      <a id="button_modal" data-toggle="modal" data-target="#centralModalSm" class="btn btn-sm btn-primary">Nueva Ubicacion</a>
                     </div>
                   </div>
                 @else
@@ -166,7 +188,7 @@
                     <h2 class="text-center">
                       No tienes Ubicaciones
                       <br>
-                      <a class="btn btn-sm btn-success">Crear Nueva</a>
+                      <a id=button_modal class="btn btn-sm btn-success" data-toggle="modal" data-target="#centralModalSm">Crear Nueva</a>
                     </h2>
                 @endif
               </div>
@@ -205,7 +227,7 @@
                               </div>
                               <br />
                               <div class="col-md-12">
-                                <a class="btn btn-sm btn-primary">Seleccionar este metodo de pago</a>
+                                <a data-dismiss="modal" id="" class="btn btn-sm btn-primary">Seleccionar este metodo de pago</a>
                               </div>
                             </div>
                           </div>
@@ -318,9 +340,9 @@
 {{-- <hr> --}}
 
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#centralModalSm" id="button_modal">
+{{-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#centralModalSm" id="button_modal">
   Launch demo modal
-</button>
+</button> --}}
 
 <!-- Central Modal Small -->
 <div class="modal fade" id="centralModalSm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -332,33 +354,60 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
-     
-          <div class="col-md-12">
-            <div id="map_modal" class="z-depth-1-half map-container"></div>
-          </div>
-          <div class="col-md-6">
-            <div class="form-group">
-              <label>Region</label>
-              <select class="form-control">
+      <form action="{{ route('bg_save_location') }}" method="post">
+      {{ csrf_field() }}
+        <div class="modal-body">
+            <div class="row">
+              
+                <div class="col-md-12">
+                  <div id="map_modal" class="z-depth-1-half map-container"></div>
+                  <input type="text" id="latitud" name="latitud" />
+                  <input type="text" id="longitud" name="longitud" />
+                </div>
 
-              </select>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label>Regions</label>
+                    <select name="regions" class="browser-default custom-select">
+                      @foreach ($regions as $item)
+                          <option value="{{ $item->id }}">{{ $item->name }}</option>
+                      @endforeach
+                    </select>
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label>Referencia</label>
+                    <select name="references" class="browser-default custom-select">
+                      @foreach ($references as $item)
+                          <option value="{{ $item }}">{{ $item }}</option>
+                      @endforeach
+                    </select>
+                  </div>
+                </div>
+
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label>Direcion</label>
+                    <textarea class="form-control" name="address"></textarea>
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <input type="checkbox" class="form-check-input filled-in" id="chekboxRules2" name="default">
+                    <label class="form-check-label" for="chekboxRules2">Ubicación por Defecto ?</label>
+                  </div>
+                </div>
+
             </div>
-          </div>
-          <div class="col-md-6">
-            <div class="form-group">
-              <label>Referencia</label>
-              <select class="form-control">
-                
-              </select>
-            </div>
-          </div>
-      
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Cancelar</button>
-        <button type="button" class="btn btn-primary btn-sm">Enviar</button>
-      </div>
+        </div>
+        <div class="modal-footer">
+          <button id="button_modal" type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Cancelar</button>
+          <button type="submit" class="btn btn-primary btn-sm">Enviar</button>
+        </div>
+      </form>
     </div>
   </div>
 </div>
@@ -413,6 +462,7 @@
 
     $("#button_modal").click(function() {
         //----- MAPA ----------
+        console.log('click en modal');
         var map;
         var marcador;
         map = L.map('map_modal').fitWorld();
@@ -430,8 +480,8 @@
                         }).addTo(map)
                         .bindPopup("Localización actual").openPopup()
                         .on('drag', function(e) {
-                            //$('#latitud').val(e.latlng.lat);
-                            //$('#longitud').val(e.latlng.lng);
+                            $('#latitud').val(e.latlng.lat);
+                            $('#longitud').val(e.latlng.lng);
                         });
             map.setView(L.latLng(lat, lng));
         }

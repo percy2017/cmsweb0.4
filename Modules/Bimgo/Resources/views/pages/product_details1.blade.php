@@ -11,7 +11,7 @@
 @section('content')
  <!-- Main Container -->
   {{-- <div class="container pt-3"> --}}
-    <section id="productDetails" class="mb-3">
+    <section id="productDetails" class="mb-3 mt-3">
       <div class="card hoverable">
         <div class="row mt-3">
           <div class="col-lg-6">

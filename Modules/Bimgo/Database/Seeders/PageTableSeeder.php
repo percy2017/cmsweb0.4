@@ -1336,6 +1336,19 @@ class PageTableSeeder extends Seeder
                 ])
             ]);
             Block::create([
+                'name'        => 'ecommerce1.slider',
+                'title'       => 'Productos con Slider',
+                'description' => 'Header Dinamyc',
+                'page_id'     => $page->id,
+                'position'    => $count++,
+                'type'        => 'controller',
+                'details'     => json_encode([
+                    'name'   => 'products Slider',
+                    'label'  => 'Slider de Productos',
+                    'value'  => 'Modules\\Bimgo\\Http\\Controllers\\Ecommerce1Controller::slider()'
+                ])
+            ]);
+            Block::create([
                 'name'        => 'ecommerce1.list_products',
                 'title'       => 'Lista Productos',
                 'description' => 'Header Dinamyc',

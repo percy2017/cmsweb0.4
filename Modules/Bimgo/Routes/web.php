@@ -19,6 +19,7 @@ Route::get('ajax/subtract/{slug}/{detail}', 'BimgoController@subtractcart')->nam
 Route::get('ajax/remove/{slug}/{detail}', 'BimgoController@removecart')->name('bg_ajax_removecart');
 Route::get('ajax/product_details/{id}', 'BimgoController@productdetails')->name('bg_ajax_product_details');
 Route::post('ajax/update/bussiness', 'BimgoController@update_bussiness')->name('bg_ajax_update_bussiness');
+Route::post('/save/location', 'BimgoController@save_location')->name('bg_save_location');
 
 // Routes  admin -----------------------------------------------------------------------
 Route::get('ajax/admin/welcome', 'Ecommerce1Controller@welcome')->name('bg_ajax_admin_welcome');

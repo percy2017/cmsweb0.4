@@ -252,4 +252,20 @@ class BimgoController extends Controller
         return $custumer;
     }
 
+    function save_location(Request $request)
+    {
+        $customer = \Modules\Bimgo\Entities\BgCustomer::where('user_id', Auth::user()->id)->first();
+        
+        \Modules\Bimgo\Entities\BgLocation::create([
+            'type' => $request->references,
+            'default' => $request->default ? 1 : 0,
+            'address' => $request->address,
+            'region_id' => $request->regions,
+            'customer_id' => $customer->id,
+            'latitud' => $request->latitud,
+            'longitud' => $request->longitud
+        ]);
+        return back();
+    }
+
 }

@@ -13,7 +13,9 @@ use Modules\Bimgo\Entities\BgProduct;
 use Modules\Bimgo\Entities\BgProductDetail;
 use Modules\Bimgo\Entities\BgCategory;
 use Modules\Bimgo\Entities\BgSubCategory;
+use Modules\Bimgo\Entities\BgRegion;
 use Illuminate\Support\Facades\Auth;
+use TCG\Voyager\Facades\Voyager;
 class Ecommerce1Controller extends Controller
 {
     /**
@@ -103,8 +105,14 @@ class Ecommerce1Controller extends Controller
     }
     static function moda()
     {
-        $products =BgProduct::where('published', true)->with(['product_details'])->orderBy('id', 'desc')->limit(6)->get();
+        $products =BgProduct::where('published', true)->with(['product_details'])->orderBy('id', 'desc')->limit(4)->get();
         return $products;
+    }
+
+    static function slider()
+    {
+        $subcategories = BgSubCategory::with(['products'])->orderBy('id', 'asc')->limit(3)->get();
+        return $subcategories;
     }
 
     //  ----------- Function Routes------------------------------
@@ -175,24 +183,23 @@ class Ecommerce1Controller extends Controller
                 'name_bussiness' => 'Name Default'
             ]);
         }
+        
         $location = \Modules\Bimgo\Entities\BgLocation::with(['region'])->where([['customer_id', $customer->user_id], ['default', true]])->first();
-        // return $location;
-        // if (!$location) {
-        //     \Modules\Bimgo\Entities\BgLocation::create([
-        //         'region_id' => 1,
-        //         'customer_id' => $customer->id,
-        //         'type' => 'Casa',
-        //         'default' => true,
-        //         'nit_ci' => 0
-        //     ]);
-        // }
+        $dataType = Voyager::model('DataType')->where('slug', '=', 'bg_locations')->first();
+        $references = Voyager::model('DataRow')->where('data_type_id', '=', $dataType->id)->orderBy('order', 'asc')->get();
+        $references = $references[4]->details->options; 
+
         $pagos=\Modules\Bimgo\Entities\BgPayment::all();
-        // return $pagos;
+        $regions = BgRegion::all();
+        $location2 = \Modules\Bimgo\Entities\BgLocation::with(['region'])->where('customer_id', $customer->user_id)->get();
         return view('bimgo::pages.payment1', [
             'page' => $page,
             'customer' => $customer,
             'location' => $location,
-            'pagos' => $pagos
+            'location2' => $location2,
+            'pagos' => $pagos,
+            'regions' => $regions,
+            'references' => $references
         ]);
     }
     

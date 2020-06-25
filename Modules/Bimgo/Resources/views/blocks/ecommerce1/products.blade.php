@@ -78,7 +78,7 @@
                                                 {{ setting('ecommerce.monedas') }}
                                             </h5>
                                         @else 
-                                            <span class="float-left"><strong>{{ $default->price }} Bs.</strong></span>
+                                            <span class="float-left"><strong>{{ $default->price }} {{ setting('ecommerce.monedas') }}</strong></span>
                                         @endif
                                         <span class="float-right">
                                             <a onclick="addcart('{{ route('bg_ajax_addcart', [$item->slug, $default->id]) }}')" data-toggle="tooltip" data-placement="top" title="Agregar al Carrito"><i
