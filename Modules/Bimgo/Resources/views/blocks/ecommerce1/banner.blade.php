@@ -1,5 +1,5 @@
 <section>
-    <div class="row">
+    <div class="row mt-3">
         <div class="col-12">
             <div class="view  z-depth-1">
                 <img src="{{ Voyager::Image($data->banner->value) }}" class="img-fluid"
@@ -22,7 +22,7 @@
         </div>
     </div>
 
-    <div class="row mt-4 pt-1">
+    <div class="row mt-3 pt-1">
         <div class="col-lg-8 col-md-12 mb-3 mb-md-4 pb-lg-2">
             <div class="view zoom z-depth-1">
                 <img src="{{ Voyager::Image($data->banner2->value) }}" class="img-fluid" alt="sample image">

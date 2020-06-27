@@ -1,12 +1,14 @@
 <section>
     <div class="row">
         <div class="col-12">
+            <h4 class="font-weight-bold dark-grey-text"> Productos Recomendados <small><a href="#">Ve Mas</a> <i class="fas fa-location-arrow"></i></small></h4>
+            <hr>
             <div class="row">
                 @foreach ($data as $item)
                     @php
                         $images = $item->images ? json_decode($item->images)[0] : '../images/icons-bimgo/icon-512x512.png';
                     @endphp
-                    <div class="col-lg-4 col-md-12 mb-4">
+                    <div class="col-lg-4 col-md-12 mb-3">
                         <div class="card card-ecommerce">
                             <div class="view overlay">
                                 <img src="{{ Voyager::image($images) }}" class="img-fluid" alt="{{ $item->name }}">

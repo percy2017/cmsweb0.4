@@ -98,15 +98,15 @@
                         <div class="row">
                           
                           <div class="col-md-12 mb-4">
-                            <label for="country">Nombre Comercial</label>
+                            <label for="country">Nombre Comercial (opcional)</label>
                             <input type="text" id="name_bussiness" name="name_bussiness" class="form-control" placeholder="Nombre Comercial" value="{{ $customer->name_bussiness }}">
                           </div>
                           <div class="col-md-12 mb-4">
-                            <label for="state">NIT o Carnet</label>
+                            <label for="state">NIT o Carnet (opcional)</label>
                             <input type="text" id="nit_ci" name="nit_ci" class="form-control" placeholder="NIT o Carnet" value="{{ $customer->nit_ci }}">
                           </div>
                           <div class="col-md-12 mb-4">
-                            <label for="state">Direcion</label>
+                            <label for="state">Direcion (opcional)</label>
                             <textarea class="form-control" name="address">{{ $customer->address }}</textarea>
                           </div>
                           <div class="col-md-12 mb-4">
@@ -127,35 +127,21 @@
                 @if($location)
                   @php
                     $lat =  $location->latitud;
-                    $lgt =  $location->longitud;
+                    $lng =  $location->longitud;
                   @endphp
                   <div class="row">
                     <div class="col-md-12 mb-4">
-                    <!-- Default inline 1-->
                       @foreach ($location2 as $item)
                           <div class="custom-control custom-radio custom-control-inline">
-                            <input type="radio" class="custom-control-input" id="{{ $item->id }}" name="inlineDefaultRadiosExample">
+                            <input type="radio" class="custom-control-input" id="{{ $item->id }}" name="inlineDefaultRadiosExample" @if($item->default) checked @endif>
                             <label class="custom-control-label" for="{{ $item->id }}">{{ $item->type }} - {{ $item->address }}</label>
                           </div>
-
                       @endforeach
-                      
-                      <!-- Default inline 2-->
-                      {{-- <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" class="custom-control-input" id="defaultInline2" name="inlineDefaultRadiosExample">
-                        <label class="custom-control-label" for="defaultInline2">2</label>
-                      </div> --}}
-
-                      <!-- Default inline 3-->
-                      {{-- <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" class="custom-control-input" id="defaultInline3" name="inlineDefaultRadiosExample">
-                        <label class="custom-control-label" for="defaultInline3">3</label>
-                      </div> --}}
                     </div>
                     <div class="col-md-12 mb-4">
                       <div id="map" class="z-depth-1-half map-container"></div>
-                      <input type="text" id="latitud" name="latitud" />
-                      <input type="text" id="longitud" name="longitud" />
+                      <input type="hidden" id="latitud" name="latitud" />
+                      <input type="hidden" id="longitud" name="longitud" />
                     </div>
                   </div>
                   
@@ -237,20 +223,14 @@
                     </div>
                     <!-- Accordion card -->  
                   @endforeach
-                  
-
                 </div>
                 <!-- Accordion wrapper -->
-
               </div>
               <!--/.Panel 3-->
-
             </div>
             <!-- Pills panels -->
-
           </div>
           <!--Grid column-->
-
           <!--Grid column-->
           <div class="col-lg-4 mb-4">
             <div class="card z-depth-0 border border-light rounded-0">
@@ -330,12 +310,10 @@
             </div>
           </div>
           <!--Grid column-->
-
         </div>
         <!--Grid row-->
       </div>
     </div>
-
   </section>
 {{-- <hr> --}}
 
@@ -361,8 +339,8 @@
               
                 <div class="col-md-12">
                   <div id="map_modal" class="z-depth-1-half map-container"></div>
-                  <input type="text" id="latitud" name="latitud" />
-                  <input type="text" id="longitud" name="longitud" />
+                  <input type="hidden" id="lat" name="lat" />
+                  <input type="hidden" id="lng" name="lng" />
                 </div>
 
                 <div class="col-md-6">
@@ -422,30 +400,33 @@
    integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
    crossorigin=""></script>
   <script>
-      $(document).ready(function() {
+      $('document').ready(function() {
         $('.mdb-select').material_select();
-        //----- MAPA ----------
         var map;
         var marcador;
         map = L.map('map').fitWorld();
         L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
                 maxZoom: 20,
-                attribution: 'Power By; <a href="https://loginweb.dev/">Loginweb @2020</a>',
+                attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
+                '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+                'Imagery ©️ <a href="https://www.mapbox.com/">Mapbox</a>',
                 id: 'mapbox.streets'
             }).addTo(map);
         function onLocationFound(e) 
         {
             var lat = '{{ $lat }}';
-            var lgt = '{{ $lgt }}';
-            marcador =  L.marker(L.latLng(lat, lgt), {
+            var lng = '{{ $lng }}';
+            $('#latitud').val(lat);
+            $('#longitud').val(lng);
+            marcador =  L.marker(L.latLng(lat, lng), {
                         draggable: true
                         }).addTo(map)
                         .bindPopup("Localización actual").openPopup()
                         .on('drag', function(e) {
-                            //$('#latitud').val(e.latlng.lat);
-                            //$('#longitud').val(e.latlng.lng);
+                            $('#latitud').val(e.latlng.lat);
+                            $('#longitud').val(e.latlng.lng);
                         });
-            map.setView(L.latLng(lat, lgt));
+            map.setView(L.latLng(lat, lng));
         }
 
         function onLocationError(e) {
@@ -461,7 +442,6 @@
     });
 
     $("#button_modal").click(function() {
-        //----- MAPA ----------
         console.log('click en modal');
         var map;
         var marcador;
@@ -475,13 +455,15 @@
         {
             var lat = e.latlng.lat;
             var lng = e.latlng.lng;
-            marcador =  L.marker(L.latLng(lat, lgt), {
+            $('#lat').val(lat);
+            $('#lng').val(lng);
+            marcador =  L.marker(L.latLng(lat, lng), {
                         draggable: true
                         }).addTo(map)
                         .bindPopup("Localización actual").openPopup()
                         .on('drag', function(e) {
-                            $('#latitud').val(e.latlng.lat);
-                            $('#longitud').val(e.latlng.lng);
+                            $('#lat').val(e.latlng.lat);
+                            $('#lng').val(e.latlng.lng);
                         });
             map.setView(L.latLng(lat, lng));
         }

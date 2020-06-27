@@ -250,7 +250,80 @@ class SettingsTableSeeder extends Seeder
                 'group'        => 'Whatsapp',
             ])->save();
         }
+
+
+        // ---------------------RRSS ------------------------------------
+        // ------------------------------------------------------------
+        $setting = $this->findSetting('rrss.facebook');
+        if (!$setting->exists) {
+            $setting->fill([
+                'display_name' => 'Facebbok',
+                'value'        => null,
+                'details'      => null,
+                'type'         => 'text',
+                'order'        => 1,
+                'group'        => 'RRSS',
+            ])->save();
+        }
+        $setting = $this->findSetting('rrss.instagram');
+        if (!$setting->exists) {
+            $setting->fill([
+                'display_name' => 'Instagram',
+                'value'        => null,
+                'details'      => null,
+                'type'         => 'text',
+                'order'        => 1,
+                'group'        => 'RRSS',
+            ])->save();
+        }
+        $setting = $this->findSetting('rrss.twitter');
+        if (!$setting->exists) {
+            $setting->fill([
+                'display_name' => 'Twitter',
+                'value'        => null,
+                'details'      => null,
+                'type'         => 'text',
+                'order'        => 1,
+                'group'        => 'RRSS',
+            ])->save();
+        }
         
+        // ---------------------Contact ------------------------------------
+        // ------------------------------------------------------------
+        $count=1;
+        $setting = $this->findSetting('contact.direction');
+        if (!$setting->exists) {
+            $setting->fill([
+                'display_name' => 'Direccion del Negocio',
+                'value'        => null,
+                'details'      => null,
+                'type'         => 'text',
+                'order'        => $count++,
+                'group'        => 'Contact',
+            ])->save();
+        }
+        $setting = $this->findSetting('contact.email');
+        if (!$setting->exists) {
+            $setting->fill([
+                'display_name' => 'Correo Electronico',
+                'value'        => null,
+                'details'      => null,
+                'type'         => 'text',
+                'order'        => $count++,
+                'group'        => 'Contact',
+            ])->save();
+        }
+        $setting = $this->findSetting('contact.movil');
+        if (!$setting->exists) {
+            $setting->fill([
+                'display_name' => 'Telefono o Movil',
+                'value'        => null,
+                'details'      => null,
+                'type'         => 'text',
+                'order'        => $count++,
+                'group'        => 'Contact',
+            ])->save();
+        }
     }
 
     /**

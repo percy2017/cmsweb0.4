@@ -1,6 +1,6 @@
-<div class="container mt-5">
+<div class="container mt-3">
   <section class="dark-grey-text text-center">
-    <h3 class="font-weight-bold mb-4 pb-2">Los mas Vendidos</h3>
+    <h4 class="font-weight-bold mb-4 pb-2">Productos mas Vendidos</h4>
     <div id="multi-item-example" class="carousel slide carousel-multi-item" data-ride="carousel">
       <div class="controls-top">
         <a class="btn-floating primary-color waves-effect waves-light" href="#multi-item-example" data-slide="prev">

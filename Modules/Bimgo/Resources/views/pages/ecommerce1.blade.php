@@ -41,6 +41,7 @@
         template: '<div class="tooltip md-tooltip"><div class="tooltip-arrow md-arrow"></div><div class="tooltip-inner md-inner"></div></div>'
       });
     })
+    
     function addcart(urli){
       $.ajax({
         type: "get",

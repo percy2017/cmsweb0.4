@@ -3451,11 +3451,11 @@ class DataRowsTableSeeder extends Seeder
                 ]
             ])->save();
         }
-        $dataRow = $this->dataRow($RegionDataType, 'time_delivery');
+        $dataRow = $this->dataRow($RegionDataType, 'day_delivery');
         if (!$dataRow->exists) {
             $dataRow->fill([
-                'type'         => 'timestamp',
-                'display_name' => 'Tiempo de Envio',
+                'type'         => 'select_dropdwon',
+                'display_name' => 'Dias de Envio',
                 'required'     => 0,
                 'browse'       => 1,
                 'read'         => 1,
@@ -3464,12 +3464,40 @@ class DataRowsTableSeeder extends Seeder
                 'delete'       => 0,
                 'order'        => $postion++,
                 'details'      => [
+                    'options' => [
+                        '1 Dia' => '1 Dia',
+                        '1 Dia' => '1 Dia'
+                    ],
                     'display'   => [
                         'width'  => '6',
                     ],
                 ]
             ])->save();
         }
+        $dataRow = $this->dataRow($RegionDataType, 'hour_delivery');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'select_dropdwon',
+                'display_name' => 'Horas de Envio',
+                'required'     => 0,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'order'        => $postion++,
+                'details'      => [
+                    'options' => [
+                        '1 Hora' => '1 Hora',
+                        '2 Horas' => '2 Horas'
+                    ],
+                    'display'   => [
+                        'width'  => '6',
+                    ],
+                ]
+            ])->save();
+        }
+
         $dataRow = $this->dataRow($RegionDataType, 'description');
         if (!$dataRow->exists) {
             $dataRow->fill([

@@ -68,15 +68,16 @@
             @foreach (json_decode($product->tags) as $item)
                 <span class="badge badge-{{ $array[$loop->index] }} product mb-4 ml-xl-0 ml-4">{{ $item }}</span>
             @endforeach
-            <h3 class="h3-responsive text-center text-md-left mb-5 ml-xl-0 ml-4">
+            <h3 class="h3-responsive text-center text-md-left mb-3 ml-xl-0 ml-4">
               <div id="price"></div>
             </h3>
             <p class="ml-xl-0 ml-4">{{ $product->description }}</p>
             @foreach($product->characteristics != null ? json_decode($product->characteristics) : [] as $item => $value)
                 <p class="ml-xl-0 ml-4"><strong>{{ $item }}: </strong>{{ $value }}</p>
             @endforeach
+            
             <section class="color">
-              <div class="mt-5">
+              <div class="mt-3">
                 <p class="grey-text">Elije tu {{ $product->product_details[0]->{'type'} }}</p>
                 <div class="row text-center text-md-left">
                   @foreach ($product->product_details as $item => $value)
@@ -88,15 +89,28 @@
                     </div>
                   @endforeach
                 </div>
+                
+                {{-- <p class="ml-xl-0 ml-4"> --}}
+                  <label>Envios a</label>
+                  <select name="regions" id="regions_select" class="browser-default custom-select">
+                    <option value="" disabled><smal>Elije tu Region o Localidad</smal></option>
+                    @foreach ($regions as $item)
+                        <option value="{{ $item->id }}">{{ $item->name }}</option>
+                    @endforeach
+                  </select>
+                  <div id="price_delivery"></div>
+                {{-- </p> --}}
+
                 <div class="row mt-3 mb-4">
                   <div class="col-md-12 text-center text-md-left text-md-right">
                     <a class="btn btn-primary btn-rounded" onclick="addcart('{{ route('bg_ajax_addcart', [$product->slug, ':detail']) }}')">
                       <i class="fas fa-cart-plus mr-2" aria-hidden="true"></i> Agreagar al Carrito</a>
                   </div>
                 </div>
+
               </div>
             </section>
-
+            
           </div>
           
         </div>
@@ -235,7 +249,8 @@
 
 @section('js')
   <script>
-    $(document).ready(function(){
+    $('document').ready(function(){
+
       $('.color input[type=radio]').each(function (idx, elt) {
           if (elt.checked){
             let id = '#'+elt.id; 
@@ -255,8 +270,20 @@
             });
           }
       });
-    });
 
+      let ids = $( "#regions_select option:checked" ).val();
+      let urli = '{{ route('bg_ajax_region_get', ':id') }}';
+      urli = urli.replace(':id', ids);
+      let price = '{{ setting('ecommerce.monedas') }}';
+      $.ajax({
+        type: "get",
+        url: urli,
+        success: function (response) {
+          $('#price_delivery').html('<strong>Costo de Envio: '+response.price_shipping+'  '+price+' / Entrega en '+response.day_delivery+' y '+response.hour_delivery+'</strong>');
+        }
+      }); 
+
+    });
     function addcart(urli){
       var urli;
       $('.color input[type=radio]').each(function (idx, elt) {
@@ -300,5 +327,19 @@
     });  
     
     $( "blockquote" ).addClass( "blockquote" );
+
+    $('#regions_select').change(function(idx){
+       //console.log(idx);
+      let urli = '{{ route('bg_ajax_region_get', ':id') }}';
+      urli = urli.replace(':id', idx.target.value);
+      let price = '{{ setting('ecommerce.monedas') }}';
+      $.ajax({
+        type: "get",
+        url: urli,
+        success: function (response) {
+          $('#price_delivery').html('<strong>Costo de Envio: '+response.price_shipping+' '+price+' / Entrega en '+response.day_delivery+' y '+response.hour_delivery+'</strong>');
+        }
+      });      
+    });
   </script>
 @show

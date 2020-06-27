@@ -143,10 +143,12 @@ class Ecommerce1Controller extends Controller
         }
         // Ordernar de mayor a menor coincidencia y convertir a colección
         $sugerencias = json_decode(json_encode(collect($sugerencias)->sortBy('coincidencias')->reverse()->take(4)));
+        $regions = BgRegion::all();
         return view('bimgo::pages.product_details1', [
             'product'  => $product,
             'sugerencias'  => $sugerencias,
-            'page' => $product
+            'page' => $product,
+            'regions' => $regions
         ]);
     }
 

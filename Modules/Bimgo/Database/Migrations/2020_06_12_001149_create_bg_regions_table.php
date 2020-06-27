@@ -18,7 +18,8 @@ class CreateBgRegionsTable extends Migration
             $table->string('name');
             $table->string('image')->nullable();
             $table->double('price_shipping')->nullable();
-            $table->dateTime('time_delivery')->nullable();
+            $table->string('day_delivery')->nullable();
+            $table->string('hour_delivery')->nullable();
             $table->text('description')->nullable();
 
             $table->timestamps();

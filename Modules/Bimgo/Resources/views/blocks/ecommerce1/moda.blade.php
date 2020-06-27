@@ -1,5 +1,5 @@
   <section class="dark-grey-text text-left">
-    <h3 class="font-weight-bold mt-3">Productos de Moda</h3>
+    <h4 class="font-weight-bold mt-3">Productos de Moda o Tendencias <small><a href="#">Ve Mas</a> <i class="fas fa-location-arrow"></i></small></h4>
     <hr />
     <div class="row">
         @foreach ($data as $item)

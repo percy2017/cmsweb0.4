@@ -1,4 +1,7 @@
   <!-- Mega menu -->
+  @php
+      $categories = \Modules\Bimgo\Entities\BgCategory::orderBy('id', 'desc')->limit(6)->get();
+  @endphp
   <div class="container mt-3 pt-3">
     <nav class="navbar navbar-expand-lg navbar-dark primary-color mt-5">
       <a class="font-weight-bold white-text mr-4" href="{{ url('my/category') }}">Categorias</a>
@@ -9,103 +12,94 @@
 
         <!-- Links -->
         <ul class="navbar-nav mr-auto">
+          @foreach ($categories as $item)
+            @php
+                $subcategories = \Modules\Bimgo\Entities\BgSubCategory::where('category_id', $item->id)->orderBy('id', 'desc')->limit(6)->get();
+            @endphp
+            <li class="nav-item dropdown mega-dropdown @if($loop->index ==0) active @endif">
+              <a class="nav-link dropdown-toggle  no-caret" id="navbarDropdownMenuLink1" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">{{ $item->title }}</a>
+              <div class="dropdown-menu mega-menu v-2 row z-depth-1 white" aria-labelledby="navbarDropdownMenuLink1">
+                <div class="row mx-md-4 mx-1">
+                  @foreach ($subcategories as $item2)
+                    @php
+                      $products = \Modules\Bimgo\Entities\BgProduct::where('sub_category_id', $item2->id)->orderBy('id', 'desc')->limit(6)->get();
+                    @endphp
+                  <div class="col-md-6 col-xl-3 sub-menu my-xl-5 mt-5 mb-4">
+                    <h6 class="sub-title text-uppercase font-weight-bold blue-text">{{ $item2->title }}</h6>
+                    <ul class="caret-style pl-0">
+                      @foreach ($products as $item3)
+                        <li class=""><a class="menu-item mb-0" href="{{ route('bg_product', $item3->slug) }}">{{ $item3->name }}</a></li>
+                        {{-- <li class=""><a class="menu-item" href="">Lenovo</a></li>
+                        <li class=""><a class="menu-item" href="">Apple</a></li>
+                        <li class=""><a class="menu-item" href="">Dell</a></li>
+                        <li class=""><a class="menu-item" href="">Asus</a></li> --}}
+                      @endforeach
+                    </ul>
+                  </div>
+                  {{-- <div class="col-md-6 col-xl-3 sub-menu my-xl-5 mt-md-5 mt-4 mb-4">
 
-          <li class="nav-item dropdown mega-dropdown active">
+                    <h6 class="sub-title text-uppercase font-weight-bold blue-text">Sales</h6>
 
-            <a class="nav-link dropdown-toggle  no-caret" id="navbarDropdownMenuLink1" data-toggle="dropdown"
-              aria-haspopup="true" aria-expanded="false">Laptop</a>
+                    <ul class="caret-style pl-0">
 
-            <div class="dropdown-menu mega-menu v-2 row z-depth-1 white" aria-labelledby="navbarDropdownMenuLink1">
+                      <li class=""><a class="menu-item" href="">Laptops Up to 50% Off </a></li>
 
-              <div class="row mx-md-4 mx-1">
+                      <li class=""><a class="menu-item" href="">Laptops under $399</a></li>
 
-                <div class="col-md-6 col-xl-3 sub-menu my-xl-5 mt-5 mb-4">
+                      <li class=""><a class="menu-item" href="">Laptops Up to 50% Off</a></li>
 
-                  <h6 class="sub-title text-uppercase font-weight-bold blue-text">Brand</h6>
+                      <li class=""><a class="menu-item" href="">Laptops for designers</a></li>
 
-                  <ul class="caret-style pl-0">
+                      <li class=""><a class="menu-item" href="">Laptops for developers</a></li>
 
-                    <li class=""><a class="menu-item mb-0" href="">Sony</a></li>
+                    </ul>
 
-                    <li class=""><a class="menu-item" href="">Lenovo</a></li>
+                  </div>
+                  <div class="col-md-6 col-xl-3 sub-menu my-xl-5 mt-4 mb-4">
 
-                    <li class=""><a class="menu-item" href="">Apple</a></li>
+                    <h6 class="sub-title text-uppercase font-weight-bold blue-text">Processor Type</h6>
 
-                    <li class=""><a class="menu-item" href="">Dell</a></li>
+                    <ul class="caret-style pl-0">
 
-                    <li class=""><a class="menu-item" href="">Asus</a></li>
+                      <li class=""><a class="menu-item" href="">Intel Core i5 4th Gen.</a></li>
 
-                  </ul>
+                      <li class=""><a class="menu-item" href="">Intel Core i5 5th Gen.</a></li>
 
+                      <li class=""><a class="menu-item" href="">Intel Core i5 3th Gen.</a></li>
+
+                      <li class=""><a class="menu-item" href="">Intel Core i5 6th Gen.</a></li>
+
+                      <li class=""><a class="menu-item" href="">Intel Core i5 7th Gen.</a></li>
+
+                    </ul>
+
+                  </div>
+                  <div class="col-md-6 col-xl-3 sub-menu my-xl-5 mt-4 mb-5">
+
+                    <h6 class="sub-title text-uppercase font-weight-bold blue-text">Customers opinions</h6>
+
+                    <ul class="caret-style pl-0">
+
+                      <li class=""><a class="menu-item" href="">Totam rem aperiam eaque</a></li>
+
+                      <li class=""><a class="menu-item" href="">Beatae vitae dicta sun</a></li>
+
+                      <li class=""><a class="menu-item" href="">Quae ab illo inventore</a></li>
+
+                      <li class=""><a class="menu-item" href="">Nemo enim ipsam</a></li>
+
+                      <li class=""><a class="menu-item" href="">Neque porro quisquam est</a></li>
+
+                    </ul>
+
+                  </div> --}}
+                   @endforeach
                 </div>
-
-                <div class="col-md-6 col-xl-3 sub-menu my-xl-5 mt-md-5 mt-4 mb-4">
-
-                  <h6 class="sub-title text-uppercase font-weight-bold blue-text">Sales</h6>
-
-                  <ul class="caret-style pl-0">
-
-                    <li class=""><a class="menu-item" href="">Laptops Up to 50% Off </a></li>
-
-                    <li class=""><a class="menu-item" href="">Laptops under $399</a></li>
-
-                    <li class=""><a class="menu-item" href="">Laptops Up to 50% Off</a></li>
-
-                    <li class=""><a class="menu-item" href="">Laptops for designers</a></li>
-
-                    <li class=""><a class="menu-item" href="">Laptops for developers</a></li>
-
-                  </ul>
-
-                </div>
-
-                <div class="col-md-6 col-xl-3 sub-menu my-xl-5 mt-4 mb-4">
-
-                  <h6 class="sub-title text-uppercase font-weight-bold blue-text">Processor Type</h6>
-
-                  <ul class="caret-style pl-0">
-
-                    <li class=""><a class="menu-item" href="">Intel Core i5 4th Gen.</a></li>
-
-                    <li class=""><a class="menu-item" href="">Intel Core i5 5th Gen.</a></li>
-
-                    <li class=""><a class="menu-item" href="">Intel Core i5 3th Gen.</a></li>
-
-                    <li class=""><a class="menu-item" href="">Intel Core i5 6th Gen.</a></li>
-
-                    <li class=""><a class="menu-item" href="">Intel Core i5 7th Gen.</a></li>
-
-                  </ul>
-
-                </div>
-
-                <div class="col-md-6 col-xl-3 sub-menu my-xl-5 mt-4 mb-5">
-
-                  <h6 class="sub-title text-uppercase font-weight-bold blue-text">Customers opinions</h6>
-
-                  <ul class="caret-style pl-0">
-
-                    <li class=""><a class="menu-item" href="">Totam rem aperiam eaque</a></li>
-
-                    <li class=""><a class="menu-item" href="">Beatae vitae dicta sun</a></li>
-
-                    <li class=""><a class="menu-item" href="">Quae ab illo inventore</a></li>
-
-                    <li class=""><a class="menu-item" href="">Nemo enim ipsam</a></li>
-
-                    <li class=""><a class="menu-item" href="">Neque porro quisquam est</a></li>
-
-                  </ul>
-
-                </div>
-
               </div>
-
-            </div>
-
-          </li>
-
-          <li class="nav-item dropdown mega-dropdown">
+            </li>
+          @endforeach
+          {{-- <li class="nav-item dropdown mega-dropdown">
 
             <a class="nav-link dropdown-toggle no-caret" id="navbarDropdownMenuLink1" data-toggle="dropdown"
               aria-haspopup="true" aria-expanded="false">Cameras</a>
@@ -289,13 +283,13 @@
 
             </div>
 
-          </li>
+          </li> --}}
 
         </ul>
         <!-- Links -->
 
         <!-- Search form -->
-        <form class="search-form" role="search">
+        <form class="search-form" role="search" action="{{ route('bg_category') }}">
 
           <div class="form-group md-form my-0 waves-light">
 

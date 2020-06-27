@@ -16,6 +16,7 @@ use Validator;
 use Modules\Bimgo\Entities\BgProduct;
 use Modules\Bimgo\Entities\BgProductDetail;
 use Modules\Bimgo\Entities\BgCategory;
+use Modules\Bimgo\Entities\BgRegion;
 use Modules\Bimgo\Entities\BgSubCategory;
 class BimgoController extends Controller
 {
@@ -265,7 +266,17 @@ class BimgoController extends Controller
             'latitud' => $request->latitud,
             'longitud' => $request->longitud
         ]);
+
+        // if ($request->default) {
+        //     \Modules\Bimgo\Entities\BgLocation
+        // }
         return back();
+    }
+
+    function regions_get($id)
+    {
+        $region = BgRegion::find($id);
+        return response()->json($region);
     }
 
 }

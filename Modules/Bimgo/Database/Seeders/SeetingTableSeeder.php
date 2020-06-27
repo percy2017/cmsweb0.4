@@ -31,7 +31,7 @@ class SeetingTableSeeder extends Seeder
             ->where('key', 'site.page')
             ->update(['value' => 'landing-page-bimgo']);
 
-         // ---------------------Whatsapp ------------------------------------
+         // ---------------------Eccomerce ------------------------------------
         // ------------------------------------------------------------
         $setting = $this->findSetting('ecommerce.monedas');
         if (!$setting->exists) {
@@ -50,6 +50,8 @@ class SeetingTableSeeder extends Seeder
                 'group'        => 'Ecommerce',
             ])->save();
         }
+
+        
     }
 
 
