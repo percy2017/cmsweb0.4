@@ -880,6 +880,59 @@ class DataRowsTableSeeder extends Seeder
                 ]
             ])->save();
         }
+        $dataRow = $this->dataRow($ProductDataType, 'block');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'select_dropdown',
+                'display_name' => 'Blocke',
+                'required'     => 0,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'order'        => $postion++,
+                'details'      => [
+                    'tooltip' => [
+                        'ubication' => 'top',
+                        'message' => 'Establece el lugar del producto'
+                    ],
+                    'options' => [
+                        'null' => 'null',
+                        'recomments' => 'recomments',
+                        'categories' => 'categories',
+                        'moda' => 'moda',
+                        'sales' => 'sales'
+                    ]
+                ]
+            ])->save();
+        }
+        $dataRow = $this->dataRow($ProductDataType, 'shortage');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'checkbox',
+                'display_name' => 'Producto en Oferta',
+                'required'     => 0,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'order'        => $postion++,
+                'details'      => [
+                    'tooltip' => [
+                        'ubication' => 'top',
+                        'message' => 'Establece si el producto esta en Escacez'
+                    ],
+                    'on'  => 'Escacez',
+                    'off' => 'No Escacez',
+                    'checked' => false,
+                    'display'   => [
+                        'width'  => '6',
+                    ],
+                ]
+            ])->save();
+        }
         $dataRow = $this->dataRow($ProductDataType, 'views');
         if (!$dataRow->exists) {
             $dataRow->fill([

@@ -90,28 +90,28 @@ class Ecommerce1Controller extends Controller
     //-----------------------------------------------------------
     static function products()
     {
-        $products = BgProduct::where('published', true)->with(['product_details'])->orderBy('id', 'desc')->limit(6)->get();
+        $products = BgProduct::where('published', true)->with(['product_details'])->orderBy('updated_at', 'desc')->limit(8)->get();
         return $products;
     }
     static function products2(){
               
-        return BgSubCategory::with(['products'])->limit(3)->get();
+        return BgSubCategory::with(['products'])->orderBy('updated_at', 'desc')->limit(3)->get();
     }
 
     static function list_products()
     {
-        $products = BgProduct::where('published', true)->orderBy('id', 'desc')->paginate(4);
+        $products = BgProduct::where('published', true)->orderBy('updated_at', 'desc')->paginate(4);
         return $products;
     }
     static function moda()
     {
-        $products =BgProduct::where('published', true)->with(['product_details'])->orderBy('id', 'desc')->limit(4)->get();
+        $products =BgProduct::where('published', true)->with(['product_details'])->orderBy('updated_at', 'desc')->limit(4)->get();
         return $products;
     }
 
     static function slider()
     {
-        $subcategories = BgSubCategory::with(['products'])->orderBy('id', 'asc')->limit(3)->get();
+        $subcategories = BgSubCategory::with(['products'])->orderBy('updated_at', 'asc')->limit(3)->get();
         return $subcategories;
     }
 
@@ -154,9 +154,9 @@ class Ecommerce1Controller extends Controller
 
     function category()
     {
-        $products = BgProduct::where('published', true)->with(['product_details'])->orderBy('id', 'desc')->paginate(9);
-        $Categorias = BgCategory::orderBy('id', 'desc')->get();
-        $SubCategorias = BgSubCategory::orderBy('id', 'desc')->get();
+        $products = BgProduct::where('published', true)->with(['product_details'])->orderBy('updated_at', 'desc')->paginate(9);
+        $Categorias = BgCategory::orderBy('updated_at', 'desc')->get();
+        $SubCategorias = BgSubCategory::orderBy('updated_at', 'desc')->get();
         $page = \App\Page::where('slug', 'landing-page-bimgo')->first();
         return view('bimgo::pages.category1', [
             'products'  => $products,
@@ -212,6 +212,7 @@ class Ecommerce1Controller extends Controller
             'page' => $page
         ]);
     }
+    
     function home()
     {
         $page = \App\Page::where('slug', 'landing-page-bimgo')->first();
@@ -221,6 +222,7 @@ class Ecommerce1Controller extends Controller
     }
 
     //----------------- ADMIN -------------------------------------------
+    //--------------------------------------------------------------------
     function admin()
     {
         $page = \App\Page::where('slug', 'landing-page-bimgo')->first();

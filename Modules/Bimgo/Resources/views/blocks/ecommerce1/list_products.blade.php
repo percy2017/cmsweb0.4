@@ -3,6 +3,7 @@
     <hr>
     <div class="row">
         @foreach ($data as $item)
+           
             @php
                 $images = $item->images ? json_decode($item->images)[0] : '../images/icons-bimgo/icon-512x512.png';
             @endphp
@@ -10,6 +11,9 @@
                 <div class="card card-ecommerce">
                     <div class="view overlay">
                         <img src="{{ Voyager::image($images) }}" class="img-fluid" alt="{{ $item->name }}">
+                        @if($item->offer)
+                            <div class="texto-encima"><span class="badge badge-pill badge-info">En Oferta</span></div>
+                        @endif
                         <a href="{{ route('bg_product', $item->slug) }}">
                             <div class="mask rgba-white-slight"></div>
                         </a>
@@ -87,6 +91,7 @@
                     </div>
                 </div>
             </div>
+  
         @endforeach
     </div>
     <div class="row justify-content-center mb-4">

@@ -62,6 +62,7 @@
                       <div class="mask rgba-white-slight"></div>
                     </a>
                   </div>
+                  
                   <!-- Card image-->
 
                   <!-- Card content-->

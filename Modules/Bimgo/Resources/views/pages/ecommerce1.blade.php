@@ -1,5 +1,14 @@
 @extends('bimgo::layouts.ecommerce1.master')
 
+@section('css')
+    <style>
+      .texto-encima{
+          position: absolute;
+          top: 5px;
+          left: 5px;
+      }
+    </style>
+@endsection
 @section('header')
   @include('bimgo::layouts.ecommerce1.header')
 @endsection

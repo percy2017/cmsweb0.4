@@ -1,10 +1,10 @@
   <!-- Mega menu -->
   @php
-      $categories = \Modules\Bimgo\Entities\BgCategory::orderBy('id', 'desc')->limit(6)->get();
+      $categories = \Modules\Bimgo\Entities\BgCategory::orderBy('updated_at', 'desc')->limit(5)->get();
   @endphp
   <div class="container mt-3 pt-3">
     <nav class="navbar navbar-expand-lg navbar-dark primary-color mt-5">
-      <a class="font-weight-bold white-text mr-4" href="{{ url('my/category') }}">Categorias</a>
+      <a class="font-weight-bold white-text mr-4" href="{{ url('my/category') }}"><i class="fas fa-filter"></i> FIltros</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent1"
         aria-controls="navbarSupportedContent1" aria-expanded="false" aria-label="Toggle navigation"><span
           class="navbar-toggler-icon"></span></button>

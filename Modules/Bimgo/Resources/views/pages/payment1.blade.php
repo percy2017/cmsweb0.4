@@ -169,7 +169,7 @@
                 @else
                   @php
                     $lat =  0;
-                    $lgt =  0;
+                    $lng =  0;
                   @endphp
                     <h2 class="text-center">
                       No tienes Ubicaciones
@@ -242,7 +242,7 @@
                     Monto Total
                   </dd>
                   <dd class="col-sm-6">
-                    {{ \Cart::getTotal() }} Bs.
+                    {{ \Cart::getTotal() }} {{ setting('ecommerce.monedas') }}
                   </dd>
                 </dl>
                 <hr>
@@ -287,10 +287,10 @@
                     <u>Total a Pagar</u>
                   </dt>
                   <dt class="col-md-6">
-                    {{ \Cart::getTotal() }} Bs.
+                    {{ \Cart::getTotal() }} {{ setting('ecommerce.monedas') }}
                   </dt>
                   <dd class="col-md-12">
-                    {{ NumerosEnLetras::convertir(\Cart::getTotal(), 'Bolivianos', true) }}
+                    {{ NumerosEnLetras::convertir(\Cart::getTotal(), setting('ecommerce.monedas'), true) }}
                   </dd>
                 </dl>
                 </dl>

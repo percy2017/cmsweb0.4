@@ -99,33 +99,33 @@
 
             // whatsapp ----------------------------------------------------------------------------------
             $('#myWP').floatingWhatsApp({
-            phone: '{{ setting('whatsapp.phone') }}',
-            popupMessage: '{{ setting('whatsapp.popupMessage') }}',
-            message: '{{ setting('whatsapp.message') }}',
-            showPopup: true,
-            showOnIE: true,
-            headerTitle: '{{ setting('whatsapp.headerTitle') }}',
-            headerColor: '{{ setting('whatsapp.color') }}',
-            backgroundColor: '{{ setting('whatsapp.color') }}',
-            buttonImage: '<img src="{{ Voyager::Image(setting('whatsapp.buttonImage' )) }}" />',
-            position: '{{ setting('whatsapp.position') }}',
-            autoOpenTimeout: {{ setting('whatsapp.autoOpenTimeout') }},
-            size: '{{ setting('whatsapp.size') }}'
+                phone: '{{ setting('whatsapp.phone') }}',
+                popupMessage: '{{ setting('whatsapp.popupMessage') }}',
+                message: '{{ setting('whatsapp.message') }}',
+                showPopup: true,
+                showOnIE: true,
+                headerTitle: '{{ setting('whatsapp.headerTitle') }}',
+                headerColor: '{{ setting('whatsapp.color') }}',
+                backgroundColor: '{{ setting('whatsapp.color') }}',
+                buttonImage: '<img src="{{ Voyager::Image(setting('whatsapp.buttonImage' )) }}" />',
+                position: '{{ setting('whatsapp.position') }}',
+                autoOpenTimeout: {{ setting('whatsapp.autoOpenTimeout') }},
+                size: '{{ setting('whatsapp.size') }}'
             });
 
             // buttun up ----------------------------------------------------------------------
             $("body").toTopButton({
-            // path to icons
-            imagePath: 'vendor/up/img/icons/',
-            // arrow, arrow-circle, caret, caret-circle, circle, circle-o, arrow-l, drop, rise, top
-            // or your own SVG icon
-            arrowType: 'arrow',
-            // 'w' = white
-            // 'b' = black
-            iconColor: 'w',
-            // icon shadow
-            // from 1 to 16
-            iconShadow: 6
+                // path to icons
+                imagePath: 'vendor/up/img/icons/',
+                // arrow, arrow-circle, caret, caret-circle, circle, circle-o, arrow-l, drop, rise, top
+                // or your own SVG icon
+                arrowType: 'arrow',
+                // 'w' = white
+                // 'b' = black
+                iconColor: 'w',
+                // icon shadow
+                // from 1 to 16
+                iconShadow: 6
             });
 
         </script>

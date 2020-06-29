@@ -9,8 +9,6 @@
 @endsection
 
 @section('content')
- <!-- Main Container -->
-  {{-- <div class="container pt-3"> --}}
     <section id="productDetails" class="mb-3 mt-3">
       <div class="card hoverable">
         <div class="row mt-3">
@@ -29,6 +27,7 @@
                         <img src="{{ Voyager::image($item) }}" alt="Second slide" class="img-fluid">
                       </div>
                     @endif
+                    
                   @endforeach
                 </div>
                 <a class="carousel-control-prev" href="#carousel-thumb" role="button" data-slide="prev">
@@ -49,7 +48,7 @@
                   @foreach ($product->images != null ? json_decode($product->images) : [] as $item)
                     <figure class="col-md-4">
                       <a href="{{ Voyager::image($item) }}" data-size="1600x1067">
-                        <img src="{{ Voyager::image($item) }}" class="img-fluid">
+                        <img src="{{ Voyager::image($item) }}" class="img-fluid">                  
                       </a>
                     </figure>
                   @endforeach
@@ -70,7 +69,14 @@
             @endforeach
             <h3 class="h3-responsive text-center text-md-left mb-3 ml-xl-0 ml-4">
               <div id="price"></div>
+              @if($product->offer)
+                <small class="badge badge-pill badge-info">En Oferta</small>
+              @endif
+              @if($product->shortage)
+                <small class="badge badge-pill badge-primary">Pocas Unidades</small>
+              @endif
             </h3>
+            
             <p class="ml-xl-0 ml-4">{{ $product->description }}</p>
             @foreach($product->characteristics != null ? json_decode($product->characteristics) : [] as $item => $value)
                 <p class="ml-xl-0 ml-4"><strong>{{ $item }}: </strong>{{ $value }}</p>
@@ -115,6 +121,7 @@
           
         </div>
       </div>
+      
     </section>
 
     <div class="card mb-5">
@@ -239,8 +246,6 @@
         @endforeach
       </div>
     </section>
-  {{-- </div> --}}
-  <!-- Main Container -->
 @endsection
 
 @section('footer')

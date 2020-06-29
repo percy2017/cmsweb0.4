@@ -201,6 +201,7 @@ class BimgoController extends Controller
                   'slug' => $product->slug, 
                   'images' => $product->images,
                   'description' => $product->description, 
+                  'offer' => $product->offer ? 1 : 0, 
                   'type' => $datail->type, 
                   'title' => $datail->title, 
                   'code' => $datail->code, 

@@ -1,6 +1,6 @@
-<section class="section pt-4">
+<section class="section mt-3">
     <div class="row">
-        <div class="col-lg-8 col-md-12 mb-3 pb-lg-2">
+        <div class="col-lg-8 col-md-12 pb-lg-2">
             <div class="view zoom  z-depth-1">
                 <img src="{{ Voyager::Image($data->image->value) }}" class="img-fluid" alt="sample image">
                 <div class="mask rgba-white-light">
@@ -15,7 +15,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-4 col-md-12 mb-4">
+        <div class="col-lg-4 col-md-12">
             <section class="section">
                 <ul class="list-group z-depth-1">
                 <li class="list-group-item d-flex justify-content-between align-items-center">

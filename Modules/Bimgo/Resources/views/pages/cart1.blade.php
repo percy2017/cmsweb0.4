@@ -55,8 +55,8 @@
                 @endphp
                 <tr>
                   <th scope="row">
-                    <img src="{{ Voyager::image($images) }}" alt=""
-                      class="img-fluid z-depth-0">
+                    <img src="{{ Voyager::image($images) }}" alt="{{ $item->name }}" class="img-fluid z-depth-0">
+                    
                   </th>
                   <td>
                     <h5 class="mt-3">
@@ -66,7 +66,12 @@
                   </td>
                   <td>{{ $item->attributes->title }}</td>
                   <td></td>
-                  <td>{{ $item->price }} Bs.</td>
+                  <td>
+                    {{ $item->price }}
+                    @if($item->attributes->offer)
+                      <div class="texto-encima"><span class="badge badge-pill badge-info">En Oferta</span></div>
+                    @endif
+                  </td>
                   <td class="text-center">
                     <span class="qty">{{ $item->quantity }}</span>
                     {{-- <br/> --}}
@@ -80,7 +85,7 @@
                     </div>
                   </td>
                   <td class="font-weight-bold">
-                    <strong>{{ $item->getPriceSum() }} Bs.</strong>
+                    <strong>{{ $item->getPriceSum() }}</strong>
                   </td>
                   <td>
                     <a onclick="removecart('{{ route('bg_ajax_removecart', [$item->attributes->slug, $item->id]) }}')" href="#" class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="top"
@@ -101,8 +106,9 @@
                 </td>
                 <td class="text-center" colspan="3">
                   <h4 class="mt-2">
-                    <strong>{{ \Cart::getTotal() }} Bs.</strong>
+                    <strong>{{ \Cart::getTotal() }} {{ setting('ecommerce.monedas') }}</strong>
                   </h4>
+                  {{ NumerosEnLetras::convertir(\Cart::getTotal(), setting('ecommerce.monedas'), true) }}
                 </td>
                 <td colspan="3" class="text-right">
                   <a href="{{ route('bg_payment') }}" class="btn btn-primary btn-rounded">Realizar Pago
