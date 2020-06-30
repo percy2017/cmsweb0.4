@@ -12,6 +12,7 @@ class SettingsTableSeeder extends Seeder
     {
         // ----------------------- SITE ----------
         //------------------------------------------------------------------
+        $count=1;
         $setting = $this->findSetting('site.title');
         if (!$setting->exists) {
             $setting->fill([
@@ -19,7 +20,7 @@ class SettingsTableSeeder extends Seeder
                 'value'        => 'CmsWeb v0.4',
                 'details'      => '',
                 'type'         => 'text',
-                'order'        => 1,
+                'order'        => $count++,
                 'group'        => 'Site',
             ])->save();
         }
@@ -30,7 +31,7 @@ class SettingsTableSeeder extends Seeder
                 'value'        => 'CmsWeb v0.4 - Software para crear y Administrar Paginas Web Dinamicas.',
                 'details'      => '',
                 'type'         => 'text_area',
-                'order'        => 2,
+                'order'        => $count++,
                 'group'        => 'Site',
             ])->save();
         }
@@ -41,7 +42,7 @@ class SettingsTableSeeder extends Seeder
                 'value'        => '',
                 'details'      => '',
                 'type'         => 'image',
-                'order'        => 3,
+                'order'        => $count++,
                 'group'        => 'Site',
             ])->save();
         }
@@ -52,7 +53,7 @@ class SettingsTableSeeder extends Seeder
                 'value'        => '',
                 'details'      => '',
                 'type'         => 'text',
-                'order'        => 4,
+                'order'        => $count++,
                 'group'        => 'Site',
             ])->save();
         }
@@ -63,21 +64,22 @@ class SettingsTableSeeder extends Seeder
                 'value'        => 'null',
                 'details'      => '',
                 'type'         => 'text',
-                'order'        => 5,
+                'order'        => $count++,
                 'group'        => 'Site',
             ])->save();
         }
 
         //------------------------------- admin-------------------------------
         //---------------------------------------------------------------------
+        $count=1;
         $setting = $this->findSetting('admin.bg_image');
         if (!$setting->exists) {
             $setting->fill([
                 'display_name' => __('voyager::seeders.settings.admin.background_image'),
                 'value'        => '',
-                'details'      => '',
+                'details'      => null,
                 'type'         => 'image',
-                'order'        => 5,
+                'order'        => $count++,
                 'group'        => 'Admin',
             ])->save();
         }
@@ -86,9 +88,9 @@ class SettingsTableSeeder extends Seeder
             $setting->fill([
                 'display_name' => __('voyager::seeders.settings.admin.title'),
                 'value'        => 'CmsWeb v0.4',
-                'details'      => '',
+                'details'      => null,
                 'type'         => 'text',
-                'order'        => 1,
+                'order'        => $count++,
                 'group'        => 'Admin',
             ])->save();
         }
@@ -97,9 +99,9 @@ class SettingsTableSeeder extends Seeder
             $setting->fill([
                 'display_name' => __('voyager::seeders.settings.admin.description'),
                 'value'        => 'CmsWeb v0.4 - Software para crear y Administrar Paginas Web Dinamicas.',
-                'details'      => '',
+                'details'      => null,
                 'type'         => 'text_area',
-                'order'        => 2,
+                'order'        => $count++,
                 'group'        => 'Admin',
             ])->save();
         }
@@ -108,9 +110,9 @@ class SettingsTableSeeder extends Seeder
             $setting->fill([
                 'display_name' => __('voyager::seeders.settings.admin.loader'),
                 'value'        => '',
-                'details'      => '',
+                'details'      => null,
                 'type'         => 'image',
-                'order'        => 3,
+                'order'        => $count++,
                 'group'        => 'Admin',
             ])->save();
         }
@@ -119,9 +121,9 @@ class SettingsTableSeeder extends Seeder
             $setting->fill([
                 'display_name' => __('voyager::seeders.settings.admin.icon_image'),
                 'value'        => '',
-                'details'      => '',
+                'details'      => null,
                 'type'         => 'image',
-                'order'        => 4,
+                'order'        => $count++,
                 'group'        => 'Admin',
             ])->save();
         }
@@ -130,9 +132,9 @@ class SettingsTableSeeder extends Seeder
             $setting->fill([
                 'display_name' => __('voyager::seeders.settings.admin.google_analytics_client_id'),
                 'value'        => '',
-                'details'      => '',
+                'details'      => null,
                 'type'         => 'text',
-                'order'        => 1,
+                'order'        => $count++,
                 'group'        => 'Admin',
             ])->save();
         }
@@ -141,9 +143,9 @@ class SettingsTableSeeder extends Seeder
             $setting->fill([
                 'display_name' => 'Paginacion',
                 'value'        => '6',
-                'details'      => '',
-                'type'         => 'number',
-                'order'        => 1,
+                'details'      => null,
+                'type'         => 'text',
+                'order'        => $count++,
                 'group'        => 'Admin',
             ])->save();
         }
@@ -151,6 +153,7 @@ class SettingsTableSeeder extends Seeder
 
         // ---------------------Whatsapp ------------------------------------
         // ------------------------------------------------------------
+        $count=1;
         $setting = $this->findSetting('whatsapp.phone');
         if (!$setting->exists) {
             $setting->fill([
@@ -158,7 +161,7 @@ class SettingsTableSeeder extends Seeder
                 'value'        => '59171130523',
                 'details'      => '',
                 'type'         => 'text',
-                'order'        => 1,
+                'order'        => $count++,
                 'group'        => 'Whatsapp',
             ])->save();
         }
@@ -169,7 +172,7 @@ class SettingsTableSeeder extends Seeder
                 'value'        => 'Hola, Necesitas Ayuda?',
                 'details'      => '',
                 'type'         => 'text',
-                'order'        => 2,
+                'order'        => $count++,
                 'group'        => 'Whatsapp',
             ])->save();
         }
@@ -180,7 +183,7 @@ class SettingsTableSeeder extends Seeder
                 'value'        => 'Quiero mas Info..',
                 'details'      => '',
                 'type'         => 'text_area',
-                'order'        => 3,
+                'order'        => $count++,
                 'group'        => 'Whatsapp',
             ])->save();
         }
@@ -191,7 +194,7 @@ class SettingsTableSeeder extends Seeder
                 'value'        => 'Mi Chat',
                 'details'      => '',
                 'type'         => 'text',
-                'order'        => 4,
+                'order'        => $count++,
                 'group'        => 'Whatsapp',
             ])->save();
         }
@@ -202,7 +205,7 @@ class SettingsTableSeeder extends Seeder
                 'value'        => '#5991FB',
                 'details'      => '',
                 'type'         => 'text',
-                'order'        => 5,
+                'order'        => $count++,
                 'group'        => 'Whatsapp',
             ])->save();
         }
@@ -213,7 +216,7 @@ class SettingsTableSeeder extends Seeder
                 'value'        => '',
                 'details'      => '',
                 'type'         => 'image',
-                'order'        => 6,
+                'order'        => $count++,
                 'group'        => 'Whatsapp',
             ])->save();
         }
@@ -224,7 +227,7 @@ class SettingsTableSeeder extends Seeder
                 'value'        => '',
                 'details'      => '',
                 'type'         => 'text',
-                'order'        => 7,
+                'order'        => $count++,
                 'group'        => 'Whatsapp',
             ])->save();
         }
@@ -235,7 +238,7 @@ class SettingsTableSeeder extends Seeder
                 'value'        => '50000',
                 'details'      => '',
                 'type'         => 'text',
-                'order'        => 8,
+                'order'        => $count++,
                 'group'        => 'Whatsapp',
             ])->save();
         }
@@ -246,7 +249,7 @@ class SettingsTableSeeder extends Seeder
                 'value'        => '72px',
                 'details'      => '',
                 'type'         => 'text',
-                'order'        => 9,
+                'order'        => $count++,
                 'group'        => 'Whatsapp',
             ])->save();
         }
@@ -254,6 +257,7 @@ class SettingsTableSeeder extends Seeder
 
         // ---------------------RRSS ------------------------------------
         // ------------------------------------------------------------
+        $count=1;
         $setting = $this->findSetting('rrss.facebook');
         if (!$setting->exists) {
             $setting->fill([
@@ -261,7 +265,7 @@ class SettingsTableSeeder extends Seeder
                 'value'        => null,
                 'details'      => null,
                 'type'         => 'text',
-                'order'        => 1,
+                'order'        => $count++,
                 'group'        => 'RRSS',
             ])->save();
         }
@@ -272,7 +276,7 @@ class SettingsTableSeeder extends Seeder
                 'value'        => null,
                 'details'      => null,
                 'type'         => 'text',
-                'order'        => 1,
+                'order'        => $count++,
                 'group'        => 'RRSS',
             ])->save();
         }
@@ -283,7 +287,7 @@ class SettingsTableSeeder extends Seeder
                 'value'        => null,
                 'details'      => null,
                 'type'         => 'text',
-                'order'        => 1,
+                'order'        => $count++,
                 'group'        => 'RRSS',
             ])->save();
         }

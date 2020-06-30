@@ -25,7 +25,7 @@ class CreateBgProductsTable extends Migration
             $table->text('characteristics')->nullable();
             $table->boolean('published')->default(false);
             $table->boolean('offer')->default(false);
-            $table->boolean('block')->default(false);
+            $table->string('block')->nullable();
             $table->boolean('shortage')->default(false);
             
             $table->integer('views')->default(0);

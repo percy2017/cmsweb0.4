@@ -1,7 +1,8 @@
 <section class="mt-3">
     <div class="row">
         <div class="col-12">
-            <h4 class="font-weight-bold dark-grey-text"> Productos Recomendados <small><a href="#">Ve Mas</a> <i class="fas fa-location-arrow"></i></small></h4>
+            <h4 class="font-weight-bold dark-grey-text"> {{ $block->title->value }} </h4>
+            <p> {{ $block->description->value }} </p>
             <hr>
             <div class="row">
                 @foreach ($data as $item)
@@ -16,7 +17,6 @@
                                     @if($item->offer)
                                         <div class="texto-encima"><span class="badge badge-pill badge-info">En Oferta</span></div>
                                     @endif
-                                    
                                     <a href="{{ route('bg_product', $item->slug) }}">
                                         <div class="mask rgba-white-slight"></div>
                                     </a>

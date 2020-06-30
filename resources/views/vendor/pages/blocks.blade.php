@@ -33,9 +33,7 @@
                                 <div class="panel-actions">
                                     <a class="panel-action voyager-angle-up" data-toggle="panel-collapse"></a>
                                 </div>
-                            
                             </div>
-
                             <div class="panel-body">
                                 <form class="miform" action="{{ route('block_update', $block->id) }}" method="POST" enctype="multipart/form-data">
                                     @csrf
@@ -49,22 +47,15 @@
                                                 <i class="sort-icons fa-lg voyager-sort-desc"></i>
                                             </a>
                                     </div>
-                                    
-                                    {{-- <div class="col-md-offset-3 col-md-6">
-                                        <input type="number" min="1" class="form-control" name="position" value="{{ $block->position }}" />
-                                    </div> --}}
                                     <div class="col-md-12">
                                         <hr />
                                     </div>
                                 
-                                    {{-- {{ dd(json_decode($block->details, true)) }} --}}
                                     @switch($block->type)
                                         @case('dinamyc-data')
                                             @if($block->details)
                                                 @foreach (json_decode($block->details, true) as $item => $value)
-                                                    
                                                     @switch($value['type'])
-                                                    
                                                         @case('text')
                                                         
                                                             <div class="form-group col-md-{{ $value['width'] }}">
@@ -152,11 +143,7 @@
                                                             </div>
                                                             @break
                                                     @endswitch
-                                                    {{-- {{ dd($value['type']) }} --}}
                                                 @endforeach
-                                                {{-- <div class="text-center">
-                                                    <code>Blocks Type dinamyc-data</code>
-                                                </div> --}}
                                             @else
                                                 <div class="text-center">
                                                     <code>No hay Detalles</code>
@@ -165,23 +152,27 @@
                                             @break
                                         @case('controller')
                                             @if($block->details)
-                                                {{--  @foreach (json_decode($block->details) as $item)
-                                                    <div class="form-group col-md-{{ $value['width'] }}">
-                                                        <label>{{ $value['label'] }}</label>
-                                                        <input type="text" class="form-control" name="{{ $value['name'] }}" placeholder="" value="{{ $value['value'] }}">
-                                                    </div>
-                                                @endforeach  --}}
-                                                {{--  <div class="text-center">
-                                                    <code>Blocks Type Controller</code>
-                                                </div>  --}}
-                                                @php
-                                                    $data = json_decode($block->details, true);
-                                                @endphp
-                                                {{--  {{ dd($data) }}  --}}
-                                                <div class="form-group col-md-12">
-                                                    <label>{{ $data['label'] }}</label>
-                                                    <input type="text" class="form-control" name="{{ $data['name'] }}" placeholder="" value="{{ $data['value'] }}">
-                                                </div>
+                                                @foreach (json_decode($block->details, true) as $item => $value)
+                                                    @switch($value['type'])
+                                                        @case('text')
+                                                            <div class="form-group col-md-{{ $value['width'] }}">
+                                                                <label>{{ $value['label'] }}</label>
+                                                                <input type="text" class="form-control" name="{{ $value['name'] }}" placeholder="" value="{{ $value['value'] }}">
+                                                            </div>
+                                                            @break
+                                                        @case('text_area')
+                                                            <div class="form-group col-md-{{ $value['width'] }}">
+                                                                <label>{{ $value['label'] }}</label>
+                                                                <textarea class="form-control" name="{{ $value['name'] }}" rows="3">{{ $value['value'] }}</textarea>
+                                                            </div>
+                                                            @break
+                                                        @case('space')
+                                                            <div class="col-md-12">
+                                                                <hr />
+                                                            </div>
+                                                            @break
+                                                    @endswitch
+                                                @endforeach
                                             @else
                                                 <div class="text-center">
                                                     <code>No hay Detalles</code>

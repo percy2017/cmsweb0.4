@@ -1,6 +1,6 @@
   <!-- Mega menu -->
   @php
-      $categories = \Modules\Bimgo\Entities\BgCategory::orderBy('updated_at', 'desc')->limit(5)->get();
+      $categories = \Modules\Bimgo\Entities\BgCategory::orderBy('updated_at', 'desc')->limit(4)->get();
   @endphp
   <div class="container mt-3 pt-3">
     <nav class="navbar navbar-expand-lg navbar-dark primary-color mt-5">

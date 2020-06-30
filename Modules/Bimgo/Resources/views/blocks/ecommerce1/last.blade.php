@@ -1,5 +1,6 @@
 <section>
-    <h4 class="font-weight-bold mt-3 dark-grey-text"><strong>Ultimos Productos Publicados</strong></h4>
+    <h4 class="font-weight-bold mt-3 dark-grey-text"> {{ $block->title->value }} </h4>
+    <p> {{ $block->description->value }} </p>
     <hr>
     <div class="row">
         @foreach ($data as $item)

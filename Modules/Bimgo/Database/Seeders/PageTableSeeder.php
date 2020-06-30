@@ -996,8 +996,8 @@ class PageTableSeeder extends Seeder
             $count = 1;
             Block::create([
                 'name'        => 'ecommerce1.header',
-                'title'       => 'Encabezado',
-                'description' => 'Encabezado',
+                'title'       => 'Encabezado o Banner Principal',
+                'description' => 'Banner Principal con Sub Categorias',
                 'page_id'     => $page->id,
                 'position'    => $count++,
                 'type'        => 'dinamyc-data',
@@ -1047,128 +1047,49 @@ class PageTableSeeder extends Seeder
                         'label'  => 'Parrafo del Banner',
                         'value'  => 'banner',
                         'width'  => 8
-                    ],
-                    'space2' => [
-                        'type'  => 'space',
-                        'name'  => 'space2',
-                    ],
-                    'icon1' => [
-                        'type'   => 'select_dropdown',
-                        'name'   => 'icon1',
-                        'label'  => 'Icono 1',
-                        'value'  => 'fas fa-laptop dark-grey-text mr-2',
-                        'width'  => 6
-                    ],
-                    'name1' => [
-                        'type'   => 'text',
-                        'name'   => 'name1',
-                        'label'  => 'Nombre 1',
-                        'value'  => 'Laptos',
-                        'width'  => 6
-                    ],
-                    'icon2' => [
-                        'type'   => 'select_dropdown',
-                        'name'   => 'icon2',
-                        'label'  => 'Icono 2',
-                        'value'  => 'fas fa-mobile-alt dark-grey-text mr-3',
-                        'width'  => 6
-                    ],
-                    'name2' => [
-                        'type'   => 'text',
-                        'name'   => 'name2',
-                        'label'  => 'Nombre 2',
-                        'value'  => 'Smatphone',
-                        'width'  => 6
-                    ],
-                    'icon3' => [
-                        'type'   => 'select_dropdown',
-                        'name'   => 'icon3',
-                        'label'  => 'Icono 3',
-                        'value'  => 'fas fa-tablet-alt dark-grey-text mr-3',
-                        'width'  => 6
-                    ],
-                    'name3' => [
-                        'type'   => 'text',
-                        'name'   => 'name3',
-                        'label'  => 'Nombre 3',
-                        'value'  => 'Tablet',
-                        'width'  => 6
-                    ],
-                    'icon4' => [
-                        'type'   => 'select_dropdown',
-                        'name'   => 'icon4',
-                        'label'  => 'Icono 4',
-                        'value'  => 'fas fa-headphones-alt dark-grey-text mr-3',
-                        'width'  => 6
-                    ],
-                    'name4' => [
-                        'type'   => 'text',
-                        'name'   => 'name4',
-                        'label'  => 'Nombre 4',
-                        'value'  => 'Heahphones',
-                        'width'  => 6
-                    ],
-                    'icon5' => [
-                        'type'   => 'select_dropdown',
-                        'name'   => 'icon5',
-                        'label'  => 'Icono 5',
-                        'value'  => 'fas fa-camera-retro dark-grey-text mr-3',
-                        'width'  => 6
-                    ],
-                    'name5' => [
-                        'type'   => 'text',
-                        'name'   => 'name5',
-                        'label'  => 'Nombre 5',
-                        'value'  => 'Camara',
-                        'width'  => 6
-                    ],
-                    'icon6' => [
-                        'type'   => 'select_dropdown',
-                        'name'   => 'icon6',
-                        'label'  => 'Icono 6',
-                        'value'  => 'fas fa-suitcase dark-grey-text mr-3',
-                        'width'  => 6
-                    ],
-                    'name6' => [
-                        'type'   => 'text',
-                        'name'   => 'name6',
-                        'label'  => 'Nombre 6',
-                        'value'  => 'Accesories',
-                        'width'  => 6
-                    ],
-                    'icon7' => [
-                        'type'   => 'select_dropdown',
-                        'name'   => 'icon7',
-                        'label'  => 'Icono 7',
-                        'value'  => 'fas fa-tv dark-grey-text mr-3',
-                        'width'  => 6
-                    ],
-                    'name7' => [
-                        'type'   => 'text',
-                        'name'   => 'name7',
-                        'label'  => 'Nombre 7',
-                        'value'  => 'TV',
-                        'width'  => 6
-                    ],
+                    ]
                 ])
             ]);
             Block::create([
-                'name'        => 'ecommerce1.products',
-                'title'       => 'Productos 1',
-                'description' => 'Products',
+                'name'        => 'ecommerce1.recomments',
+                'title'       => 'Productos Recomendados',
+                'description' => 'Productos Recomendados de 8',
                 'page_id'     => $page->id,
                 'position'    => $count++,
                 'type'        => 'controller',
                 'details'     => json_encode([
-                    'name'   => 'products',
-                    'label'  => 'Productos de a 6',
-                    'value'  => 'Modules\\Bimgo\\Http\\Controllers\\Ecommerce1Controller::products()'
+                    'title' => [
+                        'type'   => 'text',
+                        'name'   => 'title',
+                        'label'  => 'Titulo Principal',
+                        'value'  => null,
+                        'width'  => 6
+                    ],
+                    'description' => [
+                        'type'   => 'text_area',
+                        'name'   => 'description',
+                        'label'  => 'Descripcion',
+                        'value'  => null,
+                        'width'  => 6
+                    ],
+                    'space' => [
+                        'type'  => 'space',
+                        'name'  => 'space'
+                    ],
+                    'recomments' => [
+                        'type'   => 'text',
+                        'name'   => 'recomments',
+                        'label'  => 'Productos por Categorias',
+                        'value'  => 'Modules\\Bimgo\\Http\\Controllers\\Ecommerce1Controller::recomments()',
+                        'width'  => 12
+                    ]
+                    
                 ])
             ]);
             Block::create([
                 'name'        => 'ecommerce1.banner',
-                'title'       => 'Banner',
-                'description' => 'Banner Dinamico',
+                'title'       => 'Banner o Propaganda',
+                'description' => 'Banner Dinamico de 3 Imagenes',
                 'page_id'     => $page->id,
                 'position'    => $count++,
                 'type'        => 'dinamyc-data',
@@ -1310,55 +1231,144 @@ class PageTableSeeder extends Seeder
                 ])
             ]);
             Block::create([
-                'name'        => 'ecommerce1.products2',
-                'title'       => 'Productos Tipo 2',
-                'description' => 'Header Dinamyc',
+                'name'        => 'ecommerce1.categories',
+                'title'       => 'Productos por Categories',
+                'description' => 'Productos Filtrados por Categoria de a 3',
                 'page_id'     => $page->id,
                 'position'    => $count++,
                 'type'        => 'controller',
                 'details'     => json_encode([
-                    'name'   => 'products',
-                    'label'  => 'Productos por Categorias',
-                    'value'  => 'Modules\\Bimgo\\Http\\Controllers\\Ecommerce1Controller::products2()'
+                    'title' => [
+                        'type'   => 'text',
+                        'name'   => 'title',
+                        'label'  => 'Titulo Principal',
+                        'value'  => null,
+                        'width'  => 6
+                    ],
+                    'description' => [
+                        'type'   => 'text_area',
+                        'name'   => 'description',
+                        'label'  => 'Descripcion',
+                        'value'  => null,
+                        'width'  => 6
+                    ],
+                    'space' => [
+                        'type'  => 'space',
+                        'name'  => 'space'
+                    ],
+                    'categories' => [
+                        'type'   => 'text',
+                        'name'   => 'categories',
+                        'label'  => 'Productos por Categorias',
+                        'value'  => 'Modules\\Bimgo\\Http\\Controllers\\Ecommerce1Controller::categories()',
+                        'width'  => 12
+                    ]
                 ])
             ]);
             Block::create([
                 'name'        => 'ecommerce1.moda',
                 'title'       => 'Productos de Moda',
-                'description' => 'Header Dinamyc',
+                'description' => 'Productos de Moda o Tendencia',
                 'page_id'     => $page->id,
                 'position'    => $count++,
                 'type'        => 'controller',
                 'details'     => json_encode([
-                    'name'   => 'products',
-                    'label'  => 'Lista de Productos',
-                    'value'  => 'Modules\\Bimgo\\Http\\Controllers\\Ecommerce1Controller::moda()'
+                    'title' => [
+                        'type'   => 'text',
+                        'name'   => 'title',
+                        'label'  => 'Titulo Principal',
+                        'value'  => null,
+                        'width'  => 6
+                    ],
+                    'description' => [
+                        'type'   => 'text_area',
+                        'name'   => 'description',
+                        'label'  => 'Descripcion',
+                        'value'  => null,
+                        'width'  => 6
+                    ],
+                    'space' => [
+                        'type'  => 'space',
+                        'name'  => 'space'
+                    ],
+                    'moda' => [
+                        'type'   => 'text',
+                        'name'   => 'moda',
+                        'label'  => 'Productos en Tendencia o Moda',
+                        'value'  => 'Modules\\Bimgo\\Http\\Controllers\\Ecommerce1Controller::moda()',
+                        'width'  => 12
+                    ]
+                    
                 ])
             ]);
             Block::create([
-                'name'        => 'ecommerce1.slider',
-                'title'       => 'Productos con Slider',
-                'description' => 'Header Dinamyc',
+                'name'        => 'ecommerce1.sales',
+                'title'       => 'Productos mas Vendidos',
+                'description' => 'Productos mas Vendidos del Mes',
                 'page_id'     => $page->id,
                 'position'    => $count++,
                 'type'        => 'controller',
                 'details'     => json_encode([
-                    'name'   => 'products Slider',
-                    'label'  => 'Slider de Productos',
-                    'value'  => 'Modules\\Bimgo\\Http\\Controllers\\Ecommerce1Controller::slider()'
+                    'title' => [
+                        'type'   => 'text',
+                        'name'   => 'title',
+                        'label'  => 'Titulo Principal',
+                        'value'  => null,
+                        'width'  => 6
+                    ],
+                    'description' => [
+                        'type'   => 'text_area',
+                        'name'   => 'description',
+                        'label'  => 'Descripcion',
+                        'value'  => null,
+                        'width'  => 6
+                    ],
+                    'space' => [
+                        'type'  => 'space',
+                        'name'  => 'space'
+                    ],
+                    'sales' => [
+                        'type'   => 'text',
+                        'name'   => 'sales',
+                        'label'  => 'Productos mas Vendidos',
+                        'value'  => 'Modules\\Bimgo\\Http\\Controllers\\Ecommerce1Controller::sales()',
+                        'width'  => 12
+                    ]
                 ])
             ]);
             Block::create([
-                'name'        => 'ecommerce1.list_products',
-                'title'       => 'Lista Productos',
-                'description' => 'Header Dinamyc',
+                'name'        => 'ecommerce1.last',
+                'title'       => 'Productos Publicados',
+                'description' => 'Ultimos Productos Publicados',
                 'page_id'     => $page->id,
                 'position'    => $count++,
                 'type'        => 'controller',
                 'details'     => json_encode([
-                    'name'   => 'products',
-                    'label'  => 'Lista de Productos',
-                    'value'  => 'Modules\\Bimgo\\Http\\Controllers\\Ecommerce1Controller::list_products()'
+                    'title' => [
+                        'type'   => 'text',
+                        'name'   => 'title',
+                        'label'  => 'Titulo Principal',
+                        'value'  => null,
+                        'width'  => 6
+                    ],
+                    'description' => [
+                        'type'   => 'text_area',
+                        'name'   => 'description',
+                        'label'  => 'Descripcion',
+                        'value'  => null,
+                        'width'  => 6
+                    ],
+                    'space' => [
+                        'type'  => 'space',
+                        'name'  => 'space'
+                    ],
+                    'last' => [
+                        'type'   => 'text',
+                        'name'   => 'last',
+                        'label'  => 'Ultimos Productos Publicados',
+                        'value'  => 'Modules\\Bimgo\\Http\\Controllers\\Ecommerce1Controller::last()',
+                        'width'  => 12
+                    ]
                 ])
             ]);
             

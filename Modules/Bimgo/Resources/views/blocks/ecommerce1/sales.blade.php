@@ -1,6 +1,7 @@
 <div class="container mt-3">
   <section class="dark-grey-text text-center">
-    <h4 class="font-weight-bold">Productos mas Vendidos</h4>
+    <h4 class="font-weight-bold"> {{ $block->title->value }} </h4>
+    <p> {{ $block->description->value }} </p>
     <div id="multi-item-example" class="carousel slide carousel-multi-item" data-ride="carousel">
       <div class="controls-top">
         <a class="btn-floating primary-color waves-effect waves-light" href="#multi-item-example" data-slide="prev">
@@ -16,11 +17,13 @@
         <li class="primary-color" data-target="#multi-item-example" data-slide-to="2"></li>
       </ol>
       <div class="carousel-inner" role="listbox">
+        {{--  {{ dd($data) }}  --}}
         @foreach ($data as $item)
+            
             <div class="carousel-item @if($loop->index == 0) active @endif">
                 <div class="row">
                     @foreach ($item->products->take(4) as $item2)
-                        @if($item2->block == "moda")
+                        @if($item2->block == "sales")
                             @php
                                 $images = $item2->images ? json_decode($item2->images)[0] : '../images/icons-bimgo/icon-512x512.png';
                             @endphp
@@ -85,8 +88,8 @@
                         @endif
                     @endforeach 
                 </div>
-            </div>
-            
+            </div>   
+           
         @endforeach
       </div>
     </div>

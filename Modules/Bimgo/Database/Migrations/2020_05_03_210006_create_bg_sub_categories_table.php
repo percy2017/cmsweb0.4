@@ -16,6 +16,8 @@ class CreateBgSubCategoriesTable extends Migration
         Schema::create('bg_sub_categories', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('title');
+            $table->string('block')->nullable();
+            $table->string('icons')->nullable();
             $table->string('description')->nullable();
 
             $table->unsignedBigInteger('category_id');

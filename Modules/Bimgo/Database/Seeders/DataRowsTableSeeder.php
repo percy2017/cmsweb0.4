@@ -289,6 +289,59 @@ class DataRowsTableSeeder extends Seeder
                 'order'        => $postion++,
             ])->save();
         }
+        $dataRow = $this->dataRow($SubCategoryDataType, 'block');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'select_dropdown',
+                'display_name' => 'Blocke',
+                'required'     => 0,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'order'        => $postion++,
+                'details'      => [
+                    'display'   => [
+                        'width'  => '6',
+                    ],
+                    'tooltip' => [
+                        'ubication' => 'top',
+                        'message' => 'Establece el lugar de la Sub Categoria'
+                    ],
+                    'options' => [
+                        'null' => 'null',
+                        'recomments' => 'recomments',
+                        'categories' => 'categories',
+                        'moda' => 'moda',
+                        'sales' => 'sales'
+                    ]
+                ]
+            ])->save();
+        }
+        $dataRow = $this->dataRow($SubCategoryDataType, 'icons');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'text',
+                'display_name' => 'Icons',
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'details'      => [
+                    'tooltip' => [
+                        'ubication' => 'top',
+                        'message' => 'Icono de la Sub Categoria'
+                    ],
+                    'display' => [
+                        'width' => '6'
+                    ]
+                ],
+                'order'        => $postion++,
+            ])->save();
+        }
         $dataRow = $this->dataRow($SubCategoryDataType, 'description');
         if (!$dataRow->exists) {
             $dataRow->fill([
@@ -849,7 +902,7 @@ class DataRowsTableSeeder extends Seeder
                     'off' => 'No Publicado',
                     'checked' => false,
                     'display'   => [
-                        'width'  => '6',
+                        'width'  => '3',
                     ],
                 ]
             ])->save();
@@ -875,7 +928,7 @@ class DataRowsTableSeeder extends Seeder
                     'off' => 'No en Oferta',
                     'checked' => false,
                     'display'   => [
-                        'width'  => '6',
+                        'width'  => '3',
                     ],
                 ]
             ])->save();
@@ -893,6 +946,9 @@ class DataRowsTableSeeder extends Seeder
                 'delete'       => 0,
                 'order'        => $postion++,
                 'details'      => [
+                    'display'   => [
+                        'width'  => '3',
+                    ],
                     'tooltip' => [
                         'ubication' => 'top',
                         'message' => 'Establece el lugar del producto'
@@ -928,7 +984,7 @@ class DataRowsTableSeeder extends Seeder
                     'off' => 'No Escacez',
                     'checked' => false,
                     'display'   => [
-                        'width'  => '6',
+                        'width'  => '3',
                     ],
                 ]
             ])->save();
@@ -951,7 +1007,7 @@ class DataRowsTableSeeder extends Seeder
                         'message' => 'Vistas del Producto'
                     ],
                     'display' => [
-                        'width' => '6'
+                        'width' => '3'
                     ]
                 ],
                 'order'        => $postion++,

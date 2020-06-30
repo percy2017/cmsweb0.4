@@ -88,31 +88,32 @@ class Ecommerce1Controller extends Controller
     }
     //  ----------- Function Static------------------------------
     //-----------------------------------------------------------
-    static function products()
+    static function recomments() //recomments
     {
         $products = BgProduct::where('published', true)->with(['product_details'])->orderBy('updated_at', 'desc')->limit(8)->get();
         return $products;
     }
-    static function products2(){
-              
-        return BgSubCategory::with(['products'])->orderBy('updated_at', 'desc')->limit(3)->get();
+    static function categories() // categories
+    {          
+        $products = BgSubCategory::with(['products'])->where('block', 'categories')->orderBy('updated_at', 'desc')->limit(3)->get();
+        return $products;
     }
 
-    static function list_products()
+    static function last() //last
     {
         $products = BgProduct::where('published', true)->orderBy('updated_at', 'desc')->paginate(4);
         return $products;
     }
-    static function moda()
+    static function moda() //
     {
         $products =BgProduct::where('published', true)->with(['product_details'])->orderBy('updated_at', 'desc')->limit(4)->get();
         return $products;
     }
 
-    static function slider()
+    static function sales() // Sales
     {
-        $subcategories = BgSubCategory::with(['products'])->orderBy('updated_at', 'asc')->limit(3)->get();
-        return $subcategories;
+        $products = BgSubCategory::with(['products'])->where('block', 'sales')->orderBy('updated_at', 'asc')->limit(3)->get();
+        return $products;
     }
 
     //  ----------- Function Routes------------------------------

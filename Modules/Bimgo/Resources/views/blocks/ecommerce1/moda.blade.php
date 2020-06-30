@@ -1,5 +1,6 @@
   <section class="dark-grey-text text-left mt-3">
-    <h4 class="font-weight-bold mt-3">Productos de Moda o Tendencias <small><a href="#">Ve Mas</a> <i class="fas fa-location-arrow"></i></small></h4>
+    <h4 class="font-weight-bold mt-3"> {{ $block->title->value }} </h4>
+    <p> {{ $block->description->value }} </p>
     <hr />
     <div class="row">
         @foreach ($data as $item)
@@ -8,9 +9,7 @@
                     $images = $item->images_large ? json_decode($item->images_large)[0] : '../images/icons-bimgo/icon-512x512.png';
                 @endphp
                 <div class="col-lg-3 col-md-6">
-                    <!-- Card -->
                     <div class="card card-cascade narrower card-ecommerce">
-                        <!-- Card image -->
                         <div class="view view-cascade overlay">
                             <img src="{{ Voyager::image($images) }}" class="card-img-top" alt="{{ $item->name }}">
                             @if($item->offer)
@@ -20,8 +19,6 @@
                                 <div class="mask rgba-white-slight"></div>
                             </a>
                         </div>
-                        <!-- Card image -->
-                        <!-- Card content -->
                         <div class="card-body card-body-cascade text-center pb-3">
                             <!-- Title -->
                             <h5 class="card-title mb-1">
@@ -104,9 +101,7 @@
                             </span>
                             </div>
                         </div>
-                        <!-- Card content -->
                     </div>
-                    <!-- Card -->
                 </div>
             @endif
         @endforeach

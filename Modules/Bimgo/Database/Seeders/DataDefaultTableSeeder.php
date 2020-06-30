@@ -54,6 +54,18 @@ class DataDefaultTableSeeder extends Seeder
                 'category_id' => $data->id,
                 'title' => 'Sub Category 6'
             ]);
+        $data = BgCategory::create([
+            'title' => 'Category 4',
+            'slug' => 'category-4'
+        ]);
+            $data2 = BgSubCategory::create([
+                'category_id' => $data->id,
+                'title' => 'Sub Category 7'
+            ]);
+            $data2 = BgSubCategory::create([
+                'category_id' => $data->id,
+                'title' => 'Sub Category 8'
+            ]);
         //------------Marca---------------------
         BgBrand::create([
             'name' => 'Marca 1',

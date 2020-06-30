@@ -113,10 +113,12 @@ class BlockController extends Controller
                 $block->save();
                 break;
             case 'controller':
-               
-                $aux = json_decode($mijson, true);
-                $mijson = str_replace(json_encode($aux['value']), json_encode($request[$aux['name']]), $mijson);
-                // return $mijson;
+                foreach(json_decode($block->details, true) as $item => $value)
+                {
+                    $mijson_aux = json_decode($mijson, true);
+                    $mijson_aux[$value['name']]['value'] = $request[$value['name']];
+                    $mijson = json_encode($mijson_aux);
+                }
                 $block->details = $mijson;
                 $block->save();
                 break;
