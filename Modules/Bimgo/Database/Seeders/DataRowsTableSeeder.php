@@ -311,9 +311,7 @@ class DataRowsTableSeeder extends Seeder
                     ],
                     'options' => [
                         'null' => 'null',
-                        'recomments' => 'recomments',
                         'categories' => 'categories',
-                        'moda' => 'moda',
                         'sales' => 'sales'
                     ]
                 ]
@@ -956,9 +954,7 @@ class DataRowsTableSeeder extends Seeder
                     'options' => [
                         'null' => 'null',
                         'recomments' => 'recomments',
-                        'categories' => 'categories',
-                        'moda' => 'moda',
-                        'sales' => 'sales'
+                        'moda' => 'moda'
                     ]
                 ]
             ])->save();
@@ -2184,7 +2180,6 @@ class DataRowsTableSeeder extends Seeder
                 'order'        => $postion++,
             ])->save();
         }
-        
         $dataRow = $this->dataRow($customerDataType, 'created_at');
         if (!$dataRow->exists) {
             $dataRow->fill([
@@ -2287,7 +2282,6 @@ class DataRowsTableSeeder extends Seeder
                 'order'        => $postion++,
             ])->save();
         }
-
         $dataRow = $this->dataRow($cashDataType, 'name');
         if (!$dataRow->exists) {
             $dataRow->fill([
@@ -2307,7 +2301,6 @@ class DataRowsTableSeeder extends Seeder
                 'order'        => $postion++,
             ])->save();
         }
-
         $dataRow = $this->dataRow($cashDataType, 'apertura');
         if (!$dataRow->exists) {
             $dataRow->fill([
@@ -2327,7 +2320,6 @@ class DataRowsTableSeeder extends Seeder
                 'order'        => $postion++,
             ])->save();
         }
-
         $dataRow = $this->dataRow($cashDataType, 'observaciones');
         if (!$dataRow->exists) {
             $dataRow->fill([
@@ -2347,7 +2339,6 @@ class DataRowsTableSeeder extends Seeder
                 'order'        => $postion++,
             ])->save();
         }
-
         $dataRow = $this->dataRow($cashDataType, 'fecha_apertura');
         if (!$dataRow->exists) {
             $dataRow->fill([
@@ -2367,7 +2358,6 @@ class DataRowsTableSeeder extends Seeder
                 'order'        => $postion++,
             ])->save();
         }
-
         $dataRow = $this->dataRow($cashDataType, 'fecha_cierre');
         if (!$dataRow->exists) {
             $dataRow->fill([
@@ -2387,7 +2377,6 @@ class DataRowsTableSeeder extends Seeder
                 'order'        => $postion++,
             ])->save();
         }
-
         $dataRow = $this->dataRow($cashDataType, 'monto_inicial');
         if (!$dataRow->exists) {
             $dataRow->fill([
@@ -2407,7 +2396,6 @@ class DataRowsTableSeeder extends Seeder
                 'order'        => $postion++,
             ])->save();
         }
-
         $dataRow = $this->dataRow($cashDataType, 'monto_final');
         if (!$dataRow->exists) {
             $dataRow->fill([
@@ -2447,7 +2435,6 @@ class DataRowsTableSeeder extends Seeder
                 'order'        => $postion++,
             ])->save();
         }
-
         $dataRow = $this->dataRow($cashDataType, 'monto_faltante');
         if (!$dataRow->exists) {
             $dataRow->fill([
@@ -2467,7 +2454,6 @@ class DataRowsTableSeeder extends Seeder
                 'order'        => $postion++,
             ])->save();
         }
-
         $dataRow = $this->dataRow($cashDataType, 'total_egreso');
         if (!$dataRow->exists) {
             $dataRow->fill([
@@ -2487,7 +2473,6 @@ class DataRowsTableSeeder extends Seeder
                 'order'        => $postion++,
             ])->save();
         }
-
         $dataRow = $this->dataRow($cashDataType, 'total_ingreso');
         if (!$dataRow->exists) {
             $dataRow->fill([
@@ -2507,7 +2492,6 @@ class DataRowsTableSeeder extends Seeder
                 'order'        => $postion++,
             ])->save();
         }
-
         $dataRow = $this->dataRow($cashDataType, 'cash_belongsto_branchoffice_relationship');
         if (!$dataRow->exists) {
             $dataRow->fill([
@@ -2536,7 +2520,6 @@ class DataRowsTableSeeder extends Seeder
 
             ])->save();
         }
-
         $dataRow = $this->dataRow($cashDataType, 'user_id');
         if (!$dataRow->exists) {
             $dataRow->fill([
@@ -2556,7 +2539,6 @@ class DataRowsTableSeeder extends Seeder
                 ]
             ])->save();
         }
-
         $dataRow = $this->dataRow($cashDataType, 'created_at');
         if (!$dataRow->exists) {
             $dataRow->fill([
@@ -2576,7 +2558,6 @@ class DataRowsTableSeeder extends Seeder
                 ]
             ])->save();
         }
-
         $dataRow = $this->dataRow($cashDataType, 'updated_at');
         if (!$dataRow->exists) {
             $dataRow->fill([
@@ -2596,7 +2577,6 @@ class DataRowsTableSeeder extends Seeder
                 ]
             ])->save();
         }
-
         $dataRow = $this->dataRow($cashDataType, 'deleted_at');
         if (!$dataRow->exists) {
             $dataRow->fill([

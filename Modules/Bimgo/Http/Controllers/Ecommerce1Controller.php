@@ -90,7 +90,7 @@ class Ecommerce1Controller extends Controller
     //-----------------------------------------------------------
     static function recomments() //recomments
     {
-        $products = BgProduct::where('published', true)->with(['product_details'])->orderBy('updated_at', 'desc')->limit(8)->get();
+        $products = BgProduct::where([['published', true], ['block', 'recomments']])->with(['product_details'])->orderBy('updated_at', 'desc')->limit(8)->get();
         return $products;
     }
     static function categories() // categories
@@ -106,7 +106,7 @@ class Ecommerce1Controller extends Controller
     }
     static function moda() //
     {
-        $products =BgProduct::where('published', true)->with(['product_details'])->orderBy('updated_at', 'desc')->limit(4)->get();
+        $products =BgProduct::where([['published', true], ['block', 'moda']])->with(['product_details'])->orderBy('updated_at', 'desc')->limit(4)->get();
         return $products;
     }
 

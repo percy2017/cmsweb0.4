@@ -71,5 +71,23 @@
         }
       });
     }
+
+    function stars(urli)
+    {
+      console.log(urli);
+      $.ajax({
+          type: "get",
+          url: urli,
+          success: function (response) {  
+            Swal.fire({
+              position: 'top-end',
+              icon: 'success',
+              title: 'Gracias por tu Estrella #'+response,
+              showConfirmButton: true,
+              timer: 1000
+            });
+          }
+      });
+    }
   </script>
 @endsection

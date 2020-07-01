@@ -12,8 +12,9 @@
                     <h5 class="text-center font-weight-bold dark-grey-text"><strong>{{ $category->title }}</strong></h5>
                     <hr>
                     @foreach ($category->products->take(4) as $product)
+                        
                         @if ($product->published)
-                            @if($product->block == "categories")
+                            {{-- @if($product->block == "categories") --}}
                                 <div class="row mt-3 py-2 mb-3 hoverable align-items-center">
                                     <div class="col-6">
                                         @php
@@ -89,7 +90,7 @@
                                         @endif
                                     </div>
                                 </div>     
-                            @endif               
+                            {{-- @endif --}}
                         @endif
                     @endforeach
                 </div>

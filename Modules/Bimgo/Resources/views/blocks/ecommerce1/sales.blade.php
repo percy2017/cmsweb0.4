@@ -23,7 +23,7 @@
             <div class="carousel-item @if($loop->index == 0) active @endif">
                 <div class="row">
                     @foreach ($item->products->take(4) as $item2)
-                        @if($item2->block == "sales")
+                        {{-- @if($item2->block == "sales") --}}
                             @php
                                 $images = $item2->images ? json_decode($item2->images)[0] : '../images/icons-bimgo/icon-512x512.png';
                             @endphp
@@ -85,7 +85,7 @@
                                     </div>
                                 </div>
                             </div>
-                        @endif
+                        {{-- @endif --}}
                     @endforeach 
                 </div>
             </div>   

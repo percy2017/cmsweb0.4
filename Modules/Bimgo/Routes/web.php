@@ -13,6 +13,10 @@
 // Routes  Profile y Login -----------------------------------------------------------------------
 Route::get('my/profile', 'BimgoController@profile')->name('bg_profile');
 
+//---------- Products-----------------------------------------------
+Route::get('product_view/{product_id}', 'BimgoController@product_view')->name('product_view');
+Route::get('product_stars/{product_id}/{stars}', 'BimgoController@product_stars')->name('product_stars');
+
 // Routes  Cart -----------------------------------------------------------------------
 Route::get('ajax/cart/{slug}/{detail}', 'BimgoController@addcart')->name('bg_ajax_addcart');
 Route::get('ajax/subtract/{slug}/{detail}', 'BimgoController@subtractcart')->name('bg_ajax_subtractcart');

@@ -212,6 +212,7 @@ class BimgoController extends Controller
           return $product;
   
       }
+
       function subtractcart($slug, $detail)
       {
           
@@ -222,6 +223,7 @@ class BimgoController extends Controller
           return $product;
   
       }
+
       function removecart($slug, $detail)
       {
           $product = BgProduct::with(['product_details'])->where('slug', $slug)->first();
@@ -236,11 +238,11 @@ class BimgoController extends Controller
   
       }
 
+
       //----------------- USERS--------------
       //-----------------------------------
     function update_bussiness(Request $request)
     {
-        
         $custumer = \Modules\Bimgo\Entities\BgCustomer::where('user_id', Auth::user()->id)->first();
         $custumer->name_bussiness = $request->name_bussiness;
         $custumer->nit_ci = $request->nit_ci;
@@ -278,6 +280,23 @@ class BimgoController extends Controller
     {
         $region = BgRegion::find($id);
         return response()->json($region);
+    }
+
+    //----------------- Product--------------
+    //-----------------------------------
+    function product_view($product_id)
+    {
+        $product = BgProduct::find($product_id);
+        $product->views = $product->views + 1;
+        $product->save();
+        return $product;
+    }
+    function product_stars($product_id, $stars)
+    {
+        $product = BgProduct::find($product_id);
+        $product->stars = $stars;
+        $product->save();
+        return $stars;
     }
 
 }

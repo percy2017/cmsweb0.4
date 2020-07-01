@@ -6,7 +6,7 @@
             <hr>
             <div class="row">
                 @foreach ($data as $item)
-                    @if($item->block == "recomments")
+                    {{-- @if($item->block == "recomments") --}}
                         @php
                             $images = $item->images ? json_decode($item->images)[0] : '../images/icons-bimgo/icon-512x512.png';
                         @endphp
@@ -28,39 +28,39 @@
                                     <ul class="rating">
                                         @switch($item->stars)
                                             @case(1)
-                                                <li><i class="fas fa-star blue-text"></i></li>
-                                                <li><i class="fas fa-star grey-text"></i></li>
-                                                <li><i class="fas fa-star grey-text"></i></li>
-                                                <li><i class="fas fa-star grey-text"></i></li>
-                                                <li><i class="fas fa-star grey-text"></i></li>
+                                                <li><a onclick="stars('{{ route('product_stars', [$item->id, 1]) }}')"><i class="fas fa-star blue-text"></i></a></li>
+                                                <li><a onclick="stars('{{ route('product_stars', [$item->id, 2]) }}')"><i class="fas fa-star grey-text"></i></a></li>
+                                                <li><a onclick="stars('{{ route('product_stars', [$item->id, 3]) }}')"><i class="fas fa-star grey-text"></i></a></li>
+                                                <li><a onclick="stars('{{ route('product_stars', [$item->id, 4]) }}')"><i class="fas fa-star grey-text"></i></a></li>
+                                                <li><a onclick="stars('{{ route('product_stars', [$item->id, 5]) }}')"><i class="fas fa-star grey-text"></i></a></li>
                                                 @break
                                             @case(2)
-                                                <li><i class="fas fa-star blue-text"></i></li>
-                                                <li><i class="fas fa-star blue-text"></i></li>
-                                                <li><i class="fas fa-star grey-text"></i></li>
-                                                <li><i class="fas fa-star grey-text"></i></li>
-                                                <li><i class="fas fa-star grey-text"></i></li>
+                                                <li><a onclick="stars('{{ route('product_stars', [$item->id, 1]) }}')"><i class="fas fa-star blue-text"></i></a></li>
+                                                <li><a onclick="stars('{{ route('product_stars', [$item->id, 2]) }}')"><i class="fas fa-star blue-text"></i></a></li>
+                                                <li><a onclick="stars('{{ route('product_stars', [$item->id, 3]) }}')"><i class="fas fa-star grey-text"></i></a></li>
+                                                <li><a onclick="stars('{{ route('product_stars', [$item->id, 4]) }}')"><i class="fas fa-star grey-text"></i></a></li>
+                                                <li><a onclick="stars('{{ route('product_stars', [$item->id, 5]) }}')"><i class="fas fa-star grey-text"></i></a></li>
                                                 @break
                                             @case(3)
-                                                <li><i class="fas fa-star blue-text"></i></li>
-                                                <li><i class="fas fa-star blue-text"></i></li>
-                                                <li><i class="fas fa-star blue-text"></i></li>
-                                                <li><i class="fas fa-star grey-text"></i></li>
-                                                <li><i class="fas fa-star grey-text"></i></li>
+                                                <li><a onclick="stars('{{ route('product_stars', [$item->id, 1]) }}')"><i class="fas fa-star blue-text"></i></a></li>
+                                                <li><a onclick="stars('{{ route('product_stars', [$item->id, 2]) }}')"><i class="fas fa-star blue-text"></i></a></li>
+                                                <li><a onclick="stars('{{ route('product_stars', [$item->id, 3]) }}')"><i class="fas fa-star blue-text"></i></a></li>
+                                                <li><a onclick="stars('{{ route('product_stars', [$item->id, 4]) }}')"><i class="fas fa-star grey-text"></i></a></li>
+                                                <li><a onclick="stars('{{ route('product_stars', [$item->id, 5]) }}')"><i class="fas fa-star grey-text"></i></a></li>
                                                 @break
                                             @case(4)
-                                                <li><i class="fas fa-star blue-text"></i></li>
-                                                <li><i class="fas fa-star blue-text"></i></li>
-                                                <li><i class="fas fa-star blue-text"></i></li>
-                                                <li><i class="fas fa-star blue-text"></i></li>
-                                                <li><i class="fas fa-star grey-text"></i></li>
+                                                <li><a onclick="stars('{{ route('product_stars', [$item->id, 1]) }}')"><i class="fas fa-star blue-text"></i></a></li>
+                                                <li><a onclick="stars('{{ route('product_stars', [$item->id, 2]) }}')"><i class="fas fa-star blue-text"></i></a></li>
+                                                <li><a onclick="stars('{{ route('product_stars', [$item->id, 3]) }}')"><i class="fas fa-star blue-text"></i></a></li>
+                                                <li><a onclick="stars('{{ route('product_stars', [$item->id, 4]) }}')"><i class="fas fa-star blue-text"></i></a></li>
+                                                <li><a onclick="stars('{{ route('product_stars', [$item->id, 5]) }}')"><i class="fas fa-star grey-text"></i></a></li>
                                                 @break
                                             @case(5)
-                                                <li><i class="fas fa-star blue-text"></i></li>
-                                                <li><i class="fas fa-star blue-text"></i></li>
-                                                <li><i class="fas fa-star blue-text"></i></li>
-                                                <li><i class="fas fa-star blue-text"></i></li>
-                                                <li><i class="fas fa-star blue-text"></i></li>
+                                                <li><a onclick="stars('{{ route('product_stars', [$item->id, 1]) }}')"><i class="fas fa-star blue-text"></i></a></li>
+                                                <li><a onclick="stars('{{ route('product_stars', [$item->id, 2]) }}')"><i class="fas fa-star blue-text"></i></a></li>
+                                                <li><a onclick="stars('{{ route('product_stars', [$item->id, 3]) }}')"><i class="fas fa-star blue-text"></i></a></li>
+                                                <li><a onclick="stars('{{ route('product_stars', [$item->id, 4]) }}')"><i class="fas fa-star blue-text"></i></a></li>
+                                                <li><a onclick="stars('{{ route('product_stars', [$item->id, 5]) }}')"><i class="fas fa-star blue-text"></i></a></li>
                                                 @break
                                             @default
                                                 
@@ -96,7 +96,7 @@
                                 </div>
                             </div>
                         </div>
-                    @endif
+                    {{-- @endif --}}
                 @endforeach
             </div>
         </div>

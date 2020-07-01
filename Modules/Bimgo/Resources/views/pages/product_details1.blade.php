@@ -288,6 +288,13 @@
         }
       }); 
 
+      $.ajax({
+        type: "get",
+        url: "{{ route('product_view', $product->id) }}",
+        success: function (response) {  
+        }
+      });
+
     });
     function addcart(urli){
       var urli;
@@ -346,5 +353,7 @@
         }
       });      
     });
+
+    
   </script>
 @show
