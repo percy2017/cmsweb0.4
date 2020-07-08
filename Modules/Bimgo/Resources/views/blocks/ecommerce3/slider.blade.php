@@ -1,7 +1,8 @@
 
 <section class="section-content padding-y">
 	<div class="container">
-		<h4>Slick slider items</h4>
+		<h4>{{ $block->title->value }}</h4>
+		<hr />
 		<!-- ============== COMPONENT SLIDER ITEMS SLICK  ============= -->
 		<div class="slider-items-slick row" data-slick='{"slidesToShow": 4, "slidesToScroll": 1}'>
 			<div class="item-slide p-2">

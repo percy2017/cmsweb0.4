@@ -1,6 +1,6 @@
 
 <!-- ========================= FOOTER ========================= -->
-<footer class="section-footer border-top">
+<footer class="section-footer border-top mt-3">
 	<div class="container">
 		<section class="footer-top padding-y">
 			<div class="row">

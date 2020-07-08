@@ -747,7 +747,8 @@ class PagesTableSeeder extends Seeder
         ]);
 
 
-        // ------------ LPR
+        // ------------ LPR ------------------------------
+        //-----------------------------------------------
         $page = Page::create([
             'name'      => 'Landingpage Restaurant',
             'slug'      => 'landingpage-restaurant',

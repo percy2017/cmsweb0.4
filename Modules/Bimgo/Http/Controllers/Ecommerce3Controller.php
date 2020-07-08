@@ -84,19 +84,24 @@ class Ecommerce3Controller extends Controller
     }
 
     //  ----------- Function Static------------------------------
-    static function products()
+    static function products() //recomendados
     {
-        $products = BgProduct::where('published', true)->with(['product_details'])->orderBy('id', 'desc')->limit(8)->get();
+        $products = BgProduct::where([['published', true],  ['block', 'recomments']])->with(['product_details'])->orderBy('id', 'desc')->limit(8)->get();
         return $products;
     }
-    static function slider()
+    static function slider()// moda
     {
-        $products = BgProduct::where('published', true)->with(['product_details'])->orderBy('id', 'desc')->get();
+        $products = BgProduct::where([['published', true], ['block', 'moda']])->with(['product_details'])->orderBy('id', 'desc')->get();
         return $products;
     }
-    static function brands()
+    static function brands() //,arcas
     {
-        $products = BgProduct::where('published', true)->with(['product_details'])->orderBy('id', 'desc')->get();
+        $brands = BgBrand::orderBy('id', 'desc')->limit(6)->get();
+        return $brands;
+    }
+    static function categories() // categories
+    {          
+        $products = BgSubCategory::with(['products'])->where('block', 'categories')->orderBy('updated_at', 'desc')->limit(3)->get();
         return $products;
     }
 

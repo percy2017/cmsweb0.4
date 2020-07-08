@@ -1,4 +1,7 @@
 <!-- ========================= SECTION MAIN ========================= -->
+@php
+    $sub_categories = \Modules\Bimgo\Entities\BgSubCategory::orderBy('updated_at', 'desc')->limit(7)->get();
+@endphp
 <section class="section-main bg padding-y">
 	<div class="container">
 
@@ -6,7 +9,7 @@
 		<aside class="col-md-3">
 			<nav class="card">
 				<ul class="menu-category">
-					<li><a href="{{ $data->link1->value }}">{{ $data->text1->value }}</a></li>
+					{{--  <li><a href="{{ $data->link1->value }}">{{ $data->text1->value }}</a></li>
 					<li><a href="{{ $data->link2->value }}">{{ $data->text2->value }}</a></li>
 					<li><a href="{{ $data->link3->value }}">{{ $data->text3->value }}</a></li>
 					<li><a href="{{ $data->link4->value }}">{{ $data->text4->value }}</a></li>
@@ -19,7 +22,10 @@
 							<li><a href="{{ $data->link73->value }}">{{ $data->text73->value }}</a></li>
 							<li><a href="{{ $data->link74->value }}">{{ $data->text74->value }}</a></li>
 						</ul>
-					</li>
+					</li>  --}}
+					@foreach ($sub_categories as $item)
+						<li><a href="{{ $item->title }}">{{ $item->title }}</a></li>
+					@endforeach
 				</ul>
 			</nav>
 		</aside> <!-- col.// -->

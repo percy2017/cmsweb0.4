@@ -14,7 +14,7 @@
         <ul class="navbar-nav mr-auto">
           @foreach ($categories as $item)
             @php
-                $subcategories = \Modules\Bimgo\Entities\BgSubCategory::where('category_id', $item->id)->orderBy('id', 'desc')->limit(6)->get();
+              $subcategories = \Modules\Bimgo\Entities\BgSubCategory::where('category_id', $item->id)->orderBy('id', 'desc')->limit(6)->get();
             @endphp
             <li class="nav-item dropdown mega-dropdown @if($loop->index ==0) active @endif">
               <a class="nav-link dropdown-toggle  no-caret" id="navbarDropdownMenuLink1" data-toggle="dropdown"

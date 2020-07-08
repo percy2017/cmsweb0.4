@@ -4,10 +4,9 @@
 
 	<header class="section-heading">
 		<a href="{{ route('bg_category3') }}" class="btn btn-outline-primary float-right">Ver Todos</a>
-		<h3 class="section-title">Productos Populares</h3>
+		<h4 class="section-title">{{ $block->title->value }}</h4>
 	</header><!-- sect-heading -->
-
-		
+	<hr />
 	<div class="row">
 		@foreach ($data as $item)
 			@php
@@ -17,8 +16,18 @@
 				<div href="#" class="card card-product-grid">
 					<a href="{{ route('bg_product3', $item->slug) }}" class="img-wrap"> <img src="{{ Voyager::image($images) }}"> </a>
 					<figcaption class="info-wrap">
+						@php
+							$default = null;
+						@endphp
+						@foreach ($item->product_details as $value)
+							@if ($value->default)
+								@php
+									$default = $value;
+								@endphp
+							@endif
+						@endforeach
 						<a href="{{ route('bg_product3', $item->slug) }}" class="title">{{ $item->name }}</a>
-						<div class="price mt-1">{{ $item->product_details[0]->price }} Bs.</div> <!-- price-wrap.// -->
+						<div class="price mt-1">{{ $default->price }} {{ setting('ecommerce.monedas') }}</div> <!-- price-wrap.// -->
 					</figcaption>
 				</div>
 			</div> <!-- col.// -->
