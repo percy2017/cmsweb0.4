@@ -29,9 +29,8 @@
                                         <small>{{ $category->title }}</small>
                                         @if($default->price_last > 0)
                                             <h6 class="h6-responsive font-weight-bold dark-grey-text">
-                                                <strong> {{ $default->price }} </strong> 
+                                                <strong> {{ $default->price }} </strong> {{ setting('ecommerce.monedas') }} 
                                                 <span class="grey-text"><small><s> {{ $default->price_last }} </s></small></span>
-                                                {{ setting('ecommerce.monedas') }}
                                             </h6>
                                         @else
                                             <h6 class="h6-responsive font-weight-bold dark-grey-text"><strong> {{ $default->price }} {{ setting('ecommerce.monedas') }} </strong></h6>

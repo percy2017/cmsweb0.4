@@ -35,3 +35,29 @@
 @section('footer')
   @include('bimgo::layouts.ecommerce3.footer')
 @endsection 
+@section('js')
+  <script>
+    $(function () {
+      $('.material-tooltip-main').tooltip({
+        template: '<div class="tooltip md-tooltip"><div class="tooltip-arrow md-arrow"></div><div class="tooltip-inner md-inner"></div></div>'
+      });
+    })
+    
+    function addcart(urli){
+      $.ajax({
+        type: "get",
+        url: urli,
+        success: function (response) {
+          Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: response.name+', Agregado a tu Carrito',
+            showConfirmButton: true,
+            timer: 3000
+          });
+          //$('#cartTotalQuantity').html('{{ \Cart::getTotalQuantity() }}');
+        }
+      });
+    }
+      </script>
+@endsection

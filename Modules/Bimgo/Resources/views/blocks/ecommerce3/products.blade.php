@@ -27,7 +27,21 @@
 							@endif
 						@endforeach
 						<a href="{{ route('bg_product3', $item->slug) }}" class="title">{{ $item->name }}</a>
-						<div class="price mt-1">{{ $default->price }} {{ setting('ecommerce.monedas') }}</div> <!-- price-wrap.// -->
+						{{--  <div class="price mt-1">{{ $default->price }} {{ setting('ecommerce.monedas') }}</div> <!-- price-wrap.// -->  --}}
+					
+						<div class="card-footer">
+							<div class="row mb-0">
+								@if($default->price_last > 0)
+									<div class="price mt-1 float-left">{{ $default->price }} {{ setting('ecommerce.monedas') }} <span class="grey-text"><small><s>{{ $default->price_last }}</s></small></span></div>
+								@else 
+									<div class="price mt-1 float-left">{{ $default->price }} {{ setting('ecommerce.monedas') }}</div>
+								@endif
+								<span class="text-right">
+									<a onclick="addcart('{{ route('bg_ajax_addcart', [$item->slug, $default->id]) }}')" data-toggle="tooltip" data-placement="top" title="Agregar al Carrito"><i
+										class="fas fa-shopping-cart ml-3"></i></a>
+								</span>
+							</div>
+						</div>
 					</figcaption>
 				</div>
 			</div> <!-- col.// -->
