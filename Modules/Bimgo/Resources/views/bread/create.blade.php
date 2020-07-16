@@ -334,7 +334,8 @@
     </div>
   </div>
 @endcan
-<script src="//cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
+{{-- <script src="//cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script> --}}
+<script src="{{ asset('vendor/ckeditor.js') }}"></script>
 <script>
 
     $('.form-group input[type=datetime]').each(function (idx, elt) {

@@ -47,12 +47,14 @@
 @stop
 
 @section('javascript')
-  <script src="//cdn.ckeditor.com/4.14.0/full/ckeditor.js"></script>
+  {{-- <script src="//cdn.ckeditor.com/4.14.0/full/ckeditor.js"></script> --}}
+  <script src="{{ asset('vendor/ckeditor/ckeditor.js') }}"></script>
   <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
   <script type="text/javascript" src="{{ asset('vendor/Bimgo/js/app.js') }}"></script>
   <script>
       $(document).ready(function () {
         ajax('{{ route('voyager.'.$dataType->name.'.show', $dataType->id) }}', 'get');
+        //config.extraPlugins = 'video';
       });
 
       //funciones ------------------
