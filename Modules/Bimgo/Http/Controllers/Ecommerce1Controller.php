@@ -148,7 +148,6 @@ class Ecommerce1Controller extends Controller
         return view('bimgo::pages.product_details1', [
             'product'  => $product,
             'sugerencias'  => $sugerencias,
-            'page' => $product,
             'regions' => $regions
         ]);
     }

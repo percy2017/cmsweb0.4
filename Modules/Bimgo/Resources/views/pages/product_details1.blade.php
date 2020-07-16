@@ -1,5 +1,25 @@
 @extends('bimgo::layouts.ecommerce1.master')
 
+@section('meta_property')
+  @php
+      $default = null;
+  @endphp
+  @foreach ($product->product_details as $value)
+      @if ($value->default)
+          @php
+              $default = $value;
+          @endphp
+      @endif
+  @endforeach
+  <meta property="og:site_name" content="{{ setting('site.title') }}" />
+  <meta property="og:title" content="{{ $product->name }} - {{ $default->price }} {{ setting('ecommerce.monedas') }}" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="{{ route('bg_product', $product->slug) }}" />
+  <meta property="og:image" content="{{ Voyager::Image(json_decode($product->images)[0]) }}" />
+  <meta property="og:description" content="{{ $product->description }}" />
+  <title>{{ $product->name }}</title>
+@endsection
+
 @section('header')
   @include('bimgo::layouts.ecommerce1.header')
 @endsection
