@@ -17,6 +17,7 @@ use Modules\Bimgo\Entities\BgProduct;
 use Modules\Bimgo\Entities\BgProductDetail;
 use Modules\Bimgo\Entities\BgCategory;
 use Modules\Bimgo\Entities\BgRegion;
+use Modules\Bimgo\Entities\BgDelivery;
 use Modules\Bimgo\Entities\BgSubCategory;
 class BimgoController extends Controller
 {
@@ -280,6 +281,13 @@ class BimgoController extends Controller
     {
         $region = BgRegion::find($id);
         return response()->json($region);
+    }
+
+    function delivery_get($region_id)
+    {
+
+        $delivery = BgDelivery::where('region_id', $region_id)->first();
+        return response()->json($delivery);
     }
 
     //----------------- Product--------------

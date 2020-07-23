@@ -14,6 +14,7 @@ use Modules\Bimgo\Entities\BgProductDetail;
 use Modules\Bimgo\Entities\BgCategory;
 use Modules\Bimgo\Entities\BgSubCategory;
 use Modules\Bimgo\Entities\BgRegion;
+use Modules\Bimgo\Entities\BgDelivery;
 use Illuminate\Support\Facades\Auth;
 use TCG\Voyager\Facades\Voyager;
 class Ecommerce1Controller extends Controller
@@ -142,9 +143,14 @@ class Ecommerce1Controller extends Controller
                 }
             }
         }
+        // return $sugerencias;
         // Ordernar de mayor a menor coincidencia y convertir a colección
         $sugerencias = json_decode(json_encode(collect($sugerencias)->sortBy('coincidencias')->reverse()->take(4)));
-        $regions = BgRegion::all();
+        
+        // $delivery = BgDelivery::where('product_id', '=', $product->id)->get();
+        // return $delivery;
+        $regions = BgProduct::find($product->id)->regions()->get();
+        // return $regions;}
         return view('bimgo::pages.product_details1', [
             'product'  => $product,
             'sugerencias'  => $sugerencias,

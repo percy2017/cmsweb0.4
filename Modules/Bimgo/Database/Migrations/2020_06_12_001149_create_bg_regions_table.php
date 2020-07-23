@@ -17,11 +17,8 @@ class CreateBgRegionsTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('image')->nullable();
-            $table->double('price_shipping')->nullable();
-            $table->string('day_delivery')->nullable();
-            $table->string('hour_delivery')->nullable();
             $table->text('description')->nullable();
-
+            
             $table->timestamps();
             $table->softDeletes();
         });

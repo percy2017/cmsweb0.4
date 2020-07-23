@@ -109,6 +109,23 @@ class MenuItemsTableSeeder extends Seeder
                     'order'      => $count++,
                 ])->save();
             }
+
+            $menuItem = MenuItem::firstOrNew([
+                'menu_id' => $menu->id,
+                'title'   => 'Delivery',
+                'url'     => 'admin/bg_deliveries/create',
+                'route'   => null
+            ]);
+            if (!$menuItem->exists) {
+                $menuItem->fill([
+                    'target'     => '_self',
+                    'icon_class' => null,
+                    'color'      => null,
+                    'parent_id'  => null,
+                    'order'      => $count++,
+                ])->save();
+            }
+
             $menuItem = MenuItem::firstOrNew([
                 'menu_id' => $menu->id,
                 'title'   => 'divider',
@@ -143,6 +160,9 @@ class MenuItemsTableSeeder extends Seeder
         //-------------------------------------------------
         Menu::firstOrCreate([
             'name' => 'bg_product_details', // Detalles del Producto
+        ]);
+        Menu::firstOrCreate([
+            'name' => 'bg_deliveries', // Delivery
         ]);
         //-----------------FIN MODULO INVENTARI-----------    
 

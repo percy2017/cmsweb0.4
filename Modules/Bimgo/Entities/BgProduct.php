@@ -15,4 +15,9 @@ class BgProduct extends Model
     public function product_details(){
         return $this->hasMany('Modules\Bimgo\Entities\BgProductDetail', 'product_id');
     }
+
+    public function regions()
+    {
+        return $this->belongsToMany('Modules\Bimgo\Entities\BgRegion', 'bg_deliveries', 'product_id', 'region_id');
+    }
 }

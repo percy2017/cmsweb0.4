@@ -201,6 +201,29 @@ class DataTypeTableSeeder extends Seeder
             ])->save();
         }
 
+        $dataType = $this->dataType('slug', 'bg_deliveries');
+        if (!$dataType->exists) {
+            $dataType->fill([
+                'name'                  => 'bg_deliveries',
+                'display_name_singular' => 'Delivery',
+                'display_name_plural'   => 'Deliverys',
+                'icon'                  => 'voyager-play',
+                'model_name'            => 'Modules\\Bimgo\\Entities\\BgDelivery',
+                'policy_name'           => null,
+                'controller'            => 'Modules\\Bimgo\\Http\\Controllers\\DeliveryController',
+                'generate_permissions'  => 1,
+                'description'           => null,
+                'server_side'           => 1,
+                'details'               => [
+                    'order_column'         => 'id',
+                    'order_display_column' => 'id',
+                    'order_direction'      => 'asc',
+                    'default_search_key'   => 'id',
+                    'scope'                => null
+                ]
+            ])->save();
+        }
+
         // --------------MODULO INVENTARIO--------------------
         // --------------------------------------------------
         $dataType = $this->dataType('slug', 'bg_customers');

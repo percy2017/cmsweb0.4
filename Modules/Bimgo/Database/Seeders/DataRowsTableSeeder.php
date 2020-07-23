@@ -25,6 +25,7 @@ class DataRowsTableSeeder extends Seeder
         $SucursalDataType = DataType::where('slug', 'bg_branch_offices')->firstOrFail();
         $InventarioDataType = DataType::where('slug', 'bg_product_offices')->firstOrFail();
         $tansferDataType = DataType::where('slug', 'bg_transfers')->firstOrFail();
+        $deliveryDataType = DataType::where('slug', 'bg_deliveries')->firstOrFail();
 
         //---------------- MODULE VENTAS --------------------------------------------
         $customerDataType = DataType::where('slug', 'bg_customers')->firstOrFail();
@@ -898,7 +899,7 @@ class DataRowsTableSeeder extends Seeder
                     ],
                     'on'  => 'Publicado',
                     'off' => 'No Publicado',
-                    'checked' => false,
+                    'checked' => true,
                     'display'   => [
                         'width'  => '3',
                     ],
@@ -979,6 +980,32 @@ class DataRowsTableSeeder extends Seeder
                     'on'  => 'Escacez',
                     'off' => 'No Escacez',
                     'checked' => false,
+                    'display'   => [
+                        'width'  => '3',
+                    ],
+                ]
+            ])->save();
+        }
+        $dataRow = $this->dataRow($ProductDataType, 'new');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'checkbox',
+                'display_name' => 'Producto Nuevo',
+                'required'     => 0,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'order'        => $postion++,
+                'details'      => [
+                    'tooltip' => [
+                        'ubication' => 'top',
+                        'message' => 'Establece si el producto es Nuevo'
+                    ],
+                    'on'  => 'Nuevo',
+                    'off' => 'Medio Uso',
+                    'checked' => true,
                     'display'   => [
                         'width'  => '3',
                     ],
@@ -3521,71 +3548,71 @@ class DataRowsTableSeeder extends Seeder
                 ]
             ])->save();
         }
-        $dataRow = $this->dataRow($RegionDataType, 'price_shipping');
-        if (!$dataRow->exists) {
-            $dataRow->fill([
-                'type'         => 'number',
-                'display_name' => 'Precio de Envio',
-                'required'     => 0,
-                'browse'       => 1,
-                'read'         => 1,
-                'edit'         => 1,
-                'add'          => 1,
-                'delete'       => 0,
-                'order'        => $postion++,
-                'details'      => [
-                    'display'   => [
-                        'width'  => '6',
-                    ],
-                ]
-            ])->save();
-        }
-        $dataRow = $this->dataRow($RegionDataType, 'day_delivery');
-        if (!$dataRow->exists) {
-            $dataRow->fill([
-                'type'         => 'select_dropdwon',
-                'display_name' => 'Dias de Envio',
-                'required'     => 0,
-                'browse'       => 1,
-                'read'         => 1,
-                'edit'         => 1,
-                'add'          => 1,
-                'delete'       => 0,
-                'order'        => $postion++,
-                'details'      => [
-                    'options' => [
-                        '1 Dia' => '1 Dia',
-                        '1 Dia' => '1 Dia'
-                    ],
-                    'display'   => [
-                        'width'  => '6',
-                    ],
-                ]
-            ])->save();
-        }
-        $dataRow = $this->dataRow($RegionDataType, 'hour_delivery');
-        if (!$dataRow->exists) {
-            $dataRow->fill([
-                'type'         => 'select_dropdwon',
-                'display_name' => 'Horas de Envio',
-                'required'     => 0,
-                'browse'       => 1,
-                'read'         => 1,
-                'edit'         => 1,
-                'add'          => 1,
-                'delete'       => 0,
-                'order'        => $postion++,
-                'details'      => [
-                    'options' => [
-                        '1 Hora' => '1 Hora',
-                        '2 Horas' => '2 Horas'
-                    ],
-                    'display'   => [
-                        'width'  => '6',
-                    ],
-                ]
-            ])->save();
-        }
+        // $dataRow = $this->dataRow($RegionDataType, 'price_shipping');
+        // if (!$dataRow->exists) {
+        //     $dataRow->fill([
+        //         'type'         => 'number',
+        //         'display_name' => 'Precio de Envio',
+        //         'required'     => 0,
+        //         'browse'       => 1,
+        //         'read'         => 1,
+        //         'edit'         => 1,
+        //         'add'          => 1,
+        //         'delete'       => 0,
+        //         'order'        => $postion++,
+        //         'details'      => [
+        //             'display'   => [
+        //                 'width'  => '6',
+        //             ],
+        //         ]
+        //     ])->save();
+        // }
+        // $dataRow = $this->dataRow($RegionDataType, 'day_delivery');
+        // if (!$dataRow->exists) {
+        //     $dataRow->fill([
+        //         'type'         => 'select_dropdwon',
+        //         'display_name' => 'Dias de Envio',
+        //         'required'     => 0,
+        //         'browse'       => 1,
+        //         'read'         => 1,
+        //         'edit'         => 1,
+        //         'add'          => 1,
+        //         'delete'       => 0,
+        //         'order'        => $postion++,
+        //         'details'      => [
+        //             'options' => [
+        //                 '1 Dia' => '1 Dia',
+        //                 '1 Dia' => '1 Dia'
+        //             ],
+        //             'display'   => [
+        //                 'width'  => '6',
+        //             ],
+        //         ]
+        //     ])->save();
+        // }
+        // $dataRow = $this->dataRow($RegionDataType, 'hour_delivery');
+        // if (!$dataRow->exists) {
+        //     $dataRow->fill([
+        //         'type'         => 'select_dropdwon',
+        //         'display_name' => 'Horas de Envio',
+        //         'required'     => 0,
+        //         'browse'       => 1,
+        //         'read'         => 1,
+        //         'edit'         => 1,
+        //         'add'          => 1,
+        //         'delete'       => 0,
+        //         'order'        => $postion++,
+        //         'details'      => [
+        //             'options' => [
+        //                 '1 Hora' => '1 Hora',
+        //                 '2 Horas' => '2 Horas'
+        //             ],
+        //             'display'   => [
+        //                 'width'  => '6',
+        //             ],
+        //         ]
+        //     ])->save();
+        // }
 
         $dataRow = $this->dataRow($RegionDataType, 'description');
         if (!$dataRow->exists) {
@@ -4540,9 +4567,257 @@ class DataRowsTableSeeder extends Seeder
         }
 
 
+           /**
+         * ------------------------------------------------
+         *               Formulario Delivery
+         * -----------------------------------------------
+         */
+        $postion = 1;
+        $dataRow = $this->dataRow($deliveryDataType, 'id');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'number',
+                'display_name' => __('voyager::seeders.data_rows.id'),
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 0,
+                'add'          => 0,
+                'delete'       => 0,
+                'details'      => [
+                    'display' => [
+                        'width' => '6'
+                    ]
+                ],
+                'order'        => $postion++,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($deliveryDataType, 'delivery_belongsto_product_relationship');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'relationship',
+                'display_name' => 'Producto',
+                'required'     => 0,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'details'      => [
+                    'tooltip' => [
+                        'ubication' => 'top',
+                        'message' => 'Producto'
+                    ],
+                    'display' => [
+                        'width' => 6
+                    ],
+                    'model'       => 'Modules\\Bimgo\\Entities\\BgProduct',
+                    'table'       => 'bg_products',
+                    'type'        => 'belongsTo',
+                    'column'      => 'product_id',
+                    'key'         => 'id',
+                    'label'       => 'id',
+                    'pivot_table' => 'bg_products',
+                    'pivot'       => 0,
+                ],
+                'order'=> $postion++,
+
+            ])->save();
+        }
+        $dataRow = $this->dataRow($deliveryDataType, 'delivery_belongsto_region_relationship');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'relationship',
+                'display_name' => 'Region',
+                'required'     => 0,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'details'      => [
+                    'tooltip' => [
+                        'ubication' => 'top',
+                        'message' => 'Region'
+                    ],
+                    'display' => [
+                        'width' => 6
+                    ],
+                    'model'       => 'Modules\\Bimgo\\Entities\\BgRegion',
+                    'table'       => 'bg_regions',
+                    'type'        => 'belongsTo',
+                    'column'      => 'region_id',
+                    'key'         => 'id',
+                    'label'       => 'id',
+                    'pivot_table' => 'bg_regions',
+                    'pivot'       => 0,
+                ],
+                'order'=> $postion++,
+
+            ])->save();
+        }
+        $dataRow = $this->dataRow($deliveryDataType, 'price_shipping');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'number',
+                'display_name' => 'Precio de Envio',
+                'required'     => 0,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'order'        => $postion++,
+                'details'      => [
+                    'display'   => [
+                        'width'  => '6',
+                    ],
+                ]
+            ])->save();
+        }
+        $dataRow = $this->dataRow($deliveryDataType, 'day_delivery');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'select_dropdown',
+                'display_name' => 'Dias de Envio',
+                'required'     => 0,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'order'        => $postion++,
+                'details'      => [
+                    'options' => [
+                        '1 Dia' => '1 Dia',
+                        '1 Dia' => '1 Dia'
+                    ],
+                    'display'   => [
+                        'width'  => '6',
+                    ],
+                ]
+            ])->save();
+        }
+        $dataRow = $this->dataRow($deliveryDataType, 'hour_delivery');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'select_dropdown',
+                'display_name' => 'Horas de Envio',
+                'required'     => 0,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'order'        => $postion++,
+                'details'      => [
+                    'options' => [
+                        '1 Hora' => '1 Hora',
+                        '2 Horas' => '2 Horas'
+                    ],
+                    'display'   => [
+                        'width'  => '6',
+                    ],
+                ]
+            ])->save();
+        }
+        $dataRow = $this->dataRow($deliveryDataType, 'created_at');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'timestamp',
+                'display_name' => __('voyager::seeders.data_rows.created_at'),
+                'required'     => 0,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 0,
+                'add'          => 0,
+                'delete'       => 0,
+                'order'        => $postion++,
+                'details'      => [
+                    'display' => [
+                        'width' => '4'
+                    ]
+                ]
+            ])->save();
+        }
+        $dataRow = $this->dataRow($deliveryDataType, 'updated_at');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'timestamp',
+                'display_name' => __('voyager::seeders.data_rows.updated_at'),
+                'required'     => 0,
+                'browse'       => 0,
+                'read'         => 1,
+                'edit'         => 0,
+                'add'          => 0,
+                'delete'       => 0,
+                'order'        => $postion++,
+                'details'      => [
+                    'display' => [
+                        'width' => '4'
+                    ]
+                ]
+            ])->save();
+        }
+        $dataRow = $this->dataRow($deliveryDataType, 'deleted_at');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'timestamp',
+                'display_name' => 'deleted_at',
+                'required'     => 0,
+                'browse'       => 0,
+                'read'         => 1,
+                'edit'         => 0,
+                'add'          => 0,
+                'delete'       => 0,
+                'order'        => $postion++,
+                'details'      => [
+                    'display' => [
+                        'width' => '4'
+                    ]
+                ]
+            ])->save();
+        }
+        $dataRow = $this->dataRow($deliveryDataType, 'product_id');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'hidden',
+                'display_name' => 'product_id',
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'details'      => [
+                    'display' => [
+                        'width' => '6'
+                    ]
+                ],
+                'order'        => $postion++,
+            ])->save();
+        }
+        $dataRow = $this->dataRow($deliveryDataType, 'region_id');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'hidden',
+                'display_name' => 'region_id',
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'details'      => [
+                    'display' => [
+                        'width' => '6'
+                    ]
+                ],
+                'order'        => $postion++,
+            ])->save();
+        }
 
     }
-
     protected function dataRow($type, $field)
     {
         return DataRow::firstOrNew([

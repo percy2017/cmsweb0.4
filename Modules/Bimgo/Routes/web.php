@@ -25,6 +25,7 @@ Route::get('ajax/product_details/{id}', 'BimgoController@productdetails')->name(
 Route::post('ajax/update/bussiness', 'BimgoController@update_bussiness')->name('bg_ajax_update_bussiness');
 Route::post('/save/location', 'BimgoController@save_location')->name('bg_save_location');
 Route::get('ajax/bg_regions/{id}', 'BimgoController@regions_get')->name('bg_ajax_region_get');
+Route::get('ajax/bg_delivery/{region_id}', 'BimgoController@delivery_get')->name('bg_ajax_delivery_get');
 
 // Routes  admin -----------------------------------------------------------------------
 Route::get('ajax/admin/welcome', 'Ecommerce1Controller@welcome')->name('bg_ajax_admin_welcome');

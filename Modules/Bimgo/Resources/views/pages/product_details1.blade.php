@@ -118,8 +118,10 @@
                 
                 {{-- <p class="ml-xl-0 ml-4"> --}}
                   <label>Envios a</label>
+                   {{-- {{ $regions }} --}}
                   <select name="regions" id="regions_select" class="browser-default custom-select">
                     <option value="" disabled><smal>Elije tu Region o Localidad</smal></option>
+                   
                     @foreach ($regions as $item)
                         <option value="{{ $item->id }}">{{ $item->name }}</option>
                     @endforeach
@@ -297,7 +299,7 @@
       });
 
       let ids = $( "#regions_select option:checked" ).val();
-      let urli = '{{ route('bg_ajax_region_get', ':id') }}';
+      let urli = '{{ route('bg_ajax_delivery_get', ':id') }}';
       urli = urli.replace(':id', ids);
       let price = '{{ setting('ecommerce.monedas') }}';
       $.ajax({
@@ -316,6 +318,10 @@
       });
 
     });
+
+
+
+
     function addcart(urli){
       var urli;
       $('.color input[type=radio]').each(function (idx, elt) {
@@ -362,7 +368,7 @@
 
     $('#regions_select').change(function(idx){
        //console.log(idx);
-      let urli = '{{ route('bg_ajax_region_get', ':id') }}';
+      let urli = '{{ route('bg_ajax_delivery_get', ':id') }}';
       urli = urli.replace(':id', idx.target.value);
       let price = '{{ setting('ecommerce.monedas') }}';
       $.ajax({

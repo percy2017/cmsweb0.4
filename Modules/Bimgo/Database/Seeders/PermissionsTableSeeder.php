@@ -25,6 +25,7 @@ class PermissionsTableSeeder extends Seeder
         Permission::generateFor('bg_branch_offices');
         Permission::generateFor('bg_product_offices');
         Permission::generateFor('bg_transfers');
+        Permission::generateFor('bg_deliveries');
 
         //---------------------MODULO VENTAS-----------------
         Permission::generateFor('bg_customers');
@@ -142,6 +143,19 @@ class PermissionsTableSeeder extends Seeder
                 ]);
             }
         }
+
+         //--------------------------------------------------------------------------------
+        $permissions = Permission::where('table_name', 'bg_deliveries')->get();
+        foreach ($permissions as $key) {
+            $rp = DB::table('permission_role')->where('permission_id', $key->id)->first();
+            if (!$rp) {
+                DB::table('permission_role')->insert([
+                    'permission_id' => $key->id, 
+                    'role_id' => $role->id
+                ]);
+            }
+        }
+
 
         //--------------------------------------------------------------------------------
        
