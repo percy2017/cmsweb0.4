@@ -16,8 +16,8 @@ class CreateBgDeliveriesTable extends Migration
         Schema::create('bg_deliveries', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->double('price_shipping')->nullable();
-            $table->string('day_delivhour_deliveryery')->nullable();
-            $table->string('')->nullable();
+            $table->string('day_delivery')->nullable();
+            $table->string('hour_delivery')->nullable();
 
             $table->unsignedBigInteger('product_id');
             $table->foreign('product_id')->references('id')->on('bg_products');
