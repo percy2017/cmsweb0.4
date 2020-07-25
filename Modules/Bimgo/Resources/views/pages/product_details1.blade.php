@@ -107,7 +107,7 @@
                 <p class="grey-text">Elije tu {{ $product->product_details[0]->{'type'} }}</p>
                 <div class="row text-center text-md-left">
                   @foreach ($product->product_details as $item => $value)
-                    <div class="col-md-4 @if($loop->index == 0) col-12 @endif">
+                    <div class="@if($loop->index == 0) col-md-12 @else col-md-4 @endif">
                       <div class="form-group">
                         <input class="form-check-input" name="group100" type="radio" id="{{ $value->id }}" @if($value->default) checked @endif>
                         <label for="{{ $value->id }}" class="form-check-label dark-grey-text">{{ $value->title }}</label>
